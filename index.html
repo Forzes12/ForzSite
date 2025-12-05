@@ -271,35 +271,6 @@
             left: 100%;
         }
 
-        /* Стили для счетчика онлайн-посетителей */
-        .online-counter {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .online-counter:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .online-counter i {
-            color: var(--online-color);
-        }
-
-        .online-count {
-            color: var(--neon);
-            font-weight: 700;
-        }
 
         /* НОВОГОДНИЙ ЛОГОТИП */
         .logo {
@@ -1338,7 +1309,7 @@
 
         .filter-select {
             width: 100%;
-            padding: 12px 20px;
+            padding: 12px 20px 12px 40px;
             background: var(--accent);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 30px;
@@ -1347,6 +1318,13 @@
             cursor: pointer;
             transition: all 0.3s;
             min-height: 48px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: 12px center;
+            background-size: 16px;
         }
 
         .filter-select:focus {
@@ -1767,7 +1745,7 @@
 
         .modal-buy-btn:active {
             transform: translateY(0);
-            box-shadow: 0 2pх 10pх rgba(0, 206, 209, 0.6);
+            box-shadow: 0 2px 10px rgba(0, 206, 209, 0.6);
         }
 
         @keyframes modalContentAppear {
@@ -3666,11 +3644,20 @@
     transform: translateX(-50%);
     border-radius: 50% 50% 0 0;
     background: linear-gradient(to bottom, #0a5c36, #0b6b3f, #0c7a48);
-    box-shadow: 
+    box-shadow:
         inset 0 5px 10px rgba(255, 255, 255, 0.2),
         inset 0 -5px 10px rgba(0, 0, 0, 0.3),
         0 10px 20px rgba(0, 0, 0, 0.4);
     overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.tree-layer:hover {
+    transform: translateX(-50%) scale(1.05) rotateY(5deg);
+    box-shadow:
+        inset 0 5px 10px rgba(255, 255, 255, 0.3),
+        inset 0 -5px 10px rgba(0, 0, 0, 0.4),
+        0 15px 30px rgba(46, 139, 87, 0.3);
 }
 
 .layer-needles {
@@ -3690,24 +3677,35 @@
     bottom: 40px;
     width: 140px;
     height: 60px;
+    transition: all 0.3s ease;
 }
 
 .layer-2 {
     bottom: 85px;
     width: 120px;
     height: 55px;
+    transition: all 0.3s ease;
 }
 
 .layer-3 {
     bottom: 125px;
     width: 100px;
     height: 50px;
+    transition: all 0.3s ease;
 }
 
 .layer-4 {
     bottom: 160px;
     width: 80px;
     height: 45px;
+    transition: all 0.3s ease;
+}
+
+.layer-5 {
+    bottom: 190px;
+    width: 60px;
+    height: 40px;
+    transition: all 0.3s ease;
 }
 
 /* Гирлянды на елке */
@@ -3734,6 +3732,13 @@
 .garland-2 { top: 50%; animation-delay: 0.5s; }
 .garland-3 { top: 70%; animation-delay: 1s; }
 .garland-4 { top: 85%; animation-delay: 1.5s; }
+.garland-5 { top: 20%; animation-delay: 1.8s; }
+
+.garland-extra-1 { top: 45%; animation-delay: 2s; }
+.garland-extra-2 { top: 55%; animation-delay: 2.3s; }
+.garland-extra-3 { top: 65%; animation-delay: 2.6s; }
+.garland-extra-4 { top: 75%; animation-delay: 2.9s; }
+.garland-extra-5 { top: 25%; animation-delay: 3.2s; }
 
 @keyframes garlandTwinkle {
     0% { 
@@ -3920,11 +3925,17 @@
 }
 
 .present {
-    width: 25px;
-    height: 20px;
-    border-radius: 3px;
+    width: 35px;
+    height: 25px;
+    border-radius: 5px;
     position: relative;
     animation: presentFloat 4s ease-in-out infinite;
+    box-shadow:
+        0 3px 6px rgba(0, 0, 0, 0.3),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
 }
 
 .present-1 {
@@ -3944,14 +3955,16 @@
 
 .present-bow {
     position: absolute;
-    top: -5px;
+    top: -8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 10px;
-    height: 10px;
-    background: gold;
+    width: 15px;
+    height: 15px;
+    background: linear-gradient(45deg, #FFD700, #FFA500);
     border-radius: 50% 50% 0 50%;
     transform: rotate(45deg);
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 @keyframes presentFloat {
@@ -3970,6 +3983,182 @@
     background: linear-gradient(to top, rgba(255, 255, 255, 0.8), transparent);
     border-radius: 50%;
     filter: blur(2px);
+}
+
+/* Круглая спиральная гирлянда от макушки до подарков */
+.spiral-garland {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.spiral-circle {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    box-shadow:
+        0 0 8px currentColor,
+        0 0 16px currentColor,
+        inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    background: currentColor;
+}
+
+.spiral-circle.red { animation: bulbGlowRed 3s infinite ease-in-out; }
+.spiral-circle.orange { animation: bulbGlowOrange 3.2s infinite ease-in-out; }
+.spiral-circle.yellow { animation: bulbGlowYellow 2.8s infinite ease-in-out; }
+.spiral-circle.green { animation: bulbGlowGreen 3.5s infinite ease-in-out; }
+.spiral-circle.cyan { animation: bulbGlowCyan 2.6s infinite ease-in-out; }
+.spiral-circle.blue { animation: bulbGlowBlue 3.3s infinite ease-in-out; }
+.spiral-circle.purple { animation: bulbGlowPurple 2.9s infinite ease-in-out; }
+.spiral-circle.pink { animation: bulbGlowPink 3.1s infinite ease-in-out; }
+
+/* Лестничные позиции кружочков герлянды по елке (зигзаг лесенка: право-лево, лево-право по очереди) */
+.spiral-circle.circle-1 { top: 20%; left: 80%; transform: rotate(0deg); animation-delay: 0s; } /* Начало справа */
+.spiral-circle.circle-2 { top: 30%; left: 60%; transform: rotate(0deg); animation-delay: 0.1s; } /* Лево */
+.spiral-circle.circle-3 { top: 40%; left: 40%; transform: rotate(0deg); animation-delay: 0.2s; } /* Лево */
+.spiral-circle.circle-4 { top: 50%; left: 60%; transform: rotate(0deg); animation-delay: 0.3s; } /* Право */
+.spiral-circle.circle-5 { top: 60%; left: 40%; transform: rotate(0deg); animation-delay: 0.4s; } /* Лево */
+.spiral-circle.circle-6 { top: 70%; left: 20%; transform: rotate(0deg); animation-delay: 0.5s; } /* Лево */
+.spiral-circle.circle-7 { top: 80%; left: 40%; transform: rotate(0deg); animation-delay: 0.6s; } /* Право */
+.spiral-circle.circle-8 { top: 85%; left: 60%; transform: rotate(0deg); animation-delay: 0.7s; } /* Право */
+.spiral-circle.circle-9 { top: 90%; left: 80%; transform: rotate(0deg); animation-delay: 0.8s; } /* Право */
+.spiral-circle.circle-10 { top: 95%; left: 60%; transform: rotate(0deg); animation-delay: 0.9s; } /* Лево */
+.spiral-circle.circle-11 { top: 92%; left: 78%; transform: rotate(25deg); animation-delay: 1.0s; }
+.spiral-circle.circle-12 { top: 96%; left: 32%; transform: rotate(-18deg); animation-delay: 1.1s; }
+.spiral-circle.circle-13 { top: 38%; left: 52%; transform: rotate(8deg); animation-delay: 1.2s; }
+.spiral-circle.circle-14 { top: 58%; left: 45%; transform: rotate(-10deg); animation-delay: 1.3s; }
+.spiral-circle.circle-15 { top: 72%; left: 72%; transform: rotate(15deg); animation-delay: 1.4s; }
+.spiral-circle.circle-16 { top: 85%; left: 25%; transform: rotate(-22deg); animation-delay: 1.5s; }
+
+.orange { background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.8) 0%, #ff8c00 50%, #ff8c00 100%); }
+.pink { background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.8) 0%, #ff69b4 50%, #ff69b4 100%); }
+
+@keyframes bulbGlowRed {
+    0% { box-shadow: 0 0 8px #ff0000, 0 0 16px #ff0000, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
+    25% { box-shadow: 0 0 12px #ffff00, 0 0 24px #ffff00, 0 0 36px #ffff00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0 0 12px #00ff00, 0 0 24px #00ff00, 0 0 36px #00ff00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    75% { box-shadow: 0 0 12px #0000ff, 0 0 24px #0000ff, 0 0 36px #0000ff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    100% { box-shadow: 0 0 8px #ff0000, 0 0 16px #ff0000, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
+}
+
+@keyframes bulbGlowOrange {
+    0% { box-shadow: 0 0 8px #ff8c00, 0 0 16px #ff8c00, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
+    25% { box-shadow: 0 0 12px #ff69b4, 0 0 24px #ff69b4, 0 0 36px #ff69b4, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0 0 12px #00ffff, 0 0 24px #00ffff, 0 0 36px #00ffff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    75% { box-shadow: 0 0 12px #ff00ff, 0 0 24px #ff00ff, 0 0 36px #ff00ff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    100% { box-shadow: 0 0 8px #ff8c00, 0 0 16px #ff8c00, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
+}
+
+@keyframes bulbGlowYellow {
+    0% { box-shadow: 0 0 8px #ffff00, 0 0 16px #ffff00, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
+    25% { box-shadow: 0 0 12px #ff0000, 0 0 24px #ff0000, 0 0 36px #ff0000, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0 0 12px #0000ff, 0 0 24px #0000ff, 0 0 36px #0000ff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    75% { box-shadow: 0 0 12px #00ff00, 0 0 24px #00ff00, 0 0 36px #00ff00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    100% { box-shadow: 0 0 8px #ffff00, 0 0 16px #ffff00, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
+}
+
+@keyframes bulbGlowGreen {
+    0% { box-shadow: 0 0 8px #00ff00, 0 0 16px #00ff00, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
+    25% { box-shadow: 0 0 12px #00ffff, 0 0 24px #00ffff, 0 0 36px #00ffff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0 0 12px #ff00ff, 0 0 24px #ff00ff, 0 0 36px #ff00ff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    75% { box-shadow: 0 0 12px #ffff00, 0 0 24px #ffff00, 0 0 36px #ffff00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    100% { box-shadow: 0 0 8px #00ff00, 0 0 16px #00ff00, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
+}
+
+@keyframes bulbGlowCyan {
+    0% { box-shadow: 0 0 8px #00ffff, 0 0 16px #00ffff, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
+    25% { box-shadow: 0 0 12px #0000ff, 0 0 24px #0000ff, 0 0 36px #0000ff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0 0 12px #ff69b4, 0 0 24px #ff69b4, 0 0 36px #ff69b4, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    75% { box-shadow: 0 0 12px #ff8c00, 0 0 24px #ff8c00, 0 0 36px #ff8c00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    100% { box-shadow: 0 0 8px #00ffff, 0 0 16px #00ffff, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
+}
+
+@keyframes bulbGlowBlue {
+    0% { box-shadow: 0 0 8px #0000ff, 0 0 16px #0000ff, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
+    25% { box-shadow: 0 0 12px #ff00ff, 0 0 24px #ff00ff, 0 0 36px #ff00ff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0 0 12px #ff0000, 0 0 24px #ff0000, 0 0 36px #ff0000, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    75% { box-shadow: 0 0 12px #00ff00, 0 0 24px #00ff00, 0 0 36px #00ff00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    100% { box-shadow: 0 0 8px #0000ff, 0 0 16px #0000ff, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
+}
+
+@keyframes bulbGlowPurple {
+    0% { box-shadow: 0 0 8px #ff00ff, 0 0 16px #ff00ff, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
+    25% { box-shadow: 0 0 12px #ffff00, 0 0 24px #ffff00, 0 0 36px #ffff00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0 0 12px #00ffff, 0 0 24px #00ffff, 0 0 36px #00ffff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    75% { box-shadow: 0 0 12px #ff69b4, 0 0 24px #ff69b4, 0 0 36px #ff69b4, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    100% { box-shadow: 0 0 8px #ff00ff, 0 0 16px #ff00ff, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
+}
+
+@keyframes bulbGlowPink {
+    0% { box-shadow: 0 0 8px #ff69b4, 0 0 16px #ff69b4, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
+    25% { box-shadow: 0 0 12px #ff8c00, 0 0 24px #ff8c00, 0 0 36px #ff8c00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0 0 12px #0000ff, 0 0 24px #0000ff, 0 0 36px #0000ff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    75% { box-shadow: 0 0 12px #00ff00, 0 0 24px #00ff00, 0 0 36px #00ff00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
+    100% { box-shadow: 0 0 8px #ff69b4, 0 0 16px #ff69b4, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
+}
+
+/* Гирлянда вокруг елки */
+.tree-garland-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.tree-garland-border .garland-light {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: lightTwinkle 2s infinite alternate;
+    filter: blur(0.5px);
+}
+
+/* Позиции огней вокруг елки */
+.tree-garland-border .garland-light:nth-child(1) {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.tree-garland-border .garland-light:nth-child(2) {
+    top: 20%;
+    right: 15%;
+    animation-delay: 0.3s;
+}
+
+.tree-garland-border .garland-light:nth-child(3) {
+    top: 35%;
+    left: 5%;
+    animation-delay: 0.6s;
+}
+
+.tree-garland-border .garland-light:nth-child(4) {
+    top: 50%;
+    right: 10%;
+    animation-delay: 0.9s;
+}
+
+.tree-garland-border .garland-light:nth-child(5) {
+    top: 65%;
+    left: 15%;
+    animation-delay: 1.2s;
+}
+
+.tree-garland-border .garland-light:nth-child(6) {
+    top: 80%;
+    right: 20%;
+    animation-delay: 1.5s;
 }
 
 /* Украшения на елке (шары) */
@@ -4251,7 +4440,7 @@
         <div class="garland-right">
             <!-- Огоньки будут добавлены через JS -->
         </div>
-        
+
         <!-- Бегущие огоньки -->
         <div class="running-lights running-lights-top"></div>
         <div class="running-lights running-lights-bottom"></div>
@@ -4266,27 +4455,58 @@
         </div>
         <div class="garland garland-bottom"></div>
     </div>
-        
+
+        <!-- Улучшенная круглая гирлянда на елке -->
+        <div class="spiral-garland">
+            <div class="spiral-circle circle-2 orange"></div>
+            <div class="spiral-circle circle-3 yellow"></div>
+            <div class="spiral-circle circle-4 green"></div>
+            <div class="spiral-circle circle-5 cyan"></div>
+            <div class="spiral-circle circle-6 blue"></div>
+            <div class="spiral-circle circle-7 purple"></div>
+            <div class="spiral-circle circle-8 pink"></div>
+        </div>
+
+        <!-- Гирлянда вокруг елки -->
+        <div class="tree-garland-border">
+            <div class="garland-light red"></div>
+            <div class="garland-light green"></div>
+            <div class="garland-light blue"></div>
+            <div class="garland-light yellow"></div>
+            <div class="garland-light purple"></div>
+            <div class="garland-light cyan"></div>
+        </div>
+
         <!-- Ярусы елки -->
         <div class="tree-layer layer-1">
             <div class="layer-needles"></div>
             <div class="tree-decoration"></div>
             <div class="garland garland-1"></div>
+            <div class="garland garland-extra-1"></div>
         </div>
         <div class="tree-layer layer-2">
             <div class="layer-needles"></div>
             <div class="tree-decoration"></div>
             <div class="garland garland-2"></div>
+            <div class="garland garland-extra-2"></div>
         </div>
         <div class="tree-layer layer-3">
             <div class="layer-needles"></div>
             <div class="tree-decoration"></div>
             <div class="garland garland-3"></div>
+            <div class="garland garland-extra-3"></div>
         </div>
         <div class="tree-layer layer-4">
             <div class="layer-needles"></div>
             <div class="tree-decoration"></div>
             <div class="garland garland-4"></div>
+            <div class="garland garland-extra-4"></div>
+        </div>
+        <div class="tree-layer layer-5">
+            <div class="layer-needles"></div>
+            <div class="tree-decoration"></div>
+            <div class="garland garland-5"></div>
+            <div class="garland garland-extra-5"></div>
         </div>
         
         <!-- Ствол -->
@@ -4562,6 +4782,11 @@
                             <option value="soon">Скоро выйдут</option>
                         </select>
                     </div>
+                    <div class="filter-dropdown">
+                        <select id="yearFilter" class="filter-select">
+                            <option value="all">Все года</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="games-count" id="gamesCount">Найдено: 0</div>
             </div>
@@ -4725,20 +4950,6 @@
             }
         }
 
-        // Замените функцию updateOnlineCounter на эту:
-        function updateOnlineCounter() {
-            // Пример с использованием внешнего API
-            fetch('https://api.countapi.xyz/hit/forzes12-github/visits')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('onlineCounter').querySelector('.online-count').textContent = data.value;
-            })
-            .catch(error => {
-                console.error('Ошибка получения счетчика:', error);
-                // Fallback - показываем базовое значение
-                document.getElementById('onlineCounter').querySelector('.online-count').textContent = '25+';
-            });
-        }
 
         // Популярные игры (будут показаны на главной странице)
         const popularGamesTitles = [
@@ -6548,6 +6759,22 @@
             const gamesGrid = document.getElementById('allGamesGrid');
             gamesGrid.innerHTML = '';
 
+            // Собираем уникальные года
+            const uniqueYears = new Set();
+            Object.values(gameData).forEach(game => {
+                uniqueYears.add(game.year);
+            });
+
+            // Заполняем фильтр годов
+            const yearFilter = document.getElementById('yearFilter');
+            yearFilter.innerHTML = '<option value="all">Все года</option>';
+            Array.from(uniqueYears).sort((a, b) => b - a).forEach(year => {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                yearFilter.appendChild(option);
+            });
+
             let gameIndex = 0;
             Object.keys(gameData).forEach((gameId) => {
                 const game = gameData[gameId];
@@ -6556,14 +6783,14 @@
                 gameCard.dataset.category = game.category;
                 gameCard.dataset.year = game.year;
                 gameCard.style.animationDelay = `${gameIndex * 0.1}s`;
-                
+
                 gamesGrid.appendChild(gameCard);
                 gameIndex++;
             });
 
             updateGamesCount();
             setupViewButtons();
-            
+
             // Фильтруем по умолчанию (игры)
             filterGames();
         }
@@ -6579,32 +6806,37 @@
             });
         }
 
+
         // Функция фильтрации
         function filterGames() {
             const searchTerm = document.getElementById('gameSearch').value.toLowerCase();
             const filterValue = document.getElementById('gameFilter').value;
+            const yearFilter = document.getElementById('yearFilter').value;
             const activeCategory = document.querySelector('.category-tab.active').dataset.category;
             const gameCards = document.querySelectorAll('#allGamesGrid .game-card');
-            
+
             let visibleCount = 0;
 
             gameCards.forEach(card => {
                 const gameId = card.dataset.gameId;
                 const game = gameData[gameId];
-                
+
                 // Проверяем категорию
                 const matchesCategory = game.category === activeCategory;
-                
+
                 // Проверяем поиск
-                const matchesSearch = !searchTerm || 
-                                     game.title.toLowerCase().includes(searchTerm) || 
+                const matchesSearch = !searchTerm ||
+                                     game.title.toLowerCase().includes(searchTerm) ||
                                      game.description.toLowerCase().includes(searchTerm);
-                
-                // Проверяем фильтр
+
+                // Проверяем фильтр статуса
                 const matchesFilter = filterValue === 'all' || game.status === filterValue;
 
+                // Проверяем фильтр года
+                const matchesYear = yearFilter === 'all' || game.year == yearFilter;
+
                 // Если все условия выполнены - показываем карточку
-                if (matchesCategory && matchesSearch && matchesFilter) {
+                if (matchesCategory && matchesSearch && matchesFilter && matchesYear) {
                     card.style.display = 'block';
                     visibleCount++;
                 } else {
@@ -6992,6 +7224,7 @@
             // Обработчики для поиска и фильтра
             document.getElementById('gameSearch').addEventListener('input', filterGames);
             document.getElementById('gameFilter').addEventListener('change', filterGames);
+            document.getElementById('yearFilter').addEventListener('change', filterGames);
 
             // Мобильное меню
             document.getElementById('mobileMenuBtn').addEventListener('click', openMobileMenu);
@@ -7001,30 +7234,68 @@
                 link.addEventListener('click', closeMobileMenu);
             });
 
+    
+            document.addEventListener('copy', function(e) {
+                const selection = window.getSelection();
+                if (selection.rangeCount > 0) {
+                    const range = selection.getRangeAt(0);
+                    const container = range.commonAncestorContainer;
+    
+                    // Разрешить копирование если выделен текст из названия игры
+                    if (container.nodeType === Node.TEXT_NODE) {
+                        if (container.parentElement && container.parentElement.classList.contains('game-title')) {
+                            return true;
+                        }
+                    } else if (container.classList && container.classList.contains('game-title')) {
+                        return true;
+                    }
+                }
+                e.preventDefault();
+                return false;
+            });
+    
+            document.addEventListener('cut', function(e) {
+                e.preventDefault();
+                return false;
+            });
+    
+            document.addEventListener('paste', function(e) {
+                e.preventDefault();
+                return false;
+            });
+    
+            // Защита от открытия инструментов разработчика
+            function detectDevTools() {
+                if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
+                    document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-size:2rem;color:red;">Доступ запрещен</div>';
+                    window.location.href = 'about:blank';
+                }
+            }
+    
+            // Проверка каждые 500ms
+            setInterval(detectDevTools, 500);
+    
+            // Отключение клавиш F12, Ctrl+Shift+I, Ctrl+U
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'F12' ||
+                    (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                    (e.ctrlKey && e.key === 'U')) {
+                    e.preventDefault();
+                    document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-size:2rem;color:red;">Доступ запрещен</div>';
+                    return false;
+                }
+            });
+    
+            // Отключение правого клика для защиты
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+    
             // Обновляем онлайн-счетчик
             updateOnlineCounter();
         });
 
-        // Защита от копирования
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            return false;
-        });
-
-        document.addEventListener('copy', function(e) {
-            e.preventDefault();
-            return false;
-        });
-
-        document.addEventListener('cut', function(e) {
-            e.preventDefault();
-            return false;
-        });
-
-        document.addEventListener('paste', function(e) {
-            e.preventDefault();
-            return false;
-        });
         
     </script>
 </body>
