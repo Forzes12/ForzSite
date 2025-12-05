@@ -223,7 +223,7 @@
         .nav-left {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
 
         /* Стили для кнопки полноэкранного режима */
@@ -242,6 +242,8 @@
             font-size: 1.1rem;
             position: relative;
             overflow: hidden;
+            z-index: 10;
+            flex-shrink: 0;
         }
 
         .fullscreen-btn:hover {
@@ -312,6 +314,8 @@
             transition: all 0.3s ease;
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
+            z-index: 1;
+            margin-left: 5px;
         }
 
         .logo::after {
