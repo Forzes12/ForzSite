@@ -687,100 +687,6 @@
             margin-top: 5px;
         }
         
-        /* Стили для салюта */
-        .fireworks-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 10000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .fireworks-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        .firework {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            animation: explode 1.5s ease-out forwards;
-        }
-        
-        .firework:nth-child(odd) {
-            background: #ff0000;
-            box-shadow: 0 0 10px #ff0000;
-        }
-        
-        .firework:nth-child(even) {
-            background: #ffff00;
-            box-shadow: 0 0 10px #ffff00;
-        }
-        
-        .firework:nth-child(3n) {
-            background: #00ff00;
-            box-shadow: 0 0 10px #00ff00;
-        }
-        
-        .firework:nth-child(4n) {
-            background: #0000ff;
-            box-shadow: 0 0 10px #0000ff;
-        }
-        
-        .firework:nth-child(5n) {
-            background: #ff00ff;
-            box-shadow: 0 0 10px #ff00ff;
-        }
-        
-        @keyframes explode {
-            0% {
-                transform: scale(0) translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1) translateY(-50vh) rotate(180deg);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(0) translateY(-50vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        .new-year-message-fireworks {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
-            font-weight: 900;
-            text-align: center;
-            color: white;
-            text-shadow: 0 0 20px #fff, 0 0 40px #ff0000, 0 0 60px #ffff00;
-            animation: messageGlow 2s infinite alternate;
-            z-index: 10001;
-        }
-        
-        @keyframes messageGlow {
-            0% {
-                text-shadow: 0 0 20px #fff, 0 0 40px #ff0000, 0 0 60px #ffff00;
-                transform: translate(-50%, -50%) scale(1);
-            }
-            100% {
-                text-shadow: 0 0 30px #fff, 0 0 60px #ff0000, 0 0 90px #ffff00;
-                transform: translate(-50%, -50%) scale(1.05);
-            }
-        }
 
         /* НОВЫЕ СТИЛИ ДЛЯ МАЛЕНЬКИХ КНОПОК */
         .mobile-actions {
@@ -4947,34 +4853,34 @@
     <!-- Баннер ПОСЛЕ звезды -->
     <div class="new-year-banner" id="newYearBanner">
         <!-- Гирлянды с огоньками -->
-    <div class="banner-garlands">
-        <div class="garland-top">
-            <!-- Огоньки будут добавлены через JS -->
-        </div>
-        <div class="garland-bottom">
-            <!-- Огоньки будут добавлены через JS -->
-        </div>
-        <div class="garland-left">
-            <!-- Огоньки будут добавлены через JS -->
-        </div>
-        <div class="garland-right">
-            <!-- Огоньки будут добавлены через JS -->
-        </div>
+<div class="banner-garlands">
+    <div class="garland-top">
+        <!-- Огоньки будут добавлены через JS -->
+    </div>
+    <div class="garland-bottom">
+        <!-- Огоньки будут добавлены через JS -->
+    </div>
+    <div class="garland-left">
+        <!-- Огоньки будут добавлены через JS -->
+    </div>
+    <div class="garland-right">
+        <!-- Огоньки будут добавлены через JS -->
+    </div>
 
-        <!-- Бегущие огоньки -->
-        <div class="running-lights running-lights-top"></div>
-        <div class="running-lights running-lights-bottom"></div>
-        <div class="running-lights running-lights-left"></div>
-        <div class="running-lights running-lights-right"></div>
+    <!-- Бегущие огоньки -->
+    <div class="running-lights running-lights-top"></div>
+    <div class="running-lights running-lights-bottom"></div>
+    <div class="running-lights running-lights-left"></div>
+    <div class="running-lights running-lights-right"></div>
+</div>
+    <div class="garland garland-top"></div>
+    <div class="new-year-text">
+        <div class="text-glow">С НОВЫМ</div>
+        <div class="year-text">2026</div>
+        <div class="text-glow">ГОДОМ!</div>
     </div>
-        <div class="garland garland-top"></div>
-        <div class="new-year-text">
-            <div class="text-glow">СКОРО</div>
-            <div class="year-text">2026</div>
-            <div class="text-glow">ГОД!</div>
-        </div>
-        <div class="garland garland-bottom"></div>
-    </div>
+    <div class="garland garland-bottom"></div>
+</div>
 
         <!-- Улучшенная круглая гирлянда на елке -->
         <div class="spiral-garland">
@@ -5395,14 +5301,6 @@
         </div>
     </div>
 
-    <!-- Салют для Нового года -->
-    <div class="fireworks-overlay" id="fireworksOverlay">
-        <div class="fireworks-container" id="fireworksContainer">
-            <div class="new-year-message-fireworks">
-                🎄 С НОВЫМ 2026 ГОДОМ! 🎁
-            </div>
-        </div>
-    </div>
 
     <script>
         // Функция для клика по елке
@@ -8071,9 +7969,9 @@ function hideTypingIndicator() {
                 const timeLeft = targetDate - now;
 
                 if (timeLeft <= 0) {
-                    // Таймер закончился - показываем салют
+                    // Таймер закончился - Новый год уже наступил
                     document.getElementById('newYearTimer').style.display = 'none';
-                    showFireworks();
+                    // Фейерверки удалены
                     return;
                 }
 
@@ -8093,85 +7991,6 @@ function hideTypingIndicator() {
             setInterval(updateTimer, 1000);
         }
 
-        // Функция для показа салюта
-        function showFireworks() {
-            const overlay = document.getElementById('fireworksOverlay');
-            const container = document.getElementById('fireworksContainer');
-
-            overlay.style.display = 'flex';
-
-            // Создаем фейерверки непрерывно в течение 2 минут
-            const fireworkInterval = setInterval(() => {
-                // Создаем взрыв в случайной позиции
-                const explosionX = Math.random() * window.innerWidth;
-                const explosionY = Math.random() * window.innerHeight * 0.6 + window.innerHeight * 0.2; // Верхняя половина экрана
-
-                // Создаем 15-25 частиц для взрыва
-                const particleCount = Math.floor(Math.random() * 10) + 15;
-                for (let i = 0; i < particleCount; i++) {
-                    const particle = document.createElement('div');
-                    particle.className = 'firework-particle';
-
-                    // Позиция взрыва
-                    particle.style.left = explosionX + 'px';
-                    particle.style.top = explosionY + 'px';
-                    particle.style.position = 'absolute';
-
-                    // Случайный размер частицы
-                    const size = Math.random() * 8 + 2;
-                    particle.style.width = size + 'px';
-                    particle.style.height = size + 'px';
-
-                    // Случайный цвет
-                    const colors = ['#ff0000', '#ffff00', '#00ff00', '#0000ff', '#ff00ff', '#00ffff', '#ff4500', '#ffa500', '#ffffff'];
-                    const color = colors[Math.floor(Math.random() * colors.length)];
-                    particle.style.background = color;
-                    particle.style.boxShadow = `0 0 5px ${color}`;
-
-                    // Случайное направление и скорость
-                    const angle = Math.random() * 2 * Math.PI;
-                    const speed = Math.random() * 200 + 100;
-                    const vx = Math.cos(angle) * speed;
-                    const vy = Math.sin(angle) * speed;
-
-                    container.appendChild(particle);
-
-                    // Анимируем частицу
-                    let startTime = Date.now();
-                    const animate = () => {
-                        const elapsed = Date.now() - startTime;
-                        const t = elapsed / 2000; // 2 секунды анимации
-
-                        if (t < 1) {
-                            const x = explosionX + vx * t;
-                            const y = explosionY + vy * t + 0.5 * 500 * t * t; // Гравитация
-                            particle.style.left = x + 'px';
-                            particle.style.top = y + 'px';
-
-                            // Уменьшаем яркость со временем
-                            const opacity = 1 - t;
-                            particle.style.opacity = opacity;
-
-                            requestAnimationFrame(animate);
-                        } else {
-                            if (particle.parentNode) {
-                                particle.remove();
-                            }
-                        }
-                    };
-                    animate();
-                }
-            }, 500); // Каждые 500ms новый взрыв
-
-            // Останавливаем салют через 2 минуты
-            setTimeout(() => {
-                clearInterval(fireworkInterval);
-                // Скрываем через дополнительные 2 секунды
-                setTimeout(() => {
-                    overlay.style.display = 'none';
-                }, 2000);
-            }, 120000); // 2 минуты
-        }
 
         // Инициализация при загрузке
         document.addEventListener('DOMContentLoaded', function() {
