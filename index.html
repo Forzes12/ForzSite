@@ -170,32 +170,6 @@
             overflow: hidden;
         }
 
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--neon);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--neon);
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) translateX(100px);
-                opacity: 0;
-            }
-        }
 
         /* Улучшенная навигация */
         .tech-nav {
@@ -3758,34 +3732,6 @@
             text-align: center;
         }
 
-        /* СНЕЖИНКИ-ИКОНКИ */
-        .snowflake-icon {
-            position: absolute;
-            color: white;
-            font-size: 20px;
-            opacity: 0.7;
-            animation: snowflakeFloat linear infinite;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-            pointer-events: none;
-            z-index: 9998;
-        }
-
-        @keyframes snowflakeFloat {
-            0% {
-                transform: translateY(-100px) translateX(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) translateX(100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
 
         /* НОВОГОДНИЕ ШАПКИ */
         .new-year-hat {
@@ -4660,27 +4606,6 @@
 .decoration-icon-5 { top: 65%; left: 35%; color: #FF00FF; animation-delay: 1.2s; }
 .decoration-icon-6 { top: 40%; right: 35%; color: #00FFFF; animation-delay: 1.5s; }
 
-/* Анимация снегопада */
-@keyframes snowfall {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(300px) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-.snowflake {
-    position: absolute;
-    font-size: 16px;
-    color: white;
-    opacity: 0.7;
-    pointer-events: none;
-    z-index: 1000;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
-}
 
 /* Адаптивность */
 @media (max-width: 767px) {
@@ -4823,8 +4748,6 @@
     </style>
 </head>
 <body>
-    <!-- Снегопад поверх всего -->
-    <div class="snow-overlay" id="snowOverlay"></div>
     
     <!-- Новогоднее сообщение -->
     <div class="new-year-message" id="newYearMessage">
@@ -4839,8 +4762,6 @@
     <!-- Технологический фон -->
     <div class="tech-bg" id="tech-bg"></div>
     
-    <!-- Контейнер для технологических элементов -->
-    <div class="tech-particles" id="tech-particles"></div>
 
     <div class="christmas-tree-container" id="christmasTree">
 
@@ -4867,9 +4788,6 @@
         <!-- Огоньки будут добавлены через JS -->
     </div>
 
-    <!-- Бегущие огоньки -->
-    <div class="running-lights running-lights-top"></div>
-    <div class="running-lights running-lights-bottom"></div>
     <div class="running-lights running-lights-left"></div>
     <div class="running-lights running-lights-right"></div>
 </div>
@@ -4882,16 +4800,6 @@
     <div class="garland garland-bottom"></div>
 </div>
 
-        <!-- Улучшенная круглая гирлянда на елке -->
-        <div class="spiral-garland">
-            <div class="spiral-circle circle-2 orange"></div>
-            <div class="spiral-circle circle-3 yellow"></div>
-            <div class="spiral-circle circle-4 green"></div>
-            <div class="spiral-circle circle-5 cyan"></div>
-            <div class="spiral-circle circle-6 blue"></div>
-            <div class="spiral-circle circle-7 purple"></div>
-            <div class="spiral-circle circle-8 pink"></div>
-        </div>
 
         <!-- Гирлянда вокруг елки -->
         <div class="tree-garland-border">
@@ -4908,31 +4816,26 @@
             <div class="layer-needles"></div>
             <div class="tree-decoration"></div>
             <div class="garland garland-1"></div>
-            <div class="garland garland-extra-1"></div>
         </div>
         <div class="tree-layer layer-2">
             <div class="layer-needles"></div>
             <div class="tree-decoration"></div>
             <div class="garland garland-2"></div>
-            <div class="garland garland-extra-2"></div>
         </div>
         <div class="tree-layer layer-3">
             <div class="layer-needles"></div>
             <div class="tree-decoration"></div>
             <div class="garland garland-3"></div>
-            <div class="garland garland-extra-3"></div>
         </div>
         <div class="tree-layer layer-4">
             <div class="layer-needles"></div>
             <div class="tree-decoration"></div>
             <div class="garland garland-4"></div>
-            <div class="garland garland-extra-4"></div>
         </div>
         <div class="tree-layer layer-5">
             <div class="layer-needles"></div>
             <div class="tree-decoration"></div>
             <div class="garland garland-5"></div>
-            <div class="garland garland-extra-5"></div>
         </div>
         
         <!-- Ствол -->
@@ -4947,6 +4850,14 @@
             <div class="stand-design"></div>
         </div>
         
+        <!-- Украшения-иконки -->
+        <div class="decoration-icon decoration-icon-1">✦</div>
+        <div class="decoration-icon decoration-icon-2">❄</div>
+        <div class="decoration-icon decoration-icon-3">⛄</div>
+        <div class="decoration-icon decoration-icon-4">❆</div>
+        <div class="decoration-icon decoration-icon-5">❅</div>
+        <div class="decoration-icon decoration-icon-6">✦</div>
+
         <!-- Подарки под елкой -->
         <div class="presents">
             <div class="present present-1">
@@ -4960,13 +4871,6 @@
             </div>
         </div>
 
-        <!-- Украшения-иконки -->
-        <div class="decoration-icon decoration-icon-1">✦</div>
-        <div class="decoration-icon decoration-icon-2">❄</div>
-        <div class="decoration-icon decoration-icon-3">⛄</div>
-        <div class="decoration-icon decoration-icon-4">❆</div>
-        <div class="decoration-icon decoration-icon-5">❅</div>
-        <div class="decoration-icon decoration-icon-6">✦</div>
         
         <!-- Снег -->
         <div class="snow-under-tree"></div>
@@ -5014,7 +4918,7 @@
         <!-- Центральные навигационные ссылки -->
         <div class="nav-center">
             <div class="nav-links">
-                <a href="#" onclick="scrollToTop(); return false;">Главная</a>
+                <a href="#" onclick="switchPage('main-page'); return false;">Главная</a>
                 <a href="#slider">Слайдер</a>
                 <a href="#games">Популярные</a>
                 <a href="#new">Новинки</a>
@@ -5045,9 +4949,6 @@
     <!-- Главная страница -->
     <div id="main-page" class="page active">
         <section class="hero-section" id="main">
-            <video autoplay muted loop class="video-background">
-                <source src="https://assets.codepen.io/3364143/rain.mp4" type="video/mp4">
-            </video>
             <div class="video-overlay"></div>
             <div class="hero-content">
                 <h1 class="tech-title">🎄FORZSITE🎁</h1>
@@ -5184,7 +5085,7 @@
                 <div class="footer-column">
                     <h3>Быстрые ссылки</h3>
                     <ul class="footer-links">
-                        <li><a href="#main">Главная</a></li>
+                        <li><a href="#" data-page="main-page">Главная</a></li>
                         <li><a href="#slider">Слайдер</a></li>
                         <li><a href="#games">Игры</a></li>
                         <li><a href="#new">Новинки</a></li>
@@ -5227,9 +5128,6 @@
     <!-- Страница всех игр и программ -->
     <div id="all-games-page" class="page">
         <div style="padding: 70px 20px 20px;">
-            <button class="back-to-main" onclick="switchPage('main-page')">
-                <i class="fas fa-arrow-left"></i> Назад на главную
-            </button>
             
             <h2 class="section-title">ИГРЫ И ПРОГРАММЫ</h2>
             
@@ -5307,49 +5205,12 @@
         document.getElementById('christmasTree').addEventListener('click', function() {
             // Анимация клика по елке
             this.style.animation = 'treeFloat 0.5s ease-in-out';
-            
-            // Снегопад
-            createSnowfall();
-            
+
             // Возвращаем анимацию через 0.5 секунды
             setTimeout(() => {
                 this.style.animation = 'treeFloat 6s ease-in-out infinite';
             }, 500);
         });
-
-        function createSnowfall() {
-            const tree = document.querySelector('.christmas-tree-container');
-            for (let i = 0; i < 30; i++) {
-                const snowflake = document.createElement('div');
-                snowflake.className = 'snowflake';
-                snowflake.innerHTML = '❄';
-                
-                // Случайная позиция
-                const startX = Math.random() * 180;
-                const duration = Math.random() * 3 + 2;
-                
-                snowflake.style.cssText = `
-                    position: absolute;
-                    top: -10px;
-                    left: ${startX}px;
-                    font-size: ${Math.random() * 10 + 8}px;
-                    color: white;
-                    opacity: ${Math.random() * 0.5 + 0.5};
-                    pointer-events: none;
-                    z-index: 1000;
-                    animation: snowfall ${duration}s linear forwards;
-                `;
-                
-                tree.appendChild(snowflake);
-                
-                // Удаляем снежинку после анимации
-                setTimeout(() => {
-                    if (snowflake.parentNode) {
-                        snowflake.remove();
-                    }
-                }, duration * 1000);
-            }
-        }
 
         let currentTrailerIframe = null;
         let allGamesLoaded = false;
@@ -5426,14 +5287,14 @@
         // Популярные игры (будут показаны на главной странице)
         const popularGamesTitles = [
             'Grand Theft Auto V',
-            'Detroit: Become Human',
+            'My Winter Car',
             'Black Myth: Wukong'
         ];
 
         // Новинки (будут показаны на главной странице)
         const newGamesTitles = [
-            'Battlеfield 6',
-            'Spider-Man 2',
+            'My Winter Car',
+            'Battlefield 6',
             'Hollow Knight Silksong'
         ];
 
@@ -5465,6 +5326,13 @@
                 title: 'Battlefield 6',
                 description: 'Вернитесь на поля сражений будущего в новейшей части легендарного шутера.',
                 image: 'https://i.postimg.cc/KzDHS31K/1758749271-library-capsule-2x.jpg',
+                buttonText: 'Скачать сейчас'
+            },
+            {
+                id: 'my-winter-car',
+                title: 'My Winter Car',
+                description: 'Истинно финская зимняя симуляция начала 1990-х! Сохрани свою Satsuma AMP от ржавчины, борись с морозами, пей глинтвейн, зарабатывай на зимних работах и постарайся не замерзнуть в этой беспощадной симуляции выживания в суровых условиях.',
+                image: 'https://i.postimg.cc/rF71HHQN/1767038108-library-capsule-2x.jpg',
                 buttonText: 'Скачать сейчас'
             }
         ];
@@ -5749,6 +5617,59 @@
                         'Видеокарта': 'NVIDIA GeForce GTX 750 Ti / AMD Radeon R7 265',
                         'DirectX': 'Версии 11',
                         'Место на диске': '2 GB'
+                    }
+                }
+            },
+            'my-winter-car': {
+                title: 'My Winter Car',
+                description: 'Истинно финская зимняя симуляция начала 1990-х! Сохрани свою Satsuma AMP от ржавчины, борись с морозами, пей глинтвейн, зарабатывай на зимних работах и постарайся не замерзнуть в этой беспощадной симуляции выживания в суровых условиях.',
+                image: 'https://i.postimg.cc/rF71HHQN/1767038108-library-capsule-2x.jpg',
+                size: '388 MB',
+                year: 2025,
+                status: 'available',
+                category: 'games',
+                torrentFile: 'https://itorrents-igruha.org/engine/download.php?id=96854',
+                trailer: 'https://drive.google.com/file/d/11dj9PbHsOViBsE3kF7VjB5HEY4UbAnF2/preview',
+                buyGame: 'https://ggsel.net/catalog/product/my-winter-car-steam-gift-ru-ua-kz-by-in-ch-ar-tr-102113925',
+                screenshots: [
+                    'https://i.postimg.cc/wB2wRppq/1767038127-ss-2cc16cf260e3bd37151c68586d5ba616f2b56770.jpg',
+                    'https://i.postimg.cc/Sxq5nVMW/1767038165-ss-71c9f410c5e048b06634cc209cf1573aef8fa976.jpg',
+                    'https://i.postimg.cc/m2WpnVV6/1767038132-ss-11534a9e30c81d5d692da362626507c8e68b1cf0.jpg',
+                    'https://i.postimg.cc/mDMNNWxk/1767038188-ss-4380575e5d9c5e997b7b8fc0a5d477990315f8a6.jpg',
+                    'https://i.postimg.cc/XvBw46YK/1767038192-ss-b1e589ed228588ef85091e2ebd8657792d78de5f.jpg',
+                    'https://i.postimg.cc/g2nhHbRB/1767038110-ss-c0794b83ab872610158ed0a366a46a80e701f914.jpg',
+                    'https://i.postimg.cc/nr3sq3LQ/1767038161-ss-ce7a707ce57e97f612a16a209ded6d4e8afa319e.jpg',
+                    'https://i.postimg.cc/7hZhPSNr/1767038162-ss-da2d075287cf45c867ef345a980930a051707171.jpg'
+                ],
+                specs: {
+                    'Жанр': 'Симулятор, Автосимулятор, Выживание, Инди, Сезонный',
+                    'Платформа': 'PC (Windows)',
+                    'Разработчик': 'Amistech Games',
+                    'Издатель': 'Amistech Games',
+                    'Язык': 'Английский (поддержка фанатских локализаций)',
+                    'Рейтинг': '9/10 Steam (очень положительные)',
+                    'Сложность': 'Экстремальная (суровый реализм зимних условий)',
+                    'Мультиплеер': 'Нет (только моды)',
+                    'Длительность': 'От 30 до 150+ часов',
+                    'Достижения': '75 достижений Steam',
+                    'Особенности': 'Сезонные изменения, система обогрева и выживания в холоде, зимний тюнинг, борьба с обледенением'
+                },
+                systemRequirements: {
+                    'Минимальные': {
+                        'ОС': 'Windows 10 (64-bit)',
+                        'Процессор': 'Quad Core 2.5 GHz',
+                        'Память': '8 GB ОЗУ',
+                        'Видеокарта': 'NVIDIA GeForce GTX 660 / AMD Radeon HD 7870 (2GB VRAM)',
+                        'DirectX': 'Версии 11',
+                        'Место на диске': '3 GB'
+                    },
+                    'Рекомендуемые': {
+                        'ОС': 'Windows 11 (64-bit)',
+                        'Процессор': 'Six Core 3.5 GHz',
+                        'Память': '16 GB ОЗУ',
+                        'Видеокарта': 'NVIDIA GeForce GTX 1060 / AMD Radeon RX 580 (4GB VRAM)',
+                        'DirectX': 'Версии 12',
+                        'Место на диске': '5 GB'
                     }
                 }
             },
@@ -7831,29 +7752,6 @@ function hideTypingIndicator() {
             }
         });
 
-        // Создание частиц для фона
-        function createParticles() {
-            const particlesContainer = document.getElementById('tech-particles');
-            const particleCount = 50;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                const size = Math.random() * 3 + 1;
-                const left = Math.random() * 100;
-                const animationDuration = Math.random() * 20 + 10;
-                const animationDelay = Math.random() * 10;
-                
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${left}%`;
-                particle.style.animationDuration = `${animationDuration}s`;
-                particle.style.animationDelay = `${animationDelay}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
 
         // Обработчик скролла
         function handleScroll() {
@@ -8026,8 +7924,6 @@ function hideTypingIndicator() {
             // Инициализируем слайдер
             initSlider();
             
-            // Создаем частицы
-            createParticles();
             
             // Настройка обработчика скролла
             document.querySelectorAll('.page').forEach(page => {
