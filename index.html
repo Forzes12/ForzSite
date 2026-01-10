@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>🎄 ForzSite - Новогодние игры и программы 2026 🎁</title>
+    <title>ForzSite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* НОВОГОДНИЕ CSS ПЕРЕМЕННЫЕ */
         * {
             margin: 0;
             padding: 0;
@@ -16,23 +15,23 @@
         }
 
         :root {
-            --primary: #2E8B57; /* Новогодний зеленый */
-            --primary-dark: #1B5E20;
-            --secondary: #0A2F35; /* Темно-синий зимний */
-            --accent: #1C3D4A;
-            --text: #FFFFFF;
-            --text-secondary: #B8E0D2;
-            --dark: #081C24;
-            --neon: #00FF9D; /* Яркий новогодний */
-            --neon-secondary: #FF3366; /* Новогодний красный */
-            --game-color: #2E8B57;
-            --program-color: #FF7B00; /* Оранжевый как мандарины */
-            --utility-color: #00CED1;
-            --online-color: #FFD700; /* Золотой */
-            --gradient-primary: linear-gradient(135deg, #2E8B57, #FF3366, #FFD700);
-            --gradient-dark: linear-gradient(135deg, #0A2F35, #081C24);
-            --glow-primary: 0 0 20px rgba(46, 139, 87, 0.7);
-            --glow-secondary: 0 0 20px rgba(255, 51, 102, 0.7);
+            --primary: #6c5ce7;
+            --primary-dark: #5649c0;
+            --secondary: #1a1a2e;
+            --accent: #2d2d44;
+            --text: #ffffff;
+            --text-secondary: #b2b2d8;
+            --dark: #0f0f1a;
+            --neon: #00ceff;
+            --neon-secondary: #9d4edd;
+            --game-color: #6c5ce7;
+            --program-color: #9d4edd;
+            --utility-color: #00b894;
+            --online-color: #fdcb6e;
+            --gradient-primary: linear-gradient(135deg, #6c5ce7, #9d4edd);
+            --gradient-dark: linear-gradient(135deg, #1a1a2e, #16213e);
+            --glow-primary: 0 0 20px rgba(108, 92, 231, 0.7);
+            --glow-secondary: 0 0 20px rgba(157, 78, 221, 0.7);
         }
 
         html, body {
@@ -47,7 +46,7 @@
             touch-action: manipulation;
         }
 
-        /* НОВОГОДНИЙ ФОН С УСИЛЕННЫМ СНЕГОПАДОМ */
+        /* Технологический фон с анимацией */
         .tech-bg {
             position: fixed;
             top: 0;
@@ -56,10 +55,10 @@
             height: 100%;
             z-index: -2;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(46, 139, 87, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 51, 102, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
-                linear-gradient(to bottom, #081C24, #0A2F35);
+                radial-gradient(circle at 20% 80%, rgba(108, 92, 231, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(157, 78, 221, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0, 206, 255, 0.05) 0%, transparent 50%),
+                linear-gradient(to bottom, #0f0f1a, #1a1a2e);
             animation: bgPulse 15s ease-in-out infinite;
         }
 
@@ -68,98 +67,6 @@
             50% { opacity: 0.8; }
         }
 
-        /* НОВОГОДНИЙ СНЕГОПАД ПОВЕРХ ВСЕГО */
-        .snow-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-            overflow: hidden;
-        }
-
-        .snowflake-enhanced {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            filter: blur(0.5px);
-            animation: snowFallEnhanced linear infinite;
-        }
-
-        @keyframes snowFallEnhanced {
-            0% {
-                transform: translateY(-100px) translateX(var(--start-x)) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) translateX(calc(var(--start-x) + 100px)) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* НОВОГОДНЕЕ СООБЩЕНИЕ */
-        .new-year-message {
-            position: fixed;
-            bottom: 100px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(45deg, #2E8B57, #FF3366);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 0 0 30px rgba(255, 51, 102, 0.5);
-            z-index: 10000;
-            animation: messagePulse 2s infinite;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            opacity: 0;
-            display: none;
-        }
-
-        @keyframes messagePulse {
-            0%, 100% { 
-                transform: translateX(-50%) scale(1);
-                box-shadow: 0 0 30px rgba(255, 51, 102, 0.5);
-            }
-            50% { 
-                transform: translateX(-50%) scale(1.05);
-                box-shadow: 0 0 40px rgba(255, 215, 0, 0.7);
-            }
-        }
-
-        /* НОВОГОДНИЙ СКРОЛЛБАР */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0A2F35;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(#2E8B57, #FF3366);
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(#FF3366, #FFD700);
-        }
-
-        /* ОСТАЛЬНЫЕ СТИЛИ ИЗ ИСХОДНОГО КОДА (С НОВОГОДНИМИ ОБНОВЛЕНИЯМИ) */
         .tech-particles {
             position: fixed;
             top: 0;
@@ -170,13 +77,39 @@
             overflow: hidden;
         }
 
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--neon);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon);
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
 
         /* Улучшенная навигация */
         .tech-nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 47, 53, 0.95);
+            background: rgba(26, 26, 46, 0.95);
             padding: 15px 20px;
             display: flex;
             justify-content: space-between;
@@ -189,7 +122,7 @@
         }
 
         .tech-nav.scrolled {
-            background: rgba(8, 28, 36, 0.98);
+            background: rgba(15, 15, 26, 0.98);
             border-bottom: 2px solid var(--primary);
             padding: 10px 20px;
         }
@@ -197,7 +130,7 @@
         .nav-left {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
 
         /* Стили для кнопки полноэкранного режима */
@@ -216,14 +149,12 @@
             font-size: 1.1rem;
             position: relative;
             overflow: hidden;
-            z-index: 10;
-            flex-shrink: 0;
         }
 
         .fullscreen-btn:hover {
             background: var(--primary);
             transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(46, 139, 87, 0.5);
+            box-shadow: 0 0 15px rgba(108, 92, 231, 0.5);
         }
 
         .fullscreen-btn:active {
@@ -245,8 +176,43 @@
             left: 100%;
         }
 
+        /* Стили для счетчика онлайн-посетителей */
+        .online-counter {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
 
-        /* НОВОГОДНИЙ ЛОГОТИП */
+        .online-counter:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .online-counter i {
+            color: var(--online-color);
+        }
+
+        .online-count {
+            color: var(--neon);
+            font-weight: 700;
+        }
+
+        @media (max-width: 767px) {
+            .online-counter {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
         .logo {
             font-size: 24px;
             font-weight: 800;
@@ -259,8 +225,6 @@
             transition: all 0.3s ease;
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
-            z-index: 1;
-            margin-left: 5px;
         }
 
         .logo::after {
@@ -285,37 +249,10 @@
         }
 
         .logo-text {
-            background: linear-gradient(45deg, #2E8B57, #FFD700, #FF3366);
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            position: relative;
-        }
-
-        .logo-text::before {
-            content: '🎄';
-            position: absolute;
-            left: -35px;
-            font-size: 24px;
-            animation: starSpin 10s linear infinite;
-        }
-
-        .logo-text::after {
-            content: '🎁';
-            position: absolute;
-            right: -35px;
-            font-size: 24px;
-            animation: giftBounce 2s ease-in-out infinite;
-        }
-
-        @keyframes giftBounce {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(10deg); }
-        }
-
-        @keyframes starSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         .nav-center {
@@ -326,10 +263,11 @@
         }
 
         .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
             display: flex;
             gap: 25px;
-            justify-content: center;
-            transform: translateX(-30px);
         }
 
         .nav-links a {
@@ -341,7 +279,6 @@
             position: relative;
             transition: all 0.3s ease;
             font-size: 0.9rem;
-            text-align: center;
         }
 
         .nav-links a::after {
@@ -361,23 +298,6 @@
 
         .nav-links a:hover {
             color: var(--primary);
-        }
-
-        /* НОВОГОДНЯЯ НАВИГАЦИЯ - ДОБАВЛЯЕМ САНТУ */
-        .nav-links a {
-            position: relative;
-        }
-
-        .nav-links a:hover::before {
-            content: '🎅';
-            position: absolute;
-            left: -25px;
-            animation: santaMove 0.5s ease;
-        }
-
-        @keyframes santaMove {
-            0% { transform: translateX(-20px); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
         }
 
         /* Мобильное меню */
@@ -402,7 +322,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(8, 28, 36, 0.98);
+            background: rgba(15, 15, 26, 0.98);
             z-index: 999;
             display: flex;
             flex-direction: column;
@@ -415,6 +335,12 @@
 
         .mobile-menu.active {
             transform: translateX(0);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         .mobile-menu a {
@@ -457,7 +383,7 @@
             z-index: 1001;
         }
 
-        /* Улучшенные страницы с 3D эффектом */
+        /* Улучшенные страницы с 3D эффектом - анимация сверху вниз */
         .page {
             position: fixed;
             top: 0;
@@ -465,14 +391,15 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transform: translateX(100px) rotateY(5deg);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(-100%) rotateX(10deg) scale(0.8);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             pointer-events: none;
             overflow-y: auto;
             scrollbar-width: none;
             -ms-overflow-style: none;
             padding-top: 70px;
             perspective: 1000px;
+            filter: blur(5px);
         }
 
         .page::-webkit-scrollbar {
@@ -481,13 +408,15 @@
 
         .page.active {
             opacity: 1;
-            transform: translateX(0) rotateY(0);
+            transform: translateY(0) rotateX(0) scale(1);
             pointer-events: all;
+            filter: blur(0px);
         }
 
         .page.exit {
             opacity: 0;
-            transform: translateX(-100px) rotateY(-5deg);
+            transform: translateY(-100%) rotateX(-10deg) scale(0.8);
+            filter: blur(5px);
         }
 
         /* Улучшенная главная секция */
@@ -518,7 +447,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(8, 28, 36, 0.8), rgba(10, 47, 53, 0.9));
+            background: linear-gradient(to bottom, rgba(15, 15, 26, 0.8), rgba(26, 26, 46, 0.9));
             z-index: -1;
         }
 
@@ -536,7 +465,6 @@
             }
         }
 
-        /* НОВОГОДНИЙ ЗАГОЛОВОК */
         .tech-title {
             font-size: 3rem;
             margin-bottom: 20px;
@@ -547,31 +475,44 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: tech-glow 8s linear infinite;
-            text-shadow: 0 0 20px rgba(46, 139, 87, 0.3);
+            animation: tech-glow 6s linear infinite;
+            text-shadow: 0 0 20px rgba(108, 92, 231, 0.3);
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             position: relative;
+            padding: 10px;
         }
 
-        .tech-title::after {
+        .tech-title::before {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 3px;
-            background: var(--gradient-primary);
-            border-radius: 3px;
-            box-shadow: var(--glow-primary);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 3px solid var(--primary);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(108, 92, 231, 0.7);
+            clip-path: inset(0 0 100% 0);
+            animation: drawBorder 2s ease-out forwards;
         }
+
+
 
         @keyframes tech-glow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
+        @keyframes drawBorder {
+            0% { clip-path: inset(0 0 100% 0); }
+            25% { clip-path: inset(0 0 75% 0); }
+            50% { clip-path: inset(0 0 50% 0); }
+            75% { clip-path: inset(0 0 25% 0); }
+            100% { clip-path: inset(0 0 0 0); }
+        }
+
 
         .hero-subtitle {
             font-size: 1.2rem;
@@ -581,86 +522,22 @@
             line-height: 1.6;
             margin-left: auto;
             margin-right: auto;
-            animation: subtitleAppear 1s ease-out 0.3s forwards;
-            opacity: 0;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--neon);
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
         }
 
-        @keyframes subtitleAppear {
-            to {
-                opacity: 1;
-            }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
         }
-        
-        /* Стили для таймера Нового года */
-        .new-year-timer {
-            text-align: center;
-            margin: 30px 0;
-            opacity: 1;
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--neon); }
         }
-        
-        @keyframes timerAppear {
-            to {
-                opacity: 1;
-            }
-        }
-        
-        .timer-title {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .timer-display {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .timer-block {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: rgba(46, 139, 87, 0.1);
-            border: 2px solid var(--primary);
-            border-radius: 15px;
-            padding: 15px;
-            min-width: 80px;
-            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .timer-block:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(46, 139, 87, 0.5);
-        }
-        
-        .timer-value {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--text);
-            font-family: 'Orbitron', sans-serif;
-            text-shadow: 0 0 10px var(--primary);
-            animation: valuePulse 2s infinite alternate;
-        }
-        
-        @keyframes valuePulse {
-            0% { text-shadow: 0 0 10px var(--primary); }
-            100% { text-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary); }
-        }
-        
-        .timer-label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 5px;
-        }
-        
 
         /* НОВЫЕ СТИЛИ ДЛЯ МАЛЕНЬКИХ КНОПОК */
         .mobile-actions {
@@ -679,27 +556,12 @@
             }
         }
 
-        /* НОВОГОДНИЕ КНОПКИ */
-        .action-btn, .cta-button, .download-btn, .slide-button {
-            background: linear-gradient(45deg, #2E8B57, #FF3366);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .action-btn::before, .cta-button::before, .download-btn::before {
-            content: '❄️';
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            font-size: 12px;
-            opacity: 0.7;
-        }
-
         .action-btn {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            background: var(--gradient-primary);
             color: white;
             text-decoration: none;
             padding: 15px 20px;
@@ -708,7 +570,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.4);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
             position: relative;
             overflow: hidden;
             font-size: 0.9rem;
@@ -723,13 +585,13 @@
 
         .action-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(46, 139, 87, 0.6);
-            background: linear-gradient(45deg, #1B5E20, #2E8B57);
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.6);
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary));
         }
 
         .action-btn:active {
             transform: translateY(1px);
-            box-shadow: 0 2px 10px rgba(46, 139, 87, 0.6);
+            box-shadow: 0 2px 10px rgba(108, 92, 231, 0.6);
         }
 
         .action-btn::after {
@@ -759,26 +621,20 @@
 
         /* Стили для разных типов кнопок */
         .games-btn {
-            background: linear-gradient(45deg, var(--game-color), #FF3366);
+            background: var(--gradient-primary);
         }
 
         .programs-btn {
-            background: linear-gradient(45deg, var(--program-color), #FFD700);
+            background: linear-gradient(45deg, var(--program-color), #ba68c8);
         }
 
         .utilities-btn {
-            background: linear-gradient(45deg, var(--utility-color), #00FF9D);
+            background: linear-gradient(45deg, var(--utility-color), #66bb6a);
         }
 
         .online-btn {
-            background: linear-gradient(45deg, var(--online-color), #FF7B00);
+            background: linear-gradient(45deg, var(--online-color), #f39c12);
         }
-
-        /* Добавляем новогодние иконки к кнопкам */
-        .games-btn::before { content: '🎮'; }
-        .programs-btn::before { content: '💻'; }
-        .utilities-btn::before { content: '🔧'; }
-        .online-btn::before { content: '🌐'; }
 
         /* Оригинальная большая кнопка (скрыта на мобильных) */
         .cta-button {
@@ -792,7 +648,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.4);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
             position: relative;
             overflow: hidden;
             font-size: 1rem;
@@ -810,13 +666,13 @@
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(46, 139, 87, 0.6);
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.6);
             background: linear-gradient(45deg, var(--primary-dark), var(--primary));
         }
 
         .cta-button:active {
             transform: translateY(1px);
-            box-shadow: 0 2px 10px rgba(46, 139, 87, 0.6);
+            box-shadow: 0 2px 10px rgba(108, 92, 231, 0.6);
         }
 
         .cta-button::after {
@@ -840,6 +696,14 @@
             background: var(--secondary);
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .games-slider-section.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .slider-container {
@@ -848,7 +712,6 @@
             position: relative;
         }
 
-        /* НОВОГОДНИЙ СЛАЙДЕР */
         .slider-title {
             text-align: center;
             font-size: 2.2rem;
@@ -858,14 +721,6 @@
             letter-spacing: 2px;
             position: relative;
             font-family: 'Orbitron', sans-serif;
-        }
-
-        .slider-title::before {
-            content: '🎮 ';
-        }
-
-        .slider-title::after {
-            content: ' 🎯';
         }
 
         .slider-title::after {
@@ -899,7 +754,7 @@
             height: 400px;
             overflow: hidden;
             border-radius: 15px;
-            background: linear-gradient(135deg, #0A2F35, #081C24);
+            background: linear-gradient(135deg, #1a1a2e, #0f0f1a);
         }
 
         .slider-slide img {
@@ -956,7 +811,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.4);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
             min-height: 46px;
             min-width: 140px;
             display: flex;
@@ -966,12 +821,12 @@
 
         .slide-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(46, 139, 87, 0.6);
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.6);
         }
 
         .slide-button:active {
             transform: translateY(1px);
-            box-shadow: 0 2px 10px rgba(46, 139, 87, 0.6);
+            box-shadow: 0 2px 10px rgba(108, 92, 231, 0.6);
         }
 
         .slider-nav {
@@ -986,7 +841,7 @@
         }
 
         .slider-btn {
-            background: rgba(10, 47, 53, 0.7);
+            background: rgba(26, 26, 46, 0.7);
             color: white;
             border: none;
             width: 44px;
@@ -1037,6 +892,14 @@
             background: var(--secondary);
             position: relative;
             min-height: 100vh;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .games-showcase.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-title {
@@ -1071,26 +934,15 @@
             margin: 0 auto;
         }
 
-        /* НОВОГОДНИЕ КАРТОЧКИ ИГР */
         .game-card {
-            background: linear-gradient(145deg, rgba(10, 47, 53, 0.9), rgba(8, 28, 36, 0.9));
+            background: var(--accent);
             border-radius: 15px;
             overflow: hidden;
             transition: all 0.4s ease;
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            animation: cardAppear 0.6s ease-out;
             transform-style: preserve-3d;
-        }
-
-        .game-card::after {
-            content: '✨';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 16px;
-            z-index: 2;
         }
 
         .program-card {
@@ -1105,37 +957,27 @@
             border-left: 4px solid var(--online-color);
         }
 
-        @keyframes cardAppear {
-            from {
-                opacity: 0;
-                transform: translateY(30px) rotateX(10deg);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) rotateX(0);
-            }
-        }
 
         .game-card:hover {
             transform: translateY(-10px) scale(1.02) rotateY(5deg);
-            box-shadow: 0 15px 30px rgba(46, 139, 87, 0.3);
+            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.3);
             border-color: var(--primary);
         }
 
         .program-card:hover {
-            box-shadow: 0 15px 30px rgba(255, 123, 0, 0.3);
+            box-shadow: 0 15px 30px rgba(157, 78, 221, 0.3);
             border-color: var(--program-color);
             transform: translateY(-10px) scale(1.02) rotateY(5deg);
         }
 
         .utility-card:hover {
-            box-shadow: 0 15px 30px rgba(0, 206, 209, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 184, 148, 0.3);
             border-color: var(--utility-color);
             transform: translateY(-10px) scale(1.02) rotateY(5deg);
         }
 
         .online-card:hover {
-            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 15px 30px rgba(253, 203, 110, 0.3);
             border-color: var(--online-color);
             transform: translateY(-10px) scale(1.02) rotateY(5deg);
         }
@@ -1147,7 +989,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(46, 139, 87, 0.1), transparent);
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), transparent);
             opacity: 0;
             transition: opacity 0.3s;
             z-index: 1;
@@ -1160,13 +1002,19 @@
         .game-image-container {
             height: 250px;
             width: 100%;
-            background: linear-gradient(135deg, #0A2F35, #081C24);
+            background: linear-gradient(135deg, #1a1a2e, #0f0f1a);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 15px;
             position: relative;
             overflow: hidden;
+            animation: containerFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes containerFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-2px); }
         }
 
         .game-image {
@@ -1260,28 +1108,28 @@
 
         .download-btn {
             background: var(--gradient-primary);
-            box-shadow: 0 4px 15px rgba(46, 139, 87, 0.4);
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
         }
 
         .download-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(46, 139, 87, 0.6);
-            background: linear-gradient(45deg, #1B5E20, #2E8B57);
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.6);
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary));
         }
 
         .download-btn:active {
             transform: translateY(0);
-            box-shadow: 0 2px 10px rgba(46, 139, 87, 0.6);
+            box-shadow: 0 2px 10px rgba(108, 92, 231, 0.6);
         }
 
         .view-btn {
-            background: linear-gradient(45deg, #FF3366, #FFD700);
-            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+            background: linear-gradient(45deg, var(--neon-secondary), var(--neon));
+            box-shadow: 0 4px 15px rgba(157, 78, 221, 0.4);
         }
 
         .view-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 51, 102, 0.6);
+            box-shadow: 0 6px 20px rgba(157, 78, 221, 0.6);
         }
 
         .soon-btn {
@@ -1299,6 +1147,14 @@
             padding: 60px 20px;
             background: var(--secondary);
             min-height: 100vh;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .new-games-section.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .all-games-page {
@@ -1339,7 +1195,7 @@
         .search-box input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 10px rgba(46, 139, 87, 0.3);
+            box-shadow: 0 0 10px rgba(108, 92, 231, 0.3);
         }
 
         .search-box i {
@@ -1357,7 +1213,7 @@
 
         .filter-select {
             width: 100%;
-            padding: 12px 20px 12px 40px;
+            padding: 12px 20px 12px 35px;
             background: var(--accent);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 30px;
@@ -1367,18 +1223,24 @@
             transition: all 0.3s;
             min-height: 48px;
             appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: 12px center;
-            background-size: 16px;
         }
 
         .filter-select:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 10px rgba(46, 139, 87, 0.3);
+            box-shadow: 0 0 10px rgba(108, 92, 231, 0.3);
+        }
+
+        .status-filter::after {
+            content: '▼';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            z-index: 1;
         }
 
         .games-count {
@@ -1425,22 +1287,22 @@
 
         .category-tab.active {
             background: var(--primary);
-            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.4);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
         }
 
         .category-tab.programs.active {
             background: var(--program-color);
-            box-shadow: 0 5px 15px rgba(255, 123, 0, 0.4);
+            box-shadow: 0 5px 15px rgba(157, 78, 221, 0.4);
         }
 
         .category-tab.utilities.active {
             background: var(--utility-color);
-            box-shadow: 0 5px 15px rgba(0, 206, 209, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 184, 148, 0.4);
         }
 
         .category-tab.online.active {
             background: var(--online-color);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 5px 15px rgba(253, 203, 110, 0.4);
         }
 
         .category-tab:hover {
@@ -1452,9 +1314,17 @@
         }
 
         .about-section {
-            padding: 60px 20px;
+            padding: 60px 20px 100px;
             background: var(--dark);
-            min-height: 100vh;
+            min-height: 90vh;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .about-section.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .about-content {
@@ -1544,34 +1414,14 @@
             transform: scale(1.02);
         }
 
-        /* НОВОГОДНИЙ ФУТЕР */
         .tech-footer {
-            background: linear-gradient(to bottom, #0A2F35, #081C24);
+            background: var(--secondary);
             padding: 50px 20px 20px;
             text-align: center;
-            border-top: 3px solid #FFD700;
+            border-top: 2px solid var(--primary);
             position: relative;
             z-index: 1;
             width: 100%;
-        }
-
-        .tech-footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, 
-                #FF3366, #FFD700, #2E8B57, #00CED1, 
-                #FF3366, #FFD700, #2E8B57);
-            background-size: 200% 100%;
-            animation: garlandMove 3s linear infinite;
-        }
-
-        @keyframes garlandMove {
-            0% { background-position: 0% 0; }
-            100% { background-position: 200% 0; }
         }
 
         .footer-content {
@@ -1637,14 +1487,13 @@
             position: relative;
         }
 
-        /* НОВОГОДНИЕ СОЦИАЛЬНЫЕ ИКОНКИ */
         .social-icon {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 50px;
             height: 50px;
-            background: linear-gradient(45deg, #2E8B57, #FF3366);
+            background: var(--accent);
             border-radius: 50%;
             color: var(--text);
             text-decoration: none;
@@ -1653,8 +1502,10 @@
         }
 
         .social-icon:hover {
-            transform: rotate(15deg) scale(1.1);
-            background: linear-gradient(45deg, #FF3366, #FFD700);
+            background: linear-gradient(45deg, var(--primary), var(--neon));
+            transform: translateY(-5px) scale(1.1) rotate(15deg);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.6), 0 0 30px rgba(0, 206, 255, 0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .social-text {
@@ -1671,13 +1522,13 @@
         }
 
         .social-item:hover .social-icon {
-            background: linear-gradient(45deg, #FF3366, #FFD700);
-            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
+            background: linear-gradient(45deg, var(--primary), var(--neon));
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.6), 0 0 30px rgba(0, 206, 255, 0.4);
         }
 
         .social-item:hover .social-text {
             color: var(--primary);
-            text-shadow: 0 0 10px rgba(46, 139, 87, 0.5);
+            text-shadow: 0 0 10px rgba(108, 92, 231, 0.5);
         }
 
         .copyright {
@@ -1686,6 +1537,39 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 15px;
             margin-top: 15px;
+        }
+
+        /* Анимация для социальных иконок */
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .social-links .social-icon {
+            opacity: 0;
+            animation: fadeInScale 0.6s ease-out forwards;
+        }
+
+        .social-links > :nth-child(1) .social-icon {
+            animation-delay: 1.5s;
+        }
+
+        .social-links > :nth-child(2) .social-icon {
+            animation-delay: 1.7s;
+        }
+
+        .social-links > :nth-child(3) .social-icon {
+            animation-delay: 1.9s;
+        }
+
+        .social-links > :nth-child(4) .social-icon {
+            animation-delay: 2.1s;
         }
 
         .back-to-main {
@@ -1700,7 +1584,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.4);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
             min-height: 48px;
             min-width: 200px;
             display: flex;
@@ -1710,12 +1594,12 @@
 
         .back-to-main:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(46, 139, 87, 0.6);
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.6);
         }
 
         .back-to-main:active {
             transform: translateY(1px);
-            box-shadow: 0 2px 10px rgba(46, 139, 87, 0.6);
+            box-shadow: 0 2px 10px rgba(108, 92, 231, 0.6);
         }
 
         /* Улучшенное модальное окно */
@@ -1755,15 +1639,15 @@
             max-width: 1200px;
             border-radius: 15px;
             position: relative;
-            /* Smooth transition handles the animation */
-            box-shadow: 0 0 50px rgba(46, 139, 87, 0.3);
+            animation: modalContentAppear 0.4s ease-out;
+            box-shadow: 0 0 50px rgba(108, 92, 231, 0.3);
             border: 2px solid var(--primary);
             transform-style: preserve-3d;
             transform: perspective(1000px) rotateX(5deg);
         }
 
         .modal-buy-btn {
-            background: linear-gradient(45deg, #00CED1, #00FF9D);
+            background: linear-gradient(45deg, #00b894, #00ceff);
             color: white;
             padding: 12px 20px;
             border-radius: 8px;
@@ -1782,55 +1666,28 @@
             border: none;
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
-            box-shadow: 0 4px 15px rgba(0, 206, 209, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.4);
         }
 
         .modal-buy-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 206, 209, 0.6);
-            background: linear-gradient(45deg, #00A085, #00B8D4);
+            box-shadow: 0 6px 20px rgba(0, 184, 148, 0.6);
+            background: linear-gradient(45deg, #00a085, #00b8d4);
         }
 
         .modal-buy-btn:active {
             transform: translateY(0);
-            box-shadow: 0 2px 10px rgba(0, 206, 209, 0.6);
+            box-shadow: 0 2pх 10pх rgba(0, 184, 148, 0.6);
         }
 
         @keyframes modalContentAppear {
-            0% {
+            from {
                 opacity: 0;
-                transform: perspective(1200px) rotateY(-180deg) scale(0) translateY(100px);
-                filter: blur(20px) hue-rotate(0deg);
-                box-shadow: 0 0 0 rgba(46, 139, 87, 0);
-                border-color: #FF0000;
+                transform: perspective(1000px) rotateX(10deg) scale(0.8) translateY(-20px);
             }
-            25% {
-                opacity: 0.3;
-                transform: perspective(1200px) rotateY(-90deg) scale(0.5) translateY(50px);
-                filter: blur(15px) hue-rotate(90deg);
-                box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-                border-color: #FFFF00;
-            }
-            50% {
-                opacity: 0.6;
-                transform: perspective(1200px) rotateY(-45deg) scale(1.1) translateY(0px);
-                filter: blur(10px) hue-rotate(180deg);
-                box-shadow: 0 0 40px rgba(255, 255, 0, 0.7);
-                border-color: #00FF00;
-            }
-            75% {
-                opacity: 0.8;
-                transform: perspective(1200px) rotateY(-22.5deg) scale(0.95) translateY(-5px);
-                filter: blur(5px) hue-rotate(270deg);
-                box-shadow: 0 0 60px rgba(0, 255, 0, 0.9);
-                border-color: #00FFFF;
-            }
-            100% {
+            to {
                 opacity: 1;
-                transform: perspective(1200px) rotateY(0deg) scale(1) translateY(0);
-                filter: blur(0px) hue-rotate(360deg);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-                border-color: var(--primary);
+                transform: perspective(1000px) rotateX(5deg) scale(1) translateY(0);
             }
         }
 
@@ -1881,7 +1738,7 @@
             border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease;
-            background: linear-gradient(135deg, #0A2F35, #081C24);
+            background: linear-gradient(135deg, #1a1a2e, #0f0f1a);
         }
 
         .game-modal-cover:hover {
@@ -1969,18 +1826,18 @@
         .modal-download-btn {
             background: var(--gradient-primary);
             color: white;
-            box-shadow: 0 4px 15px rgba(46, 139, 87, 0.4);
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
         }
 
         .modal-download-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(46, 139, 87, 0.6);
-            background: linear-gradient(45deg, #1B5E20, #2E8B57);
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.6);
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary));
         }
 
         .modal-download-btn:active {
             transform: translateY(0);
-            box-shadow: 0 2px 10px rgba(46, 139, 87, 0.6);
+            box-shadow: 0 2px 10px rgba(108, 92, 231, 0.6);
         }
 
         .modal-soon-btn {
@@ -2179,13 +2036,13 @@
         }
 
         .spec-tag {
-            background: rgba(46, 139, 87, 0.2);
+            background: rgba(108, 92, 231, 0.2);
             color: var(--primary);
             padding: 3px 8px;
             border-radius: 15px;
             font-size: 0.7rem;
             font-weight: 600;
-            border: 1px solid rgba(46, 139, 87, 0.3);
+            border: 1px solid rgba(108, 92, 231, 0.3);
         }
 
         .spec-progress {
@@ -2217,7 +2074,7 @@
         }
 
         .spec-highlight {
-            background: linear-gradient(135deg, rgba(46, 139, 87, 0.1), transparent);
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), transparent);
             padding: 12px;
             border-radius: 8px;
             border-left: 3px solid var(--primary);
@@ -2287,7 +2144,6 @@
             font-weight: 600;
         }
 
-        /* Новогодние бейджи для категорий */
         .program-badge {
             position: absolute;
             top: 10px;
@@ -2374,7 +2230,7 @@
             justify-content: center;
             color: white;
             font-size: 1.3rem;
-            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.4);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
             cursor: pointer;
             z-index: 100;
             transition: all 0.3s ease;
@@ -2383,13 +2239,13 @@
 
         @keyframes pulse {
             0% {
-                box-shadow: 0 0 0 0 rgba(46, 139, 87, 0.7);
+                box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.7);
             }
             70% {
-                box-shadow: 0 0 0 10px rgba(46, 139, 87, 0);
+                box-shadow: 0 0 0 10px rgba(108, 92, 231, 0);
             }
             100% {
-                box-shadow: 0 0 0 0 rgba(46, 139, 87, 0);
+                box-shadow: 0 0 0 0 rgba(108, 92, 231, 0);
             }
         }
 
@@ -2399,331 +2255,6 @@
 
         .floating-action-button:active {
             transform: scale(0.95);
-        }
-
-        /* Chat Widget Styles */
-        .chat-widget {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
-
-        .chat-toggle {
-            background: var(--gradient-primary);
-            border: none;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.3rem;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.4);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulse 2s infinite;
-        }
-
-        .chat-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(46, 139, 87, 0.6);
-        }
-
-        .chat-toggle:active {
-            transform: scale(0.95);
-        }
-
-        .chat-modal {
-            position: absolute;
-            bottom: 80px;
-            left: 80px;
-            width: 350px;
-            height: 500px;
-            background: rgba(10, 47, 53, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 2px solid var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            opacity: 0;
-            transform: scale(0) translateY(50px);
-            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            pointer-events: none;
-        }
-
-        .chat-modal.active {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-            pointer-events: all;
-        }
-
-        .chat-header {
-            background: var(--gradient-primary);
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 13px 13px 0 0;
-        }
-
-        .chat-header h3 {
-            margin: 0;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        .close-chat {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 5px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .close-chat:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(90deg);
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary) rgba(255, 255, 255, 0.1);
-        }
-
-        .chat-messages::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .chat-messages::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-        }
-
-        .chat-messages::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 3px;
-        }
-
-        .chat-messages::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
-        }
-
-        .message {
-            margin-bottom: 15px;
-            padding: 10px 15px;
-            border-radius: 15px;
-            max-width: 80%;
-            word-wrap: break-word;
-            animation: messageAppear 0.3s ease-out;
-        }
-
-        @keyframes messageAppear {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .message.user {
-            background: var(--gradient-primary);
-            color: white;
-            margin-left: auto;
-            text-align: right;
-        }
-
-        .message.bot {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text);
-            margin-right: auto;
-        }
-
-        .chat-input {
-            padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .chat-input input {
-            flex: 1;
-            padding: 10px 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text);
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .chat-input input:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 10px rgba(46, 139, 87, 0.3);
-        }
-
-        .chat-input button {
-            background: var(--gradient-primary);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .chat-input button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.4);
-        }
-
-        .chat-input button:active {
-            transform: scale(0.95);
-        }
-
-        /* Стили для кнопок в чате */
-        .chat-button {
-            background: var(--gradient-primary);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.8rem;
-            margin: 5px 0;
-            display: inline-block;
-        }
-
-        .chat-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.4);
-            background: linear-gradient(45deg, #1B5E20, #2E8B57);
-        }
-
-        .chat-button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 10px rgba(46, 139, 87, 0.6);
-        }
-
-        /* Карточка игры в чате */
-        .game-chat-card {
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid rgba(46, 139, 87, 0.3);
-        }
-
-        .game-chat-image {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-
-        .game-chat-info {
-            flex: 1;
-        }
-
-        .game-chat-info h4 {
-            margin: 0 0 5px 0;
-            color: var(--text);
-            font-size: 1rem;
-        }
-
-        .game-chat-info p {
-            margin: 2px 0;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .game-chat-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .chat-download-btn {
-            background: linear-gradient(45deg, #FF3366, #FFD700);
-            color: white;
-            text-decoration: none;
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-size: 0.7rem;
-            transition: all 0.3s ease;
-            text-align: center;
-            display: inline-block;
-        }
-
-        .chat-download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 51, 102, 0.4);
-        }
-
-        /* Typing indicator */
-        .typing-indicator {
-            display: flex;
-            gap: 5px;
-            padding: 10px 15px;
-            margin-right: auto;
-            max-width: 80%;
-        }
-
-        .typing-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--primary);
-            border-radius: 50%;
-            animation: typing 1.4s infinite ease-in-out;
-        }
-
-        .typing-dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .typing-dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes typing {
-            0%, 60%, 100% {
-                transform: translateY(0);
-                opacity: 0.4;
-            }
-            30% {
-                transform: translateY(-10px);
-                opacity: 1;
-            }
         }
 
         /* Адаптивность - ОБНОВЛЕНО ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ */
@@ -2942,255 +2473,6 @@
             .cta-button {
                 display: flex;
             }
-            
-            /* Адаптация елки для десктопа */
-            .christmas-tree-container {
-                width: 180px;
-                height: 320px;
-            }
-            
-            .new-year-banner {
-                top: -120px;
-                padding: 12px 25px;
-                min-width: 200px;
-            }
-            
-            .text-glow {
-                font-size: 16px;
-            }
-            
-            .year-text {
-                font-size: 28px;
-            }
-            .banner-garlands {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.garland-light {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    animation: lightTwinkle 1.5s infinite alternate;
-    filter: blur(1px);
-}
-
-/* Гирлянда сверху */
-.garland-top {
-    top: -6px;
-    left: 0;
-    width: 100%;
-    height: 15px;
-}
-
-/* Гирлянда снизу */
-.garland-bottom {
-    bottom: -6px;
-    left: 0;
-    width: 100%;
-    height: 15px;
-}
-
-/* Гирлянды по бокам */
-.garland-left {
-    top: 0;
-    left: -6px;
-    width: 15px;
-    height: 100%;
-}
-
-.garland-right {
-    top: 0;
-    right: -6px;
-    width: 15px;
-    height: 100%;
-}
-
-/* Цвета гирлянд */
-.light-red {
-    background: radial-gradient(circle, #ff0000, #cc0000);
-    box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
-}
-
-.light-green {
-    background: radial-gradient(circle, #00ff00, #00cc00);
-    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
-}
-
-.light-blue {
-    background: radial-gradient(circle, #0000ff, #0000cc);
-    box-shadow: 0 0 10px #0000ff, 0 0 20px #0000ff;
-}
-
-.light-yellow {
-    background: radial-gradient(circle, #ffff00, #cccc00);
-    box-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00;
-}
-
-.light-purple {
-    background: radial-gradient(circle, #ff00ff, #cc00cc);
-    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
-}
-
-.light-cyan {
-    background: radial-gradient(circle, #00ffff, #00cccc);
-    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
-}
-
-/* Анимация мерцания гирлянд */
-@keyframes lightTwinkle {
-    0% {
-        opacity: 0.3;
-        transform: scale(0.8);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1.1);
-    }
-}
-
-/* Бегущие огоньки по периметру */
-.running-lights {
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, 
-        transparent 5%, 
-        #FF0000 10%, #00FF00 20%, #FFFF00 30%, 
-        #0000FF 40%, #FF00FF 50%, #00FFFF 60%, 
-        #FF0000 70%, #00FF00 80%, #FFFF00 90%, 
-        transparent 95%);
-    border-radius: 2px;
-    box-shadow: 0 0 10px currentColor;
-    animation: runningLight 2s linear infinite;
-}
-
-.running-lights-top {
-    top: -1px;
-    left: 0;
-}
-
-.running-lights-bottom {
-    bottom: -1px;
-    left: 0;
-    animation-direction: reverse;
-}
-
-.running-lights-left {
-    top: 0;
-    left: -1px;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, 
-        transparent 5%, 
-        #FF0000 10%, #00FF00 20%, #FFFF00 30%, 
-        #0000FF 40%, #FF00FF 50%, #00FFFF 60%, 
-        #FF0000 70%, #00FF00 80%, #FFFF00 90%, 
-        transparent 95%);
-    animation: runningLightVertical 2s linear infinite;
-}
-
-.running-lights-right {
-    top: 0;
-    right: -1px;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, 
-        transparent 5%, 
-        #FF0000 10%, #00FF00 20%, #FFFF00 30%, 
-        #0000FF 40%, #FF00FF 50%, #00FFFF 60%, 
-        #FF0000 70%, #00FF00 80%, #FFFF00 90%, 
-        transparent 95%);
-    animation-direction: reverse;
-}
-
-@keyframes runningLight {
-    0% { background-position: 0 0; }
-    100% { background-position: 200px 0; }
-}
-
-@keyframes runningLightVertical {
-    0% { background-position: 0 0; }
-    100% { background-position: 0 200px; }
-}
-
-/* Улучшенный новогодний текст */
-.new-year-text {
-    text-align: center;
-    font-family: 'Orbitron', sans-serif;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    position: relative;
-    z-index: 2;
-}
-
-.text-glow {
-    font-size: 16px;
-    font-weight: 900;
-    color: white;
-    text-shadow: 
-        0 0 10px #fff,
-        0 0 20px #ff0000,
-        0 0 30px #ff0000,
-        0 0 40px #ff0000;
-    letter-spacing: 3px;
-    animation: textPulse 2s infinite alternate;
-    position: relative;
-    padding: 5px 10px;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.year-text {
-    font-size: 28px;
-    font-weight: 900;
-    background: linear-gradient(45deg, #FFD700, #FFA500, #FF0000, #FFD700);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    background-size: 300% 300%;
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-    animation: yearGlow 2s infinite alternate, yearGradient 4s linear infinite;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: 2px solid rgba(255, 215, 0, 0.5);
-    background: rgba(0, 0, 0, 0.4);
-    position: relative;
-    overflow: hidden;
-}
-
-.year-text::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(255, 255, 255, 0.2) 50%, 
-        transparent 100%);
-    animation: yearShine 3s infinite;
-}
-
-@keyframes yearGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-@keyframes yearShine {
-    0% { left: -100%; }
-    100% { left: 100%; }
-}
         }
 
         @media (max-width: 767px) {
@@ -3260,68 +2542,6 @@
             
             .action-btn span {
                 font-size: 0.7rem;
-            }
-            
-            /* Адаптация елки для мобильных */
-            .christmas-tree-container {
-                width: 140px;
-                height: 250px;
-                right: 10px;
-                bottom: 10px;
-            }
-            
-            .new-year-banner {
-                top: -100px;
-                padding: 8px 15px;
-                min-width: 160px;
-            }
-            
-            .text-glow {
-                font-size: 12px;
-            }
-            
-            .year-text {
-                font-size: 22px;
-            }
-            
-            .layer-1 { 
-                width: 110px; 
-                height: 45px; 
-                bottom: 30px; 
-            }
-            .layer-2 { 
-                width: 95px; 
-                height: 40px; 
-                bottom: 65px; 
-            }
-            .layer-3 { 
-                width: 80px; 
-                height: 35px; 
-                bottom: 95px; 
-            }
-            .layer-4 { 
-                width: 65px; 
-                height: 30px; 
-                bottom: 120px; 
-            }
-            
-            .tree-star {
-                top: -35px;
-            }
-
-            .logo-text::before {
-                left: -25px;
-                font-size: 18px;
-            }
-            
-            .logo-text::after {
-                right: -25px;
-                font-size: 18px;
-            }
-            
-            .nav-links a:hover::before {
-                left: -20px;
-                font-size: 14px;
             }
         }
 
@@ -3476,63 +2696,6 @@
             .action-btn span {
                 font-size: 0.65rem;
             }
-            
-            /* Елка для очень маленьких экранов */
-            .christmas-tree-container {
-                width: 120px;
-                height: 220px;
-                right: 5px;
-                bottom: 5px;
-            }
-            
-            .new-year-banner {
-                top: -90px;
-                padding: 6px 12px;
-                min-width: 140px;
-            }
-            
-            .text-glow {
-                font-size: 10px;
-            }
-            
-            .year-text {
-                font-size: 18px;
-            }
-            
-            .layer-1 { 
-                width: 90px; 
-                height: 35px; 
-                bottom: 25px; 
-            }
-            .layer-2 { 
-                width: 75px; 
-                height: 30px; 
-                bottom: 55px; 
-            }
-            .layer-3 { 
-                width: 60px; 
-                height: 25px; 
-                bottom: 80px; 
-            }
-            .layer-4 { 
-                width: 45px; 
-                height: 20px; 
-                bottom: 100px; 
-            }
-            
-            .tree-star {
-    position: absolute;
-    top: -50px; /* Поднята выше елки */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1001;
-    animation: starSpin 10s linear infinite;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
         }
 
         /* Стили для модального окна скриншотов */
@@ -3569,7 +2732,7 @@
             max-height: 100%;
             object-fit: contain;
             border-radius: 10px;
-            box-shadow: 0 0 50px rgba(46, 139, 87, 0.5);
+            box-shadow: 0 0 50px rgba(108, 92, 231, 0.5);
             animation: zoomIn 0.3s ease-out;
         }
 
@@ -3604,7 +2767,7 @@
         }
 
         .screenshot-modal-close:hover {
-            background: rgba(46, 139, 87, 0.7);
+            background: rgba(108, 92, 231, 0.7);
             transform: scale(1.1);
         }
 
@@ -3620,7 +2783,7 @@
         }
 
         .screenshot-modal-btn {
-            background: rgba(10, 47, 53, 0.7);
+            background: rgba(26, 26, 46, 0.7);
             color: white;
             border: none;
             width: 50px;
@@ -3692,7 +2855,7 @@
 
         .buy-button {
             display: inline-block;
-            background: linear-gradient(45deg, #00CED1, #00FF9D);
+            background: linear-gradient(45deg, #00b894, #00ceff);
             color: white;
             padding: 12px 20px;
             border-radius: 8px;
@@ -3711,1196 +2874,41 @@
             border: none;
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
-            box-shadow: 0 4px 15px rgba(0, 206, 209, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.4);
             margin-top: 10px;
             width: 100%;
         }
 
         .buy-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 206, 209, 0.6);
-            background: linear-gradient(45deg, #00A085, #00B8D4);
+            box-shadow: 0 6px 20px rgba(0, 184, 148, 0.6);
+            background: linear-gradient(45deg, #00a085, #00b8d4);
         }
 
         .buy-button:active {
             transform: translateY(0);
-            box-shadow: 0 2px 10px rgba(0, 206, 209, 0.6);
+            box-shadow: 0 2px 10px rgba(0, 184, 148, 0.6);
         }
 
         .button-container {
             margin-top: 15px;
             text-align: center;
         }
-
-
-        /* НОВОГОДНИЕ ШАПКИ */
-        .new-year-hat {
-            position: fixed;
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(45deg, #ff0000, #cc0000);
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            animation: hatFloat 8s ease-in-out infinite;
-            z-index: 9997;
-            filter: drop-shadow(0 5px 15px rgba(255, 0, 0, 0.3));
-        }
-
-        .hat-pompon {
-            position: absolute;
-            top: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 15px;
-            height: 15px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 10px white;
-        }
-
-        @keyframes hatFloat {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            25% {
-                transform: translateY(-20px) rotate(-10deg);
-            }
-            50% {
-                transform: translateY(0) rotate(10deg);
-            }
-            75% {
-                transform: translateY(-20px) rotate(-10deg);
-            }
-        }
-
-        /* ПРАЗДНИЧНЫЕ КОНФЕТТИ */
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            animation: confettiFall linear forwards;
-            border-radius: 2px;
-        }
-
-        @keyframes confettiFall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        /* НОВОГОДНЯЯ ГИРЛЯНДА */
-        .new-year-garland {
-            position: fixed;
-            top: 70px;
-            left: 0;
-            width: 100%;
-            height: 30px;
-            background: linear-gradient(90deg, 
-                #ff0000, #ff9900, #ffff00, #00ff00, 
-                #0099ff, #6600ff, #ff00ff, #ff0000);
-            background-size: 200% 100%;
-            animation: garlandMove 3s linear infinite;
-            z-index: 9996;
-            opacity: 0.7;
-            clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 5% 100%);
-            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
-        }
-
-        @keyframes garlandMove {
-            0% {
-                background-position: 0% 0;
-            }
-            100% {
-                background-position: 200% 0;
-            }
-        }
-
-        /* АНИМИРОВАННЫЙ НОВОГОДНИЙ ТЕКСТ */
-        .new-year-message-fullscreen {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            font-weight: 900;
-            text-align: center;
-            z-index: 10000;
-            pointer-events: none;
-            opacity: 0;
-            animation: newYearMessage 4s ease-in-out forwards;
-        }
-
-        @keyframes newYearMessage {
-            0% {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(0.5);
-            }
-            20% {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1.2);
-            }
-            40% {
-                transform: translate(-50%, -50%) scale(1);
-            }
-            80% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(1.5);
-            }
-        }
-
-        /* Улучшенные стили для новогодней елки */
-.christmas-tree-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 180px;
-    height: 320px;
-    z-index: 999;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    animation: treeFloat 6s ease-in-out infinite;
-    perspective: 1000px;
-}
-
-.christmas-tree-container:hover {
-    transform: scale(1.05) rotateY(5deg);
-}
-
-@keyframes treeFloat {
-    0%, 100% { transform: translateY(0) rotateX(0); }
-    50% { transform: translateY(-15px) rotateX(2deg); }
-}
-
-/* Баннер с текстом */
-.new-year-banner {
-    position: absolute;
-    top: -120px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(45deg, rgba(139, 0, 0, 0.8), rgba(255, 0, 0, 0.8), rgba(255, 165, 0, 0.8));
-    padding: 12px 25px;
-    border-radius: 15px;
-    border: 3px solid gold;
-    box-shadow: 
-        0 0 30px rgba(255, 215, 0, 0.5),
-        0 10px 20px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
-    animation: bannerGlow 3s ease-in-out infinite alternate;
-    z-index: 1000;
-    min-width: 200px;
-}
-
-@keyframes bannerGlow {
-    0% {
-        box-shadow: 
-            0 0 20px rgba(255, 0, 0, 0.5),
-            0 10px 20px rgba(0, 0, 0, 0.3);
-        transform: translateX(-50%) scale(1);
-    }
-    100% {
-        box-shadow: 
-            0 0 40px rgba(255, 215, 0, 0.7),
-            0 15px 30px rgba(0, 0, 0, 0.4);
-        transform: translateX(-50%) scale(1.05);
-    }
-}
-
-/* Новогодний текст */
-.new-year-text {
-    text-align: center;
-    font-family: 'Orbitron', sans-serif;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.text-glow {
-    font-size: 16px;
-    font-weight: 900;
-    color: white;
-    text-shadow: 
-        0 0 10px #fff,
-        0 0 20px #ff0000,
-        0 0 30px #ff0000;
-    letter-spacing: 2px;
-    animation: textPulse 2s infinite alternate;
-}
-
-.year-text {
-    font-size: 28px;
-    font-weight: 900;
-    background: linear-gradient(45deg, #FFD700, #FFA500, #FF0000);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-    animation: yearGlow 2s infinite alternate;
-}
-
-@keyframes textPulse {
-    0% { 
-        text-shadow: 
-            0 0 5px #fff,
-            0 0 10px #ff0000;
-    }
-    100% { 
-        text-shadow: 
-            0 0 15px #fff,
-            0 0 25px #ff0000,
-            0 0 35px #ff0000;
-    }
-}
-
-@keyframes yearGlow {
-    0% { 
-        background-position: 0% 50%;
-        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    }
-    100% { 
-        background-position: 100% 50%;
-        text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-    }
-}
-
-/* Гироиды вокруг баннера */
-.garland {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 8px;
-    background: linear-gradient(90deg, 
-        transparent 5%, 
-        #FF0000 10%, #00FF00 20%, #FFFF00 30%, 
-        #0000FF 40%, #FF00FF 50%, #00FFFF 60%, 
-        #FF0000 70%, #00FF00 80%, #FFFF00 90%, 
-        transparent 95%);
-    border-radius: 4px;
-    box-shadow: 0 0 10px currentColor;
-    animation: garlandMove 4s linear infinite;
-}
-
-.garland-top {
-    top: -4px;
-    animation-direction: normal;
-}
-
-.garland-bottom {
-    bottom: -4px;
-    animation-direction: reverse;
-}
-
-@keyframes garlandMove {
-    0% { background-position: 0 0; }
-    100% { background-position: 200px 0; }
-}
-
-/* Контейнер елки */
-.tree-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-/* Ярусы елки */
-.tree-layer {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 50% 50% 0 0;
-    background: linear-gradient(to bottom, #0a5c36, #0b6b3f, #0c7a48);
-    box-shadow:
-        inset 0 5px 10px rgba(255, 255, 255, 0.2),
-        inset 0 -5px 10px rgba(0, 0, 0, 0.3),
-        0 10px 20px rgba(0, 0, 0, 0.4);
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.tree-layer:hover {
-    transform: translateX(-50%) scale(1.05) rotateY(5deg);
-    box-shadow:
-        inset 0 5px 10px rgba(255, 255, 255, 0.3),
-        inset 0 -5px 10px rgba(0, 0, 0, 0.4),
-        0 15px 30px rgba(46, 139, 87, 0.3);
-}
-
-.layer-needles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 2%, transparent 5%),
-        radial-gradient(circle at 70% 40%, rgba(255, 255, 255, 0.1) 2%, transparent 5%),
-        radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.1) 2%, transparent 5%);
-}
-
-/* Размеры ярусов */
-.layer-1 {
-    bottom: 40px;
-    width: 140px;
-    height: 60px;
-    transition: all 0.3s ease;
-}
-
-.layer-2 {
-    bottom: 85px;
-    width: 120px;
-    height: 55px;
-    transition: all 0.3s ease;
-}
-
-.layer-3 {
-    bottom: 125px;
-    width: 100px;
-    height: 50px;
-    transition: all 0.3s ease;
-}
-
-.layer-4 {
-    bottom: 160px;
-    width: 80px;
-    height: 45px;
-    transition: all 0.3s ease;
-}
-
-.layer-5 {
-    bottom: 190px;
-    width: 60px;
-    height: 40px;
-    transition: all 0.3s ease;
-}
-
-/* Гирлянды на елке */
-.garland-1,
-.garland-2,
-.garland-3,
-.garland-4 {
-    position: absolute;
-    width: 110%;
-    height: 4px;
-    left: -5%;
-    border-radius: 2px;
-    background: linear-gradient(90deg, 
-        #FF0000, #FFFF00, #00FF00, 
-        #00FFFF, #0000FF, #FF00FF, 
-        #FF0000);
-    background-size: 200% 100%;
-    animation: garlandTwinkle 3s linear infinite;
-    box-shadow: 0 0 8px currentColor;
-    opacity: 0.8;
-}
-
-.garland-1 { top: 30%; animation-delay: 0s; }
-.garland-2 { top: 50%; animation-delay: 0.5s; }
-.garland-3 { top: 70%; animation-delay: 1s; }
-.garland-4 { top: 85%; animation-delay: 1.5s; }
-.garland-5 { top: 20%; animation-delay: 1.8s; }
-
-.garland-extra-1 { top: 45%; animation-delay: 2s; }
-.garland-extra-2 { top: 55%; animation-delay: 2.3s; }
-.garland-extra-3 { top: 65%; animation-delay: 2.6s; }
-.garland-extra-4 { top: 75%; animation-delay: 2.9s; }
-.garland-extra-5 { top: 25%; animation-delay: 3.2s; }
-
-@keyframes garlandTwinkle {
-    0% { 
-        background-position: 0% 0;
-        opacity: 0.6;
-    }
-    50% { 
-        background-position: 100% 0;
-        opacity: 1;
-    }
-    100% { 
-        background-position: 200% 0;
-        opacity: 0.6;
-    }
-}
-
-/* ЗВЕЗДА С ОБНОВЛЕННОЙ АНИМАЦИЕЙ */
-.tree-star {
-    position: absolute;
-    top: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1003;
-    animation: starSpinClockwise 8s linear infinite;
-    width: 50px;
-    height: 320px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.star-shape {
-    font-size: 40px;
-    color: #FFD700;
-    text-shadow: 
-        0 0 10px #FFD700,
-        0 0 20px #FFD700,
-        0 0 30px #FFD700;
-    animation: starBlink 1.5s infinite alternate, starPulse 2s infinite alternate;
-    position: relative;
-    z-index: 1003;
-    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.7));
-}
-
-.star-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70px;
-    height: 0px;
-    background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, rgba(255, 215, 0, 0.1) 50%, transparent 70%);
-    border-radius: 50%;
-    z-index: 1001;
-    animation: glowPulseEnhanced 3s infinite alternate;
-}
-
-/* Вращение по часовой стрелке */
-@keyframes starSpinClockwise {
-    0% { 
-        transform: translateX(-50%) rotate(0deg) scale(1);
-    }
-    25% { 
-        transform: translateX(-50%) rotate(90deg) scale(1.05);
-    }
-    50% { 
-        transform: translateX(-50%) rotate(180deg) scale(1.1);
-    }
-    75% { 
-        transform: translateX(-50%) rotate(270deg) scale(1.05);
-    }
-    100% { 
-        transform: translateX(-50%) rotate(360deg) scale(1);
-    }
-}
-
-/* Мигание желтым цветом */
-@keyframes starBlink {
-    0%, 100% { 
-        color: #FFD700;
-        text-shadow: 
-            0 0 10px #FFD700,
-            0 0 20px #FFD700,
-            0 0 30px #FFD700;
-        filter: brightness(1) drop-shadow(0 0 5px rgba(255, 215, 0, 0.7));
-    }
-    50% { 
-        color: #FFFF00;
-        text-shadow: 
-            0 0 15px #FFFF00,
-            0 0 30px #FFFF00,
-            0 0 45px #FFA500,
-            0 0 60px #FF8C00;
-        filter: brightness(1.3) drop-shadow(0 0 10px rgba(255, 255, 0, 0.9));
-    }
-}
-
-/* Пульсация звезды */
-@keyframes starPulse {
-    0%, 100% { 
-        transform: scale(1);
-    }
-    50% { 
-        transform: scale(1.15);
-    }
-}
-
-/* Усиленная пульсация свечения */
-@keyframes glowPulseEnhanced {
-    0% { 
-        opacity: 0.6;
-        transform: translate(-50%, -50%) scale(1);
-        background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, rgba(255, 215, 0, 0.1) 50%, transparent 70%);
-    }
-    50% { 
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1.3);
-        background: radial-gradient(circle, rgba(255, 255, 0, 0.6) 0%, rgba(255, 215, 0, 0.3) 50%, transparent 70%);
-    }
-    100% { 
-        opacity: 0.6;
-        transform: translate(-50%, -50%) scale(1);
-        background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, rgba(255, 215, 0, 0.1) 50%, transparent 70%);
-    }
-}
-
-/* Ствол */
-.tree-trunk {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 40px;
-    background: linear-gradient(to bottom, #8B4513, #654321);
-    border-radius: 5px 5px 0 0;
-    z-index: 1;
-    box-shadow: 
-        inset 0 2px 4px rgba(255, 255, 255, 0.1),
-        0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* Подставка */
-.tree-stand {
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 15px;
-}
-
-.stand-base {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, #4A4A4A, #2C2C2C);
-    border-radius: 10px 10px 5px 5px;
-    box-shadow: 
-        0 5px 15px rgba(0, 0, 0, 0.5),
-        inset 0 2px 5px rgba(255, 255, 255, 0.1);
-}
-
-.stand-design {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 3px;
-    background: gold;
-    border-radius: 2px;
-    box-shadow: 0 0 8px gold;
-}
-
-/* Подарки */
-.presents {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 5px;
-    z-index: 2;
-}
-
-.present {
-    width: 35px;
-    height: 25px;
-    border-radius: 5px;
-    position: relative;
-    animation: presentFloat 4s ease-in-out infinite;
-    box-shadow:
-        0 3px 6px rgba(0, 0, 0, 0.3),
-        inset 0 1px 2px rgba(255, 255, 255, 0.3),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-}
-
-.present-1 {
-    background: linear-gradient(45deg, #FF0000, #CC0000);
-    animation-delay: 0s;
-}
-
-.present-2 {
-    background: linear-gradient(45deg, #00FF00, #00CC00);
-    animation-delay: 0.5s;
-}
-
-.present-3 {
-    background: linear-gradient(45deg, #0000FF, #0000CC);
-    animation-delay: 1s;
-}
-
-.present-bow {
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 15px;
-    height: 15px;
-    background: linear-gradient(45deg, #FFD700, #FFA500);
-    border-radius: 50% 50% 0 50%;
-    transform: rotate(45deg);
-    box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-@keyframes presentFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-}
-
-/* Снег под елкой */
-.snow-under-tree {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 10px;
-    background: linear-gradient(to top, rgba(255, 255, 255, 0.8), transparent);
-    border-radius: 50%;
-    filter: blur(2px);
-}
-
-/* Круглая спиральная гирлянда от макушки до подарков */
-.spiral-garland {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1000;
-}
-
-.spiral-circle {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    box-shadow:
-        0 0 8px currentColor,
-        0 0 16px currentColor,
-        inset 0 1px 3px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    background: currentColor;
-}
-
-.spiral-circle.red { animation: bulbGlowRed 3s infinite ease-in-out; }
-.spiral-circle.orange { animation: bulbGlowOrange 3.2s infinite ease-in-out; }
-.spiral-circle.yellow { animation: bulbGlowYellow 2.8s infinite ease-in-out; }
-.spiral-circle.green { animation: bulbGlowGreen 3.5s infinite ease-in-out; }
-.spiral-circle.cyan { animation: bulbGlowCyan 2.6s infinite ease-in-out; }
-.spiral-circle.blue { animation: bulbGlowBlue 3.3s infinite ease-in-out; }
-.spiral-circle.purple { animation: bulbGlowPurple 2.9s infinite ease-in-out; }
-.spiral-circle.pink { animation: bulbGlowPink 3.1s infinite ease-in-out; }
-
-/* Лестничные позиции кружочков герлянды по елке (зигзаг лесенка: право-лево, лево-право по очереди) */
-.spiral-circle.circle-1 { top: 20%; left: 80%; transform: rotate(0deg); animation-delay: 0s; } /* Начало справа */
-.spiral-circle.circle-2 { top: 30%; left: 60%; transform: rotate(0deg); animation-delay: 0.1s; } /* Лево */
-.spiral-circle.circle-3 { top: 40%; left: 40%; transform: rotate(0deg); animation-delay: 0.2s; } /* Лево */
-.spiral-circle.circle-4 { top: 50%; left: 60%; transform: rotate(0deg); animation-delay: 0.3s; } /* Право */
-.spiral-circle.circle-5 { top: 60%; left: 40%; transform: rotate(0deg); animation-delay: 0.4s; } /* Лево */
-.spiral-circle.circle-6 { top: 70%; left: 20%; transform: rotate(0deg); animation-delay: 0.5s; } /* Лево */
-.spiral-circle.circle-7 { top: 80%; left: 40%; transform: rotate(0deg); animation-delay: 0.6s; } /* Право */
-.spiral-circle.circle-8 { top: 85%; left: 60%; transform: rotate(0deg); animation-delay: 0.7s; } /* Право */
-.spiral-circle.circle-9 { top: 90%; left: 80%; transform: rotate(0deg); animation-delay: 0.8s; } /* Право */
-.spiral-circle.circle-10 { top: 95%; left: 60%; transform: rotate(0deg); animation-delay: 0.9s; } /* Лево */
-.spiral-circle.circle-11 { top: 92%; left: 78%; transform: rotate(25deg); animation-delay: 1.0s; }
-.spiral-circle.circle-12 { top: 96%; left: 32%; transform: rotate(-18deg); animation-delay: 1.1s; }
-.spiral-circle.circle-13 { top: 38%; left: 52%; transform: rotate(8deg); animation-delay: 1.2s; }
-.spiral-circle.circle-14 { top: 58%; left: 45%; transform: rotate(-10deg); animation-delay: 1.3s; }
-.spiral-circle.circle-15 { top: 72%; left: 72%; transform: rotate(15deg); animation-delay: 1.4s; }
-.spiral-circle.circle-16 { top: 85%; left: 25%; transform: rotate(-22deg); animation-delay: 1.5s; }
-
-.orange { background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.8) 0%, #ff8c00 50%, #ff8c00 100%); }
-.pink { background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.8) 0%, #ff69b4 50%, #ff69b4 100%); }
-
-@keyframes bulbGlowRed {
-    0% { box-shadow: 0 0 8px #ff0000, 0 0 16px #ff0000, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
-    25% { box-shadow: 0 0 12px #ffff00, 0 0 24px #ffff00, 0 0 36px #ffff00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    50% { box-shadow: 0 0 12px #00ff00, 0 0 24px #00ff00, 0 0 36px #00ff00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    75% { box-shadow: 0 0 12px #0000ff, 0 0 24px #0000ff, 0 0 36px #0000ff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    100% { box-shadow: 0 0 8px #ff0000, 0 0 16px #ff0000, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
-}
-
-@keyframes bulbGlowOrange {
-    0% { box-shadow: 0 0 8px #ff8c00, 0 0 16px #ff8c00, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
-    25% { box-shadow: 0 0 12px #ff69b4, 0 0 24px #ff69b4, 0 0 36px #ff69b4, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    50% { box-shadow: 0 0 12px #00ffff, 0 0 24px #00ffff, 0 0 36px #00ffff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    75% { box-shadow: 0 0 12px #ff00ff, 0 0 24px #ff00ff, 0 0 36px #ff00ff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    100% { box-shadow: 0 0 8px #ff8c00, 0 0 16px #ff8c00, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
-}
-
-@keyframes bulbGlowYellow {
-    0% { box-shadow: 0 0 8px #ffff00, 0 0 16px #ffff00, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
-    25% { box-shadow: 0 0 12px #ff0000, 0 0 24px #ff0000, 0 0 36px #ff0000, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    50% { box-shadow: 0 0 12px #0000ff, 0 0 24px #0000ff, 0 0 36px #0000ff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    75% { box-shadow: 0 0 12px #00ff00, 0 0 24px #00ff00, 0 0 36px #00ff00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    100% { box-shadow: 0 0 8px #ffff00, 0 0 16px #ffff00, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
-}
-
-@keyframes bulbGlowGreen {
-    0% { box-shadow: 0 0 8px #00ff00, 0 0 16px #00ff00, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
-    25% { box-shadow: 0 0 12px #00ffff, 0 0 24px #00ffff, 0 0 36px #00ffff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    50% { box-shadow: 0 0 12px #ff00ff, 0 0 24px #ff00ff, 0 0 36px #ff00ff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    75% { box-shadow: 0 0 12px #ffff00, 0 0 24px #ffff00, 0 0 36px #ffff00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    100% { box-shadow: 0 0 8px #00ff00, 0 0 16px #00ff00, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
-}
-
-@keyframes bulbGlowCyan {
-    0% { box-shadow: 0 0 8px #00ffff, 0 0 16px #00ffff, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
-    25% { box-shadow: 0 0 12px #0000ff, 0 0 24px #0000ff, 0 0 36px #0000ff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    50% { box-shadow: 0 0 12px #ff69b4, 0 0 24px #ff69b4, 0 0 36px #ff69b4, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    75% { box-shadow: 0 0 12px #ff8c00, 0 0 24px #ff8c00, 0 0 36px #ff8c00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    100% { box-shadow: 0 0 8px #00ffff, 0 0 16px #00ffff, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
-}
-
-@keyframes bulbGlowBlue {
-    0% { box-shadow: 0 0 8px #0000ff, 0 0 16px #0000ff, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
-    25% { box-shadow: 0 0 12px #ff00ff, 0 0 24px #ff00ff, 0 0 36px #ff00ff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    50% { box-shadow: 0 0 12px #ff0000, 0 0 24px #ff0000, 0 0 36px #ff0000, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    75% { box-shadow: 0 0 12px #00ff00, 0 0 24px #00ff00, 0 0 36px #00ff00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    100% { box-shadow: 0 0 8px #0000ff, 0 0 16px #0000ff, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
-}
-
-@keyframes bulbGlowPurple {
-    0% { box-shadow: 0 0 8px #ff00ff, 0 0 16px #ff00ff, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
-    25% { box-shadow: 0 0 12px #ffff00, 0 0 24px #ffff00, 0 0 36px #ffff00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    50% { box-shadow: 0 0 12px #00ffff, 0 0 24px #00ffff, 0 0 36px #00ffff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    75% { box-shadow: 0 0 12px #ff69b4, 0 0 24px #ff69b4, 0 0 36px #ff69b4, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    100% { box-shadow: 0 0 8px #ff00ff, 0 0 16px #ff00ff, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
-}
-
-@keyframes bulbGlowPink {
-    0% { box-shadow: 0 0 8px #ff69b4, 0 0 16px #ff69b4, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
-    25% { box-shadow: 0 0 12px #ff8c00, 0 0 24px #ff8c00, 0 0 36px #ff8c00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    50% { box-shadow: 0 0 12px #0000ff, 0 0 24px #0000ff, 0 0 36px #0000ff, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    75% { box-shadow: 0 0 12px #00ff00, 0 0 24px #00ff00, 0 0 36px #00ff00, inset 0 1px 3px rgba(255, 255, 255, 0.5); }
-    100% { box-shadow: 0 0 8px #ff69b4, 0 0 16px #ff69b4, inset 0 1px 2px rgba(255, 255, 255, 0.3); }
-}
-
-/* Гирлянда вокруг елки */
-.tree-garland-border {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 999;
-}
-
-.tree-garland-border .garland-light {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    animation: lightTwinkle 2s infinite alternate;
-    filter: blur(0.5px);
-}
-
-/* Позиции огней вокруг елки */
-.tree-garland-border .garland-light:nth-child(1) {
-    top: 10%;
-    left: 10%;
-    animation-delay: 0s;
-}
-
-.tree-garland-border .garland-light:nth-child(2) {
-    top: 20%;
-    right: 15%;
-    animation-delay: 0.3s;
-}
-
-.tree-garland-border .garland-light:nth-child(3) {
-    top: 35%;
-    left: 5%;
-    animation-delay: 0.6s;
-}
-
-.tree-garland-border .garland-light:nth-child(4) {
-    top: 50%;
-    right: 10%;
-    animation-delay: 0.9s;
-}
-
-.tree-garland-border .garland-light:nth-child(5) {
-    top: 65%;
-    left: 15%;
-    animation-delay: 1.2s;
-}
-
-.tree-garland-border .garland-light:nth-child(6) {
-    top: 80%;
-    right: 20%;
-    animation-delay: 1.5s;
-}
-
-/* Украшения на елке (шары) */
-.tree-decoration {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    animation: decorationFloat 6s ease-in-out infinite;
-    box-shadow: 
-        inset 0 2px 4px rgba(255, 255, 255, 0.5),
-        0 0 10px currentColor;
-    z-index: 5;
-}
-
-/* Позиции украшений */
-.layer-1 .tree-decoration {
-    top: 40%;
-    left: 30%;
-    background: radial-gradient(circle at 30% 30%, #FF0000, #CC0000);
-    animation-delay: 0s;
-}
-
-.layer-2 .tree-decoration {
-    top: 50%;
-    right: 25%;
-    background: radial-gradient(circle at 30% 30%, #00FF00, #00CC00);
-    animation-delay: 0.3s;
-}
-
-.layer-3 .tree-decoration {
-    top: 60%;
-    left: 20%;
-    background: radial-gradient(circle at 30% 30%, #FFFF00, #CCCC00);
-    animation-delay: 0.6s;
-}
-
-.layer-4 .tree-decoration {
-    top: 30%;
-    right: 20%;
-    background: radial-gradient(circle at 30% 30%, #0000FF, #0000CC);
-    animation-delay: 0.9s;
-}
-
-@keyframes decorationFloat {
-    0%, 100% { 
-        transform: translateY(0) scale(1);
-        box-shadow: 
-            inset 0 2px 4px rgba(255, 255, 255, 0.5),
-            0 0 10px currentColor;
-    }
-    50% { 
-        transform: translateY(-5px) scale(1.1);
-        box-shadow: 
-            inset 0 2px 4px rgba(255, 255, 255, 0.7),
-            0 0 15px currentColor,
-            0 0 25px currentColor;
-    }
-}
-
-/* Иконки для украшений */
-.decoration-icon {
-    position: absolute;
-    font-size: 10px;
-    animation: decorationFloat 6s ease-in-out infinite;
-    z-index: 6;
-}
-
-.decoration-icon-1 { top: 35%; left: 25%; color: #FF0000; animation-delay: 0s; }
-.decoration-icon-2 { top: 45%; right: 20%; color: #00FF00; animation-delay: 0.3s; }
-.decoration-icon-3 { top: 55%; left: 15%; color: #FFFF00; animation-delay: 0.6s; }
-.decoration-icon-4 { top: 25%; right: 15%; color: #0000FF; animation-delay: 0.9s; }
-.decoration-icon-5 { top: 65%; left: 35%; color: #FF00FF; animation-delay: 1.2s; }
-.decoration-icon-6 { top: 40%; right: 35%; color: #00FFFF; animation-delay: 1.5s; }
-
-
-/* Адаптивность */
-@media (max-width: 767px) {
-    .christmas-tree-container {
-        width: 140px;
-        height: 250px;
-        right: 10px;
-        bottom: 10px;
-    }
-    
-    .new-year-banner {
-    position: absolute;
-    top: -100px; /* Уменьшил высоту */
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(45deg, rgba(139, 0, 0, 0.8), rgba(255, 0, 0, 0.8), rgba(255, 165, 0, 0.8));
-    padding: 10px 20px;
-    border-radius: 15px;
-    border: 3px solid gold;
-    box-shadow: 
-        0 0 30px rgba(255, 215, 0, 0.5),
-        0 10px 20px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
-    animation: bannerGlow 3s ease-in-out infinite alternate;
-    z-index: 1001; /* Меньше чем у звезды */
-    min-width: 180px;
-}
-    
-    .text-glow {
-        font-size: 12px;
-    }
-    
-    .year-text {
-        font-size: 22px;
-    }
-    
-    .layer-1 { 
-        width: 110px; 
-        height: 45px; 
-        bottom: 30px; 
-    }
-    .layer-2 { 
-        width: 95px; 
-        height: 40px; 
-        bottom: 65px; 
-    }
-    .layer-3 { 
-        width: 80px; 
-        height: 35px; 
-        bottom: 95px; 
-    }
-    .layer-4 { 
-        width: 65px; 
-        height: 30px; 
-        bottom: 120px; 
-    }
-    
-    .tree-star {
-    position: absolute;
-    top: -40px; /* Уменьшил отрицательное значение */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1002; /* Увеличил z-index */
-    animation: starSpinClockwise 8s linear infinite;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-    .star-shape {
-        font-size: 32px;
-    }
-    
-    .star-glow {
-        width: 60px;
-        height: 60px;
-    }
-}
-
-@media (max-width: 480px) {
-    .christmas-tree-container {
-        width: 120px;
-        height: 220px;
-        right: 5px;
-        bottom: 5px;
-    }
-    
-    .new-year-banner {
-        top: -90px;
-        padding: 6px 12px;
-        min-width: 140px;
-    }
-    
-    .text-glow {
-        font-size: 10px;
-    }
-    
-    .year-text {
-        font-size: 18px;
-    }
-    
-    .layer-1 { 
-        width: 90px; 
-        height: 35px; 
-        bottom: 25px; 
-    }
-    .layer-2 { 
-        width: 75px; 
-        height: 30px; 
-        bottom: 55px; 
-    }
-    .layer-3 { 
-        width: 60px; 
-        height: 25px; 
-        bottom: 80px; 
-    }
-    .layer-4 { 
-        width: 45px; 
-        height: 20px; 
-        bottom: 100px; 
-    }
-    
-    .tree-star {
-        top: -30px;
-        width: 30px;
-        height: 30px;
-    }
-    
-    .star-shape {
-        font-size: 24px;
-    }
-    
-    .star-glow {
-        width: 50px;
-        height: 50px;
-    }
-}
     </style>
 </head>
 <body>
-    
-    <!-- Новогоднее сообщение -->
-    <div class="new-year-message" id="newYearMessage">
-        <i class="fas fa-gift"></i>
-        С НАСТУПАЮЩИМ 2026 ГОДОМ!
-        <i class="fas fa-tree"></i>
-    </div>
-
     <!-- Индикатор загрузки -->
     <div class="loading-bar" id="loadingBar"></div>
     
     <!-- Технологический фон -->
     <div class="tech-bg" id="tech-bg"></div>
     
-
-    <div class="christmas-tree-container" id="christmasTree">
-
-    <!-- Звезда ДО баннера -->
-    <div class="tree-star">
-        <div class="star-shape">🌟</div>
-        <div class="star-glow"></div>
-    </div>
-    
-    <!-- Баннер ПОСЛЕ звезды -->
-    <div class="new-year-banner" id="newYearBanner">
-        <!-- Гирлянды с огоньками -->
-<div class="banner-garlands">
-    <div class="garland-top">
-        <!-- Огоньки будут добавлены через JS -->
-    </div>
-    <div class="garland-bottom">
-        <!-- Огоньки будут добавлены через JS -->
-    </div>
-    <div class="garland-left">
-        <!-- Огоньки будут добавлены через JS -->
-    </div>
-    <div class="garland-right">
-        <!-- Огоньки будут добавлены через JS -->
-    </div>
-
-    <div class="running-lights running-lights-left"></div>
-    <div class="running-lights running-lights-right"></div>
-</div>
-    <div class="garland garland-top"></div>
-    <div class="new-year-text">
-        <div class="text-glow">С НОВЫМ</div>
-        <div class="year-text">2026</div>
-        <div class="text-glow">ГОДОМ!</div>
-    </div>
-    <div class="garland garland-bottom"></div>
-</div>
-
-
-        <!-- Гирлянда вокруг елки -->
-        <div class="tree-garland-border">
-            <div class="garland-light red"></div>
-            <div class="garland-light green"></div>
-            <div class="garland-light blue"></div>
-            <div class="garland-light yellow"></div>
-            <div class="garland-light purple"></div>
-            <div class="garland-light cyan"></div>
-        </div>
-
-        <!-- Ярусы елки -->
-        <div class="tree-layer layer-1">
-            <div class="layer-needles"></div>
-            <div class="tree-decoration"></div>
-            <div class="garland garland-1"></div>
-        </div>
-        <div class="tree-layer layer-2">
-            <div class="layer-needles"></div>
-            <div class="tree-decoration"></div>
-            <div class="garland garland-2"></div>
-        </div>
-        <div class="tree-layer layer-3">
-            <div class="layer-needles"></div>
-            <div class="tree-decoration"></div>
-            <div class="garland garland-3"></div>
-        </div>
-        <div class="tree-layer layer-4">
-            <div class="layer-needles"></div>
-            <div class="tree-decoration"></div>
-            <div class="garland garland-4"></div>
-        </div>
-        <div class="tree-layer layer-5">
-            <div class="layer-needles"></div>
-            <div class="tree-decoration"></div>
-            <div class="garland garland-5"></div>
-        </div>
-        
-        <!-- Ствол -->
-        <div class="tree-trunk">
-            <div class="trunk-bark"></div>
-            <div class="trunk-base"></div>
-        </div>
-        
-        <!-- Подставка -->
-        <div class="tree-stand">
-            <div class="stand-base"></div>
-            <div class="stand-design"></div>
-        </div>
-        
-        <!-- Украшения-иконки -->
-        <div class="decoration-icon decoration-icon-1">✦</div>
-        <div class="decoration-icon decoration-icon-2">❄</div>
-        <div class="decoration-icon decoration-icon-3">⛄</div>
-        <div class="decoration-icon decoration-icon-4">❆</div>
-        <div class="decoration-icon decoration-icon-5">❅</div>
-        <div class="decoration-icon decoration-icon-6">✦</div>
-
-        <!-- Подарки под елкой -->
-        <div class="presents">
-            <div class="present present-1">
-                <div class="present-bow"></div>
-            </div>
-            <div class="present present-2">
-                <div class="present-bow"></div>
-            </div>
-            <div class="present present-3">
-                <div class="present-bow"></div>
-            </div>
-        </div>
-
-        
-        <!-- Снег -->
-        <div class="snow-under-tree"></div>
-    </div>
+    <!-- Контейнер для технологических элементов -->
+    <div class="tech-particles" id="tech-particles"></div>
 
     <!-- Кнопка быстрого действия -->
     <div class="floating-action-button" id="fab" title="Наверх">
         <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- Chat Widget -->
-    <div class="chat-widget" id="chatWidget">
-        <button class="chat-toggle" id="chatToggle">
-            <i class="fas fa-robot"></i>
-        </button>
-        <div class="chat-modal" id="chatModal">
-            <div class="chat-header">
-                <h3>AI Чат</h3>
-                <button class="close-chat" id="closeChat">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="chat-messages" id="chatMessages"></div>
-            <div class="chat-input">
-                <input type="text" id="chatInput" placeholder="Напишите сообщение...">
-                <button id="sendMessage">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-        </div>
     </div>
 
     <nav class="tech-nav" id="mainNav">
@@ -4917,14 +2925,15 @@
         
         <!-- Центральные навигационные ссылки -->
         <div class="nav-center">
-            <div class="nav-links">
-                <a href="#" onclick="switchPage('main-page'); return false;">Главная</a>
-                <a href="#slider">Слайдер</a>
-                <a href="#games">Популярные</a>
-                <a href="#new">Новинки</a>
-                <a href="#" data-page="all-games-page">Игры и программы</a>
-                <a href="#about">О нас</a>
-            </div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="switchToMain(); return false;">Главная</a></li>
+                <li><a href="#slider">Слайдер</a></li>
+                <li><a href="#games">Популярные</a></li>
+                <li><a href="#new">Новинки</a></li>
+                <li><a href="#" data-page="all-games-page">Игры и программы</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#contact">Все ссылки</a></li>
+            </ul>
         </div>
         
         <!-- Кнопка мобильного меню -->
@@ -4938,45 +2947,28 @@
         <button class="close-menu" id="closeMenu">
             <i class="fas fa-times"></i>
         </button>
-        <a href="#" onclick="scrollToTop(); closeMobileMenu(); return false;">Главная</a>
-        <a href="#slider" onclick="closeMobileMenu();">Слайдер</a>
-        <a href="#games" onclick="closeMobileMenu();">Популярные</a>
-        <a href="#new" onclick="closeMobileMenu();">Новинки</a>
-        <a href="#" data-page="all-games-page" onclick="switchPage('all-games-page'); closeMobileMenu();">Игры и программы</a>
-        <a href="#about" onclick="closeMobileMenu();">О нас</a>
+        <ul>
+            <li><a href="#" onclick="switchToMain(); closeMobileMenu(); return false;">Главная</a></li>
+            <li><a href="#slider" onclick="navigateToSection('#slider'); closeMobileMenu();">Слайдер</a></li>
+            <li><a href="#games" onclick="navigateToSection('#games'); closeMobileMenu();">Популярные</a></li>
+            <li><a href="#new" onclick="navigateToSection('#new'); closeMobileMenu();">Новинки</a></li>
+            <li><a href="#" data-page="all-games-page" onclick="switchPage('all-games-page'); closeMobileMenu();">Игры и программы</a></li>
+            <li><a href="#about" onclick="navigateToSection('#about'); closeMobileMenu();">О нас</a></li>
+            <li><a href="#contact" onclick="navigateToSection('#contact'); closeMobileMenu();">Все ссылки</a></li>
+        </ul>
     </div>
 
     <!-- Главная страница -->
     <div id="main-page" class="page active">
         <section class="hero-section" id="main">
+            <video autoplay muted loop class="video-background">
+                <source src="https://assets.codepen.io/3364143/rain.mp4" type="video/mp4">
+            </video>
             <div class="video-overlay"></div>
             <div class="hero-content">
-                <h1 class="tech-title">🎄FORZSITE🎁</h1>
+                <h1 class="tech-title">FORZSITE</h1>
                 <p class="hero-subtitle"></p>
-
-                <!-- Таймер до Нового года -->
-                <div class="new-year-timer" id="newYearTimer">
-                    <div class="timer-title">До Нового года в Белгороде осталось:</div>
-                    <div class="timer-display">
-                        <div class="timer-block">
-                            <span class="timer-value" id="days">00</span>
-                            <span class="timer-label">дней</span>
-                        </div>
-                        <div class="timer-block">
-                            <span class="timer-value" id="hours">00</span>
-                            <span class="timer-label">часов</span>
-                        </div>
-                        <div class="timer-block">
-                            <span class="timer-value" id="minutes">00</span>
-                            <span class="timer-label">минут</span>
-                        </div>
-                        <div class="timer-block">
-                            <span class="timer-value" id="seconds">00</span>
-                            <span class="timer-label">секунд</span>
-                        </div>
-                    </div>
-                </div>
-
+                
                 <!-- НОВЫЕ МАЛЕНЬКИЕ КНОПКИ ДЛЯ МОБИЛЬНЫХ -->
                 <div class="mobile-actions">
                     <a href="#games" class="action-btn games-btn">
@@ -4997,8 +2989,6 @@
                     </a>
                 </div>
                 
-                <!-- ОРИГИНАЛЬНАЯ БОЛЬШАЯ КНОПКА (скрыта на мобильных) -->
-                <a href="#slider" class="cta-button">🎮 ИГРАТЬ СЕЙЧАС</a>
             </div>
             <div class="scroll-indicator">
                 <i class="fas fa-chevron-down"></i>
@@ -5029,14 +3019,14 @@
         </section>
 
         <section class="games-showcase" id="games">
-            <h2 class="section-title">🎮 ПОПУЛЯРНЫЕ ИГРЫ 🎮</h2>
+            <h2 class="section-title">ПОПУЛЯРНЫЕ ИГРЫ</h2>
             <div class="games-grid">
                 <!-- Игры будут загружены здесь -->
             </div>
         </section>
 
         <section class="new-games-section" id="new">
-            <h2 class="section-title">✨ НОВИНКИ ✨</h2>
+            <h2 class="section-title">НОВИНКИ</h2>
             <div class="games-grid">
                 <!-- Новинки будут загружены здесь -->
             </div>
@@ -5046,9 +3036,9 @@
         <section class="about-section" id="about">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>🎅 О НАС 🎅</h2>
-                    <p>Мы создаем лучшую платформу для настоящих геймеров. Все игры и программы проверены на безопасность, предоставляются с максимальной скоростью загрузки и полной технической поддержкой.</p>
-                    <p>Наша команда состоит из опытных геймеров и IT-специалистов, которые понимают, что важно для качественного игрового опыта.</p>
+                    <h2>О НАС</h2>
+                    <p></p>
+                    <p></p>
                     
                     <div class="features">
                         <div class="feature">
@@ -5070,7 +3060,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://i.postimg.cc/7ZZyXLk7/Airbrush-IMAGE-ENHANCER-1765103476684-1765103476684.jpg" alt="Gaming Setup">
+                    <img src="https://i.postimg.cc/d12zqDzX/2.jpg" alt="Gaming Setup">
                 </div>
             </div>
         </section>
@@ -5079,13 +3069,13 @@
         <footer class="tech-footer" id="contact">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>🎄 ForzSite 2026 🎄</h3>
+                    <h3>ForzSite</h3>
                     <p>Лучшие игры и программы для настоящих геймеров</p>
                 </div>
                 <div class="footer-column">
                     <h3>Быстрые ссылки</h3>
                     <ul class="footer-links">
-                        <li><a href="#" data-page="main-page">Главная</a></li>
+                        <li><a href="#main">Главная</a></li>
                         <li><a href="#slider">Слайдер</a></li>
                         <li><a href="#games">Игры</a></li>
                         <li><a href="#new">Новинки</a></li>
@@ -5128,7 +3118,6 @@
     <!-- Страница всех игр и программ -->
     <div id="all-games-page" class="page">
         <div style="padding: 70px 20px 20px;">
-            
             <h2 class="section-title">ИГРЫ И ПРОГРАММЫ</h2>
             
             <div class="category-tabs">
@@ -5144,16 +3133,28 @@
                         <i class="fas fa-search"></i>
                         <input type="text" id="gameSearch" placeholder="Поиск игр и программ...">
                     </div>
-                    <div class="filter-dropdown">
+                    <div class="filter-dropdown status-filter">
                         <select id="gameFilter" class="filter-select">
                             <option value="all">Все</option>
                             <option value="available">Доступные</option>
                             <option value="soon">Скоро выйдут</option>
+                            <option value="buy">Купить</option>
                         </select>
                     </div>
-                    <div class="filter-dropdown">
+                    <div class="filter-dropdown status-filter">
                         <select id="yearFilter" class="filter-select">
-                            <option value="all">Все года</option>
+                            <option value="">Все годы</option>
+                            <option value="2026">2026</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2018">2018</option>
+                            <option value="2016">2016</option>
+                            <option value="2008">2008</option>
+                            <option value="2005">2005</option>
+                            <option value="2004">2004</option>
                         </select>
                     </div>
                 </div>
@@ -5178,6 +3179,7 @@
         </div>
     </div>
 
+
     <!-- Модальное окно для полноэкранного просмотра скриншотов -->
     <div class="screenshot-modal" id="screenshotModal">
         <div class="screenshot-modal-content">
@@ -5199,19 +3201,8 @@
         </div>
     </div>
 
-
     <script>
-        // Функция для клика по елке
-        document.getElementById('christmasTree').addEventListener('click', function() {
-            // Анимация клика по елке
-            this.style.animation = 'treeFloat 0.5s ease-in-out';
-
-            // Возвращаем анимацию через 0.5 секунды
-            setTimeout(() => {
-                this.style.animation = 'treeFloat 6s ease-in-out infinite';
-            }, 500);
-        });
-
+        // Глобальная переменная для хранения iframe
         let currentTrailerIframe = null;
         let allGamesLoaded = false;
         let currentSlide = 0;
@@ -5283,6 +3274,20 @@
             }
         }
 
+        // Замените функцию updateOnlineCounter на эту:
+        function updateOnlineCounter() {
+            // Пример с использованием внешнего API
+            fetch('https://api.countapi.xyz/hit/forzes12-github/visits')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('onlineCounter').querySelector('.online-count').textContent = data.value;
+            })
+            .catch(error => {
+                console.error('Ошибка получения счетчика:', error);
+                // Fallback - показываем базовое значение
+                document.getElementById('onlineCounter').querySelector('.online-count').textContent = '25+';
+            });
+        }
 
         // Популярные игры (будут показаны на главной странице)
         const popularGamesTitles = [
@@ -6004,9 +4009,9 @@
                 image: 'https://image2url.com/images/1763215988383-e953343c-e838-44fb-965f-3b8fb2e099e7.jpg',
                 size: '35.63 GB',
                 year: 2018,
-                status: 'available',
+                status: 'buy',
                 category: 'games',
-                torrentFile: 'https://byxatab.com/index.php?do=download&id=17113',
+                torrentFile: '',
                 trailer: 'https://drive.google.com/file/d/1MmnTrdB9X7vhKOhVij3b6uLMQ7jvYpRz/preview',
                 buyGame: 'https://ggsel.net/catalog/the-crew-2-keys-steam',
                 screenshots: [
@@ -6050,9 +4055,9 @@
                 image: 'https://image2url.com/images/1763217725103-cba8ced6-3abf-4a66-948f-e9b610f42fe7.jpg',
                 size: '23.83 GB',
                 year: 2014,
-                status: 'available',
+                status: 'buy',
                 category: 'games',
-                torrentFile: 'https://byrutgame.org./index.php?do=download&id=168344&sid=1',
+                torrentFile: '',
                 trailer: 'https://drive.google.com/file/d/1UbM5xcXYzjIpIsVnzpoGv4GvRxeK9AAV/preview',
                 buyGame: 'https://ggsel.net/catalog/the-crew-motorfest-keys-steam',
                 screenshots: [
@@ -6979,241 +4984,6 @@
             
         };
 
-        // Функция для поиска игры по сообщению пользователя
-        function findGameInMessage(message) {
-            const lowerMessage = message.toLowerCase();
-
-            for (const gameId in gameData) {
-                const game = gameData[gameId];
-                const gameTitle = game.title.toLowerCase();
-
-                // Проверяем точное совпадение названия
-                if (lowerMessage.includes(gameTitle)) {
-                    return game;
-                }
-
-                // Проверяем частичные совпадения ключевых слов
-                const words = gameTitle.split(' ');
-                let matchCount = 0;
-                words.forEach(word => {
-                    if (word.length > 2 && lowerMessage.includes(word)) {
-                        matchCount++;
-                    }
-                });
-
-                // Если совпадает хотя бы 50% слов или хотя бы 2 слова
-                if (matchCount >= Math.max(2, Math.floor(words.length * 0.5))) {
-                    return game;
-                }
-            }
-
-            return null;
-        }
-
-        async function sendToChatGPT(message) {
-    try {
-        addMessageToChat(message, 'user');
-        showTypingIndicator();
-
-        // Сначала проверяем, запрашивает ли пользователь игру
-        const foundGame = findGameInMessage(message);
-        if (foundGame) {
-            hideTypingIndicator();
-            const gameId = Object.keys(gameData).find(id => gameData[id] === foundGame);
-            const gameResponse = `<div class="game-chat-card">
-                <img src="${foundGame.image}" alt="${foundGame.title}" class="game-chat-image">
-                <div class="game-chat-info">
-                    <h4>${foundGame.title}</h4>
-                    <p>📊 Размер: ${foundGame.size}</p>
-                    <p>📅 Год: ${foundGame.year}</p>
-                    <p>⭐ Статус: ${foundGame.status === 'available' ? 'Доступна' : 'Скоро'}</p>
-                </div>
-                <div class="game-chat-buttons">
-                    [BUTTON:Смотреть:${gameId}]
-                    ${foundGame.torrentFile ? `[DOWNLOAD:Скачать:${foundGame.torrentFile}]` : ''}
-                </div>
-            </div>`;
-            addMessageToChat(gameResponse, 'bot');
-            return gameResponse;
-        }
-
-        const API_KEY = 'sk-m6F4xclYcaHRUdycFt7jqeKVCbugenuJH9tls0ILH3k9jmLL';
-
-        // Используем API neuroapi.host
-        const response = await fetch('https://neuroapi.host/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${API_KEY}`
-            },
-            body: JSON.stringify({
-                model: 'gpt-3.5-turbo',
-                messages: [
-                    {
-                        role: 'system',
-                        content: 'Ты полезный ассистент на игровом сайте ForzSite. Ты помогаешь пользователям с играми, программами и техническими вопросами. Если пользователь спрашивает о конкретной игре, предоставь информацию о ней и ссылку для скачивания. Отвечай кратко и по делу. Максимальная длина ответа 200 символов.'
-                    },
-                    {
-                        role: 'user',
-                        content: message
-                    }
-                ],
-                max_tokens: 200,
-                temperature: 0.7
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP ошибка! статус: ${response.status}`);
-        }
-
-        const data = await response.json();
-        hideTypingIndicator();
-
-        if (data.choices && data.choices[0]) {
-            const botMessage = data.choices[0].message.content;
-            addMessageToChat(botMessage, 'bot');
-            return botMessage;
-        } else {
-            throw new Error('Некорректный ответ от API');
-        }
-
-    } catch (error) {
-        console.error('Ошибка подключения к API:', error);
-        hideTypingIndicator();
-
-        // Проверьте баланс на neuroapi.host
-        addMessageToChat("Ошибка подключения. Проверьте баланс на neuroapi.host или попробуйте позже.", 'bot');
-        return "Ошибка";
-    }
-}
-
-// Функции для управления чатом
-function initChatWidget() {
-    const chatToggle = document.getElementById('chatToggle');
-    const chatModal = document.getElementById('chatModal');
-    const closeChat = document.getElementById('closeChat');
-    const sendMessageBtn = document.getElementById('sendMessage');
-    const chatInput = document.getElementById('chatInput');
-    const chatMessages = document.getElementById('chatMessages');
-    
-    // Открытие/закрытие чата
-    chatToggle.addEventListener('click', () => {
-        chatModal.classList.toggle('active');
-        if (chatModal.classList.contains('active')) {
-            chatInput.focus();
-        }
-    });
-    
-    closeChat.addEventListener('click', () => {
-        chatModal.classList.remove('active');
-    });
-    
-    // Отправка сообщения по кнопке
-    sendMessageBtn.addEventListener('click', sendChatMessage);
-    
-    // Отправка сообщения по Enter
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            sendChatMessage();
-        }
-    });
-    
-    // Приветственное сообщение
-    setTimeout(() => {
-        addMessageToChat('Привет! Я AI-помощник ForzSite. Задайте мне вопрос об играх или программах! 🎮', 'bot');
-    }, 1000);
-}
-
-function sendChatMessage() {
-    const chatInput = document.getElementById('chatInput');
-    const message = chatInput.value.trim();
-    
-    if (message) {
-        // Очищаем поле ввода
-        chatInput.value = '';
-        
-        // Отправляем сообщение в ChatGPT
-        sendToChatGPT(message);
-    }
-}
-
-function addMessageToChat(message, sender) {
-    const chatMessages = document.getElementById('chatMessages');
-    const messageDiv = document.createElement('div');
-
-    messageDiv.className = `message ${sender}`;
-    messageDiv.innerHTML = `
-        <div class="message-content">${formatMessage(message)}</div>
-        <div class="message-time">${getCurrentTime()}</div>
-    `;
-
-    chatMessages.appendChild(messageDiv);
-
-    // Добавляем обработчики для кнопок в сообщении
-    const buttons = messageDiv.querySelectorAll('.chat-button');
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            const gameId = this.getAttribute('data-game');
-            if (gameId && gameData[gameId]) {
-                openGameModal(gameId);
-            }
-        });
-    });
-
-    // Прокручиваем вниз
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-function formatMessage(message) {
-    // Простое форматирование текста
-    let formatted = message
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // **жирный**
-        .replace(/\n/g, '<br>') // переносы строк
-        .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>'); // ссылки
-
-    // Обработка кнопок
-    formatted = formatted.replace(/\[BUTTON:([^:]+):([^\]]+)\]/g, (match, text, gameId) => {
-        return `<button class="chat-button" data-game="${gameId}">${text}</button>`;
-    });
-
-    // Обработка ссылок на скачивание
-    formatted = formatted.replace(/\[DOWNLOAD:([^:]+):([^\]]+)\]/g, (match, text, url) => {
-        return `<a href="${url}" class="chat-download-btn" target="_blank" download>${text}</a>`;
-    });
-
-    return formatted;
-}
-
-function getCurrentTime() {
-    const now = new Date();
-    return `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
-}
-
-function showTypingIndicator() {
-    const chatMessages = document.getElementById('chatMessages');
-    const typingDiv = document.createElement('div');
-    
-    typingDiv.className = 'typing-indicator';
-    typingDiv.id = 'typingIndicator';
-    typingDiv.innerHTML = `
-        <div class="typing-dot"></div>
-        <div class="typing-dot"></div>
-        <div class="typing-dot"></div>
-    `;
-    
-    chatMessages.appendChild(typingDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-function hideTypingIndicator() {
-    const typingIndicator = document.getElementById('typingIndicator');
-    if (typingIndicator) {
-        typingIndicator.remove();
-    }
-}
-
         // Функция для поиска игры по названию
         function findGameByTitle(title) {
             for (const gameId in gameData) {
@@ -7235,6 +5005,16 @@ function hideTypingIndicator() {
             }
         }
 
+        // Функция для перехода на главную
+        function switchToMain() {
+            const currentPage = document.querySelector('.page.active');
+            if (currentPage.id === 'all-games-page') {
+                switchPage('main-page');
+            } else {
+                scrollToTop();
+            }
+        }
+
         // Функции для мобильного меню
         function openMobileMenu() {
             document.getElementById('mobileMenu').classList.add('active');
@@ -7250,31 +5030,31 @@ function hideTypingIndicator() {
         function switchPage(pageId) {
             const currentPage = document.querySelector('.page.active');
             const targetPage = document.getElementById(pageId);
-            
+
             if (currentPage && targetPage && currentPage !== targetPage) {
                 stopVideo();
                 closeMobileMenu();
-                
+
                 currentPage.dataset.scrollPosition = currentPage.scrollTop;
                 currentPage.classList.add('exit');
                 currentPage.classList.remove('active');
-                
+
                 setTimeout(() => {
                     targetPage.classList.remove('exit');
                     targetPage.classList.add('active');
-                    
+
                     if (targetPage.dataset.scrollPosition) {
                         targetPage.scrollTop = targetPage.dataset.scrollPosition;
                     } else {
                         targetPage.scrollTop = 0;
                     }
-                    
+
                     if (pageId === 'all-games-page' && !allGamesLoaded) {
                         loadAllGames();
                         allGamesLoaded = true;
                     }
-                    
-                }, 450);
+
+                }, 1000);
             }
         }
         
@@ -7285,12 +5065,25 @@ function hideTypingIndicator() {
                 const target = currentPage.querySelector(targetId);
                 if (target) {
                     const offsetTop = target.getBoundingClientRect().top + currentPage.scrollTop - 70;
-                    
+
                     currentPage.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
                     });
                 }
+            }
+        }
+
+        // Функция для навигации к секциям с переключением страницы
+        function navigateToSection(targetId) {
+            const currentPage = document.querySelector('.page.active');
+            if (currentPage.id !== 'main-page') {
+                switchPage('main-page');
+                setTimeout(() => {
+                    smoothScrollTo(targetId);
+                }, 450);
+            } else {
+                smoothScrollTo(targetId);
             }
         }
 
@@ -7432,6 +5225,15 @@ function hideTypingIndicator() {
                         <i class="fas fa-eye"></i> Смотреть
                     </a>
                 `;
+            } else if (game.status === 'buy') {
+                buttonsHTML = `
+                    <a href="${game.buyGame || '#'}" class="buy-button" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Купить
+                    </a>
+                    <a href="#" class="view-btn" data-game="${gameId}">
+                        <i class="fas fa-eye"></i> Смотреть
+                    </a>
+                `;
             } else {
                 buttonsHTML = `
                     <a href="#" class="soon-btn">
@@ -7478,22 +5280,6 @@ function hideTypingIndicator() {
             const gamesGrid = document.getElementById('allGamesGrid');
             gamesGrid.innerHTML = '';
 
-            // Собираем уникальные года
-            const uniqueYears = new Set();
-            Object.values(gameData).forEach(game => {
-                uniqueYears.add(game.year);
-            });
-
-            // Заполняем фильтр годов
-            const yearFilter = document.getElementById('yearFilter');
-            yearFilter.innerHTML = '<option value="all">Все года</option>';
-            Array.from(uniqueYears).sort((a, b) => b - a).forEach(year => {
-                const option = document.createElement('option');
-                option.value = year;
-                option.textContent = year;
-                yearFilter.appendChild(option);
-            });
-
             let gameIndex = 0;
             Object.keys(gameData).forEach((gameId) => {
                 const game = gameData[gameId];
@@ -7501,7 +5287,6 @@ function hideTypingIndicator() {
                 gameCard.dataset.status = game.status;
                 gameCard.dataset.category = game.category;
                 gameCard.dataset.year = game.year;
-                gameCard.style.animationDelay = `${gameIndex * 0.1}s`;
 
                 gamesGrid.appendChild(gameCard);
                 gameIndex++;
@@ -7509,7 +5294,7 @@ function hideTypingIndicator() {
 
             updateGamesCount();
             setupViewButtons();
-
+            
             // Фильтруем по умолчанию (игры)
             filterGames();
         }
@@ -7525,12 +5310,11 @@ function hideTypingIndicator() {
             });
         }
 
-
         // Функция фильтрации
         function filterGames() {
             const searchTerm = document.getElementById('gameSearch').value.toLowerCase();
             const filterValue = document.getElementById('gameFilter').value;
-            const yearFilter = document.getElementById('yearFilter').value;
+            const yearValue = document.getElementById('yearFilter').value;
             const activeCategory = document.querySelector('.category-tab.active').dataset.category;
             const gameCards = document.querySelectorAll('#allGamesGrid .game-card');
 
@@ -7545,14 +5329,14 @@ function hideTypingIndicator() {
 
                 // Проверяем поиск
                 const matchesSearch = !searchTerm ||
-                                     game.title.toLowerCase().includes(searchTerm) ||
-                                     game.description.toLowerCase().includes(searchTerm);
+                                      game.title.toLowerCase().includes(searchTerm) ||
+                                      game.description.toLowerCase().includes(searchTerm);
 
-                // Проверяем фильтр статуса
+                // Проверяем фильтр
                 const matchesFilter = filterValue === 'all' || game.status === filterValue;
 
-                // Проверяем фильтр года
-                const matchesYear = yearFilter === 'all' || game.year == yearFilter;
+                // Проверяем год
+                const matchesYear = !yearValue || game.year.toString() === yearValue;
 
                 // Если все условия выполнены - показываем карточку
                 if (matchesCategory && matchesSearch && matchesFilter && matchesYear) {
@@ -7691,15 +5475,19 @@ function hideTypingIndicator() {
                         </div>
                         <p class="game-modal-description">${game.description}</p>
                         <div class="game-modal-buttons">
-                            ${game.status === 'available' ? 
+                            ${game.status === 'available' ?
                                 `<a href="${game.torrentFile}" class="modal-download-btn" target="_blank">
                                     <i class="fas fa-download"></i> Скачать
                                 </a>
-                                ${game.buyGame ? 
+                                ${game.buyGame ?
                                     `<a href="${game.buyGame}" class="modal-buy-btn" target="_blank">
                                         <i class="fas fa-shopping-cart"></i> Купить
                                     </a>` : ''
-                                }` : 
+                                }` :
+                                game.status === 'buy' ?
+                                `<a href="${game.buyGame || '#'}" class="modal-buy-btn" target="_blank">
+                                    <i class="fas fa-shopping-cart"></i> Купить
+                                </a>` :
                                 `<span class="modal-soon-btn">
                                     <i class="fas fa-clock"></i> Скоро в продаже
                                 </span>`
@@ -7752,6 +5540,29 @@ function hideTypingIndicator() {
             }
         });
 
+        // Создание частиц для фона
+        function createParticles() {
+            const particlesContainer = document.getElementById('tech-particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 3 + 1;
+                const left = Math.random() * 100;
+                const animationDuration = Math.random() * 20 + 10;
+                const animationDelay = Math.random() * 10;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDuration = `${animationDuration}s`;
+                particle.style.animationDelay = `${animationDelay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
 
         // Обработчик скролла
         function handleScroll() {
@@ -7858,43 +5669,8 @@ function hideTypingIndicator() {
             document.addEventListener('keydown', handleScreenshotKeyboard);
         }
 
-        // Функции для таймера Нового года
-        function initNewYearTimer() {
-            const targetDate = new Date(2026, 0, 1, 0, 0, 0); // Новый год 2026
-
-            function updateTimer() {
-                const now = new Date();
-                const timeLeft = targetDate - now;
-
-                if (timeLeft <= 0) {
-                    // Таймер закончился - Новый год уже наступил
-                    document.getElementById('newYearTimer').style.display = 'none';
-                    // Фейерверки удалены
-                    return;
-                }
-
-                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-                document.getElementById('days').textContent = ('0' + days).slice(-2);
-                document.getElementById('hours').textContent = ('0' + hours).slice(-2);
-                document.getElementById('minutes').textContent = ('0' + minutes).slice(-2);
-                document.getElementById('seconds').textContent = ('0' + seconds).slice(-2);
-            }
-
-            // Обновляем таймер каждую секунду
-            updateTimer();
-            setInterval(updateTimer, 1000);
-        }
-
-
         // Инициализация при загрузке
         document.addEventListener('DOMContentLoaded', function() {
-            // Инициализируем таймер Нового года
-            initNewYearTimer();
-
             // Полноэкранный режим
             document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
             
@@ -7908,14 +5684,12 @@ function hideTypingIndicator() {
             });
 
             // Плавная прокрутка
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                if (!anchor.hasAttribute('data-page')) {
-                    anchor.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href');
-                        smoothScrollTo(targetId);
-                    });
-                }
+            document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    navigateToSection(targetId);
+                });
             });
 
             // Загружаем игры на главную
@@ -7924,6 +5698,8 @@ function hideTypingIndicator() {
             // Инициализируем слайдер
             initSlider();
             
+            // Создаем частицы
+            createParticles();
             
             // Настройка обработчика скролла
             document.querySelectorAll('.page').forEach(page => {
@@ -7939,8 +5715,26 @@ function hideTypingIndicator() {
             // Инициализируем просмотр скриншотов
             initScreenshotViewer();
 
-            // Инициализируем чат виджет
-            initChatWidget();
+            // Анимация при скролле (вверх и вниз)
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    } else {
+                        entry.target.classList.remove('animate');
+                    }
+                });
+            }, observerOptions);
+
+            // Наблюдаем за секциями
+            document.querySelectorAll('.games-slider-section, .games-showcase, .new-games-section, .about-section').forEach(section => {
+                observer.observe(section);
+            });
 
             // Обработчики для категорий
             document.querySelectorAll('.category-tab').forEach(tab => {
@@ -7956,7 +5750,7 @@ function hideTypingIndicator() {
             // Обработчики для поиска и фильтра
             document.getElementById('gameSearch').addEventListener('input', filterGames);
             document.getElementById('gameFilter').addEventListener('change', filterGames);
-            document.getElementById('yearFilter').addEventListener('change', filterGames);
+            document.getElementById('yearFilter').addEventListener('input', filterGames);
 
             // Мобильное меню
             document.getElementById('mobileMenuBtn').addEventListener('click', openMobileMenu);
@@ -7966,46 +5760,34 @@ function hideTypingIndicator() {
                 link.addEventListener('click', closeMobileMenu);
             });
 
-    
-            document.addEventListener('copy', function(e) {
-                const selection = window.getSelection();
-                if (selection.rangeCount > 0) {
-                    const range = selection.getRangeAt(0);
-                    const container = range.commonAncestorContainer;
-    
-                    // Разрешить копирование если выделен текст из названия игры
-                    if (container.nodeType === Node.TEXT_NODE) {
-                        if (container.parentElement && container.parentElement.classList.contains('game-title')) {
-                            return true;
-                        }
-                    } else if (container.classList && container.classList.contains('game-title')) {
-                        return true;
-                    }
-                }
-                e.preventDefault();
-                return false;
-            });
-    
-            document.addEventListener('cut', function(e) {
-                e.preventDefault();
-                return false;
-            });
-    
-            document.addEventListener('paste', function(e) {
-                e.preventDefault();
-                return false;
-            });
-    
-            // Отключение правого клика для защиты
-            document.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-                return false;
-            });
-    
             // Обновляем онлайн-счетчик
             updateOnlineCounter();
         });
 
+        // Защита от копирования
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        document.addEventListener('cut', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        document.addEventListener('paste', function(e) {
+            e.preventDefault();
+            return false;
+        });
     </script>
 </body>
 </html>
+
+
+
+
