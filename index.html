@@ -1054,6 +1054,7 @@
         .game-meta {
             display: flex;
             justify-content: space-between;
+            gap: 10px;
             margin-bottom: 15px;
         }
 
@@ -1067,6 +1068,15 @@
         }
 
         .game-year {
+            background: var(--dark);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .game-updated {
             background: var(--dark);
             color: white;
             padding: 5px 12px;
@@ -1782,6 +1792,27 @@
         .game-modal-year {
             background: var(--dark);
             color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .game-modal-updated {
+            background: var(--dark);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .game-modal-meta {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
         }
 
         .game-modal-status {
@@ -3350,6 +3381,7 @@
                 image: 'https://i.postimg.cc/dQLxg34m/1670961819-cover.jpg',
                 size: '45 GB',
                 year: 2023,
+                updated: '27.10.2025',
                 status: 'available',
                 category: 'games',
                 torrentFile: 'https://thelastgame.org/index.php?do=download&id=130',
@@ -4784,6 +4816,54 @@
                   }
                 }
             },
+            'parcel-simulator': {
+                title: 'Parcel Simulator',
+                description: 'Гиперреалистичный симулятор курьера от первого лица от RealLife Games. Погрузитесь в будни современного мегаполиса, где вы — ключевое звено гигантской логистической сети. Развозите посылки, боритесь со временем, непогодой, сложными адресами и капризными заказчиками. Настраивайте свою курьерскую сумку, улучшайте транспорт и разрабатывайте оптимальные маршруты, чтобы стать легендой доставки в эпической игре, сочетающей в себе расслабляющий геймплей и напряженное выживание в городских джунглях',
+                image: 'https://i.postimg.cc/FRFWddVP/1750484627-library-600x900-2x.jpg',
+                size: '29.38 GB',
+                year: 2024,
+                status: 'available',
+                category: 'games',
+                torrentFile: 'https://itorrents-igruha.org/engine/download.php?id=97236',
+                trailer: 'https://drive.google.com/file/d/1JCxDWs7XNiZFc8T_xUu38Y-ij4Xme_ls/preview',
+                buyGame: 'https://ggsel.net/catalog/product/parcel-simulator-steam-gift-auto-ru-mir-5246759',
+                screenshots: [
+                    'https://i.postimg.cc/bv5gJCdp/1750484687-ss-9adb4053b207bde08c7cc6f22a8620dbfd19e9e9.jpg',
+                    'https://i.postimg.cc/7h3nKq98/1750484648-ss-117d4e2d7aedc6cf4782318b4f73e29dcb497bf5.jpg',
+                    'https://i.postimg.cc/5NmmvNjD/1750484674-ss-b3aa796d869d0e1090b1810fb23b576537a1e52a.jpg',
+                    'https://i.postimg.cc/yNDhwmnC/1750484637-ss-b24add335e896448099c117be172a2b743d6a5f9.jpg',
+                    'https://i.postimg.cc/hv1V9p4t/1750484615-ss-c2ea6299b8d59cf7a4a26003930b8200b37c4ff0.jpg',
+                    'https://i.postimg.cc/bNqxzcL2/1750484629-ss-d88fe3f3a0697a577b74f364f0e70dc702de0335.jpg',
+                ],
+                specs: {
+                    'Жанр': 'Симулятор, Приключение, Инди',
+                    'Платформа': 'PC, PS5, Xbox Series X|S',
+                    'Разработчик': 'RealLife Games',
+                    'Издатель': 'Simulator Pros',
+                    'Язык': 'Интерфейс и субтитры на русском языке',
+                    'Рейтинг': '12+',
+                    'Сложность': 'Динамическая (зависит от заказов и настроек)',
+                    'Длительность': '~50+ часов (нескончаемый поток заказов и карьерный рост)',
+                },
+                systemRequirements: {
+                    'Минимальные': {
+                        'ОС': 'Windows 10',
+                        'Процессор': 'Intel Core i3-6100 / AMD FX-8350',
+                        'Память': '8 GB ОЗУ',
+                        'Видеокарта': 'NVIDIA GeForce GTX 960 2GB / AMD Radeon R9 280',
+                        'DirectX': 'Версии 11',
+                        'Место на диске': '29.38 GB'
+                    },
+                    'Рекомендуемые': {
+                        'ОС': 'Windows 10/11',
+                        'Процессор': 'Intel Core i5-8400 / AMD Ryzen 5 2600',
+                        'Память': '16 GB ОЗУ',
+                        'Видеокарта': 'NVIDIA GeForce GTX 1660 Ti / AMD Radeon RX 590 (6 GB VRAM)',
+                        'DirectX': 'Версии 12',
+                        'Место на диске': '29.38 GB (SSD рекомендуется для быстрой загрузки города)'
+                  }
+                }
+            },
             'photoshop-2018': {
                 title: 'Adobe Photoshop 2018',
                 description: 'Профессиональный графический редактор для обработки фотографий и создания цифровых изображений. Последняя версия с новыми функциями ИИ.',
@@ -5264,6 +5344,7 @@
                     <p class="game-description">${game.description}</p>
                     <div class="game-meta">
                         <span class="game-size">${game.size}</span>
+                        <span class="game-updated">обновлено ${game.updated || new Date().toLocaleDateString('ru-RU')}</span>
                         <span class="game-year">${game.year}</span>
                     </div>
                     <div class="game-buttons">
@@ -5471,6 +5552,7 @@
                         <div class="game-modal-meta">
                             <span class="game-modal-size">${game.size}</span>
                             <span class="game-modal-year">${game.year}</span>
+                            <span class="game-modal-updated">обновлено ${game.updated || new Date().toLocaleDateString('ru-RU')}</span>
                             <span class="game-modal-status">${game.status === 'available' ? 'Доступно' : 'Скоро'}</span>
                         </div>
                         <p class="game-modal-description">${game.description}</p>
@@ -5764,30 +5846,6 @@
             updateOnlineCounter();
         });
 
-        // Защита от копирования
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            return false;
-        });
-
-        document.addEventListener('copy', function(e) {
-            e.preventDefault();
-            return false;
-        });
-
-        document.addEventListener('cut', function(e) {
-            e.preventDefault();
-            return false;
-        });
-
-        document.addEventListener('paste', function(e) {
-            e.preventDefault();
-            return false;
-        });
     </script>
 </body>
 </html>
-
-
-
-
