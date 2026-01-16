@@ -3147,18 +3147,9 @@
     <!-- Контейнер для технологических элементов -->
     <div class="tech-particles" id="tech-particles"></div>
 
-    <!-- Кнопка быстрого действия -->
-    <div class="floating-action-button" id="fab" title="Наверх">
-        <i class="fas fa-arrow-up"></i>
-    </div>
 
     <nav class="tech-nav" id="mainNav">
         <div class="nav-left">
-            <!-- Кнопка смены темы -->
-            <button class="theme-btn" id="themeBtn" title="Сменить тему" aria-label="Переключить тему">
-                <i class="fas fa-moon" aria-hidden="true"></i>
-            </button>
-
             <div class="logo" onclick="scrollToTop()">
                 <span class="logo-text">FORZSITE</span>
             </div>
@@ -4073,17 +4064,14 @@
         // Обработчик скролла
         function handleScroll() {
             const nav = document.getElementById('mainNav');
-            const fab = document.getElementById('fab');
             const scrollPosition = window.scrollY;
-            
+
             if (scrollPosition > 100) {
                 nav.classList.add('scrolled');
-                fab.style.display = 'flex';
             } else {
                 nav.classList.remove('scrolled');
-                fab.style.display = 'none';
             }
-            
+
         }
 
         // Функции для полноэкранного просмотра скриншотов
@@ -4249,10 +4237,7 @@
 
             // Добавляем параллакс эффект
             window.addEventListener('scroll', updateParallax);
-            
-            // Кнопка "Наверх"
-            document.getElementById('fab').addEventListener('click', scrollToTop);
-            
+
             // Инициализация скролла
             handleScroll();
 
