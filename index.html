@@ -6178,11 +6178,16 @@
 
         // Основные функции
         function findGameByTitle(title) {
+            console.log('Searching for title:', title);
+            console.log('gameData keys:', Object.keys(gameData));
             for (const gameId in gameData) {
+                console.log('Checking game:', gameId, 'title:', gameData[gameId].title);
                 if (gameData[gameId].title === title) {
+                    console.log('Found game:', gameId);
                     return { id: gameId, data: gameData[gameId] };
                 }
             }
+            console.log('Game not found for title:', title);
             return null;
         }
 
@@ -6357,33 +6362,55 @@
 
         // Загрузка игр на главную страницу
         function loadMainPageGames() {
+            console.log('loadMainPageGames called');
             const popularGamesGrid = document.querySelector('#games .games-grid');
             const newGamesGrid = document.querySelector('#new .games-grid');
-            
+
+            console.log('popularGamesGrid:', popularGamesGrid);
+            console.log('newGamesGrid:', newGamesGrid);
+            console.log('popularGamesTitles:', popularGamesTitles);
+            console.log('newGamesTitles:', newGamesTitles);
+
             popularGamesGrid.innerHTML = '';
             newGamesGrid.innerHTML = '';
-            
+
             popularGamesTitles.forEach(gameTitle => {
+                console.log('Processing popular game:', gameTitle);
                 const gameInfo = findGameByTitle(gameTitle);
+                console.log('gameInfo for', gameTitle, ':', gameInfo);
                 if (gameInfo) {
                     const gameCard = createGameCard(gameInfo.id, gameInfo.data);
+                    console.log('Created card for', gameTitle, ':', gameCard);
                     popularGamesGrid.appendChild(gameCard);
+                    console.log('Appended card to popular grid');
+                } else {
+                    console.log('No gameInfo found for', gameTitle);
                 }
             });
-            
+
             newGamesTitles.forEach(gameTitle => {
+                console.log('Processing new game:', gameTitle);
                 const gameInfo = findGameByTitle(gameTitle);
+                console.log('gameInfo for', gameTitle, ':', gameInfo);
                 if (gameInfo) {
                     const gameCard = createGameCard(gameInfo.id, gameInfo.data);
+                    console.log('Created card for', gameTitle, ':', gameCard);
                     newGamesGrid.appendChild(gameCard);
+                    console.log('Appended card to new grid');
+                } else {
+                    console.log('No gameInfo found for', gameTitle);
                 }
             });
-            
+
+            console.log('Popular grid children:', popularGamesGrid.children.length);
+            console.log('New grid children:', newGamesGrid.children.length);
+
             setupViewButtons();
         }
 
         // Создание карточки игры
         function createGameCard(gameId, game) {
+            console.log('Creating game card for', gameId, 'with data:', game);
             const gameCard = document.createElement('div');
             gameCard.className = 'game-card';
             
@@ -7349,6 +7376,66 @@
         });
 
     </script>
+
+    <!-- Мини-чат поддержки -->
+    <div class="mini-chat" id="miniChat">
+        <div class="mini-chat-header">
+            <span>Поддержка</span>
+            <button class="mini-chat-settings" id="miniChatSettings">
+                <i class="fas fa-cog"></i>
+            </button>
+            <button class="mini-chat-close" id="miniChatClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mini-chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <div class="message-content">
+                    <p>Привет! Чем могу помочь?</p>
+                    <div class="chat-options">
+                        <button class="option-btn" data-action="support">Связаться с поддержкой</button>
+                        <button class="option-btn" data-action="search">Найти игру</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mini-chat-status" id="typingIndicator" style="display: none;">
+            <i class="fas fa-circle"></i>
+            <i class="fas fa-circle"></i>
+            <i class="fas fa-circle"></i>
+            <span>Печатает...</span>
+        </div>
+        <div class="mini-chat-options" id="optionsContainer">
+            <button class="option-btn" data-action="support">Связаться с поддержкой</button>
+            <button class="option-btn" data-action="search">Найти игру</button>
+        </div>
+        <div class="mini-chat-input" id="inputContainer" style="display: none;">
+            <input type="text" id="chatInput" placeholder="Введите сообщение...">
+            <button id="sendMessageBtn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+            <button id="closeChatBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mini-chat-settings-panel" id="settingsPanel" style="display: none;">
+            <h4>Тема чата</h4>
+            <div class="theme-options">
+                <button class="theme-option active" data-theme="dark">Темная</button>
+                <button class="theme-option" data-theme="neon">Неон</button>
+                <button class="theme-option" data-theme="minimal">Минимальная</button>
+            </div>
+            <h4>Размер шрифта</h4>
+            <div class="font-size-options">
+                <button class="font-size-option active" data-size="medium">Средний</button>
+                <button class="font-size-option" data-size="small">Маленький</button>
+                <button class="font-size-option" data-size="large">Большой</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Плавающая кнопка поддержки -->
     <button class="floating-support-btn" id="supportBtn" title="Связаться с поддержкой">
