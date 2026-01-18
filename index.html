@@ -3279,10 +3279,12 @@
             box-shadow:
                 0 12px 40px rgba(99, 102, 241, 0.5),
                 0 6px 20px rgba(168, 85, 247, 0.4),
-                0 3px 10px rgba(0, 0, 0, 0.2);
+                0 3px 10px rgba(0, 0, 0, 0.2),
+                0 0 0 4px rgba(99, 102, 241, 0.3);
             background:
                 linear-gradient(135deg, rgba(168, 85, 247, 0.9) 0%, rgba(99, 102, 241, 0.9) 100%),
                 radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
+            animation: none;
         }
 
         .floating-support-btn:active {
@@ -3294,12 +3296,18 @@
 
         @keyframes gentlePulse {
             0%, 100% {
-                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4), 0 4px 10px rgba(118, 75, 162, 0.2);
-                transform: scale(1);
+                box-shadow:
+                    0 8px 25px rgba(102, 126, 234, 0.4),
+                    0 4px 10px rgba(118, 75, 162, 0.2),
+                    0 0 0 0 rgba(6, 182, 212, 0.7);
+                transform: scale(1) rotate(0deg);
             }
             50% {
-                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6), 0 5px 12px rgba(118, 75, 162, 0.3);
-                transform: scale(1.02);
+                box-shadow:
+                    0 10px 30px rgba(102, 126, 234, 0.6),
+                    0 5px 12px rgba(118, 75, 162, 0.3),
+                    0 0 20px rgba(6, 182, 212, 0.4);
+                transform: scale(1.02) rotate(1deg);
             }
         }
 
@@ -3324,7 +3332,8 @@
                 linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 50%, rgba(51, 65, 85, 0.85) 100%),
                 radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.08) 0%, transparent 50%);
+                radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 60% 20%, rgba(245, 158, 11, 0.06) 0%, transparent 50%);
             backdrop-filter: blur(25px) saturate(180%);
             -webkit-backdrop-filter: blur(25px) saturate(180%);
             border-radius: 24px;
@@ -3334,6 +3343,7 @@
                 0 12px 40px rgba(99, 102, 241, 0.2),
                 0 6px 20px rgba(168, 85, 247, 0.15),
                 0 3px 10px rgba(6, 182, 212, 0.1),
+                0 2px 8px rgba(245, 158, 11, 0.08),
                 inset 0 1px 0 rgba(255, 255, 255, 0.12),
                 inset 0 -1px 0 rgba(0, 0, 0, 0.08);
             display: none;
@@ -3342,6 +3352,7 @@
             animation: slideUpElegant 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             overflow: hidden;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            transform-style: preserve-3d;
         }
 
         .mini-chat::before {
@@ -3361,6 +3372,40 @@
 
         .mini-chat.active {
             display: flex;
+            animation: chatGlow 0.6s ease-out;
+        }
+
+        @keyframes chatGlow {
+            0% {
+                box-shadow:
+                    0 25px 80px rgba(0, 0, 0, 0.4),
+                    0 12px 40px rgba(99, 102, 241, 0.2),
+                    0 6px 20px rgba(168, 85, 247, 0.15),
+                    0 3px 10px rgba(6, 182, 212, 0.1),
+                    0 2px 8px rgba(245, 158, 11, 0.08),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+                    inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+            }
+            50% {
+                box-shadow:
+                    0 30px 100px rgba(0, 0, 0, 0.5),
+                    0 15px 50px rgba(99, 102, 241, 0.3),
+                    0 8px 25px rgba(168, 85, 247, 0.2),
+                    0 4px 15px rgba(6, 182, 212, 0.15),
+                    0 3px 10px rgba(245, 158, 11, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+            }
+            100% {
+                box-shadow:
+                    0 25px 80px rgba(0, 0, 0, 0.4),
+                    0 12px 40px rgba(99, 102, 241, 0.2),
+                    0 6px 20px rgba(168, 85, 247, 0.15),
+                    0 3px 10px rgba(6, 182, 212, 0.1),
+                    0 2px 8px rgba(245, 158, 11, 0.08),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+                    inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+            }
         }
 
         @keyframes slideUpElegant {
@@ -3384,9 +3429,40 @@
             align-items: center;
             padding: 18px 22px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.12) 50%, rgba(6, 182, 212, 0.08) 100%);
             border-radius: 20px 20px 0 0;
             backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mini-chat-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            animation: headerShine 3s infinite;
+        }
+
+        @keyframes headerShine {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: -100%; }
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: flex-start;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 8px;
         }
 
         .header-buttons {
@@ -3435,15 +3511,17 @@
         }
 
         .online-status {
-            font-size: 0.3rem;
+            font-size: 0.7rem;
             font-weight: 300;
             font-family: 'Exo 2', sans-serif;
             color: #00ff00 !important;
             -webkit-text-fill-color: #00ff00 !important;
-            text-transform: uppercase;
+            text-transform: lowercase;
             letter-spacing: 1px;
-            opacity: 0.7;
+            opacity: 1;
             transition: all 0.3s ease;
+            text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+            animation: onlinePulse 2s infinite ease-in-out;
         }
 
         .online-status.offline {
@@ -3678,9 +3756,11 @@
             text-align: left;
             box-shadow:
                 0 4px 15px rgba(99, 102, 241, 0.3),
-                0 2px 8px rgba(168, 85, 247, 0.2);
+                0 2px 8px rgba(168, 85, 247, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .option-btn::before {
@@ -7380,13 +7460,18 @@
     <!-- Мини-чат поддержки -->
     <div class="mini-chat" id="miniChat">
         <div class="mini-chat-header">
-            <span>Поддержка</span>
-            <button class="mini-chat-settings" id="miniChatSettings">
-                <i class="fas fa-cog"></i>
-            </button>
-            <button class="mini-chat-close" id="miniChatClose">
-                <i class="fas fa-times"></i>
-            </button>
+            <div class="header-text">
+                <span>Поддержка</span>
+                <div class="online-status">поддержка онлайн</div>
+            </div>
+            <div class="header-buttons">
+                <button class="mini-chat-settings" id="miniChatSettings">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <button class="mini-chat-close" id="miniChatClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
         </div>
         <div class="mini-chat-messages" id="chatMessages">
             <div class="message bot-message">
@@ -7396,8 +7481,8 @@
                 <div class="message-content">
                     <p>Привет! Чем могу помочь?</p>
                     <div class="chat-options">
-                        <button class="option-btn" data-action="support">Связаться с поддержкой</button>
-                        <button class="option-btn" data-action="search">Найти игру</button>
+                        <button class="option-btn" data-action="support">💬 Связаться с поддержкой</button>
+                        <button class="option-btn" data-action="search">🔍 Найти игру</button>
                     </div>
                 </div>
             </div>
@@ -7409,8 +7494,8 @@
             <span>Печатает...</span>
         </div>
         <div class="mini-chat-options" id="optionsContainer">
-            <button class="option-btn" data-action="support">Связаться с поддержкой</button>
-            <button class="option-btn" data-action="search">Найти игру</button>
+            <button class="option-btn" data-action="support">💬 Связаться с поддержкой</button>
+            <button class="option-btn" data-action="search">🔍 Найти игру</button>
         </div>
         <div class="mini-chat-input" id="inputContainer" style="display: none;">
             <input type="text" id="chatInput" placeholder="Введите сообщение...">
@@ -7418,7 +7503,7 @@
                 <i class="fas fa-paper-plane"></i>
             </button>
             <button id="closeChatBtn">
-                <i class="fas fa-times"></i>
+                <i class="fas fa-door-open"></i>
             </button>
         </div>
         <div class="mini-chat-settings-panel" id="settingsPanel" style="display: none;">
