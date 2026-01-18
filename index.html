@@ -77,8 +77,15 @@
             padding: 0;
             height: 100%;
             overflow-x: hidden;
+            overflow-y: auto;
             scroll-behavior: smooth;
             touch-action: manipulation;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        html::-webkit-scrollbar, body::-webkit-scrollbar {
+            display: none;
         }
 
         /* Технологический фон с анимацией - УЛУЧШЕННЫЙ */
@@ -90,12 +97,14 @@
             height: 100%;
             z-index: -2;
             background:
-                radial-gradient(circle at 20% 80%, rgba(108, 92, 231, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(157, 78, 221, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(0, 206, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 60% 10%, rgba(255, 107, 107, 0.08) 0%, transparent 50%),
-                linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
-            animation: none;
+                radial-gradient(circle at 20% 80%, rgba(108, 92, 231, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(157, 78, 221, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0, 206, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 60% 10%, rgba(255, 107, 107, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 10% 50%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 90% 70%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 30%, #16213e 60%, #0f0f1a 100%);
+            animation: bgShift 20s ease-in-out infinite alternate;
         }
 
         @keyframes bgShift {
@@ -456,7 +465,7 @@
             z-index: 1001;
         }
 
-        /* Улучшенные страницы с 3D эффектом - анимация сверху вниз */
+        /* Красивые страницы с продвинутой 3D анимацией */
         .page {
             position: fixed;
             top: 0;
@@ -464,33 +473,64 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transform: translateY(-50px) translateZ(-200px) rotateX(15deg) scale(0.9);
-            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateY(30px) translateZ(-100px) rotateX(15deg) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
             pointer-events: none;
             overflow-y: auto;
             scrollbar-width: none;
             -ms-overflow-style: none;
             padding-top: 70px;
             perspective: 1200px;
-            filter: blur(8px) brightness(0.8);
-            backdrop-filter: blur(10px);
+            filter: blur(10px) brightness(0.7) saturate(0.8);
+            backdrop-filter: blur(20px);
+            background: rgba(0, 0, 0, 0.1);
         }
 
         .page::-webkit-scrollbar {
             display: none;
         }
 
+        .page::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .page::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .page::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.6), rgba(168, 85, 247, 0.6));
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .page::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(168, 85, 247, 0.8));
+        }
+
         .page.active {
             opacity: 1;
             transform: translateY(0) rotateX(0) scale(1);
             pointer-events: all;
-            filter: blur(0px);
+            filter: blur(0px) brightness(1) saturate(1);
+            animation: pageGlow 0.6s ease-out;
         }
 
         .page.exit {
             opacity: 0;
-            transform: translateY(-100%) rotateX(-10deg) scale(0.8);
-            filter: blur(5px);
+            transform: translateY(-50px) rotateX(-20deg) scale(0.9);
+            filter: blur(15px) brightness(0.5) saturate(0.5);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes pageGlow {
+            0% {
+                box-shadow: inset 0 0 50px rgba(99, 102, 241, 0.3);
+            }
+            100% {
+                box-shadow: inset 0 0 0 rgba(99, 102, 241, 0);
+            }
         }
 
         /* Улучшенная главная секция с параллаксом */
@@ -1813,27 +1853,51 @@
             box-shadow: 0 2px 10px rgba(108, 92, 231, 0.6);
         }
 
-        /* Улучшенное модальное окно */
+        /* Красивое модальное окно с плавными анимациями */
         .modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: transparent;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
             z-index: 2000;
             visibility: hidden;
             overflow-y: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(99, 102, 241, 0.3) transparent;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .modal.active {
             visibility: visible;
+            opacity: 1;
+            animation: modalFadeIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .modal.closing {
+            opacity: 0;
             visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes modalFadeIn {
+            0% {
+                opacity: 0;
+                backdrop-filter: blur(0px) saturate(100%);
+                background: rgba(0, 0, 0, 0);
+            }
+            100% {
+                opacity: 1;
+                backdrop-filter: blur(20px) saturate(150%);
+                background: rgba(0, 0, 0, 0.6);
+            }
         }
 
         .modal::-webkit-scrollbar {
@@ -1856,7 +1920,9 @@
             margin: 5% auto;
             padding: 20px;
             width: 95%;
-            max-width: 1200px;
+            max-width: 1100px;
+            max-height: 90vh;
+            overflow-y: auto;
             border-radius: 20px;
             position: relative;
             opacity: 0;
@@ -3182,36 +3248,48 @@
         /* Плавающая кнопка поддержки */
         .floating-support-btn {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            bottom: 24px;
+            right: 24px;
+            width: 60px;
+            height: 60px;
+            background:
+                linear-gradient(135deg, rgba(99, 102, 241, 0.9) 0%, rgba(168, 85, 247, 0.9) 100%),
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
             color: white;
-            border: none;
-            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4), 0 4px 10px rgba(118, 75, 162, 0.2);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 22px;
+            box-shadow:
+                0 8px 32px rgba(99, 102, 241, 0.4),
+                0 4px 16px rgba(168, 85, 247, 0.3),
+                0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 9999;
             cursor: pointer;
-            animation: gentlePulse 3s infinite;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            animation: gentlePulse 3s infinite ease-in-out;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
         }
 
         .floating-support-btn:hover {
-            transform: scale(1.15) translateY(-2px);
-            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6), 0 6px 15px rgba(118, 75, 162, 0.3);
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            transform: scale(1.1) translateY(-3px) rotate(5deg);
+            box-shadow:
+                0 12px 40px rgba(99, 102, 241, 0.5),
+                0 6px 20px rgba(168, 85, 247, 0.4),
+                0 3px 10px rgba(0, 0, 0, 0.2);
+            background:
+                linear-gradient(135deg, rgba(168, 85, 247, 0.9) 0%, rgba(99, 102, 241, 0.9) 100%),
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
         }
 
         .floating-support-btn:active {
-            transform: scale(1.05) translateY(0);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transform: scale(1.05) translateY(-1px) rotate(2deg);
+            box-shadow:
+                0 6px 20px rgba(99, 102, 241, 0.4),
+                0 3px 10px rgba(168, 85, 247, 0.3);
         }
 
         @keyframes gentlePulse {
@@ -3235,7 +3313,7 @@
             }
         }
 
-        /* Мини-чат поддержки */
+        /* Мини-чат поддержки - Красивый дизайн */
         .mini-chat {
             position: fixed;
             bottom: 95px;
@@ -3243,27 +3321,27 @@
             width: 380px;
             height: 520px;
             background:
-                linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 27, 75, 0.92) 50%, rgba(26, 26, 46, 0.88) 100%),
-                radial-gradient(circle at 30% 20%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
-            backdrop-filter: blur(60px) saturate(300%);
-            -webkit-backdrop-filter: blur(60px) saturate(300%);
-            border-radius: 28px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+                linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 50%, rgba(51, 65, 85, 0.85) 100%),
+                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.08) 0%, transparent 50%);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             box-shadow:
-                0 32px 100px rgba(0, 0, 0, 0.6),
-                0 16px 40px rgba(102, 126, 234, 0.25),
-                0 8px 20px rgba(168, 85, 247, 0.15),
-                0 4px 10px rgba(6, 182, 212, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.18),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.12);
+                0 25px 80px rgba(0, 0, 0, 0.4),
+                0 12px 40px rgba(99, 102, 241, 0.2),
+                0 6px 20px rgba(168, 85, 247, 0.15),
+                0 3px 10px rgba(6, 182, 212, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.12),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.08);
             display: none;
             flex-direction: column;
             z-index: 9998;
-            animation: slideUpBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            animation: slideUpElegant 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             overflow: hidden;
-            transform-origin: bottom right;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
         .mini-chat::before {
@@ -3285,14 +3363,18 @@
             display: flex;
         }
 
-        @keyframes slideUp {
-            from {
+        @keyframes slideUpElegant {
+            0% {
                 opacity: 0;
-                transform: translateY(30px) scale(0.95);
+                transform: translateY(30px) scale(0.9) rotateX(10deg);
             }
-            to {
+            50% {
+                opacity: 0.8;
+                transform: translateY(-5px) scale(1.02) rotateX(-2deg);
+            }
+            100% {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0) scale(1) rotateX(0deg);
             }
         }
 
@@ -3305,6 +3387,31 @@
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
             border-radius: 20px 20px 0 0;
             backdrop-filter: blur(20px);
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .mini-chat-settings {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text);
+            font-size: 1rem;
+            cursor: pointer;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .mini-chat-settings:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
         }
 
         .header-text {
@@ -3336,6 +3443,12 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .online-status.offline {
+            color: #ff4444 !important;
+            -webkit-text-fill-color: #ff4444 !important;
         }
 
         @keyframes onlineGlow {
@@ -3385,6 +3498,47 @@
             scrollbar-color: rgba(102, 126, 234, 0.3) transparent;
         }
 
+        /* Typing indicator */
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 18px;
+            align-self: flex-start;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--neon);
+            border-radius: 50%;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.4;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+
         .mini-chat-messages::-webkit-scrollbar {
             width: 4px;
         }
@@ -3401,6 +3555,10 @@
         .message {
             max-width: 85%;
             animation: messageSlideIn 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 8px;
         }
 
         @keyframes messageSlideIn {
@@ -3420,39 +3578,79 @@
 
         .user-message {
             align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        .bot-message .message-avatar {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(168, 85, 247, 0.8));
+            color: white;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .user-message .message-avatar {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.8), rgba(99, 102, 241, 0.8));
+            color: white;
+            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
         }
 
         .message-content {
             background:
-                linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.05) 100%),
-                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+                linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%),
+                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
             padding: 14px 18px;
-            border-radius: 22px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
             position: relative;
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            backdrop-filter: blur(15px) saturate(150%);
+            -webkit-backdrop-filter: blur(15px) saturate(150%);
             box-shadow:
-                0 8px 25px rgba(0, 0, 0, 0.15),
-                0 4px 12px rgba(102, 126, 234, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                0 6px 20px rgba(0, 0, 0, 0.1),
+                0 3px 10px rgba(99, 102, 241, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            line-height: 1.4;
         }
 
         .message-content:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-1px) scale(1.01);
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.15),
+                0 4px 15px rgba(99, 102, 241, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
         .user-message .message-content {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background:
+                linear-gradient(135deg, rgba(99, 102, 241, 0.9) 0%, rgba(168, 85, 247, 0.9) 100%),
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
             color: white;
-            border: none;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow:
+                0 6px 20px rgba(99, 102, 241, 0.3),
+                0 3px 10px rgba(168, 85, 247, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            margin-left: 50px;
         }
 
         .user-message .message-content:hover {
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            box-shadow:
+                0 8px 25px rgba(99, 102, 241, 0.4),
+                0 4px 15px rgba(168, 85, 247, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
         .message-content p {
@@ -3468,25 +3666,47 @@
         }
 
         .option-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.8) 0%, rgba(168, 85, 247, 0.8) 100%);
             color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 14px;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: left;
+            box-shadow:
+                0 4px 15px rgba(99, 102, 241, 0.3),
+                0 2px 8px rgba(168, 85, 247, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
         }
 
         .option-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow:
+                0 8px 25px rgba(99, 102, 241, 0.4),
+                0 4px 15px rgba(168, 85, 247, 0.3);
+        }
+
+        .option-btn:hover::before {
+            left: 100%;
         }
 
         .option-btn:active {
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
         .mini-chat-status {
@@ -3526,6 +3746,90 @@
             padding: 20px 24px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #closeChatBtn {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #closeChatBtn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        #closeChatBtn:hover {
+            transform: scale(1.15) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+            background: linear-gradient(135deg, #ff5252 0%, #d32f2f 100%);
+        }
+
+        #closeChatBtn:hover::before {
+            left: 100%;
+        }
+
+        #closeChatBtn:active {
+            transform: scale(0.95) translateY(0);
+            box-shadow: 0 2px 10px rgba(255, 107, 107, 0.5);
+        }
+
+        #attachBtn {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #attachBtn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        #attachBtn:hover {
+            transform: scale(1.15) translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        #attachBtn:hover::before {
+            left: 100%;
+        }
+
+        #attachBtn:active {
+            transform: scale(0.95) translateY(0);
         }
 
         .mini-chat-input input {
@@ -3593,6 +3897,127 @@
             transform: scale(0.95) translateY(0);
         }
 
+        /* Настройки чата */
+        .mini-chat-settings-panel {
+            padding: 18px 22px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .settings-section {
+            margin-bottom: 20px;
+        }
+
+        .settings-section h4 {
+            margin: 0 0 10px 0;
+            color: var(--text);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .theme-options, .font-size-options {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .theme-option, .font-size-option {
+            padding: 6px 12px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-option.active, .font-size-option.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
+        .theme-option:hover, .font-size-option:hover {
+            border-color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        /* Темы чата */
+        .mini-chat.chat-theme-dark {
+            background:
+                linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 27, 75, 0.92) 50%, rgba(26, 26, 46, 0.88) 100%),
+                radial-gradient(circle at 30% 20%, rgba(0, 0, 0, 0.8) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
+        }
+
+        .mini-chat.chat-theme-neon .message-content {
+            border-color: var(--neon);
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+        }
+
+        .mini-chat.chat-theme-neon .user-message .message-content {
+            background: linear-gradient(135deg, var(--neon) 0%, var(--neon-secondary) 100%);
+        }
+
+        .mini-chat.chat-theme-minimal {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .mini-chat.chat-theme-minimal .message-content {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .mini-chat.chat-theme-minimal .user-message .message-content {
+            background: #007bff;
+            color: white;
+        }
+
+        /* Размеры шрифта */
+        .mini-chat.chat-font-small .message-content p {
+            font-size: 0.8rem;
+        }
+
+        .mini-chat.chat-font-medium .message-content p {
+            font-size: 0.9rem;
+        }
+
+        .mini-chat.chat-font-large .message-content p {
+            font-size: 1.1rem;
+        }
+
+        /* Мультимедиа в чате */
+        .file-attachment {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        .file-attachment i {
+            color: var(--primary);
+        }
+
+        .chat-image, .chat-video {
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .chat-image:hover, .chat-video:hover {
+            border-color: var(--primary);
+            transform: scale(1.02);
+        }
+
         @media (max-width: 480px) {
             .mini-chat {
                 bottom: 85px;
@@ -3615,74 +4040,139 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 15px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%),
+                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 16px;
+            backdrop-filter: blur(15px) saturate(150%);
+            -webkit-backdrop-filter: blur(15px) saturate(150%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow:
+                0 4px 16px rgba(0, 0, 0, 0.1),
+                0 2px 8px rgba(99, 102, 241, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-result-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
         }
 
         .game-result-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--primary);
-            transform: translateY(-2px);
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.06) 100%),
+                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.15),
+                0 4px 16px rgba(99, 102, 241, 0.2);
+        }
+
+        .game-result-card:hover::before {
+            left: 100%;
         }
 
         .game-avatar {
-            width: 200px;
-            height: 200px;
-            object-fit: contain;
-            border-radius: 8px;
-            margin-bottom: 10px;
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 12px;
             border: 2px solid rgba(255, 255, 255, 0.2);
-            background: rgba(0,0,0,0.1);
+            background:
+                linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1)),
+                rgba(0, 0, 0, 0.1);
+            box-shadow:
+                0 4px 16px rgba(0, 0, 0, 0.1),
+                0 2px 8px rgba(99, 102, 241, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .game-avatar:hover {
+            transform: scale(1.05);
+            box-shadow:
+                0 6px 20px rgba(0, 0, 0, 0.15),
+                0 3px 10px rgba(99, 102, 241, 0.12);
         }
 
         .game-result-card h4 {
-            margin: 0 0 15px 0;
-            color: var(--text);
-            font-size: 1.1rem;
+            margin: 0 0 16px 0;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 16px;
             font-weight: 600;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
         }
 
         .game-buttons {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             justify-content: center;
+            width: 100%;
         }
 
         .watch-btn, .download-btn {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 6px;
-            font-size: 0.9rem;
+            padding: 10px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             display: inline-block;
             text-align: center;
+            flex: 1;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
         .watch-btn {
-            background: var(--neon);
-            color: #000;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.8), rgba(99, 102, 241, 0.8));
+            color: white;
         }
 
         .watch-btn:hover {
-            background: var(--neon-secondary);
-            transform: scale(1.05);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(6, 182, 212, 0.9));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(6, 182, 212, 0.3);
         }
 
         .download-btn {
-            background: var(--primary);
-            color: #fff;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.8), rgba(99, 102, 241, 0.8));
+            color: white;
         }
 
         .download-btn:hover {
-            background: var(--primary-dark);
-            transform: scale(1.05);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(168, 85, 247, 0.9));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(168, 85, 247, 0.3);
+        }
+
+        .watch-btn::before, .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .watch-btn:hover::before, .download-btn:hover::before {
+            left: 100%;
         }
 
         @media (max-width: 768px) {
@@ -6378,6 +6868,82 @@
             });
         }
 
+        // Аналитика чата
+        let chatAnalytics = {
+            sessionStart: null,
+            messagesSent: 0,
+            filesUploaded: 0,
+            chatOpens: 0,
+            aiInteractions: 0,
+            searchQueries: 0
+        };
+
+        function initChatAnalytics() {
+            chatAnalytics.sessionStart = new Date();
+            // Загрузить предыдущие данные из localStorage
+            const stored = localStorage.getItem('chatAnalytics');
+            if (stored) {
+                const previous = JSON.parse(stored);
+                chatAnalytics = { ...chatAnalytics, ...previous };
+            }
+        }
+
+        function trackEvent(eventType, data = {}) {
+            switch (eventType) {
+                case 'chatOpen':
+                    chatAnalytics.chatOpens++;
+                    break;
+                case 'messageSent':
+                    chatAnalytics.messagesSent++;
+                    if (data.mode === 'ai-chat') chatAnalytics.aiInteractions++;
+                    if (data.mode === 'search') chatAnalytics.searchQueries++;
+                    break;
+                case 'fileUploaded':
+                    chatAnalytics.filesUploaded++;
+                    break;
+            }
+            // Сохранить в localStorage
+            localStorage.setItem('chatAnalytics', JSON.stringify(chatAnalytics));
+            console.log('Chat Analytics:', chatAnalytics);
+        }
+
+        function getChatStats() {
+            const sessionDuration = chatAnalytics.sessionStart ? (new Date() - new Date(chatAnalytics.sessionStart)) / 1000 : 0;
+            return {
+                ...chatAnalytics,
+                sessionDuration: Math.round(sessionDuration)
+            };
+        }
+
+        // Mock WebSocket для реального времени
+        let mockWebSocket = null;
+        let isOnline = true;
+
+        function initMockWebSocket() {
+            // Имитация WebSocket подключения
+            mockWebSocket = {
+                send: function(message) {
+                    // Имитация отправки
+                    console.log('Mock WS sent:', message);
+                },
+                close: function() {
+                    console.log('Mock WS closed');
+                }
+            };
+
+            // Всегда онлайн
+            updateOnlineStatus(true);
+        }
+
+        function updateOnlineStatus(online) {
+            isOnline = online;
+            const statusElement = document.querySelector('.online-status');
+            if (statusElement) {
+                statusElement.textContent = 'online';
+                statusElement.classList.remove('offline');
+            }
+        }
+
         // Функции для мини-чата поддержки
         function toggleSupportModal() {
             const miniChat = document.getElementById('miniChat');
@@ -6386,6 +6952,7 @@
                 closeSupportModal();
             } else {
                 openSupportModal();
+                trackEvent('chatOpen');
                 supportBtn.classList.add('btn-pulse');
                 setTimeout(() => supportBtn.classList.remove('btn-pulse'), 1000);
             }
@@ -6402,6 +6969,27 @@
 
         function closeSupportModal() {
             document.getElementById('miniChat').classList.remove('active');
+            document.getElementById('settingsPanel').style.display = 'none';
+        }
+
+        function toggleSettings() {
+            const settingsPanel = document.getElementById('settingsPanel');
+            const isVisible = settingsPanel.style.display !== 'none';
+            settingsPanel.style.display = isVisible ? 'none' : 'block';
+        }
+
+        function applyChatTheme(theme) {
+            const chat = document.getElementById('miniChat');
+            chat.className = chat.className.replace(/chat-theme-\w+/g, '');
+            if (theme !== 'default') {
+                chat.classList.add(`chat-theme-${theme}`);
+            }
+        }
+
+        function applyFontSize(size) {
+            const chat = document.getElementById('miniChat');
+            chat.className = chat.className.replace(/chat-font-\w+/g, '');
+            chat.classList.add(`chat-font-${size}`);
         }
 
 
@@ -6438,46 +7026,124 @@
         function sendMessage() {
             const input = document.getElementById('chatInput');
             const message = input.value.trim();
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
             const mode = document.getElementById('sendMessageBtn').getAttribute('data-mode') || 'search';
 
-            if (message) {
-                addMessage(message, 'user');
-                input.value = '';
+            if (message || file) {
+                if (message) {
+                    addMessage(message, 'user');
+                    input.value = '';
+                    trackEvent('messageSent', { mode: mode });
+                }
+
+                if (file) {
+                    handleFileUpload(file);
+                    fileInput.value = '';
+                    trackEvent('fileUploaded');
+                }
 
                 if (mode === 'support') {
+                    // Показать typing indicator
+                    showTypingIndicator();
                     // Имитация отправки сообщения поддержки
                     setTimeout(() => {
+                        hideTypingIndicator();
                         addMessage('Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.', 'bot');
                         // Скрыть чат через 3 секунды
                         setTimeout(() => {
                             closeSupportModal();
                         }, 3000);
-                    }, 1000);
+                    }, 2000);
                 } else {
+                    // Показать typing indicator
+                    showTypingIndicator();
                     // Поиск игры
-                    const results = searchGames(message);
-                    if (results.length > 0) {
-                        let response = '<div class="search-results">';
-                        results.slice(0, 5).forEach(game => {
-                            response += `
-                                <div class="game-result-card">
-                                    <img src="${game.image}" alt="${game.title}" class="game-avatar">
-                                    <h4>${game.title}</h4>
-                                    <div class="game-buttons">
-                                        <button class="watch-btn" onclick="openGameModal('${game.id}')">Информация</button>
-                                        <button class="download-btn" onclick="window.open('${game.torrentFile || game.buyGame}', '_blank')">${game.torrentFile ? 'Скачать' : 'Купить'}</button>
+                    setTimeout(() => {
+                        hideTypingIndicator();
+                        const results = searchGames(message);
+                        if (results.length > 0) {
+                            let response = '<div class="search-results">';
+                            results.slice(0, 5).forEach(game => {
+                                response += `
+                                    <div class="game-result-card">
+                                        <img src="${game.image}" alt="${game.title}" class="game-avatar">
+                                        <h4>${game.title}</h4>
+                                        <div class="game-buttons">
+                                            <button class="watch-btn" onclick="openGameModal('${game.id}')">Информация</button>
+                                            <button class="download-btn" onclick="window.open('${game.torrentFile || game.buyGame}', '_blank')">${game.torrentFile ? 'Скачать' : 'Купить'}</button>
+                                        </div>
                                     </div>
-                                </div>
-                            `;
-                        });
-                        response += '</div>';
-                        addMessage(response, 'bot');
-                    } else {
-                        addMessage('Игры не найдены. Попробуйте другое название.', 'bot');
-                    }
+                                `;
+                            });
+                            response += '</div>';
+                            addMessage(response, 'bot');
+                        } else {
+                            addMessage('Игры не найдены. Попробуйте другое название.', 'bot');
+                        }
+                    }, 1500);
                 }
             }
         }
+
+        function handleFileUpload(file) {
+            console.log('File uploaded:', file.name, file.type);
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                console.log('File loaded successfully');
+                const fileType = file.type.split('/')[0];
+                let content = '';
+
+                if (fileType === 'image') {
+                    content = `<img src="${e.target.result}" alt="${file.name}" class="chat-image" style="max-width: 200px; max-height: 200px; border-radius: 8px; margin-top: 10px;">`;
+                    console.log('Starting image analysis...');
+                    // Автоматический анализ изображения
+                    setTimeout(() => {
+                        showTypingIndicator();
+                        setTimeout(async () => {
+                            try {
+                                console.log('Analyzing image...');
+                                const analysis = await analyzeUploadedImage(file, e.target.result);
+                                console.log('Analysis result:', analysis);
+                                hideTypingIndicator();
+                                addMessage(analysis, 'bot');
+                            } catch (error) {
+                                console.error('Analysis error:', error);
+                                hideTypingIndicator();
+                                addMessage('❌ Ошибка при анализе изображения.', 'bot');
+                            }
+                        }, 2000);
+                    }, 500);
+                } else if (fileType === 'video') {
+                    content = `<video controls style="max-width: 200px; max-height: 200px; border-radius: 8px; margin-top: 10px;"><source src="${e.target.result}" type="${file.type}"></video>`;
+                }
+
+                addMessage(`<div class="file-attachment"><i class="fas fa-${fileType}"></i> ${file.name}</div>${content}`, 'user');
+            };
+            reader.onerror = function() {
+                console.error('File reading error');
+                addMessage('❌ Ошибка при загрузке файла.', 'bot');
+            };
+            reader.readAsDataURL(file);
+        }
+
+
+
+        async function analyzeUploadedImage(file, dataUrl) {
+            // Простое подтверждение загрузки изображения
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            const responses = [
+                'Изображение успешно загружено! Выглядит интересно.',
+                'Фото получено и отображено в чате.',
+                'Картинка добавлена! Спасибо за отправку.',
+                'Изображение принято! Готово к просмотру.',
+                'Фото в чате! Всё выглядит хорошо.'
+            ];
+
+            return `🖼️ **Изображение "${file.name}"**\n\n${responses[Math.floor(Math.random() * responses.length)]}`;
+        }
+
 
         function searchGames(query) {
             const results = [];
@@ -6494,12 +7160,21 @@
             return results;
         }
 
+        function showTypingIndicator() {
+            document.getElementById('typingIndicator').style.display = 'flex';
+            document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            document.getElementById('typingIndicator').style.display = 'none';
+        }
+
         function addMessage(text, type, options = null) {
             const messagesContainer = document.getElementById('chatMessages');
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${type}-message`;
 
-            const avatar = type === 'bot' ? '<i class="fas fa-robot"></i>' : '<i class="fas fa-user"></i>';
+            const avatar = type === 'bot' ? '<i class="fas fa-headset"></i>' : '<i class="fas fa-user"></i>';
 
             let content = `<p>${text}</p>`;
             if (options) {
@@ -6536,6 +7211,12 @@
 
         // Инициализация при загрузке
         document.addEventListener('DOMContentLoaded', function() {
+            // Инициализация аналитики
+            initChatAnalytics();
+
+            // Инициализация mock WebSocket
+            initMockWebSocket();
+
             // Загрузка данных и инициализация
             loadMainPageGames();
             initSlider();
@@ -6560,6 +7241,12 @@
 
             // Создаем частицы
             createParticles();
+
+            // Обработчик для кнопки закрытия чата
+            document.getElementById('closeChatBtn').addEventListener('click', function() {
+                document.getElementById('inputContainer').style.display = 'none';
+                document.getElementById('optionsContainer').style.display = 'flex';
+            });
             
             // Настройка обработчика скролла
             document.querySelectorAll('.page').forEach(page => {
@@ -6624,12 +7311,32 @@
             // Обработчики для мини-чата поддержки
             document.getElementById('supportBtn').addEventListener('click', toggleSupportModal);
             document.getElementById('miniChatClose').addEventListener('click', closeSupportModal);
+            document.getElementById('miniChatSettings').addEventListener('click', toggleSettings);
             document.getElementById('sendMessageBtn').addEventListener('click', sendMessage);
             document.getElementById('chatInput').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     sendMessage();
                 }
             });
+
+            // Обработчики для настроек чата
+            document.querySelectorAll('.theme-option').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.theme-option').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    applyChatTheme(this.getAttribute('data-theme'));
+                });
+            });
+
+            document.querySelectorAll('.font-size-option').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.font-size-option').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    applyFontSize(this.getAttribute('data-size'));
+                });
+            });
+
+
 
 
             // Обработчики для опций
@@ -6648,30 +7355,5 @@
         <i class="fas fa-headset"></i>
     </button>
 
-    <!-- Мини-чат поддержки -->
-    <div id="miniChat" class="mini-chat">
-        <div class="mini-chat-header">
-            <div class="header-text">
-                <span>💬 Live Support</span>
-                <span class="online-status">online</span>
-            </div>
-            <button class="mini-chat-close" id="miniChatClose">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="mini-chat-messages" id="chatMessages">
-            <!-- Сообщения будут добавлены через JavaScript -->
-        </div>
-        <div class="mini-chat-options" id="optionsContainer">
-            <button class="option-btn" data-action="support">📝 Написать в поддержку</button>
-            <button class="option-btn" data-action="search">🔍 Поиск игры</button>
-        </div>
-        <div class="mini-chat-input" id="inputContainer" style="display: none;">
-            <input type="text" id="chatInput" placeholder="Введите название игры..." maxlength="100">
-            <button id="sendMessageBtn">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-    </div>
 </body>
 </html>

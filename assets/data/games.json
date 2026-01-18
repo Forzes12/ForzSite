@@ -1,0 +1,887 @@
+{
+  "dead-island-2": {
+    "title": "Dead Island 2",
+    "description": "Зомби-апокалипсис в Лос-Сантосе. Выживайте, сражайтесь и исследуйте мир, полный инфицированных.",
+    "image": "https://i.imgur.com/4Q8Z8Z8.jpg",
+    "size": "45 GB",
+    "year": "2023",
+    "updated": "2024-01-15",
+    "status": "available",
+    "category": "games",
+    "tags": ["dead island", "dead island 2", "di2", "zombie", "survival", "дед айленд", "зомби"],
+    "torrentFile": "https://thelastgame.org/index.php?do=download&id=130",
+    "trailer": "https://vk.com/video_ext.php?oid=-30602036&id=456283259&hash=abc123&hd=2",
+    "screenshots": [
+      "https://i.imgur.com/screenshot1.jpg",
+      "https://i.imgur.com/screenshot2.jpg"
+    ],
+    "specs": {
+      "Жанр": "Экшен, Выживание",
+      "Разработчик": "Deep Silver",
+      "Издатель": "Deep Silver",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i5-6600K / AMD Ryzen 5 2600",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 1060 6GB / AMD Radeon RX 580 8GB",
+        "Storage": "50 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i7-8700K / AMD Ryzen 7 3700X",
+        "Memory": "16 GB RAM",
+        "Graphics": "NVIDIA GeForce RTX 3070 / AMD Radeon RX 6700 XT",
+        "Storage": "50 GB available space"
+      }
+    }
+  },
+  "gta-6": {
+    "title": "Grand Theft Auto VI",
+    "description": "Шестая часть легендарной серии GTA. Исследуйте огромный открытый мир, выполняйте миссии и наслаждайтесь свободой.",
+    "image": "https://i.imgur.com/gta6.jpg",
+    "size": "150 GB",
+    "year": "2025",
+    "updated": "2024-12-01",
+    "status": "soon",
+    "category": "games",
+    "tags": ["gta", "gta 6", "grand theft auto", "rockstar", "гта", "гта 6"],
+    "torrentFile": "",
+    "trailer": "https://www.youtube.com/embed/trailer",
+    "screenshots": [
+      "https://i.imgur.com/gta6-1.jpg",
+      "https://i.imgur.com/gta6-2.jpg"
+    ],
+    "specs": {
+      "Жанр": "Экшен, Открытый мир",
+      "Разработчик": "Rockstar Games",
+      "Издатель": "Rockstar Games",
+      "Платформа": "PC, PS5, Xbox Series X"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 11",
+        "Processor": "Intel Core i7-10700K / AMD Ryzen 7 3700X",
+        "Memory": "16 GB RAM",
+        "Graphics": "NVIDIA GeForce RTX 3070 / AMD Radeon RX 6700 XT",
+        "Storage": "200 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 11",
+        "Processor": "Intel Core i9-12900K / AMD Ryzen 9 5900X",
+        "Memory": "32 GB RAM",
+        "Graphics": "NVIDIA GeForce RTX 4080 / AMD Radeon RX 7800 XT",
+        "Storage": "200 GB available space"
+      }
+    }
+  },
+  "cyberpunk-2077": {
+    "title": "Cyberpunk 2077",
+    "description": "Киберпанк-РПГ в футуристическом мире. Станьте наемником, принимайте решения и формируйте судьбу Найт-Сити.",
+    "image": "https://i.imgur.com/cyberpunk.jpg",
+    "size": "70 GB",
+    "year": "2020",
+    "updated": "2024-09-15",
+    "status": "available",
+    "category": "games",
+    "tags": ["cyberpunk", "cyberpunk 2077", "cd projekt", "rpg", "киберпанк"],
+    "torrentFile": "https://thelastgame.org/index.php?do=download&id=25363",
+    "trailer": "https://drive.google.com/file/d/1FFEYZ4aImNICT8YX2G4XziW8wvIJez_L/preview",
+    "screenshots": [
+      "https://i.imgur.com/cp1.jpg",
+      "https://i.imgur.com/cp2.jpg"
+    ],
+    "specs": {
+      "Жанр": "RPG, Экшен",
+      "Разработчик": "CD Projekt RED",
+      "Издатель": "CD Projekt",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i5-3570K / AMD FX-8310",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 780 / AMD Radeon RX 470",
+        "Storage": "70 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i7-4790 / AMD Ryzen 3 3200G",
+        "Memory": "12 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 1060 6GB / AMD Radeon RX 580 8GB",
+        "Storage": "70 GB available space"
+      }
+    }
+  },
+  "the-last-of-us-part-2": {
+    "title": "The Last of Us Part II",
+    "description": "Эмоциональная история выживания в постапокалиптическом мире. Исследуйте, сражайтесь и принимайте трудные решения.",
+    "image": "https://i.imgur.com/tlou2.jpg",
+    "size": "100 GB",
+    "year": "2020",
+    "updated": "2024-06-20",
+    "status": "available",
+    "category": "games",
+    "tags": ["the last of us", "tlou", "naughty dog", "survival", "story"],
+    "torrentFile": "https://byxatab.com/index.php?do=download&id=3197",
+    "trailer": "https://www.youtube.com/embed/tlou2-trailer",
+    "screenshots": [
+      "https://i.imgur.com/tlou1.jpg",
+      "https://i.imgur.com/tlou2.jpg"
+    ],
+    "specs": {
+      "Жанр": "Экшен, Приключения",
+      "Разработчик": "Naughty Dog",
+      "Издатель": "Sony Interactive Entertainment",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "AMD Ryzen 5 1500X / Intel Core i7-4770K",
+        "Memory": "16 GB RAM",
+        "Graphics": "AMD Radeon RX 470 / NVIDIA GeForce GTX 1060",
+        "Storage": "100 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "AMD Ryzen 5 3600 / Intel Core i7-8700",
+        "Memory": "16 GB RAM",
+        "Graphics": "AMD Radeon RX 5700 XT / NVIDIA GeForce RTX 2070 Super",
+        "Storage": "100 GB available space"
+      }
+    }
+  },
+  "god-of-war-ragnarok": {
+    "title": "God of War Ragnarök",
+    "description": "Продолжение истории Кратоса и Атрея. Эпическое путешествие по мифам скандинавской мифологии.",
+    "image": "https://i.imgur.com/gowr.jpg",
+    "size": "110 GB",
+    "year": "2022",
+    "updated": "2024-11-10",
+    "status": "available",
+    "category": "games",
+    "tags": ["god of war", "gow", "ragnarok", "santa monica", "mythology"],
+    "torrentFile": "https://thelastgame.org/index.php?do=download&id=25116",
+    "trailer": "https://drive.google.com/file/d/1rTfV83o4uBXl5GDAK1Rm2fIlq_O50LZK/preview",
+    "screenshots": [
+      "https://i.imgur.com/gow1.jpg",
+      "https://i.imgur.com/gow2.jpg"
+    ],
+    "specs": {
+      "Жанр": "Экшен, Приключения",
+      "Разработчик": "Santa Monica Studio",
+      "Издатель": "Sony Interactive Entertainment",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i5-6600K / AMD Ryzen 5 2600",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 580",
+        "Storage": "110 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i7-8700K / AMD Ryzen 7 3700X",
+        "Memory": "16 GB RAM",
+        "Graphics": "NVIDIA GeForce RTX 3070 / AMD Radeon RX 6700 XT",
+        "Storage": "110 GB available space"
+      }
+    }
+  },
+  "elden-ring": {
+    "title": "Elden Ring",
+    "description": "Открытый мир фэнтези от FromSoftware и Джорджа Р.Р. Мартина. Исследуйте, сражайтесь с боссами и становитесь Элденлордом.",
+    "image": "https://i.imgur.com/elden.jpg",
+    "size": "60 GB",
+    "year": "2022",
+    "updated": "2024-03-15",
+    "status": "available",
+    "category": "games",
+    "tags": ["elden ring", "fromsoftware", "soulslike", "open world", "fantasy"],
+    "torrentFile": "https://itorrents-igruha.org/engine/download.php?id=96854",
+    "trailer": "https://www.youtube.com/embed/elden-trailer",
+    "screenshots": [
+      "https://i.imgur.com/elden1.jpg",
+      "https://i.imgur.com/elden2.jpg"
+    ],
+    "specs": {
+      "Жанр": "RPG, Экшен",
+      "Разработчик": "FromSoftware",
+      "Издатель": "Bandai Namco",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i5-8400 / AMD Ryzen 3 3300X",
+        "Memory": "12 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 580",
+        "Storage": "60 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i7-8700K / AMD Ryzen 5 3600X",
+        "Memory": "16 GB RAM",
+        "Graphics": "NVIDIA GeForce RTX 3070 / AMD Radeon RX 6700 XT",
+        "Storage": "60 GB available space"
+      }
+    }
+  },
+  "spider-man-2": {
+    "title": "Marvel's Spider-Man 2",
+    "description": "Новая глава в истории Человека-Паука. Исследуйте Нью-Йорк, сражайтесь с суперзлодеями и раскрывайте секреты.",
+    "image": "https://i.imgur.com/spiderman2.jpg",
+    "size": "95 GB",
+    "year": "2023",
+    "updated": "2024-10-20",
+    "status": "available",
+    "category": "games",
+    "tags": ["spider-man", "marvel", "insomniac", "superhero", "open world"],
+    "torrentFile": "https://thelastgame.org/index.php?do=download&id=25940",
+    "trailer": "https://drive.google.com/file/d/1b2HdVrg-VhsGMBhkV4vrL08ZhexzvZlz/preview",
+    "screenshots": [
+      "https://i.imgur.com/spidey1.jpg",
+      "https://i.imgur.com/spidey2.jpg"
+    ],
+    "specs": {
+      "Жанр": "Экшен, Приключения",
+      "Разработчик": "Insomniac Games",
+      "Издатель": "Sony Interactive Entertainment",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i5-6600K / AMD Ryzen 5 2600",
+        "Memory": "16 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 580",
+        "Storage": "95 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i7-8700K / AMD Ryzen 7 3700X",
+        "Memory": "16 GB RAM",
+        "Graphics": "NVIDIA GeForce RTX 3070 / AMD Radeon RX 6700 XT",
+        "Storage": "95 GB available space"
+      }
+    }
+  },
+  "resident-evil-4-remake": {
+    "title": "Resident Evil 4 (2023)",
+    "description": "Ремейк классического survival horror. Спасите дочь президента в мире, полном ужасов.",
+    "image": "https://i.imgur.com/re4.jpg",
+    "size": "45 GB",
+    "year": "2023",
+    "updated": "2024-03-24",
+    "status": "available",
+    "category": "games",
+    "tags": ["resident evil", "re4", "capcom", "horror", "survival"],
+    "torrentFile": "https://thelastgame.org/index.php?do=download&id=22660",
+    "trailer": "https://drive.google.com/file/d/1Og_0J7oBUu2_weBm9NBTOB_58fEiOEvv/preview",
+    "screenshots": [
+      "https://i.imgur.com/re41.jpg",
+      "https://i.imgur.com/re42.jpg"
+    ],
+    "specs": {
+      "Жанр": "Экшен, Ужасы",
+      "Разработчик": "Capcom",
+      "Издатель": "Capcom",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "AMD Ryzen 3 1200 / Intel Core i5-7500",
+        "Memory": "8 GB RAM",
+        "Graphics": "AMD Radeon RX 560 / NVIDIA GeForce GTX 1050 Ti",
+        "Storage": "45 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "AMD Ryzen 5 3600 / Intel Core i7-8700",
+        "Memory": "16 GB RAM",
+        "Graphics": "AMD Radeon RX 5700 / NVIDIA GeForce RTX 2060",
+        "Storage": "45 GB available space"
+      }
+    }
+  },
+  "gta-5": {
+    "title": "Grand Theft Auto V",
+    "description": "Классика жанра открытого мира. Три протагониста, бесконечные возможности и эпические истории.",
+    "image": "https://i.imgur.com/gta5.jpg",
+    "size": "95 GB",
+    "year": "2013",
+    "updated": "2024-12-01",
+    "status": "available",
+    "category": "games",
+    "tags": ["gta", "gta 5", "grand theft auto", "gta v", "rockstar", "гта", "гта 5"],
+    "torrentFile": "https://thelastgame.org/index.php?do=download&id=74",
+    "trailer": "https://drive.google.com/file/d/1u4Ov9NN54algWRQd0N9LM_XxKwTRCvS7/preview",
+    "screenshots": [
+      "https://i.imgur.com/gta51.jpg",
+      "https://i.imgur.com/gta52.jpg"
+    ],
+    "specs": {
+      "Жанр": "Экшен, Открытый мир",
+      "Разработчик": "Rockstar North",
+      "Издатель": "Rockstar Games",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core 2 Quad Q6600 / AMD Phenom 9850",
+        "Memory": "4 GB RAM",
+        "Graphics": "NVIDIA GeForce 9800 GT / AMD Radeon HD 4870",
+        "Storage": "95 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i5-3470 / AMD FX-8350",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 660 / AMD Radeon HD 7870",
+        "Storage": "95 GB available space"
+      }
+    }
+  },
+  "gta-san-andreas": {
+    "title": "Grand Theft Auto: San Andreas",
+    "description": "Классика GTA с огромным штатом Сан-Андреас. Карьера гангстера, миссии и свобода действий.",
+    "image": "https://i.imgur.com/gtasa.jpg",
+    "size": "4.7 GB",
+    "year": "2004",
+    "updated": "2024-05-10",
+    "status": "available",
+    "category": "games",
+    "tags": ["gta", "gta san andreas", "grand theft auto", "san andreas", "гта", "гта сан андреас"],
+    "torrentFile": "https://thelastgame.org/index.php?do=download&id=53",
+    "trailer": "https://drive.google.com/file/d/1RFkalR_P4_T3H17F0JpwuRIMLFuZHcgE/preview",
+    "screenshots": [
+      "https://i.imgur.com/gtasa1.jpg",
+      "https://i.imgur.com/gtasa2.jpg"
+    ],
+    "specs": {
+      "Жанр": "Экшен, Открытый мир",
+      "Разработчик": "Rockstar North",
+      "Издатель": "Rockstar Games",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows XP",
+        "Processor": "Pentium III 450 MHz",
+        "Memory": "64 MB RAM",
+        "Graphics": "DirectX 9.0 compatible",
+        "Storage": "5 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 7+",
+        "Processor": "Pentium 4 2.0 GHz",
+        "Memory": "256 MB RAM",
+        "Graphics": "GeForce 3 / Radeon 8500",
+        "Storage": "5 GB available space"
+      }
+    }
+  },
+  "assassins-creed-valhalla": {
+    "title": "Assassin's Creed Valhalla",
+    "description": "Эпическая сага викингов в мире Assassin's Creed. Завоевывайте Англию и раскрывайте тайны.",
+    "image": "https://i.imgur.com/acv.jpg",
+    "size": "50 GB",
+    "year": "2020",
+    "updated": "2024-07-15",
+    "status": "available",
+    "category": "games",
+    "tags": ["assassins creed", "valhalla", "ubisoft", "vikings", "rpg"],
+    "torrentFile": "https://thelastgame.org/index.php?do=download&id=20675",
+    "trailer": "https://drive.google.com/file/d/1OIQ3h5WFgIOICkYHPUPxXMdzqkN_rQhN/preview",
+    "screenshots": [
+      "https://i.imgur.com/acv1.jpg",
+      "https://i.imgur.com/acv2.jpg"
+    ],
+    "specs": {
+      "Жанр": "RPG, Экшен",
+      "Разработчик": "Ubisoft",
+      "Издатель": "Ubisoft",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i5-4460 / AMD Ryzen 3 1200",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 960 / AMD Radeon RX 460",
+        "Storage": "50 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i7-4790 / AMD Ryzen 5 1600",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 570",
+        "Storage": "50 GB available space"
+      }
+    }
+  },
+  "fifa-23": {
+    "title": "FIFA 23",
+    "description": "Последняя версия футбольного симулятора. Реалистичный футбол с лучшими командами и игроками мира.",
+    "image": "https://i.imgur.com/fifa23.jpg",
+    "size": "50 GB",
+    "year": "2022",
+    "updated": "2024-09-30",
+    "status": "buy",
+    "category": "games",
+    "buyGame": "https://www.ea.com/games/fifa/fifa-23",
+    "trailer": "https://www.youtube.com/embed/fifa23-trailer",
+    "screenshots": [
+      "https://i.imgur.com/fifa1.jpg",
+      "https://i.imgur.com/fifa2.jpg"
+    ],
+    "specs": {
+      "Жанр": "Спортивный симулятор",
+      "Разработчик": "EA Sports",
+      "Издатель": "Electronic Arts",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i3-6100 / AMD Athlon X4 880K",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 660 / AMD Radeon HD 7850",
+        "Storage": "50 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i5-3550 / AMD FX 8150",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 670 / AMD Radeon R9 270X",
+        "Storage": "50 GB available space"
+      }
+    }
+  },
+  "need-for-speed-unbound": {
+    "title": "Need for Speed Unbound",
+    "description": "Аркадные гонки с уникальным художественным стилем. Гоняй по городу, настраивай авто и побеждай в соревнованиях.",
+    "image": "https://i.imgur.com/nfsu.jpg",
+    "size": "50 GB",
+    "year": "2022",
+    "updated": "2024-12-05",
+    "status": "buy",
+    "category": "games",
+    "buyGame": "https://www.ea.com/games/need-for-speed/need-for-speed-unbound",
+    "trailer": "https://www.youtube.com/embed/nfsu-trailer",
+    "screenshots": [
+      "https://i.imgur.com/nfs1.jpg",
+      "https://i.imgur.com/nfs2.jpg"
+    ],
+    "specs": {
+      "Жанр": "Гонки, Аркада",
+      "Разработчик": "Criterion Games",
+      "Издатель": "Electronic Arts",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i3-8100 / AMD Ryzen 3 1200",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 1050 / AMD Radeon RX 560",
+        "Storage": "50 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i5-8400 / AMD Ryzen 5 2600",
+        "Memory": "16 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 1660 Ti / AMD Radeon RX 590",
+        "Storage": "50 GB available space"
+      }
+    }
+  },
+  "battlefield-2042": {
+    "title": "Battlefield 2042",
+    "description": "Крупномасштабные сражения в будущем. Командные бои с разрушительной средой и техникой.",
+    "image": "https://i.imgur.com/bf2042.jpg",
+    "size": "80 GB",
+    "year": "2021",
+    "updated": "2024-10-15",
+    "status": "buy",
+    "category": "games",
+    "buyGame": "https://www.ea.com/games/battlefield/battlefield-2042",
+    "trailer": "https://www.youtube.com/embed/bf2042-trailer",
+    "screenshots": [
+      "https://i.imgur.com/bf1.jpg",
+      "https://i.imgur.com/bf2.jpg"
+    ],
+    "specs": {
+      "Жанр": "Шутер, Экшен",
+      "Разработчик": "DICE",
+      "Издатель": "Electronic Arts",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "AMD Ryzen 5 3600 / Intel Core i5-6600K",
+        "Memory": "8 GB RAM",
+        "Graphics": "AMD Radeon RX 560 / NVIDIA GeForce GTX 1050 Ti",
+        "Storage": "100 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "AMD Ryzen 7 2700X / Intel Core i7-4790",
+        "Memory": "16 GB RAM",
+        "Graphics": "AMD Radeon RX 6600 XT / NVIDIA GeForce RTX 3060",
+        "Storage": "100 GB available space"
+      }
+    }
+  },
+  "beamng-drive": {
+    "title": "BeamNG.drive",
+    "description": "Реалистичный симулятор вождения. Разрушай автомобили, исследуй и создавай собственные сценарии.",
+    "image": "https://i.imgur.com/beamng.jpg",
+    "size": "2 GB",
+    "year": "2015",
+    "updated": "2024-11-20",
+    "status": "available",
+    "category": "games",
+    "torrentFile": "https://thelastgame.org/index.php?do=download&id=25167",
+    "trailer": "https://drive.google.com/file/d/1BatuMKfYTKKxJyTV3oGSuXm6WwDkG4fGW/preview",
+    "screenshots": [
+      "https://i.imgur.com/beam1.jpg",
+      "https://i.imgur.com/beam2.jpg"
+    ],
+    "specs": {
+      "Жанр": "Симулятор, Гонки",
+      "Разработчик": "BeamNG GmbH",
+      "Издатель": "BeamNG GmbH",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7 64-bit",
+        "Processor": "Dual Core 2.4 GHz",
+        "Memory": "4 GB RAM",
+        "Graphics": "DirectX 11 compatible",
+        "Storage": "3 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Quad Core 3.0 GHz",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 960 / AMD Radeon R9 280",
+        "Storage": "3 GB available space"
+      }
+    }
+  },
+  "beamng-drive-v0376": {
+    "title": "BeamNG.drive v0.37.6.0",
+    "description": "Новая версия реалистичного симулятора вождения с улучшенной физикой и новыми автомобилями.",
+    "image": "https://i.imgur.com/beamng376.jpg",
+    "size": "3 GB",
+    "year": "2024",
+    "updated": "2024-12-01",
+    "status": "available",
+    "category": "games",
+    "torrentFile": "https://thelastgame.ru/download/BeamNG_drive_v0.37.6.0.torrent",
+    "trailer": "https://drive.google.com/file/d/1BatuMKfYTKKxJyTV3oGSuXm6WwDkG4fGW/preview",
+    "screenshots": [
+      "https://i.imgur.com/beam3761.jpg",
+      "https://i.imgur.com/beam3762.jpg"
+    ],
+    "specs": {
+      "Жанр": "Симулятор, Гонки",
+      "Разработчик": "BeamNG GmbH",
+      "Издатель": "BeamNG GmbH",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7 64-bit",
+        "Processor": "Dual Core 2.4 GHz",
+        "Memory": "4 GB RAM",
+        "Graphics": "DirectX 11 compatible",
+        "Storage": "4 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Quad Core 3.0 GHz",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 580",
+        "Storage": "4 GB available space"
+      }
+    }
+  },
+  "euro-truck-simulator-2": {
+    "title": "Euro Truck Simulator 2",
+    "description": "Симулятор дальнобойщика. Управляй грузовиком, перевози грузы и развивай свой бизнес.",
+    "image": "https://i.imgur.com/ets2.jpg",
+    "size": "8 GB",
+    "year": "2012",
+    "updated": "2024-08-15",
+    "status": "available",
+    "category": "games",
+    "torrentFile": "https://byxatab.com/index.php?do=download&id=12692",
+    "trailer": "https://www.youtube.com/embed/ets2-trailer",
+    "screenshots": [
+      "https://i.imgur.com/ets21.jpg",
+      "https://i.imgur.com/ets22.jpg"
+    ],
+    "specs": {
+      "Жанр": "Симулятор",
+      "Разработчик": "SCS Software",
+      "Издатель": "SCS Software",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7 64-bit",
+        "Processor": "Dual Core 2.4 GHz",
+        "Memory": "4 GB RAM",
+        "Graphics": "DirectX 11 compatible",
+        "Storage": "8 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Quad Core 3.0 GHz",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 960 / AMD Radeon R9 280",
+        "Storage": "8 GB available space"
+      }
+    }
+  },
+  "american-truck-simulator": {
+    "title": "American Truck Simulator",
+    "description": "Американская версия симулятора дальнобойщика. Перевози грузы по США и развивай компанию.",
+    "image": "https://i.imgur.com/ats.jpg",
+    "size": "6 GB",
+    "year": "2016",
+    "updated": "2024-09-10",
+    "status": "available",
+    "category": "games",
+    "torrentFile": "https://byxatab.com/index.php?do=download&id=5266",
+    "trailer": "https://www.youtube.com/embed/ats-trailer",
+    "screenshots": [
+      "https://i.imgur.com/ats1.jpg",
+      "https://i.imgur.com/ats2.jpg"
+    ],
+    "specs": {
+      "Жанр": "Симулятор",
+      "Разработчик": "SCS Software",
+      "Издатель": "SCS Software",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7 64-bit",
+        "Processor": "Dual Core 2.4 GHz",
+        "Memory": "4 GB RAM",
+        "Graphics": "DirectX 11 compatible",
+        "Storage": "6 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Quad Core 3.0 GHz",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 960 / AMD Radeon R9 280",
+        "Storage": "6 GB available space"
+      }
+    }
+  },
+  "farming-simulator-22": {
+    "title": "Farming Simulator 22",
+    "description": "Симулятор фермера. Управляй фермой, выращивай урожай и развивай сельское хозяйство.",
+    "image": "https://i.imgur.com/fs22.jpg",
+    "size": "15 GB",
+    "year": "2021",
+    "updated": "2024-11-05",
+    "status": "available",
+    "category": "games",
+    "torrentFile": "https://thelastgame.org/index.php?do=download&id=23121",
+    "trailer": "https://drive.google.com/file/d/1wh_yZGiWCXZnArJHnK0VtNtV4H_plLEw/preview",
+    "screenshots": [
+      "https://i.imgur.com/fs1.jpg",
+      "https://i.imgur.com/fs2.jpg"
+    ],
+    "specs": {
+      "Жанр": "Симулятор",
+      "Разработчик": "Giants Software",
+      "Издатель": "Giants Software",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i3-4340 / AMD FX-6300",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 650 Ti / AMD Radeon R7 250X",
+        "Storage": "35 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i5-5675C / AMD Ryzen 5 1500X",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 570",
+        "Storage": "35 GB available space"
+      }
+    }
+  },
+  "construction-simulator": {
+    "title": "Construction Simulator",
+    "description": "Симулятор строительства. Управляй техникой, строй объекты и развивай строительную компанию.",
+    "image": "https://i.imgur.com/cs.jpg",
+    "size": "10 GB",
+    "year": "2015",
+    "updated": "2024-07-20",
+    "status": "available",
+    "category": "games",
+    "torrentFile": "https://itorrents-igruha.net/engine/download.php?id=21996",
+    "trailer": "https://www.youtube.com/embed/cs-trailer",
+    "screenshots": [
+      "https://i.imgur.com/cs1.jpg",
+      "https://i.imgur.com/cs2.jpg"
+    ],
+    "specs": {
+      "Жанр": "Симулятор",
+      "Разработчик": "Apex Game Studios",
+      "Издатель": "Astro Publishing",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7 64-bit",
+        "Processor": "Intel Core 2 Duo E8400 / AMD Athlon II X4 620",
+        "Memory": "4 GB RAM",
+        "Graphics": "NVIDIA GeForce GT 640 / AMD Radeon HD 7750",
+        "Storage": "10 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i5-2400 / AMD FX-6300",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 960 / AMD Radeon R9 280",
+        "Storage": "10 GB available space"
+      }
+    }
+  },
+  "snowrunner": {
+    "title": "SnowRunner",
+    "description": "Экстремальный симулятор вождения по бездорожью. Преодолевай препятствия и выполняй задания.",
+    "image": "https://i.imgur.com/snowrunner.jpg",
+    "size": "25 GB",
+    "year": "2018",
+    "updated": "2024-10-25",
+    "status": "available",
+    "category": "games",
+    "torrentFile": "https://byxatab.com/index.php?do=download&id=8154",
+    "trailer": "https://www.youtube.com/embed/snowrunner-trailer",
+    "screenshots": [
+      "https://i.imgur.com/snow1.jpg",
+      "https://i.imgur.com/snow2.jpg"
+    ],
+    "specs": {
+      "Жанр": "Симулятор, Гонки",
+      "Разработчик": "Saber Interactive",
+      "Издатель": "Focus Entertainment",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7 64-bit",
+        "Processor": "Intel Core i3-3210 / AMD FX-6350",
+        "Memory": "6 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 650 Ti / AMD Radeon R7 250X",
+        "Storage": "25 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i5-4430 / AMD FX-8350",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 580",
+        "Storage": "25 GB available space"
+      }
+    }
+  },
+  "mudrunner": {
+    "title": "MudRunner",
+    "description": "Симулятор вождения по грязи и бездорожью. Транспортируй грузы в экстремальных условиях.",
+    "image": "https://i.imgur.com/mudrunner.jpg",
+    "size": "8 GB",
+    "year": "2017",
+    "updated": "2024-06-30",
+    "status": "available",
+    "category": "games",
+    "torrentFile": "https://itorrents-igruha.org/engine/download.php?id=97236",
+    "trailer": "https://www.youtube.com/embed/mudrunner-trailer",
+    "screenshots": [
+      "https://i.imgur.com/mud1.jpg",
+      "https://i.imgur.com/mud2.jpg"
+    ],
+    "specs": {
+      "Жанр": "Симулятор, Гонки",
+      "Разработчик": "Saber Interactive",
+      "Издатель": "Focus Entertainment",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7 64-bit",
+        "Processor": "Intel Core 2 Duo E8400 / AMD Athlon II X4 620",
+        "Memory": "4 GB RAM",
+        "Graphics": "NVIDIA GeForce GT 640 / AMD Radeon HD 7750",
+        "Storage": "8 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i5-2400 / AMD FX-6300",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 960 / AMD Radeon R9 280",
+        "Storage": "8 GB available space"
+      }
+    }
+  },
+  "the-sims-4": {
+    "title": "The Sims 4",
+    "description": "Жизнь в симуляторе. Создавай персонажей, строй дома и управляй их жизнью.",
+    "image": "https://i.imgur.com/sims4.jpg",
+    "size": "30 GB",
+    "year": "2014",
+    "updated": "2024-12-10",
+    "status": "buy",
+    "category": "games",
+    "buyGame": "https://www.ea.com/games/the-sims/the-sims-4",
+    "trailer": "https://www.youtube.com/embed/sims4-trailer",
+    "screenshots": [
+      "https://i.imgur.com/sims1.jpg",
+      "https://i.imgur.com/sims2.jpg"
+    ],
+    "specs": {
+      "Жанр": "Симулятор жизни",
+      "Разработчик": "Maxis",
+      "Издатель": "Electronic Arts",
+      "Платформа": "PC"
+    },
+    "systemRequirements": {
+      "minimum": {
+        "OS": "Windows 7 64-bit",
+        "Processor": "Intel Core 2 Duo E4300 / AMD Athlon 64 X2 4000+",
+        "Memory": "4 GB RAM",
+        "Graphics": "NVIDIA GeForce 6600 / ATI Radeon X1300 / Intel GMA X4500",
+        "Storage": "30 GB available space"
+      },
+      "recommended": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "Intel Core i5-650 / AMD Athlon II X4 620",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 650 / AMD Radeon R7 250X",
+        "Storage": "30 GB available space"
+      }
+    }
+  }
+}
