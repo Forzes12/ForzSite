@@ -5488,14 +5488,11 @@
 
         function openSupportModal() {
             document.getElementById('miniChat').classList.add('active');
-            // Очистить сообщения и показать поиск
+            // Очистить сообщения и показать опции
             document.getElementById('chatMessages').innerHTML = '';
-            document.getElementById('optionsContainer').style.display = 'none';
-            document.getElementById('inputContainer').style.display = 'flex';
-            document.getElementById('chatInput').placeholder = 'Введите название игры...';
-            document.getElementById('chatInput').focus();
-            document.getElementById('sendMessageBtn').setAttribute('data-mode', 'search');
-            addMessage('Привет! Введите название игры для поиска:', 'bot');
+            document.getElementById('optionsContainer').style.display = 'flex';
+            document.getElementById('inputContainer').style.display = 'none';
+            addMessage('Привет! Выберите опцию:', 'bot');
         }
 
         function closeSupportModal() {
