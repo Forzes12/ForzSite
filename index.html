@@ -4946,8 +4946,7 @@
             let visibleSlideIndex = 0;
             sliderGames.forEach((game, index) => {
                 const gameDataItem = gameData[game.id];
-                const allowedStatuses = isDeveloperMode ? ['available', 'buy', 'soon', 'developer'] : ['available', 'buy', 'soon'];
-                if (gameDataItem && allowedStatuses.includes(gameDataItem.status)) {
+                if (gameDataItem) {
                     const slide = document.createElement('div');
                     slide.className = 'slider-slide';
                     slide.innerHTML = `
@@ -5037,8 +5036,7 @@
                 const gameInfo = findGameByTitle(gameTitle);
                 console.log('gameInfo for', gameTitle, ':', gameInfo);
                 if (gameInfo) {
-                    const allowedStatuses = isDeveloperMode ? ['available', 'buy', 'soon', 'developer'] : ['available', 'buy', 'soon'];
-                    if (allowedStatuses.includes(gameInfo.data.status) && gameInfo.data.category !== 'Privatki') {
+                    if (gameInfo.data.category !== 'Privatki') {
                         const gameCard = createGameCard(gameInfo.id, gameInfo.data);
                         console.log('Created card for', gameTitle, ':', gameCard);
                         popularGamesGrid.appendChild(gameCard);
@@ -5054,8 +5052,7 @@
                 const gameInfo = findGameByTitle(gameTitle);
                 console.log('gameInfo for', gameTitle, ':', gameInfo);
                 if (gameInfo) {
-                    const allowedStatuses = isDeveloperMode ? ['available', 'buy', 'soon', 'developer'] : ['available', 'buy', 'soon'];
-                    if (allowedStatuses.includes(gameInfo.data.status) && gameInfo.data.category !== 'Privatki') {
+                    if (gameInfo.data.category !== 'Privatki') {
                         const gameCard = createGameCard(gameInfo.id, gameInfo.data);
                         console.log('Created card for', gameTitle, ':', gameCard);
                         newGamesGrid.appendChild(gameCard);
@@ -5201,9 +5198,8 @@
                 // Проверяем категорию
                 const matchesCategory = game.category === activeCategory;
 
-                // Проверяем статус (только available, buy, soon для обычных пользователей, все для разработчика)
-                const allowedStatuses = isDeveloperMode ? ['available', 'buy', 'soon', 'developer'] : ['available', 'buy', 'soon'];
-                const matchesStatus = allowedStatuses.includes(game.status);
+                // Проверяем статус (показываем все игры)
+                const matchesStatus = true;
 
                 // Проверяем поиск
                 const matchesSearch = !searchTerm ||
