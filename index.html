@@ -4737,6 +4737,7 @@
         let allGamesLoaded = false;
         let currentSlide = 0;
         let autoSlideInterval;
+        let isDeveloperMode = new URLSearchParams(window.location.search).has('dev');
 
         // Глобальные переменные для управления полноэкранным просмотром скриншотов
         let currentScreenshotIndex = 0;
@@ -4886,24 +4887,30 @@
             sliderTrack.innerHTML = '';
             sliderDots.innerHTML = '';
             
+            let visibleSlideIndex = 0;
             sliderGames.forEach((game, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'slider-slide';
-                slide.innerHTML = `
-                    <img src="${game.image}" alt="${game.title}">
-                    <div class="slide-content">
-                        <h3 class="slide-title">${game.title}</h3>
-                        <p class="slide-description">${game.description}</p>
-                        <a href="#" class="slide-button" data-game="${game.id}">${game.buttonText}</a>
-                    </div>
-                `;
-                sliderTrack.appendChild(slide);
-                
-                const dot = document.createElement('div');
-                dot.className = 'slider-dot';
-                if (index === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(index));
-                sliderDots.appendChild(dot);
+                const gameDataItem = gameData[game.id];
+                const allowedStatuses = isDeveloperMode ? ['available', 'buy', 'soon', 'developer'] : ['available', 'buy', 'soon'];
+                if (gameDataItem && allowedStatuses.includes(gameDataItem.status)) {
+                    const slide = document.createElement('div');
+                    slide.className = 'slider-slide';
+                    slide.innerHTML = `
+                        <img src="${game.image}" alt="${game.title}">
+                        <div class="slide-content">
+                            <h3 class="slide-title">${game.title}</h3>
+                            <p class="slide-description">${game.description}</p>
+                            <a href="#" class="slide-button" data-game="${game.id}">${game.buttonText}</a>
+                        </div>
+                    `;
+                    sliderTrack.appendChild(slide);
+
+                    const dot = document.createElement('div');
+                    dot.className = 'slider-dot';
+                    if (visibleSlideIndex === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToSlide(visibleSlideIndex));
+                    sliderDots.appendChild(dot);
+                    visibleSlideIndex++;
+                }
             });
             
             document.getElementById('prevBtn').addEventListener('click', prevSlide);
@@ -4935,12 +4942,14 @@
         }
 
         function nextSlide() {
-            const nextSlide = (currentSlide + 1) % sliderGames.length;
+            const totalSlides = document.querySelectorAll('.slider-slide').length;
+            const nextSlide = (currentSlide + 1) % totalSlides;
             goToSlide(nextSlide);
         }
 
         function prevSlide() {
-            const prevSlide = (currentSlide - 1 + sliderGames.length) % sliderGames.length;
+            const totalSlides = document.querySelectorAll('.slider-slide').length;
+            const prevSlide = (currentSlide - 1 + totalSlides) % totalSlides;
             goToSlide(prevSlide);
         }
 
@@ -4972,10 +4981,13 @@
                 const gameInfo = findGameByTitle(gameTitle);
                 console.log('gameInfo for', gameTitle, ':', gameInfo);
                 if (gameInfo) {
-                    const gameCard = createGameCard(gameInfo.id, gameInfo.data);
-                    console.log('Created card for', gameTitle, ':', gameCard);
-                    popularGamesGrid.appendChild(gameCard);
-                    console.log('Appended card to popular grid');
+                    const allowedStatuses = isDeveloperMode ? ['available', 'buy', 'soon', 'developer'] : ['available', 'buy', 'soon'];
+                    if (allowedStatuses.includes(gameInfo.data.status) && gameInfo.data.category !== 'Privatki') {
+                        const gameCard = createGameCard(gameInfo.id, gameInfo.data);
+                        console.log('Created card for', gameTitle, ':', gameCard);
+                        popularGamesGrid.appendChild(gameCard);
+                        console.log('Appended card to popular grid');
+                    }
                 } else {
                     console.log('No gameInfo found for', gameTitle);
                 }
@@ -4986,10 +4998,13 @@
                 const gameInfo = findGameByTitle(gameTitle);
                 console.log('gameInfo for', gameTitle, ':', gameInfo);
                 if (gameInfo) {
-                    const gameCard = createGameCard(gameInfo.id, gameInfo.data);
-                    console.log('Created card for', gameTitle, ':', gameCard);
-                    newGamesGrid.appendChild(gameCard);
-                    console.log('Appended card to new grid');
+                    const allowedStatuses = isDeveloperMode ? ['available', 'buy', 'soon', 'developer'] : ['available', 'buy', 'soon'];
+                    if (allowedStatuses.includes(gameInfo.data.status) && gameInfo.data.category !== 'Privatki') {
+                        const gameCard = createGameCard(gameInfo.id, gameInfo.data);
+                        console.log('Created card for', gameTitle, ':', gameCard);
+                        newGamesGrid.appendChild(gameCard);
+                        console.log('Appended card to new grid');
+                    }
                 } else {
                     console.log('No gameInfo found for', gameTitle);
                 }
@@ -5130,13 +5145,17 @@
                 // Проверяем категорию
                 const matchesCategory = game.category === activeCategory;
 
+                // Проверяем статус (только available, buy, soon для обычных пользователей, все для разработчика)
+                const allowedStatuses = isDeveloperMode ? ['available', 'buy', 'soon', 'developer'] : ['available', 'buy', 'soon'];
+                const matchesStatus = allowedStatuses.includes(game.status);
+
                 // Проверяем поиск
                 const matchesSearch = !searchTerm ||
                                       game.title.toLowerCase().includes(searchTerm) ||
                                       game.description.toLowerCase().includes(searchTerm);
 
                 // Если условия выполнены - показываем карточку
-                if (matchesCategory && matchesSearch) {
+                if (matchesCategory && matchesStatus && matchesSearch) {
                     card.style.display = 'block';
                     visibleCount++;
                 } else {
@@ -6277,9 +6296,3 @@
 
 </body>
 </html>
-
-
-
-</body>
-</html>
-
