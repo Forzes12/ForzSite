@@ -4871,6 +4871,9 @@
         }
 
         function switchPage(pageId) {
+            // Reset URL to remove game parameter when navigating
+            history.replaceState(null, null, window.location.pathname);
+
             const currentPage = document.querySelector('.page.active');
             const targetPage = document.getElementById(pageId);
 
@@ -5433,6 +5436,9 @@
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
 
+            // Update URL with game parameter
+            history.replaceState(null, null, `?game=${gameId}`);
+
             if (game.trailer) {
                 currentTrailerIframe = modalContent.querySelector('iframe');
             }
@@ -5457,6 +5463,8 @@
                 modal.classList.remove('active', 'closing');
                 stopVideo();
                 document.body.style.overflow = '';
+                // Reset URL to remove game parameter
+                history.replaceState(null, null, window.location.pathname);
             }, 300);
         });
 
@@ -5469,6 +5477,8 @@
                     modal.classList.remove('active', 'closing');
                     stopVideo();
                     document.body.style.overflow = '';
+                    // Reset URL to remove game parameter
+                    history.replaceState(null, null, window.location.pathname);
                 }, 300);
             }
         });
