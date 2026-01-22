@@ -4469,6 +4469,62 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0.7; }
 }
+
+/* Share button styles */
+.game-modal-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.share-btn {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 50%, rgba(6, 182, 212, 0.1) 100%);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: var(--text);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.share-btn:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(6, 182, 212, 0.2) 100%);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.share-btn i {
+    font-size: 0.9rem;
+}
+
+/* Notification styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.9) 0%, rgba(168, 85, 247, 0.9) 100%);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    z-index: 10000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
     </style>
 </head>
 <body>
@@ -5299,7 +5355,12 @@
                 <div class="game-modal-header">
                     <img src="${game.image}" alt="${game.title}" class="game-modal-cover">
                     <div class="game-modal-info">
-                        <h2 class="game-modal-title">${game.title}</h2>
+                        <div class="game-modal-title-row">
+                            <h2 class="game-modal-title">${game.title}</h2>
+                            <button class="share-btn" onclick="shareGame('${gameId}')">
+                                <i class="fas fa-share-alt"></i> Поделиться
+                            </button>
+                        </div>
                         <div class="game-modal-meta">
                             <span class="game-modal-size">${game.size}</span>
                             <span class="game-modal-year">${game.year}</span>
@@ -5554,6 +5615,44 @@
                     localStorage.removeItem(`promoCode_${gameId}`);
                 }
             }
+        }
+
+        // Функция поделиться игрой
+        function shareGame(gameId) {
+            const url = `${window.location.origin}${window.location.pathname}?game=${gameId}`;
+            navigator.clipboard.writeText(url).then(function() {
+                // Показать уведомление
+                showNotification('Ссылка скопирована в буфер обмена!');
+            }).catch(function(err) {
+                console.error('Ошибка копирования: ', err);
+                // Fallback
+                const textArea = document.createElement('textarea');
+                textArea.value = url;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showNotification('Ссылка скопирована в буфер обмена!');
+            });
+        }
+
+        // Функция показа уведомлений
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
         }
 
         // Функция проверки изменений промокода в games.json
@@ -6084,6 +6183,18 @@
         document.addEventListener('DOMContentLoaded', async function() {
             // Загрузка данных
             await loadGameData();
+
+            // Проверка URL параметров для прямых ссылок на игры
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameId = urlParams.get('game');
+            if (gameId && gameData[gameId]) {
+                // Переключаемся на страницу всех игр
+                switchPage('all-games-page');
+                // Ждем загрузки страницы и открываем модальное окно
+                setTimeout(() => {
+                    openGameModal(gameId);
+                }, 1000);
+            }
 
             // Инициализация аналитики
             initChatAnalytics();
