@@ -4369,6 +4369,11 @@
                 transform: translateY(0) scale(1) rotateX(0deg);
             }
         }
+
+        .empty-message {
+            text-align: center;
+            padding: 50px 20px;
+        }
     </style>
 </head>
 <body>
@@ -5054,6 +5059,22 @@
             });
 
             document.getElementById('gamesCount').textContent = `Найдено: ${visibleCount}`;
+
+            // Handle empty message for Privatki
+            const grid = document.getElementById('allGamesGrid');
+            let emptyMessage = grid.querySelector('.empty-message');
+            if (visibleCount === 0 && activeCategory === 'Privatki') {
+                if (!emptyMessage) {
+                    emptyMessage = document.createElement('div');
+                    emptyMessage.className = 'empty-message';
+                    emptyMessage.innerHTML = '<div style="text-align: center; margin-bottom: 20px; font-size: 1.5rem; font-weight: bold; color: var(--text); text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);">🚀 Игра появится: 22.01.2026 21:00 🚀</div><img src="Video/0122(1).gif" style="max-width: 100%; height: auto; border-radius: 10px;">';
+                    grid.appendChild(emptyMessage);
+                }
+            } else {
+                if (emptyMessage) {
+                    emptyMessage.remove();
+                }
+            }
         }
 
         // Обновление счетчика
@@ -5954,3 +5975,4 @@
 
 </body>
 </html>
+
