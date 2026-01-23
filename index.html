@@ -5039,12 +5039,10 @@
                 const gameInfo = findGameByTitle(gameTitle);
                 console.log('gameInfo for', gameTitle, ':', gameInfo);
                 if (gameInfo) {
-                    if (gameInfo.data.category !== 'Privatki') {
-                        const gameCard = createGameCard(gameInfo.id, gameInfo.data);
-                        console.log('Created card for', gameTitle, ':', gameCard);
-                        popularGamesGrid.appendChild(gameCard);
-                        console.log('Appended card to popular grid');
-                    }
+                    const gameCard = createGameCard(gameInfo.id, gameInfo.data);
+                    console.log('Created card for', gameTitle, ':', gameCard);
+                    popularGamesGrid.appendChild(gameCard);
+                    console.log('Appended card to popular grid');
                 } else {
                     console.log('No gameInfo found for', gameTitle);
                 }
@@ -5055,12 +5053,10 @@
                 const gameInfo = findGameByTitle(gameTitle);
                 console.log('gameInfo for', gameTitle, ':', gameInfo);
                 if (gameInfo) {
-                    if (gameInfo.data.category !== 'Privatki') {
-                        const gameCard = createGameCard(gameInfo.id, gameInfo.data);
-                        console.log('Created card for', gameTitle, ':', gameCard);
-                        newGamesGrid.appendChild(gameCard);
-                        console.log('Appended card to new grid');
-                    }
+                    const gameCard = createGameCard(gameInfo.id, gameInfo.data);
+                    console.log('Created card for', gameTitle, ':', gameCard);
+                    newGamesGrid.appendChild(gameCard);
+                    console.log('Appended card to new grid');
                 } else {
                     console.log('No gameInfo found for', gameTitle);
                 }
