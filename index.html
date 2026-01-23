@@ -5524,8 +5524,12 @@
             const endTime = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 часа в миллисекундах
 
             // Сохранить в localStorage
-            localStorage.setItem(`promoTimer_${gameId}`, endTime);
-            localStorage.setItem(`promoCode_${gameId}`, code);
+            try {
+                localStorage.setItem(`promoTimer_${gameId}`, endTime);
+                localStorage.setItem(`promoCode_${gameId}`, code);
+            } catch (error) {
+                console.warn('localStorage not available:', error);
+            }
 
             // Функция обновления таймера
             function updateTimer() {
@@ -5537,8 +5541,12 @@
                     timerElement.style.display = 'none';
                     const promoCodeElement = document.getElementById(`promo-code-display-${gameId}`);
                     promoCodeElement.style.display = 'block';
-                    localStorage.removeItem(`promoTimer_${gameId}`);
-                    localStorage.removeItem(`promoCode_${gameId}`);
+                    try {
+                        localStorage.removeItem(`promoTimer_${gameId}`);
+                        localStorage.removeItem(`promoCode_${gameId}`);
+                    } catch (error) {
+                        console.warn('localStorage not available:', error);
+                    }
                     return;
                 }
 
@@ -5559,8 +5567,14 @@
 
         // Функция проверки активных таймеров при загрузке модального окна
         async function checkActiveTimers(gameId, originalPromoCode) {
-            const savedEndTime = localStorage.getItem(`promoTimer_${gameId}`);
-            const savedPromoCode = localStorage.getItem(`promoCode_${gameId}`);
+            let savedEndTime = null;
+            let savedPromoCode = null;
+            try {
+                savedEndTime = localStorage.getItem(`promoTimer_${gameId}`);
+                savedPromoCode = localStorage.getItem(`promoCode_${gameId}`);
+            } catch (error) {
+                console.warn('localStorage not available:', error);
+            }
 
             // Получить текущий промокод из games.json
             let currentPromoCode = originalPromoCode;
@@ -5596,8 +5610,12 @@
                                 // Таймер истек - показать промокод снова
                                 timerElement.style.display = 'none';
                                 promoCodeElement.style.display = 'block';
-                                localStorage.removeItem(`promoTimer_${gameId}`);
-                                localStorage.removeItem(`promoCode_${gameId}`);
+                                try {
+                                    localStorage.removeItem(`promoTimer_${gameId}`);
+                                    localStorage.removeItem(`promoCode_${gameId}`);
+                                } catch (error) {
+                                    console.warn('localStorage not available:', error);
+                                }
                                 return;
                             }
 
@@ -5613,8 +5631,12 @@
                     }
                 } else {
                     // Таймер истек, удалить
-                    localStorage.removeItem(`promoTimer_${gameId}`);
-                    localStorage.removeItem(`promoCode_${gameId}`);
+                    try {
+                        localStorage.removeItem(`promoTimer_${gameId}`);
+                        localStorage.removeItem(`promoCode_${gameId}`);
+                    } catch (error) {
+                        console.warn('localStorage not available:', error);
+                    }
                 }
             }
         }
@@ -5667,15 +5689,25 @@
                 for (const gameId in currentGameData) {
                     const game = currentGameData[gameId];
                     if (game.promoCode) {
-                        const savedEndTime = localStorage.getItem(`promoTimer_${gameId}`);
-                        const savedPromoCode = localStorage.getItem(`promoCode_${gameId}`);
+                        let savedEndTime = null;
+                        let savedPromoCode = null;
+                        try {
+                            savedEndTime = localStorage.getItem(`promoTimer_${gameId}`);
+                            savedPromoCode = localStorage.getItem(`promoCode_${gameId}`);
+                        } catch (error) {
+                            console.warn('localStorage not available:', error);
+                        }
 
                         if (savedEndTime && savedPromoCode) {
                             // Если промокод изменился, сбросить таймер и показать новый промокод
                             if (savedPromoCode !== game.promoCode) {
                                 // Сбросить таймер
-                                localStorage.removeItem(`promoTimer_${gameId}`);
-                                localStorage.removeItem(`promoCode_${gameId}`);
+                                try {
+                                    localStorage.removeItem(`promoTimer_${gameId}`);
+                                    localStorage.removeItem(`promoCode_${gameId}`);
+                                } catch (error) {
+                                    console.warn('localStorage not available:', error);
+                                }
 
                                 // Обновить отображение
                                 const promoCodeElement = document.getElementById(`promo-code-display-${gameId}`);
@@ -5853,10 +5885,14 @@
         function initChatAnalytics() {
             chatAnalytics.sessionStart = new Date();
             // Загрузить предыдущие данные из localStorage
-            const stored = localStorage.getItem('chatAnalytics');
-            if (stored) {
-                const previous = JSON.parse(stored);
-                chatAnalytics = { ...chatAnalytics, ...previous };
+            try {
+                const stored = localStorage.getItem('chatAnalytics');
+                if (stored) {
+                    const previous = JSON.parse(stored);
+                    chatAnalytics = { ...chatAnalytics, ...previous };
+                }
+            } catch (error) {
+                console.warn('localStorage not available:', error);
             }
         }
 
@@ -5875,7 +5911,11 @@
                     break;
             }
             // Сохранить в localStorage
-            localStorage.setItem('chatAnalytics', JSON.stringify(chatAnalytics));
+            try {
+                localStorage.setItem('chatAnalytics', JSON.stringify(chatAnalytics));
+            } catch (error) {
+                console.warn('localStorage not available:', error);
+            }
             console.log('Chat Analytics:', chatAnalytics);
         }
 
