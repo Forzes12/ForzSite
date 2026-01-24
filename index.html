@@ -4460,6 +4460,14 @@
     text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
 }
 
+.promo-updating {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--text-secondary);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
 .timer-countdown {
     color: var(--neon-tertiary);
     animation: pulse 2s infinite;
@@ -4915,6 +4923,41 @@
                         top: offsetTop,
                         behavior: 'smooth'
                     });
+                }
+            }
+            if (game.promoCode2) {
+                let savedEndTime2 = null;
+                let savedPromoCode2 = null;
+                try {
+                    savedEndTime2 = localStorage.getItem(`promoTimer_${gameId}-2`);
+                    savedPromoCode2 = localStorage.getItem(`promoCode_${gameId}-2`);
+                } catch (error) {
+                    console.warn('localStorage not available:', error);
+                }
+
+                if (savedEndTime2 && savedPromoCode2) {
+                    // Если промокод изменился, сбросить таймер и показать новый промокод
+                    if (savedPromoCode2 !== game.promoCode2) {
+                        // Сбросить таймер
+                        try {
+                            localStorage.removeItem(`promoTimer_${gameId}-2`);
+                            localStorage.removeItem(`promoCode_${gameId}-2`);
+                        } catch (error) {
+                            console.warn('localStorage not available:', error);
+                        }
+
+                        // Обновить отображение
+                        const promoCodeElement2 = document.getElementById(`promo-code-display-${gameId}-2`);
+                        const timerElement2 = document.getElementById(`promo-timer-${gameId}-2`);
+                        const labelElement2 = document.querySelector(`#promo-container-${gameId}-2 .promo-label`);
+
+                        if (promoCodeElement2 && timerElement2 && labelElement2) {
+                            promoCodeElement2.textContent = game.promoCode2;
+                            labelElement2.textContent = `Промокод: ${game.promoActivations2} активация`;
+                            promoCodeElement2.style.display = 'block';
+                            timerElement2.style.display = 'none';
+                        }
+                    }
                 }
             }
         }
@@ -5374,8 +5417,21 @@
                                             <div class="promo-button-content">
                                                 <div class="promo-label">Промокод: ${game.promoActivations} активация</div>
                                                 <div class="promo-code-display" id="promo-code-display-${game.id}">${game.promoCode}</div>
+                                                <div class="promo-updating" id="promo-updating-${game.id}" style="display: none;">Промокод обновляется</div>
                                                 <div class="promo-timer" id="promo-timer-${game.id}" style="display: none;">
                                                     <span class="timer-countdown" id="timer-countdown-${game.id}"></span>
+                                                </div>
+                                            </div>
+                                        </div>`;
+                                    }
+                                    if (game.promoCode2) {
+                                        html += `<div class="promo-button-container" id="promo-container-${game.id}-2" onclick="copyPromoCode('${game.promoCode2}', '${game.id}-2')">
+                                            <div class="promo-button-content">
+                                                <div class="promo-label">Промокод: ${game.promoActivations2} активация</div>
+                                                <div class="promo-code-display" id="promo-code-display-${game.id}-2">${game.promoCode2}</div>
+                                                <div class="promo-updating" id="promo-updating-${game.id}-2" style="display: none;">Промокод обновляется</div>
+                                                <div class="promo-timer" id="promo-timer-${game.id}-2" style="display: none;">
+                                                    <span class="timer-countdown" id="timer-countdown-${game.id}-2"></span>
                                                 </div>
                                             </div>
                                         </div>`;
@@ -5449,6 +5505,9 @@
             if (game.promoCode) {
                 checkActiveTimers(game.id, game.promoCode);
             }
+            if (game.promoCode2) {
+                checkActiveTimers(`${game.id}-2`, game.promoCode2);
+            }
         }
 
         // Закрытие модального окна
@@ -5489,8 +5548,15 @@
                 promoCodeElement.style.display = 'none';
                 timerElement.style.display = 'block';
 
-                // Запустить таймер на 24 часа
-                startPromoTimer(gameId, code);
+                // Проверить, активен ли уже таймер
+                let savedEndTime = null;
+                try {
+                    savedEndTime = localStorage.getItem(`promoTimer_${gameId}`);
+                } catch (error) {}
+                if (!(savedEndTime && parseInt(savedEndTime) > Date.now())) {
+                    // Запустить таймер на 24 часа
+                    startPromoTimer(gameId, code);
+                }
             }).catch(function(err) {
                 console.error('Ошибка копирования: ', err);
                 // Fallback для старых браузеров
@@ -5508,8 +5574,15 @@
                 promoCodeElement.style.display = 'none';
                 timerElement.style.display = 'block';
 
-                // Запустить таймер на 24 часа
-                startPromoTimer(gameId, code);
+                // Проверить, активен ли уже таймер
+                let savedEndTime = null;
+                try {
+                    savedEndTime = localStorage.getItem(`promoTimer_${gameId}`);
+                } catch (error) {}
+                if (!(savedEndTime && parseInt(savedEndTime) > Date.now())) {
+                    // Запустить таймер на 24 часа
+                    startPromoTimer(gameId, code);
+                }
             });
         }
 
@@ -5537,10 +5610,12 @@
                 const distance = endTime - now;
 
                 if (distance <= 0) {
-                    // Таймер истек - показать промокод снова
+                    // Таймер истек - показать сообщение обновления
                     timerElement.style.display = 'none';
                     const promoCodeElement = document.getElementById(`promo-code-display-${gameId}`);
-                    promoCodeElement.style.display = 'block';
+                    const updatingElement = document.getElementById(`promo-updating-${gameId}`);
+                    promoCodeElement.style.display = 'none';
+                    updatingElement.style.display = 'block';
                     try {
                         localStorage.removeItem(`promoTimer_${gameId}`);
                         localStorage.removeItem(`promoCode_${gameId}`);
@@ -5581,8 +5656,18 @@
             try {
                 const response = await fetch('assets/data/games.json');
                 const currentGameData = await response.json();
-                if (currentGameData[gameId] && currentGameData[gameId].promoCode) {
-                    currentPromoCode = currentGameData[gameId].promoCode;
+                let baseGameId = gameId;
+                let isSecond = false;
+                if (gameId.endsWith('-2')) {
+                    baseGameId = gameId.slice(0, -2);
+                    isSecond = true;
+                }
+                if (currentGameData[baseGameId]) {
+                    if (isSecond && currentGameData[baseGameId].promoCode2) {
+                        currentPromoCode = currentGameData[baseGameId].promoCode2;
+                    } else if (!isSecond && currentGameData[baseGameId].promoCode) {
+                        currentPromoCode = currentGameData[baseGameId].promoCode;
+                    }
                 }
             } catch (error) {
                 console.error('Ошибка при получении текущего промокода:', error);
@@ -5607,9 +5692,11 @@
                             const distance = endTime - now;
 
                             if (distance <= 0) {
-                                // Таймер истек - показать промокод снова
+                                // Таймер истек - показать сообщение обновления
                                 timerElement.style.display = 'none';
-                                promoCodeElement.style.display = 'block';
+                                const updatingElement = document.getElementById(`promo-updating-${gameId}`);
+                                promoCodeElement.style.display = 'none';
+                                updatingElement.style.display = 'block';
                                 try {
                                     localStorage.removeItem(`promoTimer_${gameId}`);
                                     localStorage.removeItem(`promoCode_${gameId}`);
@@ -5630,7 +5717,13 @@
                         updateTimer();
                     }
                 } else {
-                    // Таймер истек, удалить
+                    // Таймер истек - показать сообщение обновления
+                    const promoCodeElement = document.getElementById(`promo-code-display-${gameId}`);
+                    const updatingElement = document.getElementById(`promo-updating-${gameId}`);
+                    if (promoCodeElement && updatingElement) {
+                        promoCodeElement.style.display = 'none';
+                        updatingElement.style.display = 'block';
+                    }
                     try {
                         localStorage.removeItem(`promoTimer_${gameId}`);
                         localStorage.removeItem(`promoCode_${gameId}`);
@@ -5712,13 +5805,53 @@
                                 // Обновить отображение
                                 const promoCodeElement = document.getElementById(`promo-code-display-${gameId}`);
                                 const timerElement = document.getElementById(`promo-timer-${gameId}`);
+                                const updatingElement = document.getElementById(`promo-updating-${gameId}`);
                                 const labelElement = document.querySelector(`#promo-container-${gameId} .promo-label`);
 
-                                if (promoCodeElement && timerElement && labelElement) {
+                                if (promoCodeElement && timerElement && updatingElement && labelElement) {
                                     promoCodeElement.textContent = game.promoCode;
                                     labelElement.textContent = `Промокод: ${game.promoActivations} активация`;
                                     promoCodeElement.style.display = 'block';
                                     timerElement.style.display = 'none';
+                                    updatingElement.style.display = 'none';
+                                }
+                            }
+                        }
+                    }
+                    if (game.promoCode2) {
+                        const secondGameId = `${gameId}-2`;
+                        let savedEndTime2 = null;
+                        let savedPromoCode2 = null;
+                        try {
+                            savedEndTime2 = localStorage.getItem(`promoTimer_${secondGameId}`);
+                            savedPromoCode2 = localStorage.getItem(`promoCode_${secondGameId}`);
+                        } catch (error) {
+                            console.warn('localStorage not available:', error);
+                        }
+
+                        if (savedEndTime2 && savedPromoCode2) {
+                            // Если промокод изменился, сбросить таймер и показать новый промокод
+                            if (savedPromoCode2 !== game.promoCode2) {
+                                // Сбросить таймер
+                                try {
+                                    localStorage.removeItem(`promoTimer_${secondGameId}`);
+                                    localStorage.removeItem(`promoCode_${secondGameId}`);
+                                } catch (error) {
+                                    console.warn('localStorage not available:', error);
+                                }
+
+                                // Обновить отображение
+                                const promoCodeElement2 = document.getElementById(`promo-code-display-${secondGameId}`);
+                                const timerElement2 = document.getElementById(`promo-timer-${secondGameId}`);
+                                const updatingElement2 = document.getElementById(`promo-updating-${secondGameId}`);
+                                const labelElement2 = document.querySelector(`#promo-container-${secondGameId} .promo-label`);
+
+                                if (promoCodeElement2 && timerElement2 && updatingElement2 && labelElement2) {
+                                    promoCodeElement2.textContent = game.promoCode2;
+                                    labelElement2.textContent = `Промокод: ${game.promoActivations2} активация`;
+                                    promoCodeElement2.style.display = 'block';
+                                    timerElement2.style.display = 'none';
+                                    updatingElement2.style.display = 'none';
                                 }
                             }
                         }
