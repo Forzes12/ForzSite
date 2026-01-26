@@ -356,29 +356,25 @@
             text-decoration: none;
             font-weight: 600;
             text-transform: uppercase;
-            padding: 5px 0;
+            padding: 8px 15px;
             position: relative;
             transition: all 0.3s ease;
             font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--text);
+            background: rgba(99, 102, 241, 0.3);
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         /* Мобильное меню */
@@ -440,12 +436,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .mobile-menu a:hover {
-            color: var(--primary);
-            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            background: rgba(99, 102, 241, 0.3);
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         .close-menu {
@@ -5014,7 +5018,8 @@
                     const dot = document.createElement('div');
                     dot.className = 'slider-dot';
                     if (visibleSlideIndex === 0) dot.classList.add('active');
-                    dot.addEventListener('click', () => goToSlide(visibleSlideIndex));
+                    const currentIndex = visibleSlideIndex;
+                    dot.addEventListener('click', () => goToSlide(currentIndex));
                     sliderDots.appendChild(dot);
                     visibleSlideIndex++;
                 }
@@ -5241,13 +5246,30 @@
 
         // Настройка обработчиков для кнопок "Смотреть"
         function setupViewButtons() {
+            console.log('Setting up view buttons...');
             document.querySelectorAll('.view-btn').forEach(button => {
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
                     const gameId = this.getAttribute('data-game');
+                    console.log('View button clicked for game:', gameId);
                     openGameModal(gameId);
                 });
             });
+
+            // Add hover logging for game cards
+            document.querySelectorAll('.game-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    console.log('Game card hover start:', this.dataset.gameId);
+                    console.log('Card transform before hover:', window.getComputedStyle(this).transform);
+                });
+                card.addEventListener('mouseleave', function() {
+                    console.log('Game card hover end:', this.dataset.gameId);
+                    console.log('Card transform after hover:', window.getComputedStyle(this).transform);
+                });
+            });
+
+            console.log('View buttons setup complete. Total buttons:', document.querySelectorAll('.view-btn').length);
+            console.log('Total game cards:', document.querySelectorAll('.game-card').length);
         }
 
         // Функция фильтрации
