@@ -134,6 +134,169 @@
             }
         }
     },
+        "forza-horizon-6": {
+        "title": "Forza Horizon 6",
+        "description": "Forza Horizon 6 — это новое воплощение любимой серии, переносящее гонщиков в Японию, о которой давно мечтали фанаты. Здесь уличная культура соседствует с храмами и горами, а каждая трасса становится испытанием.",
+        "image": "https://i.postimg.cc/vmVC2L8s/1769112682-library-capsule-2x.jpg",
+        "size": "Неизвестно ГБ",
+        "year": "2026",
+        "updated": "23.01.2026",
+        "status": "soon",
+        "category": "games",
+        "tags": [
+            "forza",
+            "forza horizon",
+            "forza horizon 6",
+            "гоночный симулятор",
+            "открытый мир",
+            "форза",
+            "форза горизон"
+        ],
+        "trailer": "https://drive.google.com/file/d/1OXZ-pRjPbL8BXyMqwyc40w3xbqEGGGQB/preview",
+        "screenshots": [
+            "https://i.postimg.cc/Hk895T93/1769112686-ss-3b8ebc00e4a5a503984d2a523fc07a14612d03e9.jpg",
+            "https://i.postimg.cc/50gB1yfV/1769112691-ss-17b0e8d6a90e174e45f4c7438167d9d4e6ae8804.jpg",
+            "https://i.postimg.cc/rsY50H0M/1769112695-ss-4347ba202ef1cdaabaaccd830831afb8fdeeb9e4.jpg",
+            "https://i.postimg.cc/ZKC8tJgg/1769112747-ss-5033ff1c1f16bbaf1516f222fc54e399aa1480be.jpg",
+            "https://i.postimg.cc/CLXjwWp7/1769112770-ss-7775b5046e2fcc717f180577f482b2a5e3cbf0dc.jpg",
+            "https://i.postimg.cc/cJNwnwHH/1769112756-ss-909356963f2a59f0ec92898c0cb9211999e25c14.jpg",
+            "https://i.postimg.cc/JnpkvF59/1769112764-ss-a11a150869b7ae526cdbca33b7442db3f3ac88d8.jpg",
+            "https://i.postimg.cc/VvTbLbpP/1769112779-ss-c4575122a4b3f06369e79b0f83226c039f870eaf.jpg",
+            "https://i.postimg.cc/9QyqC0BP/1769112695-ss-c9354540f5a39270c918fa2eca1a92b28a7ee918.jpg",
+            "https://i.postimg.cc/3Nyd6xR2/1769112779-ss-f3634cbcfd6caa23b5b9e1b2e901d2cea63b6dc0.jpg"
+        ],
+        "specs": {
+            "Жанр": "Гонки, Автосимулятор, Открытый мир",
+            "Разработчик": "Playground Games",
+            "Издатель": "Xbox Game Studios",
+            "Платформа": "PC, Xbox Series X|S"
+        },
+        "systemRequirements": {
+            "минимальные": {
+                "ОС": "Информация уточняется",
+                "Процессор": "Информация уточняется",
+                "Оперативная память": "Информация уточняется",
+                "Видеокарта": "Информация уточняется",
+                "Место на диске": "Информация уточняется"
+            },
+            "рекомендуемые": {
+                "ОС": "Информация уточняется",
+                "Процессор": "Информация уточняется",
+                "Оперативная память": "Информация уточняется",
+                "Видеокарта": "Информация уточняется",
+                "Место на диске": "Информация уточняется"
+            }
+        }
+    },
+        "the-witcher-4": {
+        "title": "The Witcher 4",
+        "description": "Новая глава в эпохальной саге о ведьмаках. В центре сюжета — Цири и другие ведьмаки, мстящие за смерть Геральта из Ривии. Вас ждёт огромный проработанный мир, зрелищные сражения с новыми могущественными врагами и история, полная драмы и неожиданных поворотов.",
+        "image": "https://i.postimg.cc/DZQTzVN4/1734556332-8qel50y7kzlpyv3hqi72vw.jpg",
+        "size": "Неизвестно ГБ",
+        "year": "2026-2027",
+        "updated": "27.01.2026",
+        "status": "soon",
+        "category": "games",
+        "tags": [
+            "the witcher",
+            "ведьмак",
+            "cd projekt red",
+            "rpg",
+            "ролевая игра",
+            "фэнтези",
+            "открытый мир",
+            "цири"
+        ],
+        "trailer": "https://drive.google.com/file/d/1_OnTY3sYiHw1W5SmAqGhfv3oN8Q4nrqn/preview",
+        "screenshots": [
+            "https://i.postimg.cc/7hMt7w16/1734556337-432357.jpg",
+            "https://i.postimg.cc/W1Qm2xr8/1734556313-432358.jpg",
+            "https://i.postimg.cc/xCPL3C7r/1734556297-432360.jpg",
+            "https://i.postimg.cc/zXvTTqFK/1734556298-432364.jpg",
+            "https://i.postimg.cc/mgFM6Vqm/1734556294-432366.jpg",
+            "https://i.postimg.cc/1XjnvNKx/1734556377-432367.jpg",
+            "https://i.postimg.cc/Fswkc3RX/1734556337-432368.jpg",
+            "https://i.postimg.cc/76BfLTdH/1734556385-432370.jpg"
+        ],
+        "specs": {
+            "Жанр": "RPG, Фэнтези, Открытый мир",
+            "Разработчик": "CD Projekt Red",
+            "Издатель": "CD Projekt",
+            "Платформа": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        "systemRequirements": {
+            "минимальные": {
+                "ОС": "Информация уточняется",
+                "Процессор": "Информация уточняется",
+                "Оперативная память": "Информация уточняется",
+                "Видеокарта": "Информация уточняется",
+                "Место на диске": "Информация уточняется"
+            },
+            "рекомендуемые": {
+                "ОС": "Информация уточняется",
+                "Процессор": "Информация уточняется",
+                "Оперативная память": "Информация уточняется",
+                "Видеокарта": "Информация уточняется",
+                "Место на диске": "Информация уточняется"
+            }
+        }
+    },
+        "atomic-heart-2": {
+        "title": "Atomic Heart 2",
+        "description": "Продолжение безумного научно-фантастического экшена в альтернативной СССР 1950-х. Вновь погрузитесь в мир роботов, пси-способностей и технологий «Советского Союза 2.0». Вам предстоит раскрыть новые тайны комплекса «3826» и столкнуться с последствиями событий первой части.",
+        "image": "https://i.postimg.cc/L8M62T5P/1749275872-library-600x900-2x.jpg",
+        "size": "Неизвестно ГБ",
+        "year": "2026",
+        "updated": "27.01.2026",
+        "status": "soon",
+        "category": "games",
+        "tags": [
+            "atomic heart",
+            "атомик харт",
+            "mundfish",
+            "экшен",
+            "шутер",
+            "научная фантастика",
+            "альтернативная история",
+            "рpg элементы",
+            "пост-апокалипсис"
+        ],
+        "trailer": "https://drive.google.com/file/d/1IdTYHOgqnWtdkNYeapUI_R-3WNVLzium/preview",
+        "screenshots": [
+            "https://i.postimg.cc/GhvTF9ss/1749275827-ss-1eba1f82567000e87e802d732075c76b81277b3f.jpg",
+            "https://i.postimg.cc/6p07PScw/1749275809-ss-04df82d0cb959077d26d9c22dbebfc3ceff040e7.jpg",
+            "https://i.postimg.cc/0Q6bbNs2/1749275871-ss-4f32ad36c8d14b4ddb46f538fe7c2eb06b5f088d.jpg",
+            "https://i.postimg.cc/PJYJQFNL/1749275866-ss-1718e6a6f59b5afe513e87b5d624aaabab94d9cb.jpg",
+            "https://i.postimg.cc/m2WtgR6Z/1749275854-ss-38037553de909db077036cec75538d49ec06a374.jpg",
+            "https://i.postimg.cc/0y8j7nv9/1749275830-ss-bf1d7e6f8d72c1c6041c0a1786b4696994d97fb1.jpg",
+            "https://i.postimg.cc/50F2fkBS/1749275826-ss-d01888bbc730d31d22b9ccc637ba38963b9c0cb1.jpg",
+            "https://i.postimg.cc/CL4LM8q3/1749275812-ss-dd1c861c9f45a8ec6dfe715644f9a85390ed6a09.jpg",
+            "https://i.postimg.cc/2yDrrj8y/1749275810-ss-e526b2fc2f0ed4ddbc085a499dca2a8d008755aa.jpg",
+            "https://i.postimg.cc/7P3qXzmG/1749275896-ss-e4476644e6ac975b2bdf02a8f77a5fa29723088d.jpg"
+        ],
+        "specs": {
+            "Жанр": "Экшен, FPS, Научная фантастика, РPG-элементы",
+            "Разработчик": "Mundfish",
+            "Издатель": "Focus Entertainment / VK Play",
+            "Платформа": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        "systemRequirements": {
+            "минимальные": {
+                "ОС": "Информация уточняется",
+                "Процессор": "Информация уточняется",
+                "Оперативная память": "Информация уточняется",
+                "Видеокарта": "Информация уточняется",
+                "Место на диске": "Информация уточняется"
+            },
+            "рекомендуемые": {
+                "ОС": "Информация уточняется",
+                "Процессор": "Информация уточняется",
+                "Оперативная память": "Информация уточняется",
+                "Видеокарта": "Информация уточняется",
+                "Место на диске": "Информация уточняется"
+            }
+        }
+    },
     "little-nightmares-3": {
         "title": "Little Nightmares 3",
         "description": "Новые приключения в жутком мире кошмаров. Исследуйте мрачные локации и избегайте ужасных созданий в этом хоррор-платформере.",

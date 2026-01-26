@@ -4549,6 +4549,7 @@
                 <li><a href="#slider">Слайдер</a></li>
                 <li><a href="#games">Популярные</a></li>
                 <li><a href="#new">Новинки</a></li>
+                <li><a href="#anticipated">Самые ожидаемые</a></li>
                 <li><a href="#" data-page="all-games-page">Игры и программы</a></li>
                 <li><a href="#about">О нас</a></li>
                 <li><a href="#contact">Все ссылки</a></li>
@@ -4571,6 +4572,7 @@
             <li><a href="#slider" onclick="navigateToSection('#slider'); closeMobileMenu();">Слайдер</a></li>
             <li><a href="#games" onclick="navigateToSection('#games'); closeMobileMenu();">Популярные</a></li>
             <li><a href="#new" onclick="navigateToSection('#new'); closeMobileMenu();">Новинки</a></li>
+            <li><a href="#anticipated" onclick="navigateToSection('#anticipated'); closeMobileMenu();">Самые ожидаемые</a></li>
             <li><a href="#" data-page="all-games-page" onclick="switchPage('all-games-page'); closeMobileMenu();">Игры и программы</a></li>
             <li><a href="#about" onclick="navigateToSection('#about'); closeMobileMenu();">О нас</a></li>
             <li><a href="#contact" onclick="navigateToSection('#contact'); closeMobileMenu();">Все ссылки</a></li>
@@ -4643,6 +4645,13 @@
             </div>
         </section>
 
+        <section class="anticipated-games-section" id="anticipated">
+            <h2 class="section-title">Самые ожидаемые</h2>
+            <div class="games-grid">
+                <!-- Ожидаемые игры будут загружены здесь -->
+            </div>
+        </section>
+
         <!-- Секция "О нас" -->
         <section class="about-section" id="about">
             <div class="about-content">
@@ -4690,6 +4699,7 @@
                         <li><a href="#slider">Слайдер</a></li>
                         <li><a href="#games">Игры</a></li>
                         <li><a href="#new">Новинки</a></li>
+                        <li><a href="#anticipated">Самые ожидаемые</a></li>
                         <li><a href="#about">О нас</a></li>
                     </ul>
                 </div>
@@ -4806,6 +4816,7 @@
         let gameData = {};
         let popularGamesTitles = [];
         let newGamesTitles = [];
+        let anticipatedGamesTitles = [];
         let sliderGames = [];
 
         async function loadGameData() {
@@ -4818,6 +4829,9 @@
 
                 const newResponse = await fetch('assets/data/new-games.json');
                 newGamesTitles = await newResponse.json();
+
+                const anticipatedResponse = await fetch('assets/data/anticipated-games.json');
+                anticipatedGamesTitles = await anticipatedResponse.json();
 
                 const recommendedResponse = await fetch('assets/data/recommended-games.json');
                 sliderGames = await recommendedResponse.json();
@@ -5060,14 +5074,18 @@
             console.log('loadMainPageGames called');
             const popularGamesGrid = document.querySelector('#games .games-grid');
             const newGamesGrid = document.querySelector('#new .games-grid');
+            const anticipatedGamesGrid = document.querySelector('#anticipated .games-grid');
 
             console.log('popularGamesGrid:', popularGamesGrid);
             console.log('newGamesGrid:', newGamesGrid);
+            console.log('anticipatedGamesGrid:', anticipatedGamesGrid);
             console.log('popularGamesTitles:', popularGamesTitles);
             console.log('newGamesTitles:', newGamesTitles);
+            console.log('anticipatedGamesTitles:', anticipatedGamesTitles);
 
             popularGamesGrid.innerHTML = '';
             newGamesGrid.innerHTML = '';
+            anticipatedGamesGrid.innerHTML = '';
 
             popularGamesTitles.forEach(gameTitle => {
                 console.log('Processing popular game:', gameTitle);
@@ -5097,8 +5115,23 @@
                 }
             });
 
+            anticipatedGamesTitles.forEach(gameTitle => {
+                console.log('Processing anticipated game:', gameTitle);
+                const gameInfo = findGameByTitle(gameTitle);
+                console.log('gameInfo for', gameTitle, ':', gameInfo);
+                if (gameInfo) {
+                    const gameCard = createGameCard(gameInfo.id, gameInfo.data);
+                    console.log('Created card for', gameTitle, ':', gameCard);
+                    anticipatedGamesGrid.appendChild(gameCard);
+                    console.log('Appended card to anticipated grid');
+                } else {
+                    console.log('No gameInfo found for', gameTitle);
+                }
+            });
+
             console.log('Popular grid children:', popularGamesGrid.children.length);
             console.log('New grid children:', newGamesGrid.children.length);
+            console.log('Anticipated grid children:', anticipatedGamesGrid.children.length);
 
             setupViewButtons();
         }
@@ -6369,7 +6402,7 @@
             }, observerOptions);
 
             // Наблюдаем за секциями
-            document.querySelectorAll('.games-slider-section, .games-showcase, .new-games-section, .about-section').forEach(section => {
+            document.querySelectorAll('.games-slider-section, .games-showcase, .new-games-section, .anticipated-games-section, .about-section').forEach(section => {
                 observer.observe(section);
             });
 
