@@ -5015,12 +5015,6 @@
                     `;
                     sliderTrack.appendChild(slide);
 
-                    const dot = document.createElement('div');
-                    dot.className = 'slider-dot';
-                    if (visibleSlideIndex === 0) dot.classList.add('active');
-                    const currentIndex = visibleSlideIndex;
-                    dot.addEventListener('click', () => goToSlide(currentIndex));
-                    sliderDots.appendChild(dot);
                     visibleSlideIndex++;
                 }
             });
