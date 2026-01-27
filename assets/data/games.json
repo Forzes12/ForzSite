@@ -1441,6 +1441,136 @@
             }
         }
     },
+    "forza-horizon-5": {
+        "title": "Forza Horizon 5",
+        "description": "Масштабная гоночная аркада в открытом мире от Playground Games. Исследуйте бескрайние и разнообразные ландшафты Мексики, участвуйте в сотнях гонок и событий, собирайте коллекцию из сотен лицензированных автомобилей и создавайте собственные приключения в самом продвинутом и ярком фестивале Horizon.",
+        "image": "https://i.postimg.cc/L5kr5bsm/1663239689-cover.jpg",
+        "size": "110 GB",
+        "year": "2021",
+        "updated": "15.01.2024",
+        "status": "available",
+        "category": "games",
+        "torrentFile": "torrent/Forza.Horizon.5.Premium.Edition-InsaneRamZes.torrent",
+        "trailer": "https://www.youtube.com/embed/FYH9n37B7Yw",
+        "screenshots": [
+            "https://i.postimg.cc/7Yty2jNt/1635973381-screenshot-forza-horizon-5-1920x1080-2021-06-14-5.jpg",
+            "https://i.postimg.cc/QM1LvCrt/1635973327-screenshot-forza-horizon-5-1920x1080-2021-06-14-6.jpg",
+            "https://i.postimg.cc/pXTwRqtc/1635973300-screenshot-forza-horizon-5-1920x1080-2021-06-14-7.jpg",
+            "https://i.postimg.cc/VLdV3vqc/1635973367-screenshot-forza-horizon-5-1920x1080-2021-06-14-8.jpg",
+            "https://i.postimg.cc/DwGYwNpH/1635973317-screenshot-forza-horizon-5-1920x1080-2021-06-14-9.jpg",
+            "https://i.postimg.cc/cJM9QnS3/1635973295-screenshot-forza-horizon-5-3840x2160-2021-08-24-23.jpg",
+            "https://i.postimg.cc/MT99LJXZ/1635973361-screenshot-forza-horizon-5-3840x2160-2021-08-24-26.jpg",
+            "https://i.postimg.cc/0j3c8GY8/1635973317-screenshot-forza-horizon-5-3840x2160-2021-08-24-27.jpgg"
+        ],
+        "specs": {
+            "Жанр": "Аркадные гонки, Автосимулятор, Открытый мир",
+            "Разработчик": "Playground Games",
+            "Издатель": "Xbox Game Studios",
+            "Платформа": "PC, Xbox One, Xbox Series X/S"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 10 (версия 1909 или выше)",
+                "Processor": "Intel i5-4460 / AMD Ryzen 3 1200",
+                "Memory": "8 GB RAM",
+                "Graphics": "NVIDIA GTX 970 / AMD RX 470",
+                "Storage": "110 GB available space (SSD рекомендуется)",
+                "DirectX": "Версия 12"
+            },
+            "recommended": {
+                "OS": "Windows 10 (версия 1909 или выше)",
+                "Processor": "Intel i5-8400 / AMD Ryzen 5 1500X",
+                "Memory": "16 GB RAM",
+                "Graphics": "NVIDIA GTX 1070 / AMD RX 590",
+                "Storage": "110 GB available space (SSD рекомендуется)",
+                "DirectX": "Версия 12"
+            }
+        }
+    },
+    "snowrunner": {
+        "title": "SnowRunner",
+        "description": "Экстремальный симулятор внедорожника от создателей MudRunner и Spintires. Возьмите под управление мощные грузовики и отправляйтесь покорять самые суровые и бездорожные уголки мира. Перевозите грузы через грязь, реки, снег и лед, преодолевая непредсказуемую динамическую погоду и разрушаемую среду. Работа в одиночку или с друзьями в кооперативе до 4 игроков.",
+        "image": "https://i.postimg.cc/tgWTD9S6/1769521778-library-600x900-2x.jpg",
+        "size": "20 GB",
+        "year": "2020",
+        "updated": "10.02.2024",
+        "status": "available",
+        "category": "games",
+        "torrentFile": "torrent/SnowRunner.Premium.Edition-InsaneRamZes.torrent",
+        "trailer": "https://drive.google.com/file/d/1KFtP6ouKJoXfkqcK7YFDeTYtZaO_2qj_/preview",
+        "screenshots": [
+            "https://i.postimg.cc/vH46fwsS/1769521717-ss-0b9c1d6b91fad663d6bf2bc41d520447d11afa9a.jpg",
+            "https://i.postimg.cc/SKhXBXzT/1769521711-ss-3b77549445944ac9e671c79fc4f93e5de39c3d80.jpg",
+            "https://i.postimg.cc/509XtZgY/1769521753-ss-9fd461fb9ee38365467972715aa60c3f201a0c6d.jpg",
+            "https://i.postimg.cc/fLHJSBqG/1769521689-ss-52086f17e87cf8454dd7b300efae10384c4db38d.jpg",
+            "https://i.postimg.cc/bYBZzVtZ/1769521776-ss-e8f45a2c68a0d8dbe6722815557bddb7c08e077b.jpg",
+            "https://i.postimg.cc/3xMWGy9T/1769521765-ss-fb4e9bfacb334e149757cc79bb9bf054d17403b8.jpg"
+        ],
+        "specs": {
+            "Жанр": "Симулятор, Автосимулятор, Приключение",
+            "Разработчик": "Saber Interactive",
+            "Издатель": "Focus Home Interactive",
+            "Платформа": "PC, PS4, PS5, Xbox One, Xbox Series X/S, Nintendo Switch"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 7/8/10 (64-bit)",
+                "Processor": "Intel i3-4130 / AMD FX-4100",
+                "Memory": "8 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 660 / AMD Radeon R9 270",
+                "Storage": "20 GB available space"
+            },
+            "recommended": {
+                "OS": "Windows 7/8/10 (64-bit)",
+                "Processor": "Intel i7-8700 / AMD Ryzen 7 2700",
+                "Memory": "16 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 970 / AMD Radeon RX 580",
+                "Storage": "20 GB available space (SSD рекомендуется)"
+            }
+        }
+    },
+    "underground-garage": {
+        "title": "Underground Garage",
+        "description": "Погрузитесь в атмосферу уличного тюнинг-андеграунда. В этой игре вы — владелец собственной автомастерской, которая служит прикрытием для подпольных гоночных состязаний. Тюнинг, кастомизация, ночные уличные гонки и противостояние полиции — здесь всё строится вокруг культуры модификации автомобилей и стрит-рейсинга. Прокачивайте свой гараж, находите редкие запчасти и побеждайте в нелегальных заездах, чтобы стать легендой подполья.",
+        "image": "https://i.postimg.cc/GtwhyVJ4/1769513136-library-capsule-2x.jpg",
+        "size": "8 GB",
+        "year": "2023",
+        "updated": "05.03.2024",
+        "status": "available",
+        "category": "games",
+        "torrentFile": "torrent/Underground.Garage-RUNE.torrent",
+        "trailer": "https://drive.google.com/file/d/13mpU3WHP6jD5GNmiErd-UHK3jg343Ylu/preview",
+        "screenshots": [
+            "https://i.postimg.cc/15S35xzZ/1769513150-ss-35f7e2f6a5ea323d8c948ff4ee62ba852c95d569.jpg",
+            "https://i.postimg.cc/bvZzFpmx/1769513203-ss-66ac26b16cfd2454539d86f2e8f38cc3ee3a4677.jpg",
+            "https://i.postimg.cc/6qfwG3QJ/1769513165-ss-2739e9b80b3771f3ce593d54347c3f5c9625b923.jpg",
+            "https://i.postimg.cc/hGQB1MGC/1769513224-ss-e01d657e25a21e264eb2ed9454210de2b20c52f0.jpg",
+            "https://i.postimg.cc/MHqJxSmg/1769513205-ss-ea02410d979111c6560d227ec7a9a0f5f545ef5a.jpg",
+            "https://i.postimg.cc/WpwP8d2b/1769513213-ss-fe3ecb88c13f9314a91384ac576f65daa8b9ee0b.jpg"
+        ],
+        "specs": {
+            "Жанр": "Автосимулятор, Гонки, Симулятор тюнинга",
+            "Разработчик": "Garage Games Studio",
+            "Издатель": "Underground Interactive",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 10 (64-bit)",
+                "Processor": "Intel Core i5-4460 / AMD FX-8350",
+                "Memory": "8 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 760 / AMD Radeon R9 280",
+                "Storage": "10 GB available space"
+            },
+            "recommended": {
+                "OS": "Windows 10/11 (64-bit)",
+                "Processor": "Intel Core i7-7700K / AMD Ryzen 5 2600",
+                "Memory": "16 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 580",
+                "Storage": "10 GB available space (SSD рекомендуется)"
+            }
+        }
+    },
     "photoshop-2018": {
         "title": "Adobe Photoshop 2018",
         "description": "Профессиональный графический редактор для обработки фотографий и создания цифровых изображений. Последняя версия с новыми функциями ИИ.",
