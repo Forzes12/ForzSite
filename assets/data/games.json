@@ -1449,7 +1449,7 @@
         "year": "2021",
         "updated": "15.01.2024",
         "status": "available",
-        "category": "games",
+        "category": "Forza Horizon",
         "torrentFile": "torrent/Forza.Horizon.5.Premium.Edition-InsaneRamZes.torrent",
         "trailer": "https://www.youtube.com/embed/FYH9n37B7Yw",
         "screenshots": [
@@ -1484,6 +1484,186 @@
                 "Graphics": "NVIDIA GTX 1070 / AMD RX 590",
                 "Storage": "110 GB available space (SSD рекомендуется)",
                 "DirectX": "Версия 12"
+            }
+        }
+    },
+    "forza-horizon-4": {
+        "title": "Forza Horizon 4",
+        "description": "Динамичная гоночная аркада в открытом мире от Playground Games. Исследуйте живописные ландшафты Великобритании, меняющиеся вместе с временами года. Участвуйте в масштабном фестивале Horizon, собирайте коллекцию из сотен лучших автомобилей и создавайте свои собственные гонки и испытания.",
+        "image": "https://i.postimg.cc/zfJpyDt7/1668462888-cover.jpg",
+        "size": "85 GB",
+        "year": "2018",
+        "updated": "15.01.2024",
+        "status": "available",
+        "category": "Forza Horizon",
+        "torrentFile": "torrent/Forza.Horizon.4.Ultimate.Edition.Steam.Rip-InsaneRamZes.torrent",
+        "trailer": "https://drive.google.com/file/d/1JrOMDarwvred1OJUJ8QqRU0qlGAsfG1-/preview",
+        "screenshots": [
+            "https://i.postimg.cc/C1CqkbRB/1529670907-1efbd5c1-48b0-4177-a315-d36ca736fb8d.jpg",
+            "https://i.postimg.cc/NG4X07hC/1529670910-4de11c70-c185-4396-b11b-13b0ec5e9c77.jpg",
+            "https://i.postimg.cc/FsCJyrHM/1529670913-42eadba9-7ccb-4184-a645-65c251a55839.jpg",
+            "https://i.postimg.cc/N0m9vR76/1529670878-90bbac5c-2198-4ea6-81c6-2ab792f40b49.jpg",
+            "https://i.postimg.cc/63K7WTM4/1529670924-5060404d-03b8-4b4d-9ba7-579f35c18f7c.jpg",
+            "https://i.postimg.cc/R07FD4vr/1529670860-dd9f5de5-ce64-49c1-8393-1784ab146a50.jpg",
+            "https://i.postimg.cc/0QZN9n6p/1529670916-edecbd5e-4a92-4811-8a84-0fdc6e4baae3.jpg",
+            "https://i.postimg.cc/vTNHVmtv/1529670911-fd2d6947-478f-4544-ae6e-7390474672f4.jpg"
+        ],
+        "specs": {
+            "Жанр": "Аркадные гонки, Автосимулятор, Открытый мир",
+            "Разработчик": "Playground Games",
+            "Издатель": "Microsoft Studios",
+            "Платформа": "PC, Xbox One"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 10 (версия 15063.0 или выше)",
+                "Processor": "Intel i3-4170 @ 3.7GHz / Intel i5 750 @ 2.67GHz",
+                "Memory": "8 GB RAM",
+                "Graphics": "NVIDIA GTX 650 Ti / AMD R7 250X",
+                "Storage": "85 GB available space",
+                "DirectX": "Версия 12"
+            },
+            "recommended": {
+                "OS": "Windows 10 (версия 15063.0 или выше)",
+                "Processor": "Intel i7-3820 @ 3.6GHz",
+                "Memory": "12 GB RAM",
+                "Graphics": "NVIDIA GTX 970 / NVIDIA GTX 1060 / AMD R9 290X / AMD RX 470",
+                "Storage": "85 GB available space (SSD рекомендуется)",
+                "DirectX": "Версия 12"
+            }
+        }
+    },
+    "forza-horizon-3": {
+        "title": "Forza Horizon 3",
+        "description": "Легендарная гоночная аркада в открытом мире, переносящая фестиваль Horizon в Австралию. Исследуйте разнообразные ландшафты – от песчаных пляжей и тропических лесов до пустыни и современного города. Станьте директором фестиваля, создавайте собственные гонки и соревнуйтесь с друзьями в самом масштабном приключении Horizon своего времени.",
+        "image": "https://i.postimg.cc/bw38DrYG/1758816863-coverforza.jpg",
+        "size": "65 GB",
+        "year": "2016",
+        "updated": "15.01.2024",
+        "status": "available",
+        "category": "Forza Horizon",
+        "torrentFile": "torrent/[dixen18] Forza Horizon 3.torrent",
+        "trailer": "https://drive.google.com/file/d/1KST4vmBullPkTZIrQoGFg9BnmS4IfG9u/preview",
+        "screenshots": [
+            "https://i.postimg.cc/N0ZMNDyZ/1467035231-4cacce3a-33a7-45ea-a9ce-1e2ba96d0e09.jpg",
+            "https://i.postimg.cc/65BQ1y3p/1467035246-06f08033-4a33-47b7-a45d-a8b0e2b9714f.jpg"
+        ],
+        "specs": {
+            "Жанр": "Аркадные гонки, Автосимулятор, Открытый мир",
+            "Разработчик": "Playground Games",
+            "Издатель": "Microsoft Studios",
+            "Платформа": "PC, Xbox One"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 10 Anniversary Edition (версия 1607 или выше)",
+                "Processor": "Intel i5-3570 @ 3.4GHz / AMD FX-6350 @ 3.9GHz",
+                "Memory": "8 GB RAM",
+                "Graphics": "NVIDIA GTX 750 Ti / NVIDIA GTX 650 Ti / AMD R7 250X",
+                "Storage": "65 GB available space",
+                "DirectX": "Версия 12"
+            },
+            "recommended": {
+                "OS": "Windows 10 Anniversary Edition (версия 1607 или выше)",
+                "Processor": "Intel i7-3820 @ 3.6GHz",
+                "Memory": "12 GB RAM",
+                "Graphics": "NVIDIA GTX 970 / NVIDIA GTX 1060 / AMD R9 290X / AMD RX 470",
+                "Storage": "65 GB available space (SSD рекомендуется)",
+                "DirectX": "Версия 12"
+            }
+        }
+    },
+    "forza-motorsport-7": {
+        "title": "Forza Motorsport 7",
+        "description": "Погрузитесь в мир профессиональных автосимуляторов с самой технически продвинутой частью серии. Более 700 автомобилей, 30 легендарных трасс и невероятная графика 4K 60FPS. Полностью настраиваемые параметры гонок, динамическая погода и смены времени суток создают самый реалистичный опыт виртуальных гонок от Turn 10 Studios.",
+        "image": "https://i.postimg.cc/CxBdb95c/1529056574-cover.jpg",
+        "size": "95 GB",
+        "year": "2017",
+        "updated": "15.01.2024",
+        "status": "available",
+        "category": "Forza Horizon",
+        "torrentFile": "torrent/Forza Motorsport 7  by xatab.torrent",
+        "trailer": "https://drive.google.com/file/d/1lbmfmsFYeLCjw7QpYmvHiAO1i-fQirm9/preview",
+        "screenshots": [
+            "https://i.postimg.cc/bJFK0VsY/1529056863-53a69bcb5273cc5a260639b564565432.jpg",
+            "https://i.postimg.cc/6qkgg7rD/1529056832-4012a787de40e15803801c73f2186081.jpg",
+            "https://i.postimg.cc/8k7C2qdK/1529056823-6051f46e3797c6379bf3072a643e026d.jpg",
+            "https://i.postimg.cc/wTJjvLGG/1529056844-6858ae00f262da65a82c20c0301468e3.jpg",
+            "https://i.postimg.cc/zGFDw55h/1529056813-c04626f620efe88f0d29feb16d8b8a0b.jpg",
+            "https://i.postimg.cc/7LQkXZR0/1529056849-cfa21adc2bcf0cbfa92af33928a3e6fb.jpg",
+            "https://i.postimg.cc/ZRGhtDZ2/1529057113-5d62d51fd455c571f8ee4f929cec8a7b.jpg",
+            "https://i.postimg.cc/Y2FHfkfP/1529057125-62ecae6d4a0bcfc5969bba3b9055ba56.jpg",
+            "https://i.postimg.cc/BQcfkgzp/1529057142-c8bf58c4d7c123199b83449877a3f175.jpg",
+            "https://i.postimg.cc/cLFy4J0h/1529057122-c34ae1dfa61d4d432fb0c31039d1bf70.jpg"
+        ],
+        "specs": {
+            "Жанр": "Автосимулятор, Гонки, Спортивный симулятор",
+            "Разработчик": "Turn 10 Studios",
+            "Издатель": "Microsoft Studios",
+            "Платформа": "PC, Xbox One"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 10 (версия 15063.0 или выше)",
+                "Processor": "Intel i5-750 2.67GHz / AMD FX-6300",
+                "Memory": "8 GB RAM",
+                "Graphics": "NVIDIA GT 740 / NVIDIA GTX 650 / AMD R7 250X",
+                "Storage": "95 GB available space",
+                "DirectX": "Версия 12"
+            },
+            "recommended": {
+                "OS": "Windows 10 (версия 15063.0 или выше)",
+                "Processor": "Intel i7-3820 @ 3.6GHz",
+                "Memory": "16 GB RAM",
+                "Graphics": "NVIDIA GTX 1080 / NVIDIA GTX 970 / NVIDIA GTX 1060 / AMD RX 480",
+                "Storage": "95 GB available space (SSD рекомендуется)",
+                "DirectX": "Версия 12",
+                "Дополнительно": "Для игры в 4K 60FPS требуется NVIDIA GTX 1080 или эквивалентная карта"
+            }
+        }
+    },
+    "forza-motorsport-2023": {
+        "title": "Forza Motorsport (2023)",
+        "description": "Возрождение легендарной серии автосимуляторов с нуля на новом движке. Более 500 автомобилей с беспрецедентной детализацией, 20 живописных трасс и динамическая погода в реальном времени. Уникальная система прокачки автомобилей, реалистичная физика повреждений и потрясающая графика ray tracing делают эту игру новым эталоном в жанре гоночных симуляторов от Turn 10 Studios.",
+        "image": "https://i.postimg.cc/wTP4WsqD/1686512872-library-600x900-2x.jpg",
+        "size": "130 GB",
+        "year": "2023",
+        "updated": "15.01.2024",
+        "status": "available",
+        "category": "Forza Horizon",
+        "torrentFile": "torrent/Forza.Motorsport.2023.Ultimate.Edition-InsaneRamZes.torrent",
+        "trailer": "https://drive.google.com/file/d/1gImSwySVxXOQBV94cELkQeLw01ZEeKpX/preview",
+        "screenshots": [
+            "https://i.postimg.cc/fTZYMzHb/1686512929-ss-9dfd83e0b0fcefca714fb49e4da48886619fa9e2.jpg",
+            "https://i.postimg.cc/brRDZn6c/1686512900-ss-794544aa55532dbb6b34ae2e67b487009622fb2d.jpg",
+            "https://i.postimg.cc/J41H9TnL/1686512909-ss-aca0e1a161467bcf91d3c320430509b3a85f9e09.jpg",
+            "https://i.postimg.cc/L85YsnLc/1686512884-ss-b87f8ef2e694903db8a082fafecbdd5b2fb9fffe.jpg",
+            "https://i.postimg.cc/cLzKt0cM/1686512844-ss-dbcbbb8f3bea80667224c95fc70a69f9894e86fb.jpg",
+            "https://i.postimg.cc/XJfXPF6x/1686512938-ss-fd78b7798a8bc66f554da67f756d26e13727d3a8.jpg"
+        ],
+        "specs": {
+            "Жанр": "Автосимулятор, Гонки, Спортивный симулятор",
+            "Разработчик": "Turn 10 Studios",
+            "Издатель": "Xbox Game Studios",
+            "Платформа": "PC, Xbox Series X/S"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 10/11 (версия 1909 или выше)",
+                "Processor": "Intel i5-8400 / AMD Ryzen 5 1600",
+                "Memory": "16 GB RAM",
+                "Graphics": "NVIDIA GTX 1060 6GB / AMD RX 5500 XT 8GB",
+                "Storage": "130 GB available space (SSD рекомендуется)",
+                "DirectX": "Версия 12"
+            },
+            "recommended": {
+                "OS": "Windows 10/11 (версия 1909 или выше)",
+                "Processor": "Intel i7-11700K / AMD Ryzen 7 5800X",
+                "Memory": "16 GB RAM",
+                "Graphics": "NVIDIA RTX 4080 / AMD RX 7900 XTX",
+                "Storage": "130 GB available space (SSD обязательно)",
+                "DirectX": "Версия 12 Ultimate",
+                "Дополнительно": "Для игры в 4K с ray tracing требуется NVIDIA RTX 4080/4090 или AMD RX 7900 XTX"
             }
         }
     },
