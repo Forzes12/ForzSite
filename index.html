@@ -5304,18 +5304,13 @@
 }
 
 function showForzaGames() {
-    const forzaGames = Object.keys(gameData).filter(id => gameData[id].title.toLowerCase().includes('forza horizon') || gameData[id].title.toLowerCase().includes('forza'));
-    if (forzaGames.length > 0) {
-        document.getElementById('gameSearch').value = '';
-        document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
-        document.querySelector('.category-tab[data-category="games"]').classList.add('active');
-        filterGames();
-        setTimeout(() => {
-            document.getElementById('allGamesGrid').scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-    } else {
-        alert('Игры Forza Horizon пока не добавлены в базу данных!');
-    }
+    document.getElementById('gameSearch').value = 'forza';
+    document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+    document.querySelector('.category-tab[data-category="games"]').classList.add('active');
+    filterGames();
+    setTimeout(() => {
+        document.getElementById('allGamesGrid').scrollIntoView({ behavior: 'smooth' });
+    }, 100);
 }
 
         // Обновление счетчика
