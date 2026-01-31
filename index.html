@@ -1559,6 +1559,14 @@
             box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
         }
 
+        .category-tab.far-cry-tab.active {
+            background: rgba(239, 68, 68, 0.2);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border-color: rgba(239, 68, 68, 0.4);
+            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
+        }
+
         .category-tab:hover {
             transform: translateY(-3px);
         }
@@ -4759,6 +4767,7 @@
                 <button class="category-tab utilities" data-category="utilities">VPN</button>
                 <button class="category-tab Privatki" data-category="Privatki">Приватки</button>
                 <button class="category-tab forza-horizon-tab" data-category="Forza Horizon">Forza Horizon</button>
+                <button class="category-tab far-cry-tab" data-category="Far Cry">Far Cry</button>
             </div>
             
             <div class="games-header">
@@ -5295,6 +5304,14 @@
                         tag.includes('форза') || tag.includes('горизон')
                     );
                 }
+                // Для категории "Far Cry" также проверяем теги
+                if (activeCategory === 'Far Cry' && !matchesCategory) {
+                    const gameTags = game.tags ? game.tags.map(t => t.toLowerCase()) : [];
+                    matchesCategory = gameTags.some(tag => 
+                        tag.includes('far cry') || tag.includes('farcry') || 
+                        tag.includes('фор край') || tag.includes('фаркрай')
+                    );
+                }
                 
                 const matchesStatus = true;
                 const matchesSearch = !searchTerm || 
@@ -5321,6 +5338,14 @@
                     emptyMessage = document.createElement('div');
                     emptyMessage.className = 'empty-message';
                     emptyMessage.innerHTML = '<div style="text-align: center; margin-bottom: 20px; font-size: 1.5rem; font-weight: bold; color: var(--text); text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);">🚀 Игра появится: 22.01.2026 21:00 🚀</div><img src="Video/0122(1).gif" style="max-width: 100%; height: auto; border-radius: 10px;">';
+                    grid.appendChild(emptyMessage);
+                }
+            }
+            if (activeCategory === 'Far Cry') {
+                if (!emptyMessage) {
+                    emptyMessage = document.createElement('div');
+                    emptyMessage.className = 'empty-message';
+                    emptyMessage.innerHTML = '<img src="Video/0122(1).gif" style="max-width: 100%; height: auto; border-radius: 10px; margin-bottom: 20px;"><div style="text-align: center;"><h2 style="color: var(--text); font-family: Orbitron, sans-serif; margin-bottom: 15px;">FAR CRY</h2><p style="color: var(--text-secondary); line-height: 1.6; max-width: 600px; margin: 0 auto;">Far Cry — это серия популярных компьютерных игр в жанре action-adventure и шутера от первого лица, разработанная компанией Ubisoft. Первая игра серии вышла в 2004 году и с тех пор успела завоевать миллионы поклонников по всему миру. Каждая часть серии предлагает уникальный сюжет, открытый мир и захватывающий геймплей.</p></div>';
                     grid.appendChild(emptyMessage);
                 }
             }
@@ -6449,8 +6474,8 @@ function showForzaGames() {
                     });
                     this.classList.add('active');
                     
-                    // Очищаем поиск при переключении на Forza Horizon
-                    if (this.dataset.category === 'Forza Horizon') {
+                    // Очищаем поиск при переключении на Forza Horizon или Far Cry
+                    if (this.dataset.category === 'Forza Horizon' || this.dataset.category === 'Far Cry') {
                         document.getElementById('gameSearch').value = '';
                     }
                     
