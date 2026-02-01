@@ -1751,6 +1751,589 @@
             }
         }
     },
+    "my-dream-setup": {
+        "title": "My Dream Setup",
+        "description": "Создайте рабочее пространство своей мечты с нуля! Эта игра — уютный симулятор дизайна и кастомизации. Начните с пустой комнаты и постепенно превратите её в идеальный уголок для творчества, игр или работы. Подбирайте стильную мебель, настраивайте освещение, расставляйте гаджеты и декор, создавая уникальную атмосферу. Участвуйте в заданиях по оформлению, изучайте тренды и зарабатывайте на новые предметы интерьера. Расслабляющий геймплей, полный вдохновения для создания вашего личного пространства.",
+        "image": "https://i.postimg.cc/nLKRPTTs/54e7bd82108ebad88099236f2e4e2a23.jpg",
+        "size": "4.5 GB",
+        "year": "2023",
+        "updated": "15.04.2024",
+        "status": "available",
+        "category": "games",
+        "torrentFile": "torrent/MDS 16.07.25.7z.torrent",
+        "trailer": "https://drive.google.com/file/d/1i3iBj9VuSxHUat2kKUAUlGZ-Qa2iWvF/preview",
+        "screenshots": [
+            "https://i.postimg.cc/vBNWqVRQ/1690043618-ss-0a156fde1f5d4d84ee165f89fd4e87f01b54327e.jpg",
+            "https://i.postimg.cc/K4XtFh8X/1690043592-ss-1c6b14c7023592af6cdbef68731e94af4026a5f3.jpg",
+            "https://i.postimg.cc/h4NYhJJP/1690043603-ss-19bf675ae5346d8196c510f2ad7a2fc89aacc683.jpg",
+            "https://i.postimg.cc/RZLpPXgt/1690043646-ss-363c47bd4fd242c4a82c3bb4505882f5f36e8af8.jpg",
+            "https://i.postimg.cc/gJnM2dmk/1690043655-ss-630d3e0ce7ae9670a093a4f15c306452391fb8e9.jpg",
+            "https://i.postimg.cc/vTn35z1Y/1690043572-ss-5764cb89a1c9ba64187541b53b53ece18426632f.jpg"
+        ],
+        "specs": {
+            "Жанр": "Симулятор, Дизайн интерьера, Казуальная, Расслабляющая",
+            "Разработчик": "DreamDev Studios",
+            "Издатель": "Cozy Games Publishing",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 10 (64-bit)",
+                "Processor": "Intel Core i3-6100 / AMD FX-6300",
+                "Memory": "6 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 750 Ti / AMD Radeon R7 260X",
+                "Storage": "6 GB available space"
+            },
+            "recommended": {
+                "OS": "Windows 10/11 (64-bit)",
+                "Processor": "Intel Core i5-8400 / AMD Ryzen 5 1600",
+                "Memory": "8 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 570",
+                "Storage": "6 GB available space (SSD рекомендуется)"
+            }
+        }
+    },
+    "metro-2033-redux": {
+        "title": "Metro 2033 Redux",
+        "description": "Окунитесь в культовый постапокалиптический хоррор-экшен по мотивам одноименного романа Дмитрия Глуховского. Москва, 2033 год. Поверхность планеты лежит в руинах после ядерной войны, а последние выжившие ютятся в лабиринтах Московского метрополитена. Вы — Артём, молодой человек, выросший под землей, который должен отправиться в опасное путешествие через мутировавшие туннели и заброшенные станции, чтобы предупредить остатки человечества о новой смертельной угрозе. Сражайтесь со страшными мутантами и враждебными группировками, выживайте в условиях нехватки ресурсов и принимайте решения, которые определят судьбу метро.",
+        "image": "https://i.postimg.cc/L6MVrjY6/1668124001-cover.jpg",
+        "size": "10 GB",
+        "year": "2014",
+        "updated": "01.09.2023",
+        "status": "available",
+        "category": "Metro",
+        "torrentFile": "torrent/[dixen18] Metro.torrent",
+        "trailer": "https://drive.google.com/file/d/1xxRGX9DR6XHRFy53wenE-fZLu6ggfJZQ/preview",
+        "screenshots": [
+            "https://i.postimg.cc/7YWZ5n35/1442326513-280-crop890x507.jpg",
+            "https://i.postimg.cc/V6gYmqs8/1442326464-287-crop890x507.jpg",
+            "https://i.postimg.cc/P5DTPsf9/1442326484-325-crop890x507.png",
+            "https://i.postimg.cc/MT6SPn08/1442326499-ss-6f2b3f3a7409bd649208924a5815e908731432bd-1920x1080.jpg",
+            "https://i.postimg.cc/vTjwZXJB/1442326450-ss-b31b38d3d8208f30f49d94c84c73ae558006fbcd-1920x1080.jpg",
+            "https://i.postimg.cc/65kNsjVh/1442326522-ss-e731192b48c3599945136b8267979be80eea0ce1-1920x1080.jpg"
+        ],
+        "specs": {
+            "Жанр": "Шутер от первого лица, Постапокалипсис, Хоррор, Выживание",
+            "Разработчик": "4A Games",
+            "Издатель": "Deep Silver",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 7/8/10 (64-bit)",
+                "Processor": "Intel Core i5-4440 / AMD FX-6300",
+                "Memory": "4 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 660 / AMD Radeon HD 7870",
+                "Storage": "10 GB available space",
+                "DirectX": "Версии 11"
+            },
+            "recommended": {
+                "OS": "Windows 10 (64-bit)",
+                "Processor": "Intel Core i7-4770K / AMD Ryzen 5 1600",
+                "Memory": "8 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 970 / AMD Radeon R9 390",
+                "Storage": "10 GB available space (SSD рекомендуется)",
+                "DirectX": "Версии 11"
+            }
+        }
+    },
+    "metro-last-light-redux": {
+        "title": "Metro Last Light Redux",
+        "description": "Продолжение легендарной постапокалиптической саги. События разворачиваются через год после финала Metro 2033. Артёму, теперь признанному герою станции «Полис», предстоит выполнить новую опасную миссию в туннелях московского метро. Ему нужно найти последнего представителя загадочной расы «Тёмных» — ключ к выживанию человечества. Вас ждут масштабные сражения с мутантами, противостояние враждующим фракциям, исследование мрачных подземелий и опасных поверхностных локаций. Глубокий сюжет, моральный выбор и удушающая атмосфера выживания в мире, где надежда — самый дефицитный ресурс.",
+        "image": "https://i.postimg.cc/rwTM0ZdV/1668737035-cover.jpg",
+        "size": "10.5 GB",
+        "year": "2014",
+        "updated": "01.09.2023",
+        "status": "available",
+        "category": "Metro",
+        "torrentFile": "torrent/Metro - Last Light Redux v1.03 (33180).torrent",
+        "trailer": "https://drive.google.com/file/d/1rqqwX8Egrqk1jXj2DKNCET7vo_Uto4HF/preview",
+        "screenshots": [
+            "https://i.postimg.cc/44cD6bRY/1520352306-1758579.jpg",
+            "https://i.postimg.cc/tg7fYFNc/1520352255-1507824311-8599.jpg",
+            "https://i.postimg.cc/G2y5jrNg/1520352277-screenshot-metro-last-light-redux-1920x1080-2014-05-22-4.jpg",
+            "https://i.postimg.cc/nrfwRgf4/1520352285-screenshot-metro-last-light-redux-1920x1080-2014-08-13-5.jpg",
+            "https://i.postimg.cc/MKxF1CYy/1520352248-screenshot-metro-last-light-redux-1920x1080-2014-08-27-8.jpg",
+            "https://i.postimg.cc/bwwVB1Wx/1520352302-ss-a206b10bda9b4a908881e9df70ab7d691640c89b-1920x1080.jpg"
+        ],
+        "specs": {
+            "Жанр": "Шутер от первого лица, Постапокалипсис, Хоррор, Выживание, Стелс",
+            "Разработчик": "4A Games",
+            "Издатель": "Deep Silver",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 7/8/10 (64-bit)",
+                "Processor": "Intel Core i5-4440 / AMD FX-6300",
+                "Memory": "4 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 660 / AMD Radeon HD 7870",
+                "Storage": "10 GB available space",
+                "DirectX": "Версии 11"
+            },
+            "recommended": {
+                "OS": "Windows 10 (64-bit)",
+                "Processor": "Intel Core i7-4770K / AMD Ryzen 5 1600",
+                "Memory": "8 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 970 / AMD Radeon R9 390",
+                "Storage": "10 GB available space (SSD рекомендуется)",
+                "DirectX": "Версии 11"
+            }
+        }
+    },
+    "metro-last-light": {
+        "title": "Metro: Last Light",
+        "description": "Погрузитесь в мрачный мир постапокалиптической Москвы в оригинальной, не переработанной версии культового шутера. Год спустя после событий Metro 2033, вы — Артём, ставший легендой Полиса. Вас ждёт новая опасная миссия: найти последнего выжившего «Тёмного» — существо, которое может быть ключом к спасению или окончательной гибели человечества. Сражайтесь с мутантами и враждующими фракциями в туннелях метро и на отравленной поверхности. Сталкивайтесь с моральными дилеммами, где каждый выстрел и каждый поступок влияют на исход истории. Это классическая версия игры с уникальной атмосферой и геймплеем, каким его задумали разработчики.",
+        "image": "https://i.postimg.cc/XYPL1mwG/1610844609-cover.jpg",
+        "size": "8.5 GB",
+        "year": "2013",
+        "updated": "15.05.2015",
+        "status": "available",
+        "category": "Metro",
+        "torrentFile": "torrent/Metro.Last.Light.Complete.Edition.MULTi10-PLAZA.torrent",
+        "trailer": "https://drive.google.com/file/d/1CmscMlaUIC3zXPAondbgMMJPkYFGO7xK/preview",
+        "screenshots": [
+            "https://i.postimg.cc/wMWLyR2T/1610844676-7777-1.jpg",
+            "https://i.postimg.cc/G3zkS6R1/1610844619-7777-2.jpg",
+            "https://i.postimg.cc/mrxMHsYN/1610844657-7777-3.jpg",
+            "https://i.postimg.cc/nz2Qg96G/1610844674-7777-4.jpg",
+            "https://i.postimg.cc/J4vHfLdb/1610844655-7777-5.jpg",
+            "https://i.postimg.cc/fbj3S0Wq/1610844603-7777-6.jpg",
+            "https://i.postimg.cc/8CH5zQwX/1610844637-7777-7.jpg",
+            "https://i.postimg.cc/9MgQyd6N/1610844650-7777.jpg"
+        ],
+        "specs": {
+            "Жанр": "Шутер от первого лица, Постапокалипсис, Хоррор, Выживание",
+            "Разработчик": "4A Games",
+            "Издатель": "Deep Silver",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows Vista/7/8 (64-bit)",
+                "Processor": "Intel Core 2 Duo @ 2.2GHz / AMD Athlon 64 X2 4600+",
+                "Memory": "2 GB RAM",
+                "Graphics": "NVIDIA GeForce 8800 GT / AMD Radeon HD 3850 (512MB VRAM)",
+                "Storage": "8 GB available space",
+                "DirectX": "Версии 9.0c"
+            },
+            "recommended": {
+                "OS": "Windows 7/8 (64-bit)",
+                "Processor": "Intel Core i5 / AMD Phenom II X4",
+                "Memory": "4 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 560 Ti / AMD Radeon HD 6950",
+                "Storage": "8 GB available space",
+                "DirectX": "Версии 11"
+            }
+        }
+    },
+    "nid-four-speed-bridge-vented-limited": {
+        "title": "Nid Four Speed Bridge: Vented Limited Edition",
+        "description": "Погрузитесь в гиперреалистичный симулятор настройки и вождения редчайшего японского суперкара — Nid Four Speed Bridge в эксклюзивной вентилируемой версии. Эта игра — не просто гонка, а инженерный симулятор и любовное письмо автомобильной культуре. Ваша задача — не просто выиграть заезды, а понять душу этой уникальной машины: тонко настраивать каждый компонент, от геометрии подвески до угла атаки активного антикрыла, и чувствовать, как меняется её поведение на треке. Исследуйте динамическую модель, не имеющую аналогов, и докажите, что вы — настоящий пилот-инженер, способный раскрыть потенциал этого технологического шедевра.",
+        "image": "https://i.postimg.cc/HxrVZv9T/1516638576-cover.jpg",
+        "size": "25 GB",
+        "year": "2024",
+        "updated": "10.05.2024",
+        "status": "available",
+        "category": "Need For Speed",
+        "torrentFile": "torrent/Need-for-Speed-Most-Wanted-Limited-Edition-by-Igruha.torrent",
+        "trailer": "https://drive.google.com/file/d/1aYPllABQx7-Q5-aXcXzxQq0nwoiHupeB/preview",
+        "trailer1": "https://drive.google.com/file/d/1ugMcD8KMIB3LuCInO5IHkhl3xDVhgx2F/preview",
+        "screenshots": [
+            "https://i.postimg.cc/sgGHz3fY/1428771201-1-1-1024x640.jpg",
+            "https://i.postimg.cc/s2pnBKZk/1428771203-11-1-1024x640.jpg",
+            "https://i.postimg.cc/NFPbhzWR/1428771174-59-g-1-1024x576.jpg",
+            "https://i.postimg.cc/KvRJ7mM5/1428771206-68-g-1-1024x576.jpg",
+            "https://i.postimg.cc/43TPTtFz/1428771238-81-r-1-1024x576.jpg",
+            "https://i.postimg.cc/yd1TDKKR/1428771252-85-r-1-1024x576.jpg"
+        ],
+        "specs": {
+            "Жанр": "Автосимулятор (Hardcore), Инженерный симулятор, Гонки, Симулятор настройки",
+            "Разработчик": "Precision Garage Simulations",
+            "Издатель": "Boutique Interactive",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 10 (64-bit)",
+                "Processor": "Intel Core i5-9600K / AMD Ryzen 5 3600",
+                "Memory": "16 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 1660 Ti / AMD Radeon RX 5600 XT (6GB VRAM)",
+                "Storage": "30 GB available space (SSD обязательно)",
+                "Peripherals": "Руль с педалями и поддержкой force feedback настоятельно рекомендуется"
+            },
+            "recommended": {
+                "OS": "Windows 10/11 (64-bit)",
+                "Processor": "Intel Core i7-12700K / AMD Ryzen 7 5800X3D",
+                "Memory": "32 GB RAM",
+                "Graphics": "NVIDIA GeForce RTX 3070 / AMD Radeon RX 6800 XT (8GB+ VRAM)",
+                "Storage": "30 GB available space (NVMe SSD)",
+                "Peripherals": "Прямой приводный руль, педали с датчиком нагрузки, амортизаторная ручка КПП"
+            }
+        }
+    },
+    "need-for-speed-2015": {
+        "title": "Need for Speed (2015)",
+        "description": "Возрождение легенды уличных гонок! Действие игры разворачивается в вымышленном городе Вентура-Бэй, где царит атмосфера ночной автомобильной культуры. Вас ждёт полное погружение в мир нелегальных стрит-рейсинга, тюнинга и бандитских скоростей. Снимите на камеру свои самые дерзкие заезды, победы и полицейские погони, чтобы стать иконой андерграунд-сцены. Кастомизируйте автомобили с невероятной детализацией, соревнуйтесь с живыми игроками в всегда активном открытом мире и докажите, что вы — самый быстрый гонщик города. Это любовное письмо фанатам оригинальной серии с современной графикой и кинематографичной подачей.",
+        "image": "https://i.postimg.cc/Cx47SdTT/1709678542-library-600x900-2x.jpg",
+        "size": "19 GB",
+        "year": "2015",
+        "updated": "15.03.2016",
+        "status": "buy",
+        "category": "Need For Speed",
+        "buyGame": "https://ggsel.net/catalog/product/avto-24-7-need-for-speed-deluxe-edition-rf-mir-steam-podarok-102112687",
+        "trailer": "https://drive.google.com/file/d/1y-N_Dffen_gDTD5-dHv9ctpRIRA4mu4l/preview",
+        "screenshots": [
+            "https://i.postimg.cc/Vvc0JBnF/1709678603-ss-7da80363f25c7d7ccc95e7bfdc5d8091e0cea77e.jpg",
+            "https://i.postimg.cc/ryStv32Z/1709678521-ss-9dd50dff2daf09743e7ec2eab9efc5fe2b2a791e.jpg",
+            "https://i.postimg.cc/xTnbY50P/1709678539-ss-297cfc5e234303c4b1902b9cc7472f03413df644.jpg",
+            "https://i.postimg.cc/2SXqQfn2/1709678537-ss-875f91e73aa07254c7d30467f3c86ead6c6e19a7.jpg",
+            "https://i.postimg.cc/T1Ghd2X3/1709678595-ss-cea4c1efa87963e26afb2f5d70a982685980432f.jpg",
+            "https://i.postimg.cc/L6xhSMCy/1709678521-ss-e720137320c342a6664e195bc875613f338397ca.jpg"
+        ],
+        "specs": {
+            "Жанр": "Гонки, Аркада, Открытый мир, Автосимулятор (аркадный)",
+            "Разработчик": "Ghost Games",
+            "Издатель": "Electronic Arts",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 7 64-bit",
+                "Processor": "Intel Core i3-4130 / AMD FX-4130",
+                "Memory": "6 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 750 Ti / AMD Radeon HD 7850 (2GB VRAM)",
+                "Storage": "22 GB available space",
+                "DirectX": "Версии 11",
+                "Network": "Широкополосное подключение к интернету"
+            },
+            "recommended": {
+                "OS": "Windows 8.1 64-bit",
+                "Processor": "Intel Core i5-4690 / AMD FX-8350",
+                "Memory": "8 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 970 / AMD Radeon R9 290 (4GB VRAM)",
+                "Storage": "22 GB available space (SSD рекомендуется)",
+                "DirectX": "Версии 11",
+                "Network": "Широкополосное подключение к интернету"
+            }
+        }
+    },
+    "need-for-speed-payback": {
+        "title": "Need for Speed Payback",
+        "description": "Стильный кинематографичный экшен о мести и скорости в открытом мире! Действия разворачиваются в Лас-Вегасе будущего — городе Фортуна-Вэлли, где правят банды уличных гонщиков и коррумпированные власти. Вы — член экипажа The Outlaws, преданный своими же и жаждущий отомстить. Примите участие в дерзких хепендингах с преследованиями, взрывами и невероятными трюками. Собирайте и кастомизируйте уникальные автомобили для разных дисциплин: гонок, дрифта, офф-роуда и «бегства». Окунитесь в мир блокбастера за рулем, где каждая погоня — как сцена из фильма, а каждый тюнинг — шаг к восстановлению справедливости.",
+        "image": "https://i.postimg.cc/7LDRnpDz/1687175411-cover.jpg",
+        "size": "26 GB",
+        "year": "2017",
+        "updated": "20.02.2018",
+        "status": "available",
+        "category": "Need For Speed",
+        "torrentFile": "torrent/Need-for-Speed-Payback-by-Igruha.torrent",
+        "trailer": "https://drive.google.com/file/d/1Df1ArSRpa8eRKHb0SP-F35nuioZjjKJp/preview",
+        "screenshots": [
+            "https://i.postimg.cc/SKNBpwPf/1509898484-5pzvy4gk.jpg",
+            "https://i.postimg.cc/VLQ2NSTq/1509898530-77gn77.jpg",
+            "https://i.postimg.cc/zXrPrsbC/1509898488-77ne77.jpg",
+            "https://i.postimg.cc/85dMB01Y/1509898544-77pa77.jpg",
+            "https://i.postimg.cc/W4LdWwf6/1509898569-77rp77.jpg",
+            "https://i.postimg.cc/Mpy6T2dK/1509898490-7777.jpg",
+            "https://i.postimg.cc/cJ0st9bz/1509898556-ay8ig3rv.jpg",
+            "https://i.postimg.cc/0Nn9YGg5/1509898582-ldchgj97.jpg"
+        ],
+        "specs": {
+            "Жанр": "Гонки, Аркада, Экшен, Открытый мир, Автосимулятор (аркадный)",
+            "Разработчик": "Ghost Games",
+            "Издатель": "Electronic Arts",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 7 64-bit",
+                "Processor": "Intel Core i3-6300 / AMD FX-8150",
+                "Memory": "6 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 750 Ti / AMD Radeon HD 7850 (2GB VRAM)",
+                "Storage": "30 GB available space",
+                "DirectX": "Версии 11"
+            },
+            "recommended": {
+                "OS": "Windows 10 64-bit",
+                "Processor": "Intel Core i5-6500 / AMD Ryzen 5 1600",
+                "Memory": "8 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 480 (4GB VRAM)",
+                "Storage": "30 GB available space (SSD рекомендуется)",
+                "DirectX": "Версии 11"
+            }
+        }
+    },
+    "far-cry-1": {
+        "title": "Far Cry 1",
+        "description": "Игра, перевернувшая представление о шутерах от первого лица! Вы — Джек Карвер, бывший спецназовец, оказавшийся на тропическом архипелаге в поисках пропавшей журналистки. Но райские острова скрывают страшную тайну: безумные наёмники и генетические эксперименты, вышедшие из-под контроля. Вам предстоит сражаться не только с умным и опасным ИИ противников, но и с непредсказуемыми мутантами. Исследуйте огромные открытые локации, подбирайте тактику под каждый бой, используйте транспорт и оружие по ситуации. Брутальные перестрелки, нелинейный геймплей и революционная для своего времени графика — вот что сделало Far Cry классикой жанра.",
+        "image": "https://i.postimg.cc/hjvVQzKc/1668439000-cover.jpg",
+        "size": "4 GB",
+        "year": "2004",
+        "updated": "10.11.2005",
+        "status": "available",
+        "category": "Far Cry",
+        "torrentFile": "torrent/Far Cry 1.40 hotfix (29940) [GOG].torrent",
+        "trailer": "https://drive.google.com/file/d/1HDBAfev_blG_0_eb9L4lKKvhv6-_XoJU/preview",
+        "screenshots": [
+            "https://i.postimg.cc/tJHPSrhb/1446747719-0000003758-1920x1080.jpg",
+            "https://i.postimg.cc/KjrTdnNf/1446747797-0000003759-1920x1080.jpg",
+            "https://i.postimg.cc/7PgSGkkG/1446747748-0000003760-1920x1080.jpg",
+            "https://i.postimg.cc/SNd8dfj0/1446747778-0000003761-1920x1080.jpg"
+        ],
+        "specs": {
+            "Жанр": "Шутер от первого лица, Экшен, Открытый мир (для своего времени)",
+            "Разработчик": "Crytek",
+            "Издатель": "Ubisoft",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 98SE/2000/XP",
+                "Processor": "Intel Pentium 3 1GHz / AMD Athlon 1GHz",
+                "Memory": "256 MB RAM",
+                "Graphics": "NVIDIA GeForce 2 / ATI Radeon 8500 (64MB VRAM)",
+                "Storage": "4 GB available space",
+                "DirectX": "Версии 9.0b"
+            },
+            "recommended": {
+                "OS": "Windows XP",
+                "Processor": "Intel Pentium 4 2GHz / AMD Athlon XP 2000+",
+                "Memory": "512 MB RAM",
+                "Graphics": "NVIDIA GeForce 4 Ti / ATI Radeon 9700 (128MB VRAM)",
+                "Storage": "4 GB available space",
+                "DirectX": "Версии 9.0b"
+            }
+        }
+    },
+    "far-cry-2": {
+        "title": "Far Cry 2",
+        "description": "Жестокий, беспощадный симулятор выживания наемника в сердце Африки. Вы — солдат удачи, отправленный в вымышленную страну, разрываемую гражданской войной, с одной целью — ликвидировать «Барсука», торговца оружием. Но планы рушатся, когда вы заболеваете малярией, а каждое действие лишь разжигает пламя конфликта. Игровой мир живет по своим законам: пожары распространяются по саванне, оружие ломается в самый неподходящий момент, а раны нужно лечить на ходу. Друзей здесь нет — есть лишь временные союзники, которые могут предать в любой момент. Это самый атмосферный, реалистичный и безкомпромиссный Far Cry, проверяющий вашу волю на прочность.",
+        "image": "https://i.postimg.cc/fLqpY9Xc/1668467063-cover.jpg",
+        "size": "12 GB",
+        "year": "2008",
+        "updated": "15.12.2008",
+        "status": "available",
+        "category": "Far Cry",
+        "torrentFile": "torrent/Far Cry 2.torrent",
+        "trailer": "https://drive.google.com/file/d/1ciTi53Koo5WUIPzuTRd_swndod0QeIkT/preview",
+        "screenshots": [
+            "https://i.postimg.cc/PqQPftZq/1445803694-0000004525-1920x1080.jpg",
+            "https://i.postimg.cc/90rMBZn6/1445803703-0000004526-1920x1080.jpg",
+            "https://i.postimg.cc/qqzRGyFy/1445803709-0000004527-1920x1080.jpg",
+            "https://i.postimg.cc/59Rj2KH0/1445803728-0000004531-1920x1080.jpg",
+            "https://i.postimg.cc/fbCRn846/1445803748-0000004532-1920x1080.jpg",
+            "https://i.postimg.cc/wB2j8w8L/1445803700-0000004533-1920x1080.jpg",
+            "https://i.postimg.cc/B6wZttvf/1445803703-0000004534-1920x1080.jpg",
+            "https://i.postimg.cc/gjCYq5RR/1445803757-0000004535-1920x1080.jpg"
+        ],
+        "specs": {
+            "Жанр": "Шутер от первого лица, Выживание, Открытый мир, Тактический экшен",
+            "Разработчик": "Ubisoft Montreal",
+            "Издатель": "Ubisoft",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows XP/Vista",
+                "Processor": "Intel Pentium 4 3.2 GHz / AMD Athlon 64 3500+",
+                "Memory": "1 GB RAM (XP) / 2 GB RAM (Vista)",
+                "Graphics": "NVIDIA GeForce 6800 / ATI Radeon X1650 (256MB VRAM) Shader Model 3.0",
+                "Storage": "12 GB available space",
+                "DirectX": "Версии 9.0c"
+            },
+            "recommended": {
+                "OS": "Windows XP/Vista",
+                "Processor": "Intel Core 2 Duo / AMD Athlon 64 X2 5200+",
+                "Memory": "2 GB RAM",
+                "Graphics": "NVIDIA GeForce 8600 GTS / ATI Radeon X1900 (512MB VRAM)",
+                "Storage": "12 GB available space",
+                "DirectX": "Версии 9.0c / 10.0"
+            }
+        }
+    },
+    "far-cry-3": {
+        "title": "Far Cry 3",
+        "description": "От невинного отпуска до кровавой борьбы за выживание. Ваш идеальный отдых на тропическом архипелаге превращается в кошмар, когда пираты во главе с харизматичным и психически нестабильным Ваасом Монтенегро захватывают вас и ваших друзей. Вам, обычному парню Джейсону Броуди, предстоит пройти путь от испуганного туриста до безжалостного воина. Исследуйте огромный открытый мир, овладевайте навыками выживания, охоты и убийства. Освобождайте острова от тирании пиратов, окунаясь в безумие, где граница между жертвой и охотником стирается. Запоминающиеся персонажи, культовый злодей и полная свобода действий в диких джунглях сделали эту игру легендой.",
+        "image": "https://i.postimg.cc/NftGFhsm/1668378764-cover.jpg",
+        "size": "15 GB",
+        "year": "2012",
+        "updated": "04.12.2012",
+        "status": "available",
+        "category": "Far Cry",
+        "torrentFile": "torrent/Far-Cry-3.torrent",
+        "trailer": "https://drive.google.com/file/d/1NgQpSRophfpsrwa0xPUuo_YkzS59HE6b/preview",
+        "screenshots": [
+            "https://i.postimg.cc/Fz8jb9D8/1441654257-ss-6a4dec0b9653564b7be754286cef07a012c24fea-1920x1080.jpg",
+            "https://i.postimg.cc/VL09fCNd/1441654239-ss-6e7911d3622f3a801aeea1c2f8418f0f22880bb0-1920x1080.jpg",
+            "https://i.postimg.cc/K8nnLhLV/1441654290-ss-83af36773eb0393144cfefa80ceb6baf5c608cf7-1920x1080.jpg",
+            "https://i.postimg.cc/FKp3WbTK/1441654304-ss-842bfdeb44368babd55ad93af1cbbf560f9fb9a1-1920x1080.jpg",
+            "https://i.postimg.cc/d10dz7fB/1441654316-ss-7106071cd402ada3d76c044bb4361a5b2236974e-1920x1080.jpg",
+            "https://i.postimg.cc/W3frjNLL/1441654302-ss-a8fd4aee64245a876e9bee0f8b59ae065fedf08c-1920x1080.jpg",
+            "https://i.postimg.cc/Gt8DmWdk/1441654312-ss-a85a01aae90c8ca69a05d32a1196ffaf6d943bd7-1920x1080.jpg",
+            "https://i.postimg.cc/XqRCGsvp/1441654297-ss-c5c810244ba6dd899de44121b37d87fad2621d4c-1920x1080.jpg",
+            "https://i.postimg.cc/Qx75GZ6N/1441654327-ss-ea2c0211c7c9d64264b40d715ba0822db96da42c-1920x1080.jpg",
+            "https://i.postimg.cc/htqmKZwY/1441654319-ss-eed79518c510b7b8ce6fce9d1c350bfcea530993-1920x1080.jpg"
+        ],
+        "specs": {
+            "Жанр": "Шутер от первого лица, Открытый мир, Экшен, Приключения",
+            "Разработчик": "Ubisoft Montreal",
+            "Издатель": "Ubisoft",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows XP/Vista/7 (SP1) / Windows 8",
+                "Processor": "Intel Core 2 Duo E6700 / AMD Athlon 64 X2 6000+",
+                "Memory": "4 GB RAM",
+                "Graphics": "NVIDIA GeForce 8800 GT / ATI Radeon HD 2900 (512MB VRAM) Shader Model 4.0",
+                "Storage": "15 GB available space",
+                "DirectX": "Версии 9.0c"
+            },
+            "recommended": {
+                "OS": "Windows 7/8",
+                "Processor": "Intel Core i3-550 / AMD Phenom II X4 955",
+                "Memory": "4 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 480 / AMD Radeon HD 5770 (1GB VRAM)",
+                "Storage": "15 GB available space",
+                "DirectX": "Версии 11"
+            }
+        }
+    },
+    "far-cry-4": {
+        "title": "Far Cry 4",
+        "description": "Отправляйтесь в опасное и непредсказуемое путешествие в сердце Гималаев. Вы — Аджай Гейл, молодой американец, приехавший в вымышленную страну Кират, чтобы развеять прах матери на её родине. Но вместо покоя вы оказываетесь в центре кровавой гражданской войны против тирана Пагана Мина. Вас ждут бескрайние горные долины, древние храмы и опасные джунгли, полные экзотических животных. Сражайтесь, используя разнообразное оружие и уникальные средства передвижения, включая каркасный параплан и слонов. Присоединитесь к восстанию, делайте морально неоднозначные выборы и решите: кто на самом деле прав в этой войне — жестокий диктатор или фанатичные повстанцы?",
+        "image": "https://i.postimg.cc/brgJ08pj/1749877116-library-600x900-2x.jpg",
+        "size": "20 GB",
+        "year": "2014",
+        "updated": "17.11.2014",
+        "status": "available",
+        "category": "Far Cry",
+        "torrentFile": "torrent/Far-Cry-4.torrent",
+        "trailer": "https://drive.google.com/file/d/1o7shVNsqDHADRyUxk7Ffd3ivdiNjEC1R/preview",
+        "screenshots": [
+            "https://i.postimg.cc/T39zRwQT/1749877128-ss-2e7b8e01e12b4932b83b802318d8aae5eb59bacb.jpg",
+            "https://i.postimg.cc/nz65dQV7/1749877166-ss-738eb6ad93238c22b8042074119032fb3d0cb5e0.jpg",
+            "https://i.postimg.cc/NfvSmTPn/1749877185-ss-ba2f250b4986a7b6aa5133bba13b2004c410d68b.jpg",
+            "https://i.postimg.cc/sgVL0zz0/1749877216-ss-bc4db88cc60dbbf1b33347ea7a84752f1e256480.jpg"
+        ],
+        "specs": {
+            "Жанр": "Шутер от первого лица, Открытый мир, Экшен, Приключения",
+            "Разработчик": "Ubisoft Montreal",
+            "Издатель": "Ubisoft",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 7/8/8.1 (64-bit)",
+                "Processor": "Intel Core i5-750 / AMD Phenom II X4 955",
+                "Memory": "4 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 460 / AMD Radeon HD 5850 (1GB VRAM) DirectX 11",
+                "Storage": "30 GB available space",
+                "DirectX": "Версии 11"
+            },
+            "recommended": {
+                "OS": "Windows 7/8/8.1 (64-bit)",
+                "Processor": "Intel Core i5-2400S / AMD FX-8350",
+                "Memory": "8 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 680 / AMD Radeon R9 290X (2GB VRAM)",
+                "Storage": "30 GB available space",
+                "DirectX": "Версии 11"
+            }
+        }
+    },
+    "far-cry-5": {
+        "title": "Far Cry 5",
+        "description": "Забудьте об экзотических островах — самое опасное приклюствие ждет вас в самом сердце Америки. Вы — молодой шериф, прибывший в округ Хоуп, штат Монтана, чтобы арестовать Джозефа Сына, харизматичного лидера тоталитарного религиозного культа «Врата Эдема». Операция проваливается, и вы оказываетесь в ловушке на территории, полностью контролируемой фанатиками. Поднимите восстание среди местных жителей, нанимайте уникальных наемников («пушки за хвост») и освобождайте регион от тирании культистов. Исследуйте живописные, но смертоносные просторы сельской Америки, где царит атмосфера паранойи, а за каждым углом вас ждут психоделические кошмары и ожесточенные бои за свободу.",
+        "image": "https://i.postimg.cc/Vkrtwrz5/1668464672-cover.jpg",
+        "size": "40 GB",
+        "year": "2018",
+        "updated": "27.03.2018",
+        "status": "available",
+        "category": "Far Cry",
+        "torrentFile": "torrent/Far-Cry-5.torrent",
+        "trailer": "https://drive.google.com/file/d/1PJqo8VhJGtz9M9cQhs3KSP3N2MZ3AXkh/preview",
+        "screenshots": [
+            "https://i.postimg.cc/kXFJb7w0/1627302517-ss-e77cdee777bf7cc1fc820e6e3442c23166dfbc4b-1920x1080.jpg",
+            "https://i.postimg.cc/SxSyLHvz/1627302475-ss-54e115519104798a3a2dc55e6de3d4974e144b77-1920x1080.jpg",
+            "https://i.postimg.cc/wjw9wFCP/1627302460-ss-c26333a1e53aad3d6a8cc0a347e9ac5e0dd98587-1920x1080.jpg",
+            "https://i.postimg.cc/CKtSg5Ld/1627302505-ss-c6f08b3d2e156f705205f882504d3cd96f78cca1-1920x1080.jpg",
+            "https://i.postimg.cc/Bbf3jzFj/1627302491-ss-8f826d6b68fc53c48f1f52f9d5188ba998b23534-1920x1080.jpg",
+            "https://i.postimg.cc/Df1F92Vm/1627302439-ss-60894d685a0f3488ceaf0592625fc904aa2bfeb1-1920x1080.jpg",
+            "https://i.postimg.cc/QxsssRsw/1627302529-ss-64406d71653c589377e8c589ece9e3941b6fff50-1920x1080.jpg",
+            "https://i.postimg.cc/c4mWJXLJ/1627302528-ss-a52c732d62a26d20bcfb0525929178749392f4fc-1920x1080.jpg"
+        ],
+        "specs": {
+            "Жанр": "Шутер от первого лица, Открытый мир, Экшен",
+            "Разработчик": "Ubisoft Montreal / Ubisoft Toronto",
+            "Издатель": "Ubisoft",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 7/8.1/10 (64-bit)",
+                "Processor": "Intel Core i5-2400 / AMD FX-6300",
+                "Memory": "8 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 670 / AMD Radeon R9 270 (2GB VRAM)",
+                "Storage": "40 GB available space",
+                "DirectX": "Версии 9.0c"
+            },
+            "recommended": {
+                "OS": "Windows 7/8.1/10 (64-bit)",
+                "Processor": "Intel Core i7-4770 / AMD Ryzen 5 1600",
+                "Memory": "8 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 970 / AMD Radeon R9 290X (4GB VRAM)",
+                "Storage": "40 GB available space (SSD рекомендуется)",
+                "DirectX": "Версии 9.0c"
+            }
+        }
+    },
+     "far-cry-6": {
+        "title": "Far Cry 6",
+        "description": "Восстание в тропическом раю! Вы — Дани Рохас, местный житель вымышленного острова Яра, который устал от тирании диктатора Антона Кастильо. Под предводительством его сына Диего страна погрузилась в нищету и страх. Присоединяйтесь к партизанскому движению «Либертад» и разожгите революцию, которая охватит все уголки этого огромного острова — от пышных джунглей и плантаций до урбанистических трущоб и роскошной столицы Эсперанса. Создавайте уникальное оружие «Расправу» из подручных материалов, вербуйте преданных союзников-анималентос и ведите партизанскую войну против превосходящих сил режима. Выберите свой путь к свободе в самом масштабном и разнообразном мире Far Cry.",
+        "image": "https://i.postimg.cc/gkY918qT/1668462149-cover.jpg",
+        "size": "60 GB",
+        "year": "2021",
+        "updated": "07.10.2021",
+        "status": "available",
+        "category": "Far Cry",
+        "torrentFile": "torrent/Far-Cry-6.torrent",
+        "trailer": "https://drive.google.com/file/d/1ZXD7q0YzYk1I4uteRXMjuawFhkmD1Et5/preview",
+        "screenshots": [
+            "https://i.postimg.cc/3wh2ZrH4/1633432867-1594617217-8180.jpg",
+            "https://i.postimg.cc/bvRkVXyj/1633432954-1594617219-9647.jpg",
+            "https://i.postimg.cc/cH9YZQt4/1633432915-1594617221-6990.jpg",
+            "https://i.postimg.cc/0QWmxpKt/1633432878-1594617229-2996.jpg",
+            "https://i.postimg.cc/RhWt0NcM/1633432911-1622229032-3109.jpg",
+            "https://i.postimg.cc/90s7wCpd/1633432871-1622229038-6463.jpg",
+            "https://i.postimg.cc/4NhtkHf9/1633432918-1630523579-2500.jpg",
+            "https://i.postimg.cc/Mp2BWZH5/1633432956-1630523580-1963.jpg"
+        ],
+        "specs": {
+            "Жанр": "Шутер от первого лица, Открытый мир, Экшен, RPG-элементы",
+            "Разработчик": "Ubisoft Toronto",
+            "Издатель": "Ubisoft",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 10 (64-bit)",
+                "Processor": "AMD Ryzen 3 1200 / Intel Core i5-4460",
+                "Memory": "8 GB RAM",
+                "Graphics": "AMD RX 460 / NVIDIA GeForce GTX 960 (4GB VRAM)",
+                "Storage": "60 GB available space (HDD, SSD для улучшенной скорости загрузки)",
+                "DirectX": "Версии 12"
+            },
+            "recommended": {
+                "OS": "Windows 10 (64-bit)",
+                "Processor": "AMD Ryzen 5 3600X / Intel Core i7-7700",
+                "Memory": "16 GB RAM",
+                "Graphics": "AMD RX 5700 XT / NVIDIA GeForce GTX 1080 (8GB VRAM)",
+                "Storage": "60 GB available space (SSD рекомендуется)",
+                "DirectX": "Версии 12"
+            }
+        }
+    },
     "photoshop-2018": {
         "title": "Adobe Photoshop 2018",
         "description": "Профессиональный графический редактор для обработки фотографий и создания цифровых изображений. Последняя версия с новыми функциями ИИ.",

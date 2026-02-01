@@ -1559,20 +1559,60 @@
             box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
         }
 
-        .category-tab.far-cry-tab.active {
+        /* Простые цвета для категорий - легко настраиваемые */
+        .category-tab[data-color="orange"].active {
+            background: rgba(245, 158, 11, 0.2);
+            border-color: rgba(245, 158, 11, 0.4);
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
+        }
+        
+        .category-tab[data-color="blue"].active {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .category-tab[data-color="purple"].active {
+            background: rgba(168, 85, 247, 0.2);
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 5px 15px rgba(168, 85, 247, 0.3);
+        }
+        
+        .category-tab[data-color="green"].active {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+        
+        .category-tab[data-color="red"].active {
             background: rgba(239, 68, 68, 0.2);
-            backdrop-filter: blur(30px) saturate(200%);
-            -webkit-backdrop-filter: blur(30px) saturate(200%);
             border-color: rgba(239, 68, 68, 0.4);
             box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
         }
-
-        .category-tab.need-for-speed-tab.active {
-            background: rgba(245, 158, 11, 0.2);
-            backdrop-filter: blur(30px) saturate(200%);
-            -webkit-backdrop-filter: blur(30px) saturate(200%);
-            border-color: rgba(245, 158, 11, 0.4);
-            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
+        
+        .category-tab[data-color="pink"].active {
+            background: rgba(236, 72, 153, 0.2);
+            border-color: rgba(236, 72, 153, 0.4);
+            box-shadow: 0 5px 15px rgba(236, 72, 153, 0.3);
+        }
+        
+        .category-tab[data-color="cyan"].active {
+            background: rgba(6, 182, 212, 0.2);
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 5px 15px rgba(6, 182, 212, 0.3);
+        }
+        
+        .category-tab[data-color="lime"].active {
+            background: rgba(132, 204, 22, 0.2);
+            border-color: rgba(132, 204, 22, 0.4);
+            box-shadow: 0 5px 15px rgba(132, 204, 22, 0.3);
+        }
+        
+        /* Любой RGB цвет через --custom-color */
+        .category-tab[style*="--custom-color"].active {
+            background: rgba(var(--custom-color), 0.2);
+            border-color: rgba(var(--custom-color), 0.4);
+            box-shadow: 0 5px 15px rgba(var(--custom-color), 0.3);
         }
 
         .category-tab:hover {
@@ -4770,13 +4810,14 @@
             <h2 class="section-title">ИГРЫ И ПРОГРАММЫ</h2>
             
             <div class="category-tabs">
-                <button class="category-tab active" data-category="games">Игры</button>
-                <button class="category-tab programs" data-category="programs">Программы</button>
-                <button class="category-tab utilities" data-category="utilities">VPN</button>
-                <button class="category-tab Privatki" data-category="Privatki">Приватки</button>
-                <button class="category-tab forza-horizon-tab" data-category="Forza Horizon">Forza Horizon</button>
-                <button class="category-tab far-cry-tab" data-category="Far Cry">Far Cry</button>
-                <button class="category-tab need-for-speed-tab" data-category="Need For Speed">Need For Speed</button>
+                <button class="category-tab active" data-color="blue" data-category="games">Игры</button>
+                <button class="category-tab" data-color="purple" data-category="programs">Программы</button>
+                <button class="category-tab" data-color="green" data-category="utilities">VPN</button>
+                <button class="category-tab" data-color="orange" data-category="Privatki">Приватки</button>
+                <button class="category-tab" data-color="orange" data-category="Forza Horizon">Forza Horizon</button>
+                <button class="category-tab" data-color="red" data-category="Far Cry">Far Cry</button>
+                <button class="category-tab" data-color="orange" data-category="Need For Speed">Need For Speed</button>
+                <button class="category-tab" data-color="blue" data-category="Metro">Metro</button>
             </div>
             
             <div class="games-header">
@@ -6636,3 +6677,4 @@ function showForzaGames() {
 
 </body>
 </html>
+
