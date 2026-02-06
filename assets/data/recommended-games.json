@@ -1,0 +1,8 @@
+[
+    { "id": "gta-5", "title": "Grand Theft Auto V", "description": "Легендарная игра от Rockstar Games", "image": "https://i.postimg.cc/fLLHJ2Ck/1668436193-cover-1.jpg", "buttonText": "Смотреть" },
+    { "id": "battlefield6", "title": "Battlefield 6", "description": "Вернитесь на поля сражений будущего", "image": "https://i.postimg.cc/KzDHS31K/1758749271-library-capsule-2x.jpg", "buttonText": "Смотреть" },
+    { "id": "blackmythwukong", "title": "Black Myth: Wukong", "description": "Захватывающее action-RPG с видом от третьего лица", "image": "https://i.postimg.cc/ZRS075B0/6abe2744c8-black-myth-wukong-9619.jpg", "buttonText": "Купить" },
+    { "id": "quarantine-zone-the-last-check", "title": "Quarantine Zone: The Last Check", "description": "Выживание в постапокалиптической зоне", "image": "https://i.postimg.cc/QxQtPzm1/1768308298-library-capsule-2x.jpg", "buttonText": "Смотреть" },
+    { "id": "my-winter-car", "title": "My Winter Car", "description": "Истинно финская зимняя симуляция", "image": "https://i.postimg.cc/rF71HHQN/1767038108-library-capsule-2x.jpg", "buttonText": "Смотреть" },
+    { "id": "StandLeo", "title": "StandLeo", "description": "Приватный Сервер Standoff 2", "image": "https://i.postimg.cc/L8tp3kQ9/d52b1074a5-111.webp", "buttonText": "Смотреть" }
+]
