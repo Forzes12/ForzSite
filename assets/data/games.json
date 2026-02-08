@@ -462,6 +462,56 @@
             }
         }
     },
+    "minecraft-java-edition": {
+        "title": "Minecraft Java Edition",
+        "description": "Культовая песочница от Mojang, где ваши возможности ограничены только воображением. Стройте, исследуйте, сражайтесь и выживайте в бесконечном мире блоков с поддержкой модификаций и многоплеера.",
+        "image": "https://i.postimg.cc/0jS8Dv3G/minecraft-java.jpg",
+        "size": "1 GB",
+        "year": "2011",
+        "updated": "05.02.2026",
+        "status": "available",
+        "category": "games",
+        "tags": [
+            "minecraft",
+            "майнкрафт",
+            "песочница",
+            "выживание",
+            "строительство",
+            "приключение",
+            "block",
+            "sandbox"
+        ],
+        "torrentFile": "https://itorrents-igruha.org/engine/download.php?id=123456",
+        "trailer": "https://www.youtube.com/embed/MmB9b5njVbA",
+        "buyGame": "https://ggsel.net/catalog/minecraft-java-edition",
+        "screenshots": [
+            "https://i.postimg.cc/4xg3Lv4K/minecraft-screenshot-1.jpg",
+            "https://i.postimg.cc/9XsLqk4z/minecraft-screenshot-2.jpg",
+            "https://i.postimg.cc/J4KxfT6q/minecraft-screenshot-3.jpg"
+        ],
+        "specs": {
+            "Жанр": "Песочница, Выживание, Приключение",
+            "Разработчик": "Mojang Studios",
+            "Издатель": "Mojang Studios / Xbox Game Studios",
+            "Платформа": "PC, Mac, Linux"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 7 / macOS 10.12 Sierra / Ubuntu 16.04 LTS",
+                "Processor": "Intel Core i3-3210 / AMD A8-7600",
+                "Memory": "4 GB RAM",
+                "Graphics": "Intel HD Graphics 4000 / AMD Radeon R5",
+                "Storage": "1 GB available space"
+            },
+            "recommended": {
+                "OS": "Windows 10 / macOS 10.12 Sierra / Ubuntu 18.04 LTS",
+                "Processor": "Intel Core i5-4690 / AMD A10-7800",
+                "Memory": "8 GB RAM",
+                "Graphics": "NVIDIA GeForce GTX 660 / AMD Radeon R9 280",
+                "Storage": "4 GB available space"
+            }
+        }
+    },
     "hollow-knight-silksong": {
         "title": "Hollow Knight Silksong",
         "description": "Продолжение культового приключения. Играйте за Хорнет и исследуйте новое королевство, полное опасностей и тайн.",
@@ -2792,6 +2842,180 @@
             "Разработчик": "Неизвестно",
             "Издатель": "Неизвестно",
             "Платформа": "Android"
+        },
+        "systemRequirements": {
+            "minimum": {},
+            "recommended": {}
+        }
+    },
+    "minecraft-optifine": {
+        "title": "OptiFine",
+        "description": "Оптимизация и HD текстуры для Minecraft. Улучшает производительность и добавляет поддержку HD текстур, шейдеров и настройку графики.",
+        "image": "https://i.postimg.cc/RCcKQxJQ/optifine-logo.png",
+        "size": "5 MB",
+        "year": "2024",
+        "updated": "2025",
+        "status": "available",
+        "category": "Minecraft",
+        "subcategory": "mods",
+        "tags": ["optifine", "minecraft", "оптимизация", "текстуры", "шейдеры", "мод"],
+        "torrentFile": "https://optifine.net/downloads",
+        "screenshots": ["1"],
+        "specs": {
+            "Жанр": "Мод для Minecraft",
+            "Разработчик": "sp614x",
+            "Издатель": "OptiNet",
+            "Платформа": "Java Edition 1.20.4+"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Windows 7+",
+                "Processor": "Любой",
+                "Memory": "2 GB RAM",
+                "Graphics": "Любая видеокарта с OpenGL 3.0+",
+                "Storage": "5 MB"
+            },
+            "recommended": {}
+        }
+    },
+    "minecraft-sodium": {
+        "title": "Sodium",
+        "description": "Высокопроизводительный рендер- мод для Minecraft. Значительно улучшает производительность и совместим с большинством модов на Fabric.",
+        "image": "https://i.postimg.cc/ZqYxFqVJ/sodium-logo.png",
+        "size": "1 MB",
+        "year": "2024",
+        "updated": "2025",
+        "status": "available",
+        "category": "Minecraft",
+        "subcategory": "mods",
+        "tags": ["sodium", "minecraft", "производительность", "рендер", "fabric", "мод"],
+        "torrentFile": "https://modrinth.com/mod/sodium",
+        "screenshots": ["1"],
+        "specs": {
+            "Жанр": "Мод для Minecraft",
+            "Разработчик": " jellysquid3",
+            "Издатель": "Modrinth",
+            "Платформа": "Java Edition 1.20.1+"
+        },
+        "systemRequirements": {
+            "minimum": {},
+            "recommended": {}
+        }
+    },
+    "minecraft-fabric-api": {
+        "title": "Fabric API",
+        "description": "Основной API для модов на Fabric. Необходим для работы большинства модов на сервере и клиенте Minecraft.",
+        "image": "https://i.postimg.cc/7hZ5cL8w/fabric-logo.png",
+        "size": "2 MB",
+        "year": "2024",
+        "updated": "2025",
+        "status": "available",
+        "category": "Minecraft",
+        "subcategory": "mods",
+        "tags": ["fabric", "api", "minecraft", "мод", "fabric api"],
+        "torrentFile": "https://modrinth.com/mod/fabric-api",
+        "screenshots": ["1"],
+        "specs": {
+            "Жанр": "API для модов",
+            "Разработчик": "FabricMC",
+            "Издатель": "FabricMC",
+            "Платформа": "Java Edition 1.20+"
+        },
+        "systemRequirements": {
+            "minimum": {},
+            "recommended": {}
+        }
+    },
+    "minecraft-sildurs-shaders": {
+        "title": "Sildurs Vibrant Shaders",
+        "description": "Яркие и насыщенные шейдеры для Minecraft. Добавляют реалистичное освещение, тени, водные эффекты и атмосферу.",
+        "image": "https://i.postimg.cc/0j5qFQzC/sildurs-logo.png",
+        "size": "10 MB",
+        "year": "2024",
+        "updated": "2025",
+        "status": "available",
+        "category": "Minecraft",
+        "subcategory": "shaders",
+        "tags": ["шейдеры", "sildurs", "shaders", "minecraft", "освещение", "графика"],
+        "torrentFile": "https://www.curseforge.com/minecraft/customization/sildurs-vibrant-shaders",
+        "screenshots": ["1"],
+        "specs": {
+            "Жанр": "Шейдеры для Minecraft",
+            "Разработчик": "Sildur",
+            "Издатель": "CurseForge",
+            "Платформа": "OptiFine / Sodium"
+        },
+        "systemRequirements": {
+            "minimum": {},
+            "recommended": {}
+        }
+    },
+    "minecraft-bsl-shaders": {
+        "title": "BSL Shaders",
+        "description": "Красивые шейдеры с реалистичным освещением и тенями. Один из самых популярных шейдер-паков для Minecraft.",
+        "image": "https://i.postimg.cc/d14f5KQx/bsl-logo.png",
+        "size": "8 MB",
+        "year": "2024",
+        "updated": "2025",
+        "status": "available",
+        "category": "Minecraft",
+        "subcategory": "shaders",
+        "tags": ["шейдеры", "bsl", "shaders", "minecraft", "освещение"],
+        "torrentFile": "https://www.curseforge.com/minecraft/customization/bsl-shaders",
+        "screenshots": ["1"],
+        "specs": {
+            "Жанр": "Шейдеры для Minecraft",
+            "Разработчик": "BL8DC10",
+            "Издатель": "CurseForge",
+            "Платформа": "OptiFine / Sodium"
+        },
+        "systemRequirements": {
+            "minimum": {},
+            "recommended": {}
+        }
+    },
+    "minecraft-faithful-32x": {
+        "title": "Faithful 32x",
+        "description": "Классические HD текстуры для Minecraft в разрешении 32x. Идеально подходят для любого стиля игры.",
+        "image": "https://i.postimg.cc/ZR4Xqk3w/faithful-logo.png",
+        "size": "20 MB",
+        "year": "2024",
+        "updated": "2025",
+        "status": "available",
+        "category": "Minecraft",
+        "subcategory": "resourcepacks",
+        "tags": ["текстурпак", "faithful", "resourcepack", "minecraft", "32x", "hd текстуры"],
+        "torrentFile": "https://faithfulpack.net/downloads",
+        "screenshots": ["1"],
+        "specs": {
+            "Жанр": "Ресурспак для Minecraft",
+            "Разработчик": "xMrViz",
+            "Издатель": "Faithful Team",
+            "Платформа": "Java Edition 1.20+"
+        },
+        "systemRequirements": {
+            "minimum": {},
+            "recommended": {}
+        }
+    },
+    "minecraft-skyblock-map": {
+        "title": "Skyblock Ultimate",
+        "description": "Популярная карта для выживания на маленьком острове в Minecraft. Собирайте ресурсы, развивайте фермы и стройте свою империю.",
+        "image": "https://i.postimg.cc/9M8GzJvQ/skyblock-logo.png",
+        "size": "50 MB",
+        "year": "2024",
+        "updated": "2025",
+        "status": "available",
+        "category": "Minecraft",
+        "subcategory": "maps",
+        "tags": ["карта", "skyblock", "map", "minecraft", "выживание", "остров"],
+        "torrentFile": "https://www.curseforge.com/minecraft/single-player/skyblock-maps",
+        "screenshots": ["1"],
+        "specs": {
+            "Жанр": "Карта для Minecraft",
+            "Разработчик": "IamC00l",
+            "Издатель": "CurseForge",
+            "Платформа": "Java Edition 1.20+"
         },
         "systemRequirements": {
             "minimum": {},

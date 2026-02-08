@@ -7,5 +7,6 @@
     { "id": "cairn", "title": "Cairn", "description": "Покоряйте величественные горные вершины", "image": "https://i.postimg.cc/1394qVWb/1717940549-library-600x900-2x.jpg", "buttonText": "Смотреть" },
     { "id": "sonic-frontiers", "title": "Sonic Frontiers", "description": "Сверхзвуковое приключение в открытом мире", "image": "https://i.postimg.cc/PqJcVhfv/1665332189-library-600x900-2x.jpg", "buttonText": "Смотреть" },
     { "id": "half-sword", "title": "Half Sword", "description": "Фэнтези RPG с магическим мечом", "image": "https://i.postimg.cc/5NZT7DYs/1769797211-library-600x900-2x.jpg", "buttonText": "Смотреть" },
-    { "id": "StandLeo", "title": "StandLeo", "description": "Приватный Сервер Standoff 2", "image": "https://i.postimg.cc/L8tp3kQ9/d52b1074a5-111.webp", "buttonText": "Смотреть" }
+    { "id": "StandLeo", "title": "StandLeo", "description": "Приватный Сервер Standoff 2", "image": "https://i.postimg.cc/L8tp3kQ9/d52b1074a5-111.webp", "buttonText": "Смотреть" },
+    { "id": "minecraft-java-edition", "title": "Minecraft Java Edition", "description": "Культовая песочница с бесконечными возможностями", "image": "https://i.postimg.cc/0jS8Dv3G/minecraft-java.jpg", "buttonText": "Играть" }
 ]
