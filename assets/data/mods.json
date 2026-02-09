@@ -1,167 +1,142 @@
-[
-    {
-        "id": "gta-5-mods-pack",
-        "title": "GTA 5 - Mods Pack",
-        "description": "Лучшие моды для GTA 5: графика, транспорт, оружие и многое другое.",
-        "image": "https://i.postimg.cc/dVmS4jGt/gta-5-mods.jpg",
-        "size": "2.5 GB",
-        "year": "2024",
-        "updated": "05.02.2026",
-        "status": "available",
-        "category": "mods",
-        "game": "GTA 5",
-        "torrentFile": "#",
-        "tags": ["gta", "gta 5", "mods", "моды", "транспорт", "графика"],
-        "modType": "collection"
+{
+    "info": {
+        "version": "1.0",
+        "lastUpdated": "09.02.2026",
+        "description": "Minecraft mods, shaders, maps and other content. Edit this file to add/remove content.",
+        "instructions": {
+            "howToAdd": "Add items to the appropriate array (mods, shaders, maps, etc.). Each item needs: id, title, description, image, size, version, torrentFile",
+            "tabs": "Each tab has its own items array in the 'tabs' object for easy organization"
+        }
     },
-    {
-        "id": "skyrim-graphics-mods",
-        "title": "Skyrim SE - Graphics Mods",
-        "description": "Улучшенная графика для Skyrim Special Edition: текстуры, освещение, эффекты.",
-        "image": "https://i.postimg.cc/hPwZ3vqT/skyrim-mods.jpg",
-        "size": "8 GB",
-        "year": "2024",
-        "updated": "03.02.2026",
-        "status": "available",
-        "category": "mods",
-        "game": "Skyrim SE",
-        "torrentFile": "#",
-        "tags": ["skyrim", "skyrim se", "графика", "текстуры", "освещение"],
-        "modType": "graphics"
+    "tabs": {
+        "mods": {
+            "title": "Моды",
+            "icon": "puzzle-piece",
+            "description": "Модификации для Minecraft",
+            "items": [
+                {
+                    "id": "optifine",
+                    "title": "OptiFine",
+                    "description": "Оптимизация и улучшение графики Minecraft",
+                    "image": "https://i.postimg.cc/43k5cL8D/optifine.png",
+                    "size": "3 MB",
+                    "version": "1.20.4",
+                    "torrentFile": "#"
+                },
+                {
+                    "id": "fabric-api",
+                    "title": "Fabric API",
+                    "description": "Основной API для модов на Fabric",
+                    "image": "https://i.postimg.cc/52vYvXFf/fabric-api.png",
+                    "size": "1 MB",
+                    "version": "0.91.0",
+                    "torrentFile": "#"
+                }
+            ]
+        },
+        "shaders": {
+            "title": "Шейдеры",
+            "icon": "eye",
+            "description": "Графические шейдеры для красивой графики",
+            "items": [
+                {
+                    "id": "sodium",
+                    "title": "Sodium",
+                    "description": "Высокопроизводительный рендер- мод",
+                    "image": "https://i.postimg.cc/52vYvXFf/fabric-api.png",
+                    "size": "2 MB",
+                    "version": "0.5.8",
+                    "torrentFile": "#"
+                },
+                {
+                    "id": "indium",
+                    "title": "Indium",
+                    "description": "Дополнительный мод для Sodium",
+                    "image": "https://i.postimg.cc/52vYvXFf/fabric-api.png",
+                    "size": "500 KB",
+                    "version": "1.0.6",
+                    "torrentFile": "#"
+                }
+            ]
+        },
+        "maps": {
+            "title": "Карты",
+            "icon": "map",
+            "description": "Карты для приключений",
+            "items": [
+                {
+                    "id": "life-steam",
+                    "title": "Life is Steam",
+                    "description": "Карта-выживание в стиле Life is Strange",
+                    "image": "https://i.postimg.cc/4xg3LQ5M/life-steam.png",
+                    "size": "150 MB",
+                    "version": "1.0",
+                    "torrentFile": "#"
+                }
+            ]
+        },
+        "resourcepacks": {
+            "title": "Ресурспаки",
+            "icon": "box-open",
+            "description": "Текстуры и ресурсы",
+            "items": []
+        },
+        "scripts": {
+            "title": "Скрипты",
+            "icon": "code",
+            "description": "Скрипты и плагины",
+            "items": []
+        },
+        "snapshots": {
+            "title": "Снапшоты",
+            "icon": "camera",
+            "description": "Снапшоты версий",
+            "items": []
+        }
     },
-    {
-        "id": "minecraft-mods-pack",
-        "title": "Minecraft - Mods Pack 1.20",
-        "description": "Сборка лучших модов для Minecraft 1.20: Industrial, Magic, Tech.",
-        "image": "https://i.postimg.cc/XvZ3F4sL/minecraft-mods.jpg",
-        "size": "1.2 GB",
-        "year": "2024",
-        "updated": "01.02.2026",
-        "status": "available",
-        "category": "mods",
-        "game": "Minecraft",
-        "torrentFile": "#",
-        "tags": ["minecraft", "моды", "сборка", "industrial", "magic"],
-        "modType": "collection"
-    },
-    {
-        "id": "minecraft-create-modpack",
-        "title": "Minecraft - Create Modpack",
-        "description": "Техническая сборка с модами на автоматизацию, механизмы и строительство фабрик. Создавайте сложные механизмы и автоматизируйте производство.",
-        "image": "https://i.postimg.cc/28XQF0kG/minecraft-create.jpg",
-        "size": "800 MB",
-        "year": "2024",
-        "updated": "28.01.2026",
-        "status": "available",
-        "category": "mods",
-        "game": "Minecraft",
-        "torrentFile": "#",
-        "tags": ["minecraft", "create", "технич", "автоматизация", "механизмы", "фабрики"],
-        "modType": "tech"
-    },
-    {
-        "id": "minecraft-magic-mods",
-        "title": "Minecraft - Magic Mods Collection",
-        "description": "Магическая сборка с модами на заклинания, ритуалы и магические артефакты. Погрузитесь в мир волшебства и神秘ных сил.",
-        "image": "https://i.postimg.cc/3JY1HxQZ/minecraft-magic.jpg",
-        "size": "650 MB",
-        "year": "2024",
-        "updated": "25.01.2026",
-        "status": "available",
-        "category": "mods",
-        "game": "Minecraft",
-        "torrentFile": "#",
-        "tags": ["minecraft", "магия", "заклинания", "ритуалы", "артефакты", "witchery"],
-        "modType": "magic"
-    },
-    {
-        "id": "minecraft-survival-mods",
-        "title": "Minecraft - Ultimate Survival",
-        "description": "Усиленная сборка для выживания: новые мобы, оружие, броня и опасности. Испытайте себя в экстремальном выживании.",
-        "image": "https://i.postimg.cc/5HvY7qKf/minecraft-survival.jpg",
-        "size": "450 MB",
-        "year": "2024",
-        "updated": "22.01.2026",
-        "status": "available",
-        "category": "mods",
-        "game": "Minecraft",
-        "torrentFile": "#",
-        "tags": ["minecraft", "выживание", "мобы", "оружие", "броня", "danger"],
-        "modType": "survival"
-    },
-    {
-        "id": "minecraft-rpg-mods",
-        "title": "Minecraft - RPG Modpack",
-        "description": "Ролевая сборка с новыми классами, способностями, квестами и боссами. Превратите Minecraft в полноценную RPG.",
-        "image": "https://i.postimg.cc/Ls5F3QKG/minecraft-rpg.jpg",
-        "size": "920 MB",
-        "year": "2024",
-        "updated": "20.01.2026",
-        "status": "available",
-        "category": "mods",
-        "game": "Minecraft",
-        "torrentFile": "#",
-        "tags": ["minecraft", "rpg", "ролевая", "классы", "способности", "квесты"],
-        "modType": "rpg"
-    },
-    {
-        "id": "minecraft-skyblock",
-        "title": "Minecraft - SkyBlock Premium",
-        "description": "Популярный режим SkyBlock с новыми островами, ресурсами и испытаниями. Начните с нуля на маленьком острове в небесах.",
-        "image": "https://i.postimg.cc/9Mz3YvXw/minecraft-skyblock.jpg",
-        "size": "320 MB",
-        "year": "2024",
-        "updated": "18.01.2026",
-        "status": "available",
-        "category": "mods",
-        "game": "Minecraft",
-        "torrentFile": "#",
-        "tags": ["minecraft", "skyblock", "остров", "небеса", "испытания"],
-        "modType": "adventure"
-    },
-    {
-        "id": "cyberpunk-2077-graphics",
-        "title": "Cyberpunk 2077 - Graphics Mod",
-        "description": "Графический мод для Cyberpunk 2077: улучшенные текстуры, RT эффекты.",
-        "image": "https://i.postimg.cc/9FqvhPjQ/cyberpunk-mods.jpg",
-        "size": "4 GB",
-        "year": "2024",
-        "updated": "28.01.2026",
-        "status": "available",
-        "category": "mods",
-        "game": "Cyberpunk 2077",
-        "torrentFile": "#",
-        "tags": ["cyberpunk", "cyberpunk 2077", "графика", "текстуры", "ray tracing"],
-        "modType": "graphics"
-    },
-    {
-        "id": "witcher-3-hd-mods",
-        "title": "Witcher 3 - HD Mods",
-        "description": "HD текстуры и улучшения для Witcher 3: Wild Hunt.",
-        "image": "https://i.postimg.cc/Bb8Y5LhD/witcher-mods.jpg",
-        "size": "6 GB",
-        "year": "2024",
-        "updated": "25.01.2026",
-        "status": "available",
-        "category": "mods",
-        "game": "Witcher 3",
-        "torrentFile": "#",
-        "tags": ["witcher", "witcher 3", "hd", "текстуры", "графика"],
-        "modType": "graphics"
-    },
-    {
-        "id": "fallout-4-mods-collection",
-        "title": "Fallout 4 - Mods Collection",
-        "description": "Большая коллекция модов для Fallout 4: оружие, броня, поселения.",
-        "image": "https://i.postimg.cc/RZ5F7rjB/fallout-mods.jpg",
-        "size": "5.5 GB",
-        "year": "2024",
-        "updated": "20.01.2026",
-        "status": "available",
-        "category": "mods",
-        "game": "Fallout 4",
-        "torrentFile": "#",
-        "tags": ["fallout", "fallout 4", "моды", "оружие", "броня"],
-        "modType": "collection"
-    }
-]
+    "mods": [
+        {
+            "id": "optifine",
+            "title": "OptiFine",
+            "description": "Оптимизация и улучшение графики Minecraft",
+            "image": "https://i.postimg.cc/43k5cL8D/optifine.png",
+            "size": "3 MB",
+            "version": "1.20.4",
+            "torrentFile": "#"
+        },
+        {
+            "id": "fabric-api",
+            "title": "Fabric API",
+            "description": "Основной API для модов на Fabric",
+            "image": "https://i.postimg.cc/52vYvXFf/fabric-api.png",
+            "size": "1 MB",
+            "version": "0.91.0",
+            "torrentFile": "#"
+        }
+    ],
+    "shaders": [
+        {
+            "id": "sodium",
+            "title": "Sodium",
+            "description": "Высокопроизводительный рендер- мод",
+            "image": "https://i.postimg.cc/52vYvXFf/fabric-api.png",
+            "size": "2 MB",
+            "version": "0.5.8",
+            "torrentFile": "#"
+        }
+    ],
+    "maps": [
+        {
+            "id": "life-steam",
+            "title": "Life is Steam",
+            "description": "Карта-выживание в стиле Life is Strange",
+            "image": "https://i.postimg.cc/4xg3LQ5M/life-steam.png",
+            "size": "150 MB",
+            "version": "1.0",
+            "torrentFile": "#"
+        }
+    ],
+    "resourcepacks": [],
+    "scripts": [],
+    "snapshots": []
+}
