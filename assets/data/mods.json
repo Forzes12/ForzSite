@@ -1,0 +1,142 @@
+{
+    "info": {
+        "version": "1.0",
+        "lastUpdated": "09.02.2026",
+        "description": "Minecraft mods, shaders, maps and other content. Edit this file to add/remove content.",
+        "instructions": {
+            "howToAdd": "Add items to the appropriate array (mods, shaders, maps, etc.). Each item needs: id, title, description, image, size, version, torrentFile",
+            "tabs": "Each tab has its own items array in the 'tabs' object for easy organization"
+        }
+    },
+    "tabs": {
+        "mods": {
+            "title": "Моды",
+            "icon": "puzzle-piece",
+            "description": "Модификации для Minecraft",
+            "items": [
+                {
+                    "id": "optifine",
+                    "title": "OptiFine",
+                    "description": "Оптимизация и улучшение графики Minecraft",
+                    "image": "https://i.postimg.cc/43k5cL8D/optifine.png",
+                    "size": "3 MB",
+                    "version": "1.20.4",
+                    "torrentFile": "#"
+                },
+                {
+                    "id": "fabric-api",
+                    "title": "Fabric API",
+                    "description": "Основной API для модов на Fabric",
+                    "image": "https://i.postimg.cc/52vYvXFf/fabric-api.png",
+                    "size": "1 MB",
+                    "version": "0.91.0",
+                    "torrentFile": "#"
+                }
+            ]
+        },
+        "shaders": {
+            "title": "Шейдеры",
+            "icon": "eye",
+            "description": "Графические шейдеры для красивой графики",
+            "items": [
+                {
+                    "id": "sodium",
+                    "title": "Sodium",
+                    "description": "Высокопроизводительный рендер- мод",
+                    "image": "https://i.postimg.cc/52vYvXFf/fabric-api.png",
+                    "size": "2 MB",
+                    "version": "0.5.8",
+                    "torrentFile": "#"
+                },
+                {
+                    "id": "indium",
+                    "title": "Indium",
+                    "description": "Дополнительный мод для Sodium",
+                    "image": "https://i.postimg.cc/52vYvXFf/fabric-api.png",
+                    "size": "500 KB",
+                    "version": "1.0.6",
+                    "torrentFile": "#"
+                }
+            ]
+        },
+        "maps": {
+            "title": "Карты",
+            "icon": "map",
+            "description": "Карты для приключений",
+            "items": [
+                {
+                    "id": "life-steam",
+                    "title": "Life is Steam",
+                    "description": "Карта-выживание в стиле Life is Strange",
+                    "image": "https://i.postimg.cc/4xg3LQ5M/life-steam.png",
+                    "size": "150 MB",
+                    "version": "1.0",
+                    "torrentFile": "#"
+                }
+            ]
+        },
+        "resourcepacks": {
+            "title": "Ресурспаки",
+            "icon": "box-open",
+            "description": "Текстуры и ресурсы",
+            "items": []
+        },
+        "scripts": {
+            "title": "Скрипты",
+            "icon": "code",
+            "description": "Скрипты и плагины",
+            "items": []
+        },
+        "snapshots": {
+            "title": "Снапшоты",
+            "icon": "camera",
+            "description": "Снапшоты версий",
+            "items": []
+        }
+    },
+    "mods": [
+        {
+            "id": "optifine",
+            "title": "OptiFine",
+            "description": "Оптимизация и улучшение графики Minecraft",
+            "image": "https://i.postimg.cc/43k5cL8D/optifine.png",
+            "size": "3 MB",
+            "version": "1.20.4",
+            "torrentFile": "#"
+        },
+        {
+            "id": "fabric-api",
+            "title": "Fabric API",
+            "description": "Основной API для модов на Fabric",
+            "image": "https://i.postimg.cc/52vYvXFf/fabric-api.png",
+            "size": "1 MB",
+            "version": "0.91.0",
+            "torrentFile": "#"
+        }
+    ],
+    "shaders": [
+        {
+            "id": "sodium",
+            "title": "Sodium",
+            "description": "Высокопроизводительный рендер- мод",
+            "image": "https://i.postimg.cc/52vYvXFf/fabric-api.png",
+            "size": "2 MB",
+            "version": "0.5.8",
+            "torrentFile": "#"
+        }
+    ],
+    "maps": [
+        {
+            "id": "life-steam",
+            "title": "Life is Steam",
+            "description": "Карта-выживание в стиле Life is Strange",
+            "image": "https://i.postimg.cc/4xg3LQ5M/life-steam.png",
+            "size": "150 MB",
+            "version": "1.0",
+            "torrentFile": "#"
+        }
+    ],
+    "resourcepacks": [],
+    "scripts": [],
+    "snapshots": []
+}
