@@ -2796,6 +2796,154 @@
             font-weight: 600;
         }
 
+        /* Comments Section Styles */
+        .comments-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .comments-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .comments-title i {
+            color: var(--primary);
+        }
+
+        .comments-count {
+            background: var(--primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-left: auto;
+        }
+
+        .comment-form {
+            margin-bottom: 20px;
+        }
+
+        .comment-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            font-family: inherit;
+            font-size: 0.95rem;
+            resize: vertical;
+            min-height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .comment-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+        }
+
+        .comment-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .comment-submit-btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: 2px solid var(--primary);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .comment-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        }
+
+        .comments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .comment {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            animation: commentAppear 0.3s ease;
+        }
+
+        @keyframes commentAppear {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .comment-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .comment-date {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-left: auto;
+        }
+
+        .comment-text {
+            color: var(--text);
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .comment-delete-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 5px;
+            margin-left: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .comment-delete-btn:hover {
+            color: #ef4444;
+        }
+
+        .no-comments {
+            text-align: center;
+            color: var(--text-secondary);
+            padding: 30px;
+            font-style: italic;
+        }
+
         .program-badge {
             position: absolute;
             top: 10px;
@@ -5433,7 +5581,102 @@
             const userVotes = JSON.parse(localStorage.getItem('userVotes') || '{}');
             return userVotes[gameId] || null;
         }
-        
+
+        // Функции для комментариев
+        function getComments(gameId) {
+            const allComments = JSON.parse(localStorage.getItem('gameComments') || '{}');
+            return allComments[gameId] || [];
+        }
+
+        function saveComment(gameId, comment) {
+            const allComments = JSON.parse(localStorage.getItem('gameComments') || '{}');
+            if (!allComments[gameId]) {
+                allComments[gameId] = [];
+            }
+            comment.id = Date.now().toString();
+            comment.timestamp = new Date().toISOString();
+            allComments[gameId].push(comment);
+            localStorage.setItem('gameComments', JSON.stringify(allComments));
+        }
+
+        function deleteComment(gameId, commentId) {
+            const allComments = JSON.parse(localStorage.getItem('gameComments') || '{}');
+            if (allComments[gameId]) {
+                allComments[gameId] = allComments[gameId].filter(c => c.id !== commentId);
+                localStorage.setItem('gameComments', JSON.stringify(allComments));
+            }
+        }
+
+        function getUserName() {
+            return localStorage.getItem('userName') || 'Гость';
+        }
+
+        function formatCommentDate(isoString) {
+            const date = new Date(isoString);
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+            if (diffMins < 1) return 'только что';
+            if (diffMins < 60) return diffMins + ' мин. назад';
+            if (diffHours < 24) return diffHours + ' ч. назад';
+            if (diffDays < 7) return diffDays + ' дн. назад';
+            return date.toLocaleDateString('ru-RU');
+        }
+
+        function getInitials(name) {
+            return name.charAt(0).toUpperCase();
+        }
+
+        function renderComments(gameId) {
+            const comments = getComments(gameId);
+            const container = document.getElementById('commentsContainer');
+            const countEl = document.getElementById('commentsCount');
+            if (!container) return;
+            if (countEl) countEl.textContent = comments.length;
+            if (comments.length === 0) {
+                container.innerHTML = '<div class="no-comments">Пока нет комментариев. Будьте первым!</div>';
+                return;
+            }
+            const sortedComments = [...comments].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            container.innerHTML = sortedComments.map(comment => `
+                <div class="comment" data-comment-id="${comment.id}">
+                    <div class="comment-header">
+                        <div class="comment-avatar">${getInitials(comment.author)}</div>
+                        <span class="comment-author">${escapeHtml(comment.author)}</span>
+                        <span class="comment-date">${formatCommentDate(comment.timestamp)}</span>
+                        <button class="comment-delete-btn" onclick="handleDeleteComment('${gameId}', '${comment.id}')" title="Удалить"><i class="fas fa-trash"></i></button>
+                    </div>
+                    <div class="comment-text">${escapeHtml(comment.text)}</div>
+                </div>
+            `).join('');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function handleAddComment(gameId) {
+            const input = document.getElementById('commentInput');
+            const text = input.value.trim();
+            if (!text) { alert('Введите комментарий'); return; }
+            const author = getUserName();
+            const comment = { author, text };
+            saveComment(gameId, comment);
+            input.value = '';
+            renderComments(gameId);
+        }
+
+        function handleDeleteComment(gameId, commentId) {
+            if (confirm('Удалить этот комментарий?')) {
+                deleteComment(gameId, commentId);
+                renderComments(gameId);
+            }
+        }
+
         function handleLike(gameId, event) {
             event.preventDefault();
             event.stopPropagation();
@@ -6344,6 +6587,11 @@
             const gamesGrid = document.getElementById('allGamesGrid');
             gamesGrid.innerHTML = '';
 
+            // Очищаем поиск и сбрасываем категорию
+            document.getElementById('gameSearch').value = '';
+            document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector('.category-tab[data-category="games"]').classList.add('active');
+
             let gameIndex = 0;
             Object.keys(gameData).forEach((gameId) => {
                 const game = gameData[gameId];
@@ -6700,13 +6948,32 @@ function showForzaGames() {
                     </div>
                     
                     ${requirementsHTML}
+
+                    <!-- Comments Section -->
+                    <div class="comments-section">
+                        <h3 class="comments-title">
+                            <i class="fas fa-comments"></i>
+                            Комментарии
+                            <span class="comments-count" id="commentsCount">0</span>
+                        </h3>
+                        <div class="comment-form">
+                            <textarea id="commentInput" class="comment-input" placeholder="Напишите ваш комментарий..."></textarea>
+                            <button class="comment-submit-btn" onclick="handleAddComment('${gameId}')">
+                                <i class="fas fa-paper-plane"></i> Отправить
+                            </button>
+                        </div>
+                        <div class="comments-list" id="commentsContainer">
+                            <div class="no-comments">Пока нет комментариев. Будьте первым!</div>
+                        </div>
+                    </div>
                 </div>
             `;
 
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
 
-            // Update URL with game parameter
+            // Render comments for this game
+            renderComments(gameId);
             history.replaceState(null, null, `?game=${gameId}`);
 
             if (game.trailer) {
