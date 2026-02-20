@@ -4977,6 +4977,25 @@
     transform: translateX(0);
 }
     </style>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script>
+        // Firebase конфигурация
+        const firebaseConfig = {
+            apiKey: "AIzaSyD0k51XqB285-jB0jbhmTnNctDE2pJ3Zzc",
+            authDomain: "website-94624.firebaseapp.com",
+            databaseURL: "https://website-94624-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "website-94624",
+            storageBucket: "website-94624.firebasestorage.app",
+            messagingSenderId: "681356649699",
+            appId: "1:681356649699:web:0d21aa5c0a939be99911d6"
+        };
+        
+        // Инициализация Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+    </script>
 </head>
 <body>
 
@@ -5582,33 +5601,68 @@
             return userVotes[gameId] || null;
         }
 
-        // Функции для комментариев
+        // Функции для комментариев с Firebase
         function getComments(gameId) {
-            const allComments = JSON.parse(localStorage.getItem('gameComments') || '{}');
-            return allComments[gameId] || [];
+            // Локальная копия для быстрого отображения
+            const cached = localStorage.getItem('comments_cache_' + gameId);
+            return cached ? JSON.parse(cached) : [];
         }
 
         function saveComment(gameId, comment) {
-            const allComments = JSON.parse(localStorage.getItem('gameComments') || '{}');
-            if (!allComments[gameId]) {
-                allComments[gameId] = [];
-            }
-            comment.id = Date.now().toString();
-            comment.timestamp = new Date().toISOString();
-            allComments[gameId].push(comment);
-            localStorage.setItem('gameComments', JSON.stringify(allComments));
+            const newComment = {
+                id: Date.now().toString(),
+                author: comment.author,
+                text: comment.text,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Сохраняем в Firebase
+            const commentsRef = database.ref('comments/' + gameId);
+            commentsRef.push(newComment).then(() => {
+                console.log('Комментарий сохранён в Firebase');
+            }).catch(error => {
+                console.error('Ошибка сохранения:', error);
+                // Резервное сохранение в localStorage
+                const allComments = JSON.parse(localStorage.getItem('gameComments') || '{}');
+                if (!allComments[gameId]) allComments[gameId] = [];
+                allComments[gameId].push(newComment);
+                localStorage.setItem('gameComments', JSON.stringify(allComments));
+            });
         }
 
         function deleteComment(gameId, commentId) {
-            const allComments = JSON.parse(localStorage.getItem('gameComments') || '{}');
-            if (allComments[gameId]) {
-                allComments[gameId] = allComments[gameId].filter(c => c.id !== commentId);
-                localStorage.setItem('gameComments', JSON.stringify(allComments));
-            }
+            // Удаляем из Firebase
+            const commentRef = database.ref('comments/' + gameId + '/' + commentId);
+            commentRef.remove().then(() => {
+                console.log('Комментарий удалён из Firebase');
+            }).catch(error => {
+                console.error('Ошибка удаления:', error);
+            });
+        }
+
+        // Подписка на изменения комментариев в Firebase
+        function subscribeToComments(gameId) {
+            const commentsRef = database.ref('comments/' + gameId);
+            commentsRef.on('value', (snapshot) => {
+                const comments = [];
+                snapshot.forEach((childSnapshot) => {
+                    const data = childSnapshot.val();
+                    data.firebaseKey = childSnapshot.key;
+                    comments.push(data);
+                });
+                // Кэшируем локально
+                localStorage.setItem('comments_cache_' + gameId, JSON.stringify(comments));
+                renderComments(gameId);
+            }, (error) => {
+                console.error('Ошибка получения комментариев:', error);
+                // Используем кэш при ошибке
+                renderComments(gameId);
+            });
         }
 
         function getUserName() {
-            return localStorage.getItem('userName') || 'Гость';
+            // Используем имя пользователя из системы авторизации
+            return localStorage.getItem('username') || 'Гость';
         }
 
         function formatCommentDate(isoString) {
@@ -5646,7 +5700,7 @@
                         <div class="comment-avatar">${getInitials(comment.author)}</div>
                         <span class="comment-author">${escapeHtml(comment.author)}</span>
                         <span class="comment-date">${formatCommentDate(comment.timestamp)}</span>
-                        <button class="comment-delete-btn" onclick="handleDeleteComment('${gameId}', '${comment.id}')" title="Удалить"><i class="fas fa-trash"></i></button>
+                        <button class="comment-delete-btn" onclick="handleDeleteComment('${gameId}', '${comment.firebaseKey || comment.id}')" title="Удалить"><i class="fas fa-trash"></i></button>
                     </div>
                     <div class="comment-text">${escapeHtml(comment.text)}</div>
                 </div>
@@ -5667,13 +5721,13 @@
             const comment = { author, text };
             saveComment(gameId, comment);
             input.value = '';
-            renderComments(gameId);
+            // Не вызываем renderComments - Firebase обновит автоматически
         }
 
         function handleDeleteComment(gameId, commentId) {
             if (confirm('Удалить этот комментарий?')) {
                 deleteComment(gameId, commentId);
-                renderComments(gameId);
+                // Не вызываем renderComments - Firebase обновит автоматически
             }
         }
 
@@ -6972,8 +7026,8 @@ function showForzaGames() {
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
 
-            // Render comments for this game
-            renderComments(gameId);
+            // Подписка на комментарии в Firebase
+            subscribeToComments(gameId);
             history.replaceState(null, null, `?game=${gameId}`);
 
             if (game.trailer) {
