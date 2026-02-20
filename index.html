@@ -5519,6 +5519,27 @@
                 if (likeBtn) likeBtn.classList.toggle('active', userVote === 'like');
                 if (dislikeBtn) dislikeBtn.classList.toggle('active', userVote === 'dislike');
             }
+            
+            // Обновить кнопки в модальном окне
+            const modalLikeBtn = document.querySelector('.modal-like-btn');
+            const modalDislikeBtn = document.querySelector('.modal-dislike-btn');
+            const userVote = getUserVote(gameId);
+            
+            if (modalLikeBtn) {
+                modalLikeBtn.querySelector('span').textContent = getLikes(gameId);
+                const isLiked = userVote === 'like';
+                modalLikeBtn.style.background = isLiked ? 'var(--primary)' : 'rgba(0,0,0,0.5)';
+                modalLikeBtn.style.color = isLiked ? 'white' : 'var(--primary)';
+                modalLikeBtn.classList.toggle('active', isLiked);
+            }
+            if (modalDislikeBtn) {
+                modalDislikeBtn.querySelector('span').textContent = getDislikes(gameId);
+                const isDisliked = userVote === 'dislike';
+                modalDislikeBtn.style.background = isDisliked ? '#ef4444' : 'rgba(0,0,0,0.5)';
+                modalDislikeBtn.style.color = isDisliked ? 'white' : '#ef4444';
+                modalDislikeBtn.classList.toggle('active', isDisliked);
+            }
+            
             // Обновить счетчик в профиле
             updateFavoritesCount();
         }
@@ -5680,6 +5701,9 @@
                     likedGrid.appendChild(gameCard);
                 }
             });
+            
+            // Настроить кнопки для просмотра
+            setupViewButtons();
             
             // Показать страницу
             switchPage('liked-games-page');
@@ -6592,10 +6616,10 @@ function showForzaGames() {
                         </div>
                         <p class="game-modal-description">${game.description}</p>
                         <div class="game-modal-likes" style="display: flex; gap: 15px; margin-bottom: 15px;">
-                            <button class="modal-like-btn" onclick="handleLike('${gameId}', event)" style="background: rgba(0,0,0,0.5); border: 1px solid var(--primary); color: var(--primary); padding: 8px 16px; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                            <button class="modal-like-btn ${getUserVote(gameId) === 'like' ? 'active' : ''}" onclick="handleLike('${gameId}', event)" style="background: ${getUserVote(gameId) === 'like' ? 'var(--primary)' : 'rgba(0,0,0,0.5)'}; border: 1px solid var(--primary); color: ${getUserVote(gameId) === 'like' ? 'white' : 'var(--primary)'}; padding: 8px 16px; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
                                 <i class="fas fa-thumbs-up"></i> <span>${getLikes(gameId)}</span>
                             </button>
-                            <button class="modal-dislike-btn" onclick="handleDislike('${gameId}', event)" style="background: rgba(0,0,0,0.5); border: 1px solid #ef4444; color: #ef4444; padding: 8px 16px; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                            <button class="modal-dislike-btn ${getUserVote(gameId) === 'dislike' ? 'active' : ''}" onclick="handleDislike('${gameId}', event)" style="background: ${getUserVote(gameId) === 'dislike' ? '#ef4444' : 'rgba(0,0,0,0.5)'}; border: 1px solid #ef4444; color: ${getUserVote(gameId) === 'dislike' ? 'white' : '#ef4444'}; padding: 8px 16px; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
                                 <i class="fas fa-thumbs-down"></i> <span>${getDislikes(gameId)}</span>
                             </button>
                         </div>
