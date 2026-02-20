@@ -5383,18 +5383,16 @@
             
             if (navAuth) {
                 if (loggedIn === 'true') {
-                    // Пользователь вошел в систему - показываем никнейм как кнопку профиля
                     navAuth.innerHTML = `
                         <button class="auth-btn profile-btn" onclick="showUserPage()">${username}</button>
                         <button class="auth-btn logout-btn" onclick="logout()">Выход</button>
                     `;
+                    loadFavoritesFromFirebase();
                 } else if (registered === 'true') {
-                    // Пользователь зарегистрирован, но не вошел - только вход
                     navAuth.innerHTML = `
                         <button class="auth-btn login-btn" onclick="openLoginModal()">Вход</button>
                     `;
                 } else {
-                    // Пользователь не зарегистрирован
                     navAuth.innerHTML = `
                         <button class="auth-btn login-btn" onclick="openLoginModal()">Вход</button>
                         <button class="auth-btn register-btn" onclick="openRegisterModal()">Регистрация</button>
@@ -5403,54 +5401,8 @@
             }
         }
         
-        // Регистрация пользователя
-        function registerUser(username, password) {
-            // Проверить, существует ли уже аккаунт
-            const existingUsername = localStorage.getItem('username');
-            const existingPassword = localStorage.getItem('password');
-            
-            if (existingUsername && existingUsername === username) {
-                alert('Пользователь с таким именем уже существует!\nПопробуйте войти или используйте другое имя.');
-                return;
-            }
-            
-            if (existingPassword && existingPassword === password && existingUsername) {
-                alert('Этот пароль уже используется другим пользователем!\nПопробуйте войти или используйте другой пароль.');
-                return;
-            }
-            
-            // Если пользователь уже зарегистрирован, но вышел -allow повторный вход
-            if (existingUsername) {
-                // Перезаписываем данные новым пользователем
-            }
-            
-            localStorage.setItem('username', username);
-            localStorage.setItem('password', password);
-            localStorage.setItem('userRegistered', 'true');
-            localStorage.setItem('userLoggedIn', 'true');
-            closeRegisterModal();
-            checkUserStatus();
-            alert('Регистрация успешна! Добро пожаловать, ' + username + '!');
-        }
-        
-        // Вход пользователя
-        function loginUser(username, password) {
-            const storedUsername = localStorage.getItem('username');
-            const storedPassword = localStorage.getItem('password');
-            
-            if (storedUsername === username && storedPassword === password) {
-                localStorage.setItem('userLoggedIn', 'true');
-                closeLoginModal();
-                checkUserStatus();
-                alert('Вход выполнен успешно! Привет, ' + username + '!');
-            } else {
-                alert('Неверное имя пользователя или пароль!');
-            }
-        }
-        
-        // Выход пользователя
+        // Показать страницу пользователя
         function logout() {
-            // Закрыть модальные окна
             closeSettingsModal();
             closeProfileSettingsModal();
             const loginModal = document.getElementById('loginModal');
@@ -5461,18 +5413,377 @@
             localStorage.setItem('userLoggedIn', 'false');
             checkUserStatus();
             
-            // Найти и скрыть страницу пользователя
+            // Скрыть все страницы
             const userPage = document.getElementById('user-page');
-            if (userPage) {
-                userPage.classList.remove('active');
-            }
+            if (userPage) userPage.classList.remove('active');
             
-            // Показать главную страницу
+            const usersSearchPage = document.getElementById('users-search-page');
+            if (usersSearchPage) usersSearchPage.classList.remove('active');
+            
+            const viewProfilePage = document.getElementById('view-profile-page');
+            if (viewProfilePage) viewProfilePage.classList.remove('active');
+            
             const mainPage = document.getElementById('main-page');
             if (mainPage) {
                 mainPage.classList.add('active');
                 mainPage.classList.remove('exit');
             }
+        }
+        
+        // ========== ПОИСК ПОЛЬЗОВАТЕЛЕЙ ==========
+        
+        // Получить всех пользователей из Firebase
+        function getAllUsersFromFirebase() {
+            return database.ref('users').once('value')
+                .then((snapshot) => {
+                    if (snapshot.exists()) {
+                        return snapshot.val();
+                    }
+                    return {};
+                })
+                .catch((error) => {
+                    console.error('Error getting users from Firebase:', error);
+                    return {};
+                });
+        }
+        
+        // Получить пользователя из Firebase
+        function getUserFromFirebase(username) {
+            return database.ref('users/' + username.toLowerCase()).once('value')
+                .then((snapshot) => {
+                    if (snapshot.exists()) {
+                        return snapshot.val();
+                    }
+                    return null;
+                })
+                .catch((error) => {
+                    console.error('Error getting user from Firebase:', error);
+                    return null;
+                });
+        }
+        
+        // Загрузить всех пользователей
+        async function loadAllUsers() {
+            const usersList = document.getElementById('usersList');
+            const loadAllBtn = document.getElementById('loadAllUsersBtn');
+            
+            if (loadAllBtn) loadAllBtn.style.display = 'none';
+            
+            const users = await getAllUsersFromFirebase();
+            
+            if (usersList) {
+                usersList.innerHTML = '';
+                
+                const currentUsername = localStorage.getItem('username');
+                let usersArray = Object.values(users);
+                
+                usersArray.sort((a, b) => {
+                    return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
+                });
+                
+                if (usersArray.length === 0) {
+                    usersList.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">Пока нет зарегистрированных пользователей</p>';
+                    return;
+                }
+                
+                usersArray.forEach(user => {
+                    if (user.username === currentUsername) return;
+                    
+                    const userCard = createUserCard(user);
+                    usersList.innerHTML += userCard;
+                });
+            }
+        }
+        
+        // Поиск пользователей
+        async function searchUsers() {
+            const searchInput = document.getElementById('userSearchInput');
+            const usersList = document.getElementById('usersList');
+            const loadAllBtn = document.getElementById('loadAllUsersBtn');
+            
+            const searchQuery = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            
+            if (loadAllBtn) {
+                loadAllBtn.style.display = searchQuery ? 'none' : 'block';
+            }
+            
+            const users = await getAllUsersFromFirebase();
+            
+            if (usersList) {
+                usersList.innerHTML = '';
+                
+                const currentUsername = localStorage.getItem('username');
+                let usersArray = Object.values(users);
+                
+                if (searchQuery) {
+                    usersArray = usersArray.filter(user => 
+                        user.username.toLowerCase().includes(searchQuery)
+                    );
+                }
+                
+                usersArray.sort((a, b) => {
+                    return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
+                });
+                
+                if (usersArray.length === 0) {
+                    usersList.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">Пользователи не найдены</p>';
+                    return;
+                }
+                
+                usersArray.forEach(user => {
+                    if (user.username === currentUsername) return;
+                    
+                    const userCard = createUserCard(user);
+                    usersList.innerHTML += userCard;
+                });
+            }
+        }
+        
+        // Создать карточку пользователя
+        function createUserCard(user) {
+            const avatarIcon = getAvatarIcon(user.avatar);
+            const avatarBg = getAvatarBg(user.avatar);
+            
+            return `
+                <div class="user-card" style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 20px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" 
+                    onclick="viewUserProfile('${user.username}')"
+                    onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.3)'"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; ${avatarBg}; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white;">
+                            <i class="fas fa-${avatarIcon}"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.1rem; margin-bottom: 5px;">${user.username}</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                                <i class="fas fa-gamepad" style="margin-right: 5px;"></i>
+                                ${user.favoriteGames ? user.favoriteGames.length : 0} игр в избранном
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Получить иконку аватара
+        function getAvatarIcon(avatar) {
+            const icons = {
+                'default': 'user',
+                'robot': 'robot',
+                'gamepad': 'gamepad',
+                'dragon': 'dragon',
+                'ghost': 'ghost',
+                'rocket': 'rocket',
+                'star': 'star',
+                'heart': 'heart'
+            };
+            return icons[avatar] || 'user';
+        }
+        
+        // Получить цвет аватара
+        function getAvatarBg(avatar) {
+            const colors = {
+                'default': 'background: var(--primary);',
+                'robot': 'background: #6366f1;',
+                'gamepad': 'background: #10b981;',
+                'dragon': 'background: #ef4444;',
+                'ghost': 'background: #8b5cf6;',
+                'rocket': 'background: #f59e0b;',
+                'star': 'background: #ec4899;',
+                'heart': 'background: #ef4444;'
+            };
+            return colors[avatar] || colors['default'];
+        }
+        
+        // Просмотр профиля пользователя
+        async function viewUserProfile(username) {
+            const profileContent = document.getElementById('viewProfileContent');
+            const user = await getUserFromFirebase(username);
+            
+            if (!user) {
+                alert('Пользователь не найден');
+                return;
+            }
+            
+            if (profileContent) {
+                const avatarIcon = getAvatarIcon(user.avatar);
+                const avatarBg = getAvatarBg(user.avatar);
+                
+                let favoriteGamesHtml = '';
+                if (user.favoriteGames && user.favoriteGames.length > 0) {
+                    favoriteGamesHtml = '<div style="margin-top: 20px;">';
+                    favoriteGamesHtml += '<h3 style="margin-bottom: 15px;"><i class="fas fa-heart" style="color: #ef4444; margin-right: 10px;"></i>Любимые игры</h3>';
+                    favoriteGamesHtml += '<div style="display: flex; flex-wrap: wrap; gap: 10px;">';
+                    
+                    user.favoriteGames.forEach(gameTitle => {
+                        favoriteGamesHtml += `<span style="background: var(--primary); color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem;">${gameTitle}</span>`;
+                    });
+                    
+                    favoriteGamesHtml += '</div></div>';
+                } else {
+                    favoriteGamesHtml = '<p style="color: var(--text-secondary); margin-top: 20px;">Пользователь пока не добавил любимые игры</p>';
+                }
+                
+                profileContent.innerHTML = `
+                    <div style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 30px; text-align: center;">
+                        <div style="width: 120px; height: 120px; border-radius: 50%; ${avatarBg}; display: flex; align-items: center; justify-content: center; font-size: 48px; color: white; margin: 0 auto 20px;">
+                            <i class="fas fa-${avatarIcon}"></i>
+                        </div>
+                        <h1 style="font-size: 2rem; margin-bottom: 10px;">${user.username}</h1>
+                        <p style="color: var(--text-secondary); margin-bottom: 30px;">
+                            <i class="fas fa-calendar-alt" style="margin-right: 5px;"></i>
+                            Присоединился ${new Date(user.createdAt).toLocaleDateString('ru-RU')}
+                        </p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 30px;">
+                            <div style="background: var(--dark); padding: 20px; border-radius: 8px;">
+                                <i class="fas fa-download" style="font-size: 2rem; color: var(--primary); margin-bottom: 10px;"></i>
+                                <p style="font-size: 1.5rem; font-weight: bold;">${user.downloadsCount || 0}</p>
+                                <p style="color: var(--text-secondary);">Скачиваний</p>
+                            </div>
+                            <div style="background: var(--dark); padding: 20px; border-radius: 8px;">
+                                <i class="fas fa-heart" style="font-size: 2rem; color: #ef4444; margin-bottom: 10px;"></i>
+                                <p style="font-size: 1.5rem; font-weight: bold;">${user.likesCount || 0}</p>
+                                <p style="color: var(--text-secondary);">Нравится</p>
+                            </div>
+                        </div>
+                        
+                        ${favoriteGamesHtml}
+                    </div>
+                `;
+                
+                switchPage('view-profile-page');
+            }
+        }
+        
+        // Сохранить пользователя в Firebase
+        function saveUserToFirebase(username, password) {
+            const userData = {
+                username: username,
+                password: password,
+                avatar: localStorage.getItem('userAvatar') || 'default',
+                favoriteGames: JSON.parse(localStorage.getItem('favoriteGames') || '[]'),
+                downloadsCount: parseInt(localStorage.getItem('downloadsCount') || '0'),
+                likesCount: parseInt(localStorage.getItem('likesCount') || '0'),
+                createdAt: localStorage.getItem('userCreatedAt') || new Date().toISOString()
+            };
+            
+            return database.ref('users/' + username.toLowerCase()).set(userData)
+                .then(() => {
+                    console.log('User saved to Firebase');
+                    return true;
+                })
+                .catch((error) => {
+                    console.error('Error saving user to Firebase:', error);
+                    return false;
+                });
+        }
+        
+        // Обновить данные пользователя в Firebase
+        function updateUserInFirebase(username, updates) {
+            return database.ref('users/' + username.toLowerCase()).update(updates)
+                .then(() => {
+                    console.log('User updated in Firebase');
+                    return true;
+                })
+                .catch((error) => {
+                    console.error('Error updating user in Firebase:', error);
+                    return false;
+                });
+        }
+        
+        // Добавить игру в избранное
+        function addToMyFavorites(gameTitle) {
+            const loggedIn = localStorage.getItem('userLoggedIn');
+            if (loggedIn !== 'true') {
+                alert('Чтобы добавить игру в избранное, нужно войти в аккаунт!');
+                openLoginModal();
+                return;
+            }
+            
+            let favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+            if (!favorites.includes(gameTitle)) {
+                favorites.push(gameTitle);
+                localStorage.setItem('favoriteGames', JSON.stringify(favorites));
+                
+                const username = localStorage.getItem('username');
+                updateUserInFirebase(username, { favoriteGames: favorites });
+                
+                alert('Игра "' + gameTitle + '" добавлена в избранное!');
+            } else {
+                alert('Эта игра уже в избранном!');
+            }
+        }
+        
+        // Загрузить избранное из Firebase при входе
+        async function loadFavoritesFromFirebase() {
+            const username = localStorage.getItem('username');
+            if (!username) return;
+            
+            const user = await getUserFromFirebase(username);
+            if (user && user.favoriteGames) {
+                localStorage.setItem('favoriteGames', JSON.stringify(user.favoriteGames));
+            }
+        }
+        
+        // Модифицированная регистрация
+        async function registerUser(username, password) {
+            const existingUser = await getUserFromFirebase(username);
+            
+            if (existingUser) {
+                alert('Пользователь с таким именем уже существует!\nПопробуйте войти или используйте другое имя.');
+                return;
+            }
+            
+            localStorage.setItem('userCreatedAt', new Date().toISOString());
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+            localStorage.setItem('userRegistered', 'true');
+            localStorage.setItem('userLoggedIn', 'true');
+            
+            await saveUserToFirebase(username, password);
+            
+            closeRegisterModal();
+            checkUserStatus();
+            alert('Регистрация успешна! Добро пожаловать, ' + username + '!');
+        }
+        
+        // Модифицированный вход
+        async function loginUser(username, password) {
+            const user = await getUserFromFirebase(username);
+            
+            if (user && user.password === password) {
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('userRegistered', 'true');
+                
+                if (user.avatar) localStorage.setItem('userAvatar', user.avatar);
+                if (user.favoriteGames) localStorage.setItem('favoriteGames', JSON.stringify(user.favoriteGames));
+                if (user.downloadsCount) localStorage.setItem('downloadsCount', user.downloadsCount.toString());
+                if (user.likesCount) localStorage.setItem('likesCount', user.likesCount.toString());
+                
+                closeLoginModal();
+                checkUserStatus();
+                alert('Вход выполнен успешно! Привет, ' + username + '!');
+            } else {
+                alert('Неверное имя пользователя или пароль!');
+            }
+        }
+        
+        // Обновить данные в Firebase
+        function syncProfileToFirebase() {
+            const username = localStorage.getItem('username');
+            if (!username) return;
+            
+            const userData = {
+                avatar: localStorage.getItem('userAvatar') || 'default',
+                favoriteGames: JSON.parse(localStorage.getItem('favoriteGames') || '[]'),
+                downloadsCount: parseInt(localStorage.getItem('downloadsCount') || '0'),
+                likesCount: parseInt(localStorage.getItem('likesCount') || '0')
+            };
+            
+            updateUserInFirebase(username, userData);
         }
         
         // Показать страницу пользователя
@@ -5559,7 +5870,10 @@
                 avatarDisplay.style.background = colors[type] || colors['default'];
                 avatarDisplay.innerHTML = `<i class="fas ${icons[type] || icons['default']}"></i>`;
                 localStorage.setItem('avatarType', type);
+                localStorage.setItem('userAvatar', type);
                 localStorage.removeItem('avatarData'); // Удаляем загруженный аватар если есть
+                
+                syncProfileToFirebase();
                 
                 if (!isLoading) {
                     alert('Аватар изменен!');
@@ -6125,18 +6439,18 @@
             // Обработчик формы входа
             const loginForm = document.getElementById('loginForm');
             if (loginForm) {
-                loginForm.addEventListener('submit', function(e) {
+                loginForm.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     const user = document.getElementById('loginUsername').value;
                     const pass = document.getElementById('loginPassword').value;
-                    loginUser(user, pass);
+                    await loginUser(user, pass);
                 });
             }
             
             // Обработчик формы регистрации
             const registerForm = document.getElementById('registerForm');
             if (registerForm) {
-                registerForm.addEventListener('submit', function(e) {
+                registerForm.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     const user = document.getElementById('regUsername').value;
                     const pass = document.getElementById('regPassword').value;
@@ -6146,7 +6460,7 @@
                         alert('Пароли не совпадают!');
                         return;
                     }
-                    registerUser(user, pass);
+                    await registerUser(user, pass);
                 });
             }
         });
@@ -6621,11 +6935,6 @@
                         <button class="dislike-btn" onclick="handleDislike('${gameId}', event)" title="Не нравится">
                             <i class="fas fa-thumbs-down"></i> <span class="dislike-count">${getDislikes(gameId)}</span>
                         </button>
-                    </div>
-                    <div class="game-meta">
-                        <span class="game-size">${game.size}</span>
-                        <span class="game-updated">обновлено ${game.updated || new Date().toLocaleDateString('ru-RU')}</span>
-                        <span class="game-year">${game.year}</span>
                     </div>
                     <div class="game-buttons">
                         ${buttonsHTML}
@@ -8081,10 +8390,55 @@ function showForzaGames() {
         </div>
     </div>
     
+    <!-- Страница поиска пользователей -->
+    <div id="users-search-page" class="page">
+        <div class="users-search-container" style="padding-top: 120px; padding-left: 20px; padding-right: 20px; padding-bottom: 20px; max-width: 1000px; margin: 0 auto;">
+            <h1 style="text-align: center; margin-bottom: 30px; font-size: 2rem;">Поиск пользователей</h1>
+            
+            <!-- Поиск -->
+            <div class="search-box" style="position: relative; margin-bottom: 40px;">
+                <i class="fas fa-search" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-secondary); font-size: 1.2rem; z-index: 1;"></i>
+                <input type="text" id="userSearchInput" placeholder="Поиск по имени пользователя..." 
+                    style="width: 100%; padding: 18px 20px 18px 50px; border-radius: 12px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text); font-size: 1.1rem; box-sizing: border-box;"
+                    onkeyup="searchUsers()">
+            </div>
+            
+            <!-- Список пользователей -->
+            
+            <!-- Список пользователей -->
+            <div id="usersList" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+                <!-- Пользователи будут загружены здесь -->
+            </div>
+            
+            <!-- Кнопка загрузки всех пользователей -->
+            <div style="text-align: center; margin-top: 30px;">
+                <button onclick="loadAllUsers()" id="loadAllUsersBtn" style="padding: 15px 30px; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem;">
+                    <i class="fas fa-users"></i> Показать всех пользователей
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Страница просмотра профиля другого пользователя -->
+    <div id="view-profile-page" class="page">
+        <div class="view-profile-container" style="padding-top: 100px; padding-left: 20px; padding-right: 20px; padding-bottom: 20px; max-width: 800px; margin: 0 auto;">
+            <button onclick="switchPage('users-search-page'); loadAllUsers();" style="padding: 10px 20px; background: transparent; color: var(--primary); border: 1px solid var(--primary); border-radius: 6px; cursor: pointer; margin-bottom: 20px;">
+                <i class="fas fa-arrow-left"></i> Назад к поиску
+            </button>
+            
+            <div class="user-profile-view" id="viewProfileContent">
+                <!-- Контент профиля будет загружен здесь -->
+            </div>
+        </div>
+    </div>
+    
     <!-- Страница пользователя -->
     <div id="user-page" class="page">
         <div class="user-page-container" style="padding: 100px 20px 20px; max-width: 800px; margin: 0 auto;">
-            <div class="user-page-header" style="text-align: center; margin-bottom: 40px;">
+            <div class="user-page-header" style="text-align: center; margin-bottom: 40px; position: relative;">
+                <button onclick="switchPage('users-search-page'); loadAllUsers();" style="position: absolute; top: 0; right: 0; background: var(--primary); color: white; border: none; padding: 12px 16px; border-radius: 8px; cursor: pointer; font-size: 1rem;" title="Найти пользователей">
+                    <i class="fas fa-users"></i>
+                </button>
                 <div class="user-avatar-container" style="position: relative; width: 120px; height: 120px; margin: 0 auto 20px;">
                     <div class="user-avatar" id="userAvatarDisplay" style="width: 120px; height: 120px; border-radius: 50%; background: var(--primary); margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 48px; color: white; overflow: hidden;">
                         <i class="fas fa-user"></i>
