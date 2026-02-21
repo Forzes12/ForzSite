@@ -2972,6 +2972,10 @@
             font-weight: 600;
             font-size: 0.9rem;
         }
+        
+        .comment-avatar i {
+            font-size: 16px;
+        }
 
         .comment-author {
             font-weight: 600;
@@ -5569,7 +5573,9 @@
         
         // Функция получения конкретной рамки по ID
         function getFrame(frameId) {
-            return GLOBAL_PROFILE_CONFIG.frames[frameId] || GLOBAL_PROFILE_CONFIG.frames['default'];
+            // Проверяем сохранённую рамку или используем золотую по умолчанию
+            const savedFrame = localStorage.getItem('userFrame') || 'gold';
+            return GLOBAL_PROFILE_CONFIG.frames[savedFrame] || GLOBAL_PROFILE_CONFIG.frames['gold'];
         }
         
         // Функция применения рамки к профилю
@@ -5820,6 +5826,7 @@
         
         // Получить иконку аватара
         function getAvatarIcon(avatar) {
+            // Используем аватар пользователя из Firebase
             const icons = {
                 'default': 'user',
                 'robot': 'robot',
@@ -5835,6 +5842,7 @@
         
         // Получить цвет аватара
         function getAvatarBg(avatar) {
+            // Используем аватар пользователя из Firebase
             const colors = {
                 'default': 'background: var(--primary);',
                 'robot': 'background: #6366f1;',
@@ -5861,6 +5869,8 @@
             if (profileContent) {
                 const avatarIcon = getAvatarIcon(user.avatar);
                 const avatarBg = getAvatarBg(user.avatar);
+                // Получаем рамку пользователя из Firebase
+                const userFrame = user.userFrame || 'gold';
                 
                 // Используем likedGames (по ID)
                 const userLikedGameIds = user.likedGames || [];
@@ -5888,8 +5898,8 @@
                         favoriteGamesHtml += '<h3 style="margin-bottom: 15px;"><i class="fas fa-heart" style="color: #ef4444; margin-right: 10px;"></i>Понравившиеся игры (' + validGameIds.length + ')</h3>';
                         favoriteGamesHtml += '<div id="user-favorite-games-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;"></div></div>';
                         
-                        // Сразу добавляем карточки
-                        profileContent.innerHTML = getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml);
+                        // Сразу добавляем карточки с рамкой пользователя
+                        profileContent.innerHTML = getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml, userFrame);
                         
                         const grid = document.getElementById('user-favorite-games-grid');
                         if (grid) {
@@ -5909,10 +5919,10 @@
                         favoriteGamesHtml += '<p style="color: var(--text-secondary); margin-top: 10px;">ID игр в профиле: ' + userLikedGameIds.join(', ') + '</p>';
                         favoriteGamesHtml += '<p style="color: var(--text-secondary);">Доступные ID (первые 20): ' + Object.keys(gameData).slice(0, 20).join(', ') + '</p>';
                         favoriteGamesHtml += '</div>';
-                        profileContent.innerHTML = getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml);
+                        profileContent.innerHTML = getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml, userFrame);
                     } else {
                         favoriteGamesHtml = '<p style="color: var(--text-secondary); margin-top: 20px;">Пользователь пока не лайкнул ни одной игры</p>';
-                        profileContent.innerHTML = getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml);
+                        profileContent.innerHTML = getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml, userFrame);
                     }
                 };
                 
@@ -5923,11 +5933,34 @@
         }
         
         // Функция для генерации HTML профиля
-        function getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml) {
+        function getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml, userFrame) {
+            // Используем рамку пользователя из Firebase или gold по умолчанию
+            const frameId = userFrame || localStorage.getItem('userFrame') || 'gold';
+            const frame = getFrame(frameId);
+            let frameStyle = '';
+            if (frame) {
+                if (frame.gradient) {
+                    frameStyle = `background: ${frame.gradient}; padding: 8px; border-radius: 50%; box-shadow: ${frame.glow || 'none'};`;
+                } else if (frame.border) {
+                    frameStyle = `border: ${frame.border}; padding: 8px; border-radius: 50%;`;
+                }
+            }
+            
+            // Проверяем, есть ли у пользователя свой аватар
+            const hasCustomAvatar = user.avatar === 'custom' && user.avatarData;
+            let avatarContent = '';
+            if (hasCustomAvatar) {
+                avatarContent = `<img src="${user.avatarData}" style="width: 100%; height: 100%; object-fit: cover;">`;
+            } else {
+                avatarContent = `<i class="fas fa-${avatarIcon}"></i>`;
+            }
+            
             return `
                 <div style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 30px; text-align: center;">
-                    <div style="width: 120px; height: 120px; border-radius: 50%; ${avatarBg}; display: flex; align-items: center; justify-content: center; font-size: 48px; color: white; margin: 0 auto 20px;">
-                        <i class="fas fa-${avatarIcon}"></i>
+                    <div style="${frameStyle} width: 120px; margin: 0 auto 20px;">
+                        <div style="width: 120px; height: 120px; border-radius: 50%; ${avatarBg}; display: flex; align-items: center; justify-content: center; font-size: 48px; color: white; overflow: hidden;">
+                            ${avatarContent}
+                        </div>
                     </div>
                     <h1 style="font-size: 2rem; margin-bottom: 10px;">${user.username}</h1>
                     <p style="color: var(--text-secondary); margin-bottom: 30px;">
@@ -5964,7 +5997,7 @@
                 likesCount: parseInt(localStorage.getItem('likesCount') || '0'),
                 createdAt: localStorage.getItem('userCreatedAt') || new Date().toISOString(),
                 // Настройки профиля - автоматически доступны всем из глобальной конфигурации
-                userFrame: localStorage.getItem('userFrame') || 'default',
+                userFrame: localStorage.getItem('userFrame') || 'gold',
                 userBackground: localStorage.getItem('userBackground') || 'default',
                 userAvatarEffect: localStorage.getItem('userAvatarEffect') || 'none',
                 ...extraData
@@ -6130,6 +6163,7 @@
                 localStorage.setItem('userRegistered', 'true');
                 
                 if (user.avatar) localStorage.setItem('userAvatar', user.avatar);
+                if (user.avatarData) localStorage.setItem('avatarData', user.avatarData);
                 if (user.favoriteGames) localStorage.setItem('favoriteGames', JSON.stringify(user.favoriteGames));
                 if (user.downloadsCount) localStorage.setItem('downloadsCount', user.downloadsCount.toString());
                 if (user.likesCount) localStorage.setItem('likesCount', user.likesCount.toString());
@@ -6166,11 +6200,12 @@
             
             const userData = {
                 avatar: localStorage.getItem('userAvatar') || 'default',
+                avatarData: localStorage.getItem('avatarData') || null,
                 favoriteGames: JSON.parse(localStorage.getItem('favoriteGames') || '[]'),
                 downloadsCount: parseInt(localStorage.getItem('downloadsCount') || '0'),
                 likesCount: parseInt(localStorage.getItem('likesCount') || '0'),
                 // Настройки профиля из глобальной системы (доступны всем)
-                userFrame: localStorage.getItem('userFrame') || 'default',
+                userFrame: localStorage.getItem('userFrame') || 'gold',
                 userBackground: localStorage.getItem('userBackground') || 'default',
                 userAvatarEffect: localStorage.getItem('userAvatarEffect') || 'none'
             };
@@ -6264,9 +6299,12 @@
                 'heart': '#ef4444'
             };
             
+            const icon = icons[type] || icons['default'];
+            const color = colors[type] || colors['default'];
+            
             if (avatarDisplay) {
-                avatarDisplay.style.background = colors[type] || colors['default'];
-                avatarDisplay.innerHTML = `<i class="fas ${icons[type] || icons['default']}"></i>`;
+                avatarDisplay.style.background = color;
+                avatarDisplay.innerHTML = `<i class="fas ${icon}"></i>`;
                 localStorage.setItem('avatarType', type);
                 localStorage.setItem('userAvatar', type);
                 localStorage.removeItem('avatarData'); // Удаляем загруженный аватар если есть
@@ -6274,7 +6312,7 @@
                 syncProfileToFirebase();
                 
                 if (!isLoading) {
-                    alert('Аватар изменен!');
+                    showNotification('Аватар изменен!');
                 }
             }
         }
@@ -6283,15 +6321,58 @@
         function handleAvatarUpload(event) {
             const file = event.target.files[0];
             if (file) {
+                // Проверяем размер файла (максимум 2MB)
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('Файл слишком большой! Максимальный размер 2MB');
+                    return;
+                }
+                
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    const avatarDisplay = document.getElementById('userAvatarDisplay');
-                    if (avatarDisplay) {
-                        avatarDisplay.innerHTML = `<img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover;">`;
-                        localStorage.setItem('avatarData', e.target.result);
-                        localStorage.removeItem('avatarType');
-                        alert('Аватар загружен!');
-                    }
+                    // Сжимаем изображение перед сохранением
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        
+                        // Уменьшаем до 150x150 для экономии места
+                        const maxSize = 150;
+                        let width = img.width;
+                        let height = img.height;
+                        
+                        if (width > height) {
+                            if (width > maxSize) {
+                                height *= maxSize / width;
+                                width = maxSize;
+                            }
+                        } else {
+                            if (height > maxSize) {
+                                width *= maxSize / height;
+                                height = maxSize;
+                            }
+                        }
+                        
+                        canvas.width = width;
+                        canvas.height = height;
+                        ctx.drawImage(img, 0, 0, width, height);
+                        
+                        // Получаем сжатое изображение
+                        const compressedData = canvas.toDataURL('image/jpeg', 0.7);
+                        
+                        const avatarDisplay = document.getElementById('userAvatarDisplay');
+                        if (avatarDisplay) {
+                            avatarDisplay.innerHTML = `<img src="${compressedData}" style="width: 100%; height: 100%; object-fit: cover;">`;
+                            localStorage.setItem('avatarData', compressedData);
+                            localStorage.setItem('userAvatar', 'custom');
+                            localStorage.removeItem('avatarType');
+                            
+                            // Синхронизируем с Firebase
+                            syncProfileToFirebase();
+                            
+                            showNotification('Аватар загружен и сохранён!');
+                        }
+                    };
+                    img.src = e.target.result;
                 };
                 reader.readAsDataURL(file);
             }
@@ -6314,7 +6395,13 @@
                 
                 // Синхронизация с Firebase
                 syncProfileToFirebase();
-                alert('Рамка профиля изменена!');
+                
+                // Закрываем модальное окно
+                const modal = document.getElementById('frameSelectorModal');
+                if (modal) modal.style.display = 'none';
+                
+                // Показываем уведомление
+                showNotification('Рамка профиля изменена!');
             }
         }
         
@@ -6342,7 +6429,8 @@
         
         // Применение рамки к профилю пользователя
         function applyUserFrameToProfile() {
-            const frameId = localStorage.getItem('userFrame') || 'default';
+            // Используем сохранённую рамку или золотую по умолчанию
+            const frameId = localStorage.getItem('userFrame') || 'gold';
             const frameWrapper = document.getElementById('profileFrameWrapper');
             const avatarDisplay = document.getElementById('userAvatarDisplay');
             const frame = getFrame(frameId);
@@ -6598,7 +6686,8 @@
         }
 
         function getInitials(name) {
-            return name.charAt(0).toUpperCase();
+            // Все комментаторы получают одинаковую иконку
+            return '<i class="fas fa-user"></i>';
         }
 
         function renderComments(gameId) {
