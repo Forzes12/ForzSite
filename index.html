@@ -5896,11 +5896,20 @@
         // Просмотр профиля пользователя
         async function viewUserProfile(username) {
             const profileContent = document.getElementById('viewProfileContent');
-            const user = await getUserFromFirebase(username);
+            let user = await getUserFromFirebase(username);
             
+            // Если пользователь не найден в Firebase, создаём базовый профиль
             if (!user) {
-                alert('Пользователь не найден');
-                return;
+                user = {
+                    username: username,
+                    avatar: 'default',
+                    createdAt: new Date().toISOString(),
+                    downloadsCount: 0,
+                    likesCount: 0,
+                    favoriteGames: [],
+                    likedGames: [],
+                    isDeveloper: false
+                };
             }
             
             if (profileContent) {
@@ -5960,6 +5969,7 @@
                     } else {
                         favoriteGamesHtml = '<p style="color: var(--text-secondary); margin-top: 20px;">Пользователь пока не лайкнул ни одной игры</p>';
                         profileContent.innerHTML = getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml, userFrame);
+                        loadProfileComments(username);
                     }
                 };
                 
@@ -5997,6 +6007,39 @@
             const devBadge = isDev ? '<span class="developer-badge developer-badge-large" style="margin-left: 10px;"><i class="fas fa-code"></i> РАЗРАБОТЧИК</span>' : '';
             const devClass = isDev ? 'developer' : '';
             
+            // Проверяем, является ли текущий пользователь разработчиком
+            const currentUsername = localStorage.getItem('username');
+            const isCurrentUserDeveloper = localStorage.getItem('isDeveloper') === 'true';
+            
+            // Форма отправки сообщения разработчику (только для просмотра профиля разработчика)
+            let messageFormHtml = '';
+            if (isDev && !isCurrentUserDeveloper) {
+                messageFormHtml = `
+                    <div style="margin-top: 20px; padding: 20px; background: var(--dark); border-radius: 8px;">
+                        <h3 style="margin-bottom: 15px;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>Написать разработчику</h3>
+                        <textarea id="devMessageInput" placeholder="Ваше сообщение..." style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text); margin-bottom: 10px; resize: vertical; min-height: 80px;"></textarea>
+                        <button onclick="sendMessageToDeveloper('${user.username}')" style="padding: 10px 20px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem;">
+                            <i class="fas fa-paper-plane"></i> Отправить сообщение
+                        </button>
+                    </div>
+                `;
+            }
+            
+            // Проверяем, является ли текущий пользователь данным разработчиком
+            let developerInboxHtml = '';
+            if (currentUsername && currentUsername.toLowerCase() === 'developer' && isCurrentUserDeveloper) {
+                developerInboxHtml = `
+                    <div style="margin-top: 30px; padding: 20px; background: var(--dark); border-radius: 8px;">
+                        <h3 style="margin-bottom: 15px;"><i class="fas fa-inbox" style="margin-right: 8px;"></i>Сообщения</h3>
+                        <button onclick="loadDeveloperMessages()" style="padding: 10px 20px; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; margin-right: 10px;">
+                            <i class="fas fa-sync"></i> Загрузить сообщения
+                        </button>
+                        <div id="developerMessagesList" style="margin-top: 15px; max-height: 300px; overflow-y: auto;"></div>
+                    </div>
+                `;
+            }
+            
+            
             return `
                 <div style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 30px; text-align: center;">
                     <div style="${frameStyle} width: 120px; margin: 0 auto 20px;">
@@ -6024,6 +6067,8 @@
                     </div>
                     
                     ${favoriteGamesHtml}
+                    ${messageFormHtml}
+                    ${developerInboxHtml}
                 </div>
             `;
         }
@@ -6748,13 +6793,37 @@
                 const isDev = comment.isDeveloper === true;
                 const devBadge = isDev ? '<span class="developer-badge"><i class="fas fa-code"></i> DEV</span>' : '';
                 const devClass = isDev ? 'developer' : '';
+                
+                // Получаем иконку аватара
+                const avatarType = comment.avatar || 'default';
+                const avatarData = comment.avatarData || null;
+                const avatarIcons = {
+                    'default': 'fa-user',
+                    'robot': 'fa-robot',
+                    'alien': 'fa-alien',
+                    'ghost': 'fa-ghost',
+                    'dragon': 'fa-dragon',
+                    'rocket': 'fa-rocket',
+                    'star': 'fa-star',
+                    'heart': 'fa-heart',
+                    'gamepad': 'fa-gamepad'
+                };
+                const avatarIcon = avatarIcons[avatarType] || 'fa-user';
+                
+                // Если есть кастомный аватар (изображение)
+                let avatarContent = '';
+                if (avatarData && avatarType === 'custom') {
+                    avatarContent = `<img src="${avatarData}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+                } else {
+                    avatarContent = `<i class="fas ${avatarIcon}"></i>`;
+                }
+                
                 return `
                 <div class="comment ${devClass}" data-comment-id="${comment.id}">
                     <div class="comment-header">
-                        <div class="comment-avatar">${getInitials(comment.author)}</div>
+                        <div class="comment-avatar" style="display: flex; align-items: center; justify-content: center; overflow: hidden;">${avatarContent}</div>
                         <span class="comment-author ${devClass}">${escapeHtml(comment.author)}${devBadge}</span>
                         <span class="comment-date">${formatCommentDate(comment.timestamp)}</span>
-                        <button class="comment-delete-btn" onclick="handleDeleteComment('${gameId}', '${comment.firebaseKey || comment.id}')" title="Удалить"><i class="fas fa-trash"></i></button>
                     </div>
                     <div class="comment-text">${escapeHtml(comment.text)}</div>
                 </div>
@@ -6773,7 +6842,9 @@
             if (!text) { alert('Введите комментарий'); return; }
             const author = getUserName();
             const isDeveloper = localStorage.getItem('isDeveloper') === 'true';
-            const comment = { author, text, isDeveloper };
+            const userAvatar = localStorage.getItem('userAvatar') || 'default';
+            const avatarData = localStorage.getItem('avatarData') || null;
+            const comment = { author, text, isDeveloper, avatar: userAvatar, avatarData: avatarData };
             saveComment(gameId, comment);
             input.value = '';
             // Не вызываем renderComments - Firebase обновит автоматически
@@ -6784,6 +6855,212 @@
                 deleteComment(gameId, commentId);
                 // Не вызываем renderComments - Firebase обновит автоматически
             }
+        }
+
+        // Отправить сообщение разработчику
+        function sendMessageToDeveloper(developerUsername) {
+            const messageInput = document.getElementById('devMessageInput');
+            const message = messageInput.value.trim();
+            
+            if (!message) {
+                alert('Введите сообщение');
+                return;
+            }
+            
+            const loggedIn = localStorage.getItem('userLoggedIn');
+            if (loggedIn !== 'true') {
+                alert('Чтобы отправить сообщение, нужно войти в аккаунт!');
+                return;
+            }
+            
+            const sender = localStorage.getItem('username');
+            const messageData = {
+                from: sender,
+                to: developerUsername,
+                message: message,
+                timestamp: new Date().toISOString(),
+                read: false
+            };
+            
+            // Сохраняем в Firebase
+            database.ref('developer_messages').push(messageData)
+                .then(() => {
+                    alert('Сообщение отправлено разработчику!');
+                    messageInput.value = '';
+                })
+                .catch(error => {
+                    console.error('Ошибка отправки сообщения:', error);
+                    alert('Ошибка отправки сообщения');
+                });
+        }
+
+        // Загрузить сообщения для разработчика
+        function loadDeveloperMessages() {
+            const messagesList = document.getElementById('developerMessagesList');
+            if (!messagesList) return;
+            
+            const currentUsername = localStorage.getItem('username');
+            if (!currentUsername || currentUsername.toLowerCase() !== 'developer') {
+                messagesList.innerHTML = '<p style="color: #ef4444;">У вас нет доступа к сообщениям</p>';
+                return;
+            }
+            
+            messagesList.innerHTML = '<p style="color: var(--text-secondary);">Загрузка сообщений...</p>';
+            
+            database.ref('developer_messages').orderByChild('to').equalTo('developer').once('value')
+                .then(snapshot => {
+                    const messages = [];
+                    snapshot.forEach(childSnapshot => {
+                        const data = childSnapshot.val();
+                        data.id = childSnapshot.key;
+                        messages.push(data);
+                    });
+                    
+                    // Сортируем по времени (новые сверху)
+                    messages.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                    
+                    if (messages.length === 0) {
+                        messagesList.innerHTML = '<p style="color: var(--text-secondary);">Сообщений пока нет</p>';
+                        return;
+                    }
+                    
+                    messagesList.innerHTML = messages.map(msg => `
+                        <div style="background: var(--card-bg); padding: 15px; border-radius: 8px; margin-bottom: 10px; text-align: left; border: 1px solid var(--border);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                <strong style="color: var(--primary);">${escapeHtml(msg.from)}</strong>
+                                <span style="color: var(--text-secondary); font-size: 0.8rem;">${new Date(msg.timestamp).toLocaleString('ru-RU')}</span>
+                            </div>
+                            <p style="margin: 0; color: var(--text);">${escapeHtml(msg.message)}</p>
+                        </div>
+                    `).join('');
+                })
+                .catch(error => {
+                    console.error('Ошибка загрузки сообщений:', error);
+                    messagesList.innerHTML = '<p style="color: #ef4444;">Ошибка загрузки сообщений</p>';
+                });
+        }
+
+        // Добавить комментарий к профилю
+        function addProfileComment(profileUsername) {
+            const input = document.getElementById('profileCommentInput');
+            const text = input.value.trim();
+            
+            if (!text) {
+                alert('Введите комментарий');
+                return;
+            }
+            
+            const loggedIn = localStorage.getItem('userLoggedIn');
+            if (loggedIn !== 'true') {
+                alert('Чтобы оставить комментарий, нужно войти в аккаунт!');
+                return;
+            }
+            
+            const author = localStorage.getItem('username');
+            const isDeveloper = localStorage.getItem('isDeveloper') === 'true';
+            const userAvatar = localStorage.getItem('userAvatar') || 'default';
+            const avatarData = localStorage.getItem('avatarData') || null;
+            
+            const commentData = {
+                author: author,
+                profile: profileUsername,
+                text: text,
+                timestamp: new Date().toISOString(),
+                isDeveloper: isDeveloper,
+                avatar: userAvatar,
+                avatarData: avatarData
+            };
+            
+            // Сохраняем в Firebase
+            database.ref('profile_comments').push(commentData)
+                .then(() => {
+                    input.value = '';
+                    // Перезагружаем комментарии
+                    loadProfileComments(profileUsername);
+                })
+                .catch(error => {
+                    console.error('Ошибка сохранения комментария:', error);
+                    alert('Ошибка сохранения комментария');
+                });
+        }
+
+        // Загрузить комментарии профиля
+        function loadProfileComments(profileUsername) {
+            const commentsList = document.getElementById('profileCommentsList');
+            if (!commentsList) return;
+            
+            commentsList.innerHTML = '<p style="color: var(--text-secondary); text-align: center;">Загрузка комментариев...</p>';
+            
+            database.ref('profile_comments').orderByChild('profile').equalTo(profileUsername).once('value')
+                .then(snapshot => {
+                    const comments = [];
+                    snapshot.forEach(childSnapshot => {
+                        const data = childSnapshot.val();
+                        data.id = childSnapshot.key;
+                        comments.push(data);
+                    });
+                    
+                    // Сортируем по времени (новые сверху)
+                    comments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                    
+                    if (comments.length === 0) {
+                        commentsList.innerHTML = '<p style="color: var(--text-secondary); text-align: center;">Комментариев пока нет. Будьте первым!</p>';
+                        return;
+                    }
+                    
+                    commentsList.innerHTML = comments.map(comment => {
+                        const isDev = comment.isDeveloper === true;
+                        const devBadge = isDev ? '<span class="developer-badge"><i class="fas fa-code"></i> DEV</span>' : '';
+                        const devClass = isDev ? 'developer' : '';
+                        
+                        // Получаем иконку аватара
+                        const avatarType = comment.avatar || 'default';
+                        const avatarData = comment.avatarData || null;
+                        const avatarIcons = {
+                            'default': 'fa-user',
+                            'robot': 'fa-robot',
+                            'alien': 'fa-alien',
+                            'ghost': 'fa-ghost',
+                            'dragon': 'fa-dragon',
+                            'rocket': 'fa-rocket',
+                            'star': 'fa-star',
+                            'heart': 'fa-heart',
+                            'gamepad': 'fa-gamepad'
+                        };
+                        const avatarIcon = avatarIcons[avatarType] || 'fa-user';
+                        const avatarBg = isDev ? 'background: linear-gradient(135deg, #10b981, #059669)' : 'background: var(--primary)';
+                        
+                        // Если есть кастомный аватар (изображение)
+                        let avatarContent = '';
+                        if (avatarData && avatarType === 'custom') {
+                            avatarContent = `<img src="${avatarData}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+                        } else {
+                            avatarContent = `<i class="fas ${avatarIcon}"></i>`;
+                        }
+                        
+                        return `
+                            <div style="background: var(--dark); padding: 15px; border-radius: 8px; margin-bottom: 10px; text-align: left; border-left: 3px solid ${isDev ? '#10b981' : 'var(--border)'};">
+                                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                    <div style="width: 40px; height: 40px; border-radius: 50%; ${avatarBg}; display: flex; align-items: center; justify-content: center; color: white; overflow: hidden;">
+                                        ${avatarContent}
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <strong style="color: ${isDev ? '#10b981' : 'var(--primary)'};">${escapeHtml(comment.author)}</strong>
+                                            ${devBadge}
+                                        </div>
+                                        <span style="color: var(--text-secondary); font-size: 0.8rem;">${new Date(comment.timestamp).toLocaleString('ru-RU')}</span>
+                                    </div>
+                                </div>
+                                <p style="margin: 0; color: var(--text); margin-left: 52px;">${escapeHtml(comment.text)}</p>
+                            </div>
+                        `;
+                    }).join('');
+                })
+                .catch(error => {
+                    console.error('Ошибка загрузки комментариев:', error);
+                    commentsList.innerHTML = '<p style="color: #ef4444; text-align: center;">Ошибка загрузки комментариев</p>';
+                });
         }
 
         // Обработчик клика на лайк (обёртка)
