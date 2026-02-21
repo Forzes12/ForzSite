@@ -3015,6 +3015,40 @@
             font-style: italic;
         }
 
+        /* Developer Badge Styles */
+        .developer-badge {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            margin-left: 8px;
+            display: inline-block;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .developer-badge-large {
+            padding: 4px 12px;
+            font-size: 12px;
+            border-radius: 16px;
+        }
+
+        .user-card.developer {
+            border: 2px solid #10b981;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .comment-author.developer {
+            color: #10b981;
+        }
+
+        .comment.developer {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 3px solid #10b981;
+        }
+
         .program-badge {
             position: absolute;
             top: 10px;
@@ -5802,9 +5836,12 @@
         function createUserCard(user) {
             const avatarIcon = getAvatarIcon(user.avatar);
             const avatarBg = getAvatarBg(user.avatar);
+            const isDev = user.isDeveloper === true;
+            const devBadge = isDev ? '<span class="developer-badge developer-badge-large"><i class="fas fa-code"></i> РАЗРАБОТЧИК</span>' : '';
+            const devClass = isDev ? 'developer' : '';
             
             return `
-                <div class="user-card" style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 20px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" 
+                <div class="user-card ${devClass}" style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 20px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" 
                     onclick="viewUserProfile('${user.username}')"
                     onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.3)'"
                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
@@ -5813,7 +5850,7 @@
                             <i class="fas fa-${avatarIcon}"></i>
                         </div>
                         <div>
-                            <h3 style="font-size: 1.1rem; margin-bottom: 5px;">${user.username}</h3>
+                            <h3 style="font-size: 1.1rem; margin-bottom: 5px;">${user.username}${devBadge}</h3>
                             <p style="color: var(--text-secondary); font-size: 0.9rem;">
                                 <i class="fas fa-gamepad" style="margin-right: 5px;"></i>
                                 ${user.favoriteGames ? user.favoriteGames.length : 0} игр в избранном
@@ -5955,6 +5992,11 @@
                 avatarContent = `<i class="fas fa-${avatarIcon}"></i>`;
             }
             
+            // Проверяем, является ли пользователь разработчиком
+            const isDev = user.isDeveloper === true;
+            const devBadge = isDev ? '<span class="developer-badge developer-badge-large" style="margin-left: 10px;"><i class="fas fa-code"></i> РАЗРАБОТЧИК</span>' : '';
+            const devClass = isDev ? 'developer' : '';
+            
             return `
                 <div style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 30px; text-align: center;">
                     <div style="${frameStyle} width: 120px; margin: 0 auto 20px;">
@@ -5962,7 +6004,7 @@
                             ${avatarContent}
                         </div>
                     </div>
-                    <h1 style="font-size: 2rem; margin-bottom: 10px;">${user.username}</h1>
+                    <h1 style="font-size: 2rem; margin-bottom: 10px;">${user.username}${devBadge}</h1>
                     <p style="color: var(--text-secondary); margin-bottom: 30px;">
                         <i class="fas fa-calendar-alt" style="margin-right: 5px;"></i>
                         Присоединился ${new Date(user.createdAt).toLocaleDateString('ru-RU')}
@@ -6619,7 +6661,8 @@
                 id: Date.now().toString(),
                 author: comment.author,
                 text: comment.text,
-                timestamp: new Date().toISOString()
+                timestamp: new Date().toISOString(),
+                isDeveloper: comment.isDeveloper || false
             };
             
             // Сохраняем в Firebase
@@ -6701,17 +6744,21 @@
                 return;
             }
             const sortedComments = [...comments].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-            container.innerHTML = sortedComments.map(comment => `
-                <div class="comment" data-comment-id="${comment.id}">
+            container.innerHTML = sortedComments.map(comment => {
+                const isDev = comment.isDeveloper === true;
+                const devBadge = isDev ? '<span class="developer-badge"><i class="fas fa-code"></i> DEV</span>' : '';
+                const devClass = isDev ? 'developer' : '';
+                return `
+                <div class="comment ${devClass}" data-comment-id="${comment.id}">
                     <div class="comment-header">
                         <div class="comment-avatar">${getInitials(comment.author)}</div>
-                        <span class="comment-author">${escapeHtml(comment.author)}</span>
+                        <span class="comment-author ${devClass}">${escapeHtml(comment.author)}${devBadge}</span>
                         <span class="comment-date">${formatCommentDate(comment.timestamp)}</span>
                         <button class="comment-delete-btn" onclick="handleDeleteComment('${gameId}', '${comment.firebaseKey || comment.id}')" title="Удалить"><i class="fas fa-trash"></i></button>
                     </div>
                     <div class="comment-text">${escapeHtml(comment.text)}</div>
                 </div>
-            `).join('');
+            `}).join('');
         }
 
         function escapeHtml(text) {
@@ -6725,7 +6772,8 @@
             const text = input.value.trim();
             if (!text) { alert('Введите комментарий'); return; }
             const author = getUserName();
-            const comment = { author, text };
+            const isDeveloper = localStorage.getItem('isDeveloper') === 'true';
+            const comment = { author, text, isDeveloper };
             saveComment(gameId, comment);
             input.value = '';
             // Не вызываем renderComments - Firebase обновит автоматически
