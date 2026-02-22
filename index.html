@@ -5740,9 +5740,9 @@
         
         // Функция получения конкретной рамки по ID
         function getFrame(frameId) {
-            // Проверяем сохранённую рамку или используем золотую по умолчанию
-            const savedFrame = localStorage.getItem('userFrame') || 'gold';
-            return GLOBAL_PROFILE_CONFIG.frames[savedFrame] || GLOBAL_PROFILE_CONFIG.frames['gold'];
+            // Используем переданный frameId или сохранённую рамку, или золотую по умолчанию
+            const frameToUse = frameId || localStorage.getItem('userFrame') || 'gold';
+            return GLOBAL_PROFILE_CONFIG.frames[frameToUse] || GLOBAL_PROFILE_CONFIG.frames['gold'];
         }
         
         // Функция применения рамки к профилю
@@ -6359,20 +6359,11 @@
             const normalizedUsername = username.toLowerCase().trim();
             const developerPassword = 'F0rz3s!@#2023^&Secur1tyyui';
             
-            // Проверяем, является ли пользователь разработчиком:
-            // 1. По паролю разработчика
-            // 2. По имени: Dev_0, Dev_1, ... или "developer"
-            const isDevByName = /^dev_\d+$/i.test(normalizedUsername) || normalizedUsername === 'developer' || normalizedUsername === 'разработчик';
-            const isDevByPassword = password === developerPassword;
+            // Проверяем, является ли пользователь разработчиком по паролю
+            const isDeveloper = password === developerPassword;
             
-            if (isDevByName || isDevByPassword) {
-                // Для регистрации разработчика требуется специальный пароль
-                if (isDevByName && !isDevByPassword) {
-                    alert('Для регистрации аккаунта разработчика требуется специальный пароль.');
-                    return;
-                }
-                
-                // Проверяем, не занят ли аккаунт разработчика
+            if (isDeveloper) {
+                // Проверяем, не занят ли аккаунт
                 const existingUser = await getUserFromFirebase(username);
                 if (existingUser) {
                     alert('Аккаунт уже существует! Выполните вход.');
@@ -6454,12 +6445,8 @@
         
         // Проверка, является ли пользователь разработчиком
         function isDeveloperUser(username, password) {
-            const lowerUsername = username.toLowerCase();
-            // Проверяем по паролю разработчика
+            // Проверяем только по паролю разработчика
             if (password === DEVELOPER_PASSWORD) return true;
-            // Проверяем по имени: Dev_0, Dev_1, ... или "developer"
-            if (/^dev_\d+$/i.test(lowerUsername)) return true;
-            if (lowerUsername === 'developer') return true;
             return false;
         }
         
