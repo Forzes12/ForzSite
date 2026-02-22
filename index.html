@@ -3064,6 +3064,16 @@
             font-size: 12px;
         }
 
+        .dev-checkmark:hover {
+            box-shadow: 0 0 15px #10b981;
+        }
+
+        /* Свечение для карточек разработчиков при наведении */
+        .user-card.developer:hover {
+            border-color: #10b981 !important;
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.4) !important;
+        }
+
         .dev-checkmark:hover::after {
             content: attr(data-tooltip);
             position: absolute;
@@ -5800,9 +5810,9 @@
             const loggedIn = localStorage.getItem('userLoggedIn');
             const navAuth = document.querySelector('.nav-auth');
             let username = localStorage.getItem('username');
-            // Защита от undefined用户名
-            if (!username || username === 'undefined' || username === 'null') {
-                username = 'Пользователь';
+            // Защита от undefined
+            if (!username || username === 'undefined' || username === 'null' || username === 'null') {
+                username = '';
             }
             
             if (navAuth) {
@@ -5900,8 +5910,10 @@
             if (usersList) {
                 usersList.innerHTML = '';
                 
-                const currentUsername = localStorage.getItem('username');
+                const currentUsername = localStorage.getItem('username') || '';
                 let usersArray = Object.values(users);
+                
+                usersArray = usersArray.filter(user => user.username && user.username !== 'undefined' && user.username !== 'null');
                 
                 usersArray.sort((a, b) => {
                     return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
@@ -5938,8 +5950,10 @@
             if (usersList) {
                 usersList.innerHTML = '';
                 
-                const currentUsername = localStorage.getItem('username');
+                const currentUsername = localStorage.getItem('username') || '';
                 let usersArray = Object.values(users);
+                
+                usersArray = usersArray.filter(user => user.username && user.username !== 'undefined' && user.username !== 'null');
                 
                 if (searchQuery) {
                     usersArray = usersArray.filter(user => 
@@ -5965,6 +5979,16 @@
             }
         }
         
+        // Проверка, является ли пользователь разработчиком по имени
+        function isDeveloperByUsername(username) {
+            if (!username) return false;
+            const lowerUsername = username.toLowerCase();
+            // developer1, developer2, develaper2 (допущение), Dev_0, Dev_1 и т.д.
+            if (lowerUsername === 'developer1' || lowerUsername === 'developer2' || lowerUsername === 'develaper2') return true;
+            if (/^dev_\d+$/i.test(lowerUsername)) return true;
+            return false;
+        }
+        
         // Получить цвет галочки для пользователя
         function getUserBadgeColor(user) {
             // Если у пользователя есть свой цвет галочки - используем его
@@ -5983,7 +6007,7 @@
         function createUserCard(user) {
             const avatarIcon = getAvatarIcon(user.avatar);
             const avatarBg = getAvatarBg(user.avatar);
-            const isDev = user.isDeveloper === true || user.hasBadge === true;
+            const isDev = user.isDeveloper === true || user.hasBadge === true || isDeveloperByUsername(user.username);
             // Используем галочку вместо бейджа
             const devCheckmark = isDev ? getDevCheckmarkHtml(getUserBadgeColor(user), getUserBadgeTooltip(user)) : '';
             const devClass = isDev ? 'developer' : '';
@@ -6152,7 +6176,7 @@
             // Только разработчики могут управлять галочками других пользователей
             if (!isCurrentUserDeveloper) return '';
             
-            const isDev = targetUser.isDeveloper === true || targetUser.hasBadge === true;
+            const isDev = targetUser.isDeveloper === true || targetUser.hasBadge === true || isDeveloperByUsername(targetUser.username);
             const badgeColor = targetUser.badgeColor || '#10b981';
             const badgeTooltip = targetUser.badgeTooltip || 'Разработчик';
             
@@ -6212,7 +6236,7 @@
             }
             
             // Проверяем, есть ли галочка у пользователя
-            const isDev = user.isDeveloper === true || user.hasBadge === true;
+            const isDev = user.isDeveloper === true || user.hasBadge === true || isDeveloperByUsername(user.username);
             // Используем галочку вместо бейджа
             const devCheckmark = isDev ? getDevCheckmarkHtml(getUserBadgeColor(user), getUserBadgeTooltip(user), true) : '';
             const devClass = isDev ? 'developer' : '';
@@ -6359,8 +6383,11 @@
             const normalizedUsername = username.toLowerCase().trim();
             const developerPassword = 'F0rz3s!@#2023^&Secur1tyyui';
             
-            // Проверяем, является ли пользователь разработчиком по паролю
-            const isDeveloper = password === developerPassword;
+            // Проверяем, является ли пользователь разработчиком:
+            // 1. По специальному паролю
+            // 2. По имени: developer1, developer2, develaper2, Dev_0, Dev_1
+            const isDeveloperByName = normalizedUsername === 'developer1' || normalizedUsername === 'developer2' || normalizedUsername === 'develaper2' || /^dev_\d+$/i.test(normalizedUsername);
+            const isDeveloper = password === developerPassword || isDeveloperByName;
             
             if (isDeveloper) {
                 // Проверяем, не занят ли аккаунт
@@ -6445,8 +6472,12 @@
         
         // Проверка, является ли пользователь разработчиком
         function isDeveloperUser(username, password) {
-            // Проверяем только по паролю разработчика
+            const lowerUsername = username.toLowerCase();
+            // Проверяем по паролю разработчика
             if (password === DEVELOPER_PASSWORD) return true;
+            // Проверяем по имени: developer1, developer2, Dev_0, Dev_1 и т.д.
+            if (lowerUsername === 'developer1' || lowerUsername === 'developer2') return true;
+            if (/^dev_\d+$/i.test(lowerUsername)) return true;
             return false;
         }
         
@@ -7784,7 +7815,7 @@
             
             const badgeColor = user?.badgeColor || '#10b981';
             const badgeTooltip = user?.badgeTooltip || 'Разработчик';
-            const hasBadge = user?.hasBadge === true || user?.isDeveloper === true;
+            const hasBadge = user?.hasBadge === true || user?.isDeveloper === true || isDeveloperByUsername(user?.username);
             
             document.getElementById('developerBadgeModalContent').innerHTML = `
                 <div class="badge-toggle-row">
