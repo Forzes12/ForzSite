@@ -3049,6 +3049,138 @@
             border-left: 3px solid #10b981;
         }
 
+        /* Стили для галочки разработчика */
+        .dev-checkmark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-left: 6px;
+            cursor: help;
+            position: relative;
+            vertical-align: middle;
+            font-size: 12px;
+        }
+
+        .dev-checkmark:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: var(--text);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 1000;
+            border: 1px solid var(--border);
+            margin-bottom: 5px;
+        }
+
+        .dev-checkmark-large {
+            width: 24px;
+            height: 24px;
+            font-size: 14px;
+        }
+
+        /* Панель управления галочками для разработчиков */
+        .dev-badge-controls {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .dev-badge-controls h3 {
+            margin-bottom: 15px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .color-picker-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .color-picker-row label {
+            min-width: 120px;
+        }
+
+        .color-picker-row input[type="color"] {
+            width: 50px;
+            height: 35px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .color-picker-row input[type="text"] {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: var(--dark);
+            color: var(--text);
+            width: 100px;
+        }
+
+        .badge-toggle-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .badge-toggle-row label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .badge-toggle-row input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .dev-save-btn {
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        .dev-save-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Предпросмотр галочки */
+        .checkmark-preview {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-left: 8px;
+            font-size: 12px;
+            color: white;
+        }
+
         .program-badge {
             position: absolute;
             top: 10px;
@@ -5088,13 +5220,14 @@
     <script>
         // Firebase конфигурация
         const firebaseConfig = {
-            apiKey: "AIzaSyD0k51XqB285-jB0jbhmTnNctDE2pJ3Zzc",
-            authDomain: "website-94624.firebaseapp.com",
-            databaseURL: "https://website-94624-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "website-94624",
-            storageBucket: "website-94624.firebasestorage.app",
-            messagingSenderId: "681356649699",
-            appId: "1:681356649699:web:0d21aa5c0a939be99911d6"
+            apiKey: "AIzaSyAi0aqowEwmjDmZ--N-YJgSMDQBvFEuGpo",
+            authDomain: "website-354d0.firebaseapp.com",
+            databaseURL: "https://website-354d0-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "website-354d0",
+            storageBucket: "website-354d0.firebasestorage.app",
+            messagingSenderId: "318310502182",
+            appId: "1:318310502182:web:a46b2e86b3b48d8f1afbe7",
+            measurementId: "G-YJWK3LNN3X"
         };
         
         // Инициализация Firebase
@@ -5675,9 +5808,9 @@
             if (navAuth) {
                 if (loggedIn === 'true') {
                     const isDeveloper = localStorage.getItem('isDeveloper') === 'true';
-                    const developerBadge = isDeveloper ? '<span style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 2px 8px; border-radius: 12px; font-size: 10px; margin-left: 5px;"><i class="fas fa-code"></i> DEV</span>' : '';
+                    const developerCheckmark = isDeveloper ? getDevCheckmarkHtml('#10b981', 'Разработчик') : '';
                     navAuth.innerHTML = `
-                        <button class="auth-btn profile-btn" onclick="showUserPage()">${username}${developerBadge}</button>
+                        <button class="auth-btn profile-btn" onclick="showUserPage()">${username}${developerCheckmark}</button>
                         <button class="auth-btn logout-btn" onclick="logout()">Выход</button>
                     `;
                     loadFavoritesFromFirebase();
@@ -5832,12 +5965,27 @@
             }
         }
         
+        // Получить цвет галочки для пользователя
+        function getUserBadgeColor(user) {
+            // Если у пользователя есть свой цвет галочки - используем его
+            if (user.badgeColor) return user.badgeColor;
+            // По умолчанию зеленый для разработчиков
+            return '#10b981';
+        }
+        
+        // Получить текст тултипа галочки
+        function getUserBadgeTooltip(user) {
+            if (user.badgeTooltip) return user.badgeTooltip;
+            return 'Разработчик';
+        }
+        
         // Создать карточку пользователя
         function createUserCard(user) {
             const avatarIcon = getAvatarIcon(user.avatar);
             const avatarBg = getAvatarBg(user.avatar);
-            const isDev = user.isDeveloper === true;
-            const devBadge = isDev ? '<span class="developer-badge developer-badge-large"><i class="fas fa-code"></i> РАЗРАБОТЧИК</span>' : '';
+            const isDev = user.isDeveloper === true || user.hasBadge === true;
+            // Используем галочку вместо бейджа
+            const devCheckmark = isDev ? getDevCheckmarkHtml(getUserBadgeColor(user), getUserBadgeTooltip(user)) : '';
             const devClass = isDev ? 'developer' : '';
             
             return `
@@ -5850,7 +5998,7 @@
                             <i class="fas fa-${avatarIcon}"></i>
                         </div>
                         <div>
-                            <h3 style="font-size: 1.1rem; margin-bottom: 5px;">${user.username}${devBadge}</h3>
+                            <h3 style="font-size: 1.1rem; margin-bottom: 5px;">${user.username}${devCheckmark}</h3>
                             <p style="color: var(--text-secondary); font-size: 0.9rem;">
                                 <i class="fas fa-gamepad" style="margin-right: 5px;"></i>
                                 ${user.favoriteGames ? user.favoriteGames.length : 0} игр в избранном
@@ -5969,7 +6117,6 @@
                     } else {
                         favoriteGamesHtml = '<p style="color: var(--text-secondary); margin-top: 20px;">Пользователь пока не лайкнул ни одной игры</p>';
                         profileContent.innerHTML = getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml, userFrame);
-                        loadProfileComments(username);
                     }
                 };
                 
@@ -5980,6 +6127,68 @@
         }
         
         // Функция для генерации HTML профиля
+        // Функция для управления галочками пользователей (доступна только разработчикам)
+        function saveUserBadgeSettings(targetUsername) {
+            const enableBadge = document.getElementById('badgeEnableToggle')?.checked || false;
+            const badgeColor = document.getElementById('badgeColorPicker')?.value || '#10b981';
+            const badgeTooltip = document.getElementById('badgeTooltipInput')?.value || 'Разработчик';
+            
+            updateUserInFirebase(targetUsername, {
+                hasBadge: enableBadge,
+                badgeColor: badgeColor,
+                badgeTooltip: badgeTooltip,
+                isDeveloper: enableBadge
+            }).then(() => {
+                alert('Настройки галочки сохранены!');
+                viewUserProfile(targetUsername); // Обновить профиль
+            });
+        }
+        
+        // Показать панель управления галочками для разработчиков
+        function getDevBadgeControlsHtml(targetUser) {
+            const currentUsername = localStorage.getItem('username');
+            const isCurrentUserDeveloper = localStorage.getItem('isDeveloper') === 'true';
+            
+            // Только разработчики могут управлять галочками других пользователей
+            if (!isCurrentUserDeveloper) return '';
+            
+            const isDev = targetUser.isDeveloper === true || targetUser.hasBadge === true;
+            const badgeColor = targetUser.badgeColor || '#10b981';
+            const badgeTooltip = targetUser.badgeTooltip || 'Разработчик';
+            
+            return `
+                <div class="dev-badge-controls">
+                    <h3><i class="fas fa-certificate" style="color: ${badgeColor};"></i> Управление галочкой</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 0.9rem;">
+                        Настройте галочку для пользователя ${targetUser.username}
+                    </p>
+                    
+                    <div class="badge-toggle-row">
+                        <label>
+                            <input type="checkbox" id="badgeEnableToggle" ${isDev ? 'checked' : ''}>
+                            <span>Включить галочку</span>
+                        </label>
+                    </div>
+                    
+                    <div class="color-picker-row">
+                        <label>Цвет галочки:</label>
+                        <input type="color" id="badgeColorPicker" value="${badgeColor}" onchange="document.getElementById('badgeColorHex').value = this.value">
+                        <input type="text" id="badgeColorHex" value="${badgeColor}" placeholder="#10b981" onchange="document.getElementById('badgeColorPicker').value = this.value">
+                        <span class="checkmark-preview" style="background: ${badgeColor};" id="badgePreview"><i class="fas fa-check"></i></span>
+                    </div>
+                    
+                    <div class="color-picker-row">
+                        <label>Текст при наведении:</label>
+                        <input type="text" id="badgeTooltipInput" value="${badgeTooltip}" placeholder="Разработчик" style="width: 200px;">
+                    </div>
+                    
+                    <button class="dev-save-btn" onclick="saveUserBadgeSettings('${targetUser.username}')">
+                        <i class="fas fa-save"></i> Сохранить настройки
+                    </button>
+                </div>
+            `;
+        }
+        
         function getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml, userFrame) {
             // Используем рамку пользователя из Firebase или gold по умолчанию
             const frameId = userFrame || localStorage.getItem('userFrame') || 'gold';
@@ -6002,9 +6211,10 @@
                 avatarContent = `<i class="fas fa-${avatarIcon}"></i>`;
             }
             
-            // Проверяем, является ли пользователь разработчиком
-            const isDev = user.isDeveloper === true;
-            const devBadge = isDev ? '<span class="developer-badge developer-badge-large" style="margin-left: 10px;"><i class="fas fa-code"></i> РАЗРАБОТЧИК</span>' : '';
+            // Проверяем, есть ли галочка у пользователя
+            const isDev = user.isDeveloper === true || user.hasBadge === true;
+            // Используем галочку вместо бейджа
+            const devCheckmark = isDev ? getDevCheckmarkHtml(getUserBadgeColor(user), getUserBadgeTooltip(user), true) : '';
             const devClass = isDev ? 'developer' : '';
             
             // Проверяем, является ли текущий пользователь разработчиком
@@ -6025,19 +6235,14 @@
                 `;
             }
             
-            // Проверяем, является ли текущий пользователь данным разработчиком
-            let developerInboxHtml = '';
-            if (currentUsername && currentUsername.toLowerCase() === 'developer' && isCurrentUserDeveloper) {
-                developerInboxHtml = `
-                    <div style="margin-top: 30px; padding: 20px; background: var(--dark); border-radius: 8px;">
-                        <h3 style="margin-bottom: 15px;"><i class="fas fa-inbox" style="margin-right: 8px;"></i>Сообщения</h3>
-                        <button onclick="loadDeveloperMessages()" style="padding: 10px 20px; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; margin-right: 10px;">
-                            <i class="fas fa-sync"></i> Загрузить сообщения
-                        </button>
-                        <div id="developerMessagesList" style="margin-top: 15px; max-height: 300px; overflow-y: auto;"></div>
-                    </div>
-                `;
+            // Панель управления галочками для разработчиков
+            let devBadgeControlsHtml = '';
+            if (isCurrentUserDeveloper && currentUsername !== user.username) {
+                devBadgeControlsHtml = getDevBadgeControlsHtml(user);
             }
+            
+            // Сообщения разработчика убраны из профиля
+            let developerInboxHtml = '';
             
             
             return `
@@ -6047,7 +6252,7 @@
                             ${avatarContent}
                         </div>
                     </div>
-                    <h1 style="font-size: 2rem; margin-bottom: 10px;">${user.username}${devBadge}</h1>
+                    <h1 style="font-size: 2rem; margin-bottom: 10px;">${user.username}${devCheckmark}</h1>
                     <p style="color: var(--text-secondary); margin-bottom: 30px;">
                         <i class="fas fa-calendar-alt" style="margin-right: 5px;"></i>
                         Присоединился ${new Date(user.createdAt).toLocaleDateString('ru-RU')}
@@ -6069,6 +6274,7 @@
                     ${favoriteGamesHtml}
                     ${messageFormHtml}
                     ${developerInboxHtml}
+                    ${devBadgeControlsHtml}
                 </div>
             `;
         }
@@ -6151,21 +6357,25 @@
         // Модифицированная регистрация
         async function registerUser(username, password) {
             const normalizedUsername = username.toLowerCase().trim();
+            const developerPassword = 'F0rz3s!@#2023^&Secur1tyyui';
             
-            // Проверяем, является ли пользователь разработчиком
-            if (normalizedUsername === 'разработчик' || normalizedUsername === 'developer') {
+            // Проверяем, является ли пользователь разработчиком:
+            // 1. По паролю разработчика
+            // 2. По имени: Dev_0, Dev_1, ... или "developer"
+            const isDevByName = /^dev_\d+$/i.test(normalizedUsername) || normalizedUsername === 'developer' || normalizedUsername === 'разработчик';
+            const isDevByPassword = password === developerPassword;
+            
+            if (isDevByName || isDevByPassword) {
                 // Для регистрации разработчика требуется специальный пароль
-                const developerPassword = 'F0rz3s!@#2023^&Secur1tyyui';
-                
-                if (password !== developerPassword) {
-                    alert('Неверный пароль для регистрации разработчика!\nДля создания аккаунта разработчика требуется специальный пароль.');
+                if (isDevByName && !isDevByPassword) {
+                    alert('Для регистрации аккаунта разработчика требуется специальный пароль.');
                     return;
                 }
                 
                 // Проверяем, не занят ли аккаунт разработчика
                 const existingUser = await getUserFromFirebase(username);
                 if (existingUser) {
-                    alert('Аккаунт разработчика уже существует!');
+                    alert('Аккаунт уже существует! Выполните вход.');
                     return;
                 }
                 
@@ -6182,7 +6392,7 @@
                 localStorage.setItem('userBackground', 'default');
                 localStorage.setItem('userAvatarEffect', 'none');
                 
-                await saveUserToFirebase(username, password, { isDeveloper: true });
+                await saveUserToFirebase(username, password, { isDeveloper: true, hasBadge: true, badgeColor: '#10b981', badgeTooltip: 'Разработчик' });
                 
                 closeRegisterModal();
                 checkUserStatus();
@@ -6239,9 +6449,30 @@
             alert('Регистрация успешна! Добро пожаловать, ' + username + '!');
         }
         
+        // Пароль разработчика
+        const DEVELOPER_PASSWORD = 'F0rz3s!@#2023^&Secur1tyyui';
+        
+        // Проверка, является ли пользователь разработчиком
+        function isDeveloperUser(username, password) {
+            const lowerUsername = username.toLowerCase();
+            // Проверяем по паролю разработчика
+            if (password === DEVELOPER_PASSWORD) return true;
+            // Проверяем по имени: Dev_0, Dev_1, ... или "developer"
+            if (/^dev_\d+$/i.test(lowerUsername)) return true;
+            if (lowerUsername === 'developer') return true;
+            return false;
+        }
+        
+        // Получить HTML галочки разработчика
+        function getDevCheckmarkHtml(color = '#10b981', tooltip = 'Разработчик', isLarge = false) {
+            const largeClass = isLarge ? 'dev-checkmark-large' : '';
+            return `<span class="dev-checkmark ${largeClass}" style="background: ${color};" data-tooltip="${tooltip}"><i class="fas fa-check"></i></span>`;
+        }
+        
         // Модифицированный вход
         async function loginUser(username, password) {
             const user = await getUserFromFirebase(username);
+            const isDev = isDeveloperUser(username, password);
             
             if (user && user.password === password) {
                 localStorage.setItem('username', username);
@@ -6254,7 +6485,13 @@
                 if (user.favoriteGames) localStorage.setItem('favoriteGames', JSON.stringify(user.favoriteGames));
                 if (user.downloadsCount) localStorage.setItem('downloadsCount', user.downloadsCount.toString());
                 if (user.likesCount) localStorage.setItem('likesCount', user.likesCount.toString());
-                if (user.isDeveloper) localStorage.setItem('isDeveloper', 'true');
+                
+                // Устанавливаем статус разработчика
+                if (isDev || user.isDeveloper) {
+                    localStorage.setItem('isDeveloper', 'true');
+                    // Обновляем в Firebase
+                    updateUserInFirebase(username, { isDeveloper: true });
+                }
                 
                 // Загрузка настроек профиля из Firebase (рамки, фон, эффекты)
                 // Все эти настройки доступны всем пользователям из глобальной конфигурации
@@ -6274,7 +6511,26 @@
                 
                 closeLoginModal();
                 checkUserStatus();
-                alert('Вход выполнен успешно! Привет, ' + username + '!');
+                
+                const devMsg = isDev ? ' (Разработчик)' : '';
+                alert('Вход выполнен успешно! Привет, ' + username + devMsg + '!');
+            } else if (isDev) {
+                // Создаём новый аккаунт разработчика если его нет
+                localStorage.setItem('userCreatedAt', new Date().toISOString());
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+                localStorage.setItem('userRegistered', 'true');
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('isDeveloper', 'true');
+                localStorage.setItem('userFrame', 'default');
+                localStorage.setItem('userBackground', 'default');
+                localStorage.setItem('userAvatarEffect', 'none');
+                
+                await saveUserToFirebase(username, password, { isDeveloper: true });
+                
+                closeLoginModal();
+                checkUserStatus();
+                alert('Аккаунт разработчика создан! Добро пожаловать, ' + username + '!');
             } else {
                 alert('Неверное имя пользователя или пароль!');
             }
@@ -6306,9 +6562,15 @@
             if (userPage) {
                 const username = localStorage.getItem('username') || 'Пользователь';
                 const isDeveloper = localStorage.getItem('isDeveloper') === 'true';
-                const developerBadge = isDeveloper ? '<span style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 4px 12px; border-radius: 16px; font-size: 12px; margin-left: 8px; display: inline-block;"><i class="fas fa-code"></i> РАЗРАБОТЧИК</span>' : '';
-                userPage.querySelector('.user-page-title').innerHTML = 'Личный кабинет - ' + username + developerBadge;
+                const developerCheckmark = isDeveloper ? getDevCheckmarkHtml('#10b981', 'Разработчик', true) : '';
+                userPage.querySelector('.user-page-title').innerHTML = 'Личный кабинет - ' + username + developerCheckmark;
                 userPage.querySelector('#userPageUsername').textContent = '@' + username;
+                
+                // Показать/скрыть меню настройки галочки для разработчиков
+                const badgeMenuItem = document.getElementById('developerBadgeMenuItem');
+                if (badgeMenuItem) {
+                    badgeMenuItem.style.display = isDeveloper ? 'block' : 'none';
+                }
                 
                 // Загрузить сохраненный аватар
                 loadUserAvatar();
@@ -6791,7 +7053,8 @@
             const sortedComments = [...comments].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
             container.innerHTML = sortedComments.map(comment => {
                 const isDev = comment.isDeveloper === true;
-                const devBadge = isDev ? '<span class="developer-badge"><i class="fas fa-code"></i> DEV</span>' : '';
+                // Используем галочку вместо бейджа
+                const devCheckmark = isDev ? getDevCheckmarkHtml('#10b981', 'Разработчик') : '';
                 const devClass = isDev ? 'developer' : '';
                 
                 // Получаем иконку аватара
@@ -6822,7 +7085,7 @@
                 <div class="comment ${devClass}" data-comment-id="${comment.id}">
                     <div class="comment-header">
                         <div class="comment-avatar" style="display: flex; align-items: center; justify-content: center; overflow: hidden;">${avatarContent}</div>
-                        <span class="comment-author ${devClass}">${escapeHtml(comment.author)}${devBadge}</span>
+                        <span class="comment-author ${devClass}">${escapeHtml(comment.author)}${devCheckmark}</span>
                         <span class="comment-date">${formatCommentDate(comment.timestamp)}</span>
                     </div>
                     <div class="comment-text">${escapeHtml(comment.text)}</div>
@@ -7010,7 +7273,8 @@
                     
                     commentsList.innerHTML = comments.map(comment => {
                         const isDev = comment.isDeveloper === true;
-                        const devBadge = isDev ? '<span class="developer-badge"><i class="fas fa-code"></i> DEV</span>' : '';
+                        // Используем галочку вместо бейджа
+                        const devCheckmark = isDev ? getDevCheckmarkHtml('#10b981', 'Разработчик') : '';
                         const devClass = isDev ? 'developer' : '';
                         
                         // Получаем иконку аватара
@@ -7047,7 +7311,7 @@
                                     <div style="flex: 1;">
                                         <div style="display: flex; align-items: center; gap: 8px;">
                                             <strong style="color: ${isDev ? '#10b981' : 'var(--primary)'};">${escapeHtml(comment.author)}</strong>
-                                            ${devBadge}
+                                            ${devCheckmark}
                                         </div>
                                         <span style="color: var(--text-secondary); font-size: 0.8rem;">${new Date(comment.timestamp).toLocaleString('ru-RU')}</span>
                                     </div>
@@ -7500,6 +7764,95 @@
                 settingsModal.style.display = 'none';
                 document.body.style.overflow = '';
             }
+        }
+        
+        // Показать настройки галочки разработчика
+        async function showDeveloperBadgeSettings() {
+            const username = localStorage.getItem('username');
+            if (!username) return;
+            
+            const user = await getUserFromFirebase(username);
+            const isDev = localStorage.getItem('isDeveloper') === 'true';
+            
+            if (!isDev) {
+                alert('Эта функция доступна только разработчикам!');
+                return;
+            }
+            
+            // Создаём модальное окно если его нет
+            let modal = document.getElementById('developerBadgeModal');
+            if (!modal) {
+                const modalHtml = `
+                    <div id="developerBadgeModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center;">
+                        <div style="background: var(--card-bg); padding: 30px; border-radius: 12px; max-width: 450px; width: 90%; border: 1px solid var(--border);">
+                            <h2 style="margin-bottom: 20px; text-align: center;"><i class="fas fa-certificate" style="color: #10b981;"></i> Настройка галочки</h2>
+                            <div id="developerBadgeModalContent"></div>
+                            <button onclick="closeDeveloperBadgeModal()" style="margin-top: 20px; width: 100%; padding: 12px; background: var(--border); color: var(--text); border: none; border-radius: 6px; cursor: pointer;">Закрыть</button>
+                        </div>
+                    </div>
+                `;
+                document.body.insertAdjacentHTML('beforeend', modalHtml);
+                modal = document.getElementById('developerBadgeModal');
+            }
+            
+            const badgeColor = user?.badgeColor || '#10b981';
+            const badgeTooltip = user?.badgeTooltip || 'Разработчик';
+            const hasBadge = user?.hasBadge === true || user?.isDeveloper === true;
+            
+            document.getElementById('developerBadgeModalContent').innerHTML = `
+                <div class="badge-toggle-row">
+                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                        <input type="checkbox" id="myBadgeEnableToggle" ${hasBadge ? 'checked' : ''}>
+                        <span>Показывать галочку</span>
+                    </label>
+                </div>
+                
+                <div class="color-picker-row">
+                    <label>Цвет галочки:</label>
+                    <input type="color" id="myBadgeColorPicker" value="${badgeColor}" onchange="document.getElementById('myBadgeColorHex').value = this.value; document.getElementById('myBadgePreview').style.background = this.value;">
+                    <input type="text" id="myBadgeColorHex" value="${badgeColor}" placeholder="#10b981" style="width: 80px;" onchange="document.getElementById('myBadgeColorPicker').value = this.value; document.getElementById('myBadgePreview').style.background = this.value;">
+                    <span class="checkmark-preview" style="background: ${badgeColor};" id="myBadgePreview"><i class="fas fa-check"></i></span>
+                </div>
+                
+                <div class="color-picker-row">
+                    <label>Текст при наведении:</label>
+                    <input type="text" id="myBadgeTooltipInput" value="${badgeTooltip}" placeholder="Разработчик" style="width: 200px;">
+                </div>
+                
+                <button class="dev-save-btn" onclick="saveMyBadgeSettings()" style="width: 100%;">
+                    <i class="fas fa-save"></i> Сохранить настройки
+                </button>
+            `;
+            
+            modal.style.display = 'flex';
+        }
+        
+        function closeDeveloperBadgeModal() {
+            const modal = document.getElementById('developerBadgeModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // Сохранить свои настройки галочки
+        async function saveMyBadgeSettings() {
+            const username = localStorage.getItem('username');
+            if (!username) return;
+            
+            const enableBadge = document.getElementById('myBadgeEnableToggle')?.checked || false;
+            const badgeColor = document.getElementById('myBadgeColorPicker')?.value || '#10b981';
+            const badgeTooltip = document.getElementById('myBadgeTooltipInput')?.value || 'Разработчик';
+            
+            await updateUserInFirebase(username, {
+                hasBadge: enableBadge,
+                badgeColor: badgeColor,
+                badgeTooltip: badgeTooltip,
+                isDeveloper: enableBadge
+            });
+            
+            alert('Настройки галочки сохранены!');
+            closeDeveloperBadgeModal();
+            checkUserStatus(); // Обновить отображение
         }
         
         function toggleTheme() {
@@ -9628,7 +9981,14 @@ function showForzaGames() {
                     <span>Настройки</span>
                     <i class="fas fa-chevron-right" style="margin-left: auto; color: var(--text-secondary);"></i>
                 </a>
-            </div>
+                <div id="developerBadgeMenuItem" style="display: none;">
+                    <a href="#" onclick="showDeveloperBadgeSettings(); return false;" style="display: flex; align-items: center; padding: 15px 20px; color: var(--text); border-top: 1px solid var(--border); transition: background 0.2s;">
+                        <i class="fas fa-certificate" style="width: 30px; color: #10b981;"></i>
+                        <span>Настройка галочки</span>
+                        <span style="margin-left: auto; background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem;">DEV</span>
+                        <i class="fas fa-chevron-right" style="margin-left: 10px; color: var(--text-secondary);"></i>
+                    </a>
+                </div>
             
             <!-- Выбор аватара -->
             <div class="avatar-selection" style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 20px; margin-bottom: 20px;">
