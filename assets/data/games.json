@@ -808,16 +808,16 @@
             }
         }
     },
-    "blackmythwukong": {
+    "blackmyth: wukong": {
         "title": "Black Myth: Wukong",
         "description": "Захватывающее action-RPG с видом от третьего лица, основанное на классическом китайском романе. Войдите в роль Просветлённого с посохом.",
         "image": "https://i.postimg.cc/ZRS075B0/6abe2744c8-black-myth-wukong-9619.jpg",
         "size": "128.9 GB",
         "year": "2024",
-        "updated": "08.08.2024",
-        "status": "buy",
+        "updated": "08.03.2024",
+        "status": "available",
         "category": "games",
-        "torrentFile": "",
+        "torrentFile": "Black.Myth.Wukong.Digital.Deluxe.Edition-InsaneRamZes.torrent",
         "buyGame": "https://ggsel.net/catalog/black-myth-wukong-keys-steam",
         "trailer": "https://drive.google.com/file/d/1xWBoqzhHXsEiyPqsu1yhrLxv_Kp4JFKt/preview",
         "screenshots": [
@@ -846,7 +846,9 @@
                 "Graphics": "NVIDIA GeForce RTX 4060 Ti / AMD Radeon RX 7600 XT",
                 "Storage": "128.9 GB available space"
             }
-        }
+        },
+        "howToRun": "Скачать в удобное место (главное чтобы на пути к папке с игрой не было кириллицы). Скачиваем архив BMW.HYPERVISOR.B3.2.0xZeOn.rar (#1 #2 #3 #4 | #5). Подготавливаем систему к запуску игр с использованием гипервизора: Перезагружаемся и заходим в Bios, выключаем Secure Boot, а так же включаем виртуализацию (VT-x на Intel, SVM или AMD-V на AMD). Грузимся в систему. Запускаем командную строку от имени администратора, вводим команду bcdedit /set testsigning on. Запускаем командную строку от имени администратора, вводим команду bcdedit /set hypervisorlaunchtype off. Перезагружаемся. Внутри скачанного архива выбираем папку под ваш процессор AMD CPU или INTEL CPU и её содержимое закидываем в папку с игрой. Запускаем командную строку от имени администратора, вводим команду sc create denuvo type-kernel start-demand binPath=C:\\Drivers\\SimpleSvm.sys (только указывайте ваш путь до файла SimpleSvm.sys (для AMD) или же hyperkd.sys (для INTEL), данные файлы будут лежать по пути b1\\Binaries\\Win64). В той же командной строке вводим команду sc start denuvo (после окончания игры можете ввести в командной строке команду sc stop denuvo чтобы остановить сервис). Запускаем игру с файла 51-Win64-Shipping.exe по пути b1\\Binaries\\Win64.",
+        "downloadInstructions": ["Скачать в удобное место (без кириллицы в пути)", "Скачать архив BMW.HYPERVISOR.B3.2.0xZeOn.rar", "Выключить Secure Boot и включить виртуализацию в BIOS", "bcdedit /set testsigning on", "bcdedit /set hypervisorlaunchtype off (перезагрузка)", "Скопировать файлы обхода в папку с игрой (AMD или INTEL)", "sc create denuvo type-kernel start-demand binPath=C:\\ путь до SimpleSvm.sys или hyperkd.sys", "sc start denuvo", "Запустить 51-Win64-Shipping.exe"]
     },
     "battlefield6": {
         "title": "Battlefield 6",
