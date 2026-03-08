@@ -9875,18 +9875,19 @@ function showForzaGames() {
                 }
             });
             
-            if (!hasSeenWelcome && welcomeModal) {
-                setTimeout(() => {
-                    welcomeModal.classList.add('active');
-                }, 1000);
-                
-                // Закрытие по клику вне модального окна (только после 3 секунд)
-                welcomeModal.addEventListener('click', function(e) {
-                    if (e.target === welcomeModal && canCloseWelcome) {
-                        closeWelcomeModal();
-                    }
-                });
-            }
+            // Автоматический показ отключен
+            // if (!hasSeenWelcome && welcomeModal) {
+            //     setTimeout(() => {
+            //         welcomeModal.classList.add('active');
+            //     }, 1000);
+            //     
+            //     // Закрытие по клику вне модального окна (только после 3 секунд)
+            //     welcomeModal.addEventListener('click', function(e) {
+            //         if (e.target === welcomeModal && canCloseWelcome) {
+            //             closeWelcomeModal();
+            //         }
+            //     });
+            // }
 
             // Загрузка данных и инициализация
             loadMainPageGames();
