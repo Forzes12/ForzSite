@@ -1325,15 +1325,17 @@
         }
 
         .download-btn {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.5), 0 0 30px rgba(139, 92, 246, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
         }
 
         .download-btn:hover {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%) !important;
             transform: translateY(-1px);
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
-            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 6px 25px rgba(139, 92, 246, 0.7), 0 0 40px rgba(139, 92, 246, 0.4);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
         .view-btn {
@@ -2348,6 +2350,22 @@
             box-shadow: 0 2pх 10pх rgba(0, 184, 148, 0.6);
         }
 
+        /* Download button hover effect */
+        .modal-buy-btn[style*="00FF00"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px #00FF00, 0 0 40px #00FF00, inset 0 0 20px rgba(0, 255, 0, 0.2) !important;
+            background: rgba(0, 40, 0, 0.95) !important;
+        }
+
+        /* Hacking style animation */
+        @keyframes glitch {
+            0% { text-shadow: 0 0 5px #00FF00; }
+            25% { text-shadow: -2px 0 #FF0000, 2px 0 #00FFFF; }
+            50% { text-shadow: 0 0 5px #00FF00; }
+            75% { text-shadow: 2px 0 #FF0000, -2px 0 #00FFFF; }
+            100% { text-shadow: 0 0 5px #00FF00; }
+        }
+
         @keyframes modalContentAppear {
             from {
                 opacity: 0;
@@ -2538,20 +2556,22 @@
         }
 
         .modal-download-btn {
-            background: var(--gradient-primary);
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
             color: white;
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.6), 0 0 30px rgba(139, 92, 246, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
         }
 
         .modal-download-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.6);
-            background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+            box-shadow: 0 6px 30px rgba(139, 92, 246, 0.8), 0 0 50px rgba(139, 92, 246, 0.4);
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%) !important;
         }
 
         .modal-download-btn:active {
             transform: translateY(0);
-            box-shadow: 0 2px 10px rgba(108, 92, 231, 0.6);
+            box-shadow: 0 2px 15px rgba(139, 92, 246, 0.6);
         }
 
         .modal-soon-btn {
@@ -4964,14 +4984,17 @@
         }
 
         .download-btn {
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.8), rgba(99, 102, 241, 0.8));
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
             color: white;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.5), 0 0 30px rgba(139, 92, 246, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
         }
 
         .download-btn:hover {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(168, 85, 247, 0.9));
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%) !important;
             transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(168, 85, 247, 0.3);
+            box-shadow: 0 6px 25px rgba(139, 92, 246, 0.7), 0 0 40px rgba(139, 92, 246, 0.4);
         }
 
         .watch-btn::before, .download-btn::before {
@@ -8219,6 +8242,12 @@ function showForzaGames() {
                                             <i class="fas fa-shopping-cart"></i> Купить
                                         </a>`;
                                     }
+                                    // Add How to Play button for Black Myth: Wukong
+                                    if (gameId === 'blackmythwukong' || gameId === 'blackmyth: wukong') {
+                                        html += `<a href="#" class="modal-buy-btn" onclick="showBlackMythGuide(); return false;" style="background: linear-gradient(135deg, #3b82f6, #2563eb); margin-left: 10px; padding: 12px 24px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5); border: 2px solid rgba(255,255,255,0.3); color: white !important; font-family: 'Orbitron', sans-serif; text-shadow: 0 0 5px rgba(255,255,255,0.5); letter-spacing: 1px; transition: all 0.3s ease;">
+                                            <i class="fas fa-question-circle"></i> Как играть
+                                        </a>`;
+                                    }
                                     return html;
                                 } else if (game.status === 'buy') {
                                     let html = '';
@@ -8236,6 +8265,15 @@ function showForzaGames() {
                                     html += `<a href="${game.buyGame || '#'}" class="modal-buy-btn" target="_blank">
                                         <i class="fas fa-shopping-cart"></i> Купить
                                     </a>`;
+                                    // Add download button for Black Myth: Wukong
+                                    if (gameId === 'blackmythwukong' || gameId === 'blackmyth: wukong') {
+                                        html += `<a href="https://thelastgame.org/index.php?do=download&id=XXX" class="modal-buy-btn" target="_blank" style="background: rgba(0, 20, 0, 0.9); margin-left: 10px; padding: 12px 24px; border-radius: 4px; font-weight: 600; box-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, inset 0 0 10px rgba(0, 255, 0, 0.1); border: 1px solid #00FF00; color: #00FF00 !important; font-family: 'Courier New', monospace; text-shadow: 0 0 5px #00FF00; letter-spacing: 2px; transition: all 0.3s ease; animation: glitch 2s infinite;">
+                                            <i class="fas fa-terminal"></i> DOWNLOAD
+                                        </a>`;
+                                        html += `<a href="#" class="modal-buy-btn" onclick="alert('Black Myth: Wukong - Гайд по прохождению: \\n\\n1. Используйте посох в ближнем бою\\n2. Комбинируйте легкие и тяжелые атаки\\n3. Уклоняйтесь от врагов\\n4. Используйте умения духов\\n5. Собирайте ресурсы для улучшения экипировки'); return false;" style="background: linear-gradient(135deg, #3b82f6, #2563eb); margin-left: 10px; padding: 12px 24px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5); border: 2px solid rgba(255,255,255,0.3); color: white !important; font-family: 'Orbitron', sans-serif; text-shadow: 0 0 5px rgba(255,255,255,0.5); letter-spacing: 1px; transition: all 0.3s ease;">
+                                            <i class="fas fa-question-circle"></i> Как играть
+                                        </a>`;
+                                    }
                                     return html;
                                 } else {
                                     return `<span class="modal-soon-btn">
@@ -8264,31 +8302,12 @@ function showForzaGames() {
                     
                     ${requirementsHTML}
 
-                    <!-- Comments Section -->
-                    <div class="comments-section">
-                        <h3 class="comments-title">
-                            <i class="fas fa-comments"></i>
-                            Комментарии
-                            <span class="comments-count" id="commentsCount">0</span>
-                        </h3>
-                        <div class="comment-form">
-                            <textarea id="commentInput" class="comment-input" placeholder="Напишите ваш комментарий..."></textarea>
-                            <button class="comment-submit-btn" onclick="handleAddComment('${gameId}')">
-                                <i class="fas fa-paper-plane"></i> Отправить
-                            </button>
-                        </div>
-                        <div class="comments-list" id="commentsContainer">
-                            <div class="no-comments">Пока нет комментариев. Будьте первым!</div>
-                        </div>
                     </div>
-                </div>
             `;
 
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
 
-            // Подписка на комментарии в Firebase
-            subscribeToComments(gameId);
             history.replaceState(null, null, `?game=${gameId}`);
 
             if (game.trailer) {
@@ -9275,6 +9294,75 @@ function showForzaGames() {
             });
         });
 
+        // Функция для показа гайда по Black Myth: Wukong
+        function showBlackMythGuide() {
+            const modal = document.createElement('div');
+            modal.id = 'blackMythGuideModal';
+            modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:999999;display:flex;justify-content:center;align-items:center;animation:fadeIn 0.3s ease-out;';
+            modal.innerHTML = `
+                <style>
+                    @keyframes fadeIn {
+                        from { opacity: 0; }
+                        to { opacity: 1; }
+                    }
+                    @keyframes slideIn {
+                        from { transform: scale(0.8) translateY(-20px); opacity: 0; }
+                        to { transform: scale(1) translateY(0); opacity: 1; }
+                    }
+                    @keyframes fadeOut {
+                        from { opacity: 1; }
+                        to { opacity: 0; }
+                    }
+                    @keyframes slideOut {
+                        from { transform: scale(1) translateY(0); opacity: 1; }
+                        to { transform: scale(0.8) translateY(-20px); opacity: 0; }
+                    }
+                    #blackMythGuideModal::-webkit-scrollbar{display:none}
+                    #guideContent { animation: slideIn 0.3s ease-out; }
+                </style>
+                <div id="guideContent" style="background:linear-gradient(135deg,#1a1a2e,#16213e);padding:30px;border-radius:15px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;border:2px solid #3b82f6;box-shadow:0 0 30px rgba(59,130,246,0.5);position:relative;">
+                    <button onclick="const m=document.getElementById('blackMythGuideModal');const c=document.getElementById('guideContent');c.style.animation='slideOut 0.2s ease-in forwards';m.style.animation='fadeOut 0.2s ease-in forwards';setTimeout(()=>m.remove(),200);" class="close-modal" style="top:15px;right:20px;margin:0;">
+                        <i class="fas fa-times" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;"></i>
+                    </button>
+                    <h2 style="color:#3b82f6;margin:0 0 20px 0;font-family:'Orbitron',sans-serif;text-align:center;">Black Myth: Wukong - Как играть</h2>
+                    <div style="color:#fff;font-family:'Exo 2',sans-serif;line-height:1.8;white-space: pre-line;">
+                        <p>1. Скачать в удобное место (главное чтобы на пути к папке с игрой не было кир.
+                           
+                           2. Скачиваем архив BMW.HYPERVISOR.B3.2.0xZeOn.rar (<a href="https://buzzheavier.com/dlzxi2vltqfb" target="_blank" style="color:#3b82f6;text-decoration:underline;">#1</a> | <a href="https://pixeldrain.com/u/BQPthVwU" target="_blank" style="color:#3b82f6;text-decoration:underline;">#2</a> | <a href="https://wdfiles.ru/1uKtt" target="_blank" style="color:#3b82f6;text-decoration:underline;">#3</a> | <a href="https://rootz.so/d/1bqSfI" target="_blank" style="color:#3b82f6;text-decoration:underline;">#4</a> | <a href="https://krakenfiles.com/view/pAxnHKnUyt/file.html" target="_blank" style="color:#3b82f6;text-decoration:underline;">#5</a>).
+                           
+                           3. Подготавливаем систему к запуску игр с использованием гипервизора:
+                           
+                           - Перезагружаенся и заходим в Bios, выключаем Secure Boot, а так же включаем виртуализацию (VT-х на Intel, SVM или AMD-V на AMD)
+                           
+                           - Грузимся в систему
+                           
+                           -Запускаем командную строку от имени администратора, вводим команду bcdedit /set testsigning on (после перезагрузки справа внизу на раб. столе появится надпись "тестовая версия" или как-то так, это нормально)
+                           
+                           -Запускаем командную строку от имени адчинистратора, вводим команду bcdedit /set hypervisorlaunchtype off
+                           
+                           -Перезагружаенся
+                           
+                           -На этом, в целом, подготовка системы к запуску игр с подобным обходом закончена (она делается разово)
+                           ----------------------------------------------------------------------------------------------------
+                           4. Внутри скачанного архива выбираем папку под ваш процессор AMD CPU или INTEL CPU и её содержимое закидываем в папку с игрой
+                           5. Запускаем командную строку от имени администратора, вводим команду sc create denuvo type-kernel start=demand binPath=C:\Drivers\SimpleSvm.sys (только указывайте ваш путь до файла SimpleSvm.sys (для AMD) или же hyperkd.sys (для INTEL), данные файлы будут лежать по пути b1\Binaries\Win64)
+                           6. В той же командной строке вводим команду sc start denuvo (после окончания игры можете ввести в командной строке конанду sc stop denuvoчтобы остановить сервис)
+                           7. Запускаем игру с файла b1-Win64-Shipping.exe по пути b1\Binaries\Win64
+                           R.S. В архиве с файлани обхода всегда есть readme.txt, в котором есть аналогичная инструкция от саних создателей обхода, а так же другие полезности.</p>
+                    </div>
+                </div>
+            `;
+            modal.onclick = function(e) {
+                if (e.target === modal) {
+                    const c = document.getElementById('guideContent');
+                    c.style.animation = 'slideOut 0.2s ease-in forwards';
+                    modal.style.animation = 'fadeOut 0.2s ease-in forwards';
+                    setTimeout(() => modal.remove(), 200);
+                }
+            };
+            document.body.appendChild(modal);
+        }
+
     </script>
 
     <!-- Мини-чат поддержки -->
@@ -9390,4 +9478,5 @@ function showForzaGames() {
     </button>    
 </body>
 </html>
+
 
