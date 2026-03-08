@@ -8265,15 +8265,6 @@ function showForzaGames() {
                                     html += `<a href="${game.buyGame || '#'}" class="modal-buy-btn" target="_blank">
                                         <i class="fas fa-shopping-cart"></i> Купить
                                     </a>`;
-                                    // Add download button for Black Myth: Wukong
-                                    if (gameId === 'blackmythwukong' || gameId === 'blackmyth: wukong') {
-                                        html += `<a href="https://thelastgame.org/index.php?do=download&id=XXX" class="modal-buy-btn" target="_blank" style="background: rgba(0, 20, 0, 0.9); margin-left: 10px; padding: 12px 24px; border-radius: 4px; font-weight: 600; box-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, inset 0 0 10px rgba(0, 255, 0, 0.1); border: 1px solid #00FF00; color: #00FF00 !important; font-family: 'Courier New', monospace; text-shadow: 0 0 5px #00FF00; letter-spacing: 2px; transition: all 0.3s ease; animation: glitch 2s infinite;">
-                                            <i class="fas fa-terminal"></i> DOWNLOAD
-                                        </a>`;
-                                        html += `<a href="#" class="modal-buy-btn" onclick="alert('Black Myth: Wukong - Гайд по прохождению: \\n\\n1. Используйте посох в ближнем бою\\n2. Комбинируйте легкие и тяжелые атаки\\n3. Уклоняйтесь от врагов\\n4. Используйте умения духов\\n5. Собирайте ресурсы для улучшения экипировки'); return false;" style="background: linear-gradient(135deg, #3b82f6, #2563eb); margin-left: 10px; padding: 12px 24px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5); border: 2px solid rgba(255,255,255,0.3); color: white !important; font-family: 'Orbitron', sans-serif; text-shadow: 0 0 5px rgba(255,255,255,0.5); letter-spacing: 1px; transition: all 0.3s ease;">
-                                            <i class="fas fa-question-circle"></i> Как играть
-                                        </a>`;
-                                    }
                                     return html;
                                 } else {
                                     return `<span class="modal-soon-btn">
