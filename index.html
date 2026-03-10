@@ -1392,9 +1392,9 @@
 
         .news-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            max-width: 600px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -1419,6 +1419,7 @@
 
         .news-image-container {
             width: 100%;
+            height: 250px;
             background: #1e293b;
             display: flex;
             align-items: center;
@@ -1430,7 +1431,8 @@
 
         .news-image {
             max-width: 100%;
-            height: auto;
+            max-height: 100%;
+            object-fit: contain;
             transition: transform 0.5s ease;
             border-radius: 8px;
         }
@@ -1572,10 +1574,64 @@
             transform: scale(1.1);
         }
 
+        /* Вкладки новостей */
+        .news-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding: 15px 20px 0 20px;
+        }
+
+        .news-tab-btn {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .news-tab-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+        }
+
+        .news-tab-btn.active {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+            border-color: #8b5cf6;
+            color: white;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        [data-theme="light"] .news-tab-btn {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #64748b;
+        }
+
+        [data-theme="light"] .news-tab-btn:hover {
+            background: rgba(0, 0, 0, 0.1);
+            color: #1e293b;
+        }
+
+        [data-theme="light"] .news-tab-btn.active {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+            color: white;
+        }
+
+        /* Контейнер для новостей внутри модального окна */
+        .welcome-news-container {
+            display: flex;
+            flex: 1;
+            padding: 0 20px 20px 20px;
+        }
+
         /* Модальное окно приветствия */
         .welcome-modal-content {
-            max-width: 970px;
-            min-height: 400px;
+            max-width: 800px;
             padding: 0;
             background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
             border-radius: 20px;
@@ -1587,7 +1643,7 @@
             border: 1px solid rgba(139, 92, 246, 0.3);
             animation: welcomeGlow 3s ease-in-out infinite;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             position: relative;
         }
 
@@ -1664,7 +1720,8 @@
             display: flex;
             flex-direction: row;
             align-items: stretch;
-            min-height: 100%;
+            min-height: 600px;
+            height: 600px;
             flex: 1;
         }
 
@@ -1686,29 +1743,42 @@
             max-height: none;
             object-fit: cover;
             background: transparent;
-            transition: transform 0.5s ease;
+            transition: transform 0.3s ease;
             border-radius: 0;
             user-select: none;
             -webkit-user-drag: none;
             pointer-events: none;
+            transform-origin: center center;
+            will-change: transform;
         }
 
         .welcome-image:hover {
             transform: scale(1.02);
         }
 
+        .welcome-image-container iframe.welcome-image {
+            pointer-events: auto;
+            object-fit: fill;
+            transform-origin: center center;
+            will-change: transform;
+        }
+
+        .welcome-image-container iframe.welcome-image:hover {
+            transform: scale(1.02);
+        }
+
         .welcome-text {
             flex: 1;
-            padding: 40px 35px;
+            padding: 20px 25px;
             text-align: left;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            margin-top: auto;
             background: linear-gradient(180deg, rgba(139, 92, 246, 0.15) 0%, rgba(15, 23, 42, 0.98) 100%);
             position: relative;
             overflow-y: auto;
             min-height: 100%;
+            height: 100%;
             align-self: stretch;
         }
 
@@ -1758,12 +1828,12 @@
 
         /* Левая стрелка - отступ от левого края */
         #welcomeModal .welcome-nav-left {
-            left: 450px; /* Измени это значение для сдвига */
+            left: 400px;
         }
 
         /* Правая стрелка - отступ от правого края */
         #welcomeModal .welcome-nav-right {
-            right: 450px; /* Измени это значение для сдвига (больше = левее) */
+            right: 400px;
         }
 
         .welcome-nav-btn {
@@ -1798,6 +1868,13 @@
             }
             .welcome-text {
                 padding: 25px;
+            }
+            /* На мобильных стрелки внутри окна */
+            #welcomeModal .welcome-nav-left {
+                left: 20px;
+            }
+            #welcomeModal .welcome-nav-right {
+                right: 20px;
             }
         }
 
@@ -6100,14 +6177,25 @@
             </button>
         </div>
         <div class="modal-content welcome-modal-content">
-            <div class="welcome-news">
-                <div class="welcome-image-container">
-                    <img src="torrent/Screen/c8832d8a-b2a9-437c-a75a-8a0720b5e073.png" alt="Новость" class="welcome-image">
-                </div>
-                <div class="welcome-text">
-                    <h2>Добро пожаловать на ForzSite!</h2>
-                    <p>Мы рады представить вам наш обновленный сайт с самыми популярными играми и программами. Скачивайте любимые игры с максимальной скоростью и без ограничений. Наша платформа предлагает только проверенный контент с полной безопасностью.</p>
-                    <p class="welcome-hint">Нажми <b>N</b> или <b>Т</b> чтобы закрыть</p>
+            <!-- Вкладки новостей -->
+            <div class="news-tabs">
+                <button class="news-tab-btn active" id="tabAllNews" onclick="switchNewsTab('all')">
+                    <i class="fas fa-newspaper" style="margin-right: 8px;"></i>Все новости
+                </button>
+                <button class="news-tab-btn" id="tabGameNews" onclick="switchNewsTab('game')">
+                    <i class="fas fa-gamepad" style="margin-right: 8px;"></i>Игровые новости
+                </button>
+            </div>
+            <div class="welcome-news-container">
+                <div class="welcome-news">
+                    <div class="welcome-image-container">
+                        <img src="torrent/Screen/c8832d8a-b2a9-437c-a75a-8a0720b5e073.png" alt="Новость" class="welcome-image">
+                    </div>
+                    <div class="welcome-text">
+                        <h2>Добро пожаловать на ForzSite!</h2>
+                        <p>Мы рады представить вам наш обновленный сайт с самыми популярными играми и программами. Скачивайте любимые игры с максимальной скоростью и без ограничений. Наша платформа предлагает только проверенный контент с полной безопасностью.</p>
+                        <p class="welcome-hint">Нажми <b>N</b> или <b>Т</b> чтобы закрыть</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -9678,24 +9766,18 @@ function showForzaGames() {
             
             // Загрузка новостей из JSON
             let newsData = [];
+            let gameNewsData = [];
             let currentNewsIndex = 0;
+            let currentTab = 'all'; // 'all' или 'game'
             
+            // Функция загрузки всех новостей
             async function loadNews() {
                 try {
                     const response = await fetch('assets/data/news.json');
                     newsData = await response.json();
                     
                     // Показать/скрыть стрелки навигации
-                    const prevBtn = document.getElementById('welcomePrevBtn');
-                    const nextBtn = document.getElementById('welcomeNextBtn');
-                    
-                    if (newsData.length > 1) {
-                        if (prevBtn) prevBtn.style.display = 'flex';
-                        if (nextBtn) nextBtn.style.display = 'flex';
-                    } else {
-                        if (prevBtn) prevBtn.style.display = 'none';
-                        if (nextBtn) nextBtn.style.display = 'none';
-                    }
+                    updateNavigationButtons();
                     
                     // Обновить первую новость
                     if (newsData.length > 0) {
@@ -9706,35 +9788,123 @@ function showForzaGames() {
                 }
             }
             
-            function updateWelcomeNews(index) {
-                if (!newsData[index]) return;
+            // Функция загрузки игровых новостей
+            async function loadGameNews() {
+                try {
+                    const response = await fetch('assets/data/game-news.json');
+                    gameNewsData = await response.json();
+                } catch (error) {
+                    console.error('Ошибка загрузки игровых новостей:', error);
+                }
+            }
+            
+            // Функция переключения вкладок
+            window.switchNewsTab = async function(tab) {
+                currentTab = tab;
+                currentNewsIndex = 0;
                 
-                const news = newsData[index];
-                const imageEl = document.querySelector('.welcome-image');
-                const titleEl = document.querySelector('.welcome-text h2');
-                const descEl = document.querySelector('.welcome-text p:not(.welcome-hint)');
+                // Обновить классы кнопок
+                const tabAllBtn = document.getElementById('tabAllNews');
+                const tabGameBtn = document.getElementById('tabGameNews');
                 
-                if (imageEl) imageEl.src = news.image;
-                if (titleEl) titleEl.textContent = news.title;
-                if (descEl) descEl.textContent = news.description;
+                if (tab === 'all') {
+                    if (tabAllBtn) tabAllBtn.classList.add('active');
+                    if (tabGameBtn) tabGameBtn.classList.remove('active');
+                    if (newsData.length > 0) {
+                        updateWelcomeNews(0);
+                    }
+                } else {
+                    if (tabAllBtn) tabAllBtn.classList.remove('active');
+                    if (tabGameBtn) tabGameBtn.classList.add('active');
+                    // Загрузить игровые новости если ещё не загружены
+                    if (gameNewsData.length === 0) {
+                        await loadGameNews();
+                    }
+                    if (gameNewsData.length > 0) {
+                        updateWelcomeNews(0);
+                    }
+                }
                 
-                currentNewsIndex = index;
-                
-                // Обновить видимость кнопок
+                updateNavigationButtons();
+            };
+            
+            // Обновить видимость кнопок навигации
+            function updateNavigationButtons() {
                 const prevBtn = document.getElementById('welcomePrevBtn');
                 const nextBtn = document.getElementById('welcomeNextBtn');
+                const currentData = currentTab === 'all' ? newsData : gameNewsData;
                 
-                if (newsData.length > 1) {
-                    if (prevBtn) prevBtn.style.display = (index > 0) ? 'flex' : 'none';
-                    if (nextBtn) nextBtn.style.display = (index < newsData.length - 1) ? 'flex' : 'none';
+                if (currentData.length > 1) {
+                    if (prevBtn) prevBtn.style.display = 'flex';
+                    if (nextBtn) nextBtn.style.display = 'flex';
                 } else {
                     if (prevBtn) prevBtn.style.display = 'none';
                     if (nextBtn) nextBtn.style.display = 'none';
                 }
             }
             
+            function updateWelcomeNews(index) {
+                const currentData = currentTab === 'all' ? newsData : gameNewsData;
+                if (!currentData[index]) return;
+                
+                const news = currentData[index];
+                const imageContainer = document.querySelector('.welcome-image-container');
+                const titleEl = document.querySelector('.welcome-text h2');
+                const descEl = document.querySelector('.welcome-text p:not(.welcome-hint)');
+                
+                // Обработка трейлера/изображения
+                if (news.trailer) {
+                    let mediaContent = '';
+                    
+                    // Определяем тип контента по URL
+                    if (news.trailer.includes('youtube.com') || news.trailer.includes('youtu.be')) {
+                        // YouTube embed
+                        let embedUrl = news.trailer;
+                        if (!embedUrl.includes('/embed/')) {
+                            const videoId = news.trailer.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+                            if (videoId && videoId[1]) {
+                                embedUrl = `https://www.youtube.com/embed/${videoId[1]}`;
+                            }
+                        }
+                        mediaContent = `<iframe src="${embedUrl}" class="welcome-image" style="width:100%;height:100%;border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                    } else if (news.trailer.includes('drive.google.com')) {
+                        // Google Drive - используем iframe как в информации об игре
+                        const driveMatch = news.trailer.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+                        if (driveMatch && driveMatch[1]) {
+                            const embedUrl = `https://drive.google.com/file/d/${driveMatch[1]}/preview`;
+                            mediaContent = `<iframe src="${embedUrl}" class="welcome-image" style="width:100%;height:100%;border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                        }
+                    } else if (news.trailer.match(/\.(mp4|webm|ogg)$/i)) {
+                        // Прямая ссылка на видео файл
+                        mediaContent = `<video class="welcome-image" style="width:100%;height:100%;" controls allow="autoplay"><source src="${news.trailer}" type="video/mp4">Ваш браузер не поддерживает видео</video>`;
+                    } else {
+                        // iframe для других видеохостингов
+                        mediaContent = `<iframe src="${news.trailer}" class="welcome-image" style="width:100%;height:100%;border:none;" allow="autoplay" allowfullscreen></iframe>`;
+                    }
+                    
+                    imageContainer.innerHTML = mediaContent;
+                } else if (news.image) {
+                    // Если есть изображение и нет трейлера, показываем изображение
+                    const existingMedia = imageContainer.querySelector('iframe, video');
+                    if (existingMedia) {
+                        existingMedia.outerHTML = `<img src="${news.image}" alt="Новость" class="welcome-image">`;
+                    } else {
+                        imageContainer.innerHTML = `<img src="${news.image}" alt="Новость" class="welcome-image">`;
+                    }
+                }
+                
+                if (titleEl) titleEl.textContent = news.title;
+                if (descEl) descEl.textContent = news.description;
+                
+                currentNewsIndex = index;
+                
+                // Обновить видимость кнопок
+                updateNavigationButtons();
+            }
+            
             // Навигация по новостям с плавным слайдом
             document.getElementById('welcomePrevBtn')?.addEventListener('click', function() {
+                const currentData = currentTab === 'all' ? newsData : gameNewsData;
                 if (currentNewsIndex > 0) {
                     const newsEl = document.querySelector('.welcome-news');
                     if (newsEl) {
@@ -9759,7 +9929,8 @@ function showForzaGames() {
             });
             
             document.getElementById('welcomeNextBtn')?.addEventListener('click', function() {
-                if (currentNewsIndex < newsData.length - 1) {
+                const currentData = currentTab === 'all' ? newsData : gameNewsData;
+                if (currentNewsIndex < currentData.length - 1) {
                     const newsEl = document.querySelector('.welcome-news');
                     if (newsEl) {
                         // Уходим влево (новая новость будет справа)
@@ -10231,5 +10402,6 @@ function showForzaGames() {
     </button>    
 </body>
 </html>
+
 
 
