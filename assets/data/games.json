@@ -1420,50 +1420,6 @@
             }
         }
     },
-    "StandLeo": {
-        "title": "StandLeo",
-        "description": "Приватный Сервер Standoff 2 в нем есть почти все что в орегинальной игре включая 1.кланы 2.магозин 3.акции 4.промокоды 5.наборы 6.бонусы 7.соверновательные игры(соревновательный, союзники, дуэль).",
-        "image": "https://i.postimg.cc/L8tp3kQ9/d52b1074a5-111.webp",
-        "size": "2175.0MB",
-        "year": "2018",
-        "updated": "20.01.2026",
-        "status": "available",
-        "category": "Privatki",
-        "buyGame": "",
-        "promoCode": "Q8UVA6E4GZNU",
-        "promoActivations": 1,
-        "promoCode2": "PP3N37LCCP0V",
-        "promoActivations2": 1,
-        "trailer": "",
-        "screenshots": [
-            "https://i.postimg.cc/d3gzFD3k/photo-2025-12-22-19-50-42.jpg",
-            "https://i.postimg.cc/6prDsWXx/photo-2026-01-22-17-04-27.jpg",
-            "https://i.postimg.cc/3WMb66fR/photo-2025-08-31-11-19-00.jpg",
-            "https://i.postimg.cc/6Q5wY2vx/photo-2025-08-31-11-19-00-(2).jpg"
-        ],
-        "specs": {
-            "Жанр": "Экшен, Шутер",
-            "Разработчик": "неизвестна",
-            "Издатель": "неизвестна",
-            "Платформа": "PC, ANDROID"
-        },
-        "systemRequirements": {
-            "minimum": {
-                "OS": "Windows 7/10/11 (64-bit)",
-                "Processor": "Intel Core i3-530 / AMD Phenom II X4 810",
-                "Memory": "8 GB RAM",
-                "Graphics": "NVIDIA GeForce GT 710 / AMD Radeon R5 240",
-                "Storage": "2175.0MB"
-            },
-            "recommended": {
-                "OS": "Windows 10/11 (64-bit)",
-                "Processor": "Intel Core i5-8400 / AMD Ryzen 5 2600",
-                "Memory": "16 GB RAM",
-                "Graphics": "NVIDIA GeForce GTX 1050 Ti / AMD Radeon RX 560",
-                "Storage": "2175.0MB"
-            }
-        }
-    },
     "forza-horizon-5": {
         "title": "Forza Horizon 5",
         "description": "Масштабная гоночная аркада в открытом мире от Playground Games. Исследуйте бескрайние и разнообразные ландшафты Мексики, участвуйте в сотнях гонок и событий, собирайте коллекцию из сотен лицензированных автомобилей и создавайте собственные приключения в самом продвинутом и ярком фестивале Horizon.",
@@ -2930,38 +2886,14 @@
     },
     "VPN-ZIP-PC": {
         "title": "VPN-ZIP-PC",
-        "description": "Абход блокировки Ютуба и других Сервисов",
-        "image": "https://image2url.com/images/1764428426965-c618d8f7-b3b3-4249-b1af-6cb0f49213d0.png",
-        "size": "4.5 MB",
-        "year": "2023",
-        "updated": "09.01.2026",
-        "status": "available",
-        "category": "utilities",
-        "torrentFile": "https://drive.usercontent.google.com/u/0/uc?id=1xAsD1X6pmLPnzplL_Kr8R5kGowfTAyeB&export=download",
-        "screenshots": [
-            "1"
-        ],
-        "specs": {
-            "Жанр": "VPN",
-            "Разработчик": "Неизвество",
-            "Издатель": "Неизвество",
-            "Платформа": "Windows"
-        },
-        "systemRequirements": {
-            "minimum": {},
-            "recommended": {}
-        }
-    },
-    "VPN-ZIP-PC-2": {
-        "title": "VPN-ZIP-PC-2",
         "description": "Обход блокировки Ютуба и других Сервисов",
         "image": "https://i.postimg.cc/QCFVfBgN/photo-2026-02-15-00-42-59.jpg",
         "size": "1.32 MB",
         "year": "2026",
-        "updated": "15.02.2026",
+        "updated": "17.03.2026",
         "status": "available",
         "category": "utilities",
-        "torrentFile": "https://drive.google.com/file/d/1nmUHRwn-Pkbs69lCwOqL7XaI3VNt_NOa/view?usp=sharing",
+        "torrentFile": "torrent/zapret-discord-youtube-1.9.7b.zip",
         "screenshots": [
             "https://i.postimg.cc/Y07LC2Q1/1.png",
             "https://i.postimg.cc/g2jXJTLK/2.png",
@@ -2978,6 +2910,30 @@
             "https://i.postimg.cc/0NgksWYN/13.png",
             "https://i.postimg.cc/s2pVDYmK/14.png",
             "https://i.postimg.cc/4y3Z5rGZ/15.png"
+        ],
+        "specs": {
+            "Жанр": "VPN",
+            "Разработчик": "Неизвество",
+            "Издатель": "Неизвество",
+            "Платформа": "Windows"
+        },
+        "systemRequirements": {
+            "minimum": {},
+            "recommended": {}
+        }
+    },
+    "TG WS Proxy v1.1.1": {
+        "title": "TG WS Proxy v1.1.1",
+        "description": "Обход блокировки Телеграмма",
+        "image": "https://i.postimg.cc/3wZL5B8W/558208929-6a4cf683-0df8-43af-86c1-0e8f08682b62.png",
+        "size": "23,4 MB",
+        "year": "2026",
+        "updated": "17.03.2026",
+        "status": "available",
+        "category": "utilities",
+        "torrentFile": "torrent/TgWsProxy.exe",
+        "screenshots": [
+            "hhttps://i.postimg.cc/3wZL5B8W/558208929-6a4cf683-0df8-43af-86c1-0e8f08682b62.png"
         ],
         "specs": {
             "Жанр": "VPN",
