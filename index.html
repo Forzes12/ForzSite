@@ -1624,9 +1624,9 @@
             transform: scale(1.1);
         }
 
-        /* Вкладки новостей - скрываем для одиночной новости */
+        /* Вкладки новостей */
         .news-tabs {
-            display: none;
+            display: flex;
             gap: 10px;
             margin-bottom: 15px;
             padding: 15px 20px 0 20px;
@@ -1887,7 +1887,7 @@
 
         #welcomeModal .welcome-nav-left,
         #welcomeModal .welcome-nav-right {
-            display: none; /* Скрываем кнопки навигации - показываем одну новость */
+            display: flex;
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -9893,10 +9893,9 @@ function showForzaGames() {
                     }
                     if (gameNewsData.length > 0) {
                         updateWelcomeNews(0);
+                        updateNavigationButtons();
                     }
                 }
-                
-                updateNavigationButtons();
             };
             
             // Обновить видимость кнопок навигации
