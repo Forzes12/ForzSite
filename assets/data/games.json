@@ -3008,6 +3008,30 @@
             "recommended": {}
         }
     },
+    "Fan Programm": {
+        "title": "Fan Programm",
+        "description": "Программа написана на Python нужно для включение разных программ видео и других сервисов очень удобная для замены стрим дека в виде клавиатуры",
+        "image": "4a157c9f-9e6b-442a-933d-acef15f95195.png",
+        "size": "17 MB",
+        "year": "2026",
+        "updated": "25.03.2026",
+        "status": "available",
+        "category": "utilities",
+        "torrentFile": "torrent/Fan Programm.zip",
+        "screenshots": [
+            "4a157c9f-9e6b-442a-933d-acef15f95195.png"
+        ],
+        "specs": {
+            "Жанр": "Виртуальный Stream Deck",
+            "Разработчик": "Forzes",
+            "Издатель": "Forzes",
+            "Платформа": "Windows"
+        },
+        "systemRequirements": {
+            "minimum": {},
+            "recommended": {}
+        }
+    },
     "Amnezia VPN-PC": {
         "title": "Amnezia VPN-PC",
         "description": "Абход блокировки Ютуба и других Сервисов",
