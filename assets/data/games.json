@@ -3011,7 +3011,7 @@
     "Fan Programm": {
         "title": "Fan Programm",
         "description": "Программа написана на Python нужно для включение разных программ видео и других сервисов очень удобная для замены стрим дека в виде клавиатуры",
-        "image": "4a157c9f-9e6b-442a-933d-acef15f95195.png",
+        "image": "https://i.postimg.cc/BbVJT9Jq/4a157c9f-9e6b-442a-933d-acef15f95195.png",
         "size": "17 MB",
         "year": "2026",
         "updated": "25.03.2026",
@@ -3019,7 +3019,7 @@
         "category": "utilities",
         "torrentFile": "torrent/Fan Programm.zip",
         "screenshots": [
-            "4a157c9f-9e6b-442a-933d-acef15f95195.png"
+            "https://i.postimg.cc/J7P0rSCW/photo-2026-03-25-09-09-51.jpg"
         ],
         "specs": {
             "Жанр": "Виртуальный Stream Deck",
