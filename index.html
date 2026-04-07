@@ -25,6 +25,9 @@
             --border: #334155;
             --card-bg: rgba(30, 41, 59, 0.9);
             --nav-bg: rgba(15, 23, 42, 0.98);
+            --warning-bg: rgba(245, 158, 11, 0.15);
+            --warning-border: rgba(245, 158, 11, 0.5);
+            --warning-text: #fbbf24;
         }
 
         :root[data-theme="light"] {
@@ -38,6 +41,8 @@
             --border: #e2e8f0;
             --card-bg: rgba(255, 255, 255, 0.95);
             --nav-bg: rgba(255, 255, 255, 0.98);
+            --warning-bg: rgba(245, 158, 11, 0.1);
+            --warning-border: rgba(245, 158, 11, 0.4);
         }
 
         [data-theme="light"] .tech-bg {
@@ -5902,6 +5907,111 @@
 .notification.show {
     transform: translateX(0);
 }
+
+/* Tech Alert - Уведомление о возможных блокировках */
+.tech-alert {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    right: 20px;
+    max-width: 450px;
+    margin: 0 auto;
+    background: var(--warning-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid var(--warning-border);
+    border-radius: 16px;
+    padding: 15px 20px;
+    z-index: 999;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideInDown 0.5s ease-out;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tech-alert:hover {
+    transform: translateY(-2px);
+    background: rgba(245, 158, 11, 0.2);
+    border-color: rgba(245, 158, 11, 0.8);
+}
+
+.tech-alert-icon {
+    font-size: 24px;
+    color: var(--warning-text);
+    flex-shrink: 0;
+}
+
+.tech-alert-content {
+    flex: 1;
+}
+
+.tech-alert-title {
+    font-weight: 700;
+    color: var(--warning-text);
+    margin-bottom: 5px;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.tech-alert-text {
+    font-size: 0.85rem;
+    color: var(--text);
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+.tech-alert-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    transition: color 0.2s;
+}
+
+.tech-alert-close:hover {
+    color: var(--warning-text);
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 768px) {
+    .tech-alert {
+        top: 100px;
+        right: 30px;
+        left: auto;
+        margin: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-alert {
+        padding: 12px 15px;
+        top: 70px;
+    }
+    .tech-alert-icon {
+        font-size: 20px;
+    }
+    .tech-alert-title {
+        font-size: 0.9rem;
+    }
+    .tech-alert-text {
+        font-size: 0.75rem;
+    }
+}
     </style>
     <style>
         #supportBtn {
@@ -6005,6 +6115,22 @@
             <li><a href="#about" onclick="navigateToSection('#about'); closeMobileMenu(); return false;">О нас</a></li>
             <li><a href="#contact" onclick="navigateToSection('#contact'); closeMobileMenu(); return false;">Все ссылки</a></li>
         </ul>
+    </div>
+
+    <!-- Уведомление о технических работах из-за блокировок -->
+    <div class="tech-alert" id="techAlert" onclick="this.style.display='none'">
+        <div class="tech-alert-icon">
+            <i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="tech-alert-content">
+            <div class="tech-alert-title">⚡ Внимание: возможны перебои</div>
+            <div class="tech-alert-text">
+                Если фотографии не загружаются или не добавляются новые игры/программы/новости — это связано с действующими ограничениями в работе сети интернет а также с действиями компании(РКН). Проблема уже решается, скоро всё заработает в штатном режиме.
+            </div>
+        </div>
+        <button class="tech-alert-close" onclick="event.stopPropagation(); document.getElementById('techAlert').style.display='none'">
+            <i class="fas fa-times"></i>
+        </button>
     </div>
 
     <!-- Главная страница -->
@@ -6756,7 +6882,7 @@
                     if (validGameIds.length > 0) {
                         favoriteGamesHtml = '<div style="margin-top: 20px;">';
                         favoriteGamesHtml += '<h3 style="margin-bottom: 15px;"><i class="fas fa-heart" style="color: #ef4444; margin-right: 10px;"></i>Понравившиеся игры (' + validGameIds.length + ')</h3>';
-                        favoriteGamesHtml += '<div id="user-favorite-games-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;"></div></div>';
+                        favoriteGamesHtml += '<div id="user-favorite-games-grid" style="display: grid; grid-template-columns: repeat(auto-fill minmax(280px, 1fr)); gap: 20px;"></div></div>';
                         
                         // Сразу добавляем карточки с рамкой пользователя
                         profileContent.innerHTML = getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml, userFrame);
