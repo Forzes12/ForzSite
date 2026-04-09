@@ -2984,16 +2984,16 @@
             "recommended": {}
         }
     },
-    "TG WS Proxy v1.1.1": {
-        "title": "TG WS Proxy v1.1.1",
+    "TG WS Proxy v1.5.1": {
+        "title": "TG WS Proxy v1.5.1",
         "description": "Обход блокировки Телеграмма",
         "image": "https://i.postimg.cc/3wZL5B8W/558208929-6a4cf683-0df8-43af-86c1-0e8f08682b62.png",
         "size": "23,4 MB",
         "year": "2026",
-        "updated": "17.03.2026",
+        "updated": "09.04.2026",
         "status": "available",
         "category": "utilities",
-        "torrentFile": "torrent/TgWsProxy.exe",
+        "torrentFile": "torrent/TgWsProxy_windows.exe",
         "screenshots": [
             "hhttps://i.postimg.cc/3wZL5B8W/558208929-6a4cf683-0df8-43af-86c1-0e8f08682b62.png"
         ],
