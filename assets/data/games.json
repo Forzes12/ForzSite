@@ -2955,7 +2955,7 @@
         "updated": "17.03.2026",
         "status": "available",
         "category": "utilities",
-        "torrentFile": "torrent/zapret-discord-youtube-1.9.7b.zip",
+        "torrentFile": "torrent/zapret-discord-youtube-1.9.7b.rar",
         "screenshots": [
             "https://i.postimg.cc/Y07LC2Q1/1.png",
             "https://i.postimg.cc/g2jXJTLK/2.png",
@@ -2984,8 +2984,8 @@
             "recommended": {}
         }
     },
-    "TG WS Proxy v1.5.1": {
-        "title": "TG WS Proxy v1.5.1",
+    "TG WS Proxy v1.6.0": {
+        "title": "TG WS Proxy v1.6.0",
         "description": "Обход блокировки Телеграмма",
         "image": "https://i.postimg.cc/3wZL5B8W/558208929-6a4cf683-0df8-43af-86c1-0e8f08682b62.png",
         "size": "23,4 MB",
