@@ -25,8 +25,8 @@
             --border: #334155;
             --card-bg: rgba(30, 41, 59, 0.9);
             --nav-bg: rgba(15, 23, 42, 0.98);
-            --warning-bg: rgba(245, 158, 11, 0.15);
-            --warning-border: rgba(245, 158, 11, 0.5);
+            --warning-bg: linear-gradient(to bottom, rgba(34, 197, 94, 0.1), rgba(234, 179, 8, 0.1));
+            --warning-border: rgba(34, 197, 94, 0.6);
             --warning-text: #fbbf24;
         }
 
@@ -41,8 +41,8 @@
             --border: #e2e8f0;
             --card-bg: rgba(255, 255, 255, 0.95);
             --nav-bg: rgba(255, 255, 255, 0.98);
-            --warning-bg: rgba(245, 158, 11, 0.1);
-            --warning-border: rgba(245, 158, 11, 0.4);
+            --warning-bg: linear-gradient(to bottom, rgba(34, 197, 94, 0.08), rgba(234, 179, 8, 0.08));
+            --warning-border: rgba(34, 197, 94, 0.5);
         }
 
         [data-theme="light"] .tech-bg {
@@ -5913,13 +5913,11 @@
     position: fixed;
     top: 80px;
     left: 20px;
-    right: 20px;
-    max-width: 450px;
-    margin: 0 auto;
-    background: var(--warning-bg);
+    max-width: 400px;
+    background: linear-gradient(to bottom, rgba(34, 197, 94, 0.1), rgba(234, 179, 8, 0.1));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 2px solid var(--warning-border);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 16px;
     padding: 15px 20px;
     z-index: 999;
@@ -5991,8 +5989,8 @@
 @media (min-width: 768px) {
     .tech-alert {
         top: 100px;
-        right: 30px;
-        left: auto;
+        left: 30px;
+        right: auto;
         margin: 0;
     }
 }
@@ -6118,14 +6116,14 @@
     </div>
 
     <!-- Уведомление о технических работах из-за блокировок -->
-    <div class="tech-alert" id="techAlert" onclick="this.style.display='none'">
+    <div class="tech-alert" id="techAlert">
         <div class="tech-alert-icon">
             <i class="fas fa-shield-alt"></i>
         </div>
         <div class="tech-alert-content">
-            <div class="tech-alert-title">⚡ Внимание: возможны перебои</div>
+            <div class="tech-alert-title">⚡ Внимание: Работы завершены</div>
             <div class="tech-alert-text">
-                Если фотографии не загружаются или не добавляются новые игры/программы/новости — это связано с действующими ограничениями в работе сети интернет а также с действиями компании(РКН). Проблема уже решается, скоро всё заработает в штатном режиме.
+                Работы завершены, все программы работают. Большинство картинок грузится и скачивается. Если у вас что-то не грузится (программа, игра или картинка) — включите VPN. Данная проблема не с нашей стороны, а со стороны компании РКН и их действиями.
             </div>
         </div>
         <button class="tech-alert-close" onclick="event.stopPropagation(); document.getElementById('techAlert').style.display='none'">
