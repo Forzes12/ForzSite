@@ -895,61 +895,125 @@
         }
 
         .slider-container {
-            max-width: 1400px;
+            max-width: 1500px;
             margin: 0 auto;
             position: relative;
+            padding: 0 30px;
         }
 
         .slider-title {
             text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 40px;
+            font-size: 3rem;
+            margin-bottom: 60px;
             color: var(--text);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 6px;
             position: relative;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 80px rgba(139, 92, 246, 0.4);
         }
 
         .slider-title::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -25px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--gradient-primary);
-            border-radius: 2px;
-            box-shadow: var(--glow-primary);
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #f472b6);
+            border-radius: 3px;
+            box-shadow: 
+                0 0 40px rgba(139, 92, 246, 0.6),
+                0 0 80px rgba(139, 92, 246, 0.3);
         }
 
         .games-slider {
             position: relative;
             overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 30px;
+            box-shadow: 
+                0 30px 100px rgba(0, 0, 0, 0.6), 
+                0 0 80px rgba(59, 130, 246, 0.2),
+                0 0 120px rgba(139, 92, 246, 0.1),
+                inset 0 0 100px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .games-slider::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            z-index: 3;
+            pointer-events: none;
+            animation: sliderGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes sliderGlow {
+            0%, 100% { transform: translate(0, 0); opacity: 0.5; }
+            50% { transform: translate(25%, 25%); opacity: 1; }
         }
 
         .slider-track {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .slider-slide {
             min-width: 100%;
             position: relative;
-            height: 400px;
+            height: 600px;
             overflow: hidden;
-            border-radius: 15px;
-            background: #0f172a;
+            border-radius: 30px;
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .slider-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(15, 23, 42, 0.4) 0%,
+                rgba(15, 23, 42, 0.15) 50%,
+                rgba(15, 23, 42, 0.7) 100%
+            );
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .slider-slide::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95), transparent);
+            z-index: 1;
+            pointer-events: none;
         }
 
         .slider-slide img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            transition: transform 0.5s ease;
+            object-position: center;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #0a0f1a;
         }
 
         .slider-slide:hover img {
@@ -961,55 +1025,80 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-            padding: 20px;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.8) 40%, transparent 100%);
+            padding: 60px 50px 50px;
             color: white;
             transform: translateY(0);
-            transition: transform 0.3s ease;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2;
         }
 
         .slider-slide:hover .slide-content {
-            transform: translateY(-10px);
+            transform: translateY(0);
         }
 
         .slide-title {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            font-weight: 700;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 3px;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 60px rgba(59, 130, 246, 0.3);
+        }
+
+        .slide-title::before {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 2px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
         }
 
         .slide-description {
-            font-size: 1rem;
-            margin-bottom: 15px;
-            color: var(--text-secondary);
-            max-width: 600px;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #e2e8f0;
+            max-width: 750px;
+            line-height: 1.8;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         .slide-button {
-            display: inline-block;
-            background: var(--gradient-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             color: white;
             text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-weight: 600;
+            padding: 18px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
-            min-height: 46px;
-            min-width: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            letter-spacing: 2px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 10px 40px rgba(37, 99, 235, 0.5),
+                0 0 60px rgba(37, 99, 235, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.15);
         }
 
         .slide-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.6);
+            transform: translateY(-8px) scale(1.08);
+            box-shadow: 
+                0 20px 60px rgba(37, 99, 235, 0.7), 
+                0 0 80px rgba(37, 99, 235, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
         }
 
         .slide-button:active {
@@ -1024,54 +1113,72 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
-            padding: 0 10px;
+            padding: 0 30px;
             z-index: 10;
         }
 
         .slider-btn {
-            background: rgba(26, 26, 46, 0.7);
+            background: rgba(255, 255, 255, 0.08);
             color: white;
-            border: none;
-            width: 44px;
-            height: 44px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            backdrop-filter: blur(10px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.4rem;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
 
         .slider-btn:hover {
-            background: var(--primary);
-            transform: scale(1.1);
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border-color: rgba(139, 92, 246, 0.6);
+            transform: scale(1.2);
+            box-shadow: 
+                0 0 50px rgba(139, 92, 246, 0.6), 
+                0 15px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
         .slider-btn:active {
-            transform: scale(0.95);
+            transform: scale(0.9);
         }
 
         .slider-dots {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
-            gap: 10px;
+            margin-top: 30px;
+            gap: 15px;
         }
 
         .slider-dot {
-            width: 12px;
-            height: 12px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.25);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slider-dot:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: scale(1.15);
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
         }
 
         .slider-dot.active {
-            background: var(--primary);
-            transform: scale(1.2);
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border-color: #a78bfa;
+            transform: scale(1.4);
+            box-shadow: 
+                0 0 30px rgba(139, 92, 246, 0.7),
+                0 0 60px rgba(139, 92, 246, 0.3);
         }
 
         /* Games showcase */
@@ -1092,100 +1199,171 @@
 
         .section-title {
             text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 40px;
+            font-size: 2rem;
+            margin-bottom: 45px;
             color: var(--text);
-            font-weight: 600;
+            font-weight: 700;
             position: relative;
             font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -12px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--primary);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
             border-radius: 2px;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
         }
 
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
             max-width: 1400px;
             margin: 0 auto;
+            padding: 20px;
         }
 
         .game-card {
-            background: var(--card-bg);
-            border-radius: 12px;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+            border-radius: 16px;
             overflow: hidden;
-            transition: all 0.25s ease;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             z-index: 10;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 5;
+        }
+
+        .game-card:hover::before {
+            opacity: 1;
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-available {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .status-soon {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+        }
+
+        .status-buy {
+            background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
         }
 
         .program-card {
-            border-left: 3px solid #7c3aed;
+            border-left: 4px solid #8b5cf6;
         }
 
         .utility-card {
-            border-left: 3px solid #059669;
+            border-left: 4px solid #10b981;
         }
 
         .online-card {
-            border-left: 3px solid #d97706;
+            border-left: 4px solid #f59e0b;
         }
 
         .game-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--primary);
-            border-color: rgba(37, 99, 235, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
         }
 
         .program-card:hover {
-            border-left-color: #7c3aed;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px #7c3aed;
+            border-left-color: #a78bfa;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(139, 92, 246, 0.3);
         }
 
         .utility-card:hover {
-            border-left-color: #059669;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px #059669;
+            border-left-color: #34d399;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(16, 185, 129, 0.3);
         }
 
         .online-card:hover {
-            border-left-color: #d97706;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px #d97706;
+            border-left-color: #fbbf24;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(245, 158, 11, 0.3);
         }
 
         .game-image-container {
-            height: 200px;
+            height: 220px;
             width: 100%;
-            background: #1e293b;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 20px;
             position: relative;
             overflow: hidden;
+        }
+
+        .game-image-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
         }
 
         .game-image {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            transition: transform 0.5s ease;
-            border-radius: 8px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 12px;
+            filter: brightness(0.9) contrast(1.05);
         }
 
         .game-card:hover .game-image {
-            transform: scale(1.05);
+            transform: scale(1.08);
+            filter: brightness(1) contrast(1.1);
         }
 
         .game-likes {
@@ -1249,7 +1427,7 @@
         }
 
         .game-content {
-            padding: 20px;
+            padding: 24px;
             position: relative;
             z-index: 2;
             text-align: center;
@@ -1257,50 +1435,65 @@
 
         .game-title {
             color: var(--text);
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            font-weight: 600;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .game-description {
             color: var(--text-secondary);
-            margin-bottom: 15px;
-            line-height: 1.5;
-            font-size: 0.85rem;
+            margin-bottom: 18px;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .game-meta {
             display: flex;
-            justify-content: space-between;
-            gap: 10px;
+            justify-content: center;
+            gap: 12px;
             margin-bottom: 15px;
         }
 
-        .game-size {
-            background: var(--primary);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.75rem;
+        .game-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
             font-weight: 500;
         }
 
-        .game-year {
-            background: #374151;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 500;
+        .game-meta i {
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+
+        .game-size, .game-year {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(59, 130, 246, 0.3);
         }
 
         .game-updated {
-            background: #374151;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 500;
+            background: rgba(139, 92, 246, 0.15);
+            color: #a78bfa;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(139, 92, 246, 0.3);
         }
 
         .game-buttons {
@@ -1330,35 +1523,54 @@
         }
 
         .download-btn {
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.5), 0 0 30px rgba(139, 92, 246, 0.3);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4), 0 0 40px rgba(37, 99, 235, 0.2);
+            border: none;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .download-btn:hover::before {
+            left: 100%;
         }
 
         .download-btn:hover {
-            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%) !important;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 25px rgba(139, 92, 246, 0.7), 0 0 40px rgba(139, 92, 246, 0.4);
-            border-color: rgba(255, 255, 255, 0.5);
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.6), 0 0 50px rgba(37, 99, 235, 0.3);
         }
 
         .view-btn {
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-            box-shadow: 0 2px 6px rgba(124, 58, 237, 0.3);
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            border: none;
+            border-radius: 12px;
         }
 
         .view-btn:hover {
-            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 10px rgba(124, 58, 237, 0.4);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
         }
 
         .soon-btn {
-            background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+            background: linear-gradient(135deg, #475569 0%, #334155 100%);
             cursor: not-allowed;
-            opacity: 0.7;
+            opacity: 0.8;
+            border: none;
+            border-radius: 12px;
         }
 
         .download-btn:active, .view-btn:active, .program-btn:active, .utility-btn:active, .online-btn:active {
@@ -2041,46 +2253,58 @@
             padding-top: 70px;
         }
 
+        
+
         .games-header {
             display: flex;
             flex-direction: column;
+            align-items: stretch;
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+            padding: 0 20px;
         }
 
         .search-filter-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         .filter-buttons {
             display: flex;
-            gap: 8px;
+            gap: 12px;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .filter-btn {
-            padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 20px;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.4) 100%);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            color: var(--text);
+            border-radius: 50px;
+            color: #cbd5e1;
             font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(15px);
+            font-weight: 500;
         }
 
         .filter-btn:hover {
             background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(99, 102, 241, 0.3);
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         .filter-btn.active {
-            background: var(--primary);
-            border-color: var(--primary);
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-color: rgba(96, 165, 250, 0.5);
             color: white;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
         }
 
         [data-theme="light"] .filter-btn {
@@ -2108,33 +2332,301 @@
 
         .search-box input {
             width: 100%;
-            padding: 12px 20px 12px 45px;
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(25px) saturate(190%);
-            -webkit-backdrop-filter: blur(25px) saturate(190%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            color: var(--text);
-            font-size: 1rem;
-            transition: all 0.3s;
-            min-height: 48px;
+            padding: 16px 24px 16px 55px;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.6) 100%);
+            backdrop-filter: blur(30px) saturate(190%);
+            -webkit-backdrop-filter: blur(30px) saturate(190%);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: #f8fafc;
+            font-size: 1.05rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 56px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-box input::placeholder {
+            color: #64748b;
         }
 
         .search-box input:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(35px) saturate(220%);
-            -webkit-backdrop-filter: blur(35px) saturate(220%);
-            border-color: rgba(99, 102, 241, 0.3);
-            box-shadow: 0 0 20px rgba(108, 92, 231, 0.15);
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.8) 100%);
+            backdrop-filter: blur(40px) saturate(220%);
+            -webkit-backdrop-filter: blur(40px) saturate(220%);
+            border-color: rgba(96, 165, 250, 0.6);
+            box-shadow: 
+                0 0 30px rgba(37, 99, 235, 0.2),
+                0 10px 40px rgba(0, 0, 0, 0.3);
+            transform: scale(1.02);
         }
 
         .search-box i {
             position: absolute;
-            left: 15px;
+            left: 20px;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--text-secondary);
+            color: #64748b;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus + i {
+            color: #60a5fa;
+        }
+
+.advanced-filters {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 25px 30px;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.4) 100%);
+            border-radius: 24px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            box-shadow: 
+                0 15px 50px rgba(0, 0, 0, 0.4),
+                0 0 80px rgba(139, 92, 246, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(25px);
+        }
+
+        .search-box-modern {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-box-modern input {
+            width: 100%;
+            padding: 18px 55px 18px 55px;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.7) 100%);
+            backdrop-filter: blur(30px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 60px;
+            color: #f8fafc;
+            font-size: 1.05rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 56px;
+            box-shadow: 
+                inset 0 2px 15px rgba(0, 0, 0, 0.25),
+                0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-box-modern input::placeholder {
+            color: #64748b;
+        }
+
+        .search-box-modern input:focus {
+            outline: none;
+            border-color: rgba(96, 165, 250, 0.7);
+            box-shadow: 
+                0 0 40px rgba(37, 99, 235, 0.3),
+                0 10px 35px rgba(0, 0, 0, 0.35),
+                inset 0 2px 15px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.75) 100%);
+        }
+
+        .search-box-modern i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+            font-size: 1.15rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-box-modern input:focus + i {
+            color: #60a5fa;
+        }
+
+        .clear-search {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.08);
+            border: none;
+            color: #94a3b8;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .clear-search:hover {
+            background: rgba(239, 68, 68, 0.9);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .filters-panel {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 140px;
+        }
+
+        .filter-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #94a3b8;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-left: 5px;
+        }
+
+        .filter-label i {
+            font-size: 0.75rem;
+            color: #8b5cf6;
+        }
+
+        .filter-select {
+            padding: 12px 40px 12px 15px;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            color: #f1f5f9;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            min-height: 44px;
+            font-weight: 500;
+        }
+
+        .filter-select:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: rgba(139, 92, 246, 0.6);
+            box-shadow: 
+                0 0 25px rgba(139, 92, 246, 0.25),
+                0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .filter-select option {
+            background: #1e293b;
+            color: #f1f5f9;
+            padding: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .advanced-filters {
+                padding: 15px;
+            }
+            
+            .filters-panel {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .filter-group {
+                width: 100%;
+            }
+            
+            .filter-select {
+                width: 100%;
+            }
+        }
+
+        
+            align-items: center;
+            gap: 10px;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.6) 100%);
+            backdrop-filter: blur(30px) saturate(190%);
+            -webkit-backdrop-filter: blur(30px) saturate(190%);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: #cbd5e1;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 56px;
+            font-weight: 500;
+        }
+
+        .filter-select:hover {
+            border-color: rgba(96, 165, 250, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .filter-select .fa-chevron-down {
+            font-size: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+
+        .filter-container:hover .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        .filter-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 20px;
+            padding: 10px;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .filter-container:hover .filter-menu,
+        .filter-container.active .filter-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .filter-option {
+            padding: 12px 18px;
+            color: #94a3b8;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-option:hover {
+            background: rgba(59, 130, 246, 0.15);
+            color: #f8fafc;
+        }
+
+        .filter-option.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
         }
 
         .filter-dropdown {
@@ -2198,25 +2690,134 @@
         }
 
         .games-count {
-            color: var(--text-secondary);
-            font-size: 1rem;
+            color: #94a3b8;
+            font-size: 1.1rem;
             text-align: center;
+            font-weight: 600;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.4) 100%);
+            border-radius: 50px;
+            display: inline-block;
+            margin: 0 auto;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
         .all-games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 1400px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1500px;
             margin: 0 auto;
+            padding: 20px;
         }
 
-        .category-tabs {
+.category-tabs {
             display: flex;
             justify-content: center;
-            margin-bottom: 30px;
-            gap: 10px;
+            margin-bottom: 35px;
+            gap: 12px;
             flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .category-tab {
+            padding: 14px 24px;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.4) 100%);
+            backdrop-filter: blur(30px) saturate(190%);
+            -webkit-backdrop-filter: blur(30px) saturate(190%);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            font-size: 0.85rem;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .category-tab:hover::before {
+            opacity: 1;
+        }
+
+        .category-tab.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            backdrop-filter: blur(35px) saturate(220%);
+            -webkit-backdrop-filter: blur(35px) saturate(220%);
+            border-color: rgba(96, 165, 250, 0.5);
+            box-shadow: 
+                0 8px 30px rgba(37, 99, 235, 0.4),
+                0 0 50px rgba(37, 99, 235, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .category-tab[data-color="purple"].active {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            border-color: rgba(167, 139, 250, 0.5);
+            box-shadow: 
+                0 8px 30px rgba(139, 92, 246, 0.4),
+                0 0 50px rgba(139, 92, 246, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .category-tab[data-color="green"].active {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-color: rgba(52, 211, 153, 0.5);
+            box-shadow: 
+                0 8px 30px rgba(16, 185, 129, 0.4),
+                0 0 50px rgba(16, 185, 129, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .category-tab[data-color="orange"].active {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            border-color: rgba(251, 191, 36, 0.5);
+            box-shadow: 
+                0 8px 30px rgba(245, 158, 11, 0.4),
+                0 0 50px rgba(245, 158, 11, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .category-tab[data-color="red"].active {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            border-color: rgba(252, 129, 129, 0.5);
+            box-shadow: 
+                0 8px 30px rgba(239, 68, 68, 0.4),
+                0 0 50px rgba(239, 68, 68, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .category-tab:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .category-tab:active {
+            transform: translateY(0) scale(0.98);
         }
 
         .category-tab {
@@ -6082,8 +6683,7 @@
                 <li><a href="#main" onclick="navigateToSection('#main'); switchToMain(); return false;">Главная</a></li>
                 <li><a href="#slider" onclick="navigateToSection('#slider'); return false;">Слайдер</a></li>
                 <li><a href="#games" onclick="navigateToSection('#games'); return false;">Популярные</a></li>
-                <li><a href="#new" onclick="navigateToSection('#new'); return false;">Новинки</a></li>
-                <li><a href="#anticipated" onclick="navigateToSection('#anticipated'); return false;">Самые ожидаемые</a></li>
+<li><a href="#anticipated" onclick="navigateToSection('#anticipated'); return false;">Самые ожидаемые</a></li>
                 <li><a href="#" data-page="all-games-page" onclick="switchPage('all-games-page'); return false;">Игры и программы</a></li>
                 <li><a href="#about" onclick="navigateToSection('#about'); return false;">О нас</a></li>
                 <li><a href="#contact" onclick="navigateToSection('#contact'); return false;">Все ссылки</a></li>
@@ -6107,28 +6707,11 @@
             <li><a href="#main" onclick="navigateToSection('#main'); switchToMain(); closeMobileMenu(); return false;">Главная</a></li>
             <li><a href="#slider" onclick="navigateToSection('#slider'); closeMobileMenu(); return false;">Слайдер</a></li>
             <li><a href="#games" onclick="navigateToSection('#games'); closeMobileMenu(); return false;">Популярные</a></li>
-            <li><a href="#new" onclick="navigateToSection('#new'); closeMobileMenu(); return false;">Новинки</a></li>
             <li><a href="#anticipated" onclick="navigateToSection('#anticipated'); closeMobileMenu(); return false;">Самые ожидаемые</a></li>
             <li><a href="#" data-page="all-games-page" onclick="switchPage('all-games-page'); closeMobileMenu(); return false;">Игры и программы</a></li>
             <li><a href="#about" onclick="navigateToSection('#about'); closeMobileMenu(); return false;">О нас</a></li>
             <li><a href="#contact" onclick="navigateToSection('#contact'); closeMobileMenu(); return false;">Все ссылки</a></li>
         </ul>
-    </div>
-
-    <!-- Уведомление о технических работах из-за блокировок -->
-    <div class="tech-alert" id="techAlert">
-        <div class="tech-alert-icon">
-            <i class="fas fa-shield-alt"></i>
-        </div>
-        <div class="tech-alert-content">
-            <div class="tech-alert-title">⚡ Внимание: Работы завершены</div>
-            <div class="tech-alert-text">
-                Работы завершены, все программы работают. Большинство картинок грузится и скачивается. Если у вас что-то не грузится (программа, игра или картинка) — включите VPN. Данная проблема не с нашей стороны, а со стороны компании РКН и их действиями.
-            </div>
-        </div>
-        <button class="tech-alert-close" onclick="event.stopPropagation(); document.getElementById('techAlert').style.display='none'">
-            <i class="fas fa-times"></i>
-        </button>
     </div>
 
     <!-- Главная страница -->
@@ -6184,16 +6767,9 @@
         </section>
 
         <section class="games-showcase" id="games">
-            <h2 class="section-title">ПОПУЛЯРНЫЕ ИГРЫ</h2>
+            <h2 class="section-title">ПОПУЛЯРНЫЕ ИГРЫ И НОВИНКИ</h2>
             <div class="games-grid">
                 <!-- Игры будут загружены здесь -->
-            </div>
-        </section>
-
-        <section class="new-games-section" id="new">
-            <h2 class="section-title">НОВИНКИ</h2>
-            <div class="games-grid">
-                <!-- Новинки будут загружены здесь -->
             </div>
         </section>
 
@@ -6250,7 +6826,6 @@
                         <li><a href="#main" onclick="navigateToSection('#main'); switchToMain(); return false;">Главная</a></li>
                         <li><a href="#slider" onclick="navigateToSection('#slider'); return false;">Слайдер</a></li>
                         <li><a href="#games" onclick="navigateToSection('#games'); return false;">Игры</a></li>
-                        <li><a href="#new" onclick="navigateToSection('#new'); return false;">Новинки</a></li>
                         <li><a href="#anticipated" onclick="navigateToSection('#anticipated'); return false;">Самые ожидаемые</a></li>
                         <li><a href="#about" onclick="navigateToSection('#about'); return false;">О нас</a></li>
                     </ul>
@@ -6305,15 +6880,70 @@
                 <button class="category-tab" data-color="green" data-category="Minecraft">Minecraft</button>
             </div>
             
-            <div class="games-header">
-                <div class="search-filter-container">
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="gameSearch" placeholder="Поиск игр и программ...">
+            <div class="advanced-filters">
+                <div class="search-box-modern">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="gameSearch" placeholder="Поиск игр, программ...">
+                    <button class="clear-search" id="clearSearch" style="display: none;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="filters-panel">
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Год</span>
+                        </label>
+                        <select class="filter-select" id="yearFilter">
+                            <option value="all">Все года</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="old">2019 и ранее</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-tags"></i>
+                            <span>Жанр</span>
+                        </label>
+                        <select class="filter-select" id="genreFilter">
+                            <option value="all">Все жанры</option>
+                            <option value="Экшен">Экшен</option>
+                            <option value="Приключения">Приключения</option>
+                            <option value="RPG">RPG</option>
+                            <option value="Хоррор">Хоррор</option>
+                            <option value="Гонки">Гонки</option>
+                            <option value="Симулятор">Симулятор</option>
+                            <option value="Стратегия">Стратегия</option>
+                            <option value="Платформер">Платформер</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">
+                            <i class="fas fa-building"></i>
+                            <span>Компания</span>
+                        </label>
+                        <select class="filter-select" id="companyFilter">
+                            <option value="all">Все компании</option>
+                            <option value="Rockstar Games">Rockstar Games</option>
+                            <option value="CD Projekt">CD Projekt</option>
+                            <option value="Ubisoft">Ubisoft</option>
+                            <option value="EA">EA</option>
+                            <option value="Naughty Dog">Naughty Dog</option>
+                            <option value="Microsoft">Microsoft</option>
+                            <option value="PlayStation">PlayStation</option>
+                            <option value=" других">Другие</option>
+                        </select>
                     </div>
                 </div>
-                <div class="games-count" id="gamesCount">Найдено: 0</div>
             </div>
+            <div class="games-count" id="gamesCount">Найдено: 0 игр</div>
             
             <!-- Minecraft subcategory tabs -->
             <div class="minecraft-subcategory-tabs" id="minecraftSubcategoryTabs" style="display: none;">
@@ -6353,12 +6983,7 @@
         </div>
     </div>
 
-    <!-- Toast уведомление -->
-    <div class="news-toast" id="newsToast" onclick="openNewsFromToast()" style="cursor: pointer;">
-        <button class="close-toast" onclick="closeNewsToast(event)">&times;</button>
-        Добавлены новости! Нажми <b>N</b> или <b>Т</b> для просмотра<br>
-        <span style="color: #a78bfa; text-decoration: underline;">или нажмите здесь</span>
-    </div>
+    
 
     <!-- Модальное окно приветствия (показывается 1 раз) -->
     <div id="welcomeModal" class="modal">
@@ -8286,7 +8911,6 @@
         // Загрузка данных из JSON
         let gameData = {};
         let popularGamesTitles = [];
-        let newGamesTitles = [];
         let anticipatedGamesTitles = [];
         let sliderGames = [];
 
@@ -8297,9 +8921,6 @@
 
                 const popularResponse = await fetch('assets/data/popular-games.json');
                 popularGamesTitles = await popularResponse.json();
-
-                const newResponse = await fetch('assets/data/new-games.json');
-                newGamesTitles = await newResponse.json();
 
                 const anticipatedResponse = await fetch('assets/data/anticipated-games.json');
                 anticipatedGamesTitles = await anticipatedResponse.json();
@@ -8617,44 +9238,40 @@
         // Загрузка игр на главную страницу
         function loadMainPageGames() {
             console.log('loadMainPageGames called');
-            const popularGamesGrid = document.querySelector('#games .games-grid');
-            const newGamesGrid = document.querySelector('#new .games-grid');
+            const mainGamesGrid = document.querySelector('#games .games-grid');
             const anticipatedGamesGrid = document.querySelector('#anticipated .games-grid');
 
-            console.log('popularGamesGrid:', popularGamesGrid);
-            console.log('newGamesGrid:', newGamesGrid);
+            console.log('mainGamesGrid:', mainGamesGrid);
             console.log('anticipatedGamesGrid:', anticipatedGamesGrid);
             console.log('popularGamesTitles:', popularGamesTitles);
-            console.log('newGamesTitles:', newGamesTitles);
             console.log('anticipatedGamesTitles:', anticipatedGamesTitles);
 
-            popularGamesGrid.innerHTML = '';
-            newGamesGrid.innerHTML = '';
+            mainGamesGrid.innerHTML = '';
             anticipatedGamesGrid.innerHTML = '';
 
-            popularGamesTitles.forEach(gameTitle => {
-                console.log('Processing popular game:', gameTitle);
-                const gameInfo = findGameByTitle(gameTitle);
-                console.log('gameInfo for', gameTitle, ':', gameInfo);
-                if (gameInfo) {
-                    const gameCard = createGameCard(gameInfo.id, gameInfo.data);
-                    console.log('Created card for', gameTitle, ':', gameCard);
-                    popularGamesGrid.appendChild(gameCard);
-                    console.log('Appended card to popular grid');
-                } else {
-                    console.log('No gameInfo found for', gameTitle);
-                }
+            // Объединённый список - все игры из popular + new + anticipated
+            const allGames = [...popularGamesTitles];
+            const seen = new Set();
+            const uniqueGames = allGames.filter(game => {
+                if (seen.has(game)) return false;
+                seen.add(game);
+                return true;
             });
 
-            newGamesTitles.forEach(gameTitle => {
-                console.log('Processing new game:', gameTitle);
+            // Фильтруем только доступные игры (не "soon")
+            uniqueGames.forEach(gameTitle => {
+                console.log('Processing game:', gameTitle);
                 const gameInfo = findGameByTitle(gameTitle);
                 console.log('gameInfo for', gameTitle, ':', gameInfo);
                 if (gameInfo) {
+                    if (gameInfo.data.status === 'soon') {
+                        console.log('Skipping upcoming game:', gameTitle);
+                        return;
+                    }
                     const gameCard = createGameCard(gameInfo.id, gameInfo.data);
                     console.log('Created card for', gameTitle, ':', gameCard);
-                    newGamesGrid.appendChild(gameCard);
-                    console.log('Appended card to new grid');
+                    mainGamesGrid.appendChild(gameCard);
+                    console.log('Appended card to main grid');
                 } else {
                     console.log('No gameInfo found for', gameTitle);
                 }
@@ -8674,8 +9291,7 @@
                 }
             });
 
-            console.log('Popular grid children:', popularGamesGrid.children.length);
-            console.log('New grid children:', newGamesGrid.children.length);
+            console.log('Main grid children:', mainGamesGrid.children.length);
             console.log('Anticipated grid children:', anticipatedGamesGrid.children.length);
 
             setupViewButtons();
@@ -8745,6 +9361,10 @@
                 </div>
                 <div class="game-content">
                     <h3 class="game-title">${game.title}</h3>
+                    <div class="game-meta">
+                        ${game.year ? `<span class="game-year"><i class="fas fa-calendar"></i> ${game.year}</span>` : ''}
+                        ${game.size ? `<span class="game-size"><i class="fas fa-hdd"></i> ${game.size}</span>` : ''}
+                    </div>
                     <p class="game-description">${game.description}</p>
                     <div class="game-buttons">
                         ${buttonsHTML}
@@ -8816,6 +9436,7 @@
         function filterGames() {
             const searchTerm = document.getElementById('gameSearch').value.toLowerCase();
             const activeCategory = document.querySelector('.category-tab.active').dataset.category;
+            const activeFilter = document.querySelector('.filter-pill.active')?.dataset.filter || 'all';
             
 
             const gameCards = document.querySelectorAll('#allGamesGrid .game-card');
@@ -8851,7 +9472,16 @@
                     );
                 }
                 
-                const matchesStatus = true;
+                // Фильтр по статусу
+                let matchesStatus = true;
+                if (activeFilter === 'available') {
+                    matchesStatus = game.status === 'available';
+                } else if (activeFilter === 'buy') {
+                    matchesStatus = game.status === 'buy';
+                } else if (activeFilter === 'free') {
+                    matchesStatus = game.status === 'available' && (game.price === 'Бесплатно' || game.price === 'Free' || !game.price || game.price === '');
+                }
+                
                 const matchesSearch = !searchTerm || 
                     game.title.toLowerCase().includes(searchTerm) || 
                     game.description.toLowerCase().includes(searchTerm) ||
@@ -10175,40 +10805,7 @@ function showForzaGames() {
             // Загрузить новости при инициализации
             loadNews();
             
-            // Показать уведомление о новостях
-            function showNewsToast() {
-                const toast = document.getElementById('newsToast');
-                if (toast) {
-                    setTimeout(() => {
-                        toast.classList.add('show');
-                        // Скрыть через 5 секунд
-                        setTimeout(() => {
-                            toast.classList.remove('show');
-                        }, 5000);
-                    }, 500);
-                }
-            }
             
-            // Закрыть уведомление
-            window.closeNewsToast = function(e) {
-                if (e) e.stopPropagation();
-                const toast = document.getElementById('newsToast');
-                if (toast) {
-                    toast.classList.remove('show');
-                }
-            };
-            
-            // Открыть новости из уведомления
-            window.openNewsFromToast = function() {
-                const toast = document.getElementById('newsToast');
-                if (toast) {
-                    toast.classList.remove('show');
-                }
-                openWelcomeModal();
-            };
-            
-            // Показать уведомление
-            showNewsToast();
             
             function openWelcomeModal() {
                 if (welcomeModal) {
@@ -10385,10 +10982,29 @@ function showForzaGames() {
             });
 
             // Обработчики для поиска и фильтра
-            document.getElementById('gameSearch').addEventListener('input', filterGames);
-
-            // Обработчики для поиска
-            document.getElementById('gameSearch').addEventListener('input', filterGames);
+            const gameSearchInput = document.getElementById('gameSearch');
+            const clearSearchBtn = document.getElementById('clearSearch');
+            
+            gameSearchInput.addEventListener('input', function() {
+                clearSearchBtn.style.display = this.value ? 'flex' : 'none';
+                filterGames();
+            });
+            
+            clearSearchBtn?.addEventListener('click', function() {
+                gameSearchInput.value = '';
+                this.style.display = 'none';
+                filterGames();
+                gameSearchInput.focus();
+            });
+            
+            // Обработчики для фильтр-пилюль
+            document.querySelectorAll('.filter-pill').forEach(pill => {
+                pill.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+                    filterGames();
+                });
+            });
 
             // Мобильное меню
             document.getElementById('mobileMenuBtn').addEventListener('click', openMobileMenu);
