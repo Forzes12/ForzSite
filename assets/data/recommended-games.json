@@ -1,0 +1,10 @@
+[
+    { "id": "Samson", "title": "Samson", "description": "это история о возвращении туда, где тебя помнят слишком хорошо", "image": "game-screenshot/1770147387_library_capsule_2x.jpg", "buttonText": "Смотреть" },
+    { "id": "resident-evil-requiem", "title": "Resident Evil Requiem", "description": "это зрелищный экшен в постапокалиптической вселенной, где каждое событие — часть грандиозной истории", "image": "game-screenshot/1769958733_coverx.jpg", "buttonText": "Смотреть" },
+    { "id": "the-occultist", "title": "The Occultist", "description": "это атмосферный психологический хоррор с элементами мистики и детектива", "image": "https://i.postimg.cc/ZRTy4vZx/1723382972-library-600x900-2x.jpg", "buttonText": "Смотреть" },
+    { "id": "Windrose", "title": "Windrose", "description": "это PvE-приключение в эпоху Золотого века пиратства, сочетающее выживание, строительство и морские сражения в открытом мире", "image": "https://i.postimg.cc/yNmrT6WW/1776170561-library-capsule-2x.jpg", "buttonText": "Смотреть" },
+    { "id": "The Farmer Was Replaced", "title": "The Farmer Was Replaced", "description": "необычное приключение с элементами фермерства и программирования", "image": "https://i.postimg.cc/rs764gFr/1760371014-library-capsule-2x.jpg", "buttonText": "Смотреть" },
+    { "id": "REPLACED", "title": "REPLACED", "description": "совсем недавно анонсированная игра, выполненная в стиле графически качественного пиксельного экшена-платформера", "image": "https://i.postimg.cc/g0pxRHns/1776176154-library-600x900-2x.jpg", "buttonText": "Смотреть" },
+    { "id": "MOUSE: P.I. For Hire", "title": "MOUSE: P.I. For Hire", "description": "это очень непростой джазовый шутер в котором вам предстоит превратиться в частного детектива", "image": "https://i.postimg.cc/0yPf5D9R/1749292756-library-600x900-2x.jpg", "buttonText": "Смотреть" },
+    { "id": "Cthulhu: The Cosmic Abyss", "title": "Cthulhu: The Cosmic Abyss", "description": "это мрачный триллер от первого лица, где разум и безумие сталкиваются в безднах океана", "image": "https://i.postimg.cc/Vkw8YGSj/1745510259-library-600x900.jpg", "buttonText": "Смотреть" }
+]
