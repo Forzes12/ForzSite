@@ -3474,29 +3474,74 @@
             }
         }
     },
-    "Fable": {
-        "title": "Fable",
-        "description": "Fable —  Сказочная история о героях наделала немало шуму, связанного с тем, что игроки долго ждали большего, чем им давали разработчики. В любом случая игровая серия была уникальная и позволила достичь не только успеха, но и осталась в сердце многих пользователей.",
-        "image": "https://i.postimg.cc/3RPJFcpS/1769117949-library-capsule-2x.jpg",
+    "OD Knock": {
+        "title": "OD Knock",
+        "description": "OD Knock —  это классический хоррор с видом от 3-ого лица, в основе которого лежат «облачные» технологии. Попросту говоря, перед вами достаточно ожидаемый анонс от Хидэо Кодзима, который выпустил его спустя продолжительное время.",
+        "image": "https://i.postimg.cc/hjw0nTQP/1771001458-chatgpt-image-13-fevr-2026-g-18-50-30.jpg",
         "size": " GB",
         "year": "2025",
-        "updated": "23.01.2026",
+        "updated": "28.09.2025",
         "status": "soon",
         "category": "games",
         "tags": [
             ""
         ],
         "torrentFile": "",
-        "trailer": "https://drive.google.com/file/d/1wNBtoD4pMeACCkBkosPoqh3qvOgPLRps/preview",
+        "trailer": "https://drive.google.com/file/d/17S4UUW146OTQItm1lv7bPUUrf0fLsFNe/preview",
         "buyGame": "",
         "screenshots": [
-            "https://i.postimg.cc/WbSc2y3m/1769118012-ss-0b0f7aaf32d2b1eff4971c5d6f760e1da8e10e9d.jpg",
-            "https://i.postimg.cc/3w4sFJB3/1769117977-ss-2e5597297c4dfdcfcc784d61392bcad9595f82d8.jpg",
-            "https://i.postimg.cc/pTK33G4G/1769118015-ss-8d483674199a602caa1a71e15ebcbc24ce45e11b.jpg",
-            "https://i.postimg.cc/C5NXxZF1/1769117953-ss-8eba0a7e1b2ba513e25ea9aeacd5e3d517bc3be6.jpg",
-            "https://i.postimg.cc/nVY6kWv4/1769118041-ss-10b600c2b5850721d6aae34f269635edeb27e3b8.jpg",
-            "https://i.postimg.cc/52jTfNDX/1769118018-ss-6905a56e910761fd2850a9fb8a1cefe7f80810d5.jpg",
-            "https://i.postimg.cc/FsHnxHrn/1769117988-ss-89129eb9fa2d31ba69286769798b136a89a02464.jpg"
+            "https://i.postimg.cc/wTxBzZHH/1758605315-555.jpg",
+            "https://i.postimg.cc/ZqNbjhF4/1758605343-4444.jpg",
+            "https://i.postimg.cc/yYN7tRXj/1758605346-66655.jpg",
+            "https://i.postimg.cc/630N168c/1758605369-3333.jpg",
+            "https://i.postimg.cc/0N1RkKmH/1758605405-666.jpg",
+            "https://i.postimg.cc/4NYrpQQ5/1758605355-123123.jpg",
+            "https://i.postimg.cc/HxShyrJS/1758605402-444444.jpg",
+            "https://i.postimg.cc/0jbHd9DJ/1758605402-44444411.jpg",
+            "https://i.postimg.cc/Bnx7CYLd/1758605373-44444411787.jpg",
+            "https://i.postimg.cc/d1S50gp0/1758605361-213.jpg"
+        ],
+        "specs": {
+            "Жанр": "",
+            "Разработчик": "",
+            "Издатель": "",
+            "Платформа": ""
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "",
+                "Процессор": "",
+                "Оперативная память": "",
+                "Видеокарта": "",
+                "DirectX":"",
+                "Свободное место": ""
+            }
+        }
+    },
+    "Lords of the Fallen II": {
+        "title": "Lords of the Fallen II",
+        "description": "Lords of the Fallen II —  это путешествие в мир, где сама надежда стала редкостью. Здесь история переплетается с жестокими боями и личным выбором, который определит судьбу всего королевства.",
+        "image": "https://i.postimg.cc/mkf8M7Zf/1771000241-chatgpt-image-13-fevr-2026-g-18-29-15.jpg",
+        "size": " GB",
+        "year": "2025",
+        "updated": "20.08.2025",
+        "status": "soon",
+        "category": "games",
+        "tags": [
+            ""
+        ],
+        "torrentFile": "",
+        "trailer": "https://drive.google.com/file/d/1xMrWrnm6s9JyyqnShHkPFM-8EQd-Q-9p/preview",
+        "buyGame": "",
+        "screenshots": [
+            "https://i.postimg.cc/prW5gdqT/1758845272-1240526430-lords-of-the-fallen-ii-2025819-09.jpg",
+            "https://i.postimg.cc/Hn68HCNG/1758845219-3123329591-lords-of-the-fallen-ii-2025819-06.jpg",
+            "https://i.postimg.cc/Vkr0ypBp/1758845269-4089664410-lords-of-the-fallen-ii-2025819-10.jpg",
+            "https://i.postimg.cc/cCL6FbLs/1758845299-4458018605-lords-of-the-fallen-ii-2025819-08.jpg",
+            "https://i.postimg.cc/bvfJ7Jw5/1758845245-6143174825-lords-of-the-fallen-ii-2025819-02.jpg",
+            "https://i.postimg.cc/j21qZq1g/1758845218-lords-of-the-fallen-2.jpg",
+            "https://i.postimg.cc/bwkY9hRP/1758845309-lords-of-the-fallen-2-1.jpg",
+            "https://i.postimg.cc/LXCm86mn/1758845322-lords-of-the-fallen-2-2.jpg"
         ],
         "specs": {
             "Жанр": "",
@@ -3907,54 +3952,6 @@
             "Разработчик": "Amnezia VPN",
             "Издатель": "Amnezia VPN",
             "Платформа": "Windows"
-        },
-        "systemRequirements": {
-            "minimum": {},
-            "recommended": {}
-        }
-    },
-    "Amnezia VPN-Android": {
-        "title": "Amnezia VPN-Android",
-        "description": "Абход блокировки Ютуба и других Сервисов",
-        "image": "https://image2url.com/images/1764429698001-a7292fae-ff48-4293-bb8f-6befff54aca6.png",
-        "size": "4.5 MB",
-        "year": "2023",
-        "updated": "09.01.2026",
-        "status": "available",
-        "category": "utilities",
-        "torrentFile": "https://github.com/amnezia-vpn/amnezia-client/releases/tag/4.8.10.0",
-        "screenshots": [
-            "1"
-        ],
-        "specs": {
-            "Жанр": "VPN",
-            "Разработчик": "Amnezia VPN",
-            "Издатель": "Amnezia VPN",
-            "Платформа": "Android"
-        },
-        "systemRequirements": {
-            "minimum": {},
-            "recommended": {}
-        }
-    },
-    "ByeByeDPI-Android": {
-        "title": "ByeByeDPI-Android",
-        "description": "Абход блокировки Ютуба и других Сервисов",
-        "image": "https://image2url.com/images/1764429921282-ee9760f5-87e2-4729-bf55-1ca123addbd5.jpg",
-        "size": "4.5 MB",
-        "year": "2023",
-        "updated": "09.01.2026",
-        "status": "available",
-        "category": "utilities",
-        "torrentFile": "https://drive.usercontent.google.com/u/0/uc?id=1L-9Hco3kqmpOTj06XrciPvmJ_7POhbjA&export=download",
-        "screenshots": [
-            "1"
-        ],
-        "specs": {
-            "Жанр": "VPN",
-            "Разработчик": "Неизвестно",
-            "Издатель": "Неизвестно",
-            "Платформа": "Android"
         },
         "systemRequirements": {
             "minimum": {},
