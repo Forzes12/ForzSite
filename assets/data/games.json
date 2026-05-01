@@ -3234,6 +3234,46 @@
             }
         }
     },
+    "Bus Bound": {
+        "title": "Bus Bound",
+        "description": "Bus Bound — это симулятор водителя автобуса, в котором вы прокладываете свой путь через оживлённые улицы Эмбервилля.",
+        "image": "https://i.postimg.cc/4dysq0mc/1750877905-library-600x900-2x.jpg",
+        "size": "44.01 GB",
+        "year": "2026",
+        "updated": "30.04.2026",
+        "status": "available",
+        "category": "games",
+        "tags": [
+            "Симуляторы"
+        ],
+        "torrentFile": "https://itorrents-igruha.org/engine/download.php?id=103163",
+        "trailer": "https://drive.google.com/file/d/1UUZ3knMz6xWaUpAwri0tTH4czOo0xY_H/preview",
+        "buyGame": "https://ggsel.net/catalog/product/bus-bound-steam-avto-ru-mir-102262980",
+        "screenshots": [
+            "https://i.postimg.cc/BQbLGh1b/1777557990-ss-3f877831c2ae49ec43c88dcde8900e5ee701189b.jpg",
+            "https://i.postimg.cc/90rWsnN5/1777557988-ss-9c25b6500029c87d9f90ff32c2a55bb95c092e7a.jpg",
+            "https://i.postimg.cc/nc9FkNDY/1777558003-ss-9f51eb44c01c2907862516e5ad597fe780f55eea.jpg",
+            "https://i.postimg.cc/Gpdbb2St/1777557992-ss-056f610b8bd214e3cd2eb2ae518d29ff0e277e17.jpg",
+            "https://i.postimg.cc/TwPGWsxW/1777558000-ss-4358526936fdaa50aad5f0646372a2547517f422.jpg",
+            "https://i.postimg.cc/3N4TtDdH/1777557957-ss-c39e5cb309714f847b0fe1fb63e95d52546fdbea.jpg"
+        ],
+        "specs": {
+            "Жанр": "Симуляторы",
+            "Разработчик": "stillalive studios",
+            "Издатель": "Saber Interactive Inc.",
+            "Платформа": "РС"
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "Windows 10, 11 (64-bit)",
+                "Процессор": "Intel Core i5-10600k",
+                "Оперативная память": "16 GB ОЗУ",
+                "Видеокарта": "Nvidia GTX 1070",
+                "DirectX": "",
+                "Свободное место": "47 GB"
+            }
+        }
+    },
     "Darksiders 4": {
         "title": "Darksiders 4",
         "description": "Darksiders 4 — это хардкорный экшен о выживании среди падших миров, где выбор ведёт к гибели или освобождению. Вам предстоит пробираться через гибель цивилизации, отыскивая правду среди руин.",
