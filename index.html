@@ -2766,12 +2766,70 @@
             backdrop-filter: blur(35px) saturate(220%);
             -webkit-backdrop-filter: blur(35px) saturate(220%);
             border-color: rgba(96, 165, 250, 0.5);
-            box-shadow: 
+            box-shadow:
                 0 8px 30px rgba(37, 99, 235, 0.4),
                 0 0 50px rgba(37, 99, 235, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
             color: white;
             transform: translateY(-3px) scale(1.05);
+        }
+
+        .filter-pills {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .filter-pill {
+            padding: 10px 18px;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.4) 100%);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .filter-pill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .filter-pill:hover::before {
+            opacity: 1;
+        }
+
+        .filter-pill.active {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            backdrop-filter: blur(25px) saturate(200%);
+            -webkit-backdrop-filter: blur(25px) saturate(200%);
+            border-color: rgba(16, 185, 129, 0.5);
+            box-shadow:
+                0 6px 20px rgba(16, 185, 129, 0.4),
+                0 0 30px rgba(16, 185, 129, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            color: white;
+            transform: translateY(-2px);
         }
 
         .category-tab[data-color="purple"].active {
@@ -6944,7 +7002,7 @@
                 </div>
             </div>
             <div class="games-count" id="gamesCount">Найдено: 0 игр</div>
-            
+
             <!-- Minecraft subcategory tabs -->
             <div class="minecraft-subcategory-tabs" id="minecraftSubcategoryTabs" style="display: none;">
                 <button class="minecraft-subcat-tab" data-subcategory="Minecraft">
@@ -8914,19 +8972,36 @@
         let anticipatedGamesTitles = [];
         let sliderGames = [];
 
-        async function loadGameData() {
+        function loadGameData() {
             try {
-                const response = await fetch('assets/data/games.json');
-                gameData = await response.json();
+                // Use XMLHttpRequest for synchronous loading
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', 'assets/data/games.json', false); // synchronous
+                xhr.send();
+                if (xhr.status === 200) {
+                    gameData = JSON.parse(xhr.responseText);
+                }
 
-                const popularResponse = await fetch('assets/data/popular-games.json');
-                popularGamesTitles = await popularResponse.json();
+                const xhrPopular = new XMLHttpRequest();
+                xhrPopular.open('GET', 'assets/data/popular-games.json', false);
+                xhrPopular.send();
+                if (xhrPopular.status === 200) {
+                    popularGamesTitles = JSON.parse(xhrPopular.responseText);
+                }
 
-                const anticipatedResponse = await fetch('assets/data/anticipated-games.json');
-                anticipatedGamesTitles = await anticipatedResponse.json();
+                const xhrAnticipated = new XMLHttpRequest();
+                xhrAnticipated.open('GET', 'assets/data/anticipated-games.json', false);
+                xhrAnticipated.send();
+                if (xhrAnticipated.status === 200) {
+                    anticipatedGamesTitles = JSON.parse(xhrAnticipated.responseText);
+                }
 
-                const recommendedResponse = await fetch('assets/data/recommended-games.json');
-                sliderGames = await recommendedResponse.json();
+                const xhrRecommended = new XMLHttpRequest();
+                xhrRecommended.open('GET', 'assets/data/recommended-games.json', false);
+                xhrRecommended.send();
+                if (xhrRecommended.status === 200) {
+                    sliderGames = JSON.parse(xhrRecommended.responseText);
+                }
             } catch (error) {
                 console.error('Error loading game data:', error);
             }
@@ -9385,9 +9460,18 @@
             document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
             document.querySelector('.category-tab[data-category="games"]').classList.add('active');
 
+            // Сбрасываем фильтры
+            document.getElementById('yearFilter').value = 'all';
+            document.getElementById('genreFilter').value = 'all';
+            document.getElementById('companyFilter').value = 'all';
+
             let gameIndex = 0;
             Object.keys(gameData).forEach((gameId) => {
                 const game = gameData[gameId];
+                // Skip games with status 'soon' - they should only be on the main page
+                if (game.status === 'soon') {
+                    return;
+                }
                 const gameCard = createGameCard(gameId, game);
                 gameCard.dataset.status = game.status;
                 gameCard.dataset.category = game.category;
@@ -10562,9 +10646,9 @@ function showForzaGames() {
         }
 
         // Инициализация при загрузке
-        document.addEventListener('DOMContentLoaded', async function() {
+        document.addEventListener('DOMContentLoaded', function() {
             // Загрузка данных
-            await loadGameData();
+            loadGameData();
 
             // Проверка URL параметров для прямых ссылок на игры
             const urlParams = new URLSearchParams(window.location.search);
