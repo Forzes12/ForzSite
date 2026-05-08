@@ -3274,6 +3274,48 @@
             }
         }
     },
+    "CarX Drift Racing Online 2": {
+        "title": "CarX Drift Racing Online 2",
+        "description": "CarX Drift Racing Online 2 — это новый уровень симуляции дрифта, созданный для настоящих поклонников автоспорта.",
+        "image": "https://i.postimg.cc/zB88XF22/1745743440-library-600x900.jpg",
+        "size": "12.69 GB",
+        "year": "2026",
+        "updated": "07.05.2026",
+        "status": "available",
+        "category": "games",
+        "tags": [
+            "Гонки",
+            "Симуляторы",
+            "Спорт"
+        ],
+        "torrentFile": "torrent/CarX.Drift.Racing.Online.2.torrent",
+        "trailer": "https://drive.google.com/file/d/1-QJ_BrMUDz3NgPCRbjTh1r3jVK28AYz4/preview",
+        "buyGame": "https://ggsel.net/catalog/product/carx-drift-racing-online-2-steam-gift-vybor-stran-102289486",
+        "screenshots": [
+            "https://i.postimg.cc/Z5swqbfG/1778224915-ss-6eec40b9b9d7cb5b2b54dc77301dd927c756a148.jpg",
+            "https://i.postimg.cc/4ywzFPjd/1778224912-ss-8a15b9a4756f71ab6f5baba79dff5e0cd9f70f67.jpg",
+            "https://i.postimg.cc/zBFWVpz7/1778224971-ss-0542a146290ed555f083e6eba1e71990f001f597.jpg",
+            "https://i.postimg.cc/VLVtrJ8F/1778224914-ss-bf2cba00f4f48ad7605238d652bddb2228d2b495.jpg",
+            "https://i.postimg.cc/rpSRPgrL/1778224986-ss-bf4cd6c195a1b69ba9f1447e14f1a07b3bc8b092.jpg",
+            "https://i.postimg.cc/T1HKD4Zp/1778224903-ss-c8514436e8fc923b4d91b5576b670778ca1f49e0.jpg"
+        ],
+        "specs": {
+            "Жанр": "Гонки, Симуляторы, Спорт",
+            "Разработчик": "CarX Technologies, LLC",
+            "Издатель": "CarX Technologies, LLC",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "Windows 10, 11 (64-bit)",
+                "Процессор": "Intel Core i5-8400",
+                "Оперативная память": "16 GB ОЗУ",
+                "Видеокарта": "Nvidia GTX 1060",
+                "DirectX": "",
+                "Свободное место": "14 GB"
+            }
+        }
+    },
     "Darksiders 4": {
         "title": "Darksiders 4",
         "description": "Darksiders 4 — это хардкорный экшен о выживании среди падших миров, где выбор ведёт к гибели или освобождению. Вам предстоит пробираться через гибель цивилизации, отыскивая правду среди руин.",
