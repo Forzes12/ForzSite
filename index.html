@@ -2553,23 +2553,6 @@
             }
         }
 
-        
-            align-items: center;
-            gap: 10px;
-            padding: 16px 24px;
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.6) 100%);
-            backdrop-filter: blur(30px) saturate(190%);
-            -webkit-backdrop-filter: blur(30px) saturate(190%);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-            color: #cbd5e1;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            min-height: 56px;
-            font-weight: 500;
-        }
-
         .filter-select:hover {
             border-color: rgba(96, 165, 250, 0.4);
             transform: translateY(-2px);
@@ -2632,22 +2615,6 @@
         .filter-dropdown {
             position: relative;
             width: 100%;
-        }
-
-        .filter-select {
-            width: 100%;
-            padding: 12px 20px 12px 35px;
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(25px) saturate(190%);
-            -webkit-backdrop-filter: blur(25px) saturate(190%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            color: var(--text);
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            min-height: 48px;
-            appearance: none;
         }
 
         .filter-select:focus {
@@ -9521,6 +9488,9 @@
             const searchTerm = document.getElementById('gameSearch').value.toLowerCase();
             const activeCategory = document.querySelector('.category-tab.active').dataset.category;
             const activeFilter = document.querySelector('.filter-pill.active')?.dataset.filter || 'all';
+            const selectedYear = document.getElementById('yearFilter').value;
+            const selectedGenre = document.getElementById('genreFilter').value;
+            const selectedCompany = document.getElementById('companyFilter').value;
             
 
             const gameCards = document.querySelectorAll('#allGamesGrid .game-card');
@@ -9566,12 +9536,38 @@
                     matchesStatus = game.status === 'available' && (game.price === 'Бесплатно' || game.price === 'Free' || !game.price || game.price === '');
                 }
                 
-                const matchesSearch = !searchTerm || 
-                    game.title.toLowerCase().includes(searchTerm) || 
+                const matchesSearch = !searchTerm ||
+                    game.title.toLowerCase().includes(searchTerm) ||
                     game.description.toLowerCase().includes(searchTerm) ||
                     (game.tags && game.tags.some(tag => tag.toLowerCase().includes(searchTerm)));
-                    
-                if (matchesCategory && matchesStatus && matchesSearch) {
+
+                // Фильтр по году
+                let matchesYear = true;
+                if (selectedYear !== 'all') {
+                    if (selectedYear === 'old') {
+                        matchesYear = game.year && parseInt(game.year) <= 2019;
+                    } else {
+                        matchesYear = game.year === selectedYear;
+                    }
+                }
+
+                // Фильтр по жанру
+                let matchesGenre = true;
+                if (selectedGenre !== 'all') {
+                    const gameGenre = game.specs && game.specs["Жанр"];
+                    matchesGenre = gameGenre && gameGenre.toLowerCase().includes(selectedGenre.toLowerCase());
+                }
+
+                // Фильтр по компании
+                let matchesCompany = true;
+                if (selectedCompany !== 'all') {
+                    const developer = game.specs && game.specs["Разработчик"];
+                    const publisher = game.specs && game.specs["Издатель"];
+                    matchesCompany = (developer && developer.toLowerCase().includes(selectedCompany.toLowerCase())) ||
+                                   (publisher && publisher.toLowerCase().includes(selectedCompany.toLowerCase()));
+                }
+
+                if (matchesCategory && matchesStatus && matchesSearch && matchesYear && matchesGenre && matchesCompany) {
                     card.style.display = 'block';
                     visibleCount++;
                 } else {
@@ -11089,6 +11085,11 @@ function showForzaGames() {
                     filterGames();
                 });
             });
+
+            // Обработчики для фильтров года, жанра и компании
+            document.getElementById('yearFilter').addEventListener('change', filterGames);
+            document.getElementById('genreFilter').addEventListener('change', filterGames);
+            document.getElementById('companyFilter').addEventListener('change', filterGames);
 
             // Мобильное меню
             document.getElementById('mobileMenuBtn').addEventListener('click', openMobileMenu);
