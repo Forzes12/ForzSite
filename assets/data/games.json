@@ -3316,6 +3316,134 @@
             }
         }
     },
+    "Mixtape": {
+        "title": "Mixtape",
+        "description": "Mixtape – это их последний вечер в старой школе, поэтому трех друзей ожидает очередное приключение! Погрузитесь с головой в микстейп воспоминаний, которые будут записаны под саундтрек длиной в целое поколение.",
+        "image": "https://i.postimg.cc/nVwwNRMq/1717995219-library-600x900-2x.jpg",
+        "size": "9.91 GB",
+        "year": "2026",
+        "updated": "07.05.2026",
+        "status": "available",
+        "category": "games",
+        "tags": [
+            "Приключенческие игры",
+            "Инди"
+        ],
+        "torrentFile": "torrent/Mixtape.torrent",
+        "trailer": "https://drive.google.com/file/d/178NqXr80Ttg3kkkuwWTAxJ-jWeYMHUN1/preview",
+        "buyGame": "https://ggsel.net/catalog/product/mixtape-ru-sng-steam-kliuc-102289179",
+        "screenshots": [
+            "https://i.postimg.cc/m2BNX7y4/1777719427-ss-4cc42dbc765fe6668fd2e0d633f320ad0f8b08c9.jpg",
+            "https://i.postimg.cc/jSkHSm06/1777719334-ss-5abf2e239e21a59fa59dd2520a166b13f358d1d2.jpg",
+            "https://i.postimg.cc/LscjzPsH/1777719369-ss-7e065dacac8c9bf50ff45d9d9b57210ecf7c5044.jpg",
+            "https://i.postimg.cc/Hn25DP4F/1777719388-ss-08f1c5e644a5dcd172a892e2bd41bae6e47d1fe1.jpg",
+            "https://i.postimg.cc/rFVxCMqT/1777719429-ss-24acc55682b75be77cb5f4bfef6502fbafd66f10.jpg",
+            "https://i.postimg.cc/NjLXSD9q/1777719366-ss-207625ae80acf9b85f7ab91e0e806cabb892c69f.jpg",
+            "https://i.postimg.cc/SsbzXpZm/1777719424-ss-a86ec3a65b9697f6011bcc576066bd5d6e5642f2.jpg",
+            "https://i.postimg.cc/SRy2rfFP/1777719377-ss-ad1ca02ddc791e937ca6ad03b02bef893dd2da20.jpg",
+            "https://i.postimg.cc/SNxYYdGC/1387169.jpg"
+        ],
+        "specs": {
+            "Жанр": "Приключенческие игры, Инди",
+            "Разработчик": "Beethoven and Dinosaur",
+            "Издатель": "Annapurna Interactive",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "Windows 10, 11 (64-bit)",
+                "Процессор": "Intel core i5-9400F",
+                "Оперативная память": "8 GB ОЗУ",
+                "Видеокарта": "Nvidia GTX 1650",
+                "DirectX": "",
+                "Свободное место": "12 GB"
+            }
+        }
+    },
+    "Directive 8020": {
+        "title": "Directive 8020",
+        "description": "Directive 8020 – новая часть нашумевшей антологии, выход которой ожидается в скором времени. По задумкам авторов игрокам предстоит погружение в космический хоррор в стиле “Чужой” Ридли Скотта.",
+        "image": "https://i.postimg.cc/nVwwNRMq/1717995219-library-600x900-2x.jpg",
+        "size": "26.69 GB",
+        "year": "2026",
+        "updated": "12.05.2026",
+        "status": "available",
+        "category": "games",
+        "tags": [
+            "Экшены",
+            "Приключенческие игры"
+        ],
+        "torrentFile": "torrent/Directive-8020.torrent",
+        "trailer": "https://drive.google.com/file/d/18-oRXx0uzlzq-MEd50-c2YUFly1c8S1w/preview",
+        "buyGame": "https://ggsel.net/catalog/product/directive-8020-steam-kliuc-rf-sng-drugie-102231561",
+        "screenshots": [
+            "https://i.postimg.cc/dQB4KW1D/1777719738-ss-0abe7cb94c50fdf0d7577d4be99be1c67bce66cc.jpg",
+            "https://i.postimg.cc/K8d55wqX/1777719735-ss-5ee973218df1121e9f6d683c672a0941b2c7a35b.jpg",
+            "https://i.postimg.cc/NMx7BMQZ/1777719718-ss-6e94d0ad635eb7cedf9e5de51061d19d8a29cf64.jpg",
+            "https://i.postimg.cc/tCJtGpwk/1777719765-ss-35e4404a016d1704ced88332313605265eb7f646.jpg",
+            "https://i.postimg.cc/Mpj7XtW5/1777719787-ss-552258e4c696918643318412b2b1459a7cb3a13d.jpg",
+            "https://i.postimg.cc/3wX2FR0X/1777719774-ss-aea06b7e3b1681d7297cdc52ff3b16f312fd42d0.jpg",
+            "https://i.postimg.cc/wMvJzQfV/1777719799-ss-b41a64a988469d222a248062c3c79bcfd576f031.jpg",
+            "https://i.postimg.cc/nzV9K1Jf/1777719791-ss-da38d8bc2a2cfe8c42076a947eaba48f9fa049ca.jpg"
+        ],
+        "specs": {
+            "Жанр": "Экшены, Приключенческие игры",
+            "Разработчик": "Supermassive Games",
+            "Издатель": "Supermassive Games",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "Windows 10, 11 (64-bit)",
+                "Процессор": "Intel Core i5-8500",
+                "Оперативная память": "16 GB ОЗУ",
+                "Видеокарта": "GeForce RTX 2060",
+                "DirectX": "",
+                "Свободное место": "26.69 GB"
+            }
+        }
+    },
+    "Subnautica 2": {
+        "title": "Subnautica 2",
+        "description": "Subnautica 2 – настало время для новых приключений в стиле выживания в открытом море от создателей первой части! Так что погрузитесь с головой в одиночное или совместное прохождение. Неважно.",
+        "image": "https://i.postimg.cc/2jcyZpHb/1729328766-library-600x900-2x.jpg",
+        "size": "12.56 GB",
+        "year": "2026",
+        "updated": "14.05.2026",
+        "status": "available",
+        "category": "games",
+        "tags": [
+            "Экшены",
+            "Приключенческие игры"
+        ],
+        "torrentFile": "torrent/Subnautica-2.torrent",
+        "trailer": "https://drive.google.com/file/d/1SF5r9N4HVfZrWUDpMcnpvsNMRGI5nDVM/view/preview",
+        "buyGame": "https://ggsel.net/catalog/product/subnautica-2-vybor-regiona-steam-ru-avto-102294619",
+        "screenshots": [
+            "https://i.postimg.cc/Ssc5ppJB/1777720115-ss-16b68b0941ed9c5ac1eea74e478fa726d425bebf.jpg",
+            "https://i.postimg.cc/Hn2hV404/1777720109-ss-787e2315a1eb5aaba73c4f75e6f7d7d8835fa260.jpg",
+            "https://i.postimg.cc/jSCFSfW0/1777720078-ss-823b102b09530bbf588f5e9752cb52f1681dc992.jpg",
+            "https://i.postimg.cc/wM0w6xHS/1777720114-ss-56159597a28edfb07c6dd27b4a00f2e06e571048.jpg",
+            "https://i.postimg.cc/fR38NhPr/1777720071-ss-e631ef3b91faacacb5a2c823d0b979083548d66f.jpg",
+            "https://i.postimg.cc/x8TPFrH5/1777720137-ss-eab92bde7378f6532f765001126a8fb8b10ca8f9.jpg"
+        ],
+        "specs": {
+            "Жанр": "Экшены, Приключенческие игры",
+            "Разработчик": "Unknown Worlds Entertainment",
+            "Издатель": "Unknown Worlds Entertainment",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "Windows 10, 11 (64-bit)",
+                "Процессор": "Intel Core i5-8400",
+                "Оперативная память": "12 GB ОЗУ",
+                "Видеокарта": "Nvidia GTX 1660",
+                "DirectX": "",
+                "Свободное место": "15 GB"
+            }
+        }
+    },
     "Darksiders 4": {
         "title": "Darksiders 4",
         "description": "Darksiders 4 — это хардкорный экшен о выживании среди падших миров, где выбор ведёт к гибели или освобождению. Вам предстоит пробираться через гибель цивилизации, отыскивая правду среди руин.",
