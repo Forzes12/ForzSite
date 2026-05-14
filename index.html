@@ -1899,11 +1899,12 @@
         /* Модальное окно приветствия */
         .welcome-modal-content {
             max-width: 800px;
+            height: 650px;
             padding: 0;
             background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
             border-radius: 20px;
-            overflow: visible;
-            box-shadow: 
+            overflow: hidden;
+            box-shadow:
                 0 0 60px rgba(139, 92, 246, 0.4),
                 0 0 100px rgba(139, 92, 246, 0.2),
                 0 25px 50px rgba(0, 0, 0, 0.5);
@@ -2009,7 +2010,7 @@
             height: 100%;
             max-height: 100%;
             max-width: 100%;
-            object-fit: contain;
+            object-fit: fill;
             object-position: center center;
             background: transparent;
             transition: transform 0.3s ease;
@@ -2045,7 +2046,8 @@
             justify-content: flex-start;
             background: linear-gradient(180deg, rgba(139, 92, 246, 0.15) 0%, rgba(15, 23, 42, 0.98) 100%);
             position: relative;
-            overflow: visible;
+            overflow-y: auto;
+            overflow-x: hidden;
             min-height: 100%;
             height: auto;
             align-self: stretch;
@@ -10915,6 +10917,31 @@ function showForzaGames() {
                     }
                 }
             }
+
+            // Функции для уведомления о новости
+            function showNewsToast() {
+                const toast = document.getElementById('newsToast');
+                if (toast) {
+                    toast.classList.add('show');
+                    // Убрано автоматическое скрытие - теперь только по клику на крестик
+                }
+            }
+
+            function closeNewsToast() {
+                const toast = document.getElementById('newsToast');
+                if (toast) {
+                    toast.classList.remove('show');
+                }
+            }
+
+            // Открытие окна новостей при клике на toast
+            document.getElementById('newsToast').addEventListener('click', function(e) {
+                if (!e.target.classList.contains('close-toast')) {
+                    openWelcomeModal();
+                    closeNewsToast();
+                }
+            });
+
             window.closeWelcomeModal = closeWelcomeModal;
             
             // Кнопка закрытия
@@ -11025,6 +11052,11 @@ function showForzaGames() {
 
             // Инициализируем просмотр скриншотов
             initScreenshotViewer();
+
+            // Показать уведомление о новости через 3 секунды
+            setTimeout(() => {
+                showNewsToast();
+            }, 3000);
 
             // Анимация при скролле (вверх и вниз)
             const observerOptions = {
@@ -11320,7 +11352,19 @@ function showForzaGames() {
     <!-- Плавающая кнопка поддержки -->
     <button class="floating-support-btn" id="supportBtn" title="Связаться с поддержкой" style="position: fixed !important; bottom: 24px !important; right: 24px !important; z-index: 999999 !important; opacity: 1 !important; visibility: visible !important; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%) !important; width: 60px !important; height: 60px !important; display: flex !important;">
         <i class="fas fa-headset"></i>
-    </button>    
+    </button>
+
+    <!-- Уведомление о новости -->
+    <div class="news-toast" id="newsToast">
+        <button class="close-toast" onclick="closeNewsToast()">&times;</button>
+        <div style="font-weight: 600; margin-bottom: 8px;">
+            <i class="fas fa-newspaper" style="color: #fbbf24; margin-right: 8px;"></i>
+            <b>Все новости сайта здесь</b>
+        </div>
+        <div style="font-size: 14px; opacity: 0.9;">
+            Читайте последние обновления и новости Forzes HUB
+        </div>
+    </div>
 </body>
 </html>
 
