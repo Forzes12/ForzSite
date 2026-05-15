@@ -1565,6 +1565,87 @@
             box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
         }
 
+        /* Ultra-enhanced virus check button - premium and futuristic */
+        /* Beautiful virus check button styles */
+        .virus-btn {
+            background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%);
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.25), 0 2px 8px rgba(6, 95, 70, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            padding: 7px 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            min-height: 34px;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-left: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .virus-btn i {
+            font-size: 1rem;
+            color: #a7f3d0;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            transition: all 0.3s ease;
+        }
+
+        .virus-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+            transform: skewX(-15deg);
+            transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .virus-btn:hover::before {
+            left: 100%;
+        }
+
+        .virus-btn:hover {
+            background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4), 0 4px 12px rgba(6, 95, 70, 0.2);
+            border-color: rgba(34, 197, 94, 0.5);
+        }
+
+        .virus-btn:hover i {
+            color: #ffffff;
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .virus-btn:active {
+            transform: translateY(-1px) scale(1.01);
+        }
+
+        /* Modal virus button - beautiful version */
+        .virus-btn.modal-virus-btn {
+            padding: 9px 16px;
+            font-size: 0.85rem;
+            min-height: 38px;
+            border-radius: 10px;
+            margin-left: 12px;
+        }
+
+        /* Subtle pulse animation */
+        @keyframes virusPulse {
+            0%, 100% { box-shadow: 0 4px 15px rgba(5, 150, 105, 0.25), 0 2px 8px rgba(6, 95, 70, 0.15); }
+            50% { box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35), 0 3px 10px rgba(6, 95, 70, 0.2); }
+        }
+
+        .virus-btn { animation: virusPulse 3s ease-in-out infinite; }
+
+
+
         .soon-btn {
             background: linear-gradient(135deg, #475569 0%, #334155 100%);
             cursor: not-allowed;
@@ -9750,10 +9831,13 @@ function showForzaGames() {
                         <p class="game-modal-description">${game.description}</p>
                         <div class="game-modal-buttons">
                             ${(() => {
-                                if (game.status === 'available') {
+if (game.status === 'available') {
                                     let html = `<a href="javascript:void(0)" onclick="handleDownload('${game.id}', '${game.title.replace(/'/g, "\\'")}', '${game.torrentFile}')" class="modal-download-btn">
                                         <i class="fas fa-download"></i> Скачать
                                     </a>`;
+                                    if (game.virus_check) {
+                                        html += `<a href="${game.virus_check}" class="virus-btn modal-virus-btn" target="_blank" style="margin-left:10px;"><i class="fas fa-shield-virus"></i> Проверить вирусы</a>`;
+                                    }
                                     if (game.promoCode) {
                                         html += `<div class="promo-button-container" id="promo-container-${game.id}" onclick="copyPromoCode('${game.promoCode}', '${game.id}')">
                                             <div class="promo-button-content">
