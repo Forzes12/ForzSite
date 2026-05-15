@@ -137,11 +137,11 @@
         "forza-horizon-6": {
         "title": "Forza Horizon 6",
         "description": "Forza Horizon 6 — это новое воплощение любимой серии, переносящее гонщиков в Японию, о которой давно мечтали фанаты. Здесь уличная культура соседствует с храмами и горами, а каждая трасса становится испытанием.",
-        "image": "https://i.postimg.cc/vmVC2L8s/1769112682-library-capsule-2x.jpg",
-        "size": "Неизвестно ГБ",
+        "image": "https://i.postimg.cc/8CFQvGvZ/1769112682-library-capsule-2x.jpg",
+        "size": "120.76 ГБ",
         "year": "2026",
-        "updated": "23.01.2026",
-        "status": "soon",
+        "updated": "15.05.2026",
+        "status": "available",
         "category": "Forza Horizon",
         "tags": [
             "forza",
@@ -152,18 +152,20 @@
             "форза",
             "форза горизон"
         ],
-        "trailer": "https://drive.google.com/file/d/1OXZ-pRjPbL8BXyMqwyc40w3xbqEGGGQB/preview",
+        "torrentFile": "torrent/Forza-Horizon-6.torrent",
+        "trailer": "https://drive.google.com/file/d/1GFChzS81QZZa9e8RW1f_nRW33OVFbCUh/preview",
+        "buyGame": "https://ggsel.net/catalog/forza-horizon-6",
         "screenshots": [
-            "https://i.postimg.cc/Hk895T93/1769112686-ss-3b8ebc00e4a5a503984d2a523fc07a14612d03e9.jpg",
-            "https://i.postimg.cc/50gB1yfV/1769112691-ss-17b0e8d6a90e174e45f4c7438167d9d4e6ae8804.jpg",
-            "https://i.postimg.cc/rsY50H0M/1769112695-ss-4347ba202ef1cdaabaaccd830831afb8fdeeb9e4.jpg",
-            "https://i.postimg.cc/ZKC8tJgg/1769112747-ss-5033ff1c1f16bbaf1516f222fc54e399aa1480be.jpg",
-            "https://i.postimg.cc/CLXjwWp7/1769112770-ss-7775b5046e2fcc717f180577f482b2a5e3cbf0dc.jpg",
-            "https://i.postimg.cc/cJNwnwHH/1769112756-ss-909356963f2a59f0ec92898c0cb9211999e25c14.jpg",
-            "https://i.postimg.cc/JnpkvF59/1769112764-ss-a11a150869b7ae526cdbca33b7442db3f3ac88d8.jpg",
-            "https://i.postimg.cc/VvTbLbpP/1769112779-ss-c4575122a4b3f06369e79b0f83226c039f870eaf.jpg",
-            "https://i.postimg.cc/9QyqC0BP/1769112695-ss-c9354540f5a39270c918fa2eca1a92b28a7ee918.jpg",
-            "https://i.postimg.cc/3Nyd6xR2/1769112779-ss-f3634cbcfd6caa23b5b9e1b2e901d2cea63b6dc0.jpg"
+            "https://i.postimg.cc/4yjwrCd2/1769112686-ss-3b8ebc00e4a5a503984d2a523fc07a14612d03e9.jpg",
+            "https://i.postimg.cc/qBW9PS9h/1769112691-ss-17b0e8d6a90e174e45f4c7438167d9d4e6ae8804.jpg",
+            "https://i.postimg.cc/YCMykH8K/1769112695-ss-4347ba202ef1cdaabaaccd830831afb8fdeeb9e4.jpg",
+            "https://i.postimg.cc/jq6HTJ15/1769112747-ss-5033ff1c1f16bbaf1516f222fc54e399aa1480be.jpg",
+            "https://i.postimg.cc/Tw6KNtf7/1769112770-ss-7775b5046e2fcc717f180577f482b2a5e3cbf0dc.jpg",
+            "https://i.postimg.cc/RVyVbgT6/1769112756-ss-909356963f2a59f0ec92898c0cb9211999e25c14.jpg",
+            "https://i.postimg.cc/Nf9QT1wG/1769112764-ss-a11a150869b7ae526cdbca33b7442db3f3ac88d8.jpg",
+            "https://i.postimg.cc/CKFyv89n/1769112779-ss-c4575122a4b3f06369e79b0f83226c039f870eaf.jpg",
+            "https://i.postimg.cc/W1VbvhQM/1769112695-ss-c9354540f5a39270c918fa2eca1a92b28a7ee918.jpg",
+            "https://i.postimg.cc/tC3p297c/1769112779-ss-f3634cbcfd6caa23b5b9e1b2e901d2cea63b6dc0.jpg"
         ],
         "specs": {
             "Жанр": "Гонки, Автосимулятор, Открытый мир",
@@ -172,19 +174,12 @@
             "Платформа": "PC, Xbox Series X|S"
         },
         "systemRequirements": {
-            "минимальные": {
-                "ОС": "Информация уточняется",
-                "Процессор": "Информация уточняется",
-                "Оперативная память": "Информация уточняется",
-                "Видеокарта": "Информация уточняется",
-                "Место на диске": "Информация уточняется"
-            },
             "рекомендуемые": {
-                "ОС": "Информация уточняется",
-                "Процессор": "Информация уточняется",
-                "Оперативная память": "Информация уточняется",
-                "Видеокарта": "Информация уточняется",
-                "Место на диске": "Информация уточняется"
+                "ОС": "Windows 10, 11 (64-bit)",
+                "Процессор": "Intel Core i5-8400",
+                "Оперативная память": "16 GB ОЗУ",
+                "Видеокарта": "Nvidia GTX 1650",
+                "Место на диске": "(SSD): 156 GB"
             }
         }
     },
