@@ -17,8 +17,9 @@
             "дед айленд",
             "зомби"
         ],
-        "torrentFile": "https://thelastgame.org/index.php?do=download&id=130",
-        "trailer": "https://vk.com/video_ext.php?oid=-30602036&id=456283259&hash=abc123&hd=2",
+        "torrentFile": "torrent/Dead-Island-2.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/29a361f26747093ab768a083bcf8f11e67981e7fb9c901241792b9acfd37768b",
+            "trailer": "https://vk.com/video_ext.php?oid=-30602036&id=456283259&hash=abc123&hd=2",
         "buyGame": "https://ggsel.net/catalog/dead-island-2-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/x8MYQNPJ/1681135851-ds-venice-night-1.jpg",
@@ -57,8 +58,15 @@
         "updated": "01.03.2023",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://byxatab.com/index.php?do=download&id=2179",
-        "trailer": "https://drive.google.com/file/d/1ZCGhL3LDb-8dLcXygnTbg3F3WeSp_7m5/preview",
+        "tags": [
+            "Detroit",
+            "Detroit: Become",
+            "Become Human",
+            "Detroit: Human"
+        ],
+        "torrentFile": "torrent/Detroit-Become-Human.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/1cb5556ec3dee1a8f200d1e9c4283fa0875fd3d4087c7420ef03b4171016d30a",
+            "trailer": "https://drive.google.com/file/d/1ZCGhL3LDb-8dLcXygnTbg3F3WeSp_7m5/preview",
         "buyGame": "https://ggsel.net/catalog/detroit-become-human-3886",
         "screenshots": [
             "https://i.postimg.cc/MTJXb7Qq/1553366453-detroit-become-human-screen-01-ps4-us-13apr18.jpg",
@@ -105,7 +113,8 @@
             "гта",
             "гта 6"
         ],
-        "trailer": "https://drive.google.com/file/d/1l9-SpOp0QY4C2A9Ug2rUMsaUbSzqjWFJ/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1l9-SpOp0QY4C2A9Ug2rUMsaUbSzqjWFJ/preview",
         "screenshots": [
             "https://i.postimg.cc/QdssXjWz/1746543938-7nrcbjsshlti29jb1c9mvw-1.jpg",
             "https://i.postimg.cc/FsXXZhGr/1746543938-18r83yshxek9y-rchkvgra-1.jpg",
@@ -153,7 +162,8 @@
             "форза горизон"
         ],
         "torrentFile": "torrent/Forza-Horizon-6.torrent",
-        "trailer": "https://drive.google.com/file/d/1GFChzS81QZZa9e8RW1f_nRW33OVFbCUh/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1GFChzS81QZZa9e8RW1f_nRW33OVFbCUh/preview",
         "buyGame": "https://ggsel.net/catalog/forza-horizon-6",
         "screenshots": [
             "https://i.postimg.cc/4yjwrCd2/1769112686-ss-3b8ebc00e4a5a503984d2a523fc07a14612d03e9.jpg",
@@ -202,7 +212,8 @@
             "открытый мир",
             "цири"
         ],
-        "trailer": "https://drive.google.com/file/d/1_OnTY3sYiHw1W5SmAqGhfv3oN8Q4nrqn/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1_OnTY3sYiHw1W5SmAqGhfv3oN8Q4nrqn/preview",
         "screenshots": [
             "https://i.postimg.cc/7hMt7w16/1734556337-432357.jpg",
             "https://i.postimg.cc/W1Qm2xr8/1734556313-432358.jpg",
@@ -256,7 +267,8 @@
             "рpg элементы",
             "пост-апокалипсис"
         ],
-        "trailer": "https://drive.google.com/file/d/1IdTYHOgqnWtdkNYeapUI_R-3WNVLzium/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1IdTYHOgqnWtdkNYeapUI_R-3WNVLzium/preview",
         "screenshots": [
             "https://i.postimg.cc/GhvTF9ss/1749275827-ss-1eba1f82567000e87e802d732075c76b81277b3f.jpg",
             "https://i.postimg.cc/6p07PScw/1749275809-ss-04df82d0cb959077d26d9c22dbebfc3ceff040e7.jpg",
@@ -301,8 +313,16 @@
         "updated": "19.11.2025",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://thelastgame.org/index.php?do=download&id=25363",
-        "trailer": "https://drive.google.com/file/d/1FFEYZ4aImNICT8YX2G4XziW8wvIJez_L/preview",
+        "tags": [
+    "Little Nightmares",
+    "Little Nightmares 3",
+    "Low",
+    "The Spiral",
+    "Low & Alone"
+],
+        "torrentFile": "torrent/Little-Nightmares-III.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/8ecd241a796ca23d8bdf1a66097ed22200ed3581a0706eb151d6343fd00b15b9",
+            "trailer": "https://drive.google.com/file/d/1FFEYZ4aImNICT8YX2G4XziW8wvIJez_L/preview",
         "buyGame": "https://ggsel.net/catalog/little-nightmares-3-keys-and-gifts-steam",
         "screenshots": [
             "https://i.postimg.cc/bNZT5PBK/1692778601-ss-0266e383a8bca23411d6a7676aa9ba27cc27d487.jpg",
@@ -341,8 +361,18 @@
         "updated": "26.08.2022",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://byxatab.com/index.php?do=download&id=3197",
-        "trailer": "https://drive.google.com/file/d/1bUnpBkIYGGmCVyKNUMSbj_rCPzKwKkAT/preview",
+        "tags": [
+    "Little Nightmares",
+    "Little Nightmares II",
+    "Mono",
+    "Six",
+    "The Signal Tower",
+    "The Hunter",
+    "Pale City"
+],
+        "torrentFile": "torrent/Little-Nightmares-2.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/dcee3634d014e4ca1e868f5aad9cd7b3e1703cc0de73b5821104e906e2e66c98",
+            "trailer": "https://drive.google.com/file/d/1bUnpBkIYGGmCVyKNUMSbj_rCPzKwKkAT/preview",
         "buyGame": "https://ggsel.net/catalog/little-nightmares-2-keys-steam-standart",
         "screenshots": [
             "https://image2url.com/images/1764591531688-286da4b6-be4d-4509-8ace-20d889571b3a.jpg",
@@ -381,8 +411,18 @@
         "updated": "29.09.2025",
         "status": "available",
         "category": "games",
+        "tags": [
+    "My Summer Car",
+    "Satsuma",
+    "Finland",
+    "Peräjärvi",
+    "Car Building",
+    "Survival",
+    "Teimo"
+],
         "torrentFile": "https://thelastgame.org/index.php?do=download&id=25116",
-        "trailer": "https://drive.google.com/file/d/1rTfV83o4uBXl5GDAK1Rm2fIlq_O50LZK/preview",
+        "virus_check": "https://www.virustotal.com/gui/file/a86d3169615f954b45f93a566d158ba24070c60a5e36583de0b6d6c039755388",
+            "trailer": "https://drive.google.com/file/d/1rTfV83o4uBXl5GDAK1Rm2fIlq_O50LZK/preview",
         "buyGame": "https://ggsel.net/catalog/steam-40437",
         "screenshots": [
             "https://image2url.com/images/1764592319875-c058bb42-5f8c-421e-8d0b-562bd872d59a.jpg",
@@ -421,8 +461,19 @@
         "updated": "10.01.2026",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://itorrents-igruha.org/engine/download.php?id=96854",
-        "trailer": "https://drive.google.com/file/d/11dj9PbHsOViBsE3kF7VjB5HEY4UbAnF2/preview",
+        "tags": [
+    "My Winter Car",
+    "Satsuma",
+    "Finland",
+    "Winter",
+    "Snow",
+    "Car Building",
+    "Survival",
+    "Ice Roads"
+],
+        "torrentFile": "tprrent/My-Winter-Car.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/e085ecf28791700d5aea33201cd02a3a8dd613c112bedef2dc88df0ea4987626",
+            "trailer": "https://drive.google.com/file/d/11dj9PbHsOViBsE3kF7VjB5HEY4UbAnF2/preview",
         "buyGame": "https://ggsel.net/catalog/product/my-winter-car-steam-gift-ru-ua-kz-by-in-ch-ar-tr-102113925",
         "screenshots": [
             "https://i.postimg.cc/wB2wRppq/1767038127-ss-2cc16cf260e3bd37151c68586d5ba616f2b56770.jpg",
@@ -466,8 +517,18 @@
         "updated": "11.12.2025",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://thelastgame.org/index.php?do=download&id=25940",
-        "trailer": "https://drive.google.com/file/d/1b2HdVrg-VhsGMBhkV4vrL08ZhexzvZlz/preview",
+        "tags": [
+    "Hollow Knight",
+    "Silksong",
+    "Hornet",
+    "Pharloom",
+    "Lace",
+    "Citadel",
+    "Boneforest"
+],
+        "torrentFile": "torrent/Hollow-Knight-Silksong.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/2140b67d588cb9376d53bf00743a8b8b74a1444012d00581ab6d13f9f61fdd9c",
+            "trailer": "https://drive.google.com/file/d/1b2HdVrg-VhsGMBhkV4vrL08ZhexzvZlz/preview",
         "buyGame": "https://ggsel.net/catalog/steam-38446",
         "screenshots": [
             "https://i.postimg.cc/Z5KNWtGf/1755787322-ss-0a6eebaf5ade7dbd1dcffcc108d6b5dca68373f3-1.jpg",
@@ -506,8 +567,19 @@
         "updated": "29.09.2025",
         "status": "available",
         "category": "games",
+        "tags": [
+    "Spider-Man",
+    "Marvel's Spider-Man 2",
+    "Peter Parker",
+    "Miles Morales",
+    "Venom",
+    "Kraven",
+    "Symbiote",
+    "New York"
+],
         "torrentFile": "https://thelastgame.org/index.php?do=download&id=22660",
-        "trailer": "https://drive.google.com/file/d/1Og_0J7oBUu2_weBm9NBTOB_58fEiOEvv/preview",
+        "virus_check": "https://www.virustotal.com/gui/file/b0cc65e662371abfdecf7eacdaf3fa7f5f62b67c2f5d786fcc421a0ed1a2d2d3",
+            "trailer": "https://drive.google.com/file/d/1Og_0J7oBUu2_weBm9NBTOB_58fEiOEvv/preview",
         "buyGame": "https://ggsel.net/catalog/steam-102079",
         "screenshots": [
             "https://i.postimg.cc/RCKpRKWM/1738265228-ss-0fda7c96ee3f16038559fffa8c2cd7b3ac433c2b.jpg",
@@ -556,7 +628,8 @@
             "гта 5"
         ],
         "torrentFile": "https://byxatab.com/index.php?do=download&id=153",
-        "trailer": "https://drive.google.com/file/d/1BwKqJPcZa_tIY_J-VHphtE-j7N9_MUeM/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1BwKqJPcZa_tIY_J-VHphtE-j7N9_MUeM/preview",
         "buyGame": "https://ggsel.net/catalog/grand-theft-auto-v-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/XJRDmKfQ/1659003266-ss-320f7bf17d387eddb1c7153e2bf8de8e14bc4d39-1920x1080.jpg",
@@ -606,7 +679,8 @@
             "гта 4"
         ],
         "torrentFile": "https://thelastgame.org/index.php?do=download&id=74",
-        "trailer": "https://drive.google.com/file/d/1u4Ov9NN54algWRQd0N9LM_XxKwTRCvS7/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1u4Ov9NN54algWRQd0N9LM_XxKwTRCvS7/preview",
         "buyGame": "https://ggsel.net/catalog/grand-theft-auto-iv-gta-4-keys-complete-edition",
         "screenshots": [
             "https://i.postimg.cc/3N6pn92S/1414763222-05-r-1-1024x640-1.jpg",
@@ -655,7 +729,8 @@
             "гта сан андреас"
         ],
         "torrentFile": "https://thelastgame.org/index.php?do=download&id=53",
-        "trailer": "https://drive.google.com/file/d/1RFkalR_P4_T3H17F0JpwuRIMLFuZHcgE/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1RFkalR_P4_T3H17F0JpwuRIMLFuZHcgE/preview",
         "buyGame": "https://ggsel.net/catalog/steam-49912",
         "screenshots": [
             "https://i.postimg.cc/j5Zf4KtR/1scr-430537248.jpg",
@@ -694,8 +769,20 @@
         "updated": "16.12.2025",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://thelastgame.org/index.php?do=download&id=20675",
-        "trailer": "https://drive.google.com/file/d/1OIQ3h5WFgIOICkYHPUPxXMdzqkN_rQhN/preview",
+        "tags": [
+    "Teardown",
+    "Voxel",
+    "Destruction",
+    "Physics",
+    "Heist",
+    "Tuxedo Labs",
+    "Procedural",
+    "Robbery",
+    "Vandal"
+],
+        "torrentFile": "torrent/Teardown.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/fdd1598243c192e0ca07f4ef9c2422c8a7b535c66b3d0786934cc4cbe3435453",
+            "trailer": "https://drive.google.com/file/d/1OIQ3h5WFgIOICkYHPUPxXMdzqkN_rQhN/preview",
         "buyGame": "https://ggsel.net/catalog/teardown-5927",
         "screenshots": [
             "https://i.postimg.cc/hGxgQ5np/1700059364-ss-4e43fc5c0302825007c35f51e03964726a06e984.jpg",
@@ -732,10 +819,23 @@
         "size": "35.63 GB",
         "year": "2018",
         "updated": "17.10.2025",
-        "status": "buy",
+        "status": "available",
         "category": "games",
+        "tags": [
+    "The Crew 2",
+    "Ubisoft",
+    "Open World",
+    "Racing",
+    "USA",
+    "Cars",
+    "Planes",
+    "Boats",
+    "Motorsports"
+],
+        "torrentFile": "torrent/The.Crew.2.v4367857-P2P.torrent",
         "buyGame": "https://ggsel.net/catalog/the-crew-2-keys-steam",
-        "trailer": "https://drive.google.com/file/d/1MmnTrdB9X7vhKOhVij3b6uLMQ7jvYpRz/preview",
+        "virus_check": "https://www.virustotal.com/gui/file/8cc53a46ed8eaed43a302ad43001b548eb1ce588ecf867d80200919a132bee64",
+            "trailer": "https://drive.google.com/file/d/1MmnTrdB9X7vhKOhVij3b6uLMQ7jvYpRz/preview",
         "screenshots": [
             "https://image2url.com/images/1763216195469-eea2b746-041a-4d2f-931b-6fd7bd41cdd7.jpg",
             "https://image2url.com/images/1763216207734-993b6d85-3085-4e97-9f80-9999bfd165a5.jpg",
@@ -773,8 +873,19 @@
         "updated": "04.02.2023",
         "status": "buy",
         "category": "games",
+        "tags": [
+    "The Crew",
+    "Ubisoft",
+    "Open World",
+    "Racing",
+    "USA",
+    "Cars",
+    "Factions",
+    "Cops & Robbers"
+],
         "buyGame": "https://ggsel.net/catalog/the-crew-motorfest-keys-steam",
-        "trailer": "https://drive.google.com/file/d/1UbM5xcXYzjIpIsVnzpoGv4GvRxeK9AAV/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1UbM5xcXYzjIpIsVnzpoGv4GvRxeK9AAV/preview",
         "screenshots": [
             "https://image2url.com/images/1763217983447-dcbad02f-536f-4388-80f3-83b817e27e0b.jpg",
             "https://image2url.com/images/1763218021075-f9943f23-29b6-43e8-a184-25f00bda01d0.jpg",
@@ -812,9 +923,20 @@
         "updated": "08.03.2024",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://itorrents-igruha.org/engine/download.php?id=102954",
+        "tags": [
+    "Black Myth: Wukong",
+    "Wukong",
+    "Sun Wukong",
+    "Journey to the West",
+    "Action RPG",
+    "Game Science",
+    "Chinese Mythology",
+    "Souls-like"
+],
+        "torrentFile": "torrent/Black-Myth-Wukong.torrent",
         "buyGame": "https://ggsel.net/catalog/black-myth-wukong-keys-steam",
-        "trailer": "https://drive.google.com/file/d/1xWBoqzhHXsEiyPqsu1yhrLxv_Kp4JFKt/preview",
+        "virus_check": "https://www.virustotal.com/gui/file/5a35750d9f89f114027c3d8f213474cb9de765338b849014dcedb0d72836da14",
+            "trailer": "https://drive.google.com/file/d/1xWBoqzhHXsEiyPqsu1yhrLxv_Kp4JFKt/preview",
         "screenshots": [
             "https://i.postimg.cc/G90fYVSw/1scr-7958143981.jpg",
             "https://i.postimg.cc/Bn3SfVZN/2scr-843523299.jpg",
@@ -854,8 +976,20 @@
         "updated": "23.11.2025",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://byxatab.com/index.php?do=download&id=17708",
-        "trailer": "https://drive.google.com/file/d/1FDlcjDXxTlKnd39IXl9j-rbbFRka2ODB/preview",
+        "tags": [
+    "Battlefield 6",
+    "Battlefield Studios",
+    "EA",
+    "FPS",
+    "Military Shooter",
+    "Pax Armata",
+    "NATO",
+    "Campaign",
+    "Multiplayer"
+],
+        "torrentFile": "torrent/Battlefield-6.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/e6dcfce5b7761499bffa92aaad9711fa23eecd4d40e077400f0c5f832b8d21a6",
+            "trailer": "https://drive.google.com/file/d/1FDlcjDXxTlKnd39IXl9j-rbbFRka2ODB/preview",
         "buyGame": "https://ggsel.net/catalog/battlefield-6-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/mg1pZ5cG/804efa1507-1scr-2807960.jpg",
@@ -894,8 +1028,19 @@
         "updated": "22.12.2025",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://byxatab.com/index.php?do=download&id=17513",
-        "trailer": "https://drive.google.com/file/d/1-WkrFIz0Deo0kcMylr4HOvfQSCDaOJyi/preview",
+        "tags": [
+    "Satisfactory",
+    "Coffee Stain Studios",
+    "Factory Building",
+    "Automation",
+    "Open World",
+    "FPS",
+    "Resource Management",
+    "Massage 2(AB)b"
+],
+        "torrentFile": "torrent/Satisfactory.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/c84eacbae23ead6a1274762f949385d11b33c4a1323786419d801c05946c3b09",
+            "trailer": "https://drive.google.com/file/d/1-WkrFIz0Deo0kcMylr4HOvfQSCDaOJyi/preview",
         "buyGame": "https://ggsel.net/catalog/satisfactory-4424",
         "screenshots": [
             "https://i.postimg.cc/BQXYQS6k/1scr-759026200.jpg",
@@ -934,8 +1079,20 @@
         "updated": "21.01.2025",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://byxatab.com/index.php?do=download&id=13549",
-        "trailer": "https://drive.google.com/file/d/1FWaZ62BD40qOGCwt8N6zqP1JYaQllSUY/preview",
+        "tags": [
+    "Sons of the Forest",
+    "SOTF",
+    "Endnight Games",
+    "Survival Horror",
+    "Open World",
+    "Cannibals",
+    "Mutants",
+    "Building",
+    "Kelvin"
+],
+        "torrentFile": "torrent/Sons-of-the-Forest.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/74d52bc24cab91be0da46b107825b8ee09d90217926f3fddac58e0584fb51bcc",
+            "trailer": "https://drive.google.com/file/d/1FWaZ62BD40qOGCwt8N6zqP1JYaQllSUY/preview",
         "buyGame": "https://ggsel.net/catalog/sons-of-the-forest-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/ZYMRyHbc/1651822141-s1.jpg",
@@ -974,8 +1131,20 @@
         "updated": "20.09.2025",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://thelastgame.org/index.php?do=download&id=25167",
-        "trailer": "https://drive.google.com/file/d/1BatuMKfYTKKxJyTV3oGSuXm6WwDkG4fGW/preview",
+        "tags": [
+    "Cyberpunk 2077",
+    "CD Projekt Red",
+    "Night City",
+    "V",
+    "Johnny Silverhand",
+    "Keanu Reeves",
+    "Open World",
+    "RPG",
+    "Cyberpunk"
+],
+        "torrentFile": "torrent/cyberpunk-2077.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/05ea3efd89a34965a86f922069cb4130f2cbaa3a8cb6a401a3a1c04e115f3022",
+            "trailer": "https://drive.google.com/file/d/1BatuMKfYTKKxJyTV3oGSuXm6WwDkG4fGW/preview",
         "buyGame": "https://ggsel.net/catalog/cyberpunk-2077-1991",
         "screenshots": [
             "https://image2url.com/images/1764939399807-f80a47b5-f2fa-425a-b5ec-faf8279ea3ae.jpg",
@@ -1014,8 +1183,20 @@
         "updated": "16.12.2025",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://thelastgame.ru/download/BeamNG_drive_v0.37.6.0.torrent",
-        "trailer": "https://drive.google.com/file/d/1BatuMKfYTKKxJyTV3oGSuXm6WwDkG4fGW/preview",
+        "tags": [
+    "BeamNG.drive",
+    "BeamNG",
+    "Soft Body Physics",
+    "Vehicle Simulation",
+    "Destruction",
+    "Sandbox",
+    "Realistic Damage",
+    "Cars",
+    "Crash Physics"
+],
+        "torrentFile": "torrent/BeamNG.drive.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/9163c5545eb817d1ee1f3ef76e66a6a1fc6e49d17d8487b883b1be7e79871efe",
+            "trailer": "https://drive.google.com/file/d/1BatuMKfYTKKxJyTV3oGSuXm6WwDkG4fGW/preview",
         "buyGame": "https://ggsel.net/catalog/beamng-drive-5686",
         "screenshots": [
             "https://image2url.com/images/1764940793390-2d56ed07-95d6-41ed-88c5-a8ee2e04037b.jpg",
@@ -1054,8 +1235,19 @@
         "updated": "14.11.2025",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://byxatab.com/index.php?do=download&id=12692",
-        "trailer": "https://drive.google.com/file/d/18qfVWnWkHMAbekztQpBlMDb7xPCx6ZXp/preview",
+        "tags": [
+    "Star Trucker",
+    "Space Trucking",
+    "Simulation",
+    "Open World",
+    "Trucking",
+    "Cargo",
+    "Space",
+    "First Person"
+],
+        "torrentFile": "torrent/Star-Trucker.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/650db4d439977cdda866187f9b32b41ed622a6435e860ad0a34982ac9826cd4d",
+            "trailer": "https://drive.google.com/file/d/18qfVWnWkHMAbekztQpBlMDb7xPCx6ZXp/preview",
         "buyGame": "https://ggsel.net/catalog/product/star-trucker-steam-gift-avtodostavka-4648151",
         "screenshots": [
             "https://i.postimg.cc/j5JfFS4p/5ee5883d7d-1scr-131178.jpg",
@@ -1094,8 +1286,20 @@
         "updated": "29.12.2025",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://byxatab.com/index.php?do=download&id=5266",
-        "trailer": "https://drive.google.com/file/d/1zzwhorW60lh7rPDPrtRkR_0UooorLH9_/preview",
+        "tags": [
+    "Bridge Constructor Portal",
+    "Bridge Constructor",
+    "Portal",
+    "Valve",
+    "ClockStone",
+    "Puzzle",
+    "Aperture Science",
+    "GLaDOS",
+    "Physics"
+],
+        "torrentFile": "torrent/Bridge-Constructor-Portal.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/5c55b5a9784230074547c7133d3934e14bdb7b8129912497113491cbd086e81c",
+            "trailer": "https://drive.google.com/file/d/1zzwhorW60lh7rPDPrtRkR_0UooorLH9_/preview",
         "buyGame": "https://ggsel.net/catalog/steam-65109",
         "screenshots": [
             "https://i.postimg.cc/wjCRspzp/1588339410-1scr-444339352.jpg",
@@ -1134,8 +1338,20 @@
         "updated": "13.12.2025",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://thelastgame.org/index.php?do=download&id=23121",
-        "trailer": "https://drive.google.com/file/d/-/preview",
+        "tags": [
+    "Garry's Mod",
+    "GMod",
+    "Facepunch Studios",
+    "Sandbox",
+    "Physics",
+    "Source Engine",
+    "Prop Hunt",
+    "Murder",
+    "Ragdoll"
+],
+        "torrentFile": "torrent/Garrys-Mod.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/c6bc78ba9fdbcff51f7d796979cc3effe7bf01b606bb89a3f3c95cf8293ecef8",
+            "trailer": "https://drive.google.com/file/d/-/preview",
         "buyGame": "https://ggsel.net/catalog/garrys-mod-keys",
         "screenshots": [
             "https://i.postimg.cc/0yyrMyFd/1303a2fc41-1scr-740191.jpg",
@@ -1174,8 +1390,21 @@
         "updated": "14.12.2023",
         "status": "available",
         "category": "Metro",
-        "torrentFile": "https://thelastgame.org/index.php?do=download&id=25000",
-        "trailer": "https://drive.google.com/file/d/1wh_yZGiWCXZnArJHnK0VtNtV4H_plLEw/preview",
+        "tags": [
+    "Metro Exodus",
+    "Enhanced Edition",
+    "4A Games",
+    "Ray Tracing",
+    "RTX",
+    "Post Apocalyptic",
+    "Survival",
+    "Stealth",
+    "Artyom",
+    "Aurora"
+],
+        "torrentFile": "torrent/Metro-Exodus-Enhanced-Edition.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/dce85c6766b700cf3420f80ab65a4ad0c64dd43c44315571974b3b52fc7a04ef",
+            "trailer": "https://drive.google.com/file/d/1wh_yZGiWCXZnArJHnK0VtNtV4H_plLEw/preview",
         "buyGame": "https://ggsel.net/catalog/metro-exodus-enhanced-edition-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/8kd50sqw/1590586271-ss-1da518a3baf5cd738cf48f3d963e4ece5adbb5fa-1920x1080.jpg",
@@ -1214,7 +1443,21 @@
         "updated": "21.07.2023",
         "status": "available",
         "category": "Need For Speed",
-        "trailer": "https://drive.google.com/file/d/13gbXxjnJLOGI1og6bIfdMtO_sZ2YUXfp/preview",
+        "tags": [
+    "Need for Speed",
+    "Need for Speed Most Wanted",
+    "NFS Most Wanted 2005",
+    "NFS MW",
+    "Blacklist",
+    "Racing",
+    "Criterion",
+    "EA",
+    "BMW M3 GTR",
+    "Cross"
+],
+        "torrentFile": "torrent/MNeed-for-Speed-Most-Wanted.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/dd7a3f0f527a8b2fabf71a1d9e583b7492cf88c4a940d0ce617ee112e97e9ac0",
+            "trailer": "https://drive.google.com/file/d/13gbXxjnJLOGI1og6bIfdMtO_sZ2YUXfp/preview",
         "screenshots": [
             "https://i.postimg.cc/C5qVxGZt/1435606317-177-g-1-1024x819.jpg",
             "https://i.postimg.cc/wjH3nvZg/1435606314-179-g-1-1024x819.jpg",
@@ -1252,8 +1495,20 @@
         "updated": "10.03.2024",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://byxatab.com/index.php?do=download&id=8154",
-        "trailer": "https://drive.google.com/file/d/136shCawSo3PYpDrQ07mdg--x2g90b3NZ/preview",
+        "tags": [
+    "Atomic Heart",
+    "Mundfish",
+    "Soviet Union",
+    "Alternate History",
+    "FPS",
+    "Action RPG",
+    "Bio-punk",
+    "P-3",
+    "Norway"
+],
+        "torrentFile": "torrent/atomic-heart-dev-build.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/cfb5b988cc2c5cf80c89928f396bccdd69c86dee092542ce3decdd734f7ea12c",
+            "trailer": "https://drive.google.com/file/d/136shCawSo3PYpDrQ07mdg--x2g90b3NZ/preview",
         "buyGame": "https://ggsel.net/catalog/product/vse-regiony-atomic-heart-vse-izdaniia-na-vybor-4168653",
         "screenshots": [
             "https://i.postimg.cc/nhyXsw5r/1676800390-ss-0e4b3349f2124cdba1df885ac3cdabfba87b22fb-1920x1080.jpg",
@@ -1291,8 +1546,18 @@
         "updated": "11.01.2026",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://itorrents-igruha.org/engine/download.php?id=97236",
-        "trailer": "https://drive.google.com/file/d/1JCxDWs7XNiZFc8T_xUu38Y-ij4Xme_ls/preview",
+        "tags": [
+    "Parcel Simulator",
+    "Simulation",
+    "Delivery",
+    "Driving",
+    "First-Person",
+    "Logistics",
+    "Open World"
+],
+        "torrentFile": "torrent/Parcel.Simulator.v1.0.5.2.rar.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/841ad87f5384a0da3f36062c2b4cee6560d3817b00c69090aa49d72d2370c74d",
+            "trailer": "https://drive.google.com/file/d/1JCxDWs7XNiZFc8T_xUu38Y-ij4Xme_ls/preview",
         "buyGame": "https://ggsel.net/catalog/product/parcel-simulator-steam-gift-auto-ru-mir-5246759",
         "screenshots": [
             "https://i.postimg.cc/bv5gJCdp/1750484687-ss-9adb4053b207bde08c7cc6f22a8620dbfd19e9e9.jpg",
@@ -1334,8 +1599,21 @@
         "updated": "13.01.2026",
         "status": "available",
         "category": "games",
-        "torrentFile": "https://itorrents-igruha.net/engine/download.php?id=97348",
-        "trailer": "https://drive.google.com/file/d/10LJkPvQCuH8boTG2ntLkdikRyFHZp7CG/preview",
+        "tags": [
+    "Quarantine Zone: The Last Check",
+    "Brigada Games",
+    "Devolver Digital",
+    "Simulation",
+    "Zombies",
+    "Post-apocalyptic",
+    "Choices Matter",
+    "Resource Management",
+    "Papers, Please",
+    "Checkpoint"
+],
+        "torrentFile": "torrent/Quarantine-Zone-The-Last-Check.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/19702cf804faba7b114768c48e759c00968319678fee25288a76a3359e4f9462",
+            "trailer": "https://drive.google.com/file/d/10LJkPvQCuH8boTG2ntLkdikRyFHZp7CG/preview",
         "buyGame": "https://ggsel.net/catalog/product/quarantine-zone-the-last-check-steam-ru-avtovydaca-102120585",
         "screenshots": [
             "https://i.postimg.cc/DwYWWR8K/1768308387-ss-4a9c7643b40398b9606c723fef62ff81c9a5e294-(1).jpg",
@@ -1384,8 +1662,9 @@
             "ред дед",
             "ред дед редемпшн"
         ],
-        "torrentFile": "torrent/[rutor.is]Red_Dead_Redemption_II.torrent",
-        "trailer": "https://drive.google.com/file/d/1eEjnTlTzyQ76KJ3NEnONTjOT6obko-ue/preview",
+        "torrentFile": "torrent/red-dead-redemption-2-ultimate-edition-v-1491_50-dlcs-2019.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/1a35283e224b0a0b126cb9da304931ab56096df78fc645659f59f09129b9f6ca",
+            "trailer": "https://drive.google.com/file/d/1eEjnTlTzyQ76KJ3NEnONTjOT6obko-ue/preview",
         "buyGame": "https://ggsel.net/catalog/rdr-2-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/bJhBF5CG/1603370068-61a959841c6b61be1128be28a2b29d796d6a0b9d.jpg",
@@ -1424,8 +1703,20 @@
         "updated": "15.01.2024",
         "status": "available",
         "category": "Forza Horizon",
+        "tags": [
+    "Forza Horizon 5",
+    "Playground Games",
+    "Xbox Game Studios",
+    "Racing",
+    "Open World",
+    "Mexico",
+    "Cars",
+    "Arcade Racing",
+    "Festival"
+],
         "torrentFile": "torrent/Forza.Horizon.5.Premium.Edition-InsaneRamZes.torrent",
-        "trailer": "https://www.youtube.com/embed/FYH9n37B7Yw",
+        "virus_check": "https://www.virustotal.com/gui/file/a5b52b107c9a29d2970b0e43fa4d13538d8cdcd24fa38e5c3b75c3fbf5b67f82?nocache=1",
+            "trailer": "https://www.youtube.com/embed/FYH9n37B7Yw",
         "screenshots": [
             "https://i.postimg.cc/7Yty2jNt/1635973381-screenshot-forza-horizon-5-1920x1080-2021-06-14-5.jpg",
             "https://i.postimg.cc/QM1LvCrt/1635973327-screenshot-forza-horizon-5-1920x1080-2021-06-14-6.jpg",
@@ -1470,8 +1761,20 @@
         "updated": "15.01.2024",
         "status": "available",
         "category": "Forza Horizon",
+        "tags": [
+    "Forza Horizon 4",
+    "Playground Games",
+    "Xbox Game Studios",
+    "Racing",
+    "Open World",
+    "United Kingdom",
+    "Seasons",
+    "Cars",
+    "Arcade Racing"
+],
         "torrentFile": "torrent/Forza.Horizon.4.Ultimate.Edition.Steam.Rip-InsaneRamZes.torrent",
-        "trailer": "https://drive.google.com/file/d/1JrOMDarwvred1OJUJ8QqRU0qlGAsfG1-/preview",
+        "virus_check": "https://www.virustotal.com/gui/file/1c176d5306802f8076a83012762e2f9d93bd0e0d08c3882f426d3a71e7832b28?nocache=1",
+            "trailer": "https://drive.google.com/file/d/1JrOMDarwvred1OJUJ8QqRU0qlGAsfG1-/preview",
         "screenshots": [
             "https://i.postimg.cc/C1CqkbRB/1529670907-1efbd5c1-48b0-4177-a315-d36ca736fb8d.jpg",
             "https://i.postimg.cc/NG4X07hC/1529670910-4de11c70-c185-4396-b11b-13b0ec5e9c77.jpg",
@@ -1516,8 +1819,20 @@
         "updated": "15.01.2024",
         "status": "available",
         "category": "Forza Horizon",
-        "torrentFile": "torrent/[dixen18] Forza Horizon 3.torrent",
-        "trailer": "https://drive.google.com/file/d/1KST4vmBullPkTZIrQoGFg9BnmS4IfG9u/preview",
+        "tags": [
+    "Forza Horizon 3",
+    "Playground Games",
+    "Xbox Game Studios",
+    "Racing",
+    "Open World",
+    "Australia",
+    "Cars",
+    "Arcade Racing",
+    "Horizon Festival"
+],
+        "torrentFile": "torrent/Forza-Horizon-3-1.0.125.2-44-DLC.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/61a2a0aaba5a8b11582267169a72c905bf0c4120d77beb6d7092f88d0923909f",
+            "trailer": "https://drive.google.com/file/d/1KST4vmBullPkTZIrQoGFg9BnmS4IfG9u/preview",
         "screenshots": [
             "https://i.postimg.cc/N0ZMNDyZ/1467035231-4cacce3a-33a7-45ea-a9ce-1e2ba96d0e09.jpg",
             "https://i.postimg.cc/65BQ1y3p/1467035246-06f08033-4a33-47b7-a45d-a8b0e2b9714f.jpg"
@@ -1556,8 +1871,20 @@
         "updated": "15.01.2024",
         "status": "available",
         "category": "Forza Horizon",
-        "torrentFile": "torrent/Forza Motorsport 7  by xatab.torrent",
-        "trailer": "https://drive.google.com/file/d/1lbmfmsFYeLCjw7QpYmvHiAO1i-fQirm9/preview",
+        "tags": [
+    "Forza Motorsport 7",
+    "Turn 10 Studios",
+    "Xbox Game Studios",
+    "Racing",
+    "Simulation",
+    "Track Racing",
+    "Cars",
+    "Realistic Physics",
+    "Motorsport"
+],
+        "torrentFile": "torrent/forza-motorsport-7.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/e952901a4003c160713bc856610756ce484fc5b6e2f8b2f3b922b2023e3d7a1e",
+            "trailer": "https://drive.google.com/file/d/1lbmfmsFYeLCjw7QpYmvHiAO1i-fQirm9/preview",
         "screenshots": [
             "https://i.postimg.cc/bJFK0VsY/1529056863-53a69bcb5273cc5a260639b564565432.jpg",
             "https://i.postimg.cc/6qkgg7rD/1529056832-4012a787de40e15803801c73f2186081.jpg",
@@ -1605,8 +1932,20 @@
         "updated": "15.01.2024",
         "status": "available",
         "category": "Forza Horizon",
-        "torrentFile": "torrent/Forza.Motorsport.2023.Ultimate.Edition-InsaneRamZes.torrent",
-        "trailer": "https://drive.google.com/file/d/1gImSwySVxXOQBV94cELkQeLw01ZEeKpX/preview",
+        "tags": [
+    "Forza Motorsport",
+    "Forza Motorsport 2023",
+    "Turn 10 Studios",
+    "Xbox Game Studios",
+    "Sim Racing",
+    "Track Racing",
+    "Realistic Physics",
+    "Ray Tracing",
+    "Live Service"
+],
+        "torrentFile": "torrent/Forza_Motorsport_-_Premium_Edition_2023_Portable.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/b6e3cd31386e47f456a2d37ab8c46026f72548a73ff615146aa50276b61c58bd",
+            "trailer": "https://drive.google.com/file/d/1gImSwySVxXOQBV94cELkQeLw01ZEeKpX/preview",
         "screenshots": [
             "https://i.postimg.cc/fTZYMzHb/1686512929-ss-9dfd83e0b0fcefca714fb49e4da48886619fa9e2.jpg",
             "https://i.postimg.cc/brRDZn6c/1686512900-ss-794544aa55532dbb6b34ae2e67b487009622fb2d.jpg",
@@ -1650,8 +1989,21 @@
         "updated": "10.02.2024",
         "status": "available",
         "category": "games",
-        "torrentFile": "torrent/SnowRunner.Premium.Edition-InsaneRamZes.torrent",
-        "trailer": "https://drive.google.com/file/d/1KFtP6ouKJoXfkqcK7YFDeTYtZaO_2qj_/preview",
+        "tags": [
+    "SnowRunner",
+    "Saber Interactive",
+    "Focus Entertainment",
+    "Off-road",
+    "Simulation",
+    "Trucks",
+    "Mud",
+    "Snow",
+    "Physics",
+    "Exploration"
+],
+        "torrentFile": "torrent/SnowRunner.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/1253a64506b64a4282ef821e0dd0a965588c4c8828ce18e358fd3586e061d678",
+            "trailer": "https://drive.google.com/file/d/1KFtP6ouKJoXfkqcK7YFDeTYtZaO_2qj_/preview",
         "screenshots": [
             "https://i.postimg.cc/vH46fwsS/1769521717-ss-0b9c1d6b91fad663d6bf2bc41d520447d11afa9a.jpg",
             "https://i.postimg.cc/SKhXBXzT/1769521711-ss-3b77549445944ac9e671c79fc4f93e5de39c3d80.jpg",
@@ -1692,8 +2044,21 @@
         "updated": "05.03.2024",
         "status": "available",
         "category": "games",
+        "tags": [
+    "Underground Garage",
+    "BeardedBrothers.Games",
+    "astragon Entertainment",
+    "Car Mechanic",
+    "Simulation",
+    "Street Racing",
+    "Open World",
+    "Tuning",
+    "Illegal Racing",
+    "Early Access"
+],
         "torrentFile": "torrent/Underground.Garage-RUNE.torrent",
-        "trailer": "https://drive.google.com/file/d/13mpU3WHP6jD5GNmiErd-UHK3jg343Ylu/preview",
+        "virus_check": "https://www.virustotal.com/gui/file/b44f2101dc6792b3161a04d07516f5a3436c001386e8e7a8da79ffc1efd84b51",
+            "trailer": "https://drive.google.com/file/d/13mpU3WHP6jD5GNmiErd-UHK3jg343Ylu/preview",
         "screenshots": [
             "https://i.postimg.cc/15S35xzZ/1769513150-ss-35f7e2f6a5ea323d8c948ff4ee62ba852c95d569.jpg",
             "https://i.postimg.cc/bvZzFpmx/1769513203-ss-66ac26b16cfd2454539d86f2e8f38cc3ee3a4677.jpg",
@@ -1734,8 +2099,20 @@
         "updated": "15.04.2024",
         "status": "available",
         "category": "games",
-        "torrentFile": "torrent/MDS 16.07.25.7z.torrent",
-        "trailer": "https://drive.google.com/file/d/1i3iBj9VuSxHUat2kKUAUlGZ-Qa2iWvF/preview",
+        "tags": [
+    "My Dream Setup",
+    "Campfire Studio",
+    "Simulation",
+    "Sandbox",
+    "Building",
+    "Relaxing",
+    "Casual",
+    "Design & Illustration",
+    "Room Decoration"
+],
+        "torrentFile": "torrent/My.Dream.Setup.Build.22228877.rar.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/f4bc7149c72001cfda3e3e3e1cb4caa82ac93db75e7eacc6a4224385b94da749",
+            "trailer": "https://drive.google.com/file/d/1i3iBj9VuSxHUat2kKUAUlGZ-Qa2iWvF/preview",
         "screenshots": [
             "https://i.postimg.cc/vBNWqVRQ/1690043618-ss-0a156fde1f5d4d84ee165f89fd4e87f01b54327e.jpg",
             "https://i.postimg.cc/K4XtFh8X/1690043592-ss-1c6b14c7023592af6cdbef68731e94af4026a5f3.jpg",
@@ -1776,8 +2153,21 @@
         "updated": "01.09.2023",
         "status": "available",
         "category": "Metro",
-        "torrentFile": "torrent/[dixen18] Metro.torrent",
-        "trailer": "https://drive.google.com/file/d/1xxRGX9DR6XHRFy53wenE-fZLu6ggfJZQ/preview",
+        "tags": [
+    "Metro 2033",
+    "Metro 2033 Redux",
+    "4A Games",
+    "Deep Silver",
+    "Post-apocalyptic",
+    "Survival Horror",
+    "FPS",
+    "Stealth",
+    "Artyom",
+    "Moscow Metro"
+],
+        "torrentFile": "torrent/Metro-2033-Redux.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/7568f896903edb214d883898365c24e655c9cab42d35caa69d6ab27ab6705079",
+            "trailer": "https://drive.google.com/file/d/1xxRGX9DR6XHRFy53wenE-fZLu6ggfJZQ/preview",
         "screenshots": [
             "https://i.postimg.cc/7YWZ5n35/1442326513-280-crop890x507.jpg",
             "https://i.postimg.cc/V6gYmqs8/1442326464-287-crop890x507.jpg",
@@ -1820,8 +2210,21 @@
         "updated": "01.09.2023",
         "status": "available",
         "category": "Metro",
-        "torrentFile": "torrent/Metro - Last Light Redux v1.03 (33180).torrent",
-        "trailer": "https://drive.google.com/file/d/1rqqwX8Egrqk1jXj2DKNCET7vo_Uto4HF/preview",
+        "tags": [
+    "Metro Last Light",
+    "Metro Last Light Redux",
+    "4A Games",
+    "Deep Silver",
+    "Post-apocalyptic",
+    "Survival Horror",
+    "FPS",
+    "Stealth",
+    "Artyom",
+    "Moscow Metro"
+],
+        "torrentFile": "torrent/Metro Last Light Redux",
+        "virus_check": "https://www.virustotal.com/gui/file/21ad5188343f9734c55860ddfa9685fd3c9f11fe1f43755558e5e48c19a3b286",
+            "trailer": "https://drive.google.com/file/d/1rqqwX8Egrqk1jXj2DKNCET7vo_Uto4HF/preview",
         "screenshots": [
             "https://i.postimg.cc/44cD6bRY/1520352306-1758579.jpg",
             "https://i.postimg.cc/tg7fYFNc/1520352255-1507824311-8599.jpg",
@@ -1864,8 +2267,21 @@
         "updated": "15.05.2015",
         "status": "available",
         "category": "Metro",
-        "torrentFile": "torrent/Metro.Last.Light.Complete.Edition.MULTi10-PLAZA.torrent",
-        "trailer": "https://drive.google.com/file/d/1CmscMlaUIC3zXPAondbgMMJPkYFGO7xK/preview",
+        "tags": [
+    "Metro Last Light",
+    "4A Games",
+    "Deep Silver",
+    "Post-apocalyptic",
+    "Survival Horror",
+    "FPS",
+    "Stealth",
+    "Artyom",
+    "Moscow Metro",
+    "Dark Ones"
+],
+        "torrentFile": "torrent/R.G._Mechanics_Metro_Last_Light.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/2a0a5f416ac1714e79d925ed471aaa5f9b2ed94e5b9dfd8b4431a4f74a04716c",
+            "trailer": "https://drive.google.com/file/d/1CmscMlaUIC3zXPAondbgMMJPkYFGO7xK/preview",
         "screenshots": [
             "https://i.postimg.cc/wMWLyR2T/1610844676-7777-1.jpg",
             "https://i.postimg.cc/G3zkS6R1/1610844619-7777-2.jpg",
@@ -1901,7 +2317,7 @@
             }
         }
     },
-    "nid-four-speed-bridge-vented-limited": {
+    "need-four-speed-bridge-vented-limited-edition": {
         "title": "Nid Four Speed Bridge: Vented Limited Edition",
         "description": "Погрузитесь в гиперреалистичный симулятор настройки и вождения редчайшего японского суперкара — Nid Four Speed Bridge в эксклюзивной вентилируемой версии. Эта игра — не просто гонка, а инженерный симулятор и любовное письмо автомобильной культуре. Ваша задача — не просто выиграть заезды, а понять душу этой уникальной машины: тонко настраивать каждый компонент, от геометрии подвески до угла атаки активного антикрыла, и чувствовать, как меняется её поведение на треке. Исследуйте динамическую модель, не имеющую аналогов, и докажите, что вы — настоящий пилот-инженер, способный раскрыть потенциал этого технологического шедевра.",
         "image": "https://i.postimg.cc/HxrVZv9T/1516638576-cover.jpg",
@@ -1910,8 +2326,17 @@
         "updated": "10.05.2024",
         "status": "available",
         "category": "Need For Speed",
-        "torrentFile": "torrent/Need-for-Speed-Most-Wanted-Limited-Edition-by-Igruha.torrent",
-        "trailer": "https://drive.google.com/file/d/1aYPllABQx7-Q5-aXcXzxQq0nwoiHupeB/preview",
+        "tags": [
+    "Nid Four Speed Bridge",
+    "Vented Limited Edition",
+    "My Summer Car Mod",
+    "Car Building",
+    "Engine Parts",
+    "Performance Tuning"
+],
+        "torrentFile": "torrent/Need-for-Speed-Most-Wanted-Limited-Edition.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/009579a9d9d2b50f5ea2d7efa7df6c9c941c10568e2b539dccc65d17df2a8d4e",
+            "trailer": "https://drive.google.com/file/d/1aYPllABQx7-Q5-aXcXzxQq0nwoiHupeB/preview",
         "trailer1": "https://drive.google.com/file/d/1ugMcD8KMIB3LuCInO5IHkhl3xDVhgx2F/preview",
         "screenshots": [
             "https://i.postimg.cc/sgGHz3fY/1428771201-1-1-1024x640.jpg",
@@ -1955,8 +2380,21 @@
         "updated": "15.03.2016",
         "status": "buy",
         "category": "Need For Speed",
+        "tags": [
+    "Need for Speed",
+    "Need for Speed 2015",
+    "Ghost Games",
+    "EA",
+    "Racing",
+    "Open World",
+    "Live Action",
+    "Night Only",
+    "Ventura Bay",
+    "Customization"
+],
         "buyGame": "https://ggsel.net/catalog/product/avto-24-7-need-for-speed-deluxe-edition-rf-mir-steam-podarok-102112687",
-        "trailer": "https://drive.google.com/file/d/1y-N_Dffen_gDTD5-dHv9ctpRIRA4mu4l/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1y-N_Dffen_gDTD5-dHv9ctpRIRA4mu4l/preview",
         "screenshots": [
             "https://i.postimg.cc/Vvc0JBnF/1709678603-ss-7da80363f25c7d7ccc95e7bfdc5d8091e0cea77e.jpg",
             "https://i.postimg.cc/ryStv32Z/1709678521-ss-9dd50dff2daf09743e7ec2eab9efc5fe2b2a791e.jpg",
@@ -2001,8 +2439,20 @@
         "updated": "20.02.2018",
         "status": "available",
         "category": "Need For Speed",
+        "tags": [
+    "Need for Speed Payback",
+    "Ghost Games",
+    "EA",
+    "Racing",
+    "Open World",
+    "Fortune Valley",
+    "Action",
+    "Heist",
+    "Speed Cards"
+],
         "torrentFile": "torrent/Need-for-Speed-Payback-by-Igruha.torrent",
-        "trailer": "https://drive.google.com/file/d/1Df1ArSRpa8eRKHb0SP-F35nuioZjjKJp/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1Df1ArSRpa8eRKHb0SP-F35nuioZjjKJp/preview",
         "screenshots": [
             "https://i.postimg.cc/SKNBpwPf/1509898484-5pzvy4gk.jpg",
             "https://i.postimg.cc/VLQ2NSTq/1509898530-77gn77.jpg",
@@ -2047,8 +2497,20 @@
         "updated": "10.11.2005",
         "status": "available",
         "category": "Far Cry",
+        "tags": [
+    "Far Cry",
+    "Far Cry 1",
+    "Crytek",
+    "Ubisoft",
+    "FPS",
+    "Open World",
+    "Tropical Island",
+    "Jack Carver",
+    "Trigens"
+],
         "torrentFile": "torrent/Far Cry 1.40 hotfix (29940) [GOG].torrent",
-        "trailer": "https://drive.google.com/file/d/1HDBAfev_blG_0_eb9L4lKKvhv6-_XoJU/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1HDBAfev_blG_0_eb9L4lKKvhv6-_XoJU/preview",
         "screenshots": [
             "https://i.postimg.cc/tJHPSrhb/1446747719-0000003758-1920x1080.jpg",
             "https://i.postimg.cc/KjrTdnNf/1446747797-0000003759-1920x1080.jpg",
@@ -2089,8 +2551,20 @@
         "updated": "15.12.2008",
         "status": "available",
         "category": "Far Cry",
+        "tags": [
+    "Far Cry 2",
+    "Ubisoft Montreal",
+    "Ubisoft",
+    "FPS",
+    "Open World",
+    "Africa",
+    "Mercenaries",
+    "Malaria",
+    "Weapon Degradation"
+],
         "torrentFile": "torrent/Far Cry 2.torrent",
-        "trailer": "https://drive.google.com/file/d/1ciTi53Koo5WUIPzuTRd_swndod0QeIkT/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1ciTi53Koo5WUIPzuTRd_swndod0QeIkT/preview",
         "screenshots": [
             "https://i.postimg.cc/PqQPftZq/1445803694-0000004525-1920x1080.jpg",
             "https://i.postimg.cc/90rMBZn6/1445803703-0000004526-1920x1080.jpg",
@@ -2135,8 +2609,20 @@
         "updated": "04.12.2012",
         "status": "available",
         "category": "Far Cry",
+        "tags": [
+    "Far Cry 3",
+    "Ubisoft Montreal",
+    "Ubisoft",
+    "FPS",
+    "Open World",
+    "Rook Islands",
+    "Jason Brody",
+    "Vaas Montenegro",
+    "Insanity"
+],
         "torrentFile": "torrent/Far-Cry-3.torrent",
-        "trailer": "https://drive.google.com/file/d/1NgQpSRophfpsrwa0xPUuo_YkzS59HE6b/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1NgQpSRophfpsrwa0xPUuo_YkzS59HE6b/preview",
         "screenshots": [
             "https://i.postimg.cc/Fz8jb9D8/1441654257-ss-6a4dec0b9653564b7be754286cef07a012c24fea-1920x1080.jpg",
             "https://i.postimg.cc/VL09fCNd/1441654239-ss-6e7911d3622f3a801aeea1c2f8418f0f22880bb0-1920x1080.jpg",
@@ -2183,8 +2669,20 @@
         "updated": "17.11.2014",
         "status": "available",
         "category": "Far Cry",
+        "tags": [
+    "Far Cry 4",
+    "Ubisoft Montreal",
+    "Ubisoft",
+    "FPS",
+    "Open World",
+    "Kyrat",
+    "Ajay Ghale",
+    "Pagan Min",
+    "Himalayas"
+],
         "torrentFile": "torrent/Far-Cry-4.torrent",
-        "trailer": "https://drive.google.com/file/d/1o7shVNsqDHADRyUxk7Ffd3ivdiNjEC1R/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1o7shVNsqDHADRyUxk7Ffd3ivdiNjEC1R/preview",
         "screenshots": [
             "https://i.postimg.cc/T39zRwQT/1749877128-ss-2e7b8e01e12b4932b83b802318d8aae5eb59bacb.jpg",
             "https://i.postimg.cc/nz65dQV7/1749877166-ss-738eb6ad93238c22b8042074119032fb3d0cb5e0.jpg",
@@ -2225,8 +2723,20 @@
         "updated": "27.03.2018",
         "status": "available",
         "category": "Far Cry",
+        "tags": [
+    "Far Cry 5",
+    "Ubisoft Montreal",
+    "Ubisoft",
+    "FPS",
+    "Open World",
+    "Hope County",
+    "Montana",
+    "Joseph Seed",
+    "Eden's Gate"
+],
         "torrentFile": "torrent/Far-Cry-5.torrent",
-        "trailer": "https://drive.google.com/file/d/1PJqo8VhJGtz9M9cQhs3KSP3N2MZ3AXkh/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1PJqo8VhJGtz9M9cQhs3KSP3N2MZ3AXkh/preview",
         "screenshots": [
             "https://i.postimg.cc/kXFJb7w0/1627302517-ss-e77cdee777bf7cc1fc820e6e3442c23166dfbc4b-1920x1080.jpg",
             "https://i.postimg.cc/SxSyLHvz/1627302475-ss-54e115519104798a3a2dc55e6de3d4974e144b77-1920x1080.jpg",
@@ -2283,7 +2793,8 @@
             "симулятор"
         ],
         "torrentFile": "torrent/Cairn-by-Igruha.torrent",
-        "trailer": "https://drive.google.com/file/d/1CtHEiWRkhluycIjTFkRtk3QfEKAOrH6q/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1CtHEiWRkhluycIjTFkRtk3QfEKAOrH6q/preview",
         "buyGame": "https://ggsel.net/catalog/cairn-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/1zQB6Bxh/1717940595-ss-4aa578a2d59fbeaffd81f5b8bed65f6c961102d2.jpg",
@@ -2339,7 +2850,8 @@
             "еж"
         ],
         "torrentFile": "torrent/Sonic-Frontiers-by-Igruha.torrent",
-        "trailer": "https://drive.google.com/file/d/1cMILwLfOIsrB5MUMvrOtdYwssZiYh35r/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1cMILwLfOIsrB5MUMvrOtdYwssZiYh35r/preview",
         "buyGame": "https://ggsel.net/catalog/steam-40539",
         "screenshots": [
             "https://i.postimg.cc/Gpb344Qw/1665854396-ss-9817ace7705cf9096bde3fae0141055d170fbf66-1920x1080.jpg",
@@ -2396,7 +2908,8 @@
             "магия"
         ],
         "torrentFile": "torrent/HHalf-Sword-by-Igruha.torrent",
-        "trailer": "https://drive.google.com/file/d/1LWsDkRfvrxtUaKiQPrX79QqzTRFr6bN7/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1LWsDkRfvrxtUaKiQPrX79QqzTRFr6bN7/preview",
         "buyGame": "https://ggsel.net/catalog/product/half-sword-steam-avto-ru-mir-102134552",
         "screenshots": [
             "https://i.postimg.cc/7YTQ2Xs2/1769797188-ss-2e156563f1904a4b6a9da301fc2a7fab1ac9ff1b.jpg",
@@ -2454,7 +2967,8 @@
             "хоррор"
         ],
         "torrentFile": "torrent/Resident Evil 4 Remake by Igruha.torrent",
-        "trailer": "https://drive.google.com/file/d/18RucMN8H5jMJlXgu_KXINw9l2uFXeu9o/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/18RucMN8H5jMJlXgu_KXINw9l2uFXeu9o/preview",
         "buyGame": "https://ggsel.net/catalog/resident-evil-4-remake-keys-steam-standart",
         "screenshots": [
             "https://i.postimg.cc/J098Q0Cc/ss-48f6d060fc89aeaa95fd4370b63d5ae0d96d087b-1920x1080.jpg",
@@ -2513,7 +3027,8 @@
             "разрушение"
         ],
         "torrentFile": "torrent/Carmageddon-Rogue-Shift-by-Igruha.torrent",
-        "trailer": "https://drive.google.com/file/d/11ouE1HDzEWeQXg9sANh1vpbalw2U8OD0b/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/11ouE1HDzEWeQXg9sANh1vpbalw2U8OD0b/preview",
         "buyGame": "https://ggsel.net/catalog/product/carmageddon-rogue-shift-steam-avto-ru-mir-102138337",
         "screenshots": [
             "https://i.postimg.cc/90cgHjtV/1769517573-ss-4a6b2ff561fdf97101fea67a05955db74a737154.jpg",
@@ -2570,7 +3085,8 @@
             "драма"
         ],
         "torrentFile": "torrent/the-last-of-us-part-i.torrent",
-        "trailer": "https://drive.google.com/file/d/1RJY7htdPGNd92dsF85szANGZ8w8xaDli/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1RJY7htdPGNd92dsF85szANGZ8w8xaDli/preview",
         "buyGame": "https://ggsel.net/catalog/the-last-of-us-part-i-standard-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/tC4XmYqW/1680043084-1.jpg",
@@ -2625,7 +3141,8 @@
             "ремейк"
         ],
         "torrentFile": "torrent/the-last-of-us-part-ii-remastered.torrent",
-        "trailer": "https://drive.google.com/file/d/19UMWpWtxaQgDspOyykrEgY6sT7LBm_ns/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/19UMWpWtxaQgDspOyykrEgY6sT7LBm_ns/preview",
         "buyGame": "https://ggsel.net/catalog/the-last-of-us-part-ii-remastered-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/WzjMP098/1743717871-1.jpg",
@@ -2680,7 +3197,8 @@
             "выживание"
         ],
         "torrentFile": "https://itorrents-igruha.org/?do=download&id=80684",
-        "trailer": "https://drive.google.com/file/d/1s9BvLtKnSrYz6KqQ0N_axs3sgBesz5q4/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1s9BvLtKnSrYz6KqQ0N_axs3sgBesz5q4/preview",
         "buyGame": "https://ggsel.net/catalog/product/poppy-playtime-chapter-5-ru-by-ua-sng-steam-auto-102153197",
         "screenshots": [
             "https://i.postimg.cc/2S3QH7nq/1738268451-ss-1aa4b8455fdf430512f4079e43833b3308219c22.jpg",
@@ -2735,7 +3253,8 @@
             "атмосфера"
         ],
         "torrentFile": "torrent/Hitman-3-by-Igruha.torrent",
-        "trailer": "https://drive.google.com/file/d/1WrTTidOUPdH9dsiohA9aA7laBti3VitM/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1WrTTidOUPdH9dsiohA9aA7laBti3VitM/preview",
         "buyGame": "https://ggsel.net/catalog/product/hitman-world-of-assassination-steam-gift-rossiia-mir-avto-102160399",
         "screenshots": [
             "https://i.postimg.cc/Qxv187PS/1692352067-ss-86e7654dd65110c45d134be1bf6c2411408310cc.jpg",
@@ -2801,7 +3320,8 @@
             "норман ридус"
         ],
         "torrentFile": "torrent/DEATH.STRANDING.2.ON.THE.BEACH-RUNE.torrent",
-        "trailer": "https://drive.google.com/file/d/1fQ2HFdzcZgYUp70hx-sp8ZeeW9QvElPL/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1fQ2HFdzcZgYUp70hx-sp8ZeeW9QvElPL/preview",
         "buyGame": "https://ggsel.net/catalog/death-stranding-2-on-the-beach-keys-steam-standard-edition",
         "screenshots": [
             "https://i.postimg.cc/1tF9VFGd/photo-2026-03-20-16-45-49.jpg",
@@ -2863,7 +3383,8 @@
             "норман ридус"
         ],
         "torrentFile": "https://itorrents-igruha.org/engine/download.php?id=101692",
-        "trailer": "https://drive.google.com/file/d/1tfEtHOm65XqgJXYRcUmcSExuS2Rsf35z/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1tfEtHOm65XqgJXYRcUmcSExuS2Rsf35z/preview",
         "buyGame": "https://ggsel.net/catalog/product/samson-ru-by-ua-sng-steam-auto-102217154",
         "screenshots": [
             "1770147410_ss_5d2d9a914051e1a98944ecd1c8b6aeb2a8a09995.jpg",
@@ -2919,7 +3440,8 @@
             "постапокалипсис"
         ],
         "torrentFile": "https://itorrents-igruha.org/engine/download.php?id=101712",
-        "trailer": "https://drive.google.com/file/d/1ede5J14NEhoEcr9OLpt7NWWEzkKNcwSA/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1ede5J14NEhoEcr9OLpt7NWWEzkKNcwSA/preview",
         "buyGame": "https://ggsel.net/catalog/resident-evil-requiem-keys-and-gifts-steam",
         "screenshots": [
             "https://i.postimg.cc/DzNSGpKF/1769958618-ss-9e35202b6c8262496e1c57275c51bcead7232249-1920x1080.jpg",
@@ -2976,7 +3498,8 @@
             "атмосферный"
         ],
         "torrentFile": "https://itorrents-igruha.org/engine/download.php?id=101619",
-        "trailer": "https://drive.google.com/file/d/1A3GOQXoYqLAVO1kJE4x_2d7G9FxcXgGW/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1A3GOQXoYqLAVO1kJE4x_2d7G9FxcXgGW/preview",
         "buyGame": "https://ggsel.net/catalog/product/the-occultist-steam-rossiia-mir-102217524",
         "screenshots": [
             "https://i.postimg.cc/LssnWKVw/1775662136-ss-0babeb4209bf05645f8d43a6f06411d8ac71add6.jpg",
@@ -3024,7 +3547,8 @@
             "Ролевые игры"
         ],
         "torrentFile": "https://itorrents-igruha.org/engine/download.php?id=102026",
-        "trailer": "https://drive.google.com/file/d/1TPuw66d2Fxk69wHoEFeKXsl91sdWAkuq/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1TPuw66d2Fxk69wHoEFeKXsl91sdWAkuq/preview",
         "buyGame": "https://ggsel.net/catalog/product/windrose-steam-avto-ru-mir-102228402",
         "screenshots": [
             "https://i.postimg.cc/C1fzDrwN/1776170608-ss-1ecaa7ff2d46c717a5afb4a7e11f678d16ae3064.jpg",
@@ -3077,7 +3601,8 @@
             "Стратегии"
         ],
         "torrentFile": "https://itorrents-igruha.org/engine/download.php?id=92266",
-        "trailer": "https://drive.google.com/file/d/1hLn1fRcD8lZoCF3E9Z324ea4_ZFoWmXr/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1hLn1fRcD8lZoCF3E9Z324ea4_ZFoWmXr/preview",
         "buyGame": "https://ggsel.net/catalog/the-farmer-was-replaced-keys-steam?utm_referrer=https%3A%2F%2Fggsel.net%2Fcatalog%2Fproduct%2Fwindrose-steam-avto-ru-mir-102228402",
         "screenshots": [
             "https://i.postimg.cc/2SKHS3yQ/1760371109-ss-028e32193a38da5565b54b5029879439d4cf2ada.jpg",
@@ -3119,7 +3644,8 @@
             "Инди"
         ],
         "torrentFile": "https://itorrents-igruha.org/engine/download.php?id=102025",
-        "trailer": "https://drive.google.com/file/d/1gc6VqI3EFLHpBJQO8VoKtdo--h6hGYp-/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1gc6VqI3EFLHpBJQO8VoKtdo--h6hGYp-/preview",
         "buyGame": "https://ggsel.net/catalog/product/replaced-steam-ru-kz-ua-sng-102228371",
         "screenshots": [
             "https://i.postimg.cc/C58ZkPsx/1776176072-ss-6bd848bcf4f1ca78a0832df6896efedc019182e3.jpg",
@@ -3160,7 +3686,8 @@
             "Инди"
         ],
         "torrentFile": "https://itorrents-igruha.org/engine/download.php?id=102105",
-        "trailer": "https://drive.google.com/file/d/1qtPqiEl9QQObcxAQZRKOwGxla-cNmfKh/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1qtPqiEl9QQObcxAQZRKOwGxla-cNmfKh/preview",
         "buyGame": "https://ggsel.net/catalog/product/mouse-p-i-for-hire-steam-avto-ru-mir-102197385",
         "screenshots": [
             "https://i.postimg.cc/hv0X2JNn/1749292736-ss-9ca86f0188cb2b338bcaebe75b133a2af5157251-(1).jpg",
@@ -3200,7 +3727,8 @@
             "Приключенческие игры"
         ],
         "torrentFile": "https://itorrents-igruha.org/engine/download.php?id=102120",
-        "trailer": "https://drive.google.com/file/d/1yET3VtWAuTCwAlXI9yp7Q6OJcffD6FQM/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1yET3VtWAuTCwAlXI9yp7Q6OJcffD6FQM/preview",
         "buyGame": "https://ggsel.net/catalog/product/cthulhu-the-cosmic-abyss-steam-rossiia-mir-102231296",
         "screenshots": [
             "https://i.postimg.cc/MHwDcQ1B/1776359637-ss-1db5bae787e2c3abcc76e56a91d735864543ff8d.jpg",
@@ -3242,7 +3770,8 @@
             "Симуляторы"
         ],
         "torrentFile": "https://itorrents-igruha.org/engine/download.php?id=103163",
-        "trailer": "https://drive.google.com/file/d/1UUZ3knMz6xWaUpAwri0tTH4czOo0xY_H/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1UUZ3knMz6xWaUpAwri0tTH4czOo0xY_H/preview",
         "buyGame": "https://ggsel.net/catalog/product/bus-bound-steam-avto-ru-mir-102262980",
         "screenshots": [
             "https://i.postimg.cc/BQbLGh1b/1777557990-ss-3f877831c2ae49ec43c88dcde8900e5ee701189b.jpg",
@@ -3284,7 +3813,8 @@
             "Спорт"
         ],
         "torrentFile": "torrent/CarX.Drift.Racing.Online.2.torrent",
-        "trailer": "https://drive.google.com/file/d/1-QJ_BrMUDz3NgPCRbjTh1r3jVK28AYz4/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1-QJ_BrMUDz3NgPCRbjTh1r3jVK28AYz4/preview",
         "buyGame": "https://ggsel.net/catalog/product/carx-drift-racing-online-2-steam-gift-vybor-stran-102289486",
         "screenshots": [
             "https://i.postimg.cc/Z5swqbfG/1778224915-ss-6eec40b9b9d7cb5b2b54dc77301dd927c756a148.jpg",
@@ -3325,7 +3855,8 @@
             "Инди"
         ],
         "torrentFile": "torrent/Mixtape.torrent",
-        "trailer": "https://drive.google.com/file/d/178NqXr80Ttg3kkkuwWTAxJ-jWeYMHUN1/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/178NqXr80Ttg3kkkuwWTAxJ-jWeYMHUN1/preview",
         "buyGame": "https://ggsel.net/catalog/product/mixtape-ru-sng-steam-kliuc-102289179",
         "screenshots": [
             "https://i.postimg.cc/m2BNX7y4/1777719427-ss-4cc42dbc765fe6668fd2e0d633f320ad0f8b08c9.jpg",
@@ -3369,7 +3900,8 @@
             "Приключенческие игры"
         ],
         "torrentFile": "torrent/Directive-8020.torrent",
-        "trailer": "https://drive.google.com/file/d/18-oRXx0uzlzq-MEd50-c2YUFly1c8S1w/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/18-oRXx0uzlzq-MEd50-c2YUFly1c8S1w/preview",
         "buyGame": "https://ggsel.net/catalog/product/directive-8020-steam-kliuc-rf-sng-drugie-102231561",
         "screenshots": [
             "https://i.postimg.cc/dQB4KW1D/1777719738-ss-0abe7cb94c50fdf0d7577d4be99be1c67bce66cc.jpg",
@@ -3412,7 +3944,8 @@
             "Приключенческие игры"
         ],
         "torrentFile": "torrent/Subnautica-2.torrent",
-        "trailer": "https://drive.google.com/file/d/1SF5r9N4HVfZrWUDpMcnpvsNMRGI5nDVM/view/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1SF5r9N4HVfZrWUDpMcnpvsNMRGI5nDVM/view/preview",
         "buyGame": "https://ggsel.net/catalog/product/subnautica-2-vybor-regiona-steam-ru-avto-102294619",
         "screenshots": [
             "https://i.postimg.cc/Ssc5ppJB/1777720115-ss-16b68b0941ed9c5ac1eea74e478fa726d425bebf.jpg",
@@ -3452,7 +3985,8 @@
             ""
         ],
         "torrentFile": "",
-        "trailer": "https://drive.google.com/file/d/1ZFLllUOIaHNUPdl2iGk2LoYsSscijp7G/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1ZFLllUOIaHNUPdl2iGk2LoYsSscijp7G/preview",
         "buyGame": "",
         "screenshots": [
             "https://i.postimg.cc/C54qz0B7/1754287048-ss-6eecb264cd2c99d79a284358d8560ed9f6ec52a6.jpg",
@@ -3490,7 +4024,8 @@
             ""
         ],
         "torrentFile": "",
-        "trailer": "https://drive.google.com/file/d/1PLB7KSYSTOWvcbcPmPmolIwmxKRE-PZX/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1PLB7KSYSTOWvcbcPmPmolIwmxKRE-PZX/preview",
         "buyGame": "",
         "screenshots": [
             "https://i.postimg.cc/mDvvtffN/1749104103-ss-4c81e0e09db3feb0ccf680418a1b766989c8173a.jpg",
@@ -3530,7 +4065,8 @@
             ""
         ],
         "torrentFile": "",
-        "trailer": "https://drive.google.com/file/d/1WU9zcG7cVVJ-DM8n7d1tcnzQPDEgTmD9/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1WU9zcG7cVVJ-DM8n7d1tcnzQPDEgTmD9/preview",
         "buyGame": "",
         "screenshots": [
             "https://i.postimg.cc/P50QGtm3/1751389265-ss-8aa076e31be2887b85d66dafeb324d6547dacacf.jpg",
@@ -3570,7 +4106,8 @@
             ""
         ],
         "torrentFile": "",
-        "trailer": "https://drive.google.com/file/d/1Z0sr3MXFzpc8RBPlqKSINEPYk7VB-bKq/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1Z0sr3MXFzpc8RBPlqKSINEPYk7VB-bKq/preview",
         "buyGame": "",
         "screenshots": [
             "https://i.postimg.cc/Njx2DBdY/1717994419-ss-7f5a38d9affefdabbf37fab1ae47f5d30b94cd78.jpg",
@@ -3612,7 +4149,8 @@
             ""
         ],
         "torrentFile": "",
-        "trailer": "https://drive.google.com/file/d/1uz8Akd79Hz20Btv-jA1bl2g8VNMxoF8n/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1uz8Akd79Hz20Btv-jA1bl2g8VNMxoF8n/preview",
         "buyGame": "",
         "screenshots": [
             "https://i.postimg.cc/2SvNNSsy/1776363477-ss-876b7a38dd916f1a62585d87fd9900c47980f8b6.jpg",
@@ -3652,7 +4190,8 @@
             ""
         ],
         "torrentFile": "",
-        "trailer": "https://drive.google.com/file/d/1-3UT_iQQmW9SNR69UPT9a9vCV6djZkP6/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1-3UT_iQQmW9SNR69UPT9a9vCV6djZkP6/preview",
         "buyGame": "",
         "screenshots": [
             "https://i.postimg.cc/qR7krdcQ/1733377982-ss-43f5aa3bf2cd6acbdc62e548abe606820badc9bc.jpg",
@@ -3692,7 +4231,8 @@
             ""
         ],
         "torrentFile": "",
-        "trailer": "https://drive.google.com/file/d/17S4UUW146OTQItm1lv7bPUUrf0fLsFNe/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/17S4UUW146OTQItm1lv7bPUUrf0fLsFNe/preview",
         "buyGame": "",
         "screenshots": [
             "https://i.postimg.cc/wTxBzZHH/1758605315-555.jpg",
@@ -3736,7 +4276,8 @@
             ""
         ],
         "torrentFile": "",
-        "trailer": "https://drive.google.com/file/d/1xMrWrnm6s9JyyqnShHkPFM-8EQd-Q-9p/preview",
+        "virus_check": "",
+            "trailer": "https://drive.google.com/file/d/1xMrWrnm6s9JyyqnShHkPFM-8EQd-Q-9p/preview",
         "buyGame": "",
         "screenshots": [
             "https://i.postimg.cc/prW5gdqT/1758845272-1240526430-lords-of-the-fallen-ii-2025819-09.jpg",
