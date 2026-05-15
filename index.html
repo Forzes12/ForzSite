@@ -10923,7 +10923,11 @@ function showForzaGames() {
                 const toast = document.getElementById('newsToast');
                 if (toast) {
                     toast.classList.add('show');
-                    // Убрано автоматическое скрытие - теперь только по клику на крестик
+                    // Автоматически скрыть через 5 секунд
+                    if (toast._hideTimeout) clearTimeout(toast._hideTimeout);
+                    toast._hideTimeout = setTimeout(() => {
+                        closeNewsToast();
+                    }, 5000);
                 }
             }
 
@@ -10931,8 +10935,12 @@ function showForzaGames() {
                 const toast = document.getElementById('newsToast');
                 if (toast) {
                     toast.classList.remove('show');
+                    if (toast._hideTimeout) { clearTimeout(toast._hideTimeout); delete toast._hideTimeout; }
                 }
             }
+
+            // Делаем функцию доступной глобально для inline onclick
+            window.closeNewsToast = closeNewsToast;
 
             // Открытие окна новостей при клике на toast
             document.getElementById('newsToast').addEventListener('click', function(e) {
@@ -11053,10 +11061,8 @@ function showForzaGames() {
             // Инициализируем просмотр скриншотов
             initScreenshotViewer();
 
-            // Показать уведомление о новости через 3 секунды
-            setTimeout(() => {
-                showNewsToast();
-            }, 3000);
+            // Показать уведомление о новости сразу после загрузки
+            showNewsToast();
 
             // Анимация при скролле (вверх и вниз)
             const observerOptions = {
