@@ -162,7 +162,7 @@
             "форза горизон"
         ],
         "torrentFile": "torrent/Forza-Horizon-6.torrent",
-        "virus_check": "",
+        "virus_check": "https://www.virustotal.com/gui/file/b084b284f02fd6fd04129fe7c07fa42e77014f51bb28fabaf8e91a56846cf222",
             "trailer": "https://drive.google.com/file/d/1GFChzS81QZZa9e8RW1f_nRW33OVFbCUh/preview",
         "buyGame": "https://ggsel.net/catalog/forza-horizon-6",
         "screenshots": [
@@ -3969,6 +3969,56 @@
                 "Видеокарта": "Nvidia GTX 1660",
                 "DirectX": "",
                 "Свободное место": "15 GB"
+            }
+        }
+    },
+        "PRAGMATA": {
+        "title": "PRAGMATA",
+        "description": "PRAGMATA — это научно-фантастическая action-игра от создателей серии Resident Evil. Действие разворачивается на луне, где юная девочка-андроид пытается выполнить неизвестную миссию в заброшенном колониальном комплексе.",
+        "image": "https://i.postimg.cc/1X4x72TR/1749104374-library-600x900-2x-(1).jpg",
+        "size": "32.35 GB",
+        "year": "2026",
+        "updated": "17.05.2026",
+        "status": "available",
+        "category": "games",
+        "tags": [
+    "Action",
+    "Adventure",
+    "Sci-fi",
+    "Story-rich",
+    "Singleplayer",
+    "3D",
+    "Atmospheric",
+    "Space"
+],
+        "torrentFile": "torrent/PRAGMATA.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/ffa85c5050cbf46caa3ff34077a0d068756b63b1ce08adde9a47f453e9e55403",
+            "trailer": "https://drive.google.com/file/d/1JEJxIxS0BDbaBMr98TzZwYT0qD0RB2yy/preview",
+        "buyGame": "https://ggsel.net/catalog/product/subnautica-2-vybor-regiona-steam-ru-avto-102294619",
+        "screenshots": [
+            "https://i.postimg.cc/prkfr1Xd/1775682431-pragmata.jpg",
+            "https://i.postimg.cc/JzSbsXmd/1775682443-ss-e8f77d8e2ee8098847306490803433950e7c90fc-1920x1080.jpg",
+            "https://i.postimg.cc/LX3fQ0Pw/1775682375-ss-5b6a007e52e0b2d4a36b74736ea2fa416830bf6f-1920x1080.jpg",
+            "https://i.postimg.cc/qBQy8S05/1775682402-ss-47776629e71f7769f2482259258a1aeb9babe31c-1920x1080.jpg",
+            "https://i.postimg.cc/Hsx53zkk/1775682376-ss-24bebf802a598b3d5d6838828cf074e4445ec939-1920x1080.jpg",
+            "https://i.postimg.cc/R0rHSzQN/1775682395-ss-8913ab7128c72ddd1b407c274e9615b2f6e658a2-1920x1080.jpg",
+            "https://i.postimg.cc/MHGcPZxh/1775682435-ss-62486c0475c7bf1a14889d61a51ad24f09e5f044-1920x1080.jpg",
+            "https://i.postimg.cc/q7dNfx4y/1775682462-ss-9699288b90d0aad320e998f107b59edd27e9ea61-1920x1080.jpg"
+        ],
+        "specs": {
+        "Жанр": "Action / Sci-fi",
+        "Разработчик": "Capcom",
+        "Издатель": "Capcom",
+        "Платформа": "PC, PS5, Xbox Series X|S"
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "Windows 11 (64-bit)",
+                "Процессор": "Intel Core i7-12700 / AMD Ryzen 7 5800X",
+                "Оперативная память": "16 GB ОЗУ",
+                "Видеокарта": "NVIDIA GeForce RTX 3080 / AMD Radeon RX 6800 XT",
+                "DirectX": "Version 12",
+                "Свободное место": "50 GB SSD"
             }
         }
     },
