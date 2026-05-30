@@ -10149,7 +10149,8 @@ if (game.status === 'available') {
 
         // Функция поделиться игрой
         function shareGame(gameId) {
-            const url = `${window.location.origin}${window.location.pathname}?game=${gameId}`;
+            const encodedId = encodeURIComponent(gameId);
+            const url = `${window.location.origin}${window.location.pathname}?game=${encodedId}`;
             navigator.clipboard.writeText(url).then(function() {
                 // Показать уведомление
                 showNotification('Ссылка скопирована в буфер обмена!');
