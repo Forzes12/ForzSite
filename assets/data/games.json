@@ -2785,7 +2785,7 @@
             "cairn",
             "альпинизм",
             "скалолазание",
-            "горизонт",
+            "горы",
             "peak",
             "mountain",
             "climbing",
@@ -3889,7 +3889,7 @@
     "Directive 8020": {
         "title": "Directive 8020",
         "description": "Directive 8020 – новая часть нашумевшей антологии, выход которой ожидается в скором времени. По задумкам авторов игрокам предстоит погружение в космический хоррор в стиле “Чужой” Ридли Скотта.",
-        "image": "https://i.postimg.cc/nVwwNRMq/1717995219-library-600x900-2x.jpg",
+        "image": "game-screenshot/1734552509_library_600x900_2x.jpg",
         "size": "26.69 GB",
         "year": "2026",
         "updated": "12.05.2026",
@@ -4753,5 +4753,70 @@
             "minimum": {},
             "recommended": {}
         }
-    }
+    },
+    "hitman-pro": {
+        "title": "Hitman PRO",
+        "description": "Hitman PRO - Мощный антивирусный сканер для быстрой проверки и удаления вредоносных программ",
+        "image": "game-screenshot/HitmanPro-logo.webp",
+        "size": "11 MB",
+        "year": "2019",
+        "updated": "05.01.2019",
+        "status": "available",
+        "category": "antivirus",
+        "torrentFile": "torrent/HitmanPro.exe",
+        "virus_check": "https://www.virustotal.com/gui/file/747e5ac38581a5ee8d1dd970a18b3df0fd87c22924d35a80d85e73b8639ea13a",
+        "screenshots": [
+            "game-screenshot/HitmanPro_x64_2.webp",
+            "game-screenshot/HitmanPro_x64_1.webp"
+        ],
+        "tags": [
+            "Hitman PRO",
+            "HitmanPRO",
+            "Антивирус",
+            "Antivirus",
+            "Security"
+        ],
+        "specs": {
+            "Жанр": "Антивирусный сканер",
+            "Разработчик": "SurfRight",
+            "Издатель": "SurfRight",
+"Платформа": "Windows"
+         },
+         "systemRequirements": {
+             "minimum": {},
+             "recommended": {}
+}
+     },
+    "Dr.Web CureIt": {
+         "title": "Dr.Web CureIt - Лечащая утилита",
+         "description": "Dr.Web CureIt - Лечащая утилита для поиска вредоносных программ",
+         "image": "game-screenshot/717886_normal.webp",
+         "size": "256 MB",
+         "year": "2019",
+         "updated": "30.05.2019",
+         "status": "available",
+         "category": "antivirus",
+         "torrentFile": "torrent/r8vfox24.exe.torrent",
+         "virus_check": "https://www.virustotal.com/gui/file/903a0dae0a2fa14a47c495cf67b17a829d99ddbd7449639bb5a0939768f58472",
+         "screenshots": [
+             "game-screenshot/drweb_1758196309_scaled.jpeg",
+             "game-screenshot/dr-web-cureit-screen-1.jpg"
+         ],
+         "tags": [
+             "Dr.Web CureIt",
+             "Dr.Web",
+             "Dr.WebCureIt",
+             "Security"
+         ],
+         "specs": {
+             "Жанр": "Антивирусный сканер",
+             "Разработчик": "",
+             "Издатель": "",
+             "Платформа": "Windows"
+         },
+         "systemRequirements": {
+             "minimum": {},
+             "recommended": {}
+         }
+     }
 }
