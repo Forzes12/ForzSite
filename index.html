@@ -7008,18 +7008,14 @@
                         <i class="fas fa-gamepad"></i>
                         <span>ВСЕ Игры</span>
                     </a>
-                    <a href="#" data-page="all-games-page" class="action-btn programs-btn" onclick="switchPage('all-games-page')">
-                        <i class="fas fa-desktop"></i>
-                        <span>Программы</span>
-                    </a>
-                    <a href="#" data-page="all-games-page" class="action-btn utilities-btn" onclick="switchPage('all-games-page')">
-                        <i class="fas fa-tools"></i>
-                        <span>Утилиты</span>
-                    </a>
-                    <a href="#" data-page="all-games-page" class="action-btn online-btn" onclick="switchPage('all-games-page')">
-                        <i class="fas fa-globe"></i>
-                        <span>Онлайн</span>
-                    </a>
+<a href="#" data-page="all-games-page" class="action-btn programs-btn" onclick="switchPage('all-games-page', 'programs')">
+                         <i class="fas fa-desktop"></i>
+                         <span>Программы</span>
+                     </a>
+                     <a href="#" data-page="all-games-page" class="action-btn utilities-btn" onclick="switchPage('all-games-page', 'utilities')">
+                         <i class="fas fa-tools"></i>
+                         <span>VPN</span>
+                     </a>
                 </div>
             </div>
         </section>
@@ -9756,17 +9752,19 @@
                 const gameId = card.dataset.gameId;
                 const game = gameData[gameId];
                 
-                // Для категории "Forza Horizon" также проверяем теги
+                if (!game) {
+                    card.style.display = 'none';
+                    return;
+                }
+                
                 let matchesCategory = game.category === activeCategory;
                 if (activeCategory === 'Forza Horizon' && !matchesCategory) {
-                    // Если категория не совпадает, проверяем теги
                     const gameTags = game.tags ? game.tags.map(t => t.toLowerCase()) : [];
                     matchesCategory = gameTags.some(tag => 
                         tag.includes('forza') || tag.includes('horizon') || 
                         tag.includes('форза') || tag.includes('горизон')
                     );
                 }
-                // Для категории "Far Cry" также проверяем теги
                 if (activeCategory === 'Far Cry' && !matchesCategory) {
                     const gameTags = game.tags ? game.tags.map(t => t.toLowerCase()) : [];
                     matchesCategory = gameTags.some(tag => 
@@ -9774,7 +9772,6 @@
                         tag.includes('фор край') || tag.includes('фаркрай')
                     );
                 }
-                // Для категории "Need For Speed" также проверяем теги
                 if (activeCategory === 'Need For Speed' && !matchesCategory) {
                     const gameTags = game.tags ? game.tags.map(t => t.toLowerCase()) : [];
                     matchesCategory = gameTags.some(tag => 
@@ -9783,7 +9780,6 @@
                     );
                 }
                 
-                // Фильтр по статусу
                 let matchesStatus = true;
                 if (activeFilter === 'available') {
                     matchesStatus = game.status === 'available';
@@ -9797,8 +9793,7 @@
                     game.title.toLowerCase().includes(searchTerm) ||
                     game.description.toLowerCase().includes(searchTerm) ||
                     (game.tags && game.tags.some(tag => tag.toLowerCase().includes(searchTerm)));
-
-                // Фильтр по году
+                
                 let matchesYear = true;
                 if (selectedYear !== 'all') {
                     if (selectedYear === 'old') {
@@ -9807,15 +9802,13 @@
                         matchesYear = game.year === selectedYear;
                     }
                 }
-
-                // Фильтр по жанру
+                
                 let matchesGenre = true;
                 if (selectedGenre !== 'all') {
                     const gameGenre = game.specs && game.specs["Жанр"];
                     matchesGenre = gameGenre && gameGenre.toLowerCase().includes(selectedGenre.toLowerCase());
                 }
-
-                // Фильтр по компании
+                
                 let matchesCompany = true;
                 if (selectedCompany !== 'all') {
                     const developer = game.specs && game.specs["Разработчик"];
@@ -9823,10 +9816,12 @@
                     matchesCompany = (developer && developer.toLowerCase().includes(selectedCompany.toLowerCase())) ||
                                    (publisher && publisher.toLowerCase().includes(selectedCompany.toLowerCase()));
                 }
-
+                
                 if (matchesCategory && matchesStatus && matchesSearch && matchesYear && matchesGenre && matchesCompany) {
                     card.style.display = 'block';
                     visibleCount++;
+                } else {
+                    card.style.display = 'none';
                 }
             });
             const grid = document.getElementById('allGamesGrid');
@@ -11290,6 +11285,10 @@ if (game.status === 'available') {
                 if (toast) {
                     toast.classList.remove('show');
                     if (toast._hideTimeout) { clearTimeout(toast._hideTimeout); delete toast._hideTimeout; }
+                }
+                const supportBtn = document.getElementById('supportBtn');
+                if (supportBtn && (!welcomeModal || !welcomeModal.classList.contains('active'))) {
+                    supportBtn.style.setProperty('display', 'flex', 'important');
                 }
             }
 
