@@ -6182,6 +6182,72 @@
             color: white;
         }
 
+        .mini-chat.chat-theme-purple {
+            background:
+                linear-gradient(135deg, rgba(30, 10, 50, 0.95) 0%, rgba(50, 20, 80, 0.92) 50%, rgba(40, 15, 60, 0.9) 100%),
+                radial-gradient(circle at 25% 30%, rgba(139, 92, 246, 0.5) 0%, transparent 45%),
+                radial-gradient(circle at 75% 70%, rgba(168, 85, 247, 0.4) 0%, transparent 50%);
+            border-color: rgba(139, 92, 246, 0.35);
+        }
+        .mini-chat.chat-theme-purple .message-content {
+            border-color: rgba(139, 92, 246, 0.35);
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .mini-chat.chat-theme-purple .bot-message .message-content {
+            background:
+                linear-gradient(135deg, rgba(20, 10, 40, 0.75), rgba(40, 20, 70, 0.8)),
+                radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.25), transparent 50%);
+            border: 1px solid rgba(139, 92, 246, 0.35);
+        }
+        .mini-chat.chat-theme-purple .user-message .message-content {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            border-color: rgba(168, 85, 247, 0.45);
+        }
+
+        .mini-chat.chat-theme-green {
+            background:
+                linear-gradient(135deg, rgba(10, 30, 25, 0.95) 0%, rgba(15, 40, 30, 0.92) 50%, rgba(10, 35, 25, 0.9) 100%),
+                radial-gradient(circle at 30% 30%, rgba(16, 185, 129, 0.35) 0%, transparent 45%),
+                radial-gradient(circle at 70% 70%, rgba(52, 211, 153, 0.3) 0%, transparent 50%);
+            border-color: rgba(16, 185, 129, 0.35);
+        }
+        .mini-chat.chat-theme-green .message-content {
+            border-color: rgba(16, 185, 129, 0.35);
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .mini-chat.chat-theme-green .bot-message .message-content {
+            background:
+                linear-gradient(135deg, rgba(10, 25, 20, 0.75), rgba(20, 40, 30, 0.8)),
+                radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.2), transparent 50%);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+        }
+        .mini-chat.chat-theme-green .user-message .message-content {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            border-color: rgba(52, 211, 153, 0.45);
+        }
+
+        .mini-chat.chat-theme-red {
+            background:
+                linear-gradient(135deg, rgba(40, 10, 15, 0.95) 0%, rgba(55, 15, 20, 0.92) 50%, rgba(45, 12, 18, 0.9) 100%),
+                radial-gradient(circle at 30% 30%, rgba(239, 68, 68, 0.35) 0%, transparent 45%),
+                radial-gradient(circle at 70% 70%, rgba(248, 113, 113, 0.3) 0%, transparent 50%);
+            border-color: rgba(239, 68, 68, 0.35);
+        }
+        .mini-chat.chat-theme-red .message-content {
+            border-color: rgba(239, 68, 68, 0.35);
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .mini-chat.chat-theme-red .bot-message .message-content {
+            background:
+                linear-gradient(135deg, rgba(35, 10, 15, 0.75), rgba(55, 20, 25, 0.8)),
+                radial-gradient(circle at 20% 20%, rgba(239, 68, 68, 0.2), transparent 50%);
+            border: 1px solid rgba(239, 68, 68, 0.35);
+        }
+        .mini-chat.chat-theme-red .user-message .message-content {
+            background: linear-gradient(135deg, #dc2626 0%, #f87171 100%);
+            border-color: rgba(248, 113, 113, 0.45);
+        }
+
         /* Размеры шрифта */
         .mini-chat.chat-font-small .message-content p {
             font-size: 0.8rem;
@@ -6387,6 +6453,113 @@
                 width: 160px;
                 height: 160px;
             }
+        }
+
+        /* AI chips */
+        .ai-replies {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .ai-chip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 14px;
+            border-radius: 18px;
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03)),
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.18), transparent 45%),
+                radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.18), transparent 45%);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow:
+                0 14px 34px rgba(0, 0, 0, 0.35),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+            backdrop-filter: blur(14px) saturate(140%);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .ai-chip::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+            pointer-events: none;
+        }
+        .ai-chip:hover {
+            transform: translateY(-3px) scale(1.01);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow:
+                0 20px 44px rgba(0, 0, 0, 0.45),
+                0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+                0 0 40px rgba(99, 102, 241, 0.25);
+        }
+        .ai-chip img {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.2));
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+            flex-shrink: 0;
+        }
+        .ai-chip-body {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 0;
+            flex: 1;
+        }
+        .ai-chip-title {
+            color: rgba(255, 255, 255, 0.98);
+            font-weight: 800;
+            font-size: 14px;
+            line-height: 1.3;
+            letter-spacing: 0.2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+        .ai-chip-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .ai-chip-btn {
+            padding: 7px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            color: #fff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.9), rgba(99, 102, 241, 0.9));
+            box-shadow: 0 10px 24px rgba(6, 182, 212, 0.35);
+            transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+            white-space: nowrap;
+            position: relative;
+        }
+        .ai-chip-btn:hover {
+            transform: translateY(-2px) scale(1.03);
+            filter: brightness(1.15);
+            box-shadow: 0 16px 30px rgba(6, 182, 212, 0.45);
+        }
+        .ai-chip-btn.secondary {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.95), rgba(124, 58, 237, 0.95));
+            box-shadow: 0 10px 24px rgba(139, 92, 246, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .ai-chip-btn.secondary:hover {
+            box-shadow: 0 16px 30px rgba(139, 92, 246, 0.55);
         }
 
         /* Анимация появления сообщений в чате */
@@ -9654,11 +9827,8 @@
                 if (matchesCategory && matchesStatus && matchesSearch && matchesYear && matchesGenre && matchesCompany) {
                     card.style.display = 'block';
                     visibleCount++;
-                } else {
-                    card.style.display = 'none';
                 }
             });
-            document.getElementById('gamesCount').textContent = `Найдено: ${visibleCount}`;
             const grid = document.getElementById('allGamesGrid');
             let emptyMessage = grid.querySelector('.empty-message');
             if (emptyMessage) {
@@ -10515,13 +10685,12 @@ if (game.status === 'available') {
 
         function handleOption(action) {
             if (action === 'support') {
-                // Открыть Telegram Web в маленьком popup окне снизу
                 const screenWidth = window.screen.width;
                 const screenHeight = window.screen.height;
                 const windowWidth = 400;
                 const windowHeight = 600;
-                const left = screenWidth - windowWidth - 20; // 20px от правого края
-                const top = screenHeight - windowHeight - 50; // 50px от нижнего края
+                const left = screenWidth - windowWidth - 20;
+                const top = screenHeight - windowHeight - 50;
 
                 const telegramWindow = window.open(
                     'https://web.telegram.org/k/#@Forzes_Dev',
@@ -10533,17 +10702,94 @@ if (game.status === 'available') {
                 }
                 closeSupportModal();
             } else if (action === 'search') {
-                // Скрыть опции и показать поле поиска
                 document.getElementById('optionsContainer').style.display = 'none';
                 addMessage('Введите название игры для поиска:', 'bot');
                 document.getElementById('inputContainer').style.display = 'flex';
                 document.getElementById('chatInput').placeholder = 'Введите название игры...';
                 document.getElementById('chatInput').focus();
                 document.getElementById('sendMessageBtn').setAttribute('data-mode', 'search');
+            } else if (action === 'ai-chat') {
+                openAiChat();
             }
         }
 
-        function sendMessage() {
+        function openAiChat() {
+            document.getElementById('optionsContainer').style.display = 'none';
+            document.getElementById('inputContainer').style.display = 'flex';
+            document.getElementById('chatInput').placeholder = 'Введите сообщение для AI...';
+            addMessage('Привет! Я AI-ассистент. Задайте мне любой вопрос!', 'bot');
+            document.getElementById('chatInput').focus();
+            document.getElementById('sendMessageBtn').setAttribute('data-mode', 'ai-chat');
+        }
+
+        async function callAI(message) {
+            return localAIResponse(message);
+        }
+
+        function localAIResponse(message) {
+            const text = (message || '').toLowerCase().trim();
+            const q = text.replace(/[^\wа-яё0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
+
+            const greetings = ['привет', 'здравствуй', 'здарова', 'хай', 'hi', 'hello', 'добрый'];
+            if (greetings.some(g => q.startsWith(g))) {
+                return { type: 'text', text: 'Привет! Я подскажу, что есть на сайте: игры, программы, утилиты, VPN и антивирусы. Напиши, что ищешь.' };
+            }
+            if (q.includes('помощ') || q.includes('help') || q.includes('поддержк')) {
+                return { type: 'text', text: 'Если нужна живая помощь, выбери «💬 Связаться с поддержкой» — мы ответим в Telegram.' };
+            }
+            if (q.includes('спасиб') || q.includes('спс') || q.includes('thanks') || q.includes('thank you')) {
+                return { type: 'text', text: 'Всегда пожалуйста!' };
+            }
+            if (q.includes('как дела') || q.includes('как ты') || q.includes('как жизнь')) {
+                return { type: 'text', text: 'Работаю в штатном режиме. Спрашивай, что хочешь найти на сайте.' };
+            }
+
+            const typeMap = {
+                'торрент': 'torrent',
+                'скачать': 'torrent',
+                'download': 'torrent',
+                'торент': 'torrent',
+                'купить': 'buy',
+                'buy': 'buy',
+                'онлайн': 'online',
+                'online': 'online',
+                'vpn': 'vpn',
+                'antivirus': 'antivirus',
+                'антивирус': 'antivirus',
+            };
+            let matchedType = null;
+            for (const key in typeMap) if (q.includes(key)) matchedType = typeMap[key];
+
+            let results = [];
+            for (const gameId in gameData) {
+                const game = gameData[gameId];
+                const title = (game.title || '').toLowerCase();
+                const tags = Array.isArray(game.tags) ? game.tags.map(t => (t || '').toLowerCase()).join(' ') : '';
+                const combined = title + ' ' + tags;
+                if (q && !['игры','игра','игр','game','программ','программа','program'].includes(q) && combined.includes(q)) {
+                    results.push(game);
+                }
+            }
+            if (results.length === 0 && matchedType) {
+                for (const gameId in gameData) {
+                    const game = gameData[gameId];
+                    const t = (game.type || '').toLowerCase();
+                    const s = (game.status || '').toLowerCase();
+                    if (t.includes(matchedType) || s.includes(matchedType)) results.push(game);
+                }
+            }
+            if (results.length === 0 && (q.includes('игр') || q.includes('game') || q.includes('программ') || q.includes('program'))) {
+                for (const gameId in gameData) results.push(gameData[gameId]);
+            }
+
+            results = results.slice(0, 5);
+            if (!results.length) {
+                return { type: 'text', text: 'Ничего не нашёл. Попробуй уточнить запрос: “CS”, “программы”, “VPN” или “антивирус”.' };
+            }
+            return { type: 'results', games: results };
+        }
+
+        async function sendMessage() {
             const input = document.getElementById('chatInput');
             const message = input.value.trim();
             const fileInput = document.getElementById('fileInput');
@@ -10564,21 +10810,43 @@ if (game.status === 'available') {
                 }
 
                 if (mode === 'support') {
-                    // Показать typing indicator
                     showTypingIndicator();
-                    // Имитация отправки сообщения поддержки
                     setTimeout(() => {
                         hideTypingIndicator();
                         addMessage('Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.', 'bot');
-                        // Скрыть чат через 3 секунды
                         setTimeout(() => {
                             closeSupportModal();
                         }, 3000);
                     }, 2000);
-                } else {
-                    // Показать typing indicator
+                } else if (mode === 'ai-chat') {
                     showTypingIndicator();
-                    // Поиск игры
+                    const aiReply = localAIResponse(message);
+                    setTimeout(() => {
+                        hideTypingIndicator();
+                        if (aiReply.type === 'results') {
+                            let response = '<div class="ai-replies">';
+                            aiReply.games.slice(0, 5).forEach(game => {
+                                response += `
+                                    <div class="ai-chip">
+                                        <img src="${game.image}" alt="${game.title}" class="ai-chip-img">
+                                        <div class="ai-chip-body">
+                                            <div class="ai-chip-title">${game.title}</div>
+                                            <div class="ai-chip-actions">
+                                                <button class="ai-chip-btn" onclick="openGameModal('${game.id}')">Информация</button>
+                                                <button class="ai-chip-btn secondary" onclick="window.open('${game.torrentFile || game.buyGame}', '_blank')">${game.torrentFile ? 'Скачать' : 'Купить'}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                            });
+                            response += '</div>';
+                            addMessage(response, 'bot');
+                        } else {
+                            addMessage(aiReply.text, 'bot');
+                        }
+                    }, 700);
+                } else {
+                    showTypingIndicator();
                     setTimeout(() => {
                         hideTypingIndicator();
                         const results = searchGames(message);
@@ -11051,7 +11319,7 @@ if (game.status === 'available') {
             setTimeout(() => { canCloseWelcome = true; }, 2000);
             
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'n' || e.key === 'N' || e.key === 'т' || e.key === 'Т') {
+                if (e.key === 'n' || e.key === 'N' || e.key === 'ъ') {
                     if (welcomeModal.classList.contains('active')) {
                         if (canCloseWelcome) {
                             closeWelcomeModal();
@@ -11360,6 +11628,7 @@ if (game.status === 'available') {
                     <div class="chat-options">
                         <button class="option-btn" data-action="support">💬 Связаться с поддержкой</button>
                         <button class="option-btn" data-action="search">🔍 Найти игру</button>
+                        <button class="option-btn" data-action="ai-chat">🤖 Чат с AI</button>
                     </div>
                 </div>
             </div>
@@ -11373,6 +11642,7 @@ if (game.status === 'available') {
         <div class="mini-chat-options" id="optionsContainer">
             <button class="option-btn" data-action="support">💬 Связаться с поддержкой</button>
             <button class="option-btn" data-action="search">🔍 Найти игру</button>
+            <button class="option-btn" data-action="ai-chat">🤖 Чат с AI</button>
         </div>
         <div class="mini-chat-input" id="inputContainer" style="display: none;">
             <input type="text" id="chatInput" placeholder="Введите сообщение...">
@@ -11389,6 +11659,9 @@ if (game.status === 'available') {
                 <button class="theme-option active" data-theme="dark">Темная</button>
                 <button class="theme-option" data-theme="neon">Неон</button>
                 <button class="theme-option" data-theme="minimal">Минимальная</button>
+                <button class="theme-option" data-theme="purple">Фиолетовая</button>
+                <button class="theme-option" data-theme="green">Зелёная</button>
+                <button class="theme-option" data-theme="red">Красная</button>
             </div>
             <h4>Размер шрифта</h4>
             <div class="font-size-options">
