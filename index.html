@@ -9710,30 +9710,13 @@
 
         // Настройка обработчиков для кнопок "Смотреть"
         function setupViewButtons() {
-            console.log('Setting up view buttons...');
-            document.querySelectorAll('.view-btn').forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const gameId = this.getAttribute('data-game');
-                    console.log('View button clicked for game:', gameId);
-                    openGameModal(gameId);
-                });
+            document.addEventListener('click', function(e) {
+                const btn = e.target.closest('.view-btn');
+                if (!btn) return;
+                e.preventDefault();
+                const gameId = btn.getAttribute('data-game');
+                if (gameId && typeof openGameModal === 'function') openGameModal(gameId);
             });
-
-            // Add hover logging for game cards
-            document.querySelectorAll('.game-card').forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    console.log('Game card hover start:', this.dataset.gameId);
-                    console.log('Card transform before hover:', window.getComputedStyle(this).transform);
-                });
-                card.addEventListener('mouseleave', function() {
-                    console.log('Game card hover end:', this.dataset.gameId);
-                    console.log('Card transform after hover:', window.getComputedStyle(this).transform);
-                });
-            });
-
-            console.log('View buttons setup complete. Total buttons:', document.querySelectorAll('.view-btn').length);
-            console.log('Total game cards:', document.querySelectorAll('.game-card').length);
         }
 
         // Функция фильтрации
@@ -10762,7 +10745,7 @@ if (game.status === 'available') {
                 const tags = Array.isArray(game.tags) ? game.tags.map(t => (t || '').toLowerCase()).join(' ') : '';
                 const combined = title + ' ' + tags;
                 if (q && !['игры','игра','игр','game','программ','программа','program'].includes(q) && combined.includes(q)) {
-                    results.push(game);
+                    results.push({ id: gameId, ...game });
                 }
             }
             if (results.length === 0 && matchedType) {
@@ -10770,7 +10753,7 @@ if (game.status === 'available') {
                     const game = gameData[gameId];
                     const t = (game.type || '').toLowerCase();
                     const s = (game.status || '').toLowerCase();
-                    if (t.includes(matchedType) || s.includes(matchedType)) results.push(game);
+                    if (t.includes(matchedType) || s.includes(matchedType)) results.push({ id: gameId, ...game });
                 }
             }
             if (results.length === 0 && (q.includes('игр') || q.includes('game') || q.includes('программ') || q.includes('program'))) {
