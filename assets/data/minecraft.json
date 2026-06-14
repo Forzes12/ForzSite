@@ -1,455 +1,491 @@
 {
-  "tabs": {
-    "launchers": {
-      "description": "Популярные лаунчеры для Minecraft",
-      "items": [
-        {
-          "id": "tlauncher",
-          "type": "launcher",
-          "title": "TLauncher",
-          "description": "Популярный лаунчер для Minecraft: авторизация, моды, скины, авторские версии.",
-          "image": "game-screenshot/bb546f93-651a-4b35-a200-652cd8a3078d.png",
-          "torrentFile": "torrent/tlauncher-1.9.7.2.exe",
-          "author": "TLauncher Team",
-          "size": "50 MB",
-          "version": "1.9.7.2",
-          "updated": "2026",
-          "status": "available"
+    "tabs": {
+        "launchers": {
+            "description": "Популярные лаунчеры для Minecraft",
+            "items": [
+                {
+                    "id": "tlauncher",
+                    "type": "launcher",
+                    "title": "TLauncher",
+                    "description": "Популярный лаунчер для Minecraft: авторизация, моды, скины, авторские версии.",
+                    "image": "game-screenshot/bb546f93-651a-4b35-a200-652cd8a3078d.png",
+                    "torrentFile": "torrent/tlauncher-1.9.7.2.exe",
+                    "author": "TLauncher Team",
+                    "size": "50 MB",
+                    "version": "1.9.7.2",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0098"
+                },
+                {
+                    "id": "prismlauncher",
+                    "type": "launcher",
+                    "title": "Prism Launcher",
+                    "description": "Кроссплатформенный лаунчер с поддержкой множества аккаунтов и модепаков.",
+                    "image": "game-screenshot/44a050ce-7050-4872-9ab7-000550a3ebd4.png",
+                    "torrentFile": "torrent/prismlauncher.exe",
+                    "author": "Prism Launcher Team",
+                    "size": "30 MB",
+                    "version": "8.0",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0099"
+                },
+                {
+                    "id": "lunarclient",
+                    "type": "launcher",
+                    "title": "Lunar Client",
+                    "description": "Лаунчер для PvP с набором полезных модов, шейдеров и оптимизаций.",
+                    "image": "game-screenshot/f7206f63-7b60-460a-8a05-5e682ad7f5e0.png",
+                    "torrentFile": "torrent/lunarclient.exe",
+                    "author": "Lunar Client Inc.",
+                    "size": "200 MB",
+                    "version": "3.17",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0100"
+                },
+                {
+                    "id": "badlionclient",
+                    "type": "launcher",
+                    "title": "Badlion Client",
+                    "description": "Лаунчер с особым фокусом на честную игру и надежную античит-систему.",
+                    "image": "game-screenshot/6ef66e59-37f0-4299-b8a0-c5a30eae4608.png",
+                    "torrentFile": "torrent/badlionclient.exe",
+                    "author": "Badlion",
+                    "size": "180 MB",
+                    "version": "4.3",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0101"
+                },
+                {
+                    "id": "official-launcher",
+                    "type": "launcher",
+                    "title": "Официальный лаунчер Minecraft",
+                    "description": "Оригинальный лаунчер от Mojang/Microsoft с поддержкой Realms и Market.",
+                    "image": "game-screenshot/427fba19-ea56-45cb-be8e-c5cd2a67526b.png",
+                    "torrentFile": "torrent/minecraft-launcher.exe",
+                    "author": "Mojang Studios",
+                    "size": "120 MB",
+                    "version": "1.20",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0102"
+                }
+            ]
         },
-        {
-          "id": "prismlauncher",
-          "type": "launcher",
-          "title": "Prism Launcher",
-          "description": "Кроссплатформенный лаунчер с поддержкой множества аккаунтов и модепаков.",
-          "image": "game-screenshot/44a050ce-7050-4872-9ab7-000550a3ebd4.png",
-          "torrentFile": "torrent/prismlauncher.exe",
-          "author": "Prism Launcher Team",
-          "size": "30 MB",
-          "version": "8.0",
-          "updated": "2026",
-          "status": "available"
+        "mods": {
+            "description": "Моды для Minecraft",
+            "items": [
+                {
+                    "id": "optifine",
+                    "type": "mod",
+                    "title": "OptiFine",
+                    "description": "Оптимизация, шейдеры, HD-текстуры, больше настроек графики.",
+                    "image": "game-screenshot/8956_63ef2828adf39.png",
+                    "torrentFile": "torrent/OptiFine_1.20.4.jar",
+                    "author": "sp614x",
+                    "size": "2 MB",
+                    "version": "1.20.4",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0103"
+                },
+                {
+                    "id": "forge",
+                    "type": "mod",
+                    "title": "Minecraft Forge",
+                    "description": "Популярный модлоадер с огромным количеством совместимых модов.",
+                    "image": "game-screenshot/30083642.jpg",
+                    "torrentFile": "torrent/forge-1.20.4-installer.jar",
+                    "author": "Forge Team",
+                    "size": "5 MB",
+                    "version": "47.4.0",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0104"
+                },
+                {
+                    "id": "fabric",
+                    "type": "mod",
+                    "title": "Fabric API",
+                    "description": "Лёгкий модлоадер и фреймворк для современных версий Minecraft.",
+                    "image": "game-screenshot/Fabric_API.jpg",
+                    "torrentFile": "torrent/fabric-loader-1.20.4.jar",
+                    "author": "Fabric Team",
+                    "size": "1 MB",
+                    "version": "0.16.9",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0105"
+                },
+                {
+                    "id": "sodium",
+                    "type": "mod",
+                    "title": "Sodium",
+                    "description": "Современный мод на оптимизацию рендеринга для Fabric, повышает FPS.",
+                    "image": "game-screenshot/637298471098686391.png",
+                    "torrentFile": "torrent/sodium-1.20.4.jar",
+                    "author": "jellysquid3",
+                    "size": "1.5 MB",
+                    "version": "0.5.0",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0106"
+                },
+                {
+                    "id": "create",
+                    "type": "mod",
+                    "title": "Create",
+                    "description": "Механический и инженерный мод с вращениями, понтонными системами и автоматизацией.",
+                    "image": "game-screenshot/102865_63e48edbaf8f4.png",
+                    "torrentFile": "torrent/create-1.20.4.jar",
+                    "author": "Simibubi",
+                    "size": "6 MB",
+                    "version": "0.5.1",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0107"
+                },
+                {
+                    "id": "journeymap",
+                    "type": "mod",
+                    "title": "JourneyMap",
+                    "description": "Карта в реальном времени, метки, мини-карты и полноразмерные карты.",
+                    "image": "game-screenshot/JourneyMap.jpg",
+                    "torrentFile": "torrent/journeymap-1.20.4.jar",
+                    "author": "techbrew",
+                    "size": "4 MB",
+                    "version": "5.9.18",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0108"
+                },
+                {
+                    "id": "jei",
+                    "type": "mod",
+                    "title": "Just Enough Items (JEI)",
+                    "description": "Просмотр рецептов, предметов и инструментов для крафта.",
+                    "image": "game-screenshot/24358_63ef268db7d94.jpg",
+                    "torrentFile": "torrent/jei-1.20.4.jar",
+                    "author": "mezz",
+                    "size": "3 MB",
+                    "version": "15.2.0.27",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0109"
+                },
+                {
+                    "id": "tconstruct",
+                    "type": "mod",
+                    "title": "Tinkers' Construct",
+                    "description": "Мод на инструменты, оружие, литейные формы и кастомные материалы.",
+                    "image": "game-screenshot/10312_6878ad5d43339.png",
+                    "torrentFile": "torrent/tconstruct-1.20.4.jar",
+                    "author": "mDiyo",
+                    "size": "5 MB",
+                    "version": "3.9.0.5",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0110"
+                },
+                {
+                    "id": "biomes-o-plenty",
+                    "type": "mod",
+                    "title": "Biomes O' Plenty",
+                    "description": "Добавляет десятки новых биомов с уникальным ландшафтом и растительностью.",
+                    "image": "game-screenshot/Biomes_O_Plenty.jpg",
+                    "torrentFile": "torrent/biomes-o-plenty-1.20.4.jar",
+                    "author": "Forstride",
+                    "size": "8 MB",
+                    "version": "1.20.4",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0111"
+                },
+                {
+                    "id": "appleskin",
+                    "type": "mod",
+                    "title": "AppleSkin",
+                    "description": "Показывает количество сытости при еде и насыщение еды.",
+                    "image": "game-screenshot/AppleSkin.jpg",
+                    "torrentFile": "torrent/appleskin-1.20.4.jar",
+                    "author": "squeek",
+                    "size": "0.5 MB",
+                    "version": "2.4.1",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0112"
+                }
+            ]
         },
-        {
-          "id": "lunarclient",
-          "type": "launcher",
-          "title": "Lunar Client",
-          "description": "Лаунчер для PvP с набором полезных модов, шейдеров и оптимизаций.",
-          "image": "game-screenshot/f7206f63-7b60-460a-8a05-5e682ad7f5e0.png",
-          "torrentFile": "torrent/lunarclient.exe",
-          "author": "Lunar Client Inc.",
-          "size": "200 MB",
-          "version": "3.17",
-          "updated": "2026",
-          "status": "available"
+        "skins": {
+            "description": "Скины для персонажей Minecraft",
+            "items": [
+                {
+                    "id": "anime-skins-pack",
+                    "type": "skin",
+                    "title": "Набор аниме-скинов",
+                    "description": "Коллекция скинов в стиле аниме: Naruto, Bleach, Demon Slayer и другие.",
+                    "image": "game-screenshot/photo_2026-06-11_19-02-03.jpg",
+                    "torrentFile": "https://minecraft-inside.ru/skins/tags/Аниме/page/4/",
+                    "author": "SkinPack Team",
+                    "size": "25 MB",
+                    "version": "1.0",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0113"
+                },
+                {
+                    "id": "fantasy-skins",
+                    "type": "skin",
+                    "title": "Фэнтези-скины",
+                    "description": "Эльфы, орки, драконы и магические существа в формате скинов.",
+                    "image": "game-screenshot/photo_2026-06-11_19-03-58.jpg",
+                    "torrentFile": "https://ru.namemc.com/minecraft-skins/tag/fantasy?page=1",
+                    "author": "SkinPack Team",
+                    "size": "30 MB",
+                    "version": "1.0",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0114"
+                },
+                {
+                    "id": "pro-players-skins",
+                    "type": "skin",
+                    "title": "Скины профессиональных игроков",
+                    "description": "Топовые скины от известных стримеров и киберспортсменов.",
+                    "image": "game-screenshot/photo_2026-06-11_19-05-55.jpg",
+                    "torrentFile": "https://www.planetminecraft.com/skins/tag/professional/?order=order_views&p=1",
+                    "author": "SkinPack Team",
+                    "size": "15 MB",
+                    "version": "1.0",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0115"
+                },
+                {
+                    "id": "realistic-skins",
+                    "type": "skin",
+                    "title": "Реалистичные скины",
+                    "description": "Высокодетализированные скины с реалистичной одеждой и внешностью.",
+                    "image": "game-screenshot/photo_2026-06-11_19-07-09.jpg",
+                    "torrentFile": "https://www.planetminecraft.com/skins/tag/hd/?order=order_popularity&p=2&ysclid=mq9oxfqr1y652721153",
+                    "author": "SkinPack Team",
+                    "size": "40 MB",
+                    "version": "1.0",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0116"
+                }
+            ]
         },
-        {
-          "id": "badlionclient",
-          "type": "launcher",
-          "title": "Badlion Client",
-          "description": "Лаунчер с особым фокусом на честную игру и надежную античит-систему.",
-          "image": "game-screenshot/6ef66e59-37f0-4299-b8a0-c5a30eae4608.png",
-          "torrentFile": "torrent/badlionclient.exe",
-          "author": "Badlion",
-          "size": "180 MB",
-          "version": "4.3",
-          "updated": "2026",
-          "status": "available"
+        "maps": {
+            "description": "Карты и адвенчуры для Minecraft",
+            "items": [
+                {
+                    "id": "skyblock-legacy",
+                    "type": "map",
+                    "title": "SkyBlock Legacy",
+                    "description": "Классическая карта на выживание в небе, с уникальными механиками и квестами.",
+                    "image": "game-screenshot/sky_block.jpg",
+                    "torrentFile": "torrent/skyblock-legacy.zip",
+                    "author": "TheBlazeCraft",
+                    "size": "15 MB",
+                    "version": "3.0",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0117"
+                },
+                {
+                    "id": "parkour-city",
+                    "type": "map",
+                    "title": "Parkour City",
+                    "description": "Огромный паркур-город с сотнями уровней и проверками.",
+                    "image": "game-screenshot/1626592956_14628306-parkourcitylogo_l.jpg",
+                    "torrentFile": "torrent/parkour-city.zip",
+                    "author": "Xisumavoid",
+                    "size": "25 MB",
+                    "version": "2.1",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0118"
+                },
+                {
+                    "id": "adventure-realm",
+                    "type": "map",
+                    "title": "Adventure Realm",
+                    "description": "Полноценная адвенчура с NPC, диалогами и прогрессией героя.",
+                    "image": "game-screenshot/638212267806635573.png",
+                    "torrentFile": "torrent/adventure-realm.zip",
+                    "author": "MinecraftMaps",
+                    "size": "35 MB",
+                    "version": "1.5",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0119"
+                },
+                {
+                    "id": "survival-islands",
+                    "type": "map",
+                    "title": "Survival Islands",
+                    "description": "Выживание на рассеянных островах с торговлей и кланами.",
+                    "image": "game-screenshot/179780_66f7b1dcf1584.png",
+                    "torrentFile": "torrent/survival-islands.zip",
+                    "author": "TeamVoid",
+                    "size": "20 MB",
+                    "version": "4.2",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0120"
+                }
+            ]
         },
-        {
-          "id": "official-launcher",
-          "type": "launcher",
-          "title": "Официальный лаунчер Minecraft",
-          "description": "Оригинальный лаунчер от Mojang/Microsoft с поддержкой Realms и Market.",
-          "image": "game-screenshot/427fba19-ea56-45cb-be8e-c5cd2a67526b.png",
-          "torrentFile": "torrent/minecraft-launcher.exe",
-          "author": "Mojang Studios",
-          "size": "120 MB",
-          "version": "1.20",
-          "updated": "2026",
-          "status": "available"
+        "shaders": {
+            "description": "Шейдеры для улучшения графики Minecraft",
+            "items": [
+                {
+                    "id": "seus-ptgi",
+                    "type": "shader",
+                    "title": "SEUS PTGI",
+                    "description": "Продвинутый трассировочный шейдер с реалистичным освещением и PBR.",
+                    "image": "game-screenshot/1555462821_seus-path-tracing-shaders-ptgi-e6.jpg",
+                    "torrentFile": "torrent/seus-ptgi-e12.zip",
+                    "author": "Sonic Ether",
+                    "size": "30 MB",
+                    "version": "E12",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0121"
+                },
+                {
+                    "id": "bsl",
+                    "type": "shader",
+                    "title": "BSL Shaders",
+                    "description": "Красивые и оптимизированные шейдеры с реалистичным небом и водой.",
+                    "image": "game-screenshot/33458_61a89cf944cc9.png",
+                    "torrentFile": "torrent/bsl-shaders-v8.3.zip",
+                    "author": "CaptTatsu",
+                    "size": "15 MB",
+                    "version": "8.3",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0122"
+                },
+                {
+                    "id": "complementary",
+                    "type": "shader",
+                    "title": "Complementary Shaders",
+                    "description": "Сбалансированные шейдеры для мощного и красивого освещения.",
+                    "image": "game-screenshot/637259406383714704.jpeg",
+                    "torrentFile": "torrent/complementary-shaders-r5.1.zip",
+                    "author": "EminGT",
+                    "size": "18 MB",
+                    "version": "5.1",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0123"
+                },
+                {
+                    "id": "silfurio",
+                    "type": "shader",
+                    "title": "Silfurio Shaders",
+                    "description": "Эфирный вайб и качественное освещение для атмосферных скриншотов.",
+                    "image": "game-screenshot/sildurs_shader.jpg",
+                    "torrentFile": "torrent/silfurio-shaders.zip",
+                    "author": "Silfurio",
+                    "size": "12 MB",
+                    "version": "1.0",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0124"
+                }
+            ]
+        },
+        "resourcepacks": {
+            "description": "Ресурспаки для Minecraft",
+            "items": [
+                {
+                    "id": "faithful",
+                    "type": "resourcepack",
+                    "title": "Faithful 32x",
+                    "description": "Высокодетализированный ресурспак без потери атмосферы оригинала.",
+                    "image": "game-screenshot/9431_66b5d515f1ef1.png",
+                    "torrentFile": "torrent/faithful-1.20.zip",
+                    "author": "Faithful Team",
+                    "size": "50 MB",
+                    "version": "1.20.4",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0125"
+                },
+                {
+                    "id": "sphax",
+                    "type": "resourcepack",
+                    "title": "Sphax PureBDCraft",
+                    "description": "Стильный и минималистичный ресурспак с чистыми текстурами.",
+                    "image": "game-screenshot/1572710648_aquatic02.jpg",
+                    "torrentFile": "torrent/sphax-1.20.zip",
+                    "author": "BDCraft Team",
+                    "size": "60 MB",
+                    "version": "1.20.4",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0126"
+                },
+                {
+                    "id": "realistico",
+                    "type": "resourcepack",
+                    "title": "Realistico",
+                    "description": "Реалистичные текстуры с PBR и готовностью к шейдерам.",
+                    "image": "game-screenshot/1588961663_realistico-texture-minecraft.jpg",
+                    "torrentFile": "torrent/realistico-1.20.zip",
+                    "author": "Realistico Team",
+                    "size": "120 MB",
+                    "version": "1.20.4",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0127"
+                },
+                {
+                    "id": "chromahills",
+                    "type": "resourcepack",
+                    "title": "ChromaHills",
+                    "description": "Яркий и насыщенный арт-ресурспак с улучшенными моделями.",
+                    "image": "game-screenshot/chroma_hills_rpg_texture_pack.jpg",
+                    "torrentFile": "torrent/chromahills-1.20.zip",
+                    "author": "Chroma Team",
+                    "size": "80 MB",
+                    "version": "1.20.4",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0128"
+                }
+            ]
+        },
+        "scripts": {
+            "description": "Скрипты и модлоадеры для Minecraft",
+            "items": [
+                {
+                    "id": "worldedit",
+                    "type": "script",
+                    "title": "WorldEdit",
+                    "description": "Мощный редактор мира с генерацией форм, заменой блоков и штампами.",
+                    "image": "game-screenshot/maxresdefault (4).jpg",
+                    "torrentFile": "torrent/worldedit-1.20.4.jar",
+                    "author": "EngineHub",
+                    "size": "4 MB",
+                    "version": "7.3.0",
+                    "updated": "2026",
+                    "status": "available",
+                    "sku": "ART-0129"
+                }
+            ]
+        },
+        "snapshots": {
+            "description": "Снапшоты Minecraft",
+            "items": []
         }
-      ]
-    },
-    "mods": {
-      "description": "Моды для Minecraft",
-      "items": [
-        {
-          "id": "optifine",
-          "type": "mod",
-          "title": "OptiFine",
-          "description": "Оптимизация, шейдеры, HD-текстуры, больше настроек графики.",
-          "image": "game-screenshot/8956_63ef2828adf39.png",
-          "torrentFile": "torrent/OptiFine_1.20.4.jar",
-          "author": "sp614x",
-          "size": "2 MB",
-          "version": "1.20.4",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "forge",
-          "type": "mod",
-          "title": "Minecraft Forge",
-          "description": "Популярный модлоадер с огромным количеством совместимых модов.",
-          "image": "game-screenshot/30083642.jpg",
-          "torrentFile": "torrent/forge-1.20.4-installer.jar",
-          "author": "Forge Team",
-          "size": "5 MB",
-          "version": "47.4.0",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "fabric",
-          "type": "mod",
-          "title": "Fabric API",
-          "description": "Лёгкий модлоадер и фреймворк для современных версий Minecraft.",
-          "image": "game-screenshot/Fabric_API.jpg",
-          "torrentFile": "torrent/fabric-loader-1.20.4.jar",
-          "author": "Fabric Team",
-          "size": "1 MB",
-          "version": "0.16.9",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "sodium",
-          "type": "mod",
-          "title": "Sodium",
-          "description": "Современный мод на оптимизацию рендеринга для Fabric, повышает FPS.",
-          "image": "game-screenshot/637298471098686391.png",
-          "torrentFile": "torrent/sodium-1.20.4.jar",
-          "author": "jellysquid3",
-          "size": "1.5 MB",
-          "version": "0.5.0",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "create",
-          "type": "mod",
-          "title": "Create",
-          "description": "Механический и инженерный мод с вращениями, понтонными системами и автоматизацией.",
-          "image": "game-screenshot/102865_63e48edbaf8f4.png",
-          "torrentFile": "torrent/create-1.20.4.jar",
-          "author": "Simibubi",
-          "size": "6 MB",
-          "version": "0.5.1",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "journeymap",
-          "type": "mod",
-          "title": "JourneyMap",
-          "description": "Карта в реальном времени, метки, мини-карты и полноразмерные карты.",
-          "image": "game-screenshot/JourneyMap.jpg",
-          "torrentFile": "torrent/journeymap-1.20.4.jar",
-          "author": "techbrew",
-          "size": "4 MB",
-          "version": "5.9.18",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "jei",
-          "type": "mod",
-          "title": "Just Enough Items (JEI)",
-          "description": "Просмотр рецептов, предметов и инструментов для крафта.",
-          "image": "game-screenshot/24358_63ef268db7d94.jpg",
-          "torrentFile": "torrent/jei-1.20.4.jar",
-          "author": "mezz",
-          "size": "3 MB",
-          "version": "15.2.0.27",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "tconstruct",
-          "type": "mod",
-          "title": "Tinkers' Construct",
-          "description": "Мод на инструменты, оружие, литейные формы и кастомные материалы.",
-          "image": "game-screenshot/10312_6878ad5d43339.png",
-          "torrentFile": "torrent/tconstruct-1.20.4.jar",
-          "author": "mDiyo",
-          "size": "5 MB",
-          "version": "3.9.0.5",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "biomes-o-plenty",
-          "type": "mod",
-          "title": "Biomes O' Plenty",
-          "description": "Добавляет десятки новых биомов с уникальным ландшафтом и растительностью.",
-          "image": "game-screenshot/Biomes_O_Plenty.jpg",
-          "torrentFile": "torrent/biomes-o-plenty-1.20.4.jar",
-          "author": "Forstride",
-          "size": "8 MB",
-          "version": "1.20.4",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "appleskin",
-          "type": "mod",
-          "title": "AppleSkin",
-          "description": "Показывает количество сытости при еде и насыщение еды.",
-          "image": "game-screenshot/AppleSkin.jpg",
-          "torrentFile": "torrent/appleskin-1.20.4.jar",
-          "author": "squeek",
-          "size": "0.5 MB",
-          "version": "2.4.1",
-          "updated": "2026",
-          "status": "available"
-        }
-      ]
-    },
-    "skins": {
-      "description": "Скины для персонажей Minecraft",
-      "items": [
-        {
-          "id": "anime-skins-pack",
-          "type": "skin",
-          "title": "Набор аниме-скинов",
-          "description": "Коллекция скинов в стиле аниме: Naruto, Bleach, Demon Slayer и другие.",
-          "image": "game-screenshot/photo_2026-06-11_19-02-03.jpg",
-          "torrentFile": "https://minecraft-inside.ru/skins/tags/Аниме/page/4/",
-          "author": "SkinPack Team",
-          "size": "25 MB",
-          "version": "1.0",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "fantasy-skins",
-          "type": "skin",
-          "title": "Фэнтези-скины",
-          "description": "Эльфы, орки, драконы и магические существа в формате скинов.",
-          "image": "game-screenshot/photo_2026-06-11_19-03-58.jpg",
-          "torrentFile": "https://ru.namemc.com/minecraft-skins/tag/fantasy?page=1",
-          "author": "SkinPack Team",
-          "size": "30 MB",
-          "version": "1.0",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "pro-players-skins",
-          "type": "skin",
-          "title": "Скины профессиональных игроков",
-          "description": "Топовые скины от известных стримеров и киберспортсменов.",
-          "image": "game-screenshot/photo_2026-06-11_19-05-55.jpg",
-          "torrentFile": "https://www.planetminecraft.com/skins/tag/professional/?order=order_views&p=1",
-          "author": "SkinPack Team",
-          "size": "15 MB",
-          "version": "1.0",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "realistic-skins",
-          "type": "skin",
-          "title": "Реалистичные скины",
-          "description": "Высокодетализированные скины с реалистичной одеждой и внешностью.",
-          "image": "game-screenshot/photo_2026-06-11_19-07-09.jpg",
-          "torrentFile": "https://www.planetminecraft.com/skins/tag/hd/?order=order_popularity&p=2&ysclid=mq9oxfqr1y652721153",
-          "author": "SkinPack Team",
-          "size": "40 MB",
-          "version": "1.0",
-          "updated": "2026",
-          "status": "available"
-        }
-      ]
-    },
-    "maps": {
-      "description": "Карты и адвенчуры для Minecraft",
-      "items": [
-        {
-          "id": "skyblock-legacy",
-          "type": "map",
-          "title": "SkyBlock Legacy",
-          "description": "Классическая карта на выживание в небе, с уникальными механиками и квестами.",
-          "image": "game-screenshot/sky_block.jpg",
-          "torrentFile": "torrent/skyblock-legacy.zip",
-          "author": "TheBlazeCraft",
-          "size": "15 MB",
-          "version": "3.0",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "parkour-city",
-          "type": "map",
-          "title": "Parkour City",
-          "description": "Огромный паркур-город с сотнями уровней и проверками.",
-          "image": "game-screenshot/1626592956_14628306-parkourcitylogo_l.jpg",
-          "torrentFile": "torrent/parkour-city.zip",
-          "author": "Xisumavoid",
-          "size": "25 MB",
-          "version": "2.1",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "adventure-realm",
-          "type": "map",
-          "title": "Adventure Realm",
-          "description": "Полноценная адвенчура с NPC, диалогами и прогрессией героя.",
-          "image": "game-screenshot/638212267806635573.png",
-          "torrentFile": "torrent/adventure-realm.zip",
-          "author": "MinecraftMaps",
-          "size": "35 MB",
-          "version": "1.5",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "survival-islands",
-          "type": "map",
-          "title": "Survival Islands",
-          "description": "Выживание на рассеянных островах с торговлей и кланами.",
-          "image": "game-screenshot/179780_66f7b1dcf1584.png",
-          "torrentFile": "torrent/survival-islands.zip",
-          "author": "TeamVoid",
-          "size": "20 MB",
-          "version": "4.2",
-          "updated": "2026",
-          "status": "available"
-        }
-      ]
-    },
-    "shaders": {
-      "description": "Шейдеры для улучшения графики Minecraft",
-      "items": [
-        {
-          "id": "seus-ptgi",
-          "type": "shader",
-          "title": "SEUS PTGI",
-          "description": "Продвинутый трассировочный шейдер с реалистичным освещением и PBR.",
-          "image": "game-screenshot/1555462821_seus-path-tracing-shaders-ptgi-e6.jpg",
-          "torrentFile": "torrent/seus-ptgi-e12.zip",
-          "author": "Sonic Ether",
-          "size": "30 MB",
-          "version": "E12",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "bsl",
-          "type": "shader",
-          "title": "BSL Shaders",
-          "description": "Красивые и оптимизированные шейдеры с реалистичным небом и водой.",
-          "image": "game-screenshot/33458_61a89cf944cc9.png",
-          "torrentFile": "torrent/bsl-shaders-v8.3.zip",
-          "author": "CaptTatsu",
-          "size": "15 MB",
-          "version": "8.3",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "complementary",
-          "type": "shader",
-          "title": "Complementary Shaders",
-          "description": "Сбалансированные шейдеры для мощного и красивого освещения.",
-          "image": "game-screenshot/637259406383714704.jpeg",
-          "torrentFile": "torrent/complementary-shaders-r5.1.zip",
-          "author": "EminGT",
-          "size": "18 MB",
-          "version": "5.1",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "silfurio",
-          "type": "shader",
-          "title": "Silfurio Shaders",
-          "description": "Эфирный вайб и качественное освещение для атмосферных скриншотов.",
-          "image": "game-screenshot/sildurs_shader.jpg",
-          "torrentFile": "torrent/silfurio-shaders.zip",
-          "author": "Silfurio",
-          "size": "12 MB",
-          "version": "1.0",
-          "updated": "2026",
-          "status": "available"
-        }
-      ]
-    },
-    "resourcepacks": {
-      "description": "Ресурспаки для Minecraft",
-      "items": [
-        {
-          "id": "faithful",
-          "type": "resourcepack",
-          "title": "Faithful 32x",
-          "description": "Высокодетализированный ресурспак без потери атмосферы оригинала.",
-          "image": "game-screenshot/9431_66b5d515f1ef1.png",
-          "torrentFile": "torrent/faithful-1.20.zip",
-          "author": "Faithful Team",
-          "size": "50 MB",
-          "version": "1.20.4",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "sphax",
-          "type": "resourcepack",
-          "title": "Sphax PureBDCraft",
-          "description": "Стильный и минималистичный ресурспак с чистыми текстурами.",
-          "image": "game-screenshot/1572710648_aquatic02.jpg",
-          "torrentFile": "torrent/sphax-1.20.zip",
-          "author": "BDCraft Team",
-          "size": "60 MB",
-          "version": "1.20.4",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "realistico",
-          "type": "resourcepack",
-          "title": "Realistico",
-          "description": "Реалистичные текстуры с PBR и готовностью к шейдерам.",
-          "image": "game-screenshot/1588961663_realistico-texture-minecraft.jpg",
-          "torrentFile": "torrent/realistico-1.20.zip",
-          "author": "Realistico Team",
-          "size": "120 MB",
-          "version": "1.20.4",
-          "updated": "2026",
-          "status": "available"
-        },
-        {
-          "id": "chromahills",
-          "type": "resourcepack",
-          "title": "ChromaHills",
-          "description": "Яркий и насыщенный арт-ресурспак с улучшенными моделями.",
-          "image": "game-screenshot/chroma_hills_rpg_texture_pack.jpg",
-          "torrentFile": "torrent/chromahills-1.20.zip",
-          "author": "Chroma Team",
-          "size": "80 MB",
-          "version": "1.20.4",
-          "updated": "2026",
-          "status": "available"
-        }
-      ]
-    },
-    "scripts": {
-      "description": "Скрипты и модлоадеры для Minecraft",
-      "items": [
-        {
-          "id": "worldedit",
-          "type": "script",
-          "title": "WorldEdit",
-          "description": "Мощный редактор мира с генерацией форм, заменой блоков и штампами.",
-          "image": "game-screenshot/worldedit.webp",
-          "torrentFile": "torrent/worldedit-1.20.4.jar",
-          "author": "EngineHub",
-          "size": "4 MB",
-          "version": "7.3.0",
-          "updated": "2026",
-          "status": "available"
-        }
-      ]
     }
-  }
 }

@@ -19,7 +19,7 @@
         ],
         "torrentFile": "torrent/DL Dead Island 2 P RUS + ENG + 12 ENG (2023 FPS).torrent",
         "virus_check": "https://www.virustotal.com/gui/file/6f5185f2ef3151cb98121b886d56ddfa6baaf86eed58fbda7a8c3a4c17f45180",
-            "trailer": "https://vk.com/video_ext.php?oid=-30602036&id=456283259&hash=abc123&hd=2",
+        "trailer": "https://vk.com/video_ext.php?oid=-30602036&id=456283259&hash=abc123&hd=2",
         "buyGame": "https://ggsel.net/catalog/dead-island-2-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/x8MYQNPJ/1681135851-ds-venice-night-1.jpg",
@@ -47,7 +47,8 @@
                 "Graphics": "Radeon RX 6800 XT / GeForce RTX 2070 Super",
                 "Storage": "45 GB available space"
             }
-        }
+        },
+        "sku": "ART-0001"
     },
     "detroit-become-human": {
         "title": "Detroit: Become Human",
@@ -66,7 +67,7 @@
         ],
         "torrentFile": "torrent/Detroit - Become Human.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/437e31d60a7e57755795c87fc838c06d4263b791c2ce984a65d4fe92855ef30d?nocache=1",
-            "trailer": "https://drive.google.com/file/d/1ZCGhL3LDb-8dLcXygnTbg3F3WeSp_7m5/preview",
+        "trailer": "https://drive.google.com/file/d/1ZCGhL3LDb-8dLcXygnTbg3F3WeSp_7m5/preview",
         "buyGame": "https://ggsel.net/catalog/detroit-become-human-3886",
         "screenshots": [
             "https://i.postimg.cc/MTJXb7Qq/1553366453-detroit-become-human-screen-01-ps4-us-13apr18.jpg",
@@ -94,7 +95,8 @@
                 "Graphics": "Nvidia GeForce GTX 1080 / AMD Radeon RX Vega 64",
                 "Storage": "55 GB available space"
             }
-        }
+        },
+        "sku": "ART-0002"
     },
     "gta-6": {
         "title": "GTA 6",
@@ -114,7 +116,7 @@
             "гта 6"
         ],
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1l9-SpOp0QY4C2A9Ug2rUMsaUbSzqjWFJ/preview",
+        "trailer": "https://drive.google.com/file/d/1l9-SpOp0QY4C2A9Ug2rUMsaUbSzqjWFJ/preview",
         "screenshots": [
             "https://i.postimg.cc/QdssXjWz/1746543938-7nrcbjsshlti29jb1c9mvw-1.jpg",
             "https://i.postimg.cc/FsXXZhGr/1746543938-18r83yshxek9y-rchkvgra-1.jpg",
@@ -141,9 +143,10 @@
                 "Graphics": "Информация уточняется",
                 "Storage": "Информация уточняется"
             }
-        }
+        },
+        "sku": "ART-0003"
     },
-        "forza-horizon-6": {
+    "forza-horizon-6": {
         "title": "Forza Horizon 6",
         "description": "Forza Horizon 6 — это новое воплощение любимой серии, переносящее гонщиков в Японию, о которой давно мечтали фанаты. Здесь уличная культура соседствует с храмами и горами, а каждая трасса становится испытанием.",
         "image": "https://i.postimg.cc/8CFQvGvZ/1769112682-library-capsule-2x.jpg",
@@ -163,7 +166,7 @@
         ],
         "torrentFile": "torrent/Forza Horizon 6.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/b084b284f02fd6fd04129fe7c07fa42e77014f51bb28fabaf8e91a56846cf222",
-            "trailer": "https://drive.google.com/file/d/1GFChzS81QZZa9e8RW1f_nRW33OVFbCUh/preview",
+        "trailer": "https://drive.google.com/file/d/1GFChzS81QZZa9e8RW1f_nRW33OVFbCUh/preview",
         "buyGame": "https://ggsel.net/catalog/forza-horizon-6",
         "screenshots": [
             "https://i.postimg.cc/4yjwrCd2/1769112686-ss-3b8ebc00e4a5a503984d2a523fc07a14612d03e9.jpg",
@@ -191,9 +194,10 @@
                 "Видеокарта": "Nvidia GTX 1650",
                 "Место на диске": "(SSD): 156 GB"
             }
-        }
+        },
+        "sku": "ART-0004"
     },
-        "the-witcher-4": {
+    "the-witcher-4": {
         "title": "The Witcher 4",
         "description": "Новая глава в эпохальной саге о ведьмаках. В центре сюжета — Цири и другие ведьмаки, мстящие за смерть Геральта из Ривии. Вас ждёт огромный проработанный мир, зрелищные сражения с новыми могущественными врагами и история, полная драмы и неожиданных поворотов.",
         "image": "https://i.postimg.cc/DZQTzVN4/1734556332-8qel50y7kzlpyv3hqi72vw.jpg",
@@ -213,7 +217,7 @@
             "цири"
         ],
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1_OnTY3sYiHw1W5SmAqGhfv3oN8Q4nrqn/preview",
+        "trailer": "https://drive.google.com/file/d/1_OnTY3sYiHw1W5SmAqGhfv3oN8Q4nrqn/preview",
         "screenshots": [
             "https://i.postimg.cc/7hMt7w16/1734556337-432357.jpg",
             "https://i.postimg.cc/W1Qm2xr8/1734556313-432358.jpg",
@@ -245,9 +249,10 @@
                 "Видеокарта": "Информация уточняется",
                 "Место на диске": "Информация уточняется"
             }
-        }
+        },
+        "sku": "ART-0005"
     },
-        "atomic-heart-2": {
+    "atomic-heart-2": {
         "title": "Atomic Heart 2",
         "description": "Продолжение безумного научно-фантастического экшена в альтернативной СССР 1950-х. Вновь погрузитесь в мир роботов, пси-способностей и технологий «Советского Союза 2.0». Вам предстоит раскрыть новые тайны комплекса «3826» и столкнуться с последствиями событий первой части.",
         "image": "https://i.postimg.cc/xTw2cmY8/1771000750-chatgpt-image-13-fevr-2026-g-18-37-12.jpg",
@@ -268,7 +273,7 @@
             "пост-апокалипсис"
         ],
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1IdTYHOgqnWtdkNYeapUI_R-3WNVLzium/preview",
+        "trailer": "https://drive.google.com/file/d/1IdTYHOgqnWtdkNYeapUI_R-3WNVLzium/preview",
         "screenshots": [
             "https://i.postimg.cc/GhvTF9ss/1749275827-ss-1eba1f82567000e87e802d732075c76b81277b3f.jpg",
             "https://i.postimg.cc/6p07PScw/1749275809-ss-04df82d0cb959077d26d9c22dbebfc3ceff040e7.jpg",
@@ -302,7 +307,8 @@
                 "Видеокарта": "Информация уточняется",
                 "Место на диске": "Информация уточняется"
             }
-        }
+        },
+        "sku": "ART-0006"
     },
     "little-nightmares-3": {
         "title": "Little Nightmares 3",
@@ -314,15 +320,15 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Little Nightmares",
-    "Little Nightmares 3",
-    "Low",
-    "The Spiral",
-    "Low & Alone"
-],
+            "Little Nightmares",
+            "Little Nightmares 3",
+            "Low",
+            "The Spiral",
+            "Low & Alone"
+        ],
         "torrentFile": "torrent/little-nightmares-iii-1.0.0.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/de8f5baa9de800eb9ea45e77a3b732592c9e7a427669644cc6242a59cf0efead",
-            "trailer": "https://drive.google.com/file/d/1FFEYZ4aImNICT8YX2G4XziW8wvIJez_L/preview",
+        "trailer": "https://drive.google.com/file/d/1FFEYZ4aImNICT8YX2G4XziW8wvIJez_L/preview",
         "buyGame": "https://ggsel.net/catalog/little-nightmares-3-keys-and-gifts-steam",
         "screenshots": [
             "https://i.postimg.cc/bNZT5PBK/1692778601-ss-0266e383a8bca23411d6a7676aa9ba27cc27d487.jpg",
@@ -350,7 +356,8 @@
                 "Graphics": "Nvidia GeForce GTX 970 / AMD Radeon RX 570",
                 "Storage": "12 GB available space"
             }
-        }
+        },
+        "sku": "ART-0007"
     },
     "little-nightmares-2": {
         "title": "Little Nightmares II",
@@ -362,17 +369,17 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Little Nightmares",
-    "Little Nightmares II",
-    "Mono",
-    "Six",
-    "The Signal Tower",
-    "The Hunter",
-    "Pale City"
-],
+            "Little Nightmares",
+            "Little Nightmares II",
+            "Mono",
+            "Six",
+            "The Signal Tower",
+            "The Hunter",
+            "Pale City"
+        ],
         "torrentFile": "torrent/Little Nightmares II.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/f1dea4358ea354ba086d244f0bad25a02ff4746ee3a143164bcd8c498f214e59?nocache=1",
-            "trailer": "https://drive.google.com/file/d/1bUnpBkIYGGmCVyKNUMSbj_rCPzKwKkAT/preview",
+        "trailer": "https://drive.google.com/file/d/1bUnpBkIYGGmCVyKNUMSbj_rCPzKwKkAT/preview",
         "buyGame": "https://ggsel.net/catalog/little-nightmares-2-keys-steam-standart",
         "screenshots": [
             "https://image2url.com/images/1764591531688-286da4b6-be4d-4509-8ace-20d889571b3a.jpg",
@@ -400,7 +407,8 @@
                 "Graphics": "Nvidia GeForce GTX 970 / AMD Radeon R9 290",
                 "Storage": "6 GB available space"
             }
-        }
+        },
+        "sku": "ART-0008"
     },
     "my-summer-car": {
         "title": "My Summer Car",
@@ -412,17 +420,17 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "My Summer Car",
-    "Satsuma",
-    "Finland",
-    "Peräjärvi",
-    "Car Building",
-    "Survival",
-    "Teimo"
-],
+            "My Summer Car",
+            "Satsuma",
+            "Finland",
+            "Peräjärvi",
+            "Car Building",
+            "Survival",
+            "Teimo"
+        ],
         "torrentFile": "torrent/my-summer-car-250908.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/f729b246fea25a131c2c4af0b8c22f9e20c1aa42d00a79fb9d034c6d0e1e5348",
-            "trailer": "https://drive.google.com/file/d/1rTfV83o4uBXl5GDAK1Rm2fIlq_O50LZK/preview",
+        "trailer": "https://drive.google.com/file/d/1rTfV83o4uBXl5GDAK1Rm2fIlq_O50LZK/preview",
         "buyGame": "https://ggsel.net/catalog/steam-40437",
         "screenshots": [
             "https://image2url.com/images/1764592319875-c058bb42-5f8c-421e-8d0b-562bd872d59a.jpg",
@@ -450,7 +458,8 @@
                 "Graphics": "NVIDIA GeForce GTX 750 Ti / AMD Radeon R7 265",
                 "Storage": "2 GB available space"
             }
-        }
+        },
+        "sku": "ART-0009"
     },
     "my-winter-car": {
         "title": "My Winter Car",
@@ -462,18 +471,18 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "My Winter Car",
-    "Satsuma",
-    "Finland",
-    "Winter",
-    "Snow",
-    "Car Building",
-    "Survival",
-    "Ice Roads"
-],
+            "My Winter Car",
+            "Satsuma",
+            "Finland",
+            "Winter",
+            "Snow",
+            "Car Building",
+            "Survival",
+            "Ice Roads"
+        ],
         "torrentFile": "tprrent/DL В разработке My Winter Car P ENG FIN (2025 Simulation).torrent",
         "virus_check": "https://www.virustotal.com/gui/file/a2afb04551b142c4b1fef9bf895779510010607dca3facc00c7deb9294798d98",
-            "trailer": "https://drive.google.com/file/d/11dj9PbHsOViBsE3kF7VjB5HEY4UbAnF2/preview",
+        "trailer": "https://drive.google.com/file/d/11dj9PbHsOViBsE3kF7VjB5HEY4UbAnF2/preview",
         "buyGame": "https://ggsel.net/catalog/product/my-winter-car-steam-gift-ru-ua-kz-by-in-ch-ar-tr-102113925",
         "screenshots": [
             "https://i.postimg.cc/wB2wRppq/1767038127-ss-2cc16cf260e3bd37151c68586d5ba616f2b56770.jpg",
@@ -506,7 +515,8 @@
                 "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 580 (4GB VRAM)",
                 "Storage": "5 GB available space"
             }
-        }
+        },
+        "sku": "ART-0010"
     },
     "hollow-knight-silksong": {
         "title": "Hollow Knight Silksong",
@@ -518,17 +528,17 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Hollow Knight",
-    "Silksong",
-    "Hornet",
-    "Pharloom",
-    "Lace",
-    "Citadel",
-    "Boneforest"
-],
+            "Hollow Knight",
+            "Silksong",
+            "Hornet",
+            "Pharloom",
+            "Lace",
+            "Citadel",
+            "Boneforest"
+        ],
         "torrentFile": "torrent/hollow-knight-silksong- 1.0.30000.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/3b62033e1527ab732bd78a97eb04667e48187ffacbb665f9520a4cdeebfa1785",
-            "trailer": "https://drive.google.com/file/d/1b2HdVrg-VhsGMBhkV4vrL08ZhexzvZlz/preview",
+        "trailer": "https://drive.google.com/file/d/1b2HdVrg-VhsGMBhkV4vrL08ZhexzvZlz/preview",
         "buyGame": "https://ggsel.net/catalog/steam-38446",
         "screenshots": [
             "https://i.postimg.cc/Z5KNWtGf/1755787322-ss-0a6eebaf5ade7dbd1dcffcc108d6b5dca68373f3-1.jpg",
@@ -556,7 +566,8 @@
                 "Graphics": "GeForce GTX 560",
                 "Storage": "2 GB available space"
             }
-        }
+        },
+        "sku": "ART-0011"
     },
     "marvel's spider-man-2": {
         "title": "Marvel's Spider-Man 2",
@@ -568,18 +579,18 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Spider-Man",
-    "Marvel's Spider-Man 2",
-    "Peter Parker",
-    "Miles Morales",
-    "Venom",
-    "Kraven",
-    "Symbiote",
-    "New York"
-],
+            "Spider-Man",
+            "Marvel's Spider-Man 2",
+            "Peter Parker",
+            "Miles Morales",
+            "Venom",
+            "Kraven",
+            "Symbiote",
+            "New York"
+        ],
         "torrentFile": "torrent/marvels-spider-man-2-1.526.0.0.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/ae7059713592af29e33e04f32ad612c643a0ff65f0393c2125d14f5b308785e6",
-            "trailer": "https://drive.google.com/file/d/1Og_0J7oBUu2_weBm9NBTOB_58fEiOEvv/preview",
+        "trailer": "https://drive.google.com/file/d/1Og_0J7oBUu2_weBm9NBTOB_58fEiOEvv/preview",
         "buyGame": "https://ggsel.net/catalog/steam-102079",
         "screenshots": [
             "https://i.postimg.cc/RCKpRKWM/1738265228-ss-0fda7c96ee3f16038559fffa8c2cd7b3ac433c2b.jpg",
@@ -607,7 +618,8 @@
                 "Graphics": "NVIDIA RTX 3070 / AMD RX 6800 XT",
                 "Storage": "88 GB SSD available space"
             }
-        }
+        },
+        "sku": "ART-0012"
     },
     "gta-5": {
         "title": "Grand Theft Auto V",
@@ -629,7 +641,7 @@
         ],
         "torrentFile": "https://byxatab.com/index.php?do=download&id=153",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1BwKqJPcZa_tIY_J-VHphtE-j7N9_MUeM/preview",
+        "trailer": "https://drive.google.com/file/d/1BwKqJPcZa_tIY_J-VHphtE-j7N9_MUeM/preview",
         "buyGame": "https://ggsel.net/catalog/grand-theft-auto-v-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/XJRDmKfQ/1659003266-ss-320f7bf17d387eddb1c7153e2bf8de8e14bc4d39-1920x1080.jpg",
@@ -657,7 +669,8 @@
                 "Graphics": "NVIDIA GTX 660 2GB / AMD HD 7870 2GB",
                 "Storage": "110 GB available space"
             }
-        }
+        },
+        "sku": "ART-0013"
     },
     "gta-4": {
         "title": "Grand Theft Auto IV: The Complete Edition",
@@ -680,7 +693,7 @@
         ],
         "torrentFile": "https://thelastgame.org/index.php?do=download&id=74",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1u4Ov9NN54algWRQd0N9LM_XxKwTRCvS7/preview",
+        "trailer": "https://drive.google.com/file/d/1u4Ov9NN54algWRQd0N9LM_XxKwTRCvS7/preview",
         "buyGame": "https://ggsel.net/catalog/grand-theft-auto-iv-gta-4-keys-complete-edition",
         "screenshots": [
             "https://i.postimg.cc/3N6pn92S/1414763222-05-r-1-1024x640-1.jpg",
@@ -708,7 +721,8 @@
                 "Graphics": "NVIDIA 8600 (512 MB) / ATI 3870 (512 MB)",
                 "Storage": "25 GB available space"
             }
-        }
+        },
+        "sku": "ART-0014"
     },
     "gta-san-andreas": {
         "title": "Grand Theft Auto: San Andreas",
@@ -730,7 +744,7 @@
         ],
         "torrentFile": "https://thelastgame.org/index.php?do=download&id=53",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1RFkalR_P4_T3H17F0JpwuRIMLFuZHcgE/preview",
+        "trailer": "https://drive.google.com/file/d/1RFkalR_P4_T3H17F0JpwuRIMLFuZHcgE/preview",
         "buyGame": "https://ggsel.net/catalog/steam-49912",
         "screenshots": [
             "https://i.postimg.cc/j5Zf4KtR/1scr-430537248.jpg",
@@ -758,7 +772,8 @@
                 "Graphics": "NVIDIA GeForce 6 128MB / ATI Radeon 9600 128MB",
                 "Storage": "5 GB available space"
             }
-        }
+        },
+        "sku": "ART-0015"
     },
     "teardown": {
         "title": "Teardown",
@@ -770,19 +785,19 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Teardown",
-    "Voxel",
-    "Destruction",
-    "Physics",
-    "Heist",
-    "Tuxedo Labs",
-    "Procedural",
-    "Robbery",
-    "Vandal"
-],
+            "Teardown",
+            "Voxel",
+            "Destruction",
+            "Physics",
+            "Heist",
+            "Tuxedo Labs",
+            "Procedural",
+            "Robbery",
+            "Vandal"
+        ],
         "torrentFile": "torrent/Teardown.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/ae4389cf85c633785602817678f5e63f4b5491b130955cb8bb8348f49711c529?nocache=1",
-            "trailer": "https://drive.google.com/file/d/1OIQ3h5WFgIOICkYHPUPxXMdzqkN_rQhN/preview",
+        "trailer": "https://drive.google.com/file/d/1OIQ3h5WFgIOICkYHPUPxXMdzqkN_rQhN/preview",
         "buyGame": "https://ggsel.net/catalog/teardown-5927",
         "screenshots": [
             "https://i.postimg.cc/hGxgQ5np/1700059364-ss-4e43fc5c0302825007c35f51e03964726a06e984.jpg",
@@ -810,7 +825,8 @@
                 "Graphics": "NVIDIA GeForce RTX 2070 / AMD Radeon RX 5700 XT",
                 "Storage": "2 GB available space"
             }
-        }
+        },
+        "sku": "ART-0016"
     },
     "the-crew-2": {
         "title": "The Crew 2",
@@ -822,20 +838,20 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "The Crew 2",
-    "Ubisoft",
-    "Open World",
-    "Racing",
-    "USA",
-    "Cars",
-    "Planes",
-    "Boats",
-    "Motorsports"
-],
+            "The Crew 2",
+            "Ubisoft",
+            "Open World",
+            "Racing",
+            "USA",
+            "Cars",
+            "Planes",
+            "Boats",
+            "Motorsports"
+        ],
         "torrentFile": "torrent/The.Crew.2.v4367857.torrent",
         "buyGame": "https://ggsel.net/catalog/the-crew-2-keys-steam",
         "virus_check": "https://www.virustotal.com/gui/file/8cc53a46ed8eaed43a302ad43001b548eb1ce588ecf867d80200919a132bee64",
-            "trailer": "https://drive.google.com/file/d/1MmnTrdB9X7vhKOhVij3b6uLMQ7jvYpRz/preview",
+        "trailer": "https://drive.google.com/file/d/1MmnTrdB9X7vhKOhVij3b6uLMQ7jvYpRz/preview",
         "screenshots": [
             "https://image2url.com/images/1763216195469-eea2b746-041a-4d2f-931b-6fd7bd41cdd7.jpg",
             "https://image2url.com/images/1763216207734-993b6d85-3085-4e97-9f80-9999bfd165a5.jpg",
@@ -862,7 +878,8 @@
                 "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 570",
                 "Storage": "35.63 GB available space"
             }
-        }
+        },
+        "sku": "ART-0017"
     },
     "the-crew": {
         "title": "The Crew",
@@ -874,19 +891,19 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "The Crew",
-    "Ubisoft",
-    "Open World",
-    "Racing",
-    "USA",
-    "Cars",
-    "Factions",
-    "Cops & Robbers"
-],
+            "The Crew",
+            "Ubisoft",
+            "Open World",
+            "Racing",
+            "USA",
+            "Cars",
+            "Factions",
+            "Cops & Robbers"
+        ],
         "torrentFile": "torrent/DL The Crew P RUS RUS (2014 Racing) (1.2.0.0) Portable .torrent",
         "buyGame": "https://ggsel.net/catalog/the-crew-motorfest-keys-steam",
         "virus_check": "https://www.virustotal.com/gui/file/9cbb585ca8b31cb4b3b2fd4fd8540f3981ea1e07cac28d17960a5dadd4ed62e9",
-            "trailer": "https://drive.google.com/file/d/1UbM5xcXYzjIpIsVnzpoGv4GvRxeK9AAV/preview",
+        "trailer": "https://drive.google.com/file/d/1UbM5xcXYzjIpIsVnzpoGv4GvRxeK9AAV/preview",
         "screenshots": [
             "https://image2url.com/images/1763217983447-dcbad02f-536f-4388-80f3-83b817e27e0b.jpg",
             "https://image2url.com/images/1763218021075-f9943f23-29b6-43e8-a184-25f00bda01d0.jpg",
@@ -913,7 +930,8 @@
                 "Graphics": "NVIDIA GeForce GTX 580 / AMD Radeon HD 7870",
                 "Storage": "23.83 GB available space"
             }
-        }
+        },
+        "sku": "ART-0018"
     },
     "blackmyth: wukong": {
         "title": "Black Myth: Wukong",
@@ -925,19 +943,19 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Black Myth: Wukong",
-    "Wukong",
-    "Sun Wukong",
-    "Journey to the West",
-    "Action RPG",
-    "Game Science",
-    "Chinese Mythology",
-    "Souls-like"
-],
+            "Black Myth: Wukong",
+            "Wukong",
+            "Sun Wukong",
+            "Journey to the West",
+            "Action RPG",
+            "Game Science",
+            "Chinese Mythology",
+            "Souls-like"
+        ],
         "torrentFile": "torrent/DL Black Myth Wukong P RUS + ENG + 13 ENG + 1 (2024 Action) (1.0.21.23831 + 1 DLC) Portable .torrent",
         "buyGame": "https://ggsel.net/catalog/black-myth-wukong-keys-steam",
         "virus_check": "https://www.virustotal.com/gui/file/2833943c5db9dd023ec63fa05913710d23b97d07fed3444a2d72fe69fbfdb044",
-            "trailer": "https://drive.google.com/file/d/1xWBoqzhHXsEiyPqsu1yhrLxv_Kp4JFKt/preview",
+        "trailer": "https://drive.google.com/file/d/1xWBoqzhHXsEiyPqsu1yhrLxv_Kp4JFKt/preview",
         "screenshots": [
             "https://i.postimg.cc/G90fYVSw/1scr-7958143981.jpg",
             "https://i.postimg.cc/Bn3SfVZN/2scr-843523299.jpg",
@@ -966,7 +984,18 @@
             }
         },
         "howToRun": "Скачать в удобное место (главное чтобы на пути к папке с игрой не было кириллицы). Скачиваем архив BMW.HYPERVISOR.B3.2.0xZeOn.rar (#1 #2 #3 #4 | #5). Подготавливаем систему к запуску игр с использованием гипервизора: Перезагружаемся и заходим в Bios, выключаем Secure Boot, а так же включаем виртуализацию (VT-x на Intel, SVM или AMD-V на AMD). Грузимся в систему. Запускаем командную строку от имени администратора, вводим команду bcdedit /set testsigning on. Запускаем командную строку от имени администратора, вводим команду bcdedit /set hypervisorlaunchtype off. Перезагружаемся. Внутри скачанного архива выбираем папку под ваш процессор AMD CPU или INTEL CPU и её содержимое закидываем в папку с игрой. Запускаем командную строку от имени администратора, вводим команду sc create denuvo type-kernel start-demand binPath=C:\\Drivers\\SimpleSvm.sys (только указывайте ваш путь до файла SimpleSvm.sys (для AMD) или же hyperkd.sys (для INTEL), данные файлы будут лежать по пути b1\\Binaries\\Win64). В той же командной строке вводим команду sc start denuvo (после окончания игры можете ввести в командной строке команду sc stop denuvo чтобы остановить сервис). Запускаем игру с файла 51-Win64-Shipping.exe по пути b1\\Binaries\\Win64.",
-        "downloadInstructions": ["Скачать в удобное место (без кириллицы в пути)", "Скачать архив BMW.HYPERVISOR.B3.2.0xZeOn.rar", "Выключить Secure Boot и включить виртуализацию в BIOS", "bcdedit /set testsigning on", "bcdedit /set hypervisorlaunchtype off (перезагрузка)", "Скопировать файлы обхода в папку с игрой (AMD или INTEL)", "sc create denuvo type-kernel start-demand binPath=C:\\ путь до SimpleSvm.sys или hyperkd.sys", "sc start denuvo", "Запустить 51-Win64-Shipping.exe"]
+        "downloadInstructions": [
+            "Скачать в удобное место (без кириллицы в пути)",
+            "Скачать архив BMW.HYPERVISOR.B3.2.0xZeOn.rar",
+            "Выключить Secure Boot и включить виртуализацию в BIOS",
+            "bcdedit /set testsigning on",
+            "bcdedit /set hypervisorlaunchtype off (перезагрузка)",
+            "Скопировать файлы обхода в папку с игрой (AMD или INTEL)",
+            "sc create denuvo type-kernel start-demand binPath=C:\\ путь до SimpleSvm.sys или hyperkd.sys",
+            "sc start denuvo",
+            "Запустить 51-Win64-Shipping.exe"
+        ],
+        "sku": "ART-0019"
     },
     "battlefield6": {
         "title": "Battlefield 6",
@@ -978,19 +1007,19 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Battlefield 6",
-    "Battlefield Studios",
-    "EA",
-    "FPS",
-    "Military Shooter",
-    "Pax Armata",
-    "NATO",
-    "Campaign",
-    "Multiplayer"
-],
+            "Battlefield 6",
+            "Battlefield Studios",
+            "EA",
+            "FPS",
+            "Military Shooter",
+            "Pax Armata",
+            "NATO",
+            "Campaign",
+            "Multiplayer"
+        ],
         "torrentFile": "torrent/DL Battlefield 6 P ENG ENG (2025 Action) (1.1.2.0 + 9 DLC) Portable .torrent",
         "virus_check": "https://www.virustotal.com/gui/file/2b463b50e2497016e9b661ce2ed80b40cc99f548cdc89dc6121b1ffcd746ce50",
-            "trailer": "https://drive.google.com/file/d/1FDlcjDXxTlKnd39IXl9j-rbbFRka2ODB/preview",
+        "trailer": "https://drive.google.com/file/d/1FDlcjDXxTlKnd39IXl9j-rbbFRka2ODB/preview",
         "buyGame": "https://ggsel.net/catalog/battlefield-6-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/mg1pZ5cG/804efa1507-1scr-2807960.jpg",
@@ -1018,7 +1047,8 @@
                 "Graphics": "NVIDIA GeForce RTX 4060 Ti / AMD Radeon RX 7600 XT",
                 "Storage": "84.88 GB available space"
             }
-        }
+        },
+        "sku": "ART-0020"
     },
     "satisfactory": {
         "title": "Satisfactory",
@@ -1030,18 +1060,18 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Satisfactory",
-    "Coffee Stain Studios",
-    "Factory Building",
-    "Automation",
-    "Open World",
-    "FPS",
-    "Resource Management",
-    "Massage 2(AB)b"
-],
+            "Satisfactory",
+            "Coffee Stain Studios",
+            "Factory Building",
+            "Automation",
+            "Open World",
+            "FPS",
+            "Resource Management",
+            "Massage 2(AB)b"
+        ],
         "torrentFile": "torrent/satisfactory-v-1.2.2.2-cl491125-2024-pc-repack-ot-pioneer.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/d474357ddf16cc2452410aca12ae03cb60adb27c444a7e3bf9fcde8690a3b83c",
-            "trailer": "https://drive.google.com/file/d/1-WkrFIz0Deo0kcMylr4HOvfQSCDaOJyi/preview",
+        "trailer": "https://drive.google.com/file/d/1-WkrFIz0Deo0kcMylr4HOvfQSCDaOJyi/preview",
         "buyGame": "https://ggsel.net/catalog/satisfactory-4424",
         "screenshots": [
             "https://i.postimg.cc/BQXYQS6k/1scr-759026200.jpg",
@@ -1069,7 +1099,8 @@
                 "Graphics": "NVIDIA GeForce GTX 750 Ti / AMD Radeon R7 265",
                 "Storage": "11.33 GB available space"
             }
-        }
+        },
+        "sku": "ART-0021"
     },
     "sons-of-the-forest": {
         "title": "Sons of The Forest",
@@ -1081,19 +1112,19 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Sons of the Forest",
-    "SOTF",
-    "Endnight Games",
-    "Survival Horror",
-    "Open World",
-    "Cannibals",
-    "Mutants",
-    "Building",
-    "Kelvin"
-],
+            "Sons of the Forest",
+            "SOTF",
+            "Endnight Games",
+            "Survival Horror",
+            "Open World",
+            "Cannibals",
+            "Mutants",
+            "Building",
+            "Kelvin"
+        ],
         "torrentFile": "torrent/sons-of-the-forest-v-1.0_53951-2024-pc-repack-ot-pioneer.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/d11752d11516a37c3a11582e883c76ece4825fb326adfbf991d17995ee96f5ae",
-            "trailer": "https://drive.google.com/file/d/1FWaZ62BD40qOGCwt8N6zqP1JYaQllSUY/preview",
+        "trailer": "https://drive.google.com/file/d/1FWaZ62BD40qOGCwt8N6zqP1JYaQllSUY/preview",
         "buyGame": "https://ggsel.net/catalog/sons-of-the-forest-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/ZYMRyHbc/1651822141-s1.jpg",
@@ -1121,7 +1152,8 @@
                 "Graphics": "NVIDIA GeForce RTX 2070 / AMD Radeon RX 6700 XT",
                 "Storage": "10.07 GB available space"
             }
-        }
+        },
+        "sku": "ART-0022"
     },
     "cyberpunk-2077": {
         "title": "Cyberpunk 2077",
@@ -1133,19 +1165,19 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Cyberpunk 2077",
-    "CD Projekt Red",
-    "Night City",
-    "V",
-    "Johnny Silverhand",
-    "Keanu Reeves",
-    "Open World",
-    "RPG",
-    "Cyberpunk"
-],
+            "Cyberpunk 2077",
+            "CD Projekt Red",
+            "Night City",
+            "V",
+            "Johnny Silverhand",
+            "Keanu Reeves",
+            "Open World",
+            "RPG",
+            "Cyberpunk"
+        ],
         "torrentFile": "torrent/DL Cyberpunk 2077 P RUS + ENG + 17 RUS + ENG + 9 (2020 RPG) (2.31a + 2 DLC) Portable.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/3723cc573d6835e8cab07bb4105361207f27c89b410bacaff704385eab09a6da",
-            "trailer": "https://drive.google.com/file/d/1BatuMKfYTKKxJyTV3oGSuXm6WwDkG4fGW/preview",
+        "trailer": "https://drive.google.com/file/d/1BatuMKfYTKKxJyTV3oGSuXm6WwDkG4fGW/preview",
         "buyGame": "https://ggsel.net/catalog/cyberpunk-2077-1991",
         "screenshots": [
             "https://image2url.com/images/1764939399807-f80a47b5-f2fa-425a-b5ec-faf8279ea3ae.jpg",
@@ -1173,7 +1205,8 @@
                 "Graphics": "NVIDIA GeForce GTX 1060 6GB / AMD Radeon RX 580",
                 "Storage": "70 GB available space"
             }
-        }
+        },
+        "sku": "ART-0023"
     },
     "beamng-drive": {
         "title": "BeamNG.drive",
@@ -1185,19 +1218,19 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "BeamNG.drive",
-    "BeamNG",
-    "Soft Body Physics",
-    "Vehicle Simulation",
-    "Destruction",
-    "Sandbox",
-    "Realistic Damage",
-    "Cars",
-    "Crash Physics"
-],
+            "BeamNG.drive",
+            "BeamNG",
+            "Soft Body Physics",
+            "Vehicle Simulation",
+            "Destruction",
+            "Sandbox",
+            "Realistic Damage",
+            "Cars",
+            "Crash Physics"
+        ],
         "torrentFile": "torrent/BeamNG.drive.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/569791b48943da815fff7655f005cead2d423eeb194180c4f5df1fc547d81537?nocache=1",
-            "trailer": "https://drive.google.com/file/d/1BatuMKfYTKKxJyTV3oGSuXm6WwDkG4fGW/preview",
+        "trailer": "https://drive.google.com/file/d/1BatuMKfYTKKxJyTV3oGSuXm6WwDkG4fGW/preview",
         "buyGame": "https://ggsel.net/catalog/beamng-drive-5686",
         "screenshots": [
             "https://image2url.com/images/1764940793390-2d56ed07-95d6-41ed-88c5-a8ee2e04037b.jpg",
@@ -1225,7 +1258,8 @@
                 "Graphics": "NVIDIA GeForce RTX 4070 / AMD Radeon RX 7800 XT (12+ GB VRAM)",
                 "Storage": "50 GB SSD (NVMe) available space"
             }
-        }
+        },
+        "sku": "ART-0024"
     },
     "star-trucker": {
         "title": "Star Trucker",
@@ -1237,18 +1271,18 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Star Trucker",
-    "Space Trucking",
-    "Simulation",
-    "Open World",
-    "Trucking",
-    "Cargo",
-    "Space",
-    "First Person"
-],
+            "Star Trucker",
+            "Space Trucking",
+            "Simulation",
+            "Open World",
+            "Trucking",
+            "Cargo",
+            "Space",
+            "First Person"
+        ],
         "torrentFile": "torrent/star_trucker_windows_gog_90733.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/e695beecf3f3e4f15d00818ed64ce882dd6db9745ef2f31b674e57a794f706e8",
-            "trailer": "https://drive.google.com/file/d/18qfVWnWkHMAbekztQpBlMDb7xPCx6ZXp/preview",
+        "trailer": "https://drive.google.com/file/d/18qfVWnWkHMAbekztQpBlMDb7xPCx6ZXp/preview",
         "buyGame": "https://ggsel.net/catalog/product/star-trucker-steam-gift-avtodostavka-4648151",
         "screenshots": [
             "https://i.postimg.cc/j5JfFS4p/5ee5883d7d-1scr-131178.jpg",
@@ -1276,7 +1310,8 @@
                 "Graphics": "NVIDIA GeForce RTX 2070 / AMD Radeon RX 5700 XT",
                 "Storage": "4.35 GB available space"
             }
-        }
+        },
+        "sku": "ART-0025"
     },
     "bridge-constructor-portal": {
         "title": "Bridge Constructor Portal",
@@ -1288,19 +1323,19 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Bridge Constructor Portal",
-    "Bridge Constructor",
-    "Portal",
-    "Valve",
-    "ClockStone",
-    "Puzzle",
-    "Aperture Science",
-    "GLaDOS",
-    "Physics"
-],
+            "Bridge Constructor Portal",
+            "Bridge Constructor",
+            "Portal",
+            "Valve",
+            "ClockStone",
+            "Puzzle",
+            "Aperture Science",
+            "GLaDOS",
+            "Physics"
+        ],
         "torrentFile": "torrent/Bridge Constructor Portal.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/dda1be67fa0330e260b20ba6f523569debd0ef1a2833d999e6133744ee5fcbdb",
-            "trailer": "https://drive.google.com/file/d/1zzwhorW60lh7rPDPrtRkR_0UooorLH9_/preview",
+        "trailer": "https://drive.google.com/file/d/1zzwhorW60lh7rPDPrtRkR_0UooorLH9_/preview",
         "buyGame": "https://ggsel.net/catalog/steam-65109",
         "screenshots": [
             "https://i.postimg.cc/wjCRspzp/1588339410-1scr-444339352.jpg",
@@ -1328,7 +1363,8 @@
                 "Graphics": "NVIDIA GeForce GTX 750 Ti / AMD Radeon R7 265",
                 "Storage": "102.51 MB available space"
             }
-        }
+        },
+        "sku": "ART-0026"
     },
     "garrys-mod": {
         "title": "Garrys Mod",
@@ -1340,19 +1376,19 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Garry's Mod",
-    "GMod",
-    "Facepunch Studios",
-    "Sandbox",
-    "Physics",
-    "Source Engine",
-    "Prop Hunt",
-    "Murder",
-    "Ragdoll"
-],
+            "Garry's Mod",
+            "GMod",
+            "Facepunch Studios",
+            "Sandbox",
+            "Physics",
+            "Source Engine",
+            "Prop Hunt",
+            "Murder",
+            "Ragdoll"
+        ],
         "torrentFile": "torrent/Garrys Mod.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/e326d404941806540afc5b6d0fa1e1fd3fd600ba462bba0d5da86761260cc7d3?nocache=1",
-            "trailer": "https://drive.google.com/file/d/-/preview",
+        "trailer": "https://drive.google.com/file/d/-/preview",
         "buyGame": "https://ggsel.net/catalog/garrys-mod-keys",
         "screenshots": [
             "https://i.postimg.cc/0yyrMyFd/1303a2fc41-1scr-740191.jpg",
@@ -1380,7 +1416,8 @@
                 "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 580",
                 "Storage": "2.89 GB available space"
             }
-        }
+        },
+        "sku": "ART-0027"
     },
     "metro-exodus-enhanced-edition": {
         "title": "Metro Exodus Enhanced Edition",
@@ -1392,20 +1429,20 @@
         "status": "available",
         "category": "Metro",
         "tags": [
-    "Metro Exodus",
-    "Enhanced Edition",
-    "4A Games",
-    "Ray Tracing",
-    "RTX",
-    "Post Apocalyptic",
-    "Survival",
-    "Stealth",
-    "Artyom",
-    "Aurora"
-],
+            "Metro Exodus",
+            "Enhanced Edition",
+            "4A Games",
+            "Ray Tracing",
+            "RTX",
+            "Post Apocalyptic",
+            "Survival",
+            "Stealth",
+            "Artyom",
+            "Aurora"
+        ],
         "torrentFile": "torrent/Metro-Exodus-Enhanced-Edition.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/dce85c6766b700cf3420f80ab65a4ad0c64dd43c44315571974b3b52fc7a04ef",
-            "trailer": "https://drive.google.com/file/d/1wh_yZGiWCXZnArJHnK0VtNtV4H_plLEw/preview",
+        "trailer": "https://drive.google.com/file/d/1wh_yZGiWCXZnArJHnK0VtNtV4H_plLEw/preview",
         "buyGame": "https://ggsel.net/catalog/metro-exodus-enhanced-edition-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/8kd50sqw/1590586271-ss-1da518a3baf5cd738cf48f3d963e4ece5adbb5fa-1920x1080.jpg",
@@ -1433,7 +1470,8 @@
                 "Graphics": "NVIDIA GeForce RTX 3070 / AMD Radeon RX 6700 XT",
                 "Storage": "60 GB available space"
             }
-        }
+        },
+        "sku": "ART-0028"
     },
     "need-for-speed-most-wanted-2005": {
         "title": "Need for Speed: Most Wanted (2005)",
@@ -1445,20 +1483,20 @@
         "status": "available",
         "category": "Need For Speed",
         "tags": [
-    "Need for Speed",
-    "Need for Speed Most Wanted",
-    "NFS Most Wanted 2005",
-    "NFS MW",
-    "Blacklist",
-    "Racing",
-    "Criterion",
-    "EA",
-    "BMW M3 GTR",
-    "Cross"
-],
+            "Need for Speed",
+            "Need for Speed Most Wanted",
+            "NFS Most Wanted 2005",
+            "NFS MW",
+            "Blacklist",
+            "Racing",
+            "Criterion",
+            "EA",
+            "BMW M3 GTR",
+            "Cross"
+        ],
         "torrentFile": "torrent/MNeed-for-Speed-Most-Wanted.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/dd7a3f0f527a8b2fabf71a1d9e583b7492cf88c4a940d0ce617ee112e97e9ac0",
-            "trailer": "https://drive.google.com/file/d/13gbXxjnJLOGI1og6bIfdMtO_sZ2YUXfp/preview",
+        "trailer": "https://drive.google.com/file/d/13gbXxjnJLOGI1og6bIfdMtO_sZ2YUXfp/preview",
         "screenshots": [
             "https://i.postimg.cc/C5qVxGZt/1435606317-177-g-1-1024x819.jpg",
             "https://i.postimg.cc/wjH3nvZg/1435606314-179-g-1-1024x819.jpg",
@@ -1485,7 +1523,8 @@
                 "Graphics": "NVIDIA GeForce FX 5600 / ATI Radeon 9600 (с 128 MB памяти)",
                 "Storage": "3 GB available space"
             }
-        }
+        },
+        "sku": "ART-0029"
     },
     "atomic-heart": {
         "title": "Atomic Heart",
@@ -1497,19 +1536,19 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Atomic Heart",
-    "Mundfish",
-    "Soviet Union",
-    "Alternate History",
-    "FPS",
-    "Action RPG",
-    "Bio-punk",
-    "P-3",
-    "Norway"
-],
+            "Atomic Heart",
+            "Mundfish",
+            "Soviet Union",
+            "Alternate History",
+            "FPS",
+            "Action RPG",
+            "Bio-punk",
+            "P-3",
+            "Norway"
+        ],
         "torrentFile": "torrent/DL Atomic Heart P RUS + ENG + 11 RUS + ENG + 8 (2023 FPS) .torrent",
         "virus_check": "https://www.virustotal.com/gui/file/fa3bb08bace432b13e66f792dab6548aa8258302df5a59b4846e76ae96aaedde",
-            "trailer": "https://drive.google.com/file/d/136shCawSo3PYpDrQ07mdg--x2g90b3NZ/preview",
+        "trailer": "https://drive.google.com/file/d/136shCawSo3PYpDrQ07mdg--x2g90b3NZ/preview",
         "buyGame": "https://ggsel.net/catalog/product/vse-regiony-atomic-heart-vse-izdaniia-na-vybor-4168653",
         "screenshots": [
             "https://i.postimg.cc/nhyXsw5r/1676800390-ss-0e4b3349f2124cdba1df885ac3cdabfba87b22fb-1920x1080.jpg",
@@ -1536,7 +1575,8 @@
                 "Graphics": "NVIDIA GeForce RTX 2070 / AMD Radeon RX 6700 XT (8 GB VRAM)",
                 "Storage": "90 GB (SSD рекомендуется) available space"
             }
-        }
+        },
+        "sku": "ART-0030"
     },
     "parcel-simulator": {
         "title": "Parcel Simulator",
@@ -1548,17 +1588,17 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Parcel Simulator",
-    "Simulation",
-    "Delivery",
-    "Driving",
-    "First-Person",
-    "Logistics",
-    "Open World"
-],
+            "Parcel Simulator",
+            "Simulation",
+            "Delivery",
+            "Driving",
+            "First-Person",
+            "Logistics",
+            "Open World"
+        ],
         "torrentFile": "torrent/Parcel.Simulator.v1.0.5.2.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/74de14dc2340153eb694f5420bd77dd29931ec9022f44372f21e6c4126cc0cf1?nocache=1",
-            "trailer": "https://drive.google.com/file/d/1JCxDWs7XNiZFc8T_xUu38Y-ij4Xme_ls/preview",
+        "trailer": "https://drive.google.com/file/d/1JCxDWs7XNiZFc8T_xUu38Y-ij4Xme_ls/preview",
         "buyGame": "https://ggsel.net/catalog/product/parcel-simulator-steam-gift-auto-ru-mir-5246759",
         "screenshots": [
             "https://i.postimg.cc/bv5gJCdp/1750484687-ss-9adb4053b207bde08c7cc6f22a8620dbfd19e9e9.jpg",
@@ -1589,7 +1629,8 @@
                 "Graphics": "NVIDIA GeForce GTX 1660 Ti / AMD Radeon RX 590 (6 GB VRAM)",
                 "Storage": "29.38 GB (SSD рекомендуется для быстрой загрузки города) available space"
             }
-        }
+        },
+        "sku": "ART-0031"
     },
     "quarantine-zone-the-last-check": {
         "title": "Quarantine Zone: The Last Check",
@@ -1601,20 +1642,20 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Quarantine Zone: The Last Check",
-    "Brigada Games",
-    "Devolver Digital",
-    "Simulation",
-    "Zombies",
-    "Post-apocalyptic",
-    "Choices Matter",
-    "Resource Management",
-    "Papers, Please",
-    "Checkpoint"
-],
+            "Quarantine Zone: The Last Check",
+            "Brigada Games",
+            "Devolver Digital",
+            "Simulation",
+            "Zombies",
+            "Post-apocalyptic",
+            "Choices Matter",
+            "Resource Management",
+            "Papers, Please",
+            "Checkpoint"
+        ],
         "torrentFile": "torrent/DL Quarantine Zone The Last Check P RUS + ENG + 12 RUS + ENG (2026 Simulation) (1.1.13.1645 + 5 DLC) Portable.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/3bad9b08d4902e6a37ae9780e7b7061554533c7ba3a2e995505d66f3ee6991af",
-            "trailer": "https://drive.google.com/file/d/10LJkPvQCuH8boTG2ntLkdikRyFHZp7CG/preview",
+        "trailer": "https://drive.google.com/file/d/10LJkPvQCuH8boTG2ntLkdikRyFHZp7CG/preview",
         "buyGame": "https://ggsel.net/catalog/product/quarantine-zone-the-last-check-steam-ru-avtovydaca-102120585",
         "screenshots": [
             "https://i.postimg.cc/DwYWWR8K/1768308387-ss-4a9c7643b40398b9606c723fef62ff81c9a5e294-(1).jpg",
@@ -1642,7 +1683,8 @@
                 "Graphics": "NVIDIA GeForce RTX 2060 6GB / AMD Radeon RX 5700 XT",
                 "Storage": "7.32 GB available space"
             }
-        }
+        },
+        "sku": "ART-0032"
     },
     "Red-Dead-Redеmption-2": {
         "title": "Red Dead Redеmption 2",
@@ -1665,7 +1707,7 @@
         ],
         "torrentFile": "torrent/red-dead-redemption-2-ultimate-edition-v-1491_50-dlcs-2019.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/1a35283e224b0a0b126cb9da304931ab56096df78fc645659f59f09129b9f6ca",
-            "trailer": "https://drive.google.com/file/d/1eEjnTlTzyQ76KJ3NEnONTjOT6obko-ue/preview",
+        "trailer": "https://drive.google.com/file/d/1eEjnTlTzyQ76KJ3NEnONTjOT6obko-ue/preview",
         "buyGame": "https://ggsel.net/catalog/rdr-2-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/bJhBF5CG/1603370068-61a959841c6b61be1128be28a2b29d796d6a0b9d.jpg",
@@ -1693,7 +1735,8 @@
                 "Graphics": "NVIDIA GeForce GTX 1060 6GB / AMD Radeon RX 480 4GB",
                 "Storage": "94.59 GB SSD available space"
             }
-        }
+        },
+        "sku": "ART-0033"
     },
     "forza-horizon-5": {
         "title": "Forza Horizon 5",
@@ -1705,19 +1748,19 @@
         "status": "available",
         "category": "Forza Horizon",
         "tags": [
-    "Forza Horizon 5",
-    "Playground Games",
-    "Xbox Game Studios",
-    "Racing",
-    "Open World",
-    "Mexico",
-    "Cars",
-    "Arcade Racing",
-    "Festival"
-],
+            "Forza Horizon 5",
+            "Playground Games",
+            "Xbox Game Studios",
+            "Racing",
+            "Open World",
+            "Mexico",
+            "Cars",
+            "Arcade Racing",
+            "Festival"
+        ],
         "torrentFile": "torrent/Forza.Horizon.5.Premium.Edition-InsaneRamZes.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/a5b52b107c9a29d2970b0e43fa4d13538d8cdcd24fa38e5c3b75c3fbf5b67f82?nocache=1",
-            "trailer": "https://www.youtube.com/embed/FYH9n37B7Yw",
+        "trailer": "https://www.youtube.com/embed/FYH9n37B7Yw",
         "screenshots": [
             "https://i.postimg.cc/7Yty2jNt/1635973381-screenshot-forza-horizon-5-1920x1080-2021-06-14-5.jpg",
             "https://i.postimg.cc/QM1LvCrt/1635973327-screenshot-forza-horizon-5-1920x1080-2021-06-14-6.jpg",
@@ -1751,7 +1794,8 @@
                 "Storage": "110 GB available space (SSD рекомендуется)",
                 "DirectX": "Версия 12"
             }
-        }
+        },
+        "sku": "ART-0034"
     },
     "forza-horizon-4": {
         "title": "Forza Horizon 4",
@@ -1763,19 +1807,19 @@
         "status": "available",
         "category": "Forza Horizon",
         "tags": [
-    "Forza Horizon 4",
-    "Playground Games",
-    "Xbox Game Studios",
-    "Racing",
-    "Open World",
-    "United Kingdom",
-    "Seasons",
-    "Cars",
-    "Arcade Racing"
-],
+            "Forza Horizon 4",
+            "Playground Games",
+            "Xbox Game Studios",
+            "Racing",
+            "Open World",
+            "United Kingdom",
+            "Seasons",
+            "Cars",
+            "Arcade Racing"
+        ],
         "torrentFile": "torrent/Forza.Horizon.4.Ultimate.Edition.Steam.Rip-InsaneRamZes.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/1c176d5306802f8076a83012762e2f9d93bd0e0d08c3882f426d3a71e7832b28?nocache=1",
-            "trailer": "https://drive.google.com/file/d/1JrOMDarwvred1OJUJ8QqRU0qlGAsfG1-/preview",
+        "trailer": "https://drive.google.com/file/d/1JrOMDarwvred1OJUJ8QqRU0qlGAsfG1-/preview",
         "screenshots": [
             "https://i.postimg.cc/C1CqkbRB/1529670907-1efbd5c1-48b0-4177-a315-d36ca736fb8d.jpg",
             "https://i.postimg.cc/NG4X07hC/1529670910-4de11c70-c185-4396-b11b-13b0ec5e9c77.jpg",
@@ -1809,7 +1853,8 @@
                 "Storage": "85 GB available space (SSD рекомендуется)",
                 "DirectX": "Версия 12"
             }
-        }
+        },
+        "sku": "ART-0035"
     },
     "forza-horizon-3": {
         "title": "Forza Horizon 3",
@@ -1821,19 +1866,19 @@
         "status": "available",
         "category": "Forza Horizon",
         "tags": [
-    "Forza Horizon 3",
-    "Playground Games",
-    "Xbox Game Studios",
-    "Racing",
-    "Open World",
-    "Australia",
-    "Cars",
-    "Arcade Racing",
-    "Horizon Festival"
-],
+            "Forza Horizon 3",
+            "Playground Games",
+            "Xbox Game Studios",
+            "Racing",
+            "Open World",
+            "Australia",
+            "Cars",
+            "Arcade Racing",
+            "Horizon Festival"
+        ],
         "torrentFile": "torrent/Forza-Horizon-3-1.0.125.2-44-DLC.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/61a2a0aaba5a8b11582267169a72c905bf0c4120d77beb6d7092f88d0923909f",
-            "trailer": "https://drive.google.com/file/d/1KST4vmBullPkTZIrQoGFg9BnmS4IfG9u/preview",
+        "trailer": "https://drive.google.com/file/d/1KST4vmBullPkTZIrQoGFg9BnmS4IfG9u/preview",
         "screenshots": [
             "https://i.postimg.cc/N0ZMNDyZ/1467035231-4cacce3a-33a7-45ea-a9ce-1e2ba96d0e09.jpg",
             "https://i.postimg.cc/65BQ1y3p/1467035246-06f08033-4a33-47b7-a45d-a8b0e2b9714f.jpg"
@@ -1861,7 +1906,8 @@
                 "Storage": "65 GB available space (SSD рекомендуется)",
                 "DirectX": "Версия 12"
             }
-        }
+        },
+        "sku": "ART-0036"
     },
     "forza-motorsport-7": {
         "title": "Forza Motorsport 7",
@@ -1873,19 +1919,19 @@
         "status": "available",
         "category": "Forza Horizon",
         "tags": [
-    "Forza Motorsport 7",
-    "Turn 10 Studios",
-    "Xbox Game Studios",
-    "Racing",
-    "Simulation",
-    "Track Racing",
-    "Cars",
-    "Realistic Physics",
-    "Motorsport"
-],
+            "Forza Motorsport 7",
+            "Turn 10 Studios",
+            "Xbox Game Studios",
+            "Racing",
+            "Simulation",
+            "Track Racing",
+            "Cars",
+            "Realistic Physics",
+            "Motorsport"
+        ],
         "torrentFile": "torrent/forza-motorsport-7.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/e952901a4003c160713bc856610756ce484fc5b6e2f8b2f3b922b2023e3d7a1e",
-            "trailer": "https://drive.google.com/file/d/1lbmfmsFYeLCjw7QpYmvHiAO1i-fQirm9/preview",
+        "trailer": "https://drive.google.com/file/d/1lbmfmsFYeLCjw7QpYmvHiAO1i-fQirm9/preview",
         "screenshots": [
             "https://i.postimg.cc/bJFK0VsY/1529056863-53a69bcb5273cc5a260639b564565432.jpg",
             "https://i.postimg.cc/6qkgg7rD/1529056832-4012a787de40e15803801c73f2186081.jpg",
@@ -1922,7 +1968,8 @@
                 "DirectX": "Версия 12",
                 "Дополнительно": "Для игры в 4K 60FPS требуется NVIDIA GTX 1080 или эквивалентная карта"
             }
-        }
+        },
+        "sku": "ART-0037"
     },
     "forza-motorsport-2023": {
         "title": "Forza Motorsport (2023)",
@@ -1934,19 +1981,19 @@
         "status": "available",
         "category": "Forza Horizon",
         "tags": [
-    "Forza Motorsport",
-    "Forza Motorsport 2023",
-    "Turn 10 Studios",
-    "Xbox Game Studios",
-    "Sim Racing",
-    "Track Racing",
-    "Realistic Physics",
-    "Ray Tracing",
-    "Live Service"
-],
+            "Forza Motorsport",
+            "Forza Motorsport 2023",
+            "Turn 10 Studios",
+            "Xbox Game Studios",
+            "Sim Racing",
+            "Track Racing",
+            "Realistic Physics",
+            "Ray Tracing",
+            "Live Service"
+        ],
         "torrentFile": "torrent/Forza_Motorsport_-_Premium_Edition_2023_Portable.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/b6e3cd31386e47f456a2d37ab8c46026f72548a73ff615146aa50276b61c58bd",
-            "trailer": "https://drive.google.com/file/d/1gImSwySVxXOQBV94cELkQeLw01ZEeKpX/preview",
+        "trailer": "https://drive.google.com/file/d/1gImSwySVxXOQBV94cELkQeLw01ZEeKpX/preview",
         "screenshots": [
             "https://i.postimg.cc/fTZYMzHb/1686512929-ss-9dfd83e0b0fcefca714fb49e4da48886619fa9e2.jpg",
             "https://i.postimg.cc/brRDZn6c/1686512900-ss-794544aa55532dbb6b34ae2e67b487009622fb2d.jpg",
@@ -1979,7 +2026,8 @@
                 "DirectX": "Версия 12 Ultimate",
                 "Дополнительно": "Для игры в 4K с ray tracing требуется NVIDIA RTX 4080/4090 или AMD RX 7900 XTX"
             }
-        }
+        },
+        "sku": "ART-0038"
     },
     "snowrunner": {
         "title": "SnowRunner",
@@ -1991,20 +2039,20 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "SnowRunner",
-    "Saber Interactive",
-    "Focus Entertainment",
-    "Off-road",
-    "Simulation",
-    "Trucks",
-    "Mud",
-    "Snow",
-    "Physics",
-    "Exploration"
-],
+            "SnowRunner",
+            "Saber Interactive",
+            "Focus Entertainment",
+            "Off-road",
+            "Simulation",
+            "Trucks",
+            "Mud",
+            "Snow",
+            "Physics",
+            "Exploration"
+        ],
         "torrentFile": "torrent/SnowRunner Repair.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/80a022a0fbf0c95c95fa738a7b885cd6c1cb05f4f69928bf917e827390e7d8a8?nocache=1",
-            "trailer": "https://drive.google.com/file/d/1KFtP6ouKJoXfkqcK7YFDeTYtZaO_2qj_/preview",
+        "trailer": "https://drive.google.com/file/d/1KFtP6ouKJoXfkqcK7YFDeTYtZaO_2qj_/preview",
         "screenshots": [
             "https://i.postimg.cc/vH46fwsS/1769521717-ss-0b9c1d6b91fad663d6bf2bc41d520447d11afa9a.jpg",
             "https://i.postimg.cc/SKhXBXzT/1769521711-ss-3b77549445944ac9e671c79fc4f93e5de39c3d80.jpg",
@@ -2034,7 +2082,8 @@
                 "Graphics": "NVIDIA GeForce GTX 970 / AMD Radeon RX 580",
                 "Storage": "20 GB available space (SSD рекомендуется)"
             }
-        }
+        },
+        "sku": "ART-0039"
     },
     "underground-garage": {
         "title": "Underground Garage",
@@ -2046,20 +2095,20 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Underground Garage",
-    "BeardedBrothers.Games",
-    "astragon Entertainment",
-    "Car Mechanic",
-    "Simulation",
-    "Street Racing",
-    "Open World",
-    "Tuning",
-    "Illegal Racing",
-    "Early Access"
-],
+            "Underground Garage",
+            "BeardedBrothers.Games",
+            "astragon Entertainment",
+            "Car Mechanic",
+            "Simulation",
+            "Street Racing",
+            "Open World",
+            "Tuning",
+            "Illegal Racing",
+            "Early Access"
+        ],
         "torrentFile": "torrent/Underground.Garage-RUNE.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/6dcf50666443198de36953880548d2afc111abb22936a282cb78284606abbf87?nocache=1",
-            "trailer": "https://drive.google.com/file/d/13mpU3WHP6jD5GNmiErd-UHK3jg343Ylu/preview",
+        "trailer": "https://drive.google.com/file/d/13mpU3WHP6jD5GNmiErd-UHK3jg343Ylu/preview",
         "screenshots": [
             "https://i.postimg.cc/15S35xzZ/1769513150-ss-35f7e2f6a5ea323d8c948ff4ee62ba852c95d569.jpg",
             "https://i.postimg.cc/bvZzFpmx/1769513203-ss-66ac26b16cfd2454539d86f2e8f38cc3ee3a4677.jpg",
@@ -2089,7 +2138,8 @@
                 "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 580",
                 "Storage": "10 GB available space (SSD рекомендуется)"
             }
-        }
+        },
+        "sku": "ART-0040"
     },
     "my-dream-setup": {
         "title": "My Dream Setup",
@@ -2101,19 +2151,19 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "My Dream Setup",
-    "Campfire Studio",
-    "Simulation",
-    "Sandbox",
-    "Building",
-    "Relaxing",
-    "Casual",
-    "Design & Illustration",
-    "Room Decoration"
-],
+            "My Dream Setup",
+            "Campfire Studio",
+            "Simulation",
+            "Sandbox",
+            "Building",
+            "Relaxing",
+            "Casual",
+            "Design & Illustration",
+            "Room Decoration"
+        ],
         "torrentFile": "torrent/My.Dream.Setup.Build.22228877.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/f4bc7149c72001cfda3e3e3e1cb4caa82ac93db75e7eacc6a4224385b94da749",
-            "trailer": "https://drive.google.com/file/d/1i3iBj9VuSxHUat2kKUAUlGZ-Qa2iWvF/preview",
+        "trailer": "https://drive.google.com/file/d/1i3iBj9VuSxHUat2kKUAUlGZ-Qa2iWvF/preview",
         "screenshots": [
             "https://i.postimg.cc/vBNWqVRQ/1690043618-ss-0a156fde1f5d4d84ee165f89fd4e87f01b54327e.jpg",
             "https://i.postimg.cc/K4XtFh8X/1690043592-ss-1c6b14c7023592af6cdbef68731e94af4026a5f3.jpg",
@@ -2143,7 +2193,8 @@
                 "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 570",
                 "Storage": "6 GB available space (SSD рекомендуется)"
             }
-        }
+        },
+        "sku": "ART-0041"
     },
     "metro-2033-redux": {
         "title": "Metro 2033 Redux",
@@ -2155,20 +2206,20 @@
         "status": "available",
         "category": "Metro",
         "tags": [
-    "Metro 2033",
-    "Metro 2033 Redux",
-    "4A Games",
-    "Deep Silver",
-    "Post-apocalyptic",
-    "Survival Horror",
-    "FPS",
-    "Stealth",
-    "Artyom",
-    "Moscow Metro"
-],
+            "Metro 2033",
+            "Metro 2033 Redux",
+            "4A Games",
+            "Deep Silver",
+            "Post-apocalyptic",
+            "Survival Horror",
+            "FPS",
+            "Stealth",
+            "Artyom",
+            "Moscow Metro"
+        ],
         "torrentFile": "torrent/Metro-2033-Redux.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/7568f896903edb214d883898365c24e655c9cab42d35caa69d6ab27ab6705079",
-            "trailer": "https://drive.google.com/file/d/1xxRGX9DR6XHRFy53wenE-fZLu6ggfJZQ/preview",
+        "trailer": "https://drive.google.com/file/d/1xxRGX9DR6XHRFy53wenE-fZLu6ggfJZQ/preview",
         "screenshots": [
             "https://i.postimg.cc/7YWZ5n35/1442326513-280-crop890x507.jpg",
             "https://i.postimg.cc/V6gYmqs8/1442326464-287-crop890x507.jpg",
@@ -2200,7 +2251,8 @@
                 "Storage": "10 GB available space (SSD рекомендуется)",
                 "DirectX": "Версии 11"
             }
-        }
+        },
+        "sku": "ART-0042"
     },
     "metro-last-light-redux": {
         "title": "Metro Last Light Redux",
@@ -2212,20 +2264,20 @@
         "status": "available",
         "category": "Metro",
         "tags": [
-    "Metro Last Light",
-    "Metro Last Light Redux",
-    "4A Games",
-    "Deep Silver",
-    "Post-apocalyptic",
-    "Survival Horror",
-    "FPS",
-    "Stealth",
-    "Artyom",
-    "Moscow Metro"
-],
+            "Metro Last Light",
+            "Metro Last Light Redux",
+            "4A Games",
+            "Deep Silver",
+            "Post-apocalyptic",
+            "Survival Horror",
+            "FPS",
+            "Stealth",
+            "Artyom",
+            "Moscow Metro"
+        ],
         "torrentFile": "torrent/Metro Last Light Redux",
         "virus_check": "https://www.virustotal.com/gui/file/21ad5188343f9734c55860ddfa9685fd3c9f11fe1f43755558e5e48c19a3b286",
-            "trailer": "https://drive.google.com/file/d/1rqqwX8Egrqk1jXj2DKNCET7vo_Uto4HF/preview",
+        "trailer": "https://drive.google.com/file/d/1rqqwX8Egrqk1jXj2DKNCET7vo_Uto4HF/preview",
         "screenshots": [
             "https://i.postimg.cc/44cD6bRY/1520352306-1758579.jpg",
             "https://i.postimg.cc/tg7fYFNc/1520352255-1507824311-8599.jpg",
@@ -2257,7 +2309,8 @@
                 "Storage": "10 GB available space (SSD рекомендуется)",
                 "DirectX": "Версии 11"
             }
-        }
+        },
+        "sku": "ART-0043"
     },
     "metro-last-light": {
         "title": "Metro: Last Light",
@@ -2269,20 +2322,20 @@
         "status": "available",
         "category": "Metro",
         "tags": [
-    "Metro Last Light",
-    "4A Games",
-    "Deep Silver",
-    "Post-apocalyptic",
-    "Survival Horror",
-    "FPS",
-    "Stealth",
-    "Artyom",
-    "Moscow Metro",
-    "Dark Ones"
-],
+            "Metro Last Light",
+            "4A Games",
+            "Deep Silver",
+            "Post-apocalyptic",
+            "Survival Horror",
+            "FPS",
+            "Stealth",
+            "Artyom",
+            "Moscow Metro",
+            "Dark Ones"
+        ],
         "torrentFile": "torrent/R.G._Mechanics_Metro_Last_Light.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/2a0a5f416ac1714e79d925ed471aaa5f9b2ed94e5b9dfd8b4431a4f74a04716c",
-            "trailer": "https://drive.google.com/file/d/1CmscMlaUIC3zXPAondbgMMJPkYFGO7xK/preview",
+        "trailer": "https://drive.google.com/file/d/1CmscMlaUIC3zXPAondbgMMJPkYFGO7xK/preview",
         "screenshots": [
             "https://i.postimg.cc/wMWLyR2T/1610844676-7777-1.jpg",
             "https://i.postimg.cc/G3zkS6R1/1610844619-7777-2.jpg",
@@ -2316,7 +2369,8 @@
                 "Storage": "8 GB available space",
                 "DirectX": "Версии 11"
             }
-        }
+        },
+        "sku": "ART-0044"
     },
     "need-four-speed-bridge-vented-limited-edition": {
         "title": "Nid Four Speed Bridge: Vented Limited Edition",
@@ -2328,16 +2382,16 @@
         "status": "available",
         "category": "Need For Speed",
         "tags": [
-    "Nid Four Speed Bridge",
-    "Vented Limited Edition",
-    "My Summer Car Mod",
-    "Car Building",
-    "Engine Parts",
-    "Performance Tuning"
-],
+            "Nid Four Speed Bridge",
+            "Vented Limited Edition",
+            "My Summer Car Mod",
+            "Car Building",
+            "Engine Parts",
+            "Performance Tuning"
+        ],
         "torrentFile": "torrent/Need-for-Speed-Most-Wanted-Limited-Edition.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/009579a9d9d2b50f5ea2d7efa7df6c9c941c10568e2b539dccc65d17df2a8d4e",
-            "trailer": "https://drive.google.com/file/d/1aYPllABQx7-Q5-aXcXzxQq0nwoiHupeB/preview",
+        "trailer": "https://drive.google.com/file/d/1aYPllABQx7-Q5-aXcXzxQq0nwoiHupeB/preview",
         "trailer1": "https://drive.google.com/file/d/1ugMcD8KMIB3LuCInO5IHkhl3xDVhgx2F/preview",
         "screenshots": [
             "https://i.postimg.cc/sgGHz3fY/1428771201-1-1-1024x640.jpg",
@@ -2370,7 +2424,8 @@
                 "Storage": "30 GB available space (NVMe SSD)",
                 "Peripherals": "Прямой приводный руль, педали с датчиком нагрузки, амортизаторная ручка КПП"
             }
-        }
+        },
+        "sku": "ART-0045"
     },
     "need-for-speed-2015": {
         "title": "Need for Speed (2015)",
@@ -2382,20 +2437,20 @@
         "status": "buy",
         "category": "Need For Speed",
         "tags": [
-    "Need for Speed",
-    "Need for Speed 2015",
-    "Ghost Games",
-    "EA",
-    "Racing",
-    "Open World",
-    "Live Action",
-    "Night Only",
-    "Ventura Bay",
-    "Customization"
-],
+            "Need for Speed",
+            "Need for Speed 2015",
+            "Ghost Games",
+            "EA",
+            "Racing",
+            "Open World",
+            "Live Action",
+            "Night Only",
+            "Ventura Bay",
+            "Customization"
+        ],
         "buyGame": "https://ggsel.net/catalog/product/avto-24-7-need-for-speed-deluxe-edition-rf-mir-steam-podarok-102112687",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1y-N_Dffen_gDTD5-dHv9ctpRIRA4mu4l/preview",
+        "trailer": "https://drive.google.com/file/d/1y-N_Dffen_gDTD5-dHv9ctpRIRA4mu4l/preview",
         "screenshots": [
             "https://i.postimg.cc/Vvc0JBnF/1709678603-ss-7da80363f25c7d7ccc95e7bfdc5d8091e0cea77e.jpg",
             "https://i.postimg.cc/ryStv32Z/1709678521-ss-9dd50dff2daf09743e7ec2eab9efc5fe2b2a791e.jpg",
@@ -2429,7 +2484,8 @@
                 "DirectX": "Версии 11",
                 "Network": "Широкополосное подключение к интернету"
             }
-        }
+        },
+        "sku": "ART-0046"
     },
     "need-for-speed-payback": {
         "title": "Need for Speed Payback",
@@ -2441,19 +2497,19 @@
         "status": "available",
         "category": "Need For Speed",
         "tags": [
-    "Need for Speed Payback",
-    "Ghost Games",
-    "EA",
-    "Racing",
-    "Open World",
-    "Fortune Valley",
-    "Action",
-    "Heist",
-    "Speed Cards"
-],
+            "Need for Speed Payback",
+            "Ghost Games",
+            "EA",
+            "Racing",
+            "Open World",
+            "Fortune Valley",
+            "Action",
+            "Heist",
+            "Speed Cards"
+        ],
         "torrentFile": "torrent/Need-for-Speed-Payback-by-Igruha.torrent",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1Df1ArSRpa8eRKHb0SP-F35nuioZjjKJp/preview",
+        "trailer": "https://drive.google.com/file/d/1Df1ArSRpa8eRKHb0SP-F35nuioZjjKJp/preview",
         "screenshots": [
             "https://i.postimg.cc/SKNBpwPf/1509898484-5pzvy4gk.jpg",
             "https://i.postimg.cc/VLQ2NSTq/1509898530-77gn77.jpg",
@@ -2487,7 +2543,8 @@
                 "Storage": "30 GB available space (SSD рекомендуется)",
                 "DirectX": "Версии 11"
             }
-        }
+        },
+        "sku": "ART-0047"
     },
     "far-cry-1": {
         "title": "Far Cry 1",
@@ -2499,19 +2556,19 @@
         "status": "available",
         "category": "Far Cry",
         "tags": [
-    "Far Cry",
-    "Far Cry 1",
-    "Crytek",
-    "Ubisoft",
-    "FPS",
-    "Open World",
-    "Tropical Island",
-    "Jack Carver",
-    "Trigens"
-],
+            "Far Cry",
+            "Far Cry 1",
+            "Crytek",
+            "Ubisoft",
+            "FPS",
+            "Open World",
+            "Tropical Island",
+            "Jack Carver",
+            "Trigens"
+        ],
         "torrentFile": "torrent/Far Cry 1.40 hotfix (29940) [GOG].torrent",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1HDBAfev_blG_0_eb9L4lKKvhv6-_XoJU/preview",
+        "trailer": "https://drive.google.com/file/d/1HDBAfev_blG_0_eb9L4lKKvhv6-_XoJU/preview",
         "screenshots": [
             "https://i.postimg.cc/tJHPSrhb/1446747719-0000003758-1920x1080.jpg",
             "https://i.postimg.cc/KjrTdnNf/1446747797-0000003759-1920x1080.jpg",
@@ -2541,7 +2598,8 @@
                 "Storage": "4 GB available space",
                 "DirectX": "Версии 9.0b"
             }
-        }
+        },
+        "sku": "ART-0048"
     },
     "far-cry-2": {
         "title": "Far Cry 2",
@@ -2553,19 +2611,19 @@
         "status": "available",
         "category": "Far Cry",
         "tags": [
-    "Far Cry 2",
-    "Ubisoft Montreal",
-    "Ubisoft",
-    "FPS",
-    "Open World",
-    "Africa",
-    "Mercenaries",
-    "Malaria",
-    "Weapon Degradation"
-],
+            "Far Cry 2",
+            "Ubisoft Montreal",
+            "Ubisoft",
+            "FPS",
+            "Open World",
+            "Africa",
+            "Mercenaries",
+            "Malaria",
+            "Weapon Degradation"
+        ],
         "torrentFile": "torrent/Far Cry 2.torrent",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1ciTi53Koo5WUIPzuTRd_swndod0QeIkT/preview",
+        "trailer": "https://drive.google.com/file/d/1ciTi53Koo5WUIPzuTRd_swndod0QeIkT/preview",
         "screenshots": [
             "https://i.postimg.cc/PqQPftZq/1445803694-0000004525-1920x1080.jpg",
             "https://i.postimg.cc/90rMBZn6/1445803703-0000004526-1920x1080.jpg",
@@ -2599,7 +2657,8 @@
                 "Storage": "12 GB available space",
                 "DirectX": "Версии 9.0c / 10.0"
             }
-        }
+        },
+        "sku": "ART-0049"
     },
     "far-cry-3": {
         "title": "Far Cry 3",
@@ -2611,19 +2670,19 @@
         "status": "available",
         "category": "Far Cry",
         "tags": [
-    "Far Cry 3",
-    "Ubisoft Montreal",
-    "Ubisoft",
-    "FPS",
-    "Open World",
-    "Rook Islands",
-    "Jason Brody",
-    "Vaas Montenegro",
-    "Insanity"
-],
+            "Far Cry 3",
+            "Ubisoft Montreal",
+            "Ubisoft",
+            "FPS",
+            "Open World",
+            "Rook Islands",
+            "Jason Brody",
+            "Vaas Montenegro",
+            "Insanity"
+        ],
         "torrentFile": "torrent/Far-Cry-3.torrent",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1NgQpSRophfpsrwa0xPUuo_YkzS59HE6b/preview",
+        "trailer": "https://drive.google.com/file/d/1NgQpSRophfpsrwa0xPUuo_YkzS59HE6b/preview",
         "screenshots": [
             "https://i.postimg.cc/Fz8jb9D8/1441654257-ss-6a4dec0b9653564b7be754286cef07a012c24fea-1920x1080.jpg",
             "https://i.postimg.cc/VL09fCNd/1441654239-ss-6e7911d3622f3a801aeea1c2f8418f0f22880bb0-1920x1080.jpg",
@@ -2659,7 +2718,8 @@
                 "Storage": "15 GB available space",
                 "DirectX": "Версии 11"
             }
-        }
+        },
+        "sku": "ART-0050"
     },
     "far-cry-4": {
         "title": "Far Cry 4",
@@ -2671,19 +2731,19 @@
         "status": "available",
         "category": "Far Cry",
         "tags": [
-    "Far Cry 4",
-    "Ubisoft Montreal",
-    "Ubisoft",
-    "FPS",
-    "Open World",
-    "Kyrat",
-    "Ajay Ghale",
-    "Pagan Min",
-    "Himalayas"
-],
+            "Far Cry 4",
+            "Ubisoft Montreal",
+            "Ubisoft",
+            "FPS",
+            "Open World",
+            "Kyrat",
+            "Ajay Ghale",
+            "Pagan Min",
+            "Himalayas"
+        ],
         "torrentFile": "torrent/Far-Cry-4.torrent",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1o7shVNsqDHADRyUxk7Ffd3ivdiNjEC1R/preview",
+        "trailer": "https://drive.google.com/file/d/1o7shVNsqDHADRyUxk7Ffd3ivdiNjEC1R/preview",
         "screenshots": [
             "https://i.postimg.cc/T39zRwQT/1749877128-ss-2e7b8e01e12b4932b83b802318d8aae5eb59bacb.jpg",
             "https://i.postimg.cc/nz65dQV7/1749877166-ss-738eb6ad93238c22b8042074119032fb3d0cb5e0.jpg",
@@ -2713,7 +2773,8 @@
                 "Storage": "30 GB available space",
                 "DirectX": "Версии 11"
             }
-        }
+        },
+        "sku": "ART-0051"
     },
     "far-cry-5": {
         "title": "Far Cry 5",
@@ -2725,19 +2786,19 @@
         "status": "available",
         "category": "Far Cry",
         "tags": [
-    "Far Cry 5",
-    "Ubisoft Montreal",
-    "Ubisoft",
-    "FPS",
-    "Open World",
-    "Hope County",
-    "Montana",
-    "Joseph Seed",
-    "Eden's Gate"
-],
+            "Far Cry 5",
+            "Ubisoft Montreal",
+            "Ubisoft",
+            "FPS",
+            "Open World",
+            "Hope County",
+            "Montana",
+            "Joseph Seed",
+            "Eden's Gate"
+        ],
         "torrentFile": "torrent/Far-Cry-5.torrent",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1PJqo8VhJGtz9M9cQhs3KSP3N2MZ3AXkh/preview",
+        "trailer": "https://drive.google.com/file/d/1PJqo8VhJGtz9M9cQhs3KSP3N2MZ3AXkh/preview",
         "screenshots": [
             "https://i.postimg.cc/kXFJb7w0/1627302517-ss-e77cdee777bf7cc1fc820e6e3442c23166dfbc4b-1920x1080.jpg",
             "https://i.postimg.cc/SxSyLHvz/1627302475-ss-54e115519104798a3a2dc55e6de3d4974e144b77-1920x1080.jpg",
@@ -2771,9 +2832,10 @@
                 "Storage": "40 GB available space (SSD рекомендуется)",
                 "DirectX": "Версии 9.0c"
             }
-        }
+        },
+        "sku": "ART-0052"
     },
-     "cairn": {
+    "cairn": {
         "title": "Cairn",
         "description": "Cairn — это атмосферная альпинистская игра, в которой вы покоряете величественные горные вершины. Исследуйте захватывающие дух пейзажи, преодолевайте сложные маршруты и достигайте вершин в одиночку или вместе с друзьями. Почувствуйте азарт первопроходца и насладитесь медитативным геймплеем в мире, где каждое восхождение — это уникальное приключение.",
         "image": "https://i.postimg.cc/1394qVWb/1717940549-library-600x900-2x.jpg",
@@ -2795,7 +2857,7 @@
         ],
         "torrentFile": "torrent/DL Cairn P RUS + ENG + 9 ENG (2026 Adventure).torrent",
         "virus_check": "https://www.virustotal.com/gui/file/6f2b7f33e19525047b03cd836665f9d80c439c7fa416906aa5f6d387ccaf0ba6",
-            "trailer": "https://drive.google.com/file/d/1CtHEiWRkhluycIjTFkRtk3QfEKAOrH6q/preview",
+        "trailer": "https://drive.google.com/file/d/1CtHEiWRkhluycIjTFkRtk3QfEKAOrH6q/preview",
         "buyGame": "https://ggsel.net/catalog/cairn-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/1zQB6Bxh/1717940595-ss-4aa578a2d59fbeaffd81f5b8bed65f6c961102d2.jpg",
@@ -2828,9 +2890,10 @@
                 "Graphics": "NVIDIA GeForce RTX 3060 / AMD Radeon RX 6600 XT",
                 "Storage": "3 GB available space (SSD)"
             }
-        }
+        },
+        "sku": "ART-0053"
     },
-     "sonic-frontiers": {
+    "sonic-frontiers": {
         "title": "Sonic Frontiers",
         "description": "Отправляйтесь в открытое приключение с Соником в новой захватывающей главе серии! Исследуйте огромные, красивые острова, полные древних тайн и опасных противников. Гоните на сверхзвуковой скорости по живописным ландшафтам, сражайтесь с могущественными боссами и раскройте правду о древней цивилизации.",
         "image": "https://i.postimg.cc/PqJcVhfv/1665332189-library-600x900-2x.jpg",
@@ -2852,7 +2915,7 @@
         ],
         "torrentFile": "torrent/sons-of-the-forest-v-1.0_53951-2024.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/88484a5dd21eba26b8e30c86ddd16f9dcf1ff2a94caa612e52177519c54233e5",
-            "trailer": "https://drive.google.com/file/d/1cMILwLfOIsrB5MUMvrOtdYwssZiYh35r/preview",
+        "trailer": "https://drive.google.com/file/d/1cMILwLfOIsrB5MUMvrOtdYwssZiYh35r/preview",
         "buyGame": "https://ggsel.net/catalog/steam-40539",
         "screenshots": [
             "https://i.postimg.cc/Gpb344Qw/1665854396-ss-9817ace7705cf9096bde3fae0141055d170fbf66-1920x1080.jpg",
@@ -2885,9 +2948,10 @@
                 "Graphics": "NVIDIA GeForce RTX 3060 / AMD Radeon RX 6600 XT (8GB VRAM)",
                 "Storage": "18 GB available space (SSD)"
             }
-        }
+        },
+        "sku": "ART-0054"
     },
-     "half-sword": {
+    "half-sword": {
         "title": "Half Sword",
         "description": "Half Sword — это захватывающее приключение в фэнтезийном мире, где вы владеете магическим мечом, способным раскалывать реальность. Сражайтесь с ордами врагов, решайте древние загадки и раскрывайте тайны забытого королевства в этой эпической RPG.",
         "image": "https://i.postimg.cc/5NZT7DYs/1769797211-library-600x900-2x.jpg",
@@ -2910,7 +2974,7 @@
         ],
         "torrentFile": "torrent/half-sword-v-0.6_early-access-2026.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/845984a0c288ed3e306fe884694e225fb6ec60fbaa9f8134c67ab30f6f686a65",
-            "trailer": "https://drive.google.com/file/d/1LWsDkRfvrxtUaKiQPrX79QqzTRFr6bN7/preview",
+        "trailer": "https://drive.google.com/file/d/1LWsDkRfvrxtUaKiQPrX79QqzTRFr6bN7/preview",
         "buyGame": "https://ggsel.net/catalog/product/half-sword-steam-avto-ru-mir-102134552",
         "screenshots": [
             "https://i.postimg.cc/7YTQ2Xs2/1769797188-ss-2e156563f1904a4b6a9da301fc2a7fab1ac9ff1b.jpg",
@@ -2941,7 +3005,8 @@
                 "Graphics": "NVIDIA GeForce RTX 3060 Ti / AMD Radeon RX 6700 XT (8GB VRAM)",
                 "Storage": "25 GB available space (SSD)"
             }
-        }
+        },
+        "sku": "ART-0055"
     },
     "resident-evil-4-remake": {
         "title": "Resident Evil 4 Remake",
@@ -2969,7 +3034,7 @@
         ],
         "torrentFile": "torrent/resident-evil-4-remake-1.5.9.0.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/eb70702a49c3bf216b6e3bbb22d6da3de97bfbb4476723183d24eacf86d97024",
-            "trailer": "https://drive.google.com/file/d/18RucMN8H5jMJlXgu_KXINw9l2uFXeu9o/preview",
+        "trailer": "https://drive.google.com/file/d/18RucMN8H5jMJlXgu_KXINw9l2uFXeu9o/preview",
         "buyGame": "https://ggsel.net/catalog/resident-evil-4-remake-keys-steam-standart",
         "screenshots": [
             "https://i.postimg.cc/J098Q0Cc/ss-48f6d060fc89aeaa95fd4370b63d5ae0d96d087b-1920x1080.jpg",
@@ -3003,7 +3068,8 @@
                 "Graphics": "NVIDIA GeForce RTX 2070 / AMD Radeon RX 5700 XT",
                 "Storage": "63 GB available space (SSD)"
             }
-        }
+        },
+        "sku": "ART-0056"
     },
     "carmageddon-rogue-shift": {
         "title": "Carmageddon: Rogue Shift",
@@ -3029,7 +3095,7 @@
         ],
         "torrentFile": "torrent/carmageddon-rogue-shift-1.4.0.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/d9c5f78c37c9f662f9b14389a9dec551abffbf5e3d98a6707514e92a2d557be6?nocache=1",
-            "trailer": "https://drive.google.com/file/d/11ouE1HDzEWeQXg9sANh1vpbalw2U8OD0b/preview",
+        "trailer": "https://drive.google.com/file/d/11ouE1HDzEWeQXg9sANh1vpbalw2U8OD0b/preview",
         "buyGame": "https://ggsel.net/catalog/product/carmageddon-rogue-shift-steam-avto-ru-mir-102138337",
         "screenshots": [
             "https://i.postimg.cc/90cgHjtV/1769517573-ss-4a6b2ff561fdf97101fea67a05955db74a737154.jpg",
@@ -3060,7 +3126,8 @@
                 "Graphics": "NVIDIA GeForce GTX 1660 Ti / AMD Radeon RX 580",
                 "Storage": "15 GB available space (SSD)"
             }
-        }
+        },
+        "sku": "ART-0057"
     },
     "The-Last-Of-Us-Part-I": {
         "title": "The Last of Us Part I",
@@ -3087,7 +3154,7 @@
         ],
         "torrentFile": "torrent/the-last-of-us-part-i.torrent",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1RJY7htdPGNd92dsF85szANGZ8w8xaDli/preview",
+        "trailer": "https://drive.google.com/file/d/1RJY7htdPGNd92dsF85szANGZ8w8xaDli/preview",
         "buyGame": "https://ggsel.net/catalog/the-last-of-us-part-i-standard-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/tC4XmYqW/1680043084-1.jpg",
@@ -3115,7 +3182,8 @@
                 "Graphics": "AMD Radeon RX 5700 XT / NVIDIA GeForce RTX 2070 SUPER",
                 "Storage": "100 GB available space (SSD обязательно)"
             }
-        }
+        },
+        "sku": "ART-0058"
     },
     "The-Last-Of-Us-Part-II": {
         "title": "The Last of Us Part II Remastered",
@@ -3143,7 +3211,7 @@
         ],
         "torrentFile": "torrent/the-last-of-us-part-ii-remastered.torrent",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/19UMWpWtxaQgDspOyykrEgY6sT7LBm_ns/preview",
+        "trailer": "https://drive.google.com/file/d/19UMWpWtxaQgDspOyykrEgY6sT7LBm_ns/preview",
         "buyGame": "https://ggsel.net/catalog/the-last-of-us-part-ii-remastered-keys-steam",
         "screenshots": [
             "https://i.postimg.cc/WzjMP098/1743717871-1.jpg",
@@ -3171,7 +3239,8 @@
                 "Graphics": "AMD Radeon RX 6800 / NVIDIA GeForce RTX 3080",
                 "Storage": "100 GB available space (NVMe SSD рекомендуется)"
             }
-        }
+        },
+        "sku": "ART-0059"
     },
     "Poppy Playtime Chapter 1-2-3-4-5": {
         "title": "Poppy Playtime Chapter 1-2-3-4-5",
@@ -3199,7 +3268,7 @@
         ],
         "torrentFile": "https://itorrents-igruha.org/?do=download&id=80684",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1s9BvLtKnSrYz6KqQ0N_axs3sgBesz5q4/preview",
+        "trailer": "https://drive.google.com/file/d/1s9BvLtKnSrYz6KqQ0N_axs3sgBesz5q4/preview",
         "buyGame": "https://ggsel.net/catalog/product/poppy-playtime-chapter-5-ru-by-ua-sng-steam-auto-102153197",
         "screenshots": [
             "https://i.postimg.cc/2S3QH7nq/1738268451-ss-1aa4b8455fdf430512f4079e43833b3308219c22.jpg",
@@ -3232,7 +3301,8 @@
                 "Видеокарта": "NVIDIA GeForce RTX 2060 / AMD Radeon RX 5600 XT",
                 "Свободное место": "45.50 GB"
             }
-        }
+        },
+        "sku": "ART-0060"
     },
     "HITMAN 3": {
         "title": "HITMAN 3",
@@ -3255,7 +3325,7 @@
         ],
         "torrentFile": "torrent/Hitman.3.Deluxe.Edition.v3.270-P2P.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/331d8b67ca47c09f20d7b5ec3b5ae74af80a3dc37390582965a56c0c6897225e",
-            "trailer": "https://drive.google.com/file/d/1WrTTidOUPdH9dsiohA9aA7laBti3VitM/preview",
+        "trailer": "https://drive.google.com/file/d/1WrTTidOUPdH9dsiohA9aA7laBti3VitM/preview",
         "buyGame": "https://ggsel.net/catalog/product/hitman-world-of-assassination-steam-gift-rossiia-mir-avto-102160399",
         "screenshots": [
             "https://i.postimg.cc/Qxv187PS/1692352067-ss-86e7654dd65110c45d134be1bf6c2411408310cc.jpg",
@@ -3288,7 +3358,8 @@
                 "Видеокарта": "NVIDIA GeForce RTX 2060 / AMD Radeon RX 5600 XT",
                 "Свободное место": "45.50 GB"
             }
-        }
+        },
+        "sku": "ART-0061"
     },
     "DEATH STRANDING 2: ON THE BEACH": {
         "title": "DEATH STRANDING 2: ON THE BEACH",
@@ -3322,7 +3393,7 @@
         ],
         "torrentFile": "torrent/death-stranding-2-on-the-beach-1.8.81.0.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/a1b104afe3da4940c7ec7d85cb4b696610701261b311eb3d86b309208a97102f",
-            "trailer": "https://drive.google.com/file/d/1fQ2HFdzcZgYUp70hx-sp8ZeeW9QvElPL/preview",
+        "trailer": "https://drive.google.com/file/d/1fQ2HFdzcZgYUp70hx-sp8ZeeW9QvElPL/preview",
         "buyGame": "https://ggsel.net/catalog/death-stranding-2-on-the-beach-keys-steam-standard-edition",
         "screenshots": [
             "https://i.postimg.cc/1tF9VFGd/photo-2026-03-20-16-45-49.jpg",
@@ -3351,7 +3422,8 @@
                 "Видеокарта": "NVIDIA GeForce RTX 3080 / AMD Radeon RX 6800 XT",
                 "Свободное место": "105.76 GB"
             }
-        }
+        },
+        "sku": "ART-0062"
     },
     "Samson": {
         "title": "Samson",
@@ -3385,7 +3457,7 @@
         ],
         "torrentFile": "torrent/Samson_(2026).torrent",
         "virus_check": "https://www.virustotal.com/gui/file/cccb80de74ad638f81dc99e0821f0e7faf02b1b761bf0c74252696b0e5267153",
-            "trailer": "https://drive.google.com/file/d/1tfEtHOm65XqgJXYRcUmcSExuS2Rsf35z/preview",
+        "trailer": "https://drive.google.com/file/d/1tfEtHOm65XqgJXYRcUmcSExuS2Rsf35z/preview",
         "buyGame": "https://ggsel.net/catalog/product/samson-ru-by-ua-sng-steam-auto-102217154",
         "screenshots": [
             "1770147410_ss_5d2d9a914051e1a98944ecd1c8b6aeb2a8a09995.jpg",
@@ -3418,7 +3490,8 @@
                 "Видеокарта": "NVIDIA GeForce RTX 3080 / AMD Radeon RX 6800 XT",
                 "Свободное место": "10.47 GB"
             }
-        }
+        },
+        "sku": "ART-0063"
     },
     "resident-evil-requiem": {
         "title": "Resident Evil Requiem",
@@ -3442,7 +3515,7 @@
         ],
         "torrentFile": "torrent/DL Resident Evil Requiem P RUS + ENG + 12 RUS + ENG + 8 (2026 Horror) (22277314 + 2 DLC) Portable .torrent",
         "virus_check": "https://www.virustotal.com/gui/file/6b93ba8810038e922266dfa7722ddea69ae95467d5d3de80fee3409a383db879",
-            "trailer": "https://drive.google.com/file/d/1ede5J14NEhoEcr9OLpt7NWWEzkKNcwSA/preview",
+        "trailer": "https://drive.google.com/file/d/1ede5J14NEhoEcr9OLpt7NWWEzkKNcwSA/preview",
         "buyGame": "https://ggsel.net/catalog/resident-evil-requiem-keys-and-gifts-steam",
         "screenshots": [
             "https://i.postimg.cc/DzNSGpKF/1769958618-ss-9e35202b6c8262496e1c57275c51bcead7232249-1920x1080.jpg",
@@ -3477,7 +3550,8 @@
                 "Видеокарта": "NVIDIA GeForce RTX 3080 / AMD Radeon RX 6800 XT",
                 "Свободное место": "70.69 GB"
             }
-        }
+        },
+        "sku": "ART-0064"
     },
     "the-occultist": {
         "title": "The Occultist",
@@ -3500,7 +3574,7 @@
         ],
         "torrentFile": "torrent/the-occultist-1.0.2.6.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/da1934fcfb591907b8fb6066793ae47d1784e0ef49a57d73e0414cc95aea8913",
-            "trailer": "https://drive.google.com/file/d/1A3GOQXoYqLAVO1kJE4x_2d7G9FxcXgGW/preview",
+        "trailer": "https://drive.google.com/file/d/1A3GOQXoYqLAVO1kJE4x_2d7G9FxcXgGW/preview",
         "buyGame": "https://ggsel.net/catalog/product/the-occultist-steam-rossiia-mir-102217524",
         "screenshots": [
             "https://i.postimg.cc/LssnWKVw/1775662136-ss-0babeb4209bf05645f8d43a6f06411d8ac71add6.jpg",
@@ -3531,12 +3605,13 @@
                 "Видеокарта": "NVIDIA GeForce RTX 3060 Ti / AMD Radeon RX 6700 XT",
                 "Свободное место": "50 GB SSD"
             }
-        }
+        },
+        "sku": "ART-0065"
     },
     "Windrose": {
         "title": "Windrose",
         "description": "Windrose — это PvE-приключение в эпоху Золотого века пиратства, сочетающее выживание, строительство и морские сражения в открытом мире.",
-        "image": "https://i.postimg.cc/yNmrT6WW/1776170561-library-capsule-2x.jpg",
+        "image": "game-screenshot/windrose-1go8w.jpg",
         "size": "6.22 GB",
         "year": "2026",
         "updated": "16.04.2026",
@@ -3549,7 +3624,7 @@
         ],
         "torrentFile": "torrent/Windrose.v2026.05.20.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/35845b9acdaaf9d183755769bec2a1bff75286d8fc1842ebf106d24838e5dd61?nocache=1",
-            "trailer": "https://drive.google.com/file/d/1TPuw66d2Fxk69wHoEFeKXsl91sdWAkuq/preview",
+        "trailer": "https://drive.google.com/file/d/1TPuw66d2Fxk69wHoEFeKXsl91sdWAkuq/preview",
         "buyGame": "https://ggsel.net/catalog/product/windrose-steam-avto-ru-mir-102228402",
         "screenshots": [
             "https://i.postimg.cc/C1fzDrwN/1776170608-ss-1ecaa7ff2d46c717a5afb4a7e11f678d16ae3064.jpg",
@@ -3573,7 +3648,7 @@
                 "Процессор": "Intel Core i7-8700K / AMD Ryzen 7 2700X",
                 "Оперативная память": "16 GB",
                 "Видеокарта": "NVIDIA GTX 1080 Ti / AMD Radeon RX 6800",
-                "DirectX":"Версия 12",
+                "DirectX": "Версия 12",
                 "Свободное место": "30 GB"
             },
             "recommended": {
@@ -3581,10 +3656,11 @@
                 "Процессор": "Intel Core i7-10700 / AMD Ryzen 7 5800X",
                 "Оперативная память": "32 GB",
                 "Видеокарта": "NVIDIA RTX 3080 / AMD Radeon RX 6800 XT",
-                "DirectX":"Версия 12",
+                "DirectX": "Версия 12",
                 "Свободное место": "30 GB"
             }
-        }
+        },
+        "sku": "ART-0066"
     },
     "The Farmer Was Replaced": {
         "title": "The Farmer Was Replaced",
@@ -3603,7 +3679,7 @@
         ],
         "torrentFile": "torrent/The.Farmer.Was.Replaced.Build.22883144.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/1c32941ecbe18df4bbd29dff721f14f1435f9c6e249496a909acc6246ce05197?nocache=1",
-            "trailer": "https://drive.google.com/file/d/1hLn1fRcD8lZoCF3E9Z324ea4_ZFoWmXr/preview",
+        "trailer": "https://drive.google.com/file/d/1hLn1fRcD8lZoCF3E9Z324ea4_ZFoWmXr/preview",
         "buyGame": "https://ggsel.net/catalog/the-farmer-was-replaced-keys-steam?utm_referrer=https%3A%2F%2Fggsel.net%2Fcatalog%2Fproduct%2Fwindrose-steam-avto-ru-mir-102228402",
         "screenshots": [
             "https://i.postimg.cc/2SKHS3yQ/1760371109-ss-028e32193a38da5565b54b5029879439d4cf2ada.jpg",
@@ -3625,10 +3701,11 @@
                 "Процессор": "Intel Core i3 или аналогичный",
                 "Оперативная память": "4 GB",
                 "Видеокарта": "Nvidia GeForce GTX 550 Ti / 1 ГБ VRAM",
-                "DirectX":"Версия 11",
+                "DirectX": "Версия 11",
                 "Свободное место": "1 GB"
             }
-        }
+        },
+        "sku": "ART-0067"
     },
     "REPLACED": {
         "title": "REPLACED",
@@ -3646,7 +3723,7 @@
         ],
         "torrentFile": "torrent/replaced-1.1.2.0.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/201ed611971e10bdfd2fe99c39b85f8bd57c11827ea2ec23faa2ca62d16041b6",
-            "trailer": "https://drive.google.com/file/d/1gc6VqI3EFLHpBJQO8VoKtdo--h6hGYp-/preview",
+        "trailer": "https://drive.google.com/file/d/1gc6VqI3EFLHpBJQO8VoKtdo--h6hGYp-/preview",
         "buyGame": "https://ggsel.net/catalog/product/replaced-steam-ru-kz-ua-sng-102228371",
         "screenshots": [
             "https://i.postimg.cc/C58ZkPsx/1776176072-ss-6bd848bcf4f1ca78a0832df6896efedc019182e3.jpg",
@@ -3668,10 +3745,11 @@
                 "Процессор": "Intel Core i5-8400",
                 "Оперативная память": "16 GB",
                 "Видеокарта": "GeForce GTX 1060",
-                "DirectX":"Версия 11",
+                "DirectX": "Версия 11",
                 "Свободное место": "5.5 GB"
             }
-        }
+        },
+        "sku": "ART-0068"
     },
     "MOUSE: P.I. For Hire": {
         "title": "MOUSE: P.I. For Hire",
@@ -3687,7 +3765,7 @@
         ],
         "torrentFile": "torrent/mouse-p_i_-for-hire-1.1.0.8432.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/b33989ec75a07ee964fcca2602fb364ffb1b2edce80eab75e496d11cfb214e88",
-            "trailer": "https://drive.google.com/file/d/1qtPqiEl9QQObcxAQZRKOwGxla-cNmfKh/preview",
+        "trailer": "https://drive.google.com/file/d/1qtPqiEl9QQObcxAQZRKOwGxla-cNmfKh/preview",
         "buyGame": "https://ggsel.net/catalog/product/mouse-p-i-for-hire-steam-avto-ru-mir-102197385",
         "screenshots": [
             "https://i.postimg.cc/hv0X2JNn/1749292736-ss-9ca86f0188cb2b338bcaebe75b133a2af5157251-(1).jpg",
@@ -3709,10 +3787,11 @@
                 "Процессор": "Intel Core i5 9500",
                 "Оперативная память": "12 GB",
                 "Видеокарта": "GeForce GTX 1060",
-                "DirectX":"Версия 11",
+                "DirectX": "Версия 11",
                 "Свободное место": "11 GB"
             }
-        }
+        },
+        "sku": "ART-0069"
     },
     "Cthulhu: The Cosmic Abyss": {
         "title": "Cthulhu: The Cosmic Abyss",
@@ -3728,7 +3807,7 @@
         ],
         "torrentFile": "torrent/cthulhu-the-cosmic-abyss-23114800.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/913aeaae4eb63ba030f38836a0536818a5f8b11fd2507266482e548367f6b85f",
-            "trailer": "https://drive.google.com/file/d/1yET3VtWAuTCwAlXI9yp7Q6OJcffD6FQM/preview",
+        "trailer": "https://drive.google.com/file/d/1yET3VtWAuTCwAlXI9yp7Q6OJcffD6FQM/preview",
         "buyGame": "https://ggsel.net/catalog/product/cthulhu-the-cosmic-abyss-steam-rossiia-mir-102231296",
         "screenshots": [
             "https://i.postimg.cc/MHwDcQ1B/1776359637-ss-1db5bae787e2c3abcc76e56a91d735864543ff8d.jpg",
@@ -3752,10 +3831,11 @@
                 "Процессор": "Intel Core i7-8700K",
                 "Оперативная память": "12 GB",
                 "Видеокарта": "GeForce GTX 1060",
-                "DirectX":"Версия 11",
+                "DirectX": "Версия 11",
                 "Свободное место": "18 GB"
             }
-        }
+        },
+        "sku": "ART-0070"
     },
     "Bus Bound": {
         "title": "Bus Bound",
@@ -3771,7 +3851,7 @@
         ],
         "torrentFile": "torrent/DL Bus Bound P RUS + ENG + 10 ENG + 1 (2026 Simulation) (23177166 + 2 DLC) Portable.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/83cbd6e5204c593fc1a62fff2e9f60978c1b08f27110082c6e52362adf2f901c?nocache=1",
-            "trailer": "https://drive.google.com/file/d/1UUZ3knMz6xWaUpAwri0tTH4czOo0xY_H/preview",
+        "trailer": "https://drive.google.com/file/d/1UUZ3knMz6xWaUpAwri0tTH4czOo0xY_H/preview",
         "buyGame": "https://ggsel.net/catalog/product/bus-bound-steam-avto-ru-mir-102262980",
         "screenshots": [
             "https://i.postimg.cc/BQbLGh1b/1777557990-ss-3f877831c2ae49ec43c88dcde8900e5ee701189b.jpg",
@@ -3796,7 +3876,8 @@
                 "DirectX": "",
                 "Свободное место": "47 GB"
             }
-        }
+        },
+        "sku": "ART-0071"
     },
     "CarX Drift Racing Online 2": {
         "title": "CarX Drift Racing Online 2",
@@ -3814,7 +3895,7 @@
         ],
         "torrentFile": "torrent/CarX.Drift.Racing.Online.2.v2026.06.02.rar.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/7eb0ce8962f89186b23942e171e262576755311bb14b6416f223a5c4eb1a190b",
-            "trailer": "https://drive.google.com/file/d/1-QJ_BrMUDz3NgPCRbjTh1r3jVK28AYz4/preview",
+        "trailer": "https://drive.google.com/file/d/1-QJ_BrMUDz3NgPCRbjTh1r3jVK28AYz4/preview",
         "buyGame": "https://ggsel.net/catalog/product/carx-drift-racing-online-2-steam-gift-vybor-stran-102289486",
         "screenshots": [
             "https://i.postimg.cc/Z5swqbfG/1778224915-ss-6eec40b9b9d7cb5b2b54dc77301dd927c756a148.jpg",
@@ -3839,7 +3920,8 @@
                 "DirectX": "",
                 "Свободное место": "14 GB"
             }
-        }
+        },
+        "sku": "ART-0072"
     },
     "Mixtape": {
         "title": "Mixtape",
@@ -3855,7 +3937,7 @@
         ],
         "torrentFile": "torrent/DL Mixtape P RUS + ENG + 11 ENG (2026 Adventure) (1.1) Portable.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/55fa91ad6dbfa6da95ab904b5288b2335a13c4ae04da7264cf7e0faf434092c8",
-            "trailer": "https://drive.google.com/file/d/178NqXr80Ttg3kkkuwWTAxJ-jWeYMHUN1/preview",
+        "trailer": "https://drive.google.com/file/d/178NqXr80Ttg3kkkuwWTAxJ-jWeYMHUN1/preview",
         "buyGame": "https://ggsel.net/catalog/product/mixtape-ru-sng-steam-kliuc-102289179",
         "screenshots": [
             "https://i.postimg.cc/m2BNX7y4/1777719427-ss-4cc42dbc765fe6668fd2e0d633f320ad0f8b08c9.jpg",
@@ -3883,7 +3965,8 @@
                 "DirectX": "",
                 "Свободное место": "12 GB"
             }
-        }
+        },
+        "sku": "ART-0073"
     },
     "Directive 8020": {
         "title": "Directive 8020",
@@ -3900,7 +3983,7 @@
         ],
         "torrentFile": "torrent/the-dark-pictures-anthology-directive-23468611.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/8105f18a033d54bbaeea1c9237f439c594acb69764347bc085423f39599dfa52",
-            "trailer": "https://drive.google.com/file/d/18-oRXx0uzlzq-MEd50-c2YUFly1c8S1w/preview",
+        "trailer": "https://drive.google.com/file/d/18-oRXx0uzlzq-MEd50-c2YUFly1c8S1w/preview",
         "buyGame": "https://ggsel.net/catalog/product/directive-8020-steam-kliuc-rf-sng-drugie-102231561",
         "screenshots": [
             "https://i.postimg.cc/dQB4KW1D/1777719738-ss-0abe7cb94c50fdf0d7577d4be99be1c67bce66cc.jpg",
@@ -3927,7 +4010,8 @@
                 "DirectX": "",
                 "Свободное место": "26.69 GB"
             }
-        }
+        },
+        "sku": "ART-0074"
     },
     "Subnautica 2": {
         "title": "Subnautica 2",
@@ -3943,7 +4027,7 @@
         ],
         "torrentFile": "torrent/subnautica-2 0.10.3.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/da31df981d6bcce0ad5e6757d30cf29fbd5ead2e99e27e191fe1d16e75cd51e5",
-            "trailer": "https://drive.google.com/file/d/1SF5r9N4HVfZrWUDpMcnpvsNMRGI5nDVM/view/preview",
+        "trailer": "https://drive.google.com/file/d/1SF5r9N4HVfZrWUDpMcnpvsNMRGI5nDVM/view/preview",
         "buyGame": "https://ggsel.net/catalog/product/subnautica-2-vybor-regiona-steam-ru-avto-102294619",
         "screenshots": [
             "https://i.postimg.cc/Ssc5ppJB/1777720115-ss-16b68b0941ed9c5ac1eea74e478fa726d425bebf.jpg",
@@ -3968,9 +4052,10 @@
                 "DirectX": "",
                 "Свободное место": "15 GB"
             }
-        }
+        },
+        "sku": "ART-0075"
     },
-        "PRAGMATA": {
+    "PRAGMATA": {
         "title": "PRAGMATA",
         "description": "PRAGMATA — это научно-фантастическая action-игра от создателей серии Resident Evil. Действие разворачивается на луне, где юная девочка-андроид пытается выполнить неизвестную миссию в заброшенном колониальном комплексе.",
         "image": "https://i.postimg.cc/1X4x72TR/1749104374-library-600x900-2x-(1).jpg",
@@ -3980,18 +4065,18 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Action",
-    "Adventure",
-    "Sci-fi",
-    "Story-rich",
-    "Singleplayer",
-    "3D",
-    "Atmospheric",
-    "Space"
-],
+            "Action",
+            "Adventure",
+            "Sci-fi",
+            "Story-rich",
+            "Singleplayer",
+            "3D",
+            "Atmospheric",
+            "Space"
+        ],
         "torrentFile": "torrent/PRAGMATA.Deluxe.Edition-InsaneRamZes.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/b54f3eb7c7aa4315648c52bb1cb93e66490634e0d0a3a79f32185b309dd8766c",
-            "trailer": "https://drive.google.com/file/d/1JEJxIxS0BDbaBMr98TzZwYT0qD0RB2yy/preview",
+        "trailer": "https://drive.google.com/file/d/1JEJxIxS0BDbaBMr98TzZwYT0qD0RB2yy/preview",
         "buyGame": "https://ggsel.net/catalog/product/subnautica-2-vybor-regiona-steam-ru-avto-102294619",
         "screenshots": [
             "https://i.postimg.cc/prkfr1Xd/1775682431-pragmata.jpg",
@@ -4004,10 +4089,10 @@
             "https://i.postimg.cc/q7dNfx4y/1775682462-ss-9699288b90d0aad320e998f107b59edd27e9ea61-1920x1080.jpg"
         ],
         "specs": {
-        "Жанр": "Action / Sci-fi",
-        "Разработчик": "Capcom",
-        "Издатель": "Capcom",
-        "Платформа": "PC, PS5, Xbox Series X|S"
+            "Жанр": "Action / Sci-fi",
+            "Разработчик": "Capcom",
+            "Издатель": "Capcom",
+            "Платформа": "PC, PS5, Xbox Series X|S"
         },
         "systemRequirements": {
             "recommended": {
@@ -4018,7 +4103,8 @@
                 "DirectX": "Version 12",
                 "Свободное место": "50 GB SSD"
             }
-        }
+        },
+        "sku": "ART-0076"
     },
     "Darksiders 4": {
         "title": "Darksiders 4",
@@ -4034,7 +4120,7 @@
         ],
         "torrentFile": "",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1ZFLllUOIaHNUPdl2iGk2LoYsSscijp7G/preview",
+        "trailer": "https://drive.google.com/file/d/1ZFLllUOIaHNUPdl2iGk2LoYsSscijp7G/preview",
         "buyGame": "",
         "screenshots": [
             "https://i.postimg.cc/C54qz0B7/1754287048-ss-6eecb264cd2c99d79a284358d8560ed9f6ec52a6.jpg",
@@ -4054,10 +4140,11 @@
                 "Процессор": "",
                 "Оперативная память": "",
                 "Видеокарта": "",
-                "DirectX":"",
+                "DirectX": "",
                 "Свободное место": ""
             }
-        }
+        },
+        "sku": "ART-0077"
     },
     "007 First Light": {
         "title": "007 First Light",
@@ -4073,7 +4160,7 @@
         ],
         "torrentFile": "torrent/007.First.Light-InsaneRamZes.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/f27684e16bb9c5cac5bc13999223528700e02bf4ce49ac3d7a12aa4db62c3f83",
-            "trailer": "https://drive.google.com/file/d/1PLB7KSYSTOWvcbcPmPmolIwmxKRE-PZX/preview",
+        "trailer": "https://drive.google.com/file/d/1PLB7KSYSTOWvcbcPmPmolIwmxKRE-PZX/preview",
         "buyGame": "https://ggsel.net/catalog/product/007-first-light-vybor-izdaniia-steam-ru-avto-102121158",
         "screenshots": [
             "https://i.postimg.cc/mDvvtffN/1749104103-ss-4c81e0e09db3feb0ccf680418a1b766989c8173a.jpg",
@@ -4095,10 +4182,11 @@
                 "Процессор": "",
                 "Оперативная память": "",
                 "Видеокарта": "",
-                "DirectX":"",
+                "DirectX": "",
                 "Свободное место": ""
             }
-        }
+        },
+        "sku": "ART-0078"
     },
     "The Blood of Dawnwalker": {
         "title": "The Blood of Dawnwalker",
@@ -4114,7 +4202,7 @@
         ],
         "torrentFile": "",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1WU9zcG7cVVJ-DM8n7d1tcnzQPDEgTmD9/preview",
+        "trailer": "https://drive.google.com/file/d/1WU9zcG7cVVJ-DM8n7d1tcnzQPDEgTmD9/preview",
         "buyGame": "",
         "screenshots": [
             "https://i.postimg.cc/P50QGtm3/1751389265-ss-8aa076e31be2887b85d66dafeb324d6547dacacf.jpg",
@@ -4136,10 +4224,11 @@
                 "Процессор": "",
                 "Оперативная память": "",
                 "Видеокарта": "",
-                "DirectX":"",
+                "DirectX": "",
                 "Свободное место": ""
             }
-        }
+        },
+        "sku": "ART-0079"
     },
     "Gears of War: E-Day": {
         "title": "Gears of War: E-Day",
@@ -4155,7 +4244,7 @@
         ],
         "torrentFile": "",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1Z0sr3MXFzpc8RBPlqKSINEPYk7VB-bKq/preview",
+        "trailer": "https://drive.google.com/file/d/1Z0sr3MXFzpc8RBPlqKSINEPYk7VB-bKq/preview",
         "buyGame": "",
         "screenshots": [
             "https://i.postimg.cc/Njx2DBdY/1717994419-ss-7f5a38d9affefdabbf37fab1ae47f5d30b94cd78.jpg",
@@ -4179,10 +4268,11 @@
                 "Процессор": "",
                 "Оперативная память": "",
                 "Видеокарта": "",
-                "DirectX":"",
+                "DirectX": "",
                 "Свободное место": ""
             }
-        }
+        },
+        "sku": "ART-0080"
     },
     "Metro 2039": {
         "title": "Metro 2039",
@@ -4198,7 +4288,7 @@
         ],
         "torrentFile": "",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1uz8Akd79Hz20Btv-jA1bl2g8VNMxoF8n/preview",
+        "trailer": "https://drive.google.com/file/d/1uz8Akd79Hz20Btv-jA1bl2g8VNMxoF8n/preview",
         "buyGame": "",
         "screenshots": [
             "https://i.postimg.cc/2SvNNSsy/1776363477-ss-876b7a38dd916f1a62585d87fd9900c47980f8b6.jpg",
@@ -4220,10 +4310,11 @@
                 "Процессор": "",
                 "Оперативная память": "",
                 "Видеокарта": "",
-                "DirectX":"",
+                "DirectX": "",
                 "Свободное место": ""
             }
-        }
+        },
+        "sku": "ART-0081"
     },
     "Gothic 1 Remake": {
         "title": "Gothic 1 Remake",
@@ -4239,7 +4330,7 @@
         ],
         "torrentFile": "",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1-3UT_iQQmW9SNR69UPT9a9vCV6djZkP6/preview",
+        "trailer": "https://drive.google.com/file/d/1-3UT_iQQmW9SNR69UPT9a9vCV6djZkP6/preview",
         "buyGame": "",
         "screenshots": [
             "https://i.postimg.cc/qR7krdcQ/1733377982-ss-43f5aa3bf2cd6acbdc62e548abe606820badc9bc.jpg",
@@ -4261,10 +4352,11 @@
                 "Процессор": "",
                 "Оперативная память": "",
                 "Видеокарта": "",
-                "DirectX":"",
+                "DirectX": "",
                 "Свободное место": ""
             }
-        }
+        },
+        "sku": "ART-0082"
     },
     "OD Knock": {
         "title": "OD Knock",
@@ -4280,7 +4372,7 @@
         ],
         "torrentFile": "",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/17S4UUW146OTQItm1lv7bPUUrf0fLsFNe/preview",
+        "trailer": "https://drive.google.com/file/d/17S4UUW146OTQItm1lv7bPUUrf0fLsFNe/preview",
         "buyGame": "",
         "screenshots": [
             "https://i.postimg.cc/wTxBzZHH/1758605315-555.jpg",
@@ -4306,10 +4398,11 @@
                 "Процессор": "",
                 "Оперативная память": "",
                 "Видеокарта": "",
-                "DirectX":"",
+                "DirectX": "",
                 "Свободное место": ""
             }
-        }
+        },
+        "sku": "ART-0083"
     },
     "Lords of the Fallen II": {
         "title": "Lords of the Fallen II",
@@ -4325,7 +4418,7 @@
         ],
         "torrentFile": "",
         "virus_check": "",
-            "trailer": "https://drive.google.com/file/d/1xMrWrnm6s9JyyqnShHkPFM-8EQd-Q-9p/preview",
+        "trailer": "https://drive.google.com/file/d/1xMrWrnm6s9JyyqnShHkPFM-8EQd-Q-9p/preview",
         "buyGame": "",
         "screenshots": [
             "https://i.postimg.cc/prW5gdqT/1758845272-1240526430-lords-of-the-fallen-ii-2025819-09.jpg",
@@ -4349,10 +4442,11 @@
                 "Процессор": "",
                 "Оперативная память": "",
                 "Видеокарта": "",
-                "DirectX":"",
+                "DirectX": "",
                 "Свободное место": ""
             }
-        }
+        },
+        "sku": "ART-0084"
     },
     "photoshop-2022": {
         "title": "Adobe Photoshop 2022",
@@ -4388,7 +4482,8 @@
                 "Graphics": "DirectX 12, 4 GB VRAM (NVIDIA RTX / AMD RX)",
                 "Storage": "10 GB SSD available space"
             }
-        }
+        },
+        "sku": "ART-0085"
     },
     "Adobe After Effects 2024": {
         "title": "Adobe After Effects 2024",
@@ -4424,7 +4519,8 @@
                 "Graphics": "DirectX 12, 4 GB VRAM (NVIDIA RTX 2060+ / AMD RX 6000+)",
                 "Storage": "10 GB SSD available space"
             }
-        }
+        },
+        "sku": "ART-0086"
     },
     "Adobe After Effects 2023": {
         "title": "Adobe After Effects 2023",
@@ -4460,7 +4556,8 @@
                 "Graphics": "DirectX 12, 4 GB VRAM (NVIDIA GTX 1060+ / AMD RX 5000+)",
                 "Storage": "10 GB SSD available space"
             }
-        }
+        },
+        "sku": "ART-0087"
     },
     "Adobe After Effects 2022": {
         "title": "Adobe After Effects 2022",
@@ -4496,7 +4593,8 @@
                 "Graphics": "DirectX 12, 4 GB VRAM (NVIDIA GTX 1050 Ti+ / AMD RX 400+)",
                 "Storage": "10 GB SSD available space"
             }
-        }
+        },
+        "sku": "ART-0088"
     },
     "Adobe After Effects 2021": {
         "title": "Adobe After Effects 2021",
@@ -4532,7 +4630,8 @@
                 "Graphics": "DirectX 12, 2 GB VRAM (NVIDIA GTX 1050 Ti+ / AMD RX 400+)",
                 "Storage": "10 GB SSD available space"
             }
-        }
+        },
+        "sku": "ART-0089"
     },
     "Adobe After Effects CC 2019": {
         "title": "Adobe After Effects CC 2019",
@@ -4568,7 +4667,8 @@
                 "Graphics": "DirectX 12, 2 GB VRAM (NVIDIA GTX 970+ / AMD R9 290+)",
                 "Storage": "10 GB SSD available space"
             }
-        }
+        },
+        "sku": "ART-0090"
     },
     "Adobe After Effects CC 2017": {
         "title": "Adobe After Effects CC 2017",
@@ -4604,7 +4704,8 @@
                 "Graphics": "DirectX 12, 2 GB VRAM (NVIDIA GTX 960+ / AMD R9 280+)",
                 "Storage": "10 GB SSD available space"
             }
-        }
+        },
+        "sku": "ART-0091"
     },
     "winrar": {
         "title": "WinRAR",
@@ -4640,7 +4741,8 @@
                 "Graphics": "",
                 "Storage": "50 MB available space"
             }
-        }
+        },
+        "sku": "ART-0092"
     },
     "VPN-ZIP-PC": {
         "title": "VPN-ZIP-PC",
@@ -4678,7 +4780,8 @@
         "systemRequirements": {
             "minimum": {},
             "recommended": {}
-        }
+        },
+        "sku": "ART-0093"
     },
     "TG WS Proxy v1.6.6": {
         "title": "TG WS Proxy v1.6.6",
@@ -4702,7 +4805,8 @@
         "systemRequirements": {
             "minimum": {},
             "recommended": {}
-        }
+        },
+        "sku": "ART-0094"
     },
     "Amnezia VPN-PC": {
         "title": "Amnezia VPN-PC",
@@ -4726,7 +4830,8 @@
         "systemRequirements": {
             "minimum": {},
             "recommended": {}
-        }
+        },
+        "sku": "ART-0095"
     },
     "hitman-pro": {
         "title": "Hitman PRO",
@@ -4758,7 +4863,8 @@
         "systemRequirements": {
             "minimum": {},
             "recommended": {}
-        }
+        },
+        "sku": "ART-0096"
     },
     "Dr.Web CureIt": {
         "title": "Dr.Web CureIt - Лечащая утилита",
@@ -4791,6 +4897,7 @@
         "systemRequirements": {
             "minimum": {},
             "recommended": {}
-        }
+        },
+        "sku": "ART-0097"
     }
 }
