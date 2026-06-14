@@ -1352,6 +1352,173 @@
             background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
         }
 
+        .sku-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: #ffffff;
+            font-family: 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 7px 13px;
+            z-index: 10;
+            letter-spacing: 1px;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 8px;
+            border: none;
+            box-shadow: 
+                0 4px 14px rgba(99, 102, 241, 0.4),
+                0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .sku-tag:hover {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 
+                0 8px 22px rgba(99, 102, 241, 0.55),
+                0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .sku-tag:active {
+            transform: translateY(0) scale(0.97);
+            transition: all 0.08s ease;
+            box-shadow: 
+                0 2px 8px rgba(99, 102, 241, 0.3);
+        }
+
+        [data-theme="light"] .sku-tag {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: #ffffff;
+            box-shadow: 
+                0 4px 14px rgba(99, 102, 241, 0.35),
+                0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="light"] .sku-tag:hover {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            box-shadow: 
+                0 8px 22px rgba(99, 102, 241, 0.5),
+                0 2px 6px rgba(0, 0, 0, 0.12);
+        }
+
+        .sku-tag::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(191, 0, 255, 0.1));
+            pointer-events: none;
+        }
+
+        .sku-tag::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 8px;
+            height: 8px;
+            background: #00f0ff;
+            box-shadow: 
+                0 0 10px #00f0ff, 
+                0 0 20px rgba(0, 240, 255, 0.8),
+                0 0 30px rgba(191, 0, 255, 0.4);
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+            transition: all 0.2s ease;
+        }
+
+        .sku-tag:hover {
+            background: rgba(0, 20, 40, 0.95);
+            color: #bf00ff;
+            transform: translateY(-2px) scale(1.06);
+            box-shadow: 
+                0 0 25px rgba(0, 240, 255, 0.8),
+                0 0 50px rgba(191, 0, 255, 0.5),
+                0 0 80px rgba(255, 0, 255, 0.3),
+                0 0 120px rgba(0, 102, 255, 0.2),
+                0 8px 24px rgba(0, 0, 0, 0.6);
+            text-shadow: 0 0 12px rgba(191, 0, 255, 1);
+        }
+
+        .sku-tag:hover::after {
+            background: #ff00ff;
+            box-shadow: 
+                0 0 12px #ff00ff, 
+                0 0 24px rgba(255, 0, 255, 0.9),
+                0 0 36px rgba(191, 0, 255, 0.6);
+        }
+
+        .sku-tag:active {
+            transform: translateY(0) scale(0.95);
+            transition: all 0.08s ease;
+        }
+
+        [data-theme="light"] .sku-tag {
+            background: rgba(10, 10, 30, 0.9);
+            color: #00f0ff;
+            box-shadow: 
+                0 0 15px rgba(0, 240, 255, 0.5),
+                0 0 35px rgba(0, 240, 255, 0.2);
+            text-shadow: 0 0 6px rgba(0, 240, 255, 0.6);
+        }
+
+        [data-theme="light"] .sku-tag:hover {
+            background: rgba(20, 10, 40, 0.95);
+            color: #ff00ff;
+            box-shadow: 
+                0 0 25px rgba(255, 0, 255, 0.7),
+                0 0 50px rgba(191, 0, 255, 0.4),
+                0 0 80px rgba(0, 102, 255, 0.2);
+            text-shadow: 0 0 12px rgba(255, 0, 255, 0.9);
+        }
+
+        [data-theme="light"] .sku-tag::after {
+            background: #00f0ff;
+            box-shadow: 0 0 8px #00f0ff, 0 0 16px rgba(0, 240, 255, 0.7);
+        }
+
+        [data-theme="light"] .sku-tag:hover::after {
+            background: #ff00ff;
+            box-shadow: 0 0 12px #ff00ff, 0 0 24px rgba(255, 0, 255, 0.8);
+        }
+
+        .sku-tag:hover {
+            background: #ffffff;
+            color: #1e293b;
+            border-color: #ffffff;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 
+                0 8px 24px rgba(0, 0, 0, 0.35),
+                0 2px 6px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.5);
+        }
+
+        .sku-tag:active {
+            transform: translateY(0) scale(0.97);
+            transition: all 0.08s ease;
+        }
+
+        [data-theme="light"] .sku-tag {
+            background: rgba(255, 255, 255, 0.95);
+            color: #0f172a;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.1),
+                0 1px 3px rgba(0, 0, 0, 0.06);
+        }
+
+        [data-theme="light"] .sku-tag:hover {
+            background: #ffffff;
+            border-color: #e2e8f0;
+            box-shadow: 
+                0 8px 24px rgba(0, 0, 0, 0.15),
+                0 2px 6px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px) scale(1.04);
+        }
+
         .game-image {
             max-width: 100%;
             max-height: 100%;
@@ -9133,6 +9300,24 @@
             trackDownload(gameId, gameName);
             window.open(torrentUrl, '_blank');
         }
+
+        function copySKU(sku, gameId) {
+            const encodedId = encodeURIComponent(gameId);
+            const encodedSku = encodeURIComponent(sku);
+            const url = `${window.location.origin}${window.location.pathname}?game=${encodedId}&sku=${encodedSku}`;
+            navigator.clipboard.writeText(url).then(function() {
+                showNotification('Ссылка скопирована: ' + url);
+            }).catch(function(err) {
+                console.error('Ошибка копирования: ', err);
+                const textArea = document.createElement('textarea');
+                textArea.value = url;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showNotification('Ссылка скопирована: ' + url);
+            });
+        }
         
         // Получить общее количество скачиваний
         function getTotalDownloads() {
@@ -9584,18 +9769,24 @@
             document.body.style.overflow = '';
         }
 
-        function loadMinecraftContent(subcategory) {
+        async function loadMinecraftContent(subcategory, retryCount = 0) {
             const contentDiv = document.getElementById('minecraftContent');
             
             // Check if modsData exists and has the expected structure
             if (!modsData || !modsData.tabs) {
+                if (retryCount < 10) {
+                    // Wait and retry
+                    setTimeout(() => loadMinecraftContent(subcategory, retryCount + 1), 200);
+                    return false;
+                }
                 contentDiv.innerHTML = `
                     <div class="minecraft-empty">
                         <i class="fas fa-folder-open"></i>
-                        <p>Загрузка...</p>
+                        <p>Ошибка загрузки данных</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Попробуйте обновить страницу</p>
                     </div>
                 `;
-                return;
+                return false;
             }
 
             // Get items from the specific category in modsData
@@ -9617,7 +9808,7 @@
                         <p style="color: var(--text-secondary); font-size: 0.9rem;">Загляните позже!</p>
                     </div>
                 `;
-                return;
+                return true;
             }
 
             let html = '<div class="minecraft-grid">';
@@ -9648,10 +9839,55 @@
             
             html += '</div>';
             contentDiv.innerHTML = html;
+            updateGamesCount();
+            return true;
+        }
+
+        function switchCategory(category) {
+            document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+            const targetTab = document.querySelector(`.category-tab[data-category="${category}"]`);
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+            const minecraftTabs = document.getElementById('minecraftSubcategoryTabs');
+            const minecraftContent = document.getElementById('minecraftContent');
+            const gamesGrid = document.getElementById('allGamesGrid');
+            
+            const loadMinecraftIfNeeded = () => {
+                if (minecraftTabs) {
+                    const firstSubtab = minecraftTabs.querySelector('.minecraft-subcat-tab');
+                    let activeSubtab = minecraftTabs.querySelector('.minecraft-subcat-tab.active');
+                    
+                    if (!activeSubtab && firstSubtab) {
+                        firstSubtab.classList.add('active');
+                        activeSubtab = firstSubtab;
+                    }
+                    
+                    if (activeSubtab) {
+                        loadMinecraftContent(activeSubtab.dataset.subcategory);
+                    }
+                }
+            };
+            
+            if (category === 'Minecraft') {
+                if (minecraftTabs) minecraftTabs.style.display = 'flex';
+                if (minecraftContent) {
+                    minecraftContent.style.display = 'block';
+                }
+                if (gamesGrid) gamesGrid.style.display = 'none';
+                loadMinecraftIfNeeded();
+            } else {
+                if (minecraftTabs) minecraftTabs.style.display = 'none';
+                if (minecraftContent) {
+                    minecraftContent.style.display = 'none';
+                }
+                if (gamesGrid) gamesGrid.style.display = 'grid';
+            }
+            filterGames();
         }
 
 
-        function switchPage(pageId) {
+        function switchPage(pageId, category) {
             // Reset URL to remove game parameter when navigating
             history.replaceState(null, null, window.location.pathname);
 
@@ -9679,6 +9915,11 @@
                     if (pageId === 'all-games-page' && !allGamesLoaded) {
                         loadAllGames();
                         allGamesLoaded = true;
+                        if (category) {
+                            setTimeout(() => switchCategory(category), 100);
+                        }
+                    } else if (pageId === 'all-games-page' && category) {
+                        switchCategory(category);
                     }
 
                 }, 1000);
@@ -9955,18 +10196,23 @@
                 `;
             }
 
-            let badgeHTML = '';
-            if (game.category === 'programs') {
-                badgeHTML = '<div class="program-badge">Программа</div>';
-            } else if (game.category === 'utilities') {
-                badgeHTML = '<div class="utility-badge">Утилита</div>';
-            } else if (game.category === 'online') {
-                badgeHTML = '<div class="online-badge">Онлайн</div>';
-            }
+    let badgeHTML = '';
+    let skuHTML = '';
+    if (game.category === 'programs') {
+        badgeHTML = '<div class="program-badge">Программа</div>';
+    } else if (game.category === 'utilities') {
+        badgeHTML = '<div class="utility-badge">Утилита</div>';
+    } else if (game.category === 'online') {
+        badgeHTML = '<div class="online-badge">Онлайн</div>';
+    }
+    if (game.sku) {
+        skuHTML = `<div class="sku-tag" title="Нажмите, чтобы скопировать артикул" onclick="copySKU('${game.sku}', '${gameId}')">${game.sku}</div>`;
+    }
 
             gameCard.innerHTML = `
                 <div class="game-image-container">
                     ${badgeHTML}
+                    ${skuHTML}
                     <img src="${game.image}" alt="${game.title}" class="game-image">
                 </div>
                 <div class="game-content">
@@ -10156,6 +10402,7 @@
                 }
                 grid.appendChild(emptyMessage);
             }
+            updateGamesCount();
         }
 
 function showForzaGames() {
@@ -10170,9 +10417,12 @@ function showForzaGames() {
 
         // Обновление счетчика
         function updateGamesCount() {
-            const gameCards = document.querySelectorAll('#allGamesGrid .game-card');
-            const visibleCards = Array.from(gameCards).filter(card => card.style.display !== 'none');
-            document.getElementById('gamesCount').textContent = `Найдено: ${visibleCards.length}`;
+            const cards = [
+                ...document.querySelectorAll('#allGamesGrid .game-card:not([style*="display: none"])'),
+                ...document.querySelectorAll('#minecraftContent .minecraft-item:not([style*="display: none"])')
+            ];
+            const count = cards.length;
+            document.getElementById('gamesCount').textContent = `Найдено: ${count}`;
         }
 
         // Открытие модального окна
@@ -10292,7 +10542,7 @@ function showForzaGames() {
                             <span class="game-modal-size">${game.size}</span>
                             <span class="game-modal-year">${game.year}</span>
                             <span class="game-modal-updated">обновлено ${game.updated || new Date().toLocaleDateString('ru-RU')}</span>
-                            <span class="game-modal-status" style="background: transparent; color: white; padding: 8px 16px; border-radius: 8px; border: 2px solid rgba(255, 255, 255, 0.5); font-weight: bold;">${game.status === 'available' ? 'Доступно' : game.status === 'buy' ? 'Можно купить' : 'Скоро'}</span>
+                            <span class="game-modal-status" style="background: transparent; color: white; padding: 8px 16px; border-radius: 8px; border: 2px solid rgba(255, 255, 255, 0.5); font-weight: bold;">${game.status === 'available' ? 'Доступно' : game.status === 'buy' ? 'Можно купить' : 'Скоро'}</span><button class="game-modal-sku" style="margin-left:10px; font-family: 'SF Mono', Menlo, Consolas, monospace; font-size:10px; font-weight:700; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: #ffffff; padding: 7px 13px; border-radius: 8px; border: none; letter-spacing: 1px; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 14px rgba(99,102,241,0.4), 0 1px 3px rgba(0,0,0,0.1); position: relative;" onclick="copySKU('${game.sku}', '${gameId}')" title="Нажмите, чтобы скопировать ссылку">${game.sku}</button>
                         </div>
                         <p class="game-modal-description">${game.description}</p>
                         <div class="game-modal-buttons">
@@ -10782,6 +11032,13 @@ if (game.status === 'available') {
                 }, 300);
             }
         }
+
+        function openScreenshotGallery(gameId) {
+            const game = gameData[gameId];
+            if (game && game.screenshots && game.screenshots.length > 0) {
+                openScreenshotViewer(game.screenshots, 0);
+            }
+        }
         
         function nextScreenshot() {
             if (currentScreenshots.length > 0) {
@@ -11005,6 +11262,13 @@ if (game.status === 'available') {
                 document.getElementById('sendMessageBtn').setAttribute('data-mode', 'search');
             } else if (action === 'ai-chat') {
                 openAiChat();
+            } else if (action === 'artworks') {
+                document.getElementById('optionsContainer').style.display = 'none';
+                document.getElementById('inputContainer').style.display = 'flex';
+                document.getElementById('chatInput').placeholder = 'Введите название игры или программы для поиска артов...';
+                addMessage('🔍 Введите название игры или программы, чтобы найти скриншоты и арты.', 'bot');
+                document.getElementById('chatInput').focus();
+                document.getElementById('sendMessageBtn').setAttribute('data-mode', 'artworks');
             }
         }
 
@@ -11021,7 +11285,7 @@ if (game.status === 'available') {
             return localAIResponse(message);
         }
 
-        function localAIResponse(message) {
+function localAIResponse(message) {
             const text = (message || '').toLowerCase().trim();
             const q = text.replace(/[^\wа-яё0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
 
@@ -11051,11 +11315,20 @@ if (game.status === 'available') {
                 'vpn': 'vpn',
                 'antivirus': 'antivirus',
                 'антивирус': 'antivirus',
+                'minecraft': 'minecraft',
+                'майнкрафт': 'minecraft',
+                'мод': 'minecraft',
+                'шейдер': 'minecraft',
+                'лаунчер': 'minecraft',
+                'скин': 'minecraft',
+                'ресурспак': 'minecraft',
             };
             let matchedType = null;
             for (const key in typeMap) if (q.includes(key)) matchedType = typeMap[key];
 
             let results = [];
+            
+            // Search in gameData
             for (const gameId in gameData) {
                 const game = gameData[gameId];
                 const title = (game.title || '').toLowerCase();
@@ -11076,10 +11349,57 @@ if (game.status === 'available') {
             if (results.length === 0 && (q.includes('игр') || q.includes('game') || q.includes('программ') || q.includes('program'))) {
                 for (const gameId in gameData) results.push(gameData[gameId]);
             }
+            
+            // Search in Minecraft data
+            if (results.length === 0 && modsData && modsData.tabs) {
+                for (const subcategory in modsData.tabs) {
+                    const tabData = modsData.tabs[subcategory];
+                    const items = tabData.items || [];
+                    for (const item of items) {
+                        const itemTitle = (item.title || '').toLowerCase();
+                        const itemDesc = (item.description || '').toLowerCase();
+                        const itemType = (item.type || '').toLowerCase();
+                        if (itemTitle.includes(q) || itemDesc.includes(q) || itemType.includes(q)) {
+                            results.push({ 
+                                id: item.id || item.title,
+                                title: item.title,
+                                image: item.image,
+                                description: item.description,
+                                torrentFile: item.torrentFile || item.download,
+                                size: item.size,
+                                category: 'minecraft',
+                                type: item.type
+                            });
+                        }
+                    }
+                }
+            }
+            if (results.length === 0 && matchedType === 'minecraft') {
+                for (const subcategory in modsData.tabs) {
+                    const tabData = modsData.tabs[subcategory];
+                    const items = tabData.items || [];
+                    for (const item of items) {
+                        results.push({ 
+                            id: item.id || item.title,
+                            title: item.title,
+                            image: item.image,
+                            description: item.description,
+                            torrentFile: item.torrentFile || item.download,
+                            size: item.size,
+                            category: 'minecraft',
+                            type: item.type
+                        });
+                    }
+                }
+            }
 
             results = results.slice(0, 5);
             if (!results.length) {
-                return { type: 'text', text: 'Ничего не нашёл. Попробуй уточнить запрос: “CS”, “программы”, “VPN” или “антивирус”.' };
+                // Try to show Minecraft content even if no match
+                if (q.includes('minecraft') || q.includes('майнкрафт') || q.includes('мод') || q.includes('шейдер') || q.includes('лаунчер') || q.includes('скин') || q.includes('ресурспак')) {
+                    return { type: 'text', text: 'Minecraft контент доступен на сайте! Перейдите в раздел Игры и программы, выберите категорию Minecraft.' };
+                }
+                return { type: 'text', text: 'Ничего не нашёл. Попробуй уточнить запрос: "CS", "программы", "VPN" или "антивирус".' };
             }
             return { type: 'results', games: results };
         }
@@ -11138,6 +11458,31 @@ if (game.status === 'available') {
                             addMessage(response, 'bot');
                         } else {
                             addMessage(aiReply.text, 'bot');
+                        }
+                    }, 700);
+                } else if (mode === 'artworks') {
+                    showTypingIndicator();
+                    setTimeout(() => {
+                        hideTypingIndicator();
+                        const results = searchGames(message);
+                        if (results.length > 0) {
+                            let response = '<div class="artwork-results" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px;">';
+                            results.slice(0, 6).forEach(game => {
+                                if (game.screenshots && game.screenshots.length > 0) {
+                                    game.screenshots.slice(0, 2).forEach(screenshot => {
+                                        response += `
+                                            <div class="artwork-item" style="cursor: pointer; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);" onclick="openScreenshotGallery('${game.id}')">
+                                                <img src="${screenshot}" alt="Artwork" style="width: 100%; height: 100px; object-fit: cover; display: block;">
+                                                <div style="padding: 5px; font-size: 0.75rem; text-align: center; color: var(--text); background: rgba(0,0,0,0.5);">${game.title}</div>
+                                            </div>
+                                        `;
+                                    });
+                                }
+                            });
+                            response += '</div>';
+                            addMessage(response, 'bot');
+                        } else {
+                            addMessage('Арты или скриншоты для этой игры не найдены. Попробуйте другое название.', 'bot');
                         }
                     }, 700);
                 } else {
@@ -11741,30 +12086,7 @@ if (game.status === 'available') {
             // Обработчики для категорий
             document.querySelectorAll('.category-tab').forEach(tab => {
                 tab.addEventListener('click', function() {
-                    document.querySelectorAll('.category-tab').forEach(t => {
-                        t.classList.remove('active');
-                    });
-                    this.classList.add('active');
-
-                    const category = this.dataset.category;
-                    const minecraftTabs = document.getElementById('minecraftSubcategoryTabs');
-                    const minecraftContent = document.getElementById('minecraftContent');
-
-                    if (category === 'Minecraft') {
-                        minecraftTabs.style.display = 'flex';
-                        minecraftContent.style.display = 'block';
-                        const firstSubtab = minecraftTabs.querySelector('.minecraft-subcat-tab');
-                        if (firstSubtab && !minecraftTabs.querySelector('.minecraft-subcat-tab.active')) {
-                            firstSubtab.classList.add('active');
-                            loadMinecraftContent(firstSubtab.dataset.subcategory);
-                        }
-                    } else {
-                        minecraftTabs.style.display = 'none';
-                        minecraftContent.style.display = 'none';
-                        minecraftContent.innerHTML = '';
-                    }
-
-                    filterGames();
+                    switchCategory(this.dataset.category);
                 });
             });
 
@@ -11773,6 +12095,7 @@ if (game.status === 'available') {
                     document.querySelectorAll('.minecraft-subcat-tab').forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
                     loadMinecraftContent(this.dataset.subcategory);
+                    setTimeout(() => updateGamesCount(), 50);
                 });
             });
 
@@ -11978,11 +12301,11 @@ if (game.status === 'available') {
             <i class="fas fa-circle"></i>
             <span>Печатает...</span>
         </div>
-        <div class="mini-chat-options" id="optionsContainer">
-            <button class="option-btn" data-action="support">💬 Связаться с поддержкой</button>
-            <button class="option-btn" data-action="search">🔍 Найти игру</button>
-            <button class="option-btn" data-action="ai-chat">🤖 Чат с AI</button>
-        </div>
+<div class="mini-chat-options" id="optionsContainer">
+             <button class="option-btn" data-action="support">💬 Связаться с поддержкой</button>
+             <button class="option-btn" data-action="search">🔍 Найти игру</button>
+             <button class="option-btn" data-action="ai-chat">🤖 Чат с AI</button>
+         </div>
         <div class="mini-chat-input" id="inputContainer" style="display: none;">
             <input type="text" id="chatInput" placeholder="Введите сообщение...">
             <button id="sendMessageBtn">
@@ -12071,7 +12394,6 @@ if (game.status === 'available') {
     </div>
 </body>
 </html>
-
 
 
 
