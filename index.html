@@ -7403,6 +7403,21 @@
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
     </script>
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('keydown', event => {
+            if (event.key === 'F12' || 
+                (event.ctrlKey && event.shiftKey && event.key === 'I') ||
+                (event.ctrlKey && event.shiftKey && event.key === 'J') ||
+                (event.ctrlKey && event.key === 'U') ||
+                (event.ctrlKey && event.key === 'S')) {
+                event.preventDefault();
+            }
+        });
+        document.addEventListener('dragstart', event => event.preventDefault());
+        document.addEventListener('selectstart', event => event.preventDefault());
+        document.addEventListener('select', event => event.preventDefault());
+    </script>
 </head>
 <body>
 
