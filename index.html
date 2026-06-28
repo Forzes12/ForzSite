@@ -8686,7 +8686,7 @@ position: absolute;
                             <h3 style="font-size: 1.1rem; margin-bottom: 5px;">${user.username}${devCheckmark}</h3>
                             <p style="color: var(--text-secondary); font-size: 0.9rem;">
                                 <i class="fas fa-gamepad" style="margin-right: 5px;"></i>
-                                ${user.favoriteGames ? user.favoriteGames.length : 0} игр в избранном
+                                ${user.likedGames ? user.likedGames.length : 0} игр в избранном
                             </p>
                         </div>
                     </div>
@@ -8745,7 +8745,6 @@ position: absolute;
                     createdAt: new Date().toISOString(),
                     downloadsCount: 0,
                     likesCount: 0,
-                    favoriteGames: [],
                     likedGames: [],
                     isDeveloper: false
                 };
@@ -9138,13 +9137,22 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
                         return;
                     }
                     
-                    // Восстановление downloads из Firebase
+// Восстановление downloads из Firebase
                     if (user && user.downloads) {
                         const storageKey = `userDownloads_${username.toLowerCase()}`;
                         localStorage.setItem(storageKey, JSON.stringify(user.downloads));
                     }
                     
-localStorage.setItem('username', username);
+                    // Восстановление likedGames из Firebase в localStorage
+                    if (user && user.likedGames) {
+                        const syncVotes = {};
+                        user.likedGames.forEach(gameId => {
+                            syncVotes[gameId] = 'like';
+                        });
+                        localStorage.setItem('userVotes', JSON.stringify(syncVotes));
+                    }
+                    
+                    localStorage.setItem('username', username);
                      localStorage.setItem('password', password);
                      localStorage.setItem('isDeveloper', user.isDeveloper === true || user.hasBadge === true || isDeveloperByUsername(username) ? 'true' : 'false');
                      closeAuthModal();
@@ -9202,7 +9210,7 @@ localStorage.setItem('username', username);
                 username: username,
                 password: password,
                 avatar: localStorage.getItem('userAvatar') || 'default',
-                favoriteGames: JSON.parse(localStorage.getItem('favoriteGames') || '[]'),
+                likedGames: [],
                 downloadsCount: getTotalDownloads(),
                 downloads: downloads,
                 likesCount: parseInt(localStorage.getItem('likesCount') || '0'),
@@ -9262,7 +9270,10 @@ localStorage.setItem('username', username);
             const userData = {
                 avatar: localStorage.getItem('userAvatar') || 'default',
                 avatarData: localStorage.getItem('avatarData') || null,
-                favoriteGames: JSON.parse(localStorage.getItem('favoriteGames') || '[]'),
+                likedGames: Object.keys(JSON.parse(localStorage.getItem('userVotes') || '{}')).filter(id => {
+                    const votes = JSON.parse(localStorage.getItem('userVotes') || '{}');
+                    return votes[id] === 'like';
+                }),
                 downloadsCount: getTotalDownloads(),
                 downloads: downloads,
                 likesCount: parseInt(localStorage.getItem('likesCount') || '0'),
@@ -9303,6 +9314,14 @@ localStorage.setItem('username', username);
                             if (user.downloads) {
                                 const storageKey = `userDownloads_${username.toLowerCase()}`;
                                 localStorage.setItem(storageKey, JSON.stringify(user.downloads));
+                            }
+                            // Восстановить likedGames из Firebase в localStorage
+                            if (user.likedGames && user.likedGames.length > 0) {
+                                const syncVotes = {};
+                                user.likedGames.forEach(gameId => {
+                                    syncVotes[gameId] = 'like';
+                                });
+                                localStorage.setItem('userVotes', JSON.stringify(syncVotes));
                             }
                         }
                         // Загрузить сохраненный аватар
@@ -10179,7 +10198,7 @@ localStorage.setItem('username', username);
         }
         
         // Переключить лайк/дизлайк
-        function toggleLike(gameId, button) {
+function toggleLike(gameId, button) {
             const userVotes = JSON.parse(localStorage.getItem('userVotes') || '{}');
             const wasLiked = userVotes[gameId] === 'like';
             
@@ -10192,6 +10211,11 @@ localStorage.setItem('username', username);
                 button.classList.add('active');
                 showNotification('Добавлено в избранное!');
             }
+            
+            localStorage.setItem('userVotes', JSON.stringify(userVotes));
+            updateFavoritesCount();
+            syncProfileToFirebase();
+        }
             
             localStorage.setItem('userVotes', JSON.stringify(userVotes));
             updateFavoritesCount();
