@@ -7,5 +7,11 @@
       "**/.*",
       "**/node_modules/**"
     ]
+  },
+  "database": {
+    "rules": {
+      ".read": true,
+      ".write": true
+    }
   }
 }

@@ -8473,6 +8473,13 @@ position: absolute;
         
         // Функция получения всех доступных рамок (для всех пользователей)
         function getGlobalFrames() {
+            // Если конфиг не загрузился, возвращаем рамки по умолчанию
+            if (!GLOBAL_PROFILE_CONFIG.frames) {
+                return {
+                    'default': { name: 'Стандартная', border: '2px solid var(--primary)', gradient: null, glow: null },
+                    'gold': { name: 'Золото', gradient: 'linear-gradient(135deg, #ffd700 0%, #ffaa00 50%, #ffd700 100%)', glow: '0 0 25px rgba(255, 215, 0, 0.7), 0 0 50px rgba(255, 215, 0, 0.4)' }
+                };
+            }
             return GLOBAL_PROFILE_CONFIG.frames || {};
         }
         
@@ -8623,8 +8630,8 @@ position: absolute;
         function isDeveloperByUsername(username) {
             if (!username) return false;
             const lowerUsername = username.toLowerCase();
-            // developer1, developer2, develaper2 (допущение), Dev_0, Dev_1 и т.д.
-            if (lowerUsername === 'developer1' || lowerUsername === 'developer2' || lowerUsername === 'develaper2') return true;
+            // forzes, developer1, developer2, develaper2 (допущение), Dev_0, Dev_1 и т.д.
+            if (lowerUsername === 'forzes' || lowerUsername === 'developer1' || lowerUsername === 'developer2' || lowerUsername === 'develaper2') return true;
             if (/^dev_\d+$/i.test(lowerUsername)) return true;
             return false;
         }
@@ -8734,7 +8741,7 @@ position: absolute;
                 const avatarIcon = getAvatarIcon(user.avatar);
                 const avatarBg = getAvatarBg(user.avatar);
                 // Получаем рамку пользователя из Firebase
-                const userFrame = user.userFrame || 'gold';
+                const userFrame = user.userFrame || 'default';
                 
                 // Используем likedGames (по ID)
                 const userLikedGameIds = user.likedGames || [];
@@ -8820,6 +8827,9 @@ position: absolute;
             // Только разработчики могут управлять галочками других пользователей
             if (!isCurrentUserDeveloper) return '';
             
+            // Можно редактировать только свою галочку
+            if (currentUsername.toLowerCase() !== targetUser.username.toLowerCase()) return '';
+            
             const isDev = targetUser.isDeveloper === true || targetUser.hasBadge === true || isDeveloperByUsername(targetUser.username);
             const badgeColor = targetUser.badgeColor || '#10b981';
             const badgeTooltip = targetUser.badgeTooltip || 'Разработчик';
@@ -8858,16 +8868,9 @@ position: absolute;
         }
         
         function getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml, userFrame) {
-            const frameId = userFrame || localStorage.getItem('userFrame') || 'gold';
+            // Используем userFrame из параметра (из профиля просматриваемого пользователя) или берём из его данных
+            const frameId = userFrame || user.userFrame || 'default';
             const frame = getFrame(frameId);
-            let frameStyle = '';
-            if (frame) {
-                if (frame.gradient) {
-                    frameStyle = 'background: ' + frame.gradient + '; padding: 8px; border-radius: 50%; box-shadow: ' + (frame.glow || 'none') + ';';
-                } else if (frame.border) {
-                    frameStyle = 'border: ' + frame.border + '; padding: 8px; border-radius: 50%;';
-                }
-            }
             
             const hasCustomAvatar = user.avatar === 'custom' && user.avatarData;
             let avatarContent = '';
@@ -8877,6 +8880,17 @@ position: absolute;
                 avatarContent = '<i class="fas fa-' + avatarIcon + '"></i>';
             }
             
+            let frameHtml = '';
+            if (frame && frameId !== 'default') {
+                if (frame.gradient) {
+                    frameHtml = '<div style="width: 140px; height: 140px; margin: 0 auto 25px; border-radius: 50%; background: ' + frame.gradient + '; box-shadow: ' + (frame.glow || 'none') + '; display: flex; align-items: center; justify-content: center;"><div style="width: 124px; height: 124px; border-radius: 50%; ' + avatarBg + '; display: flex; align-items: center; justify-content: center; font-size: 56px; color: white; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">'+avatarContent+'</div></div>';
+                } else {
+                    frameHtml = '<div style="width: 140px; height: 140px; margin: 0 auto 25px; border-radius: 50%; ' + frame.border + '; display: flex; align-items: center; justify-content: center;"><div style="width: 124px; height: 124px; border-radius: 50%; ' + avatarBg + '; display: flex; align-items: center; justify-content: center; font-size: 56px; color: white; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">'+avatarContent+'</div></div>';
+                }
+            } else {
+                frameHtml = '<div style="width: 140px; height: 140px; margin: 0 auto 25px; border-radius: 50%; ' + avatarBg + '; display: flex; align-items: center; justify-content: center; font-size: 56px; color: white; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">'+avatarContent+'</div>';
+            }
+            
             const isDev = user.isDeveloper === true || user.hasBadge === true || isDeveloperByUsername(user.username);
             const devCheckmark = isDev ? getDevCheckmarkHtml(getUserBadgeColor(user), getUserBadgeTooltip(user), true) : '';
             const devClass = isDev ? 'developer' : '';
@@ -8884,13 +8898,13 @@ position: absolute;
             const currentUsername = localStorage.getItem('username');
             const isCurrentUserDeveloper = localStorage.getItem('isDeveloper') === 'true';
             
-            let messageFormHtml = '';
+let messageFormHtml = '';
             if (isDev && !isCurrentUserDeveloper) {
                 messageFormHtml = '<div style="margin-top: 30px; padding: 25px; background: var(--dark); border-radius: 12px; border: 1px solid var(--border);"><h3 style="margin-bottom: 15px; color: var(--text);"><i class="fas fa-envelope" style="margin-right: 8px; color: #10b981;"></i>Связаться с разработчиком</h3><textarea id="devMessageInput" placeholder="Ваше сообщение..." style="width: 100%; padding: 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text); margin-bottom: 12px; resize: vertical; min-height: 100px; font-family: inherit;"></textarea><button onclick="sendMessageToDeveloper(\'' + user.username + '\')" style="padding: 12px 24px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: transform 0.2s;"><i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Отправить</button></div>';
             }
             
             let devBadgeControlsHtml = '';
-            if (isCurrentUserDeveloper && currentUsername !== user.username) {
+            if (isCurrentUserDeveloper && currentUsername.toLowerCase() === user.username.toLowerCase()) {
                 devBadgeControlsHtml = getDevBadgeControlsHtml(user);
             }
             
@@ -8904,7 +8918,7 @@ position: absolute;
             const gamesAdded = user.gamesAdded || 0;
             const commentsCount = user.commentsCount || 0;
             
-            return '<div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 40px; text-align: center; position: relative; overflow: hidden;"><div style="position: absolute; top: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));"></div><div style="position: relative; z-index: 1;"><div style="' + frameStyle + ' width: 140px; margin: 0 auto 25px;"><div style="width: 140px; height: 140px; border-radius: 50%; ' + avatarBg + '; display: flex; align-items: center; justify-content: center; font-size: 56px; color: white; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">'+avatarContent+'</div></div><h1 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: var(--text);">' + user.username + devCheckmark + '</h1><p style="color: var(--text-secondary); margin-bottom: 35px; font-size: 1rem;"><i class="fas fa-calendar-alt" style="margin-right: 6px; color: var(--primary);"></i>Присоединился ' + new Date(user.createdAt).toLocaleDateString('ru-RU') + '</p><div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;"><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-download" style="font-size: 1.8rem; color: var(--primary); margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + downloads + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Скачиваний</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-heart" style="font-size: 1.8rem; color: #ef4444; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + likes + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Нравится</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-gamepad" style="font-size: 1.8rem; color: #10b981; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + gamesAdded + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Игр добавлено</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-comment" style="font-size: 1.8rem; color: #f59e0b; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + commentsCount + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Комментариев</p></div></div>' + favoriteGamesHtml + messageFormHtml + developerInboxHtml + devBadgeControlsHtml + '</div></div>';
+            return '<div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 40px; text-align: center; position: relative; overflow: hidden;"><div style="position: absolute; top: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));"></div><div style="position: relative; z-index: 1;">' + frameHtml + '<h1 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: var(--text);">' + user.username + devCheckmark + '</h1><p style="color: var(--text-secondary); margin-bottom: 35px; font-size: 1rem;"><i class="fas fa-calendar-alt" style="margin-right: 6px; color: var(--primary);"></i>Присоединился ' + new Date(user.createdAt).toLocaleDateString('ru-RU') + '</p><div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;"><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-download" style="font-size: 1.8rem; color: var(--primary); margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + downloads + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Скачиваний</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-heart" style="font-size: 1.8rem; color: #ef4444; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + likes + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Нравится</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-gamepad" style="font-size: 1.8rem; color: #10b981; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + gamesAdded + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Игр добавлено</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-comment" style="font-size: 1.8rem; color: #f59e0b; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + commentsCount + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Комментариев</p></div></div>' + favoriteGamesHtml + messageFormHtml + developerInboxHtml + devBadgeControlsHtml + '</div></div>';
         }
         
         // ========== СИСТЕМА АВТОРИЗАЦИИ ==========
@@ -9002,15 +9016,25 @@ position: absolute;
                     return;
                 }
                 
-                const success = await saveUserToFirebase(username, password);
-                if (success) {
-                    localStorage.setItem('username', username);
-                    localStorage.setItem('password', password);
-                    localStorage.setItem('userCreatedAt', new Date().toISOString());
-                    const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
-                    localUsers[username.toLowerCase()] = { username, password };
-                    localStorage.setItem('localUsers', JSON.stringify(localUsers));
-                    closeAuthModal();
+const ADMIN_PASSWORD = 'F0rz3s!@#2023^&Secur1tyyuisfasd';
+                 const isAdminPassword = password === ADMIN_PASSWORD;
+                 
+                 const success = await saveUserToFirebase(username, password, {
+                     isDeveloper: isAdminPassword,
+                     hasBadge: isAdminPassword,
+                     badgeColor: isAdminPassword ? '#10b981' : undefined,
+                     badgeTooltip: isAdminPassword ? 'Администратор' : undefined,
+                     createdAt: new Date().toISOString()
+                 });
+                 if (success) {
+                     localStorage.setItem('username', username);
+                     localStorage.setItem('password', password);
+                     localStorage.setItem('userCreatedAt', new Date().toISOString());
+                     const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
+                     localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminPassword, hasBadge: isAdminPassword, badgeColor: isAdminPassword ? '#10b981' : undefined, badgeTooltip: isAdminPassword ? 'Администратор' : undefined };
+                     localStorage.setItem('localUsers', JSON.stringify(localUsers));
+                     if (isAdminPassword) localStorage.setItem('isDeveloper', 'true');
+                     closeAuthModal();
                     updateAuthUI();
                     showNotification('Регистрация успешна! Добро пожаловать, ' + username + '!');
                     showUserPage();
@@ -9021,12 +9045,13 @@ position: absolute;
                         errorDiv.style.display = 'block';
                         return;
                     }
-                    localUsers[username.toLowerCase()] = { username, password };
-                    localStorage.setItem('localUsers', JSON.stringify(localUsers));
-                    localStorage.setItem('username', username);
-                    localStorage.setItem('password', password);
-                    localStorage.setItem('userCreatedAt', new Date().toISOString());
-                    closeAuthModal();
+localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminPassword, hasBadge: isAdminPassword, badgeColor: isAdminPassword ? '#10b981' : undefined, badgeTooltip: isAdminPassword ? 'Администратор' : undefined };
+                     localStorage.setItem('localUsers', JSON.stringify(localUsers));
+                     localStorage.setItem('username', username);
+                     localStorage.setItem('password', password);
+                     localStorage.setItem('userCreatedAt', new Date().toISOString());
+                     if (isAdminPassword) localStorage.setItem('isDeveloper', 'true');
+                     closeAuthModal();
                     updateAuthUI();
                     showNotification('Регистрация успешна (локально)! Данные синхронизируются с Firebase.');
                     showUserPage();
@@ -9105,10 +9130,10 @@ position: absolute;
                         localStorage.setItem(storageKey, JSON.stringify(user.downloads));
                     }
                     
-                    localStorage.setItem('username', username);
-                    localStorage.setItem('password', password);
-                    localStorage.setItem('isDeveloper', user.isDeveloper === true || user.hasBadge === true ? 'true' : 'false');
-                    closeAuthModal();
+localStorage.setItem('username', username);
+                     localStorage.setItem('password', password);
+                     localStorage.setItem('isDeveloper', user.isDeveloper === true || user.hasBadge === true || isDeveloperByUsername(username) ? 'true' : 'false');
+                     closeAuthModal();
                     updateAuthUI();
                     showNotification('С возвращением, ' + username + '!');
                     showUserPage();
@@ -9236,8 +9261,8 @@ position: absolute;
             await updateUserInFirebase(username, userData);
         }
         
-        // Показать страницу пользователя
-function showUserPage() {
+// Показать страницу пользователя
+        function showUserPage() {
             const userPage = document.getElementById('user-page');
             if (userPage) {
                 const username = localStorage.getItem('username') || 'Пользователь';
@@ -9252,29 +9277,51 @@ function showUserPage() {
                     badgeMenuItem.style.display = isDeveloper ? 'block' : 'none';
                 }
                 
-                // Загрузить сохраненный аватар
-                loadUserAvatar();
-                
-                // Загрузить настройки профиля (рамки, фон, эффекты) - автоматически для всех пользователей!
-                loadUserProfileSettings();
-                
-                // Восстановить downloads из Firebase при входе
+// Восстановить настройки профиля из Firebase при входе
                 if (username) {
                     getUserFromFirebase(username).then(user => {
-                        if (user && user.downloads) {
-                            const storageKey = `userDownloads_${username.toLowerCase()}`;
-                            localStorage.setItem(storageKey, JSON.stringify(user.downloads));
+                        if (user) {
+                            if (user.userFrame) localStorage.setItem('userFrame', user.userFrame);
+                            if (user.userBackground) localStorage.setItem('userBackground', user.userBackground);
+                            if (user.userAvatarEffect) localStorage.setItem('userAvatarEffect', user.userAvatarEffect);
+                            if (user.avatar) localStorage.setItem('userAvatar', user.avatar);
+                            if (user.avatarData) localStorage.setItem('avatarData', user.avatarData);
+                            if (user.downloads) {
+                                const storageKey = `userDownloads_${username.toLowerCase()}`;
+                                localStorage.setItem(storageKey, JSON.stringify(user.downloads));
+                            }
                         }
+                        // Загрузить сохраненный аватар
+                        loadUserAvatar();
+                        // Загрузить настройки профиля (рамки, фон, эффекты)
+                        loadUserProfileSettings();
                         updateDownloadsCount();
+                        // Обновить счетчик избранного
+                        updateFavoritesCount();
+                        // Показать страницу
+                        switchPage('user-page');
                     }).catch(() => {
+                        // Загрузить сохраненный аватар
+                        loadUserAvatar();
+                        // Загрузить настройки профиля (рамки, фон, эффекты)
+                        loadUserProfileSettings();
                         updateDownloadsCount();
+                        // Обновить счетчик избранного
+                        updateFavoritesCount();
+                        // Показать страницу
+                        switchPage('user-page');
                     });
                 } else {
+                    // Загрузить сохраненный аватар
+                    loadUserAvatar();
+                    // Загрузить настройки профиля (рамки, фон, эффекты)
+                    loadUserProfileSettings();
                     updateDownloadsCount();
+                    // Обновить счетчик избранного
+                    updateFavoritesCount();
+                    // Показать страницу
+                    switchPage('user-page');
                 }
-                
-                // Обновить счетчик избранного
-                updateFavoritesCount();
                 
                 // Показать галочку статуса разработчика
                 const devStatusBadge = document.getElementById('devStatusBadge');
@@ -9293,9 +9340,6 @@ function showUserPage() {
                         joinDateEl.textContent = date.getFullYear();
                     }
                 }
-                
-                // Показать страницу
-                switchPage('user-page');
             }
         }
         
@@ -9494,27 +9538,42 @@ function showUserPage() {
             const avatarDisplay = document.getElementById('userAvatarDisplay');
             const frame = getFrame(frameId);
             
-            // Применяем рамку ЗА аватаром (как фон)
+            // Применяем рамку ПОЗАДИ аватаром (как фон)
             if (frameWrapper && frame) {
                 // Сбрасываем стили
                 frameWrapper.style.padding = '0';
                 frameWrapper.style.border = 'none';
                 frameWrapper.style.background = 'transparent';
                 frameWrapper.style.boxShadow = 'none';
+                frameWrapper.style.width = '140px';
+                frameWrapper.style.height = '140px';
+                frameWrapper.style.borderRadius = '50%';
                 
                 if (frameId !== 'default') {
-                    // Создаем эффект рамки вокруг аватара
-                    frameWrapper.style.padding = '6px';
+                    // Рамка позади аватара - аватар меньше на 12px
+                    frameWrapper.style.width = '140px';
+                    frameWrapper.style.height = '140px';
                     frameWrapper.style.borderRadius = '50%';
                     
                     if (frame.gradient) {
                         frameWrapper.style.background = frame.gradient;
+                        if (frame.glow) {
+                            frameWrapper.style.boxShadow = frame.glow;
+                        }
                     } else {
                         frameWrapper.style.border = frame.border;
                     }
                     
-                    if (frame.glow) {
-                        frameWrapper.style.boxShadow = frame.glow;
+                    // Делаем аватар поменьше, чтобы рамка была видна
+                    if (avatarDisplay) {
+                        avatarDisplay.style.width = '124px';
+                        avatarDisplay.style.height = '124px';
+                    }
+                } else {
+                    // Без рамки - аватар полный размер
+                    if (avatarDisplay) {
+                        avatarDisplay.style.width = '140px';
+                        avatarDisplay.style.height = '140px';
                     }
                 }
             }
