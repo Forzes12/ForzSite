@@ -8899,7 +8899,7 @@ position: absolute;
                 developerInboxHtml = '<div style="margin-top: 30px; padding: 25px; background: var(--dark); border-radius: 12px; border: 1px solid var(--border);"><h3 style="margin-bottom: 15px; color: var(--text);"><i class="fas fa-inbox" style="margin-right: 8px; color: var(--primary);"></i>Входящие сообщения</h3><div id="developerInboxMessages" style="max-height: 300px; overflow-y: auto;"><p style="color: var(--text-secondary);">Загрузка сообщений...</p></div></div>';
             }
             
-            const downloads = user.downloadsCount || 0;
+            const downloads = user.downloads ? user.downloads.reduce((total, d) => total + d.count, 0) : (user.downloadsCount || 0);
             const likes = user.likesCount || 0;
             const gamesAdded = user.gamesAdded || 0;
             const commentsCount = user.commentsCount || 0;
@@ -9099,6 +9099,12 @@ position: absolute;
                         return;
                     }
                     
+                    // Восстановление downloads из Firebase
+                    if (user && user.downloads) {
+                        const storageKey = `userDownloads_${username.toLowerCase()}`;
+                        localStorage.setItem(storageKey, JSON.stringify(user.downloads));
+                    }
+                    
                     localStorage.setItem('username', username);
                     localStorage.setItem('password', password);
                     localStorage.setItem('isDeveloper', user.isDeveloper === true || user.hasBadge === true ? 'true' : 'false');
@@ -9151,12 +9157,15 @@ position: absolute;
         
         // Сохранить пользователя в Firebase
         function saveUserToFirebase(username, password, extraData = {}) {
+            const storageKey = `userDownloads_${username.toLowerCase()}`;
+            const downloads = JSON.parse(localStorage.getItem(storageKey) || '[]');
             const userData = {
                 username: username,
                 password: password,
                 avatar: localStorage.getItem('userAvatar') || 'default',
                 favoriteGames: JSON.parse(localStorage.getItem('favoriteGames') || '[]'),
-                downloadsCount: parseInt(localStorage.getItem('downloadsCount') || '0'),
+                downloadsCount: getTotalDownloads(),
+                downloads: downloads,
                 likesCount: parseInt(localStorage.getItem('likesCount') || '0'),
                 createdAt: localStorage.getItem('userCreatedAt') || new Date().toISOString(),
                 // Настройки профиля - автоматически доступны всем из глобальной конфигурации
@@ -9202,16 +9211,21 @@ position: absolute;
             }
         }
         
-        // ========== СИНХРОНИЗАЦИЯ ПРОФИЛЯ (упрощено) ==========
-        function syncProfileToFirebase() {
+// ========== СИНХРОНИЗАЦИЯ ПРОФИЛЯ (упрощено) ==========
+        async function syncProfileToFirebase() {
             const username = localStorage.getItem('username');
             if (!username) return;
+            
+            // Синхронизуем downloads из персонального хранилища
+            const storageKey = `userDownloads_${username.toLowerCase()}`;
+            const downloads = JSON.parse(localStorage.getItem(storageKey) || '[]');
             
             const userData = {
                 avatar: localStorage.getItem('userAvatar') || 'default',
                 avatarData: localStorage.getItem('avatarData') || null,
                 favoriteGames: JSON.parse(localStorage.getItem('favoriteGames') || '[]'),
-                downloadsCount: parseInt(localStorage.getItem('downloadsCount') || '0'),
+                downloadsCount: getTotalDownloads(),
+                downloads: downloads,
                 likesCount: parseInt(localStorage.getItem('likesCount') || '0'),
                 // Настройки профиля из глобальной системы (доступны всем)
                 userFrame: localStorage.getItem('userFrame') || 'gold',
@@ -9219,11 +9233,11 @@ position: absolute;
                 userAvatarEffect: localStorage.getItem('userAvatarEffect') || 'none'
             };
             
-            updateUserInFirebase(username, userData);
+            await updateUserInFirebase(username, userData);
         }
         
         // Показать страницу пользователя
-        function showUserPage() {
+function showUserPage() {
             const userPage = document.getElementById('user-page');
             if (userPage) {
                 const username = localStorage.getItem('username') || 'Пользователь';
@@ -9244,32 +9258,44 @@ position: absolute;
                 // Загрузить настройки профиля (рамки, фон, эффекты) - автоматически для всех пользователей!
                 loadUserProfileSettings();
                 
+                // Восстановить downloads из Firebase при входе
+                if (username) {
+                    getUserFromFirebase(username).then(user => {
+                        if (user && user.downloads) {
+                            const storageKey = `userDownloads_${username.toLowerCase()}`;
+                            localStorage.setItem(storageKey, JSON.stringify(user.downloads));
+                        }
+                        updateDownloadsCount();
+                    }).catch(() => {
+                        updateDownloadsCount();
+                    });
+                } else {
+                    updateDownloadsCount();
+                }
+                
                 // Обновить счетчик избранного
                 updateFavoritesCount();
                 
-// Обновить счетчик скачиваний
-                 updateDownloadsCount();
-                 
-                 // Показать галочку статуса разработчика
-                 const devStatusBadge = document.getElementById('devStatusBadge');
-                 if (devStatusBadge) {
-                     devStatusBadge.style.display = isDeveloper ? 'inline-block' : 'none';
-                 }
-                 
-                 // Установить дату регистрации
-                 const joinDateEl = document.getElementById('joinDate');
-                 if (joinDateEl) {
-                     const createdDate = localStorage.getItem('userCreatedAt');
-                     if (isDeveloper) {
-                         joinDateEl.textContent = '2025';
-                     } else if (createdDate) {
-                         const date = new Date(createdDate);
-                         joinDateEl.textContent = date.getFullYear();
-                     }
-                 }
-                 
-                 // Показать страницу
-                 switchPage('user-page');
+                // Показать галочку статуса разработчика
+                const devStatusBadge = document.getElementById('devStatusBadge');
+                if (devStatusBadge) {
+                    devStatusBadge.style.display = isDeveloper ? 'inline-block' : 'none';
+                }
+                
+                // Установить дату регистрации
+                const joinDateEl = document.getElementById('joinDate');
+                if (joinDateEl) {
+                    const createdDate = localStorage.getItem('userCreatedAt');
+                    if (isDeveloper) {
+                        joinDateEl.textContent = '2025';
+                    } else if (createdDate) {
+                        const date = new Date(createdDate);
+                        joinDateEl.textContent = date.getFullYear();
+                    }
+                }
+                
+                // Показать страницу
+                switchPage('user-page');
             }
         }
         
@@ -10003,75 +10029,39 @@ position: absolute;
         
         // ========== УДАЛЕНО: ЛАЙКИ И ДИЗЛАЙКИ ==========
         
-        // Функция для отслеживания скачиваний
-function trackDownload(gameId, gameName) {
-             const downloads = JSON.parse(localStorage.getItem('userDownloads') || '[]');
-             const existingIndex = downloads.findIndex(d => d.gameId === gameId);
-             
-             if (existingIndex >= 0) {
-                 downloads[existingIndex].count += 1;
-                 downloads[existingIndex].lastDownload = new Date().toISOString();
-             } else {
-                 downloads.push({
-                     gameId: gameId,
-                     gameName: gameName,
-                     count: 1,
-                     firstDownload: new Date().toISOString(),
-                     lastDownload: new Date().toISOString()
-                 });
-             }
-             
-             localStorage.setItem('userDownloads', JSON.stringify(downloads));
-             localStorage.setItem('downloadsCount', getTotalDownloads());
-             updateDownloadsCount();
-         }
-         
-         // Переключить лайк/дизлайк
-         function toggleLike(gameId, button) {
-             const userVotes = JSON.parse(localStorage.getItem('userVotes') || '{}');
-             const wasLiked = userVotes[gameId] === 'like';
-             
-             if (wasLiked) {
-                 delete userVotes[gameId];
-                 button.classList.remove('active');
-                 showNotification('Удалено из избранного');
-             } else {
-                 userVotes[gameId] = 'like';
-                 button.classList.add('active');
-                 showNotification('Добавлено в избранное!');
-             }
-             
-             localStorage.setItem('userVotes', JSON.stringify(userVotes));
-             updateFavoritesCount();
-         }
-        
-        // Обработчик скачивания с отслеживанием
-        function handleDownload(gameId, gameName, torrentUrl) {
-            trackDownload(gameId, gameName);
-            window.open(torrentUrl, '_blank');
-        }
-
-        function copySKU(sku, gameId) {
-            const encodedId = encodeURIComponent(gameId);
-            const encodedSku = encodeURIComponent(sku);
-            const url = `${window.location.origin}${window.location.pathname}?game=${encodedId}&sku=${encodedSku}`;
-            navigator.clipboard.writeText(url).then(function() {
-                showNotification('Ссылка скопирована: ' + url);
-            }).catch(function(err) {
-                console.error('Ошибка копирования: ', err);
-                const textArea = document.createElement('textarea');
-                textArea.value = url;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                showNotification('Ссылка скопирована: ' + url);
-            });
+// Функция для отслеживания скачиваний (персональный счетчик для каждого пользователя)
+        function trackDownload(gameId, gameName) {
+            const username = localStorage.getItem('username');
+            const storageKey = username ? `userDownloads_${username.toLowerCase()}` : 'userDownloads';
+            const downloads = JSON.parse(localStorage.getItem(storageKey) || '[]');
+            const existingIndex = downloads.findIndex(d => d.gameId === gameId);
+            
+            if (existingIndex >= 0) {
+                downloads[existingIndex].count += 1;
+                downloads[existingIndex].lastDownload = new Date().toISOString();
+            } else {
+                downloads.push({
+                    gameId: gameId,
+                    gameName: gameName,
+                    count: 1,
+                    firstDownload: new Date().toISOString(),
+                    lastDownload: new Date().toISOString()
+                });
+            }
+            
+            localStorage.setItem(storageKey, JSON.stringify(downloads));
+            if (username) {
+                localStorage.setItem('downloadsCount', getTotalDownloads());
+                updateUserInFirebase(username, { downloads: downloads, downloadsCount: getTotalDownloads() });
+            }
+            updateDownloadsCount();
         }
         
         // Получить общее количество скачиваний
         function getTotalDownloads() {
-            const downloads = JSON.parse(localStorage.getItem('userDownloads') || '[]');
+            const username = localStorage.getItem('username');
+            const storageKey = username ? `userDownloads_${username.toLowerCase()}` : 'userDownloads';
+            const downloads = JSON.parse(localStorage.getItem(storageKey) || '[]');
             return downloads.reduce((total, d) => total + d.count, 0);
         }
         
@@ -10085,7 +10075,8 @@ function trackDownload(gameId, gameName) {
         
         // Показать скачанные игры
         function showDownloadedGames() {
-            const downloads = JSON.parse(localStorage.getItem('userDownloads') || '[]');
+            const username = localStorage.getItem('username');
+            const downloads = JSON.parse(localStorage.getItem(username ? `userDownloads_${username.toLowerCase()}` : 'userDownloads') || '[]');
             const modal = document.getElementById('downloadedGamesModal');
             const listEl = document.getElementById('downloadedGamesList');
             
@@ -10108,6 +10099,49 @@ function trackDownload(gameId, gameName) {
             }
         }
         
+// Обработчик скачивания с отслеживанием
+        function handleDownload(gameId, gameName, torrentUrl) {
+            trackDownload(gameId, gameName);
+            window.open(torrentUrl, '_blank');
+        }
+        
+        // Переключить лайк/дизлайк
+        function toggleLike(gameId, button) {
+            const userVotes = JSON.parse(localStorage.getItem('userVotes') || '{}');
+            const wasLiked = userVotes[gameId] === 'like';
+            
+            if (wasLiked) {
+                delete userVotes[gameId];
+                button.classList.remove('active');
+                showNotification('Удалено из избранного');
+            } else {
+                userVotes[gameId] = 'like';
+                button.classList.add('active');
+                showNotification('Добавлено в избранное!');
+            }
+            
+            localStorage.setItem('userVotes', JSON.stringify(userVotes));
+            updateFavoritesCount();
+        }
+        
+        function copySKU(sku, gameId) {
+             const encodedId = encodeURIComponent(gameId);
+             const encodedSku = encodeURIComponent(sku);
+             const url = `${window.location.origin}${window.location.pathname}?game=${encodedId}&sku=${encodedSku}`;
+             navigator.clipboard.writeText(url).then(function() {
+                 showNotification('Ссылка скопирована: ' + url);
+             }).catch(function(err) {
+                 console.error('Ошибка копирования: ', err);
+                 const textArea = document.createElement('textarea');
+                 textArea.value = url;
+                 document.body.appendChild(textArea);
+                 textArea.select();
+                 document.execCommand('copy');
+                 document.body.removeChild(textArea);
+                 showNotification('Ссылка скопирована: ' + url);
+             });
+         }
+         
         function closeDownloadedGamesModal() {
             const modal = document.getElementById('downloadedGamesModal');
             if (modal) {
