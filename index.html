@@ -7851,8 +7851,6 @@ position: absolute;
             }
         });
         document.addEventListener('dragstart', event => event.preventDefault());
-        document.addEventListener('selectstart', event => event.preventDefault());
-        document.addEventListener('select', event => event.preventDefault());
     </script>
 </head>
 <body>
@@ -8473,11 +8471,25 @@ position: absolute;
         
         // Функция получения всех доступных рамок (для всех пользователей)
         function getGlobalFrames() {
-            // Если конфиг не загрузился, возвращаем рамки по умолчанию
+            // Если конфиг не загрузился, возвращаем все рамки по умолчанию
             if (!GLOBAL_PROFILE_CONFIG.frames) {
                 return {
                     'default': { name: 'Стандартная', border: '2px solid var(--primary)', gradient: null, glow: null },
-                    'gold': { name: 'Золото', gradient: 'linear-gradient(135deg, #ffd700 0%, #ffaa00 50%, #ffd700 100%)', glow: '0 0 25px rgba(255, 215, 0, 0.7), 0 0 50px rgba(255, 215, 0, 0.4)' }
+                    'gold': { name: 'Золото', gradient: 'linear-gradient(135deg, #ffd700 0%, #ffaa00 50%, #ffd700 100%)', glow: '0 0 25px rgba(255, 215, 0, 0.7), 0 0 50px rgba(255, 215, 0, 0.4)' },
+                    'diamond': { name: 'Бриллиант', border: '3px solid #00ffff', gradient: 'linear-gradient(135deg, #00ffff 0%, #ffffff 25%, #00ffff 50%, #ffffff 75%, #00ffff 100%)', glow: '0 0 30px rgba(0, 255, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.4)' },
+                    'fire': { name: 'Огонь', border: '3px solid #ff4500', gradient: 'linear-gradient(135deg, #ff4500 0%, #ff8c00 50%, #ff4500 100%)', glow: '0 0 30px rgba(255, 69, 0, 0.8), 0 0 60px rgba(255, 140, 0, 0.5)' },
+                    'ice': { name: 'Лёд', border: '3px solid #00bfff', gradient: 'linear-gradient(135deg, #00bfff 0%, #e0ffff 50%, #00bfff 100%)', glow: '0 0 30px rgba(0, 191, 255, 0.8), 0 0 60px rgba(0, 191, 255, 0.4)' },
+                    'neon': { name: 'Неон', border: '3px solid #ff00ff', gradient: 'linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff, #00ffff)', glow: '0 0 35px rgba(255, 0, 255, 0.9), 0 0 70px rgba(0, 255, 255, 0.5)' },
+                    'dark': { name: 'Тьма', border: '3px solid #4a0080', gradient: 'linear-gradient(135deg, #2d0047 0%, #4a0080 50%, #2d0047 100%)', glow: '0 0 25px rgba(74, 0, 128, 0.7), inset 0 0 20px rgba(0, 0, 0, 0.5)' },
+                    'rainbow': { name: 'Радуга', border: '3px solid transparent', gradient: 'linear-gradient(45deg, #ff0000, #ff7700, #ffff00, #00ff00, #00ffff, #0077ff, #ff00ff, #ff0000)', glow: '0 0 30px rgba(255, 0, 255, 0.6)' },
+                    'cyber': { name: 'Кибер', border: '3px solid #00ff88', gradient: 'linear-gradient(135deg, #00ff88 0%, #00ffff 33%, #ff00ff 66%, #00ff88 100%)', glow: '0 0 35px rgba(0, 255, 136, 0.8), 0 0 70px rgba(0, 255, 255, 0.5)' },
+                    'legend': { name: 'Легенда', border: '4px solid #ffd700', gradient: 'linear-gradient(135deg, #ffd700 0%, #ff6b6b 20%, #c71585 40%, #4b0082 60%, #ff00ff 80%, #ffd700 100%)', glow: '0 0 50px rgba(255, 215, 0, 1), 0 0 100px rgba(255, 0, 255, 0.6)' },
+                    'dragon': { name: 'Дракон', border: '3px solid #8b0000', gradient: 'linear-gradient(135deg, #8b0000 0%, #dc143c 50%, #8b0000 100%)', glow: '0 0 35px rgba(139, 0, 0, 0.9), 0 0 70px rgba(220, 20, 60, 0.5)' },
+                    'phoenix': { name: 'Феникс', border: '3px solid #ff6600', gradient: 'linear-gradient(135deg, #ff4500 0%, #ff8c00 25%, #ffd700 50%, #ff8c00 75%, #ff4500 100%)', glow: '0 0 40px rgba(255, 69, 0, 0.9), 0 0 80px rgba(255, 140, 0, 0.6)' },
+                    'galaxy': { name: 'Галактика', border: '3px solid #9400d3', gradient: 'linear-gradient(135deg, #000033 0%, #4b0082 25%, #9400d3 50%, #ff00ff 75%, #000033 100%)', glow: '0 0 35px rgba(148, 0, 211, 0.8), 0 0 70px rgba(255, 0, 255, 0.5)' },
+                    'platinum': { name: 'Платина', border: '3px solid #e5e4e2', gradient: 'linear-gradient(135deg, #e5e4e2 0%, #c0c0c0 25%, #e5e4e2 50%, #c0c0c0 75%, #e5e4e2 100%)', glow: '0 0 25px rgba(229, 228, 226, 0.8), 0 0 50px rgba(192, 192, 192, 0.5)' },
+                    'emerald': { name: 'Изумруд', border: '3px solid #50c878', gradient: 'linear-gradient(135deg, #50c878 0%, #00ff7f 50%, #50c878 100%)', glow: '0 0 30px rgba(80, 200, 120, 0.8), 0 0 60px rgba(0, 255, 127, 0.5)' },
+                    'royal': { name: 'Королевская', border: '3px solid #4169e1', gradient: 'linear-gradient(135deg, #4169e1 0%, #ffd700 50%, #4169e1 100%)', glow: '0 0 30px rgba(65, 105, 225, 0.8), 0 0 60px rgba(255, 215, 0, 0.4)' }
                 };
             }
             return GLOBAL_PROFILE_CONFIG.frames || {};
@@ -8496,7 +8508,9 @@ position: absolute;
         // Функция получения конкретной рамки по ID
         function getFrame(frameId) {
             const frameToUse = frameId || localStorage.getItem('userFrame') || 'gold';
-            return GLOBAL_PROFILE_CONFIG.frames?.[frameToUse] || GLOBAL_PROFILE_CONFIG.frames?.['gold'] || null;
+            // Попробовать взять из конфигурации, если нет - вернуть из fallback
+            const frames = getGlobalFrames();
+            return frames[frameToUse] || frames['gold'] || frames['default'] || null;
         }
         
         // Функция применения рамки к профилю
@@ -10529,14 +10543,9 @@ function saveProfileSettings() {
             } else {
                 alert('Эта игра уже в избранном!');
             }
-        }
-        
-        // Инициализация при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function() {
-            // Функции авторизации удалены - сайт работает без регистрации
-        });
-
-        // Загрузка данных из JSON
+}
+         
+         // Загрузка данных из JSON
         let gameData = {};
         let preordersData = [];
         let popularGamesTitles = [];
@@ -13388,6 +13397,14 @@ function localAIResponse(message) {
             Читайте последние обновления и новости Forzes HUB
         </div>
     </div>
+     
+     <script>
+         // Функционал кнопок регистрации и входа уже определён выше
+         // Вызываем инициализацию UI при загрузке
+         document.addEventListener('DOMContentLoaded', function() {
+             updateAuthUI();
+         });
+     </script>
 </body>
 </html>
 
