@@ -1309,6 +1309,15 @@
             border-left: 4px solid #f59e0b;
         }
 
+        .preorder-card {
+            border-left: 4px solid #ec4899;
+        }
+
+        .preorder-card:hover {
+            border-left-color: #f472b6;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(236, 72, 153, 0.3);
+        }
+
         .game-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(59, 130, 246, 0.2);
@@ -1541,37 +1550,35 @@
             margin-bottom: 10px;
         }
 
-        .like-btn, .dislike-btn {
-            background: rgba(0, 0, 0, 0.7);
-            border: none;
-            border-radius: 20px;
-            padding: 6px 12px;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.85rem;
-            transition: all 0.2s ease;
-        }
+.like-btn, .dislike-btn {
+             background: rgba(0, 0, 0, 0.7);
+             border: none;
+             border-radius: 50%;
+             width: 36px;
+             height: 36px;
+             padding: 0;
+             color: white;
+             cursor: pointer;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             font-size: 1rem;
+             transition: all 0.2s ease;
+position: absolute;
+             top: 10px;
+             left: 10px;
+             z-index: 10;
+         }
+ 
+         .like-btn:hover, .dislike-btn:hover {
+             transform: scale(1.1);
+}
+ 
+.like-btn.active {
+             background: #ef4444;
+         }
 
-        .like-btn:hover {
-            background: #10b981;
-        }
-
-        .dislike-btn:hover {
-            background: #ef4444;
-        }
-
-        .like-btn.active {
-            background: #10b981;
-        }
-
-        .dislike-btn.active {
-            background: #ef4444;
-        }
-
-        .fav-btn {
+         .fav-btn {
             background: transparent;
             border: 1px solid var(--primary);
             color: var(--primary);
@@ -2493,6 +2500,11 @@
         }
 
         .all-games-page {
+            background: var(--dark);
+            min-height: 100vh;
+        }
+
+        .preorders-page {
             background: var(--dark);
             min-height: 100vh;
         }
@@ -4733,6 +4745,9 @@
             margin-top: 30px;
             padding-top: 20px;
             border-top: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 15px;
         }
 
         .comments-title {
@@ -4923,10 +4938,11 @@
             height: 20px;
             border-radius: 50%;
             margin-left: 6px;
-            cursor: help;
             position: relative;
             vertical-align: middle;
             font-size: 12px;
+            background: #10b981;
+            color: white;
         }
 
         .dev-checkmark:hover {
@@ -7367,6 +7383,279 @@
         font-size: 0.75rem;
     }
 }
+
+.page.preorders-page {
+    padding-top: 80px;
+}
+
+.preorders-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.preorders-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.preorders-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+}
+
+.preorders-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.preorders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.preorder-card {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.preorder-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.4);
+}
+
+.preorder-image-container {
+    height: 250px;
+    width: 100%;
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.preorder-image-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+}
+
+.preorder-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+    filter: brightness(0.9) contrast(1.05);
+    position: relative;
+    z-index: 2;
+}
+
+.preorder-card:hover .preorder-image {
+    transform: scale(1.08);
+    filter: brightness(1) contrast(1.1);
+}
+
+.preorder-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    z-index: 10;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    animation: preorderPulse 2s ease-in-out infinite;
+}
+
+@keyframes preorderPulse {
+    0%, 100% { box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4); }
+    50% { box-shadow: 0 4px 25px rgba(245, 158, 11, 0.7); }
+}
+
+.preorder-content {
+    padding: 24px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.preorder-title {
+    color: var(--text);
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.preorder-description {
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.preorder-meta {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.preorder-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.preorder-meta i {
+    font-size: 0.8rem;
+    color: var(--primary);
+}
+
+.preorder-price {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.preorder-platforms {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.preorder-platform {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.preorder-buttons {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.preorder-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.preorder-btn:hover {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+}
+
+.preorder-btn:active {
+    transform: translateY(0);
+}
+
+.preorder-btn i {
+    font-size: 1rem;
+}
+
+.preorder-details-btn {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.preorder-details-btn:hover {
+    background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+}
+
+@media (max-width: 768px) {
+    .preorders-grid {
+        grid-template-columns: 1fr;
+    }
+    .preorders-header h2 {
+        font-size: 1.8rem;
+    }
+    .preorder-card {
+        border-radius: 16px;
+    }
+    .preorder-image-container {
+        height: 200px;
+    }
+    .preorder-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 769px) {
+    .preorders-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
     </style>
     <style>
         #supportBtn {
@@ -7382,6 +7671,153 @@
             background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%) !important;
             border-radius: 50% !important;
         }
+        
+        /* Beautiful Profile Styles */
+        .user-profile-view {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .user-profile-view::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+        }
+        
+        .profile-avatar-container {
+            width: 140px;
+            margin: 0 auto 25px;
+        }
+        
+        .profile-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 56px;
+            color: white;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .profile-username {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--text);
+        }
+        
+        .profile-joined {
+            color: var(--text-secondary);
+            margin-bottom: 35px;
+            font-size: 1rem;
+        }
+        
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 35px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .profile-stat-card {
+            background: var(--dark);
+            padding: 20px 15px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+        
+        .profile-stat-icon {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+        
+        .profile-stat-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 5px 0;
+        }
+        
+        .profile-stat-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+        
+        .dev-checkmark {
+            background: #10b981;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 8px;
+            font-size: 12px;
+        }
+        
+        .dev-badge-controls {
+            margin-top: 30px;
+            padding: 25px;
+            background: var(--dark);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        
+        .badge-toggle-row, .color-picker-row {
+            margin-bottom: 15px;
+        }
+        
+        .checkmark-preview {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #10b981;
+            border-radius: 4px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        .checkmark-preview i {
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .dev-save-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        
+        .dev-save-btn:hover {
+            transform: scale(1.02);
+        }
     </style>
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -7389,14 +7825,14 @@
     <script>
         // Firebase конфигурация
         const firebaseConfig = {
-            apiKey: "AIzaSyAi0aqowEwmjDmZ--N-YJgSMDQBvFEuGpo",
-            authDomain: "website-354d0.firebaseapp.com",
-            databaseURL: "https://website-354d0-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "website-354d0",
-            storageBucket: "website-354d0.firebasestorage.app",
-            messagingSenderId: "318310502182",
-            appId: "1:318310502182:web:a46b2e86b3b48d8f1afbe7",
-            measurementId: "G-YJWK3LNN3X"
+            apiKey: "AIzaSyAoGDZCmlRSHI1ZSkc2iUi06grwBoCOSMU",
+            authDomain: "forzes-hub.firebaseapp.com",
+            databaseURL: "https://forzes-hub-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "forzes-hub",
+            storageBucket: "forzes-hub.firebasestorage.app",
+            messagingSenderId: "81375010703",
+            appId: "1:81375010703:web:993d2da0a22e934a7cf5fa",
+            measurementId: "G-2593TX47NN"
         };
         
         // Инициализация Firebase
@@ -7452,16 +7888,20 @@
         <div class="nav-center">
             <ul class="nav-links">
                 <li><a href="#main" onclick="navigateToSection('#main'); switchToMain(); return false;">Главная</a></li>
-                <li><a href="#slider" onclick="navigateToSection('#slider'); return false;">Слайдер</a></li>
-                <li><a href="#games" onclick="navigateToSection('#games'); return false;">Популярные</a></li>
-<li><a href="#anticipated" onclick="navigateToSection('#anticipated'); return false;">Самые ожидаемые</a></li>
+                <li><a href="#anticipated" onclick="navigateToSection('#anticipated'); return false;">Самые ожидаемые</a></li>
                 <li><a href="#" data-page="all-games-page" onclick="switchPage('all-games-page'); return false;">Игры и программы</a></li>
+                <li><a href="#" data-page="preorders-page" onclick="switchPage('preorders-page'); return false;">Предзаказы</a></li>
                 <li><a href="#about" onclick="navigateToSection('#about'); return false;">О нас</a></li>
                 <li><a href="#contact" onclick="navigateToSection('#contact'); return false;">Все ссылки</a></li>
             </ul>
         </div>
         
-        <!-- Кнопки авторизации удалены -->
+        <div class="nav-auth" id="navAuth">
+            <button class="auth-btn login-btn" id="loginBtn" onclick="showAuthModal('login')">Войти</button>
+            <button class="auth-btn register-btn" id="registerBtn" onclick="showAuthModal('register')">Регистрация</button>
+            <button class="auth-btn profile-btn" id="profileBtn" onclick="showUserPage()" style="display: none;">Профиль</button>
+            <button class="auth-btn logout-btn" id="logoutBtn" onclick="logoutUser()" style="display: none;">Выход</button>
+        </div>
         
         <!-- Кнопка мобильного меню -->
         <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -7476,13 +7916,59 @@
         </button>
         <ul>
             <li><a href="#main" onclick="navigateToSection('#main'); switchToMain(); closeMobileMenu(); return false;">Главная</a></li>
-            <li><a href="#slider" onclick="navigateToSection('#slider'); closeMobileMenu(); return false;">Слайдер</a></li>
-            <li><a href="#games" onclick="navigateToSection('#games'); closeMobileMenu(); return false;">Популярные</a></li>
             <li><a href="#anticipated" onclick="navigateToSection('#anticipated'); closeMobileMenu(); return false;">Самые ожидаемые</a></li>
             <li><a href="#" data-page="all-games-page" onclick="switchPage('all-games-page'); closeMobileMenu(); return false;">Игры и программы</a></li>
+            <li><a href="#" data-page="preorders-page" onclick="switchPage('preorders-page'); closeMobileMenu(); return false;">Предзаказы</a></li>
             <li><a href="#about" onclick="navigateToSection('#about'); closeMobileMenu(); return false;">О нас</a></li>
             <li><a href="#contact" onclick="navigateToSection('#contact'); closeMobileMenu(); return false;">Все ссылки</a></li>
+            <li><a href="#" onclick="showAuthModal('login'); closeMobileMenu(); return false;">Войти</a></li>
+            <li><a href="#" onclick="showAuthModal('register'); closeMobileMenu(); return false;">Регистрация</a></li>
+            <li><a href="#" onclick="showUserPage(); closeMobileMenu(); return false;" id="mobileProfileLink" style="display: none;">Профиль</a></li>
+            <li><a href="#" onclick="logoutUser(); closeMobileMenu(); return false;" id="mobileLogoutLink" style="display: none;">Выход</a></li>
         </ul>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="authModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(10px);" onclick="if(event.target === this) closeAuthModal()">
+        <div style="background: linear-gradient(135deg, #1e293b, #0f172a); padding: 30px; border-radius: 20px; max-width: 420px; width: 95%; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <h2 id="authModalTitle" style="margin: 0 0 10px 0; color: white; font-size: 1.8rem;"><i class="fas fa-user" style="color: var(--primary);"></i> Вход</h2>
+                <p id="authModalSubtitle" style="color: #94a3b8; margin: 0; font-size: 14px;">Войдите в свой аккаунт</p>
+            </div>
+            
+            <form id="authForm" onsubmit="handleAuth(event)" style="display: flex; flex-direction: column; gap: 15px;">
+                <div id="authUsernameField">
+                    <label style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px; display: block;">Имя пользователя</label>
+                    <input type="text" id="authUsername" placeholder="Введите имя пользователя" required
+                        style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1rem; box-sizing: border-box;">
+                </div>
+                
+                <div id="authPasswordField">
+                    <label style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px; display: block;">Пароль</label>
+                    <input type="password" id="authPassword" placeholder="Введите пароль" required
+                        style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1rem; box-sizing: border-box;">
+                </div>
+                
+                <div id="authConfirmField" style="display: none;">
+                    <label style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px; display: block;">Подтвердите пароль</label>
+                    <input type="password" id="authConfirmPassword" placeholder="Повторите пароль"
+                        style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1rem; box-sizing: border-box;">
+                </div>
+                
+                <div id="authError" style="color: #ef4444; font-size: 0.9rem; text-align: center; display: none;"></div>
+                
+                <button type="submit" id="authSubmitBtn"
+                    style="padding: 12px 20px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; margin-top: 10px;">
+                    <i class="fas fa-sign-in-alt"></i> <span id="authSubmitText">Войти</span>
+                </button>
+            </form>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button onclick="closeAuthModal()" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #94a3b8; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease;">
+                    Отмена
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Главная страница -->
@@ -7498,14 +7984,18 @@
                         <i class="fas fa-gamepad"></i>
                         <span>ВСЕ Игры</span>
                     </a>
-<a href="#" data-page="all-games-page" class="action-btn programs-btn" onclick="switchPage('all-games-page', 'programs')">
-                         <i class="fas fa-desktop"></i>
-                         <span>Программы</span>
-                     </a>
-                     <a href="#" data-page="all-games-page" class="action-btn utilities-btn" onclick="switchPage('all-games-page', 'utilities')">
-                         <i class="fas fa-tools"></i>
-                         <span>VPN</span>
-                     </a>
+                    <a href="#" data-page="all-games-page" class="action-btn programs-btn" onclick="switchPage('all-games-page', 'programs')">
+                        <i class="fas fa-desktop"></i>
+                        <span>Программы</span>
+                    </a>
+                    <a href="#" data-page="all-games-page" class="action-btn utilities-btn" onclick="switchPage('all-games-page', 'utilities')">
+                        <i class="fas fa-tools"></i>
+                        <span>VPN</span>
+                    </a>
+                    <a href="#" data-page="preorders-page" class="action-btn" onclick="switchPage('preorders-page')" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Предзаказы</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -7628,6 +8118,104 @@
                 &copy; 2026 ForzSite. Все права защищены.
             </div>
         </footer>
+    </div>
+
+    <!-- Страница профиля пользователя -->
+    <div id="user-page" class="page">
+        <div style="padding: 80px 20px 40px; max-width: 800px; margin: 0 auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <h2 class="user-page-title" style="font-size: 2rem; font-weight: 700; color: var(--text);">Личный кабинет</h2>
+                <button onclick="showProfileSettings()" style="padding: 10px 20px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 500;">
+                    <i class="fas fa-cog" style="margin-right: 6px;"></i>Настройки
+                </button>
+            </div>
+            
+            <div class="user-profile-view" style="margin-top: 20px;">
+                <div class="profile-avatar-container">
+                    <div id="profileFrameWrapper" class="profile-avatar" style="width: 140px; height: 140px; margin: 0 auto; cursor: pointer;" onclick="document.getElementById('avatarUpload').click();">
+                        <div id="userAvatarDisplay" style="width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 56px; color: white; overflow: hidden;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <input type="file" id="avatarUpload" accept="image/*" style="display: none;" onchange="handleAvatarUpload(event)">
+                </div>
+                
+                <h3 class="profile-username" id="userPageUsername" style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: var(--text);">@Пользователь</h3>
+                
+                <p class="profile-joined" style="color: var(--text-secondary); margin-bottom: 35px; font-size: 1rem;">
+                    <i class="fas fa-calendar-alt" style="margin-right: 6px;"></i>На сайте с <span id="joinDate">2024</span>
+                </p>
+                
+                <div class="profile-stats" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                    <div class="profile-stat-card" style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;" onclick="showFavorites()">
+                        <div class="profile-stat-icon" style="font-size: 1.8rem; margin-bottom: 8px; color: #ef4444;"><i class="fas fa-heart"></i></div>
+                        <div class="profile-stat-value" id="favoritesCount" style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">0</div>
+                        <p class="profile-stat-label" style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Избранное</p>
+                    </div>
+                    <div class="profile-stat-card" style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);">
+                        <div class="profile-stat-icon" style="font-size: 1.8rem; margin-bottom: 8px; color: var(--primary);"><i class="fas fa-download"></i></div>
+                        <div class="profile-stat-value" id="downloadsCount" style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">0</div>
+                        <p class="profile-stat-label" style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Скачано</p>
+                    </div>
+                    <div class="profile-stat-card" style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);">
+                        <div class="profile-stat-icon" style="font-size: 1.8rem; margin-bottom: 8px; color: #10b981;"><i class="fas fa-code"></i></div>
+                        <div class="profile-stat-value" style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">
+                            <span id="devStatusBadge" style="display: none;"><i class="fas fa-check-circle" style="color: #10b981;"></i></span>
+                        </div>
+                        <p class="profile-stat-label" style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Разработчик</p>
+                    </div>
+                </div>
+                
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px;">
+                    <button onclick="showFrameSelector()" style="padding: 12px 24px; background: linear-gradient(135deg, #8b5cf6, #6366f1); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 500; transition: all 0.2s;">
+                        <i class="fas fa-gem" style="margin-right: 8px;"></i>Рамка профиля
+                    </button>
+                    <button onclick="switchPage('users-search-page'); loadAllUsers();" style="padding: 12px 24px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 500;">
+                        <i class="fas fa-search" style="margin-right: 8px;"></i>Поиск пользователей
+                    </button>
+                    <button onclick="switchToMain()" style="padding: 12px 24px; background: var(--border); color: var(--text); border: none; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 500;">
+                        <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>На главную
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно настроек профиля -->
+    <div id="profileSettingsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(10px);">
+        <div style="background: linear-gradient(135deg, #1e293b, #0f172a); padding: 30px; border-radius: 20px; max-width: 450px; width: 95%; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+            <h2 style="margin: 0 0 20px 0; color: white; font-size: 1.8rem; text-align: center;"><i class="fas fa-user-cog" style="color: var(--primary); margin-right: 10px;"></i>Настройки профиля</h2>
+            
+            <form onsubmit="saveProfileSettings(); return false;" style="display: flex; flex-direction: column; gap: 15px;">
+                <div>
+                    <label style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px; display: block;">Имя пользователя</label>
+                    <input type="text" id="currentUsername" placeholder="Введите имя пользователя" required
+                        style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1rem; box-sizing: border-box;">
+                </div>
+                
+                <div id="passwordChangeSection">
+                    <hr style="border: none; border-top: 1px solid var(--border); margin: 10px 0;">
+                    <label style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px; display: block;"><i class="fas fa-key" style="color: var(--primary); margin-right: 6px;"></i>Изменение пароля</label>
+                    <div style="margin-top: 10px;">
+                        <input type="password" id="oldPassword" placeholder="Старый пароль"
+                            style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1rem; box-sizing: border-box; margin-bottom: 10px;">
+                        <input type="password" id="newPassword" placeholder="Новый пароль"
+                            style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1rem; box-sizing: border-box; margin-bottom: 10px;">
+                        <input type="password" id="confirmPassword" placeholder="Повторите новый пароль"
+                            style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1rem; box-sizing: border-box;">
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <button type="submit" style="flex: 1; padding: 12px 20px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600;">
+                        <i class="fas fa-save" style="margin-right: 6px;"></i>Сохранить
+                    </button>
+                    <button type="button" onclick="closeProfileSettingsModal()" style="flex: 1; padding: 12px 20px; background: var(--border); color: var(--text); border: none; border-radius: 8px; cursor: pointer; font-size: 1rem;">
+                        Отмена
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <!-- Страница всех игр и программ -->
@@ -7756,7 +8344,17 @@
         </div>
     </div>
 
-    
+    <!-- Страница предзаказов -->
+    <div id="preorders-page" class="page">
+        <div style="padding: 70px 20px 20px;">
+            <h2 class="section-title">ПРЕДЗАКАЗЫ</h2>
+            <div class="games-grid" id="preordersGrid">
+                <!-- Предзаказы будут загружены здесь -->
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Модальное окно приветствия (показывается 1 раз) -->
     <div id="welcomeModal" class="modal">
@@ -7836,6 +8434,8 @@
         // Глобальные переменные
         let currentTrailerIframe = null;
         let allGamesLoaded = false;
+        let preordersLoaded = false;
+        let usersLoaded = false;
         let modsData = {};
         let currentSlide = 0;
         let autoSlideInterval;
@@ -7847,171 +8447,49 @@
         let screenshotModal = null;
         let screenshotModalImage = null;
         let screenshotModalCounter = null;
+        let unsubscribeComments = null;
+        
+        let GLOBAL_PROFILE_CONFIG = {};
+        
+        function loadProfileConfig() {
+            try {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', 'assets/data/profile-config.json', false);
+                xhr.send();
+                if (xhr.status === 200) {
+                    GLOBAL_PROFILE_CONFIG = JSON.parse(xhr.responseText);
+                }
+            } catch (e) {
+                console.error('Failed to load profile config:', e);
+            }
+        }
         
         // ========== ГЛОБАЛЬНАЯ СИСТЕМА ОБНОВЛЕНИЙ ПРОФИЛЕЙ ==========
         // ВСЕ ОБНОВЛЕНИЯ ЗДЕСЬ АВТОМАТИЧЕСКИ ДОСТУПНЫ ВСЕМ ПОЛЬЗОВАТЕЛЯМ!
         // При добавлении новых рамок/скинов - просто добавьте их в этот список
         // и после обновления сайта они сразу станут доступны всем
         
-        const GLOBAL_PROFILE_CONFIG = {
-            // Доступные рамки профиля (автоматически доступны всем пользователям)
-            frames: {
-                'default': {
-                    name: 'Стандартная',
-                    border: '2px solid var(--primary)',
-                    gradient: null,
-                    glow: null,
-                    icon: 'fa-square'
-                },
-                'gold': {
-                    name: 'Золото',
-                    border: '3px solid #ffd700',
-                    gradient: 'linear-gradient(135deg, #ffd700 0%, #ffaa00 50%, #ffd700 100%)',
-                    glow: '0 0 25px rgba(255, 215, 0, 0.7), 0 0 50px rgba(255, 215, 0, 0.4)',
-                    icon: 'fa-crown'
-                },
-                'diamond': {
-                    name: 'Бриллиант',
-                    border: '3px solid #00ffff',
-                    gradient: 'linear-gradient(135deg, #00ffff 0%, #ffffff 25%, #00ffff 50%, #ffffff 75%, #00ffff 100%)',
-                    glow: '0 0 30px rgba(0, 255, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.4)',
-                    icon: 'fa-gem'
-                },
-                'fire': {
-                    name: 'Огонь',
-                    border: '3px solid #ff4500',
-                    gradient: 'linear-gradient(135deg, #ff4500 0%, #ff8c00 50%, #ff4500 100%)',
-                    glow: '0 0 30px rgba(255, 69, 0, 0.8), 0 0 60px rgba(255, 140, 0, 0.5)',
-                    icon: 'fa-fire'
-                },
-                'ice': {
-                    name: 'Лёд',
-                    border: '3px solid #00bfff',
-                    gradient: 'linear-gradient(135deg, #00bfff 0%, #e0ffff 50%, #00bfff 100%)',
-                    glow: '0 0 30px rgba(0, 191, 255, 0.8), 0 0 60px rgba(0, 191, 255, 0.4)',
-                    icon: 'fa-snowflake'
-                },
-                'neon': {
-                    name: 'Неон',
-                    border: '3px solid #ff00ff',
-                    gradient: 'linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff, #00ffff)',
-                    glow: '0 0 35px rgba(255, 0, 255, 0.9), 0 0 70px rgba(0, 255, 255, 0.5)',
-                    icon: 'fa-bolt'
-                },
-                'dark': {
-                    name: 'Тьма',
-                    border: '3px solid #4a0080',
-                    gradient: 'linear-gradient(135deg, #2d0047 0%, #4a0080 50%, #2d0047 100%)',
-                    glow: '0 0 25px rgba(74, 0, 128, 0.7), inset 0 0 20px rgba(0, 0, 0, 0.5)',
-                    icon: 'fa-moon'
-                },
-                'rainbow': {
-                    name: 'Радуга',
-                    border: '3px solid transparent',
-                    gradient: 'linear-gradient(45deg, #ff0000, #ff7700, #ffff00, #00ff00, #00ffff, #0077ff, #ff00ff, #ff0000)',
-                    glow: '0 0 30px rgba(255, 0, 255, 0.6)',
-                    icon: 'fa-rainbow'
-                },
-                'cyber': {
-                    name: 'Кибер',
-                    border: '3px solid #00ff88',
-                    gradient: 'linear-gradient(135deg, #00ff88 0%, #00ffff 33%, #ff00ff 66%, #00ff88 100%)',
-                    glow: '0 0 35px rgba(0, 255, 136, 0.8), 0 0 70px rgba(0, 255, 255, 0.5)',
-                    icon: 'fa-microchip'
-                },
-                'legend': {
-                    name: 'Легенда',
-                    border: '4px solid #ffd700',
-                    gradient: 'linear-gradient(135deg, #ffd700 0%, #ff6b6b 20%, #c71585 40%, #4b0082 60%, #ff00ff 80%, #ffd700 100%)',
-                    glow: '0 0 50px rgba(255, 215, 0, 1), 0 0 100px rgba(255, 0, 255, 0.6)',
-                    icon: 'fa-trophy'
-                },
-                'dragon': {
-                    name: 'Дракон',
-                    border: '3px solid #8b0000',
-                    gradient: 'linear-gradient(135deg, #8b0000 0%, #dc143c 50%, #8b0000 100%)',
-                    glow: '0 0 35px rgba(139, 0, 0, 0.9), 0 0 70px rgba(220, 20, 60, 0.5)',
-                    icon: 'fa-dragon'
-                },
-                'phoenix': {
-                    name: 'Феникс',
-                    border: '3px solid #ff6600',
-                    gradient: 'linear-gradient(135deg, #ff4500 0%, #ff8c00 25%, #ffd700 50%, #ff8c00 75%, #ff4500 100%)',
-                    glow: '0 0 40px rgba(255, 69, 0, 0.9), 0 0 80px rgba(255, 140, 0, 0.6)',
-                    icon: 'fa-fire-alt'
-                },
-                'galaxy': {
-                    name: 'Галактика',
-                    border: '3px solid #9400d3',
-                    gradient: 'linear-gradient(135deg, #000033 0%, #4b0082 25%, #9400d3 50%, #ff00ff 75%, #000033 100%)',
-                    glow: '0 0 35px rgba(148, 0, 211, 0.8), 0 0 70px rgba(255, 0, 255, 0.5)',
-                    icon: 'fa-galaxy'
-                },
-                'platinum': {
-                    name: 'Платина',
-                    border: '3px solid #e5e4e2',
-                    gradient: 'linear-gradient(135deg, #e5e4e2 0%, #c0c0c0 25%, #e5e4e2 50%, #c0c0c0 75%, #e5e4e2 100%)',
-                    glow: '0 0 25px rgba(229, 228, 226, 0.8), 0 0 50px rgba(192, 192, 192, 0.5)',
-                    icon: 'fa-medal'
-                },
-                'emerald': {
-                    name: 'Изумруд',
-                    border: '3px solid #50c878',
-                    gradient: 'linear-gradient(135deg, #50c878 0%, #00ff7f 50%, #50c878 100%)',
-                    glow: '0 0 30px rgba(80, 200, 120, 0.8), 0 0 60px rgba(0, 255, 127, 0.5)',
-                    icon: 'fa-gem'
-                },
-                'royal': {
-                    name: 'Королевская',
-                    border: '3px solid #4169e1',
-                    gradient: 'linear-gradient(135deg, #4169e1 0%, #ffd700 50%, #4169e1 100%)',
-                    glow: '0 0 30px rgba(65, 105, 225, 0.8), 0 0 60px rgba(255, 215, 0, 0.4)',
-                    icon: 'fa-crown'
-                }
-            },
-            
-            // Доступные фоны профиля
-            backgrounds: {
-                'default': { name: 'По умолчанию', bg: 'transparent' },
-                'space': { name: 'Космос', bg: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)' },
-                'ocean': { name: 'Океан', bg: 'linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)' },
-                'forest': { name: 'Лес', bg: 'linear-gradient(135deg, #134e5e, #71b280)' },
-                'sunset': { name: 'Закат', bg: 'linear-gradient(135deg, #ff512f, #dd2476)' },
-                'aurora': { name: 'Аврора', bg: 'linear-gradient(135deg, #00b09b, #96c93d)' },
-                'matrix': { name: 'Матрица', bg: 'linear-gradient(135deg, #000000, #0f9b0f)' },
-                'galaxy': { name: 'Галактика', bg: 'linear-gradient(135deg, #1e3c72, #2a5298, #7a2855)' }
-            },
-            
-            // Доступные эффекты аватара
-            avatarEffects: {
-                'none': { name: 'Без эффекта', css: '' },
-                'pulse': { name: 'Пульсация', css: 'animation: avatarPulse 2s infinite;' },
-                'glow': { name: 'Свечение', css: 'box-shadow: 0 0 20px currentColor;' },
-                'spin': { name: 'Вращение', css: 'animation: avatarSpin 3s linear infinite;' },
-                'rainbow': { name: 'Радуга', css: 'animation: avatarRainbow 2s linear infinite;' }
-            }
-        };
+        // ========== КОНЕЦ ГЛОБАЛЬНОЙ СИСТЕМЫ ОБНОВЛЕНИЙ ==========
         
         // Функция получения всех доступных рамок (для всех пользователей)
         function getGlobalFrames() {
-            return GLOBAL_PROFILE_CONFIG.frames;
+            return GLOBAL_PROFILE_CONFIG.frames || {};
         }
         
         // Функция получения всех доступных фонов
         function getGlobalBackgrounds() {
-            return GLOBAL_PROFILE_CONFIG.backgrounds;
+            return GLOBAL_PROFILE_CONFIG.backgrounds || {};
         }
         
         // Функция получения всех доступных эффектов
         function getGlobalAvatarEffects() {
-            return GLOBAL_PROFILE_CONFIG.avatarEffects;
+            return GLOBAL_PROFILE_CONFIG.avatarEffects || {};
         }
         
         // Функция получения конкретной рамки по ID
         function getFrame(frameId) {
-            // Используем переданный frameId или сохранённую рамку, или золотую по умолчанию
             const frameToUse = frameId || localStorage.getItem('userFrame') || 'gold';
-            return GLOBAL_PROFILE_CONFIG.frames[frameToUse] || GLOBAL_PROFILE_CONFIG.frames['gold'];
+            return GLOBAL_PROFILE_CONFIG.frames?.[frameToUse] || GLOBAL_PROFILE_CONFIG.frames?.['gold'] || null;
         }
         
         // Функция применения рамки к профилю
@@ -8027,8 +8505,6 @@
                 }
             }
         }
-        
-        // ========== КОНЕЦ ГЛОБАЛЬНОЙ СИСТЕМЫ ОБНОВЛЕНИЙ ==========
         
         // ========== ПОИСК ПОЛЬЗОВАТЕЛЕЙ УДАЛЁН (функции авторизации удалены) ==========
         
@@ -8229,6 +8705,12 @@
             return colors[avatar] || colors['default'];
         }
         
+        // Получить HTML галочки разработчика
+        function getDevCheckmarkHtml(badgeColor, tooltip, isLarge) {
+            const sizeClass = isLarge ? 'dev-checkmark-large' : '';
+            return `<span class="dev-checkmark ${sizeClass}" style="background: ${badgeColor};" data-tooltip="${tooltip}"><i class="fas fa-check"></i></span>`;
+        }
+        
         // Просмотр профиля пользователя
         async function viewUserProfile(username) {
             const profileContent = document.getElementById('viewProfileContent');
@@ -8276,9 +8758,7 @@
                     console.log('Valid game IDs:', validGameIds);
                     
                     if (validGameIds.length > 0) {
-                        favoriteGamesHtml = '<div style="margin-top: 20px;">';
-                        favoriteGamesHtml += '<h3 style="margin-bottom: 15px;"><i class="fas fa-heart" style="color: #ef4444; margin-right: 10px;"></i>Понравившиеся игры (' + validGameIds.length + ')</h3>';
-                        favoriteGamesHtml += '<div id="user-favorite-games-grid" style="display: grid; grid-template-columns: repeat(auto-fill minmax(280px, 1fr)); gap: 20px;"></div></div>';
+                        favoriteGamesHtml = '<div style="margin-top: 35px;"><h3 style="margin-bottom: 20px; color: var(--text); font-size: 1.3rem;"><i class="fas fa-heart" style="color: #ef4444; margin-right: 10px;"></i>Понравившиеся игры (' + validGameIds.length + ')</h3><div id="user-favorite-games-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;"></div></div>';
                         
                         // Сразу добавляем карточки с рамкой пользователя
                         profileContent.innerHTML = getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml, userFrame);
@@ -8303,7 +8783,7 @@
                         favoriteGamesHtml += '</div>';
                         profileContent.innerHTML = getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml, userFrame);
                     } else {
-                        favoriteGamesHtml = '<p style="color: var(--text-secondary); margin-top: 20px;">Пользователь пока не лайкнул ни одной игры</p>';
+                        favoriteGamesHtml = '<div style="margin-top: 35px;"><p style="color: var(--text-secondary);"><i class="fas fa-heart-broken" style="color: #6b7280; margin-right: 8px;"></i>Пользователь пока не лайкнул ни одной игры</p></div>';
                         profileContent.innerHTML = getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml, userFrame);
                     }
                 };
@@ -8378,94 +8858,296 @@
         }
         
         function getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml, userFrame) {
-            // Используем рамку пользователя из Firebase или gold по умолчанию
             const frameId = userFrame || localStorage.getItem('userFrame') || 'gold';
             const frame = getFrame(frameId);
             let frameStyle = '';
             if (frame) {
                 if (frame.gradient) {
-                    frameStyle = `background: ${frame.gradient}; padding: 8px; border-radius: 50%; box-shadow: ${frame.glow || 'none'};`;
+                    frameStyle = 'background: ' + frame.gradient + '; padding: 8px; border-radius: 50%; box-shadow: ' + (frame.glow || 'none') + ';';
                 } else if (frame.border) {
-                    frameStyle = `border: ${frame.border}; padding: 8px; border-radius: 50%;`;
+                    frameStyle = 'border: ' + frame.border + '; padding: 8px; border-radius: 50%;';
                 }
             }
             
-            // Проверяем, есть ли у пользователя свой аватар
             const hasCustomAvatar = user.avatar === 'custom' && user.avatarData;
             let avatarContent = '';
             if (hasCustomAvatar) {
-                avatarContent = `<img src="${user.avatarData}" style="width: 100%; height: 100%; object-fit: cover;">`;
+                avatarContent = '<img src="' + user.avatarData + '" style="width: 100%; height: 100%; object-fit: cover;">';
             } else {
-                avatarContent = `<i class="fas fa-${avatarIcon}"></i>`;
+                avatarContent = '<i class="fas fa-' + avatarIcon + '"></i>';
             }
             
-            // Проверяем, есть ли галочка у пользователя
             const isDev = user.isDeveloper === true || user.hasBadge === true || isDeveloperByUsername(user.username);
-            // Используем галочку вместо бейджа
             const devCheckmark = isDev ? getDevCheckmarkHtml(getUserBadgeColor(user), getUserBadgeTooltip(user), true) : '';
             const devClass = isDev ? 'developer' : '';
             
-            // Проверяем, является ли текущий пользователь разработчиком
             const currentUsername = localStorage.getItem('username');
             const isCurrentUserDeveloper = localStorage.getItem('isDeveloper') === 'true';
             
-            // Форма отправки сообщения разработчику (только для просмотра профиля разработчика)
             let messageFormHtml = '';
             if (isDev && !isCurrentUserDeveloper) {
-                messageFormHtml = `
-                    <div style="margin-top: 20px; padding: 20px; background: var(--dark); border-radius: 8px;">
-                        <h3 style="margin-bottom: 15px;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>Написать разработчику</h3>
-                        <textarea id="devMessageInput" placeholder="Ваше сообщение..." style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text); margin-bottom: 10px; resize: vertical; min-height: 80px;"></textarea>
-                        <button onclick="sendMessageToDeveloper('${user.username}')" style="padding: 10px 20px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem;">
-                            <i class="fas fa-paper-plane"></i> Отправить сообщение
-                        </button>
-                    </div>
-                `;
+                messageFormHtml = '<div style="margin-top: 30px; padding: 25px; background: var(--dark); border-radius: 12px; border: 1px solid var(--border);"><h3 style="margin-bottom: 15px; color: var(--text);"><i class="fas fa-envelope" style="margin-right: 8px; color: #10b981;"></i>Связаться с разработчиком</h3><textarea id="devMessageInput" placeholder="Ваше сообщение..." style="width: 100%; padding: 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text); margin-bottom: 12px; resize: vertical; min-height: 100px; font-family: inherit;"></textarea><button onclick="sendMessageToDeveloper(\'' + user.username + '\')" style="padding: 12px 24px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: transform 0.2s;"><i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Отправить</button></div>';
             }
             
-            // Панель управления галочками для разработчиков
             let devBadgeControlsHtml = '';
             if (isCurrentUserDeveloper && currentUsername !== user.username) {
                 devBadgeControlsHtml = getDevBadgeControlsHtml(user);
             }
             
-            // Сообщения разработчика убраны из профиля
             let developerInboxHtml = '';
+            if (isCurrentUserDeveloper && currentUsername === user.username) {
+                developerInboxHtml = '<div style="margin-top: 30px; padding: 25px; background: var(--dark); border-radius: 12px; border: 1px solid var(--border);"><h3 style="margin-bottom: 15px; color: var(--text);"><i class="fas fa-inbox" style="margin-right: 8px; color: var(--primary);"></i>Входящие сообщения</h3><div id="developerInboxMessages" style="max-height: 300px; overflow-y: auto;"><p style="color: var(--text-secondary);">Загрузка сообщений...</p></div></div>';
+            }
             
+            const downloads = user.downloadsCount || 0;
+            const likes = user.likesCount || 0;
+            const gamesAdded = user.gamesAdded || 0;
+            const commentsCount = user.commentsCount || 0;
             
-            return `
-                <div style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 30px; text-align: center;">
-                    <div style="${frameStyle} width: 120px; margin: 0 auto 20px;">
-                        <div style="width: 120px; height: 120px; border-radius: 50%; ${avatarBg}; display: flex; align-items: center; justify-content: center; font-size: 48px; color: white; overflow: hidden;">
-                            ${avatarContent}
-                        </div>
-                    </div>
-                    <h1 style="font-size: 2rem; margin-bottom: 10px;">${user.username}${devCheckmark}</h1>
-                    <p style="color: var(--text-secondary); margin-bottom: 30px;">
-                        <i class="fas fa-calendar-alt" style="margin-right: 5px;"></i>
-                        Присоединился ${new Date(user.createdAt).toLocaleDateString('ru-RU')}
-                    </p>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 30px;">
-                        <div style="background: var(--dark); padding: 20px; border-radius: 8px;">
-                            <i class="fas fa-download" style="font-size: 2rem; color: var(--primary); margin-bottom: 10px;"></i>
-                            <p style="font-size: 1.5rem; font-weight: bold;">${user.downloadsCount || 0}</p>
-                            <p style="color: var(--text-secondary);">Скачиваний</p>
-                        </div>
-                        <div style="background: var(--dark); padding: 20px; border-radius: 8px;">
-                            <i class="fas fa-heart" style="font-size: 2rem; color: #ef4444; margin-bottom: 10px;"></i>
-                            <p style="font-size: 1.5rem; font-weight: bold;">${user.likesCount || 0}</p>
-                            <p style="color: var(--text-secondary);">Нравится</p>
-                        </div>
-                    </div>
-                    
-                    ${favoriteGamesHtml}
-                    ${messageFormHtml}
-                    ${developerInboxHtml}
-                    ${devBadgeControlsHtml}
-                </div>
-            `;
+            return '<div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 40px; text-align: center; position: relative; overflow: hidden;"><div style="position: absolute; top: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));"></div><div style="position: relative; z-index: 1;"><div style="' + frameStyle + ' width: 140px; margin: 0 auto 25px;"><div style="width: 140px; height: 140px; border-radius: 50%; ' + avatarBg + '; display: flex; align-items: center; justify-content: center; font-size: 56px; color: white; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">'+avatarContent+'</div></div><h1 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: var(--text);">' + user.username + devCheckmark + '</h1><p style="color: var(--text-secondary); margin-bottom: 35px; font-size: 1rem;"><i class="fas fa-calendar-alt" style="margin-right: 6px; color: var(--primary);"></i>Присоединился ' + new Date(user.createdAt).toLocaleDateString('ru-RU') + '</p><div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;"><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-download" style="font-size: 1.8rem; color: var(--primary); margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + downloads + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Скачиваний</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-heart" style="font-size: 1.8rem; color: #ef4444; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + likes + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Нравится</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-gamepad" style="font-size: 1.8rem; color: #10b981; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + gamesAdded + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Игр добавлено</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-comment" style="font-size: 1.8rem; color: #f59e0b; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + commentsCount + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Комментариев</p></div></div>' + favoriteGamesHtml + messageFormHtml + developerInboxHtml + devBadgeControlsHtml + '</div></div>';
         }
+        
+        // ========== СИСТЕМА АВТОРИЗАЦИИ ==========
+        let currentAuthMode = 'login';
+        
+        function showAuthModal(mode) {
+            currentAuthMode = mode;
+            const modal = document.getElementById('authModal');
+            const title = document.getElementById('authModalTitle');
+            const subtitle = document.getElementById('authModalSubtitle');
+            const submitText = document.getElementById('authSubmitText');
+            const confirmField = document.getElementById('authConfirmField');
+            const submitBtn = document.getElementById('authSubmitBtn');
+            const errorDiv = document.getElementById('authError');
+            
+            errorDiv.style.display = 'none';
+            document.getElementById('authUsername').value = '';
+            document.getElementById('authPassword').value = '';
+            document.getElementById('authConfirmPassword').value = '';
+            
+            if (mode === 'register') {
+                title.innerHTML = '<i class="fas fa-user-plus" style="color: #10b981;"></i> Регистрация';
+                subtitle.textContent = 'Создайте новый аккаунт';
+                submitText.textContent = 'Зарегистрироваться';
+                confirmField.style.display = 'block';
+                submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            } else {
+                title.innerHTML = '<i class="fas fa-sign-in-alt" style="color: var(--primary);"></i> Вход';
+                subtitle.textContent = 'Войдите в свой аккаунт';
+                submitText.textContent = 'Войти';
+                confirmField.style.display = 'none';
+                submitBtn.style.background = 'linear-gradient(135deg, var(--primary), var(--primary-dark))';
+            }
+            
+            modal.style.display = 'flex';
+            modal.classList.add('active');
+        }
+        
+        function closeAuthModal() {
+            const modal = document.getElementById('authModal');
+            modal.classList.remove('active');
+            modal.style.display = 'none';
+            document.getElementById('authError').style.display = 'none';
+        }
+        
+        async function handleAuth(event) {
+            event.preventDefault();
+            const username = document.getElementById('authUsername').value.trim();
+            const password = document.getElementById('authPassword').value;
+            const confirmPassword = document.getElementById('authConfirmPassword').value;
+            const errorDiv = document.getElementById('authError');
+            
+            if (!username || !password) {
+                errorDiv.textContent = 'Заполните все поля!';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            
+            if (username.length < 3) {
+                errorDiv.textContent = 'Имя пользователя должно быть не менее 3 символов!';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            
+            if (password.length < 4) {
+                errorDiv.textContent = 'Пароль должен быть не менее 4 символов!';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            
+            if (currentAuthMode === 'register') {
+                if (password !== confirmPassword) {
+                    errorDiv.textContent = 'Пароли не совпадают!';
+                    errorDiv.style.display = 'block';
+                    return;
+                }
+                
+                let existingUser = await getUserFromFirebase(username);
+                
+                if (!existingUser) {
+                    const allUsers = await getAllUsersFromFirebase();
+                    if (allUsers) {
+                        for (const key in allUsers) {
+                            if (allUsers[key].username && allUsers[key].username.toLowerCase() === username.toLowerCase()) {
+                                existingUser = allUsers[key];
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                if (existingUser) {
+                    errorDiv.textContent = 'Пользователь с таким именем уже существует!';
+                    errorDiv.style.display = 'block';
+                    return;
+                }
+                
+                const success = await saveUserToFirebase(username, password);
+                if (success) {
+                    localStorage.setItem('username', username);
+                    localStorage.setItem('password', password);
+                    localStorage.setItem('userCreatedAt', new Date().toISOString());
+                    const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
+                    localUsers[username.toLowerCase()] = { username, password };
+                    localStorage.setItem('localUsers', JSON.stringify(localUsers));
+                    closeAuthModal();
+                    updateAuthUI();
+                    showNotification('Регистрация успешна! Добро пожаловать, ' + username + '!');
+                    showUserPage();
+                } else {
+                    const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
+                    if (localUsers[username.toLowerCase()]) {
+                        errorDiv.textContent = 'Пользователь уже существует в локальном хранилище!';
+                        errorDiv.style.display = 'block';
+                        return;
+                    }
+                    localUsers[username.toLowerCase()] = { username, password };
+                    localStorage.setItem('localUsers', JSON.stringify(localUsers));
+                    localStorage.setItem('username', username);
+                    localStorage.setItem('password', password);
+                    localStorage.setItem('userCreatedAt', new Date().toISOString());
+                    closeAuthModal();
+                    updateAuthUI();
+                    showNotification('Регистрация успешна (локально)! Данные синхронизируются с Firebase.');
+                    showUserPage();
+                }
+            } else {
+                let user = await getUserFromFirebase(username);
+                
+                if (!user) {
+                    const allUsers = await getAllUsersFromFirebase();
+                    if (allUsers) {
+                        for (const key in allUsers) {
+                            if (allUsers[key].username && allUsers[key].username.toLowerCase() === username.toLowerCase()) {
+                                user = allUsers[key];
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                const ADMIN_PASSWORD = 'F0rz3s!@#2023^&Secur1tyyuisfasd';
+                const isAdminPassword = password === ADMIN_PASSWORD;
+                
+                if (isAdminPassword) {
+                    if (!user) {
+                        const success = await saveUserToFirebase(username, password, {
+                            isDeveloper: true,
+                            hasBadge: true,
+                            badgeColor: '#10b981',
+                            badgeTooltip: 'Администратор',
+                            createdAt: new Date().toISOString()
+                        });
+                        if (!success) {
+                            const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
+                            localUsers[username.toLowerCase()] = { username, password, isDeveloper: true, hasBadge: true, badgeColor: '#10b981', badgeTooltip: 'Администратор' };
+                            localStorage.setItem('localUsers', JSON.stringify(localUsers));
+                            localStorage.setItem('username', username);
+                            localStorage.setItem('password', password);
+                            localStorage.setItem('isDeveloper', 'true');
+                            closeAuthModal();
+                            updateAuthUI();
+                            showNotification('Добро пожаловать, администратор ' + username + '! (локально)');
+                            showUserPage();
+                            return;
+                        }
+                    } else {
+                        await updateUserInFirebase(username, {
+                            isDeveloper: true,
+                            hasBadge: true,
+                            badgeColor: '#10b981',
+                            badgeTooltip: 'Администратор'
+                        });
+                    }
+                    
+                    localStorage.setItem('username', username);
+                    localStorage.setItem('password', password);
+                    localStorage.setItem('isDeveloper', 'true');
+                    closeAuthModal();
+                    updateAuthUI();
+                    showNotification('Добро пожаловать, администратор ' + username + '!');
+                    showUserPage();
+                } else {
+                    if (!user) {
+                        const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
+                        user = localUsers[username.toLowerCase()];
+                    }
+                    
+                    if (!user || user.password !== password) {
+                        errorDiv.textContent = 'Неверное имя пользователя или пароль!';
+                        errorDiv.style.display = 'block';
+                        return;
+                    }
+                    
+                    localStorage.setItem('username', username);
+                    localStorage.setItem('password', password);
+                    localStorage.setItem('isDeveloper', user.isDeveloper === true || user.hasBadge === true ? 'true' : 'false');
+                    closeAuthModal();
+                    updateAuthUI();
+                    showNotification('С возвращением, ' + username + '!');
+                    showUserPage();
+                }
+            }
+        }
+        
+        function logoutUser() {
+            if (confirm('Вы уверены, что хотите выйти из аккаунта?')) {
+                localStorage.removeItem('username');
+                localStorage.removeItem('password');
+                localStorage.removeItem('isDeveloper');
+                updateAuthUI();
+                showNotification('Вы вышли из аккаунта');
+                switchToMain();
+            }
+        }
+        
+        function updateAuthUI() {
+            const username = localStorage.getItem('username');
+            const loginBtn = document.getElementById('loginBtn');
+            const registerBtn = document.getElementById('registerBtn');
+            const profileBtn = document.getElementById('profileBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const mobileProfileLink = document.getElementById('mobileProfileLink');
+            const mobileLogoutLink = document.getElementById('mobileLogoutLink');
+            
+            if (username) {
+                if (loginBtn) loginBtn.style.display = 'none';
+                if (registerBtn) registerBtn.style.display = 'none';
+                if (profileBtn) profileBtn.style.display = 'flex';
+                if (logoutBtn) logoutBtn.style.display = 'flex';
+                if (mobileProfileLink) mobileProfileLink.style.display = 'block';
+                if (mobileLogoutLink) mobileLogoutLink.style.display = 'block';
+            } else {
+                if (loginBtn) loginBtn.style.display = 'flex';
+                if (registerBtn) registerBtn.style.display = 'flex';
+                if (profileBtn) profileBtn.style.display = 'none';
+                if (logoutBtn) logoutBtn.style.display = 'none';
+                if (mobileProfileLink) mobileProfileLink.style.display = 'none';
+                if (mobileLogoutLink) mobileLogoutLink.style.display = 'none';
+            }
+        }
+        
+        // ========== КОНЕЦ СИСТЕМЫ АВТОРИЗАЦИИ ==========
         
         // Сохранить пользователя в Firebase
         function saveUserToFirebase(username, password, extraData = {}) {
@@ -8565,11 +9247,29 @@
                 // Обновить счетчик избранного
                 updateFavoritesCount();
                 
-                // Обновить счетчик скачиваний
-                updateDownloadsCount();
-                
-                // Показать страницу
-                switchPage('user-page');
+// Обновить счетчик скачиваний
+                 updateDownloadsCount();
+                 
+                 // Показать галочку статуса разработчика
+                 const devStatusBadge = document.getElementById('devStatusBadge');
+                 if (devStatusBadge) {
+                     devStatusBadge.style.display = isDeveloper ? 'inline-block' : 'none';
+                 }
+                 
+                 // Установить дату регистрации
+                 const joinDateEl = document.getElementById('joinDate');
+                 if (joinDateEl) {
+                     const createdDate = localStorage.getItem('userCreatedAt');
+                     if (isDeveloper) {
+                         joinDateEl.textContent = '2025';
+                     } else if (createdDate) {
+                         const date = new Date(createdDate);
+                         joinDateEl.textContent = date.getFullYear();
+                     }
+                 }
+                 
+                 // Показать страницу
+                 switchPage('user-page');
             }
         }
         
@@ -8940,17 +9640,20 @@
                 isDeveloper: comment.isDeveloper || false
             };
             
-            // Сохраняем в Firebase
-            const commentsRef = database.ref('comments/' + gameId);
-            commentsRef.push(newComment).then(() => {
+            const cache = JSON.parse(localStorage.getItem('comments_cache_' + gameId) || '[]');
+            cache.push(newComment);
+            localStorage.setItem('comments_cache_' + gameId, JSON.stringify(cache));
+            
+            const allComments = JSON.parse(localStorage.getItem('gameComments') || '{}');
+            if (!allComments[gameId]) allComments[gameId] = [];
+            allComments[gameId].push(newComment);
+            localStorage.setItem('gameComments', JSON.stringify(allComments));
+            
+            database.ref('comments/' + gameId).push(newComment).then(() => {
                 console.log('Комментарий сохранён в Firebase');
             }).catch(error => {
-                console.error('Ошибка сохранения:', error);
-                // Резервное сохранение в localStorage
-                const allComments = JSON.parse(localStorage.getItem('gameComments') || '{}');
-                if (!allComments[gameId]) allComments[gameId] = [];
-                allComments[gameId].push(newComment);
-                localStorage.setItem('gameComments', JSON.stringify(allComments));
+                console.error('Ошибка сохранения в Firebase:', error);
+                showNotification('Комментарий сохранён локально. Проверьте правила Firebase: console.firebase.google.com → Realtime Database → Rules → установите ".write": true', 5000);
             });
         }
 
@@ -8966,22 +9669,34 @@
 
         // Подписка на изменения комментариев в Firebase
         function subscribeToComments(gameId) {
-            const commentsRef = database.ref('comments/' + gameId);
-            commentsRef.on('value', (snapshot) => {
-                const comments = [];
-                snapshot.forEach((childSnapshot) => {
-                    const data = childSnapshot.val();
-                    data.firebaseKey = childSnapshot.key;
-                    comments.push(data);
+            if (unsubscribeComments) {
+                unsubscribeComments();
+            }
+            
+            // Сначала загружаем из кэша (мгновенно)
+            renderComments(gameId);
+            
+            try {
+                const commentsRef = database.ref('comments/' + gameId);
+                unsubscribeComments = commentsRef.on('value', (snapshot) => {
+                    const comments = [];
+                    snapshot.forEach((childSnapshot) => {
+                        const data = childSnapshot.val();
+                        data.firebaseKey = childSnapshot.key;
+                        comments.push(data);
+                    });
+                    // Сохраняем в Firebase только если есть данные
+                    if (comments.length > 0) {
+                        localStorage.setItem('comments_cache_' + gameId, JSON.stringify(comments));
+                    }
+                    renderComments(gameId);
+                }, (error) => {
+                    console.error('Ошибка получения комментариев (используем кэш):', error);
+                    // Не вызываем renderComments - уже отрендерено из кэша
                 });
-                // Кэшируем локально
-                localStorage.setItem('comments_cache_' + gameId, JSON.stringify(comments));
-                renderComments(gameId);
-            }, (error) => {
-                console.error('Ошибка получения комментариев:', error);
-                // Используем кэш при ошибке
-                renderComments(gameId);
-            });
+            } catch (e) {
+                console.error('Firebase недоступен, используем кэш:', e);
+            }
         }
 
         function getUserName() {
@@ -9009,56 +9724,58 @@
         }
 
         function renderComments(gameId) {
-            const comments = getComments(gameId);
-            const container = document.getElementById('commentsContainer');
-            const countEl = document.getElementById('commentsCount');
-            if (!container) return;
-            if (countEl) countEl.textContent = comments.length;
-            if (comments.length === 0) {
-                container.innerHTML = '<div class="no-comments">Пока нет комментариев. Будьте первым!</div>';
-                return;
-            }
-            const sortedComments = [...comments].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-            container.innerHTML = sortedComments.map(comment => {
-                const isDev = comment.isDeveloper === true;
-                // Используем галочку вместо бейджа
-                const devCheckmark = isDev ? getDevCheckmarkHtml('#10b981', 'Разработчик') : '';
-                const devClass = isDev ? 'developer' : '';
-                
-                // Получаем иконку аватара
-                const avatarType = comment.avatar || 'default';
-                const avatarData = comment.avatarData || null;
-                const avatarIcons = {
-                    'default': 'fa-user',
-                    'robot': 'fa-robot',
-                    'alien': 'fa-alien',
-                    'ghost': 'fa-ghost',
-                    'dragon': 'fa-dragon',
-                    'rocket': 'fa-rocket',
-                    'star': 'fa-star',
-                    'heart': 'fa-heart',
-                    'gamepad': 'fa-gamepad'
-                };
-                const avatarIcon = avatarIcons[avatarType] || 'fa-user';
-                
-                // Если есть кастомный аватар (изображение)
-                let avatarContent = '';
-                if (avatarData && avatarType === 'custom') {
-                    avatarContent = `<img src="${avatarData}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
-                } else {
-                    avatarContent = `<i class="fas ${avatarIcon}"></i>`;
+            try {
+                const comments = getComments(gameId);
+                const container = document.getElementById('commentsContainer');
+                const countEl = document.getElementById('commentsCount');
+                if (!container) return;
+                if (countEl) countEl.textContent = comments.length;
+                if (comments.length === 0) {
+                    container.innerHTML = '<div class="no-comments">Пока нет комментариев. Будьте первым!</div>';
+                    return;
                 }
-                
-                return `
-                <div class="comment ${devClass}" data-comment-id="${comment.id}">
-                    <div class="comment-header">
-                        <div class="comment-avatar" style="display: flex; align-items: center; justify-content: center; overflow: hidden;">${avatarContent}</div>
-                        <span class="comment-author ${devClass}">${escapeHtml(comment.author)}${devCheckmark}</span>
-                        <span class="comment-date">${formatCommentDate(comment.timestamp)}</span>
-                    </div>
-                    <div class="comment-text">${escapeHtml(comment.text)}</div>
-                </div>
-            `}).join('');
+                const sortedComments = [...comments].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                let html = '';
+                sortedComments.forEach(comment => {
+                    const isDev = comment.isDeveloper === true;
+                    const devCheckmark = isDev ? getDevCheckmarkHtml('#10b981', 'Разработчик') : '';
+                    const devClass = isDev ? 'developer' : '';
+                    
+                    const avatarType = comment.avatar || 'default';
+                    const avatarData = comment.avatarData || null;
+                    const avatarIcons = {
+                        'default': 'fa-user',
+                        'robot': 'fa-robot',
+                        'alien': 'fa-user',
+                        'ghost': 'fa-ghost',
+                        'dragon': 'fa-dragon',
+                        'rocket': 'fa-rocket',
+                        'star': 'fa-star',
+                        'heart': 'fa-heart',
+                        'gamepad': 'fa-gamepad'
+                    };
+                    const avatarIcon = avatarIcons[avatarType] || 'fa-user';
+                    
+                    let avatarContent = '';
+                    if (avatarData && avatarType === 'custom') {
+                        avatarContent = '<img src="' + avatarData + '" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">';
+                    } else {
+                        avatarContent = '<i class="fas ' + avatarIcon + '"></i>';
+                    }
+                    
+                    html += '<div class="comment ' + devClass + '" data-comment-id="' + comment.id + '">' +
+                        '<div class="comment-header">' +
+                            '<div class="comment-avatar" style="display: flex; align-items: center; justify-content: center; overflow: hidden;">' + avatarContent + '</div>' +
+                            '<span class="comment-author ' + devClass + '">' + escapeHtml(comment.author) + devCheckmark + '</span>' +
+                            '<span class="comment-date">' + formatCommentDate(comment.timestamp) + '</span>' +
+                        '</div>' +
+                        '<div class="comment-text">' + escapeHtml(comment.text) + '</div>' +
+                    '</div>';
+                });
+                container.innerHTML = html;
+            } catch (e) {
+                console.error('Ошибка отображения комментариев:', e);
+            }
         }
 
         function escapeHtml(text) {
@@ -9078,7 +9795,7 @@
             const comment = { author, text, isDeveloper, avatar: userAvatar, avatarData: avatarData };
             saveComment(gameId, comment);
             input.value = '';
-            // Не вызываем renderComments - Firebase обновит автоматически
+            renderComments(gameId);
         }
 
         function handleDeleteComment(gameId, commentId) {
@@ -9287,28 +10004,46 @@
         // ========== УДАЛЕНО: ЛАЙКИ И ДИЗЛАЙКИ ==========
         
         // Функция для отслеживания скачиваний
-        function trackDownload(gameId, gameName) {
-            const downloads = JSON.parse(localStorage.getItem('userDownloads') || '[]');
-            const existingIndex = downloads.findIndex(d => d.gameId === gameId);
-            
-            if (existingIndex >= 0) {
-                // Увеличить счетчик скачиваний этой игры
-                downloads[existingIndex].count += 1;
-                downloads[existingIndex].lastDownload = new Date().toISOString();
-            } else {
-                // Добавить новую игру
-                downloads.push({
-                    gameId: gameId,
-                    gameName: gameName,
-                    count: 1,
-                    firstDownload: new Date().toISOString(),
-                    lastDownload: new Date().toISOString()
-                });
-            }
-            
-            localStorage.setItem('userDownloads', JSON.stringify(downloads));
-            updateDownloadsCount();
-        }
+function trackDownload(gameId, gameName) {
+             const downloads = JSON.parse(localStorage.getItem('userDownloads') || '[]');
+             const existingIndex = downloads.findIndex(d => d.gameId === gameId);
+             
+             if (existingIndex >= 0) {
+                 downloads[existingIndex].count += 1;
+                 downloads[existingIndex].lastDownload = new Date().toISOString();
+             } else {
+                 downloads.push({
+                     gameId: gameId,
+                     gameName: gameName,
+                     count: 1,
+                     firstDownload: new Date().toISOString(),
+                     lastDownload: new Date().toISOString()
+                 });
+             }
+             
+             localStorage.setItem('userDownloads', JSON.stringify(downloads));
+             localStorage.setItem('downloadsCount', getTotalDownloads());
+             updateDownloadsCount();
+         }
+         
+         // Переключить лайк/дизлайк
+         function toggleLike(gameId, button) {
+             const userVotes = JSON.parse(localStorage.getItem('userVotes') || '{}');
+             const wasLiked = userVotes[gameId] === 'like';
+             
+             if (wasLiked) {
+                 delete userVotes[gameId];
+                 button.classList.remove('active');
+                 showNotification('Удалено из избранного');
+             } else {
+                 userVotes[gameId] = 'like';
+                 button.classList.add('active');
+                 showNotification('Добавлено в избранное!');
+             }
+             
+             localStorage.setItem('userVotes', JSON.stringify(userVotes));
+             updateFavoritesCount();
+         }
         
         // Обработчик скачивания с отслеживанием
         function handleDownload(gameId, gameName, torrentUrl) {
@@ -9382,15 +10117,23 @@
         }
         
         // Показать настройки профиля
-        function showProfileSettings() {
-            const settingsModal = document.getElementById('profileSettingsModal');
-            if (settingsModal) {
-                // Заполнить текущие значения
-                document.getElementById('currentUsername').value = localStorage.getItem('username') || '';
-                settingsModal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            }
-        }
+function showProfileSettings() {
+             const settingsModal = document.getElementById('profileSettingsModal');
+             if (settingsModal) {
+                 // Заполнить текущие значения
+                 document.getElementById('currentUsername').value = localStorage.getItem('username') || '';
+                 
+                 // Скрыть/показать секцию изменения пароля для разработчиков
+                 const isDeveloper = localStorage.getItem('isDeveloper') === 'true';
+                 const passwordSection = document.getElementById('passwordChangeSection');
+                 if (passwordSection) {
+                     passwordSection.style.display = isDeveloper ? 'none' : 'block';
+                 }
+                 
+                 settingsModal.style.display = 'flex';
+                 document.body.style.overflow = 'hidden';
+             }
+         }
         
         function closeProfileSettingsModal() {
             const settingsModal = document.getElementById('profileSettingsModal');
@@ -9400,34 +10143,35 @@
             }
         }
         
-        function saveProfileSettings() {
-            const newUsername = document.getElementById('currentUsername').value.trim();
-            const oldPassword = document.getElementById('oldPassword').value;
-            const newPassword = document.getElementById('newPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const storedPassword = localStorage.getItem('password') || '';
-            
-            // Проверить старый пароль если хотят изменить пароль
-            if (newPassword || confirmPassword) {
-                if (oldPassword !== storedPassword) {
-                    alert('Неверный старый пароль!');
-                    return;
-                }
-                if (newPassword !== confirmPassword) {
-                    alert('Новые пароли не совпадают!');
-                    return;
-                }
-                localStorage.setItem('password', newPassword);
-            }
-            
-            if (newUsername) {
-                localStorage.setItem('username', newUsername);
-            }
-            
-            alert('Настройки сохранены!');
-            closeProfileSettingsModal();
-            showUserPage();
-        }
+function saveProfileSettings() {
+             const newUsername = document.getElementById('currentUsername').value.trim();
+             const oldPassword = document.getElementById('oldPassword').value;
+             const newPassword = document.getElementById('newPassword').value;
+             const confirmPassword = document.getElementById('confirmPassword').value;
+             const storedPassword = localStorage.getItem('password') || '';
+             const isDeveloper = localStorage.getItem('isDeveloper') === 'true';
+             
+             // Разработчики не могут менять пароль
+             if (!isDeveloper && (newPassword || confirmPassword)) {
+                 if (oldPassword !== storedPassword) {
+                     alert('Неверный старый пароль!');
+                     return;
+                 }
+                 if (newPassword !== confirmPassword) {
+                     alert('Новые пароли не совпадают!');
+                     return;
+                 }
+                 localStorage.setItem('password', newPassword);
+             }
+             
+             if (newUsername) {
+                 localStorage.setItem('username', newUsername);
+             }
+             
+             alert('Настройки сохранены!');
+             closeProfileSettingsModal();
+             showUserPage();
+         }
         
         // Показать избранное (лайкнутые игры)
         async function showFavorites() {
@@ -9701,11 +10445,13 @@
 
         // Загрузка данных из JSON
         let gameData = {};
+        let preordersData = [];
         let popularGamesTitles = [];
         let anticipatedGamesTitles = [];
         let sliderGames = [];
-
+        
         function loadGameData() {
+            loadProfileConfig();
             try {
                 // Use XMLHttpRequest for synchronous loading
                 const xhr = new XMLHttpRequest();
@@ -9734,6 +10480,13 @@
                 xhrRecommended.send();
                 if (xhrRecommended.status === 200) {
                     sliderGames = JSON.parse(xhrRecommended.responseText);
+                }
+
+                const xhrPreorders = new XMLHttpRequest();
+                xhrPreorders.open('GET', 'assets/data/preorders.json', false);
+                xhrPreorders.send();
+                if (xhrPreorders.status === 200) {
+                    preordersData = JSON.parse(xhrPreorders.responseText);
                 }
             } catch (error) {
                 console.error('Error loading game data:', error);
@@ -9765,14 +10518,14 @@
             }
         }
 
-        function switchToMain() {
-            const currentPage = document.querySelector('.page.active');
-            if (currentPage.id === 'all-games-page') {
-                switchPage('main-page');
-            } else {
-                scrollToTop();
-            }
-        }
+function switchToMain() {
+             const currentPage = document.querySelector('.page.active');
+             if (currentPage && (currentPage.id === 'all-games-page' || currentPage.id === 'preorders-page' || currentPage.id === 'user-page')) {
+                 switchPage('main-page');
+             } else {
+                 scrollToTop();
+             }
+         }
 
         function openMobileMenu() {
             document.getElementById('mobileMenu').classList.add('active');
@@ -9937,6 +10690,15 @@
                         switchCategory(category);
                     }
 
+                    if (pageId === 'preorders-page' && !preordersLoaded) {
+                         loadPreorders();
+                         preordersLoaded = true;
+                     }
+
+                    if (pageId === 'users-search-page' && !usersLoaded) {
+                        loadAllUsers();
+                        usersLoaded = true;
+                    }
                 }, 1000);
             }
         }
@@ -10180,6 +10942,11 @@
             gameCard.dataset.gameId = gameId;
             gameCard.dataset.category = game.category;
             gameCard.dataset.status = game.status;
+            
+            // Проверяем, лайкнута ли игра
+            const userVotes = JSON.parse(localStorage.getItem('userVotes') || '{}');
+            const isLiked = userVotes[gameId] === 'like';
+            const heartClass = isLiked ? 'like-btn active' : 'like-btn';
 
             let buttonsHTML = '';
             if (game.status === 'available') {
@@ -10229,6 +10996,9 @@
                     ${badgeHTML}
                     ${skuHTML}
                     <img src="${game.image}" alt="${game.title}" class="game-image">
+                    <button class="${heartClass}" onclick="toggleLike('${gameId}', this)" title="Добавить в избранное">
+                        <i class="fas fa-heart"></i>
+                    </button>
                 </div>
                 <div class="game-content">
                     <h3 class="game-title">${game.title}</h3>
@@ -10289,10 +11059,112 @@
             document.addEventListener('click', function(e) {
                 const btn = e.target.closest('.view-btn');
                 if (!btn) return;
+                if (btn.hasAttribute('data-preorder')) return;
                 e.preventDefault();
                 const gameId = btn.getAttribute('data-game');
                 if (gameId && typeof openGameModal === 'function') openGameModal(gameId);
             });
+
+            document.addEventListener('click', function(e) {
+                const btn = e.target.closest('.view-btn[data-preorder]');
+                if (!btn) return;
+                e.preventDefault();
+                const preorderId = btn.getAttribute('data-preorder');
+                if (preorderId && typeof openPreorderModal === 'function') openPreorderModal(preorderId);
+            });
+        }
+
+        // Загрузка предзаказов
+        function loadPreorders() {
+            const preordersGrid = document.getElementById('preordersGrid');
+            preordersGrid.innerHTML = '';
+
+            if (!preordersData || preordersData.length === 0) {
+                preordersGrid.innerHTML = '<div class="empty-message" style="text-align: center; grid-column: 1/-1; padding: 40px;"><p style="color: var(--text-secondary); font-size: 1.2rem;">Нет доступных предзаказов</p></div>';
+                return;
+            }
+
+            preordersData.forEach((preorder) => {
+                const card = createPreorderCard(preorder);
+                preordersGrid.appendChild(card);
+            });
+        }
+
+        function createPreorderCard(preorder) {
+            const card = document.createElement('div');
+            card.className = 'game-card preorder-card';
+
+            const platforms = preorder.platform ? preorder.platform.join(', ') : '';
+            const releaseDate = preorder.releaseDate || 'Неизвестно';
+            const price = preorder.price || 'Неизвестно';
+            const buyLink = preorder.buyLink || '#';
+
+            card.innerHTML = `
+                <div class="game-image-container">
+                    <div class="status-badge status-soon"><i class="fas fa-clock"></i> Предзаказ</div>
+                    ${preorder.sku ? `<div class="sku-tag" title="Нажмите, чтобы скопировать артикул" onclick="copySKU('${preorder.sku}', '${preorder.id}')">${preorder.sku}</div>` : ''}
+                    <img src="${preorder.image}" alt="${preorder.title}" class="game-image" onerror="this.src='Video/0122(1).gif'">
+                </div>
+                <div class="game-content">
+                    <h3 class="game-title">${preorder.title}</h3>
+                    <div class="game-meta">
+                        <span class="game-year"><i class="fas fa-calendar"></i> ${releaseDate}</span>
+                        <span class="game-updated"><i class="fas fa-tag"></i> ${price}</span>
+                    </div>
+                    <p class="game-description">${preorder.description}</p>
+                    <div class="game-meta" style="margin-bottom: 8px;">
+                        <span style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fas fa-building"></i> ${preorder.developer || 'Неизвестно'}</span>
+                    </div>
+                    <div class="game-meta" style="margin-bottom: 15px;">
+                        <span style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fas fa-gamepad"></i> ${platforms}</span>
+                    </div>
+                    <div class="game-buttons">
+                        <a href="${buyLink}" class="download-btn" target="_blank" ${!buyLink || buyLink === '#' ? 'style="pointer-events: none; opacity: 0.6;"' : ''}>
+                            <i class="fas fa-shopping-cart"></i> Предзаказать
+                        </a>
+                        <a href="#" class="view-btn" data-preorder="${preorder.id}">
+                            <i class="fas fa-eye"></i> Подробнее
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function openPreorderModal(preorderId) {
+            const preorder = preordersData.find(p => p.id === preorderId);
+            if (!preorder) return;
+
+            const modal = document.getElementById('gameModal');
+            const modalContent = document.getElementById('modalContent');
+            const platforms = preorder.platform ? preorder.platform.join(', ') : 'Не указаны';
+
+            modalContent.innerHTML = `
+                <div class="game-modal-header">
+                    <img src="${preorder.image}" alt="${preorder.title}" class="game-modal-cover" onerror="this.src='Video/0122(1).gif'">
+                    <div class="game-modal-info">
+                        <h2 class="game-modal-title">${preorder.title}</h2>
+                        <div class="game-modal-meta">
+                            <span class="game-modal-year"><i class="fas fa-calendar"></i> ${preorder.releaseDate || 'Неизвестно'}</span>
+                            <span class="game-modal-size"><i class="fas fa-tag"></i> ${preorder.price || 'Неизвестно'}</span>
+                        </div>
+                        <p class="game-modal-description">${preorder.description}</p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 15px;">
+                            <span style="background: rgba(99, 102, 241, 0.2); padding: 6px 14px; border-radius: 20px; color: #a78bfa; font-size: 0.85rem;"><i class="fas fa-building"></i> ${preorder.developer || 'Неизвестно'}</span>
+                            <span style="background: rgba(16, 185, 129, 0.2); padding: 6px 14px; border-radius: 20px; color: #34d399; font-size: 0.85rem;"><i class="fas fa-gamepad"></i> ${platforms}</span>
+                        </div>
+                        <div class="game-modal-buttons">
+                            <a href="${preorder.buyLink || '#'}" class="modal-download-btn" target="_blank" ${!preorder.buyLink || preorder.buyLink === '#' ? 'style="pointer-events: none; opacity: 0.6;"' : ''}>
+                                <i class="fas fa-shopping-cart"></i> Предзаказать
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
         // Функция фильтрации
@@ -10646,14 +11518,26 @@ if (game.status === 'available') {
                     </div>
                     
                     ${requirementsHTML}
-
+                    
+                    <div class="comments-section">
+                        <div class="comments-title">
+                            <i class="fas fa-comments"></i> Комментарии
+                            <span class="comments-count" id="commentsCount">0</span>
+                        </div>
+                        <div class="comment-form">
+                            <textarea id="commentInput" class="comment-input" placeholder="Напишите комментарий..."></textarea>
+                            <button class="comment-submit-btn" onclick="handleAddComment('${gameId}')">Отправить</button>
+                        </div>
+<div class="comments-list" id="commentsContainer">
+                            <div class="no-comments">Загрузка комментариев...</div>
+                        </div>
                     </div>
-            `;
-
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-
-            history.replaceState(null, null, `?game=${gameId}`);
+                </div>
+            </div>
+        `;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        history.replaceState(null, null, `?game=${gameId}`);
 
             if (game.trailer) {
                 currentTrailerIframe = modalContent.querySelector('iframe');
@@ -10665,13 +11549,18 @@ if (game.status === 'available') {
                 });
             });
 
-            // Проверить активные таймеры промокодов
+// Проверить активные таймеры промокодов
             if (game.promoCode) {
                 checkActiveTimers(game.id, game.promoCode);
             }
             if (game.promoCode2) {
                 checkActiveTimers(`${game.id}-2`, game.promoCode2);
             }
+            
+            // Небольшая задержка для обеспечения рендеринга DOM
+            setTimeout(() => {
+                subscribeToComments(gameId);
+            }, 100);
         }
 
         // Закрытие модального окна
@@ -10682,7 +11571,7 @@ if (game.status === 'available') {
                 modal.classList.remove('active', 'closing');
                 stopVideo();
                 document.body.style.overflow = '';
-                // Reset URL to remove game parameter
+                if (unsubscribeComments) unsubscribeComments();
                 history.replaceState(null, null, window.location.pathname);
             }, 300);
         });
@@ -10696,7 +11585,7 @@ if (game.status === 'available') {
                     modal.classList.remove('active', 'closing');
                     stopVideo();
                     document.body.style.overflow = '';
-                    // Reset URL to remove game parameter
+                    if (unsubscribeComments) unsubscribeComments();
                     history.replaceState(null, null, window.location.pathname);
                 }, 300);
             }
@@ -11619,7 +12508,7 @@ function localAIResponse(message) {
 
             const avatar = type === 'bot' ? '<i class="fas fa-headset"></i>' : '<i class="fas fa-user"></i>';
 
-            let content = `<p>${text}</p>`;
+                let content = `<p>${text}</p>`;
             if (options) {
                 content += `<div class="chat-options">${options}</div>`;
             }
@@ -11654,8 +12543,17 @@ function localAIResponse(message) {
 
         // Инициализация при загрузке
         document.addEventListener('DOMContentLoaded', function() {
+            // Гарантированно скрыть модальное окно профиля при загрузке
+            const profileSettingsModal = document.getElementById('profileSettingsModal');
+            if (profileSettingsModal) {
+                profileSettingsModal.style.display = 'none';
+            }
+            
             // Загрузка данных
             loadGameData();
+
+            // Обновление UI авторизации
+            updateAuthUI();
 
             // Проверка URL параметров для прямых ссылок на игры
             const urlParams = new URLSearchParams(window.location.search);
@@ -12031,7 +12929,7 @@ function localAIResponse(message) {
                 }
                 
                 // Если на странице профиля, избранного или всех игр - переключиться на главную
-                if (activePage.id === 'user-page' || activePage.id === 'all-games-page' || activePage.id === 'favorites-page') {
+                if (activePage.id === 'user-page' || activePage.id === 'all-games-page' || activePage.id === 'favorites-page' || activePage.id === 'preorders-page') {
                     const mainPage = document.getElementById('main-page');
                     if (mainPage) {
                         activePage.classList.remove('active');
@@ -12362,29 +13260,19 @@ function localAIResponse(message) {
                     onkeyup="searchUsers()">
             </div>
             
-            <!-- Список пользователей -->
-            
-            <!-- Список пользователей -->
             <div id="usersList" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
-                <!-- Пользователи будут загружены здесь -->
-            </div>
-            
-            <!-- Кнопка загрузки всех пользователей -->
-            <div style="text-align: center; margin-top: 30px;">
-                <button onclick="loadAllUsers()" id="loadAllUsersBtn" style="padding: 15px 30px; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem;">
-                    <i class="fas fa-users"></i> Показать всех пользователей
-                </button>
+                <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-secondary);">
+                    <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 15px;"></i>
+                    <p>Загрузка пользователей...</p>
+                </div>
             </div>
         </div>
     </div>
     
     <!-- Страница просмотра профиля другого пользователя -->
     <div id="view-profile-page" class="page">
-        <div class="view-profile-container" style="padding-top: 100px; padding-left: 20px; padding-right: 20px; padding-bottom: 20px; max-width: 800px; margin: 0 auto;">
-            <button onclick="switchPage('users-search-page'); loadAllUsers();" style="padding: 10px 20px; background: transparent; color: var(--primary); border: 1px solid var(--primary); border-radius: 6px; cursor: pointer; margin-bottom: 20px;">
-                <i class="fas fa-arrow-left"></i> Назад к поиску
-            </button>
-            
+        <div class="view-profile-container" style="padding-top: 80px; padding-left: 20px; padding-right: 20px; padding-bottom: 40px; max-width: 800px; margin: 0 auto;">
+            <button onclick="switchPage('users-search-page'); loadAllUsers();" style="padding: 12px 24px; background: linear-gradient(135deg, var(--primary), #8b5cf6); color: white; border: none; border-radius: 10px; cursor: pointer; margin-bottom: 25px; font-weight: 600; box-shadow: 0 4px 16px rgba(99, 102, 241, 0.25); transition: transform 0.2s;"><i class="fas fa-arrow-left" style="margin-right: 8px;"></i>Назад к поиску</button>
             <div class="user-profile-view" id="viewProfileContent">
                 <!-- Контент профиля будет загружен здесь -->
             </div>
