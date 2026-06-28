@@ -10209,14 +10209,11 @@ function toggleLike(gameId, button) {
                 showNotification('Добавлено в избранное!');
             }
             
-            localStorage.setItem('userVotes', JSON.stringify(userVotes));
+localStorage.setItem('userVotes', JSON.stringify(userVotes));
             updateFavoritesCount();
-        }
-            
-            localStorage.setItem('userVotes', JSON.stringify(userVotes));
-            updateFavoritesCount();
-        
-        function copySKU(sku, gameId) {
+         }
+             
+         function copySKU(sku, gameId) {
              const encodedId = encodeURIComponent(gameId);
              const encodedSku = encodeURIComponent(sku);
              const url = `${window.location.origin}${window.location.pathname}?game=${encodedId}&sku=${encodedSku}`;
@@ -10567,9 +10564,10 @@ function saveProfileSettings() {
          // Загрузка данных из JSON
         let gameData = {};
         let preordersData = [];
-        let popularGamesTitles = [];
-        let anticipatedGamesTitles = [];
-        let sliderGames = [];
+let popularGamesTitles = [];
+         let anticipatedGamesTitles = [];
+         let sliderGames = [];
+         let popularProgramsTitles = [];
         
         function loadGameData() {
             loadProfileConfig();
@@ -10578,22 +10576,29 @@ function saveProfileSettings() {
                 const xhr = new XMLHttpRequest();
                 xhr.open('GET', 'assets/data/games.json', false); // synchronous
                 xhr.send();
-                if (xhr.status === 200) {
-                    gameData = JSON.parse(xhr.responseText);
+                if (xhr.status === 200 || xhr.status === 0) {
+                    gameData = JSON.parse(xhr.responseText || '{}');
+                }
+                if (!gameData || Object.keys(gameData).length === 0) {
+                    gameData = {"samson":{title:"Samson",image:"https://i.postimg.cc/dQLxg34m/1670961819-cover.jpg",description:"Samson - игра 2026"},"windrose":{title:"Windrose",image:"https://i.postimg.cc/dQLxg34m/1670961819-cover.jpg",description:"Windrose - RPG"}};
                 }
 
                 const xhrPopular = new XMLHttpRequest();
                 xhrPopular.open('GET', 'assets/data/popular-games.json', false);
                 xhrPopular.send();
-                if (xhrPopular.status === 200) {
-                    popularGamesTitles = JSON.parse(xhrPopular.responseText);
+                if (xhrPopular.status === 200 || xhrPopular.status === 0) {
+                    popularGamesTitles = JSON.parse(xhrPopular.responseText || '["Samson","REPLACED","Windrose","Subnautica 2","Forza Horizon 6","PRAGMATA"]');
+                } else {
+                    popularGamesTitles = ["Samson", "REPLACED", "Windrose", "Subnautica 2", "Forza Horizon 6", "PRAGMATA"];
                 }
 
                 const xhrAnticipated = new XMLHttpRequest();
                 xhrAnticipated.open('GET', 'assets/data/anticipated-games.json', false);
                 xhrAnticipated.send();
-                if (xhrAnticipated.status === 200) {
-                    anticipatedGamesTitles = JSON.parse(xhrAnticipated.responseText);
+                if (xhrAnticipated.status === 200 || xhrAnticipated.status === 0) {
+                    anticipatedGamesTitles = JSON.parse(xhrAnticipated.responseText || '["The Witcher 4","Atomic Heart 2","GTA 6"]');
+                } else {
+                    anticipatedGamesTitles = ["The Witcher 4", "Atomic Heart 2", "GTA 6", "Darksiders 4", "The Blood of Dawnwalker", "Gears of War: E-Day", "Metro 2039", "Gothic 1 Remake", "OD Knock", "Lords of the Fallen II"];
                 }
 
                 const xhrRecommended = new XMLHttpRequest();
@@ -10601,6 +10606,11 @@ function saveProfileSettings() {
                 xhrRecommended.send();
                 if (xhrRecommended.status === 200) {
                     sliderGames = JSON.parse(xhrRecommended.responseText);
+                } else {
+                    sliderGames = [
+                        {id: "samson", title: "Samson", description: "Samson - игра 2026", image: "https://i.postimg.cc/dQLxg34m/1670961819-cover.jpg", buttonText: "Смотреть"},
+                        {id: "windrose", title: "Windrose", description: "Windrose - RPG", image: "https://i.postimg.cc/dQLxg34m/1670961819-cover.jpg", buttonText: "Смотреть"}
+                    ];
                 }
 
                 const xhrPreorders = new XMLHttpRequest();
@@ -10608,6 +10618,15 @@ function saveProfileSettings() {
                 xhrPreorders.send();
                 if (xhrPreorders.status === 200) {
                     preordersData = JSON.parse(xhrPreorders.responseText);
+                }
+
+                const xhrPopularPrograms = new XMLHttpRequest();
+                xhrPopularPrograms.open('GET', 'assets/data/popular-programs.json', false);
+                xhrPopularPrograms.send();
+                if (xhrPopularPrograms.status === 200 || xhrPopularPrograms.status === 0) {
+                    popularProgramsTitles = JSON.parse(xhrPopularPrograms.responseText || '["Adobe Photoshop 2022","Adobe After Effects 2024","WinRAR"]');
+                } else {
+                    popularProgramsTitles = ["Adobe Photoshop 2022", "Adobe After Effects 2024", "WinRAR", "7-Zip", "VLC Media Player", "Steam"];
                 }
             } catch (error) {
                 console.error('Error loading game data:', error);
