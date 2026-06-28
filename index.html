@@ -8686,7 +8686,7 @@ position: absolute;
                             <h3 style="font-size: 1.1rem; margin-bottom: 5px;">${user.username}${devCheckmark}</h3>
                             <p style="color: var(--text-secondary); font-size: 0.9rem;">
                                 <i class="fas fa-gamepad" style="margin-right: 5px;"></i>
-                                ${user.likedGames ? user.likedGames.length : 0} игр в избранном
+                                ${user.favoriteGames ? user.favoriteGames.length : 0} игр в избранном
                             </p>
                         </div>
                     </div>
@@ -8745,7 +8745,7 @@ position: absolute;
                     createdAt: new Date().toISOString(),
                     downloadsCount: 0,
                     likesCount: 0,
-                    likedGames: [],
+                    favoriteGames: [],
                     isDeveloper: false
                 };
             }
@@ -8756,8 +8756,8 @@ position: absolute;
                 // Получаем рамку пользователя из Firebase
                 const userFrame = user.userFrame || 'default';
                 
-                // Используем likedGames (по ID)
-                const userLikedGameIds = user.likedGames || [];
+                // Используем favoriteGames (по ID)
+                const userLikedGameIds = user.favoriteGames || [];
                 
                 let favoriteGamesHtml = '';
                 
@@ -9143,10 +9143,10 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
                         localStorage.setItem(storageKey, JSON.stringify(user.downloads));
                     }
                     
-                    // Восстановление likedGames из Firebase в localStorage
-                    if (user && user.likedGames) {
+                    // Восстановление favoriteGames из Firebase в localStorage
+                    if (user && user.favoriteGames) {
                         const syncVotes = {};
-                        user.likedGames.forEach(gameId => {
+                        user.favoriteGames.forEach(gameId => {
                             syncVotes[gameId] = 'like';
                         });
                         localStorage.setItem('userVotes', JSON.stringify(syncVotes));
@@ -9268,12 +9268,9 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
             const downloads = JSON.parse(localStorage.getItem(storageKey) || '[]');
             
             const userData = {
-                avatar: localStorage.getItem('userAvatar') || 'default',
+avatar: localStorage.getItem('userAvatar') || 'default',
                 avatarData: localStorage.getItem('avatarData') || null,
-                likedGames: Object.keys(JSON.parse(localStorage.getItem('userVotes') || '{}')).filter(id => {
-                    const votes = JSON.parse(localStorage.getItem('userVotes') || '{}');
-                    return votes[id] === 'like';
-                }),
+                favoriteGames: [],
                 downloadsCount: getTotalDownloads(),
                 downloads: downloads,
                 likesCount: parseInt(localStorage.getItem('likesCount') || '0'),
@@ -9315,10 +9312,10 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
                                 const storageKey = `userDownloads_${username.toLowerCase()}`;
                                 localStorage.setItem(storageKey, JSON.stringify(user.downloads));
                             }
-                            // Восстановить likedGames из Firebase в localStorage
-                            if (user.likedGames && user.likedGames.length > 0) {
+                            // Восстановить favoriteGames из Firebase в localStorage
+                            if (user.favoriteGames && user.favoriteGames.length > 0) {
                                 const syncVotes = {};
-                                user.likedGames.forEach(gameId => {
+                                user.favoriteGames.forEach(gameId => {
                                     syncVotes[gameId] = 'like';
                                 });
                                 localStorage.setItem('userVotes', JSON.stringify(syncVotes));
@@ -10214,12 +10211,10 @@ function toggleLike(gameId, button) {
             
             localStorage.setItem('userVotes', JSON.stringify(userVotes));
             updateFavoritesCount();
-            syncProfileToFirebase();
         }
             
             localStorage.setItem('userVotes', JSON.stringify(userVotes));
             updateFavoritesCount();
-        }
         
         function copySKU(sku, gameId) {
              const encodedId = encodeURIComponent(gameId);
@@ -10322,8 +10317,8 @@ function saveProfileSettings() {
                 const username = localStorage.getItem('username');
                 if (username) {
                     const user = await getUserFromFirebase(username);
-                    if (user && user.likedGames) {
-                        likedGames = user.likedGames;
+                    if (user && user.favoriteGames) {
+                        likedGames = user.favoriteGames;
                         // Также синхронизируем в localStorage
                         const syncVotes = {};
                         likedGames.forEach(gameId => {
@@ -12989,6 +12984,10 @@ function localAIResponse(message) {
 
             window.closeWelcomeModal = closeWelcomeModal;
             
+            // Экспортируем функции аутентификации глобально для inline onclick
+            window.showAuthModal = showAuthModal;
+            window.closeAuthModal = closeAuthModal;
+            
             // Кнопка закрытия
             if (welcomeModalClose) {
                 welcomeModalClose.addEventListener('click', function(e) {
@@ -13422,13 +13421,11 @@ function localAIResponse(message) {
         </div>
     </div>
      
-     <script>
-         // Функционал кнопок регистрации и входа уже определён выше
-         // Вызываем инициализацию UI при загрузке
-         document.addEventListener('DOMContentLoaded', function() {
-             updateAuthUI();
-         });
-     </script>
+<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                updateAuthUI();
+            });
+        </script>
 </body>
 </html>
 
