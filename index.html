@@ -5822,6 +5822,78 @@ position: absolute;
             }
         }
 
+        .image-preview-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 3500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .image-preview-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .image-preview-content {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            padding: 24px;
+            max-width: 520px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+
+        .image-preview-content img {
+            width: 100%;
+            max-height: 320px;
+            object-fit: contain;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            background: #000;
+        }
+
+        .image-preview-title {
+            color: var(--text);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .image-preview-url {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            word-break: break-all;
+            margin-bottom: 18px;
+        }
+
+        .image-preview-close {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            font-size: 22px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+
+        .image-preview-close:hover {
+            color: var(--text);
+        }
+
         .buy-button {
             display: inline-block;
             background: linear-gradient(45deg, #00b894, #00ceff);
@@ -7879,14 +7951,24 @@ position: absolute;
         };
         
         // Инициализация Firebase
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
+        let database = null;
+        let firebaseAvailable = false;
+        try {
+            if (typeof firebase !== 'undefined') {
+                firebase.initializeApp(firebaseConfig);
+                database = firebase.database();
+                firebaseAvailable = true;
+            }
+        } catch (e) {
+            console.warn('Firebase initialization failed:', e);
+            firebaseAvailable = false;
+        }
         
         // Система присутствия пользователей (онлайн/оффлайн)
-        const userStatusRef = database.ref('users');
+        const userStatusRef = database ? database.ref('users') : null;
         
         function setupPresence(username) {
-            if (!username) return;
+            if (!username || !firebaseAvailable || !database) return;
             const sanitizedUsername = sanitizeFirebasePath(username.toLowerCase());
             const userStatusDatabaseRef = database.ref('/status/' + sanitizedUsername);
             const isOnlineRef = userStatusDatabaseRef.child('isOnline');
@@ -7904,7 +7986,7 @@ position: absolute;
         }
         
         function setUserOffline(username) {
-            if (!username) return;
+            if (!username || !firebaseAvailable || !database) return;
             const sanitizedUsername = sanitizeFirebasePath(username.toLowerCase());
             const userStatusDatabaseRef = database.ref('/status/' + sanitizedUsername);
             userStatusDatabaseRef.update({
@@ -7914,7 +7996,7 @@ position: absolute;
         }
         
         async function updateLastSeen(username) {
-            if (!username) return;
+            if (!username || !firebaseAvailable || !database) return;
             const sanitizedUsername = sanitizeFirebasePath(username.toLowerCase());
             try {
                 await database.ref('/status/' + sanitizedUsername).update({
@@ -8520,6 +8602,16 @@ position: absolute;
         </div>
     </div>
 
+    <!-- Модальное окно для просмотра изображения при поделиться/копировании -->
+    <div class="image-preview-modal" id="imagePreviewModal">
+        <div class="image-preview-content">
+            <button class="image-preview-close" id="imagePreviewClose">&times;</button>
+            <img id="imagePreviewImg" src="" alt="Превью">
+            <div class="image-preview-title" id="imagePreviewTitle"></div>
+            <div class="image-preview-url" id="imagePreviewUrl"></div>
+        </div>
+    </div>
+
     <script>
         // Глобальные переменные
         let currentTrailerIframe = null;
@@ -8541,13 +8633,11 @@ position: absolute;
         
         let GLOBAL_PROFILE_CONFIG = {};
         
-        function loadProfileConfig() {
+        async function loadProfileConfig() {
             try {
-                const xhr = new XMLHttpRequest();
-                xhr.open('GET', 'assets/data/profile-config.json', false);
-                xhr.send();
-                if (xhr.status === 200) {
-                    GLOBAL_PROFILE_CONFIG = JSON.parse(xhr.responseText);
+                const response = await fetch('assets/data/profile-config.json');
+                if (response.ok) {
+                    GLOBAL_PROFILE_CONFIG = await response.json();
                 }
             } catch (e) {
                 console.error('Failed to load profile config:', e);
@@ -8623,6 +8713,9 @@ position: absolute;
         
         // Получить всех пользователей из Firebase
         function getAllUsersFromFirebase() {
+            if (!firebaseAvailable || !database) {
+                return Promise.resolve({});
+            }
             return database.ref('users').once('value')
                 .then(async (snapshot) => {
                     const users = snapshot.exists() ? snapshot.val() : {};
@@ -8649,6 +8742,9 @@ position: absolute;
         
         // Получить пользователя из Firebase
         function getUserFromFirebase(username) {
+            if (!firebaseAvailable || !database) {
+                return Promise.resolve(null);
+            }
             const sanitizedUsername = sanitizeFirebasePath(username.toLowerCase());
             return database.ref('users/' + sanitizedUsername).once('value')
                 .then((snapshot) => {
@@ -8790,9 +8886,10 @@ position: absolute;
             
             const status = user.status || {};
             const isOnline = status.isOnline === true;
+            const offlineTooltip = status.lastSeen ? 'Offline · ' + formatLastSeen(new Date(status.lastSeen)) : 'Offline';
             const statusDot = isOnline 
                 ? '<span class="status-dot online" data-tooltip="Online" style="margin-left: 6px;"></span>' 
-                : '<span class="status-dot offline" data-tooltip="Offline" style="margin-left: 6px;"></span>';
+                : '<span class="status-dot offline" data-tooltip="' + offlineTooltip + '" style="margin-left: 6px;"></span>';
             
             return `
                 <div class="user-card ${devClass}" style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 20px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" 
@@ -8805,10 +8902,6 @@ position: absolute;
                         </div>
                         <div style="flex: 1; min-width: 0;">
                             <h3 style="font-size: 1.1rem; margin-bottom: 5px; display: flex; align-items: center;">${user.username}${statusDot}${devCheckmark}</h3>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem;">
-                                <i class="fas fa-gamepad" style="margin-right: 5px;"></i>
-                                ${user.favoriteGames ? user.favoriteGames.length : 0} игр в избранном
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -8818,11 +8911,13 @@ position: absolute;
         function formatLastSeen(date) {
             const now = new Date();
             const diffMs = now - date;
+            const diffSecs = Math.floor(diffMs / 1000);
             const diffMins = Math.floor(diffMs / 60000);
             const diffHours = Math.floor(diffMs / 3600000);
             const diffDays = Math.floor(diffMs / 86400000);
             
-            if (diffMins < 1) return 'только что';
+            if (diffSecs < 5) return 'только что';
+            if (diffSecs < 60) return diffSecs + ' сек. назад';
             if (diffMins < 60) return diffMins + ' мин. назад';
             if (diffHours < 24) return diffHours + ' ч. назад';
             if (diffDays < 7) return diffDays + ' дн. назад';
@@ -9086,9 +9181,10 @@ let messageFormHtml = '';
             
             const status = user.status || {};
             const isOnline = status.isOnline === true;
+            const offlineTooltip = status.lastSeen ? 'Offline · ' + formatLastSeen(new Date(status.lastSeen)) : 'Offline';
             const statusDot = isOnline 
                 ? '<span class="status-dot online" data-tooltip="Online"></span>' 
-                : '<span class="status-dot offline" data-tooltip="Offline"></span>';
+                : '<span class="status-dot offline" data-tooltip="' + offlineTooltip + '"></span>';
             
             return '<div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 40px; text-align: center; position: relative; overflow: hidden;"><div style="position: absolute; top: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));"></div><div style="position: relative; z-index: 1;">' + frameHtml + '<h1 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: var(--text); display: inline-flex; align-items: center; gap: 10px;">' + user.username + statusDot + devCheckmark + '</h1><p style="color: var(--text-secondary); margin-bottom: 35px; font-size: 1rem;"><i class="fas fa-calendar-alt" style="margin-right: 6px; color: var(--primary);"></i>Присоединился ' + new Date(user.createdAt).toLocaleDateString('ru-RU') + '</p><div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;"><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-download" style="font-size: 1.8rem; color: var(--primary); margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + downloads + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Скачиваний</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-heart" style="font-size: 1.8rem; color: #ef4444; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + likes + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Нравится</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-comment" style="font-size: 1.8rem; color: #f59e0b; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + commentsCount + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Комментариев</p></div></div>' + favoriteGamesHtml + messageFormHtml + developerInboxHtml + devBadgeControlsHtml + '</div></div>';
         }
@@ -9462,6 +9558,9 @@ let messageFormHtml = '';
         
         // Сохранить пользователя в Firebase
         function saveUserToFirebase(username, password, extraData = {}) {
+            if (!firebaseAvailable || !database) {
+                return Promise.resolve(false);
+            }
             const sanitizedUsername = sanitizeFirebasePath(username.toLowerCase());
             const storageKey = `userDownloads_${sanitizedUsername}`;
             const downloads = safeGetLocalStorageJSON(storageKey, []);
@@ -9500,6 +9599,9 @@ let messageFormHtml = '';
         
         // Обновить данные пользователя в Firebase
         function updateUserInFirebase(username, updates) {
+            if (!firebaseAvailable || !database) {
+                return Promise.resolve(false);
+            }
             const sanitizedUsername = sanitizeFirebasePath(username.toLowerCase());
             return database.ref('users/' + sanitizedUsername).update(updates)
                 .then(() => {
@@ -9674,13 +9776,14 @@ let messageFormHtml = '';
             
             const status = user.status || {};
             const isOnline = status.isOnline === true;
+            const offlineTooltip = status.lastSeen ? 'Offline · ' + formatLastSeen(new Date(status.lastSeen)) : 'Offline';
             
             if (isOnline) {
                 statusDot.className = 'status-dot online';
                 statusDot.setAttribute('data-tooltip', 'Online');
             } else {
                 statusDot.className = 'status-dot offline';
-                statusDot.setAttribute('data-tooltip', 'Offline');
+                statusDot.setAttribute('data-tooltip', offlineTooltip);
             }
         }
         
@@ -10532,25 +10635,26 @@ let messageFormHtml = '';
             }
         }
              
-         function copySKU(sku, gameId) {
-             const encodedId = encodeURIComponent(gameId);
-             const encodedSku = encodeURIComponent(sku);
-             const url = `${window.location.origin}${window.location.pathname}?game=${encodedId}&sku=${encodedSku}`;
-             navigator.clipboard.writeText(url).then(function() {
-                 showNotification('Ссылка скопирована: ' + url);
-             }).catch(function(err) {
-                 console.error('Ошибка копирования: ', err);
-                 const textArea = document.createElement('textarea');
-                 textArea.value = url;
-                 document.body.appendChild(textArea);
-                 textArea.select();
-                 document.execCommand('copy');
-                 document.body.removeChild(textArea);
-                 showNotification('Ссылка скопирована: ' + url);
-             });
-         }
-         
-        function closeDownloadedGamesModal() {
+          function copySKU(sku, gameId) {
+              const encodedId = encodeURIComponent(gameId);
+              const encodedSku = encodeURIComponent(sku);
+              const url = `${window.location.origin}${window.location.pathname}?game=${encodedId}&sku=${encodedSku}`;
+              navigator.clipboard.writeText(url).then(function() {
+                  showNotification('Ссылка скопирована: ' + url);
+              }).catch(function(err) {
+                  console.error('Ошибка копирования: ', err);
+                  const textArea = document.createElement('textarea');
+                  textArea.value = url;
+                  document.body.appendChild(textArea);
+                  textArea.select();
+                  document.execCommand('copy');
+                  document.body.removeChild(textArea);
+                  showNotification('Ссылка скопирована: ' + url);
+              });
+              showImagePreview(gameId, url);
+          }
+          
+         function closeDownloadedGamesModal() {
             const modal = document.getElementById('downloadedGamesModal');
             if (modal) {
                 modal.style.display = 'none';
@@ -12321,11 +12425,9 @@ if (game.status === 'available') {
             const encodedId = encodeURIComponent(gameId);
             const url = `${window.location.origin}${window.location.pathname}?game=${encodedId}`;
             navigator.clipboard.writeText(url).then(function() {
-                // Показать уведомление
                 showNotification('Ссылка скопирована в буфер обмена!');
             }).catch(function(err) {
                 console.error('Ошибка копирования: ', err);
-                // Fallback
                 const textArea = document.createElement('textarea');
                 textArea.value = url;
                 document.body.appendChild(textArea);
@@ -12334,6 +12436,7 @@ if (game.status === 'available') {
                 document.body.removeChild(textArea);
                 showNotification('Ссылка скопирована в буфер обмена!');
             });
+            showImagePreview(gameId, url);
         }
 
         // Функция показа уведомлений
