@@ -550,6 +550,49 @@
             z-index: 1001;
         }
 
+        @keyframes onlinePulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-left: 8px;
+            vertical-align: middle;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .status-dot.online {
+            background: #10b981;
+            animation: onlinePulse 2s infinite;
+        }
+
+        .status-dot.offline {
+            background: #6b7280;
+            animation: none;
+        }
+
+        .status-dot:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 140%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 100;
+            pointer-events: none;
+        }
+
         /* Clean page transitions */
         .page {
             position: fixed;
@@ -7726,7 +7769,7 @@ position: absolute;
         
         .profile-stats {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
             margin-bottom: 35px;
             max-width: 500px;
@@ -7838,6 +7881,49 @@ position: absolute;
         // Инициализация Firebase
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
+        
+        // Система присутствия пользователей (онлайн/оффлайн)
+        const userStatusRef = database.ref('users');
+        
+        function setupPresence(username) {
+            if (!username) return;
+            const sanitizedUsername = sanitizeFirebasePath(username.toLowerCase());
+            const userStatusDatabaseRef = database.ref('/status/' + sanitizedUsername);
+            const isOnlineRef = userStatusDatabaseRef.child('isOnline');
+            const lastSeenRef = userStatusDatabaseRef.child('lastSeen');
+            
+            const connectedRef = database.ref('.info/connected');
+            connectedRef.on('value', (snap) => {
+                if (snap.val() === true) {
+                    isOnlineRef.set(true);
+                    lastSeenRef.set(firebase.database.ServerValue.TIMESTAMP);
+                    isOnlineRef.onDisconnect().set(false);
+                    lastSeenRef.onDisconnect().set(firebase.database.ServerValue.TIMESTAMP);
+                }
+            });
+        }
+        
+        function setUserOffline(username) {
+            if (!username) return;
+            const sanitizedUsername = sanitizeFirebasePath(username.toLowerCase());
+            const userStatusDatabaseRef = database.ref('/status/' + sanitizedUsername);
+            userStatusDatabaseRef.update({
+                isOnline: false,
+                lastSeen: firebase.database.ServerValue.TIMESTAMP
+            });
+        }
+        
+        async function updateLastSeen(username) {
+            if (!username) return;
+            const sanitizedUsername = sanitizeFirebasePath(username.toLowerCase());
+            try {
+                await database.ref('/status/' + sanitizedUsername).update({
+                    lastSeen: firebase.database.ServerValue.TIMESTAMP
+                });
+            } catch (e) {
+                console.error('Error updating last seen:', e);
+            }
+        }
     </script>
     <script>
         document.addEventListener('contextmenu', event => event.preventDefault());
@@ -8138,13 +8224,14 @@ position: absolute;
                     <input type="file" id="avatarUpload" accept="image/*" style="display: none;" onchange="handleAvatarUpload(event)">
                 </div>
                 
-                <h3 class="profile-username" id="userPageUsername" style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: var(--text);">@Пользователь</h3>
+                <h3 class="profile-username" id="userPageUsername" style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: var(--text);">@Пользователь <span id="userPageStatusDot" style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-left: 10px;"></span></h3>
+                <div id="userPageStatus" style="margin-bottom: 10px;"></div>
                 
                 <p class="profile-joined" style="color: var(--text-secondary); margin-bottom: 35px; font-size: 1rem;">
                     <i class="fas fa-calendar-alt" style="margin-right: 6px;"></i>На сайте с <span id="joinDate">2024</span>
                 </p>
                 
-                <div class="profile-stats" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                <div class="profile-stats" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 35px; max-width: 700px; margin-left: auto; margin-right: auto;">
                     <div class="profile-stat-card" style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;" onclick="showFavorites()">
                         <div class="profile-stat-icon" style="font-size: 1.8rem; margin-bottom: 8px; color: #ef4444;"><i class="fas fa-heart"></i></div>
                         <div class="profile-stat-value" id="favoritesCount" style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">0</div>
@@ -8161,6 +8248,11 @@ position: absolute;
                             <span id="devStatusBadge" style="display: none;"><i class="fas fa-check-circle" style="color: #10b981;"></i></span>
                         </div>
                         <p class="profile-stat-label" style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Разработчик</p>
+                    </div>
+                    <div class="profile-stat-card" style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;" onclick="openProfileCommentsPage()">
+                        <div class="profile-stat-icon" style="font-size: 1.8rem; margin-bottom: 8px; color: #f59e0b;"><i class="fas fa-comment"></i></div>
+                        <div class="profile-stat-value" id="profileCommentsCount" style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">0</div>
+                        <p class="profile-stat-label" style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Комментариев</p>
                     </div>
                 </div>
                 
@@ -8532,11 +8624,22 @@ position: absolute;
         // Получить всех пользователей из Firebase
         function getAllUsersFromFirebase() {
             return database.ref('users').once('value')
-                .then((snapshot) => {
-                    if (snapshot.exists()) {
-                        return snapshot.val();
+                .then(async (snapshot) => {
+                    const users = snapshot.exists() ? snapshot.val() : {};
+                    const usersWithStatus = {};
+                    
+                    for (const key in users) {
+                        try {
+                            const statusSnapshot = await database.ref('status/' + key).once('value');
+                            usersWithStatus[key] = users[key];
+                            usersWithStatus[key].status = statusSnapshot.exists() ? statusSnapshot.val() : {};
+                        } catch (e) {
+                            usersWithStatus[key] = users[key];
+                            usersWithStatus[key].status = {};
+                        }
                     }
-                    return {};
+                    
+                    return usersWithStatus;
                 })
                 .catch((error) => {
                     console.error('Error getting users from Firebase:', error);
@@ -8546,12 +8649,25 @@ position: absolute;
         
         // Получить пользователя из Firebase
         function getUserFromFirebase(username) {
-            return database.ref('users/' + username.toLowerCase()).once('value')
+            const sanitizedUsername = sanitizeFirebasePath(username.toLowerCase());
+            return database.ref('users/' + sanitizedUsername).once('value')
                 .then((snapshot) => {
-                    if (snapshot.exists()) {
-                        return snapshot.val();
-                    }
-                    return null;
+                    const userData = snapshot.exists() ? snapshot.val() : null;
+                    
+                    // Загружаем статус присутствия
+                    return database.ref('status/' + sanitizedUsername).once('value')
+                        .then((statusSnapshot) => {
+                            if (userData) {
+                                userData.status = statusSnapshot.exists() ? statusSnapshot.val() : {};
+                            }
+                            return userData;
+                        })
+                        .catch(() => {
+                            if (userData) {
+                                userData.status = {};
+                            }
+                            return userData;
+                        });
                 })
                 .catch((error) => {
                     console.error('Error getting user from Firebase:', error);
@@ -8669,9 +8785,14 @@ position: absolute;
             const avatarIcon = getAvatarIcon(user.avatar);
             const avatarBg = getAvatarBg(user.avatar);
             const isDev = user.isDeveloper === true || user.hasBadge === true || isDeveloperByUsername(user.username);
-            // Используем галочку вместо бейджа
             const devCheckmark = isDev ? getDevCheckmarkHtml(getUserBadgeColor(user), getUserBadgeTooltip(user)) : '';
             const devClass = isDev ? 'developer' : '';
+            
+            const status = user.status || {};
+            const isOnline = status.isOnline === true;
+            const statusDot = isOnline 
+                ? '<span class="status-dot online" data-tooltip="Online" style="margin-left: 6px;"></span>' 
+                : '<span class="status-dot offline" data-tooltip="Offline" style="margin-left: 6px;"></span>';
             
             return `
                 <div class="user-card ${devClass}" style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 20px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" 
@@ -8679,11 +8800,11 @@ position: absolute;
                     onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.3)'"
                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                     <div style="display: flex; align-items: center; gap: 15px;">
-                        <div style="width: 60px; height: 60px; border-radius: 50%; ${avatarBg}; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white;">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; ${avatarBg}; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white; position: relative;">
                             <i class="fas fa-${avatarIcon}"></i>
                         </div>
-                        <div>
-                            <h3 style="font-size: 1.1rem; margin-bottom: 5px;">${user.username}${devCheckmark}</h3>
+                        <div style="flex: 1; min-width: 0;">
+                            <h3 style="font-size: 1.1rem; margin-bottom: 5px; display: flex; align-items: center;">${user.username}${statusDot}${devCheckmark}</h3>
                             <p style="color: var(--text-secondary); font-size: 0.9rem;">
                                 <i class="fas fa-gamepad" style="margin-right: 5px;"></i>
                                 ${user.favoriteGames ? user.favoriteGames.length : 0} игр в избранном
@@ -8692,6 +8813,20 @@ position: absolute;
                     </div>
                 </div>
             `;
+        }
+        
+        function formatLastSeen(date) {
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+            
+            if (diffMins < 1) return 'только что';
+            if (diffMins < 60) return diffMins + ' мин. назад';
+            if (diffHours < 24) return diffHours + ' ч. назад';
+            if (diffDays < 7) return diffDays + ' дн. назад';
+            return date.toLocaleDateString('ru-RU');
         }
         
         // Получить иконку аватара
@@ -8733,6 +8868,14 @@ position: absolute;
         }
         
         // Просмотр профиля пользователя
+        let currentProfileUsername = null;
+        
+        function submitProfileComment() {
+            if (currentProfileUsername) {
+                addProfileComment(currentProfileUsername);
+            }
+        }
+        
         async function viewUserProfile(username) {
             const profileContent = document.getElementById('viewProfileContent');
             let user = await getUserFromFirebase(username);
@@ -8750,37 +8893,42 @@ position: absolute;
                 };
             }
             
+            // Считаем актуальную статистику из localStorage
+            const stats = getProfileStats(username);
+            user.downloadsCount = stats.downloadsCount;
+            user.likesCount = stats.likesCount;
+            user.favoriteGames = stats.favoriteGames;
+            
+            // Считаем комментарии профиля из Firebase
+            try {
+                const commentsSnapshot = await database.ref('profile_comments').orderByChild('profile').equalTo(username).once('value');
+                user.commentsCount = commentsSnapshot.exists() ? Object.keys(commentsSnapshot.val()).length : 0;
+            } catch (e) {
+                user.commentsCount = 0;
+            }
+            
+            // Обновляем время последнего посещения
+            await updateLastSeen(username);
+            
             if (profileContent) {
                 const avatarIcon = getAvatarIcon(user.avatar);
                 const avatarBg = getAvatarBg(user.avatar);
-                // Получаем рамку пользователя из Firebase
                 const userFrame = user.userFrame || 'default';
-                
-                // Используем favoriteGames (по ID)
                 const userLikedGameIds = user.favoriteGames || [];
                 
                 let favoriteGamesHtml = '';
                 
-                // Функция для отображения игр
                 const renderUserLikedGames = () => {
-                    // Проверяем, загружены ли данные игр
                     if (!gameData || Object.keys(gameData).length === 0) {
-                        // Данные игр ещё не загружены
                         console.log('Game data not loaded, retrying...');
                         setTimeout(renderUserLikedGames, 500);
                         return;
                     }
                     
-                    // Фильтруем только те ID, которые есть в gameData
                     const validGameIds = userLikedGameIds.filter(gameId => gameData[gameId]);
-                    console.log('User liked game IDs:', userLikedGameIds);
-                    console.log('Available game IDs:', Object.keys(gameData).slice(0, 10));
-                    console.log('Valid game IDs:', validGameIds);
                     
                     if (validGameIds.length > 0) {
                         favoriteGamesHtml = '<div style="margin-top: 35px;"><h3 style="margin-bottom: 20px; color: var(--text); font-size: 1.3rem;"><i class="fas fa-heart" style="color: #ef4444; margin-right: 10px;"></i>Понравившиеся игры (' + validGameIds.length + ')</h3><div id="user-favorite-games-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;"></div></div>';
-                        
-                        // Сразу добавляем карточки с рамкой пользователя
                         profileContent.innerHTML = getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml, userFrame);
                         
                         const grid = document.getElementById('user-favorite-games-grid');
@@ -8795,7 +8943,6 @@ position: absolute;
                             setupViewButtons();
                         }
                     } else if (userLikedGameIds.length > 0) {
-                        // Показать все ID и проверить есть ли совпадения
                         favoriteGamesHtml = '<div style="margin-top: 20px;">';
                         favoriteGamesHtml += '<h3 style="margin-bottom: 15px;"><i class="fas fa-heart" style="color: #ef4444; margin-right: 10px;"></i>Понравившиеся игры (0)</h3>';
                         favoriteGamesHtml += '<p style="color: var(--text-secondary); margin-top: 10px;">ID игр в профиле: ' + userLikedGameIds.join(', ') + '</p>';
@@ -8808,9 +8955,16 @@ position: absolute;
                     }
                 };
                 
-                // Запускаем отображение
                 renderUserLikedGames();
                 switchPage('view-profile-page');
+                
+                currentProfileUsername = username;
+                setTimeout(() => {
+                    const commentsList = document.getElementById('profileCommentsList');
+                    if (commentsList && commentsList.innerHTML.includes('Загрузка комментариев')) {
+                        loadProfileComments(username);
+                    }
+                }, 1200);
             }
         }
         
@@ -8928,14 +9082,89 @@ let messageFormHtml = '';
             
             const downloads = user.downloads ? user.downloads.reduce((total, d) => total + d.count, 0) : (user.downloadsCount || 0);
             const likes = user.likesCount || 0;
-            const gamesAdded = user.gamesAdded || 0;
             const commentsCount = user.commentsCount || 0;
             
-            return '<div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 40px; text-align: center; position: relative; overflow: hidden;"><div style="position: absolute; top: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));"></div><div style="position: relative; z-index: 1;">' + frameHtml + '<h1 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: var(--text);">' + user.username + devCheckmark + '</h1><p style="color: var(--text-secondary); margin-bottom: 35px; font-size: 1rem;"><i class="fas fa-calendar-alt" style="margin-right: 6px; color: var(--primary);"></i>Присоединился ' + new Date(user.createdAt).toLocaleDateString('ru-RU') + '</p><div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;"><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-download" style="font-size: 1.8rem; color: var(--primary); margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + downloads + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Скачиваний</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-heart" style="font-size: 1.8rem; color: #ef4444; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + likes + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Нравится</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-gamepad" style="font-size: 1.8rem; color: #10b981; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + gamesAdded + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Игр добавлено</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-comment" style="font-size: 1.8rem; color: #f59e0b; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + commentsCount + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Комментариев</p></div></div>' + favoriteGamesHtml + messageFormHtml + developerInboxHtml + devBadgeControlsHtml + '</div></div>';
+            const status = user.status || {};
+            const isOnline = status.isOnline === true;
+            const statusDot = isOnline 
+                ? '<span class="status-dot online" data-tooltip="Online"></span>' 
+                : '<span class="status-dot offline" data-tooltip="Offline"></span>';
+            
+            return '<div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 40px; text-align: center; position: relative; overflow: hidden;"><div style="position: absolute; top: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));"></div><div style="position: relative; z-index: 1;">' + frameHtml + '<h1 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: var(--text); display: inline-flex; align-items: center; gap: 10px;">' + user.username + statusDot + devCheckmark + '</h1><p style="color: var(--text-secondary); margin-bottom: 35px; font-size: 1rem;"><i class="fas fa-calendar-alt" style="margin-right: 6px; color: var(--primary);"></i>Присоединился ' + new Date(user.createdAt).toLocaleDateString('ru-RU') + '</p><div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;"><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-download" style="font-size: 1.8rem; color: var(--primary); margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + downloads + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Скачиваний</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-heart" style="font-size: 1.8rem; color: #ef4444; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + likes + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Нравится</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-comment" style="font-size: 1.8rem; color: #f59e0b; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + commentsCount + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Комментариев</p></div></div>' + favoriteGamesHtml + messageFormHtml + developerInboxHtml + devBadgeControlsHtml + '</div></div>';
         }
         
         // ========== СИСТЕМА АВТОРИЗАЦИИ ==========
         let currentAuthMode = 'login';
+        let AUTH_CONFIG = null;
+        
+        async function loadAuthConfig() {
+            try {
+                const response = await fetch('assets/data/auth-modal.json');
+                if (response.ok) {
+                    AUTH_CONFIG = await response.json();
+                } else {
+                    AUTH_CONFIG = getDefaultAuthConfig();
+                }
+            } catch (e) {
+                console.warn('Failed to load auth config, using defaults:', e);
+                AUTH_CONFIG = getDefaultAuthConfig();
+            }
+        }
+        
+        function getDefaultAuthConfig() {
+            return {
+                titles: { login: 'Вход', register: 'Регистрация' },
+                subtitles: { login: 'Войдите в свой аккаунт', register: 'Создайте новый аккаунт' },
+                labels: { username: 'Имя пользователя', password: 'Пароль', confirmPassword: 'Подтвердите пароль' },
+                placeholders: { username: 'Введите имя пользователя', password: 'Введите пароль', confirmPassword: 'Повторите пароль' },
+                buttons: { login: 'Войти', register: 'Зарегистрироваться', loading: 'Загрузка...', cancel: 'Отмена' },
+                errors: { fillAllFields: 'Заполните все поля!', usernameTooShort: 'Имя пользователя должно быть не менее 3 символов!', passwordTooShort: 'Пароль должен быть не менее 4 символов!', passwordsMismatch: 'Пароли не совпадают!', userExists: 'Пользователь с таким именем уже существует!', localUserExists: 'Пользователь уже существует в локальном хранилище!', invalidCredentials: 'Неверное имя пользователя или пароль!', generic: 'Произошла ошибка: {message}', browserHint: 'Попробуйте другой браузер или отключите блокировщики рекламы' },
+                success: { registration: 'Регистрация успешна! Добро пожаловать, {username}!', registrationLocal: 'Регистрация успешна (локально)! Данные синхронизируются с Firebase.', loginAdmin: 'Добро пожаловать, администратор {username}!', loginAdminLocal: 'Добро пожаловать, администратор {username}! (локально)', loginBack: 'С возвращением, {username}!' },
+                icons: { login: 'fa-sign-in-alt', register: 'fa-user-plus', user: 'fa-user' },
+                validation: { usernameMinLength: 3, passwordMinLength: 4 },
+                adminPassword: 'F0rz3s!@#2023^&Secur1tyyuisfasd',
+                developerBadge: { color: '#10b981', tooltip: 'Администратор' },
+                styles: { titleColors: { login: 'var(--primary)', register: '#10b981' }, submitGradients: { login: 'linear-gradient(135deg, var(--primary), var(--primary-dark))', register: 'linear-gradient(135deg, #10b981, #059669)' } }
+            };
+        }
+        
+        function t(key, replacements) {
+            if (!AUTH_CONFIG) return key;
+            const val = key.split('.').reduce((obj, k) => obj && obj[k], AUTH_CONFIG);
+            if (!val) return key;
+            if (replacements) {
+                Object.keys(replacements).forEach(r => {
+                    val.replace(new RegExp('\\{' + r + '\\}', 'g'), replacements[r]);
+                });
+            }
+            return val;
+        }
+        
+        function safeGetLocalStorage(key, defaultValue) {
+            try { return localStorage.getItem(key) || defaultValue; }
+            catch (e) { return defaultValue; }
+        }
+        
+        function safeSetLocalStorage(key, value) {
+            try { localStorage.setItem(key, value); return true; }
+            catch (e) { return false; }
+        }
+        
+        function safeGetLocalStorageJSON(key, defaultValue) {
+            try {
+                const val = localStorage.getItem(key);
+                return val ? JSON.parse(val) : defaultValue;
+            } catch (e) { return defaultValue; }
+        }
+        
+        function safeSetLocalStorageJSON(key, value) {
+            try { localStorage.setItem(key, JSON.stringify(value)); return true; }
+            catch (e) { return false; }
+        }
+        
+        function sanitizeFirebasePath(str) {
+            return str.replace(/[.#$[\]]/g, '_');
+        }
         
         function showAuthModal(mode) {
             currentAuthMode = mode;
@@ -8953,17 +9182,17 @@ let messageFormHtml = '';
             document.getElementById('authConfirmPassword').value = '';
             
             if (mode === 'register') {
-                title.innerHTML = '<i class="fas fa-user-plus" style="color: #10b981;"></i> Регистрация';
-                subtitle.textContent = 'Создайте новый аккаунт';
-                submitText.textContent = 'Зарегистрироваться';
+                title.innerHTML = '<i class="fas ' + AUTH_CONFIG.icons.register + '" style="color: ' + AUTH_CONFIG.styles.titleColors.register + ';"></i> ' + AUTH_CONFIG.titles.register;
+                subtitle.textContent = AUTH_CONFIG.subtitles.register;
+                submitText.textContent = AUTH_CONFIG.buttons.register;
                 confirmField.style.display = 'block';
-                submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                submitBtn.style.background = AUTH_CONFIG.styles.submitGradients.register;
             } else {
-                title.innerHTML = '<i class="fas fa-sign-in-alt" style="color: var(--primary);"></i> Вход';
-                subtitle.textContent = 'Войдите в свой аккаунт';
-                submitText.textContent = 'Войти';
+                title.innerHTML = '<i class="fas ' + AUTH_CONFIG.icons.login + '" style="color: ' + AUTH_CONFIG.styles.titleColors.login + ';"></i> ' + AUTH_CONFIG.titles.login;
+                subtitle.textContent = AUTH_CONFIG.subtitles.login;
+                submitText.textContent = AUTH_CONFIG.buttons.login;
                 confirmField.style.display = 'none';
-                submitBtn.style.background = 'linear-gradient(135deg, var(--primary), var(--primary-dark))';
+                submitBtn.style.background = AUTH_CONFIG.styles.submitGradients.login;
             }
             
             modal.style.display = 'flex';
@@ -8979,195 +9208,224 @@ let messageFormHtml = '';
         
         async function handleAuth(event) {
             event.preventDefault();
-            const username = document.getElementById('authUsername').value.trim();
-            const password = document.getElementById('authPassword').value;
-            const confirmPassword = document.getElementById('authConfirmPassword').value;
             const errorDiv = document.getElementById('authError');
+            const submitBtn = document.getElementById('authSubmitBtn');
+            const submitText = document.getElementById('authSubmitText');
             
-            if (!username || !password) {
-                errorDiv.textContent = 'Заполните все поля!';
-                errorDiv.style.display = 'block';
-                return;
-            }
-            
-            if (username.length < 3) {
-                errorDiv.textContent = 'Имя пользователя должно быть не менее 3 символов!';
-                errorDiv.style.display = 'block';
-                return;
-            }
-            
-            if (password.length < 4) {
-                errorDiv.textContent = 'Пароль должен быть не менее 4 символов!';
-                errorDiv.style.display = 'block';
-                return;
-            }
-            
-            if (currentAuthMode === 'register') {
-                if (password !== confirmPassword) {
-                    errorDiv.textContent = 'Пароли не совпадают!';
+            try {
+                if (submitBtn) submitBtn.disabled = true;
+                if (submitText) submitText.textContent = AUTH_CONFIG.buttons.loading;
+                if (errorDiv) errorDiv.style.display = 'none';
+                
+                const username = document.getElementById('authUsername').value.trim();
+                const password = document.getElementById('authPassword').value;
+                const confirmPassword = document.getElementById('authConfirmPassword').value;
+                
+                if (!username || !password) {
+                    errorDiv.textContent = AUTH_CONFIG.errors.fillAllFields;
                     errorDiv.style.display = 'block';
                     return;
                 }
                 
-                let existingUser = await getUserFromFirebase(username);
-                
-                if (!existingUser) {
-                    const allUsers = await getAllUsersFromFirebase();
-                    if (allUsers) {
-                        for (const key in allUsers) {
-                            if (allUsers[key].username && allUsers[key].username.toLowerCase() === username.toLowerCase()) {
-                                existingUser = allUsers[key];
-                                break;
-                            }
-                        }
-                    }
-                }
-                
-                if (existingUser) {
-                    errorDiv.textContent = 'Пользователь с таким именем уже существует!';
+                if (username.length < AUTH_CONFIG.validation.usernameMinLength) {
+                    errorDiv.textContent = AUTH_CONFIG.errors.usernameTooShort;
                     errorDiv.style.display = 'block';
                     return;
                 }
                 
-const ADMIN_PASSWORD = 'F0rz3s!@#2023^&Secur1tyyuisfasd';
-                 const isAdminPassword = password === ADMIN_PASSWORD;
-                 
-                 const success = await saveUserToFirebase(username, password, {
-                     isDeveloper: isAdminPassword,
-                     hasBadge: isAdminPassword,
-                     badgeColor: isAdminPassword ? '#10b981' : undefined,
-                     badgeTooltip: isAdminPassword ? 'Администратор' : undefined,
-                     createdAt: new Date().toISOString()
-                 });
-                 if (success) {
-                     localStorage.setItem('username', username);
-                     localStorage.setItem('password', password);
-                     localStorage.setItem('userCreatedAt', new Date().toISOString());
-                     const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
-                     localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminPassword, hasBadge: isAdminPassword, badgeColor: isAdminPassword ? '#10b981' : undefined, badgeTooltip: isAdminPassword ? 'Администратор' : undefined };
-                     localStorage.setItem('localUsers', JSON.stringify(localUsers));
-                     if (isAdminPassword) localStorage.setItem('isDeveloper', 'true');
-                     closeAuthModal();
-                    updateAuthUI();
-                    showNotification('Регистрация успешна! Добро пожаловать, ' + username + '!');
-                    showUserPage();
-                } else {
-                    const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
-                    if (localUsers[username.toLowerCase()]) {
-                        errorDiv.textContent = 'Пользователь уже существует в локальном хранилище!';
+                if (password.length < AUTH_CONFIG.validation.passwordMinLength) {
+                    errorDiv.textContent = AUTH_CONFIG.errors.passwordTooShort;
+                    errorDiv.style.display = 'block';
+                    return;
+                }
+                
+                if (currentAuthMode === 'register') {
+                    if (password !== confirmPassword) {
+                        errorDiv.textContent = AUTH_CONFIG.errors.passwordsMismatch;
                         errorDiv.style.display = 'block';
                         return;
                     }
-localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminPassword, hasBadge: isAdminPassword, badgeColor: isAdminPassword ? '#10b981' : undefined, badgeTooltip: isAdminPassword ? 'Администратор' : undefined };
-                     localStorage.setItem('localUsers', JSON.stringify(localUsers));
-                     localStorage.setItem('username', username);
-                     localStorage.setItem('password', password);
-                     localStorage.setItem('userCreatedAt', new Date().toISOString());
-                     if (isAdminPassword) localStorage.setItem('isDeveloper', 'true');
-                     closeAuthModal();
-                    updateAuthUI();
-                    showNotification('Регистрация успешна (локально)! Данные синхронизируются с Firebase.');
-                    showUserPage();
-                }
-            } else {
-                let user = await getUserFromFirebase(username);
-                
-                if (!user) {
-                    const allUsers = await getAllUsersFromFirebase();
-                    if (allUsers) {
-                        for (const key in allUsers) {
-                            if (allUsers[key].username && allUsers[key].username.toLowerCase() === username.toLowerCase()) {
-                                user = allUsers[key];
-                                break;
+                    
+                    let existingUser = await getUserFromFirebase(username);
+                    
+                    if (!existingUser) {
+                        const allUsers = await getAllUsersFromFirebase();
+                        if (allUsers) {
+                            for (const key in allUsers) {
+                                if (allUsers[key].username && allUsers[key].username.toLowerCase() === username.toLowerCase()) {
+                                    existingUser = allUsers[key];
+                                    break;
+                                }
                             }
                         }
                     }
-                }
-                
-                const ADMIN_PASSWORD = 'F0rz3s!@#2023^&Secur1tyyuisfasd';
-                const isAdminPassword = password === ADMIN_PASSWORD;
-                
-                if (isAdminPassword) {
-                    if (!user) {
-                        const success = await saveUserToFirebase(username, password, {
-                            isDeveloper: true,
-                            hasBadge: true,
-                            badgeColor: '#10b981',
-                            badgeTooltip: 'Администратор',
-                            createdAt: new Date().toISOString()
-                        });
-                        if (!success) {
-                            const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
-                            localUsers[username.toLowerCase()] = { username, password, isDeveloper: true, hasBadge: true, badgeColor: '#10b981', badgeTooltip: 'Администратор' };
-                            localStorage.setItem('localUsers', JSON.stringify(localUsers));
-                            localStorage.setItem('username', username);
-                            localStorage.setItem('password', password);
-                            localStorage.setItem('isDeveloper', 'true');
-                            closeAuthModal();
-                            updateAuthUI();
-                            showNotification('Добро пожаловать, администратор ' + username + '! (локально)');
-                            showUserPage();
+                    
+                    if (existingUser) {
+                        errorDiv.textContent = AUTH_CONFIG.errors.userExists;
+                        errorDiv.style.display = 'block';
+                        return;
+                    }
+                    
+                    const isAdminPassword = password === AUTH_CONFIG.adminPassword;
+                    
+                    const success = await saveUserToFirebase(username, password, {
+                        isDeveloper: isAdminPassword,
+                        hasBadge: isAdminPassword,
+                        badgeColor: isAdminPassword ? AUTH_CONFIG.developerBadge.color : undefined,
+                        badgeTooltip: isAdminPassword ? AUTH_CONFIG.developerBadge.tooltip : undefined,
+                        createdAt: new Date().toISOString()
+                    });
+                    if (success) {
+                        safeSetLocalStorage('username', username);
+                        safeSetLocalStorage('password', password);
+                        safeSetLocalStorage('userCreatedAt', new Date().toISOString());
+                        const localUsers = safeGetLocalStorageJSON('localUsers', {});
+                        localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminPassword, hasBadge: isAdminPassword, badgeColor: isAdminPassword ? AUTH_CONFIG.developerBadge.color : undefined, badgeTooltip: isAdminPassword ? AUTH_CONFIG.developerBadge.tooltip : undefined };
+                         safeSetLocalStorageJSON('localUsers', localUsers);
+                         if (isAdminPassword) safeSetLocalStorage('isDeveloper', 'true');
+                         closeAuthModal();
+                         updateAuthUI();
+                         setupPresence(username);
+                         showNotification(AUTH_CONFIG.success.registration.replace('{username}', username));
+                         usersLoaded = false;
+                         showUserPage();
+                         syncProfileToFirebase();
+                     } else {
+                        const localUsers = safeGetLocalStorageJSON('localUsers', {});
+                        if (localUsers[username.toLowerCase()]) {
+                            errorDiv.textContent = AUTH_CONFIG.errors.localUserExists;
+                            errorDiv.style.display = 'block';
                             return;
                         }
-                    } else {
-                        await updateUserInFirebase(username, {
-                            isDeveloper: true,
-                            hasBadge: true,
-                            badgeColor: '#10b981',
-                            badgeTooltip: 'Администратор'
-                        });
-                    }
+                        localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminPassword, hasBadge: isAdminPassword, badgeColor: isAdminPassword ? AUTH_CONFIG.developerBadge.color : undefined, badgeTooltip: isAdminPassword ? AUTH_CONFIG.developerBadge.tooltip : undefined };
+                        safeSetLocalStorageJSON('localUsers', localUsers);
+                        safeSetLocalStorage('username', username);
+                         safeSetLocalStorage('password', password);
+                         safeSetLocalStorage('userCreatedAt', new Date().toISOString());
+                          if (isAdminPassword) safeSetLocalStorage('isDeveloper', 'true');
+                          closeAuthModal();
+                          updateAuthUI();
+                          setupPresence(username);
+                          showNotification(AUTH_CONFIG.success.registrationLocal);
+                          usersLoaded = false;
+                          showUserPage();
+                          syncProfileToFirebase();
+                     }
+                 } else {
+                    let user = await getUserFromFirebase(username);
                     
-                    localStorage.setItem('username', username);
-                    localStorage.setItem('password', password);
-                    localStorage.setItem('isDeveloper', 'true');
-                    closeAuthModal();
-                    updateAuthUI();
-                    showNotification('Добро пожаловать, администратор ' + username + '!');
-                    showUserPage();
-                } else {
                     if (!user) {
-                        const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
-                        user = localUsers[username.toLowerCase()];
+                        const allUsers = await getAllUsersFromFirebase();
+                        if (allUsers) {
+                            for (const key in allUsers) {
+                                if (allUsers[key].username && allUsers[key].username.toLowerCase() === username.toLowerCase()) {
+                                    user = allUsers[key];
+                                    break;
+                                }
+                            }
+                        }
                     }
                     
-                    if (!user || user.password !== password) {
-                        errorDiv.textContent = 'Неверное имя пользователя или пароль!';
-                        errorDiv.style.display = 'block';
-                        return;
-                    }
+                    const isAdminPassword = password === AUTH_CONFIG.adminPassword;
                     
-// Восстановление downloads из Firebase
-                    if (user && user.downloads) {
-                        const storageKey = `userDownloads_${username.toLowerCase()}`;
-                        localStorage.setItem(storageKey, JSON.stringify(user.downloads));
-                    }
-                    
-                    // Восстановление favoriteGames из Firebase в localStorage
-                    if (user && user.favoriteGames) {
-                        const syncVotes = {};
-                        user.favoriteGames.forEach(gameId => {
-                            syncVotes[gameId] = 'like';
-                        });
-                        localStorage.setItem('userVotes', JSON.stringify(syncVotes));
-                    }
-                    
-                    localStorage.setItem('username', username);
-                     localStorage.setItem('password', password);
-                     localStorage.setItem('isDeveloper', user.isDeveloper === true || user.hasBadge === true || isDeveloperByUsername(username) ? 'true' : 'false');
-                     closeAuthModal();
-                    updateAuthUI();
-                    showNotification('С возвращением, ' + username + '!');
-                    showUserPage();
-                }
+                    if (isAdminPassword) {
+                        if (!user) {
+                            const success = await saveUserToFirebase(username, password, {
+                                isDeveloper: true,
+                                hasBadge: true,
+                                badgeColor: AUTH_CONFIG.developerBadge.color,
+                                badgeTooltip: AUTH_CONFIG.developerBadge.tooltip,
+                                createdAt: new Date().toISOString()
+                            });
+                            if (!success) {
+                                const localUsers = safeGetLocalStorageJSON('localUsers', {});
+                                localUsers[username.toLowerCase()] = { username, password, isDeveloper: true, hasBadge: true, badgeColor: AUTH_CONFIG.developerBadge.color, badgeTooltip: AUTH_CONFIG.developerBadge.tooltip };
+                                 safeSetLocalStorageJSON('localUsers', localUsers);
+                                 safeSetLocalStorage('username', username);
+                                  safeSetLocalStorage('password', password);
+                                  safeSetLocalStorage('isDeveloper', 'true');
+                                  closeAuthModal();
+                                  updateAuthUI();
+                                  setupPresence(username);
+                                  showNotification(AUTH_CONFIG.success.loginAdminLocal.replace('{username}', username));
+                                  usersLoaded = false;
+                                  showUserPage();
+                                  syncProfileToFirebase();
+                                  return;
+                              }
+                        } else {
+                            await updateUserInFirebase(username, {
+                                isDeveloper: true,
+                                hasBadge: true,
+                                badgeColor: AUTH_CONFIG.developerBadge.color,
+                                badgeTooltip: AUTH_CONFIG.developerBadge.tooltip
+                            });
+                        }
+                        
+                         safeSetLocalStorage('username', username);
+                         safeSetLocalStorage('password', password);
+                         safeSetLocalStorage('isDeveloper', 'true');
+                         closeAuthModal();
+                         updateAuthUI();
+                         setupPresence(username);
+                         showNotification(AUTH_CONFIG.success.loginAdmin.replace('{username}', username));
+                         usersLoaded = false;
+                         showUserPage();
+                         syncProfileToFirebase();
+                     } else {
+                        if (!user) {
+                            const localUsers = safeGetLocalStorageJSON('localUsers', {});
+                            user = localUsers[username.toLowerCase()];
+                        }
+                        
+                        if (!user || user.password !== password) {
+                            errorDiv.textContent = AUTH_CONFIG.errors.invalidCredentials;
+                            errorDiv.style.display = 'block';
+                            return;
+                        }
+                        
+                        if (user && user.downloads) {
+                            const storageKey = `userDownloads_${sanitizeFirebasePath(username.toLowerCase())}`;
+                            safeSetLocalStorage(storageKey, JSON.stringify(user.downloads));
+                        }
+                        
+                        if (user && user.favoriteGames) {
+                            const syncVotes = {};
+                            user.favoriteGames.forEach(gameId => {
+                                syncVotes[gameId] = 'like';
+                            });
+                            safeSetLocalStorage('userVotes', JSON.stringify(syncVotes));
+                        }
+                        
+                         safeSetLocalStorage('username', username);
+                         safeSetLocalStorage('password', password);
+                         safeSetLocalStorage('isDeveloper', user.isDeveloper === true || user.hasBadge === true || isDeveloperByUsername(username) ? 'true' : 'false');
+                         closeAuthModal();
+                         updateAuthUI();
+                         setupPresence(username);
+                         showNotification(AUTH_CONFIG.success.loginBack.replace('{username}', username));
+                         usersLoaded = false;
+                         showUserPage();
+                         syncProfileToFirebase();
+                     }
+                 }
+             } catch (err) {
+                console.error('Auth error:', err);
+                errorDiv.textContent = AUTH_CONFIG.errors.generic.replace('{message}', (err.message || AUTH_CONFIG.errors.browserHint));
+                errorDiv.style.display = 'block';
+            } finally {
+                if (submitBtn) submitBtn.disabled = false;
+                if (submitText) submitText.textContent = currentAuthMode === 'register' ? AUTH_CONFIG.buttons.register : AUTH_CONFIG.buttons.login;
             }
         }
         
         function logoutUser() {
             if (confirm('Вы уверены, что хотите выйти из аккаунта?')) {
-                localStorage.removeItem('username');
-                localStorage.removeItem('password');
-                localStorage.removeItem('isDeveloper');
+                const username = safeGetLocalStorage('username', null);
+                setUserOffline(username);
+                safeSetLocalStorage('username', null);
+                safeSetLocalStorage('password', null);
+                safeSetLocalStorage('isDeveloper', null);
                 updateAuthUI();
                 showNotification('Вы вышли из аккаунта');
                 switchToMain();
@@ -9175,7 +9433,7 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
         }
         
         function updateAuthUI() {
-            const username = localStorage.getItem('username');
+            const username = safeGetLocalStorage('username', null);
             const loginBtn = document.getElementById('loginBtn');
             const registerBtn = document.getElementById('registerBtn');
             const profileBtn = document.getElementById('profileBtn');
@@ -9204,25 +9462,32 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
         
         // Сохранить пользователя в Firebase
         function saveUserToFirebase(username, password, extraData = {}) {
-            const storageKey = `userDownloads_${username.toLowerCase()}`;
-            const downloads = JSON.parse(localStorage.getItem(storageKey) || '[]');
+            const sanitizedUsername = sanitizeFirebasePath(username.toLowerCase());
+            const storageKey = `userDownloads_${sanitizedUsername}`;
+            const downloads = safeGetLocalStorageJSON(storageKey, []);
             const userData = {
                 username: username,
                 password: password,
-                avatar: localStorage.getItem('userAvatar') || 'default',
+                avatar: safeGetLocalStorage('userAvatar', 'default'),
                 likedGames: [],
                 downloadsCount: getTotalDownloads(),
                 downloads: downloads,
-                likesCount: parseInt(localStorage.getItem('likesCount') || '0'),
-                createdAt: localStorage.getItem('userCreatedAt') || new Date().toISOString(),
-                // Настройки профиля - автоматически доступны всем из глобальной конфигурации
-                userFrame: localStorage.getItem('userFrame') || 'gold',
-                userBackground: localStorage.getItem('userBackground') || 'default',
-                userAvatarEffect: localStorage.getItem('userAvatarEffect') || 'none',
-                ...extraData
+                likesCount: parseInt(safeGetLocalStorage('likesCount', '0')),
+                createdAt: safeGetLocalStorage('userCreatedAt', new Date().toISOString()),
+                userFrame: safeGetLocalStorage('userFrame', 'gold'),
+                userBackground: safeGetLocalStorage('userBackground', 'default'),
+                userAvatarEffect: safeGetLocalStorage('userAvatarEffect', 'none')
             };
             
-            return database.ref('users/' + username.toLowerCase()).set(userData)
+            const filteredExtra = {};
+            for (const key in extraData) {
+                if (extraData[key] !== undefined && extraData[key] !== null) {
+                    filteredExtra[key] = extraData[key];
+                }
+            }
+            Object.assign(userData, filteredExtra);
+            
+            return database.ref('users/' + sanitizedUsername).set(userData)
                 .then(() => {
                     console.log('User saved to Firebase');
                     return true;
@@ -9235,7 +9500,8 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
         
         // Обновить данные пользователя в Firebase
         function updateUserInFirebase(username, updates) {
-            return database.ref('users/' + username.toLowerCase()).update(updates)
+            const sanitizedUsername = sanitizeFirebasePath(username.toLowerCase());
+            return database.ref('users/' + sanitizedUsername).update(updates)
                 .then(() => {
                     console.log('User updated in Firebase');
                     return true;
@@ -9248,36 +9514,45 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
         
         // Добавить игру в избранное (работает без регистрации)
         function addToMyFavorites(gameTitle) {
-            let favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+            let favorites = safeGetLocalStorageJSON('favoriteGames', []);
             if (!favorites.includes(gameTitle)) {
                 favorites.push(gameTitle);
-                localStorage.setItem('favoriteGames', JSON.stringify(favorites));
+                safeSetLocalStorageJSON('favoriteGames', favorites);
                 alert('Игра "' + gameTitle + '" добавлена в избранное!');
             } else {
                 alert('Эта игра уже в избранном!');
             }
         }
         
-// ========== СИНХРОНИЗАЦИЯ ПРОФИЛЯ (упрощено) ==========
+        function getProfileStats(username) {
+            const userVotes = safeGetLocalStorageJSON('userVotes', {});
+            const likesCount = Object.keys(userVotes).filter(gameId => userVotes[gameId] === 'like').length;
+            
+            const storageKey = `userDownloads_${sanitizeFirebasePath(username.toLowerCase())}`;
+            const downloads = safeGetLocalStorageJSON(storageKey, []);
+            const downloadsCount = downloads.reduce((total, d) => total + (d.count || 0), 0);
+            
+            return {
+                downloadsCount: downloadsCount,
+                likesCount: likesCount,
+                favoriteGames: Object.keys(userVotes).filter(gameId => userVotes[gameId] === 'like')
+            };
+        }
+        
+        function getCurrentUsername() {
+            return safeGetLocalStorage('username', null);
+        }
+        
         async function syncProfileToFirebase() {
-            const username = localStorage.getItem('username');
+            const username = safeGetLocalStorage('username', null);
             if (!username) return;
             
-            // Синхронизуем downloads из персонального хранилища
-            const storageKey = `userDownloads_${username.toLowerCase()}`;
-            const downloads = JSON.parse(localStorage.getItem(storageKey) || '[]');
-            
             const userData = {
-avatar: localStorage.getItem('userAvatar') || 'default',
-                avatarData: localStorage.getItem('avatarData') || null,
-                favoriteGames: [],
-                downloadsCount: getTotalDownloads(),
-                downloads: downloads,
-                likesCount: parseInt(localStorage.getItem('likesCount') || '0'),
-                // Настройки профиля из глобальной системы (доступны всем)
-                userFrame: localStorage.getItem('userFrame') || 'gold',
-                userBackground: localStorage.getItem('userBackground') || 'default',
-                userAvatarEffect: localStorage.getItem('userAvatarEffect') || 'none'
+                avatar: safeGetLocalStorage('userAvatar', 'default'),
+                avatarData: safeGetLocalStorage('avatarData', null),
+                userFrame: safeGetLocalStorage('userFrame', 'gold'),
+                userBackground: safeGetLocalStorage('userBackground', 'default'),
+                userAvatarEffect: safeGetLocalStorage('userAvatarEffect', 'none')
             };
             
             await updateUserInFirebase(username, userData);
@@ -9287,69 +9562,69 @@ avatar: localStorage.getItem('userAvatar') || 'default',
         function showUserPage() {
             const userPage = document.getElementById('user-page');
             if (userPage) {
-                const username = localStorage.getItem('username') || 'Пользователь';
-                const isDeveloper = localStorage.getItem('isDeveloper') === 'true';
+                const username = safeGetLocalStorage('username', 'Пользователь');
+                const isDeveloper = safeGetLocalStorage('isDeveloper', 'false') === 'true';
                 const developerCheckmark = isDeveloper ? getDevCheckmarkHtml('#10b981', 'Разработчик', true) : '';
                 userPage.querySelector('.user-page-title').innerHTML = 'Личный кабинет - ' + username + developerCheckmark;
-                userPage.querySelector('#userPageUsername').textContent = '@' + username;
+                const usernameEl = userPage.querySelector('#userPageUsername');
+                const statusDot = usernameEl ? usernameEl.querySelector('#userPageStatusDot') : null;
+                if (usernameEl) {
+                    usernameEl.childNodes[0].textContent = '@' + username;
+                    if (statusDot && !usernameEl.contains(statusDot)) {
+                        usernameEl.appendChild(statusDot);
+                    }
+                }
                 
-                // Показать/скрыть меню настройки галочки для разработчиков
                 const badgeMenuItem = document.getElementById('developerBadgeMenuItem');
                 if (badgeMenuItem) {
                     badgeMenuItem.style.display = isDeveloper ? 'block' : 'none';
                 }
                 
 // Восстановить настройки профиля из Firebase при входе
-                if (username) {
+                if (username && username !== 'Пользователь') {
                     getUserFromFirebase(username).then(user => {
                         if (user) {
-                            if (user.userFrame) localStorage.setItem('userFrame', user.userFrame);
-                            if (user.userBackground) localStorage.setItem('userBackground', user.userBackground);
-                            if (user.userAvatarEffect) localStorage.setItem('userAvatarEffect', user.userAvatarEffect);
-                            if (user.avatar) localStorage.setItem('userAvatar', user.avatar);
-                            if (user.avatarData) localStorage.setItem('avatarData', user.avatarData);
+                            if (user.userFrame) safeSetLocalStorage('userFrame', user.userFrame);
+                            if (user.userBackground) safeSetLocalStorage('userBackground', user.userBackground);
+                            if (user.userAvatarEffect) safeSetLocalStorage('userAvatarEffect', user.userAvatarEffect);
+                            if (user.avatar) safeSetLocalStorage('userAvatar', user.avatar);
+                            if (user.avatarData) safeSetLocalStorage('avatarData', user.avatarData);
                             if (user.downloads) {
-                                const storageKey = `userDownloads_${username.toLowerCase()}`;
-                                localStorage.setItem(storageKey, JSON.stringify(user.downloads));
+                                const storageKey = `userDownloads_${sanitizeFirebasePath(username.toLowerCase())}`;
+                                safeSetLocalStorage(storageKey, JSON.stringify(user.downloads));
                             }
-                            // Восстановить favoriteGames из Firebase в localStorage
                             if (user.favoriteGames && user.favoriteGames.length > 0) {
                                 const syncVotes = {};
                                 user.favoriteGames.forEach(gameId => {
                                     syncVotes[gameId] = 'like';
                                 });
-                                localStorage.setItem('userVotes', JSON.stringify(syncVotes));
+                                safeSetLocalStorageJSON('userVotes', syncVotes);
                             }
+                            updateUserPageStatusDot(user);
                         }
-                        // Загрузить сохраненный аватар
                         loadUserAvatar();
-                        // Загрузить настройки профиля (рамки, фон, эффекты)
                         loadUserProfileSettings();
                         updateDownloadsCount();
-                        // Обновить счетчик избранного
                         updateFavoritesCount();
-                        // Показать страницу
+                        syncProfileToFirebase();
+                        loadProfileCommentsCount(username);
                         switchPage('user-page');
                     }).catch(() => {
-                        // Загрузить сохраненный аватар
+                        updateUserPageStatusDot({ status: {} });
                         loadUserAvatar();
-                        // Загрузить настройки профиля (рамки, фон, эффекты)
                         loadUserProfileSettings();
                         updateDownloadsCount();
-                        // Обновить счетчик избранного
                         updateFavoritesCount();
-                        // Показать страницу
+                        syncProfileToFirebase();
+                        loadProfileCommentsCount(username);
                         switchPage('user-page');
                     });
                 } else {
-                    // Загрузить сохраненный аватар
+                    updateUserPageStatusDot({ status: {} });
                     loadUserAvatar();
-                    // Загрузить настройки профиля (рамки, фон, эффекты)
                     loadUserProfileSettings();
                     updateDownloadsCount();
-                    // Обновить счетчик избранного
                     updateFavoritesCount();
-                    // Показать страницу
                     switchPage('user-page');
                 }
                 
@@ -9373,10 +9648,8 @@ avatar: localStorage.getItem('userAvatar') || 'default',
             }
         }
         
-        // Обновить счетчик избранного
         function updateFavoritesCount() {
-            // Показываем количество игр, которые лайкнул ТЕКУЩИЙ пользователь
-            const userVotes = JSON.parse(localStorage.getItem('userVotes') || '{}');
+            const userVotes = safeGetLocalStorageJSON('userVotes', {});
             const likedCount = Object.keys(userVotes).filter(gameId => userVotes[gameId] === 'like').length;
             const countEl = document.getElementById('favoritesCount');
             const likesCountEl = document.getElementById('likesCount');
@@ -9385,6 +9658,47 @@ avatar: localStorage.getItem('userAvatar') || 'default',
             }
             if (likesCountEl) {
                 likesCountEl.textContent = likedCount;
+            }
+        }
+        
+        function updateProfileCommentsCount(count) {
+            const countEl = document.getElementById('profileCommentsCount');
+            if (countEl) {
+                countEl.textContent = count;
+            }
+        }
+        
+        function updateUserPageStatusDot(user) {
+            const statusDot = document.getElementById('userPageStatusDot');
+            if (!statusDot) return;
+            
+            const status = user.status || {};
+            const isOnline = status.isOnline === true;
+            
+            if (isOnline) {
+                statusDot.className = 'status-dot online';
+                statusDot.setAttribute('data-tooltip', 'Online');
+            } else {
+                statusDot.className = 'status-dot offline';
+                statusDot.setAttribute('data-tooltip', 'Offline');
+            }
+        }
+        
+        async function loadProfileCommentsCount(username) {
+            if (!username) return;
+            try {
+                const snapshot = await database.ref('profile_comments').once('value');
+                const allComments = [];
+                if (snapshot.exists()) {
+                    snapshot.forEach(childSnapshot => {
+                        const data = childSnapshot.val();
+                        allComments.push(data);
+                    });
+                }
+                const comments = allComments.filter(c => c.profile === username);
+                updateProfileCommentsCount(comments.length);
+            } catch (e) {
+                updateProfileCommentsCount(0);
             }
         }
         
@@ -10043,16 +10357,17 @@ avatar: localStorage.getItem('userAvatar') || 'default',
             
             commentsList.innerHTML = '<p style="color: var(--text-secondary); text-align: center;">Загрузка комментариев...</p>';
             
-            database.ref('profile_comments').orderByChild('profile').equalTo(profileUsername).once('value')
+            database.ref('profile_comments').once('value')
                 .then(snapshot => {
-                    const comments = [];
+                    const allComments = [];
                     snapshot.forEach(childSnapshot => {
                         const data = childSnapshot.val();
                         data.id = childSnapshot.key;
-                        comments.push(data);
+                        allComments.push(data);
                     });
                     
-                    // Сортируем по времени (новые сверху)
+                    const comments = allComments.filter(c => c.profile === profileUsername);
+                    
                     comments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
                     
                     if (comments.length === 0) {
@@ -10062,11 +10377,9 @@ avatar: localStorage.getItem('userAvatar') || 'default',
                     
                     commentsList.innerHTML = comments.map(comment => {
                         const isDev = comment.isDeveloper === true;
-                        // Используем галочку вместо бейджа
                         const devCheckmark = isDev ? getDevCheckmarkHtml('#10b981', 'Разработчик') : '';
                         const devClass = isDev ? 'developer' : '';
                         
-                        // Получаем иконку аватара
                         const avatarType = comment.avatar || 'default';
                         const avatarData = comment.avatarData || null;
                         const avatarIcons = {
@@ -10083,7 +10396,6 @@ avatar: localStorage.getItem('userAvatar') || 'default',
                         const avatarIcon = avatarIcons[avatarType] || 'fa-user';
                         const avatarBg = isDev ? 'background: linear-gradient(135deg, #10b981, #059669)' : 'background: var(--primary)';
                         
-                        // Если есть кастомный аватар (изображение)
                         let avatarContent = '';
                         if (avatarData && avatarType === 'custom') {
                             avatarContent = `<img src="${avatarData}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
@@ -10195,23 +10507,30 @@ avatar: localStorage.getItem('userAvatar') || 'default',
         }
         
         // Переключить лайк/дизлайк
-function toggleLike(gameId, button) {
-            const userVotes = JSON.parse(localStorage.getItem('userVotes') || '{}');
+        function toggleLike(gameId, button) {
+            const userVotes = safeGetLocalStorageJSON('userVotes', {});
             const wasLiked = userVotes[gameId] === 'like';
             
             if (wasLiked) {
                 delete userVotes[gameId];
-                button.classList.remove('active');
+                if (button) button.classList.remove('active');
                 showNotification('Удалено из избранного');
             } else {
                 userVotes[gameId] = 'like';
-                button.classList.add('active');
+                if (button) button.classList.add('active');
                 showNotification('Добавлено в избранное!');
             }
             
-localStorage.setItem('userVotes', JSON.stringify(userVotes));
+            safeSetLocalStorageJSON('userVotes', userVotes);
             updateFavoritesCount();
-         }
+            
+            const username = safeGetLocalStorage('username', null);
+            if (username) {
+                const favoriteGames = Object.keys(userVotes).filter(id => userVotes[id] === 'like');
+                const likesCount = favoriteGames.length;
+                updateUserInFirebase(username, { favoriteGames: favoriteGames, likesCount: likesCount });
+            }
+        }
              
          function copySKU(sku, gameId) {
              const encodedId = encodeURIComponent(gameId);
@@ -10658,7 +10977,97 @@ let popularGamesTitles = [];
             }
         }
 
-function switchToMain() {
+        let profileCommentsTargetUsername = null;
+        let profileCommentsPreviousPage = null;
+        
+        function openProfileCommentsPage() {
+            const username = safeGetLocalStorage('username', null);
+            if (!username) return;
+            profileCommentsTargetUsername = username;
+            profileCommentsPreviousPage = document.querySelector('.page.active')?.id || 'user-page';
+            switchPage('profile-comments-page');
+            setTimeout(() => loadAllProfileComments(username), 300);
+        }
+        
+        function goBackFromComments() {
+            if (profileCommentsPreviousPage) {
+                switchPage(profileCommentsPreviousPage);
+            } else {
+                switchPage('user-page');
+            }
+        }
+        
+        async function loadAllProfileComments(profileUsername) {
+            const commentsList = document.getElementById('allProfileCommentsList');
+            const profileNameEl = document.getElementById('commentsPageProfileName');
+            if (!commentsList) return;
+            
+            if (profileNameEl) {
+                profileNameEl.textContent = '@' + profileUsername;
+            }
+            
+            commentsList.innerHTML = '<p style="color: var(--text-secondary); text-align: center;">Загрузка комментариев...</p>';
+            
+            try {
+                const snapshot = await database.ref('profile_comments').once('value');
+                const allComments = [];
+                if (snapshot.exists()) {
+                    snapshot.forEach(childSnapshot => {
+                        const data = childSnapshot.val();
+                        data.id = childSnapshot.key;
+                        allComments.push(data);
+                    });
+                }
+                
+                const comments = allComments.filter(c => c.profile === profileUsername);
+                comments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                
+                if (comments.length === 0) {
+                    commentsList.innerHTML = '<p style="color: var(--text-secondary); text-align: center;">Комментариев пока нет. Будьте первым!</p>';
+                    return;
+                }
+                
+                commentsList.innerHTML = comments.map(comment => {
+                    const isDev = comment.isDeveloper === true;
+                    const devCheckmark = isDev ? getDevCheckmarkHtml('#10b981', 'Разработчик') : '';
+                    const avatarType = comment.avatar || 'default';
+                    const avatarData = comment.avatarData || null;
+                    const avatarIcons = {
+                        'default': 'fa-user', 'robot': 'fa-robot', 'alien': 'fa-alien',
+                        'ghost': 'fa-ghost', 'dragon': 'fa-dragon', 'rocket': 'fa-rocket',
+                        'star': 'fa-star', 'heart': 'fa-heart', 'gamepad': 'fa-gamepad'
+                    };
+                    const avatarIcon = avatarIcons[avatarType] || 'fa-user';
+                    const avatarBg = isDev ? 'background: linear-gradient(135deg, #10b981, #059669)' : 'background: var(--primary)';
+                    const avatarContent = (avatarData && avatarType === 'custom') 
+                        ? `<img src="${avatarData}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">` 
+                        : `<i class="fas ${avatarIcon}"></i>`;
+                    
+                    return `
+                        <div style="background: var(--dark); padding: 15px; border-radius: 8px; margin-bottom: 10px; text-align: left; border-left: 3px solid ${isDev ? '#10b981' : 'var(--border)'};">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                <div style="width: 40px; height: 40px; border-radius: 50%; ${avatarBg}; display: flex; align-items: center; justify-content: center; color: white; overflow: hidden;">
+                                    ${avatarContent}
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <strong style="color: ${isDev ? '#10b981' : 'var(--primary)'};">${escapeHtml(comment.author)}</strong>
+                                        ${devCheckmark}
+                                    </div>
+                                    <span style="color: var(--text-secondary); font-size: 0.8rem;">${new Date(comment.timestamp).toLocaleString('ru-RU')}</span>
+                                </div>
+                            </div>
+                            <p style="margin: 0; color: var(--text); margin-left: 52px;">${escapeHtml(comment.text)}</p>
+                        </div>
+                    `;
+                }).join('');
+            } catch (error) {
+                console.error('Ошибка загрузки комментариев:', error);
+                commentsList.innerHTML = '<p style="color: #ef4444; text-align: center;">Ошибка загрузки комментариев</p>';
+            }
+        }
+        
+        function switchToMain() {
              const currentPage = document.querySelector('.page.active');
              if (currentPage && (currentPage.id === 'all-games-page' || currentPage.id === 'preorders-page' || currentPage.id === 'user-page')) {
                  switchPage('main-page');
@@ -12692,8 +13101,17 @@ function localAIResponse(message) {
             // Загрузка данных
             loadGameData();
 
+            // Загрузка конфигурации авторизации
+            loadAuthConfig();
+
             // Обновление UI авторизации
             updateAuthUI();
+            
+            // Если пользователь уже авторизован, запускаем отслеживание присутствия
+            const existingUsername = safeGetLocalStorage('username', null);
+            if (existingUsername) {
+                setupPresence(existingUsername);
+            }
 
             // Проверка URL параметров для прямых ссылок на игры
             const urlParams = new URLSearchParams(window.location.search);
@@ -13420,6 +13838,36 @@ function localAIResponse(message) {
             <div class="user-profile-view" id="viewProfileContent">
                 <!-- Контент профиля будет загружен здесь -->
             </div>
+            
+            <div id="profileCommentsSection" style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border);">
+                <h3 style="margin-bottom: 20px; color: var(--text); font-size: 1.3rem;"><i class="fas fa-comments" style="color: var(--primary); margin-right: 10px;"></i>Комментарии</h3>
+                <div id="profileCommentsList" style="margin-bottom: 20px;">
+                    <p style="color: var(--text-secondary); text-align: center;">Загрузка комментариев...</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <textarea id="profileCommentInput" placeholder="Напишите комментарий..." style="flex: 1; padding: 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text); resize: vertical; min-height: 80px; font-family: inherit;"></textarea>
+                    <button onclick="submitProfileComment()" style="padding: 14px 24px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; align-self: flex-end;"><i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Отправить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Страница всех комментариев профиля -->
+    <div id="profile-comments-page" class="page">
+        <div style="padding: 80px 20px 40px; max-width: 800px; margin: 0 auto;">
+            <button onclick="goBackFromComments()" style="padding: 12px 24px; background: linear-gradient(135deg, var(--primary), #8b5cf6); color: white; border: none; border-radius: 10px; cursor: pointer; margin-bottom: 25px; font-weight: 600; box-shadow: 0 4px 16px rgba(99, 102, 241, 0.25); transition: transform 0.2s;"><i class="fas fa-arrow-left" style="margin-right: 8px;"></i>Назад в профиль</button>
+            
+            <div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 40px; text-align: center; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));"></div>
+                <div style="position: relative; z-index: 1;">
+                    <h2 style="font-size: 2rem; margin-bottom: 10px; color: var(--text);"><i class="fas fa-comments" style="color: var(--primary); margin-right: 10px;"></i>Комментарии профиля</h2>
+                    <p id="commentsPageProfileName" style="color: var(--text-secondary); margin-bottom: 30px;"></p>
+                    
+                    <div id="allProfileCommentsList" style="text-align: left;">
+                        <p style="color: var(--text-secondary); text-align: center;">Загрузка комментариев...</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -13447,7 +13895,3 @@ function localAIResponse(message) {
         </script>
 </body>
 </html>
-
-
-
-
