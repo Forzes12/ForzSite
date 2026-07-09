@@ -1,0 +1,133 @@
+{
+    "frames": {
+        "default": {
+            "name": "Стандартная",
+            "border": "2px solid var(--primary)",
+            "gradient": null,
+            "glow": null,
+            "icon": "fa-square"
+        },
+        "gold": {
+            "name": "Золото",
+            "border": "3px solid #ffd700",
+            "gradient": "linear-gradient(135deg, #ffd700 0%, #ffaa00 50%, #ffd700 100%)",
+            "glow": "0 0 25px rgba(255, 215, 0, 0.7), 0 0 50px rgba(255, 215, 0, 0.4)",
+            "icon": "fa-crown"
+        },
+        "diamond": {
+            "name": "Бриллиант",
+            "border": "3px solid #00ffff",
+            "gradient": "linear-gradient(135deg, #00ffff 0%, #ffffff 25%, #00ffff 50%, #ffffff 75%, #00ffff 100%)",
+            "glow": "0 0 30px rgba(0, 255, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.4)",
+            "icon": "fa-gem"
+        },
+        "fire": {
+            "name": "Огонь",
+            "border": "3px solid #ff4500",
+            "gradient": "linear-gradient(135deg, #ff4500 0%, #ff8c00 50%, #ff4500 100%)",
+            "glow": "0 0 30px rgba(255, 69, 0, 0.8), 0 0 60px rgba(255, 140, 0, 0.5)",
+            "icon": "fa-fire"
+        },
+        "ice": {
+            "name": "Лёд",
+            "border": "3px solid #00bfff",
+            "gradient": "linear-gradient(135deg, #00bfff 0%, #e0ffff 50%, #00bfff 100%)",
+            "glow": "0 0 30px rgba(0, 191, 255, 0.8), 0 0 60px rgba(0, 191, 255, 0.4)",
+            "icon": "fa-snowflake"
+        },
+        "neon": {
+            "name": "Неон",
+            "border": "3px solid #ff00ff",
+            "gradient": "linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff, #00ffff)",
+            "glow": "0 0 35px rgba(255, 0, 255, 0.9), 0 0 70px rgba(0, 255, 255, 0.5)",
+            "icon": "fa-bolt"
+        },
+        "dark": {
+            "name": "Тьма",
+            "border": "3px solid #4a0080",
+            "gradient": "linear-gradient(135deg, #2d0047 0%, #4a0080 50%, #2d0047 100%)",
+            "glow": "0 0 25px rgba(74, 0, 128, 0.7), inset 0 0 20px rgba(0, 0, 0, 0.5)",
+            "icon": "fa-moon"
+        },
+        "rainbow": {
+            "name": "Радуга",
+            "border": "3px solid transparent",
+            "gradient": "linear-gradient(45deg, #ff0000, #ff7700, #ffff00, #00ff00, #00ffff, #0077ff, #ff00ff, #ff0000)",
+            "glow": "0 0 30px rgba(255, 0, 255, 0.6)",
+            "icon": "fa-rainbow"
+        },
+        "cyber": {
+            "name": "Кибер",
+            "border": "3px solid #00ff88",
+            "gradient": "linear-gradient(135deg, #00ff88 0%, #00ffff 33%, #ff00ff 66%, #00ff88 100%)",
+            "glow": "0 0 35px rgba(0, 255, 136, 0.8), 0 0 70px rgba(0, 255, 255, 0.5)",
+            "icon": "fa-microchip"
+        },
+        "legend": {
+            "name": "Легенда",
+            "border": "4px solid #ffd700",
+            "gradient": "linear-gradient(135deg, #ffd700 0%, #ff6b6b 20%, #c71585 40%, #4b0082 60%, #ff00ff 80%, #ffd700 100%)",
+            "glow": "0 0 50px rgba(255, 215, 0, 1), 0 0 100px rgba(255, 0, 255, 0.6)",
+            "icon": "fa-trophy"
+        },
+        "dragon": {
+            "name": "Дракон",
+            "border": "3px solid #8b0000",
+            "gradient": "linear-gradient(135deg, #8b0000 0%, #dc143c 50%, #8b0000 100%)",
+            "glow": "0 0 35px rgba(139, 0, 0, 0.9), 0 0 70px rgba(220, 20, 60, 0.5)",
+            "icon": "fa-dragon"
+        },
+        "phoenix": {
+            "name": "Феникс",
+            "border": "3px solid #ff6600",
+            "gradient": "linear-gradient(135deg, #ff4500 0%, #ff8c00 25%, #ffd700 50%, #ff8c00 75%, #ff4500 100%)",
+            "glow": "0 0 40px rgba(255, 69, 0, 0.9), 0 0 80px rgba(255, 140, 0, 0.6)",
+            "icon": "fa-fire-alt"
+        },
+        "galaxy": {
+            "name": "Галактика",
+            "border": "3px solid #9400d3",
+            "gradient": "linear-gradient(135deg, #000033 0%, #4b0082 25%, #9400d3 50%, #ff00ff 75%, #000033 100%)",
+            "glow": "0 0 35px rgba(148, 0, 211, 0.8), 0 0 70px rgba(255, 0, 255, 0.5)",
+            "icon": "fa-galaxy"
+        },
+        "platinum": {
+            "name": "Платина",
+            "border": "3px solid #e5e4e2",
+            "gradient": "linear-gradient(135deg, #e5e4e2 0%, #c0c0c0 25%, #e5e4e2 50%, #c0c0c0 75%, #e5e4e2 100%)",
+            "glow": "0 0 25px rgba(229, 228, 226, 0.8), 0 0 50px rgba(192, 192, 192, 0.5)",
+            "icon": "fa-medal"
+        },
+        "emerald": {
+            "name": "Изумруд",
+            "border": "3px solid #50c878",
+            "gradient": "linear-gradient(135deg, #50c878 0%, #00ff7f 50%, #50c878 100%)",
+            "glow": "0 0 30px rgba(80, 200, 120, 0.8), 0 0 60px rgba(0, 255, 127, 0.5)",
+            "icon": "fa-gem"
+        },
+        "royal": {
+            "name": "Королевская",
+            "border": "3px solid #4169e1",
+            "gradient": "linear-gradient(135deg, #4169e1 0%, #ffd700 50%, #4169e1 100%)",
+            "glow": "0 0 30px rgba(65, 105, 225, 0.8), 0 0 60px rgba(255, 215, 0, 0.4)",
+            "icon": "fa-crown"
+        }
+    },
+    "backgrounds": {
+        "default": { "name": "По умолчанию", "bg": "transparent" },
+        "space": { "name": "Космос", "bg": "linear-gradient(135deg, #0f0c29, #302b63, #24243e)" },
+        "ocean": { "name": "Океан", "bg": "linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)" },
+        "forest": { "name": "Лес", "bg": "linear-gradient(135deg, #134e5e, #71b280)" },
+        "sunset": { "name": "Закат", "bg": "linear-gradient(135deg, #ff512f, #dd2476)" },
+        "aurora": { "name": "Аврора", "bg": "linear-gradient(135deg, #00b09b, #96c93d)" },
+        "matrix": { "name": "Матрица", "bg": "linear-gradient(135deg, #000000, #0f9b0f)" },
+        "galaxy": { "name": "Галактика", "bg": "linear-gradient(135deg, #1e3c72, #2a5298, #7a2855)" }
+    },
+    "avatarEffects": {
+        "none": { "name": "Без эффекта", "css": "" },
+        "pulse": { "name": "Пульсация", "css": "animation: avatarPulse 2s infinite;" },
+        "glow": { "name": "Свечение", "css": "box-shadow: 0 0 20px currentColor;" },
+        "spin": { "name": "Вращение", "css": "animation: avatarSpin 3s linear infinite;" },
+        "rainbow": { "name": "Радуга", "css": "animation: avatarRainbow 2s linear infinite;" }
+    }
+}

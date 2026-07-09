@@ -34,22 +34,6 @@
         "sku": "ART-0008-2026-06-14"
     },
     {
-        "id": "forza-horizon-6",
-        "title": "Forza Horizon 6",
-        "description": "Новое воплощение любимой серии, переносящее гонщиков в Японию. Уличная культура соседствует с храмами и горами.",
-        "image": "https://i.postimg.cc/8CFQvGvZ/1769112682-library-capsule-2x.jpg",
-        "releaseDate": "2026",
-        "price": "Неизвестно",
-        "platform": [
-            "PC",
-            "Xbox Series X|S"
-        ],
-        "developer": "Playground Games",
-        "genre": "Гонки, Открытый мир, Автосимулятор",
-        "buyLink": "https://ggsel.net/catalog/forza-horizon-6",
-        "sku": "ART-0009-2026-06-14"
-    },
-    {
         "id": "atomic-heart-2",
         "title": "Atomic Heart 2",
         "description": "Продолжение безумного научно-фантастического экшена в альтернативной СССР 1950-х. Раскройте новые тайны комплекса «3826».",

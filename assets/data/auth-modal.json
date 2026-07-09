@@ -1,0 +1,68 @@
+{
+  "titles": {
+    "login": "Вход",
+    "register": "Регистрация"
+  },
+  "subtitles": {
+    "login": "Войдите в свой аккаунт",
+    "register": "Создайте новый аккаунт"
+  },
+  "labels": {
+    "username": "Имя пользователя",
+    "password": "Пароль",
+    "confirmPassword": "Подтвердите пароль"
+  },
+  "placeholders": {
+    "username": "Введите имя пользователя",
+    "password": "Введите пароль",
+    "confirmPassword": "Повторите пароль"
+  },
+  "buttons": {
+    "login": "Войти",
+    "register": "Зарегистрироваться",
+    "loading": "Загрузка...",
+    "cancel": "Отмена"
+  },
+  "errors": {
+    "fillAllFields": "Заполните все поля!",
+    "usernameTooShort": "Имя пользователя должно быть не менее 3 символов!",
+    "passwordTooShort": "Пароль должен быть не менее 4 символов!",
+    "passwordsMismatch": "Пароли не совпадают!",
+    "userExists": "Пользователь с таким именем уже существует!",
+    "localUserExists": "Пользователь уже существует в локальном хранилище!",
+    "invalidCredentials": "Неверное имя пользователя или пароль!",
+    "generic": "Произошла ошибка: {message}",
+    "browserHint": "Попробуйте другой браузер или отключите блокировщики рекламы"
+  },
+  "success": {
+    "registration": "Регистрация успешна! Добро пожаловать, {username}!",
+    "registrationLocal": "Регистрация успешна (локально)! Данные синхронизируются с Firebase.",
+    "loginAdmin": "Добро пожаловать, администратор {username}!",
+    "loginAdminLocal": "Добро пожаловать, администратор {username}! (локально)",
+    "loginBack": "С возвращением, {username}!"
+  },
+  "icons": {
+    "login": "fa-sign-in-alt",
+    "register": "fa-user-plus",
+    "user": "fa-user"
+  },
+  "validation": {
+    "usernameMinLength": 3,
+    "passwordMinLength": 4
+  },
+  "adminPassword": "F0rz3s!@#2023^&Secur1tyyuisfasd",
+  "developerBadge": {
+    "color": "#10b981",
+    "tooltip": "Администратор"
+  },
+  "styles": {
+    "titleColors": {
+      "login": "var(--primary)",
+      "register": "#10b981"
+    },
+    "submitGradients": {
+      "login": "linear-gradient(135deg, var(--primary), var(--primary-dark))",
+      "register": "linear-gradient(135deg, #10b981, #059669)"
+    }
+  }
+}
