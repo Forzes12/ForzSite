@@ -2771,6 +2771,13 @@ position: absolute;
             transform: translateY(-50%) scale(1.1);
         }
 
+        .clear-search i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
         .filters-panel {
             display: flex;
             gap: 15px;
@@ -9553,7 +9560,28 @@ let messageFormHtml = '';
                 if (mobileLogoutLink) mobileLogoutLink.style.display = 'none';
             }
         }
-        
+
+        // Проверка: авторизован ли пользователь
+        function isUserLoggedIn() {
+            return !!safeGetLocalStorage('username', null);
+        }
+
+        // Требует авторизации. Если пользователь не вошёл — открывает окно входа и возвращает false
+        function requireAuth(message) {
+            if (isUserLoggedIn()) return true;
+            showAuthModal('login');
+            showNotification(message || 'Для этого действия необходимо зарегистрироваться или войти в аккаунт.');
+            return false;
+        }
+
+        // Безопасная загрузка: блокирует скачивание для неавторизованных пользователей
+        function guardDownload(url, event) {
+            if (event) event.preventDefault();
+            if (!requireAuth('Чтобы скачать, войдите или зарегистрируйтесь на сайте.')) return false;
+            if (url && url !== '#') window.open(url, '_blank');
+            return false;
+        }
+
         // ========== КОНЕЦ СИСТЕМЫ АВТОРИЗАЦИИ ==========
         
         // Сохранить пользователя в Firebase
@@ -10605,6 +10633,7 @@ let messageFormHtml = '';
         
 // Обработчик скачивания с отслеживанием
         function handleDownload(gameId, gameName, torrentUrl) {
+            if (!requireAuth('Чтобы скачать игру, войдите или зарегистрируйтесь на сайте.')) return;
             trackDownload(gameId, gameName);
             window.open(torrentUrl, '_blank');
         }
@@ -10636,6 +10665,7 @@ let messageFormHtml = '';
         }
              
           function copySKU(sku, gameId) {
+              if (!requireAuth('Чтобы скопировать ссылку, войдите или зарегистрируйтесь на сайте.')) return;
               const encodedId = encodeURIComponent(gameId);
               const encodedSku = encodeURIComponent(sku);
               const url = `${window.location.origin}${window.location.pathname}?game=${encodedId}&sku=${encodedSku}`;
@@ -11249,7 +11279,7 @@ let popularGamesTitles = [];
                                 <span class="minecraft-item-size"><i class="fas fa-download"></i> ${item.size || 'N/A'}</span>
                                 <span class="minecraft-item-version">v${item.version || item.year || '1.0'}</span>
                             </div>
-                            <a href="${item.torrentFile || item.download || '#'}" class="minecraft-item-download" download>
+                            <a href="javascript:void(0)" class="minecraft-item-download" onclick="return guardDownload('${item.torrentFile || item.download || '#'}', event)">
                                 <i class="fas fa-download"></i>
                                 <span>Скачать</span>
                             </a>
@@ -12422,6 +12452,7 @@ if (game.status === 'available') {
 
         // Функция поделиться игрой
         function shareGame(gameId) {
+            if (!requireAuth('Чтобы поделиться ссылкой, войдите или зарегистрируйтесь на сайте.')) return;
             const encodedId = encodeURIComponent(gameId);
             const url = `${window.location.origin}${window.location.pathname}?game=${encodedId}`;
             navigator.clipboard.writeText(url).then(function() {
@@ -12590,6 +12621,7 @@ if (game.status === 'available') {
         }
 
         function openScreenshotGallery(gameId) {
+            if (!requireAuth('Чтобы просматривать арты и скриншоты, войдите или зарегистрируйтесь на сайте.')) return;
             const game = gameData[gameId];
             if (game && game.screenshots && game.screenshots.length > 0) {
                 openScreenshotViewer(game.screenshots, 0);
@@ -12819,6 +12851,7 @@ if (game.status === 'available') {
             } else if (action === 'ai-chat') {
                 openAiChat();
             } else if (action === 'artworks') {
+                if (!requireAuth('Чтобы искать арты, войдите или зарегистрируйтесь на сайте.')) return;
                 document.getElementById('optionsContainer').style.display = 'none';
                 document.getElementById('inputContainer').style.display = 'flex';
                 document.getElementById('chatInput').placeholder = 'Введите название игры или программы для поиска артов...';
@@ -13004,7 +13037,7 @@ function localAIResponse(message) {
                                             <div class="ai-chip-title">${game.title}</div>
                                             <div class="ai-chip-actions">
                                                 <button class="ai-chip-btn" onclick="openGameModal('${game.id}')">Информация</button>
-                                                <button class="ai-chip-btn secondary" onclick="window.open('${game.torrentFile || game.buyGame}', '_blank')">${game.torrentFile ? 'Скачать' : 'Купить'}</button>
+                                                <button class="ai-chip-btn secondary" onclick="guardDownload('${game.torrentFile || game.buyGame}', event)">${game.torrentFile ? 'Скачать' : 'Купить'}</button>
                                             </div>
                                         </div>
                                     </div>
@@ -13017,6 +13050,7 @@ function localAIResponse(message) {
                         }
                     }, 700);
                 } else if (mode === 'artworks') {
+                    if (!requireAuth('Чтобы искать арты, войдите или зарегистрируйтесь на сайте.')) return;
                     showTypingIndicator();
                     setTimeout(() => {
                         hideTypingIndicator();
@@ -13055,7 +13089,7 @@ function localAIResponse(message) {
                                         <h4>${game.title}</h4>
                                         <div class="game-buttons">
                                             <button class="watch-btn" onclick="openGameModal('${game.id}')">Информация</button>
-                                            <button class="download-btn" onclick="window.open('${game.torrentFile || game.buyGame}', '_blank')">${game.torrentFile ? 'Скачать' : 'Купить'}</button>
+                                            <button class="download-btn" onclick="guardDownload('${game.torrentFile || game.buyGame}', event)">${game.torrentFile ? 'Скачать' : 'Купить'}</button>
                                         </div>
                                     </div>
                                 `;
@@ -13389,7 +13423,7 @@ function localAIResponse(message) {
                     
                     // Кнопка "Скачать" (если есть downloadUrl)
                     if (news.downloadUrl && news.downloadUrl.trim() !== '') {
-                        buttonsHTML += `<a href="${news.downloadUrl}" target="_blank" class="news-btn news-btn-download"><i class="fas fa-download"></i> Скачать</a>`;
+                        buttonsHTML += `<a href="javascript:void(0)" class="news-btn news-btn-download" onclick="guardDownload('${news.downloadUrl}', event)"><i class="fas fa-download"></i> Скачать</a>`;
                     }
                     
                     buttonsContainer.innerHTML = buttonsHTML;
