@@ -395,7 +395,7 @@
             font-weight: 700;
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 1024px) {
             .online-counter {
                 padding: 6px 12px;
                 font-size: 0.8rem;
@@ -436,20 +436,23 @@
             margin: 0;
             padding: 0;
             display: flex;
-            gap: 25px;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .nav-links a {
             color: var(--text);
             text-decoration: none;
             font-weight: 500;
-            padding: 8px 16px;
+            padding: 6px 12px;
             position: relative;
             transition: all 0.2s ease;
             font-size: 0.9rem;
             border-radius: 6px;
             border: 1px solid rgba(255, 255, 255, 0.15);
             background: rgba(255, 255, 255, 0.05);
+            white-space: nowrap;
         }
 
         .nav-links a:hover {
@@ -5240,7 +5243,7 @@ position: absolute;
             }
             
             .nav-links {
-                gap: 30px;
+                gap: 20px;
             }
             
             .nav-links a {
@@ -5442,7 +5445,7 @@ position: absolute;
             }
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 1024px) {
             .nav-left {
                 gap: 10px;
             }
@@ -8001,6 +8004,55 @@ position: absolute;
                 lastSeen: firebase.database.ServerValue.TIMESTAMP
             });
         }
+
+        function initOnlineCounter() {
+            if (!firebaseAvailable || !database) return;
+            
+            const statusRef = database.ref('/status');
+            const onlineCountEl = document.getElementById('onlineCount');
+            const onlineCounterEl = document.getElementById('onlineCounter');
+            const onlineDotEl = document.getElementById('onlineDot');
+            
+            if (!onlineCountEl || !onlineCounterEl) return;
+            
+            onlineCounterEl.style.display = 'flex';
+            
+            const localCount = { value: 0 };
+            
+            const updateOnlineCount = () => {
+                statusRef.once('value').then(snapshot => {
+                    let count = 0;
+                    snapshot.forEach(child => {
+                        if (child.val() && child.val().isOnline === true) {
+                            count++;
+                        }
+                    });
+                    localCount.value = count;
+                    onlineCountEl.textContent = count;
+                    
+                    if (onlineDotEl) {
+                        if (count > 0) {
+                            onlineDotEl.classList.add('active');
+                            onlineDotEl.style.color = '#10b981';
+                        } else {
+                            onlineDotEl.classList.remove('active');
+                            onlineDotEl.style.color = '#6b7280';
+                        }
+                    }
+                }).catch(() => {
+                    onlineCountEl.textContent = '0';
+                    if (onlineDotEl) {
+                        onlineDotEl.classList.remove('active');
+                        onlineDotEl.style.color = '#6b7280';
+                    }
+                });
+            };
+            
+            statusRef.on('child_added', updateOnlineCount);
+            statusRef.on('child_removed', updateOnlineCount);
+            statusRef.on('child_changed', updateOnlineCount);
+            statusRef.on('value', updateOnlineCount);
+        }
         
         async function updateLastSeen(username) {
             if (!username || !firebaseAvailable || !database) return;
@@ -8012,6 +8064,38 @@ position: absolute;
             } catch (e) {
                 console.error('Error updating last seen:', e);
             }
+        }
+        
+        function initRealtimeStatus() {
+            if (!firebaseAvailable || !database) return;
+            
+            const statusRef = database.ref('/status');
+            
+            statusRef.on('child_added', (snapshot) => {
+                const username = snapshot.key;
+                const data = snapshot.val();
+                updateStatusDot(username, data.isOnline === true, data.lastSeen);
+            });
+            
+            statusRef.on('child_removed', (snapshot) => {
+                const username = snapshot.key;
+                updateStatusDot(username, false, null);
+            });
+            
+            statusRef.on('child_changed', (snapshot) => {
+                const username = snapshot.key;
+                const data = snapshot.val();
+                updateStatusDot(username, data.isOnline === true, data.lastSeen);
+            });
+        }
+        
+        function updateStatusDot(username, isOnline, lastSeen) {
+            const dots = document.querySelectorAll('.status-dot[data-username="' + username + '"]');
+            dots.forEach(dot => {
+                dot.className = 'status-dot ' + (isOnline ? 'online' : 'offline');
+                const offlineTooltip = lastSeen ? 'Offline · ' + formatLastSeen(new Date(lastSeen)) : 'Offline';
+                dot.setAttribute('data-tooltip', isOnline ? 'Online' : offlineTooltip);
+            });
         }
     </script>
     <script>
@@ -8074,6 +8158,10 @@ position: absolute;
             <button class="auth-btn register-btn" id="registerBtn" onclick="showAuthModal('register')">Регистрация</button>
             <button class="auth-btn profile-btn" id="profileBtn" onclick="showUserPage()" style="display: none;">Профиль</button>
             <button class="auth-btn logout-btn" id="logoutBtn" onclick="logoutUser()" style="display: none;">Выход</button>
+            <div class="online-counter" id="onlineCounter" style="display: none;">
+                <i class="fas fa-circle online-dot" id="onlineDot" style="color: #6b7280;"></i>
+                <span class="online-count" id="onlineCount">0</span>
+            </div>
         </div>
         
         <!-- Кнопка мобильного меню -->
@@ -8331,7 +8419,7 @@ position: absolute;
                         <div class="profile-stat-value" id="downloadsCount" style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">0</div>
                         <p class="profile-stat-label" style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Скачано</p>
                     </div>
-                    <div class="profile-stat-card" style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);">
+                    <div id="developerStatCard" class="profile-stat-card" style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);">
                         <div class="profile-stat-icon" style="font-size: 1.8rem; margin-bottom: 8px; color: #10b981;"><i class="fas fa-code"></i></div>
                         <div class="profile-stat-value" style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">
                             <span id="devStatusBadge" style="display: none;"><i class="fas fa-check-circle" style="color: #10b981;"></i></span>
@@ -8890,13 +8978,14 @@ position: absolute;
             const isDev = user.isDeveloper === true || user.hasBadge === true || isDeveloperByUsername(user.username);
             const devCheckmark = isDev ? getDevCheckmarkHtml(getUserBadgeColor(user), getUserBadgeTooltip(user)) : '';
             const devClass = isDev ? 'developer' : '';
+            const sanitizedUsername = sanitizeFirebasePath((user.username || '').toLowerCase());
             
             const status = user.status || {};
             const isOnline = status.isOnline === true;
             const offlineTooltip = status.lastSeen ? 'Offline · ' + formatLastSeen(new Date(status.lastSeen)) : 'Offline';
             const statusDot = isOnline 
-                ? '<span class="status-dot online" data-tooltip="Online" style="margin-left: 6px;"></span>' 
-                : '<span class="status-dot offline" data-tooltip="' + offlineTooltip + '" style="margin-left: 6px;"></span>';
+                ? '<span class="status-dot online" data-username="' + sanitizedUsername + '" data-tooltip="Online" style="margin-left: 6px;"></span>' 
+                : '<span class="status-dot offline" data-username="' + sanitizedUsername + '" data-tooltip="' + offlineTooltip + '" style="margin-left: 6px;"></span>';
             
             return `
                 <div class="user-card ${devClass}" style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 20px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" 
@@ -8995,8 +9084,8 @@ position: absolute;
                 };
             }
             
-            // Считаем актуальную статистику из localStorage
-            const stats = getProfileStats(username);
+            // Считаем актуальную статистику из localStorage и Firebase
+            const stats = await getProfileStats(username, user);
             user.downloadsCount = stats.downloadsCount;
             user.likesCount = stats.likesCount;
             user.favoriteGames = stats.favoriteGames;
@@ -9189,9 +9278,10 @@ let messageFormHtml = '';
             const status = user.status || {};
             const isOnline = status.isOnline === true;
             const offlineTooltip = status.lastSeen ? 'Offline · ' + formatLastSeen(new Date(status.lastSeen)) : 'Offline';
+            const sanitizedUsername = sanitizeFirebasePath((user.username || '').toLowerCase());
             const statusDot = isOnline 
-                ? '<span class="status-dot online" data-tooltip="Online"></span>' 
-                : '<span class="status-dot offline" data-tooltip="' + offlineTooltip + '"></span>';
+                ? '<span class="status-dot online" data-username="' + sanitizedUsername + '" data-tooltip="Online"></span>' 
+                : '<span class="status-dot offline" data-username="' + sanitizedUsername + '" data-tooltip="' + offlineTooltip + '"></span>';
             
             return '<div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 40px; text-align: center; position: relative; overflow: hidden;"><div style="position: absolute; top: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));"></div><div style="position: relative; z-index: 1;">' + frameHtml + '<h1 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: var(--text); display: inline-flex; align-items: center; gap: 10px;">' + user.username + statusDot + devCheckmark + '</h1><p style="color: var(--text-secondary); margin-bottom: 35px; font-size: 1rem;"><i class="fas fa-calendar-alt" style="margin-right: 6px; color: var(--primary);"></i>Присоединился ' + new Date(user.createdAt).toLocaleDateString('ru-RU') + '</p><div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;"><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-download" style="font-size: 1.8rem; color: var(--primary); margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + downloads + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Скачиваний</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-heart" style="font-size: 1.8rem; color: #ef4444; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + likes + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Нравится</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-comment" style="font-size: 1.8rem; color: #f59e0b; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + commentsCount + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Комментариев</p></div></div>' + favoriteGamesHtml + messageFormHtml + developerInboxHtml + devBadgeControlsHtml + '</div></div>';
         }
@@ -9267,6 +9357,18 @@ let messageFormHtml = '';
         
         function sanitizeFirebasePath(str) {
             return str.replace(/[.#$[\]]/g, '_');
+        }
+        
+        function getUserVotesKey(username) {
+            return `userVotes_${sanitizeFirebasePath(username.toLowerCase())}`;
+        }
+        
+        function getFavoriteGamesKey(username) {
+            return `favoriteGames_${sanitizeFirebasePath(username.toLowerCase())}`;
+        }
+        
+        function getUserFavoritesKey(username) {
+            return `userFavorites_${sanitizeFirebasePath(username.toLowerCase())}`;
         }
         
         function showAuthModal(mode) {
@@ -9385,7 +9487,7 @@ let messageFormHtml = '';
                         const localUsers = safeGetLocalStorageJSON('localUsers', {});
                         localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminPassword, hasBadge: isAdminPassword, badgeColor: isAdminPassword ? AUTH_CONFIG.developerBadge.color : undefined, badgeTooltip: isAdminPassword ? AUTH_CONFIG.developerBadge.tooltip : undefined };
                          safeSetLocalStorageJSON('localUsers', localUsers);
-                         if (isAdminPassword) safeSetLocalStorage('isDeveloper', 'true');
+                         safeSetLocalStorage('isDeveloper', isAdminPassword ? 'true' : 'false');
                          closeAuthModal();
                          updateAuthUI();
                          setupPresence(username);
@@ -9405,15 +9507,15 @@ let messageFormHtml = '';
                         safeSetLocalStorage('username', username);
                          safeSetLocalStorage('password', password);
                          safeSetLocalStorage('userCreatedAt', new Date().toISOString());
-                          if (isAdminPassword) safeSetLocalStorage('isDeveloper', 'true');
-                          closeAuthModal();
-                          updateAuthUI();
-                          setupPresence(username);
-                          showNotification(AUTH_CONFIG.success.registrationLocal);
-                          usersLoaded = false;
-                          showUserPage();
-                          syncProfileToFirebase();
-                     }
+                           safeSetLocalStorage('isDeveloper', isAdminPassword ? 'true' : 'false');
+                           closeAuthModal();
+                           updateAuthUI();
+                           setupPresence(username);
+                           showNotification(AUTH_CONFIG.success.registrationLocal);
+                           usersLoaded = false;
+                           showUserPage();
+                           syncProfileToFirebase();
+                      }
                  } else {
                     let user = await getUserFromFirebase(username);
                     
@@ -9497,7 +9599,8 @@ let messageFormHtml = '';
                             user.favoriteGames.forEach(gameId => {
                                 syncVotes[gameId] = 'like';
                             });
-                            safeSetLocalStorage('userVotes', JSON.stringify(syncVotes));
+                            const votesKey = getUserVotesKey(username);
+                            safeSetLocalStorage(votesKey, JSON.stringify(syncVotes));
                         }
                         
                          safeSetLocalStorage('username', username);
@@ -9526,6 +9629,13 @@ let messageFormHtml = '';
             if (confirm('Вы уверены, что хотите выйти из аккаунта?')) {
                 const username = safeGetLocalStorage('username', null);
                 setUserOffline(username);
+                
+                if (username) {
+                    localStorage.removeItem(getUserVotesKey(username));
+                    localStorage.removeItem(getFavoriteGamesKey(username));
+                    localStorage.removeItem(getUserFavoritesKey(username));
+                }
+                
                 safeSetLocalStorage('username', null);
                 safeSetLocalStorage('password', null);
                 safeSetLocalStorage('isDeveloper', null);
@@ -9644,19 +9754,31 @@ let messageFormHtml = '';
         
         // Добавить игру в избранное (работает без регистрации)
         function addToMyFavorites(gameTitle) {
-            let favorites = safeGetLocalStorageJSON('favoriteGames', []);
+            const username = safeGetLocalStorage('username', null);
+            const favKey = username ? getFavoriteGamesKey(username) : 'favoriteGames';
+            let favorites = safeGetLocalStorageJSON(favKey, []);
             if (!favorites.includes(gameTitle)) {
                 favorites.push(gameTitle);
-                safeSetLocalStorageJSON('favoriteGames', favorites);
+                safeSetLocalStorageJSON(favKey, favorites);
                 alert('Игра "' + gameTitle + '" добавлена в избранное!');
             } else {
                 alert('Эта игра уже в избранном!');
             }
         }
         
-        function getProfileStats(username) {
-            const userVotes = safeGetLocalStorageJSON('userVotes', {});
-            const likesCount = Object.keys(userVotes).filter(gameId => userVotes[gameId] === 'like').length;
+        async function getProfileStats(username, firebaseUser) {
+            const currentUsername = safeGetLocalStorage('username', null);
+            let favoriteGames = [];
+            
+            if (username === currentUsername) {
+                const votesKey = getUserVotesKey(username);
+                const userVotes = safeGetLocalStorageJSON(votesKey, {});
+                favoriteGames = Object.keys(userVotes).filter(gameId => userVotes[gameId] === 'like');
+            } else if (firebaseUser && firebaseUser.favoriteGames) {
+                favoriteGames = firebaseUser.favoriteGames;
+            }
+            
+            const likesCount = favoriteGames.length;
             
             const storageKey = `userDownloads_${sanitizeFirebasePath(username.toLowerCase())}`;
             const downloads = safeGetLocalStorageJSON(storageKey, []);
@@ -9665,7 +9787,7 @@ let messageFormHtml = '';
             return {
                 downloadsCount: downloadsCount,
                 likesCount: likesCount,
-                favoriteGames: Object.keys(userVotes).filter(gameId => userVotes[gameId] === 'like')
+                favoriteGames: favoriteGames
             };
         }
         
@@ -9705,12 +9827,17 @@ let messageFormHtml = '';
                     }
                 }
                 
-                const badgeMenuItem = document.getElementById('developerBadgeMenuItem');
-                if (badgeMenuItem) {
-                    badgeMenuItem.style.display = isDeveloper ? 'block' : 'none';
+                if (statusDot) {
+                    statusDot.setAttribute('data-username', sanitizeFirebasePath(username.toLowerCase()));
                 }
                 
-// Восстановить настройки профиля из Firebase при входе
+                const developerStatCard = document.getElementById('developerStatCard');
+                if (developerStatCard) {
+                    developerStatCard.style.display = isDeveloper ? 'block' : 'none';
+                }
+                
+                switchPage('user-page');
+                
                 if (username && username !== 'Пользователь') {
                     getUserFromFirebase(username).then(user => {
                         if (user) {
@@ -9728,7 +9855,8 @@ let messageFormHtml = '';
                                 user.favoriteGames.forEach(gameId => {
                                     syncVotes[gameId] = 'like';
                                 });
-                                safeSetLocalStorageJSON('userVotes', syncVotes);
+                                const votesKey = getUserVotesKey(username);
+                                safeSetLocalStorageJSON(votesKey, syncVotes);
                             }
                             updateUserPageStatusDot(user);
                         }
@@ -9738,7 +9866,6 @@ let messageFormHtml = '';
                         updateFavoritesCount();
                         syncProfileToFirebase();
                         loadProfileCommentsCount(username);
-                        switchPage('user-page');
                     }).catch(() => {
                         updateUserPageStatusDot({ status: {} });
                         loadUserAvatar();
@@ -9747,7 +9874,6 @@ let messageFormHtml = '';
                         updateFavoritesCount();
                         syncProfileToFirebase();
                         loadProfileCommentsCount(username);
-                        switchPage('user-page');
                     });
                 } else {
                     updateUserPageStatusDot({ status: {} });
@@ -9755,16 +9881,15 @@ let messageFormHtml = '';
                     loadUserProfileSettings();
                     updateDownloadsCount();
                     updateFavoritesCount();
-                    switchPage('user-page');
+                    syncProfileToFirebase();
+                    loadProfileCommentsCount(username);
                 }
                 
-                // Показать галочку статуса разработчика
                 const devStatusBadge = document.getElementById('devStatusBadge');
                 if (devStatusBadge) {
                     devStatusBadge.style.display = isDeveloper ? 'inline-block' : 'none';
                 }
                 
-                // Установить дату регистрации
                 const joinDateEl = document.getElementById('joinDate');
                 if (joinDateEl) {
                     const createdDate = localStorage.getItem('userCreatedAt');
@@ -9779,7 +9904,9 @@ let messageFormHtml = '';
         }
         
         function updateFavoritesCount() {
-            const userVotes = safeGetLocalStorageJSON('userVotes', {});
+            const username = safeGetLocalStorage('username', null);
+            const votesKey = username ? getUserVotesKey(username) : 'userVotes';
+            const userVotes = safeGetLocalStorageJSON(votesKey, {});
             const likedCount = Object.keys(userVotes).filter(gameId => userVotes[gameId] === 'like').length;
             const countEl = document.getElementById('favoritesCount');
             const likesCountEl = document.getElementById('likesCount');
@@ -10640,7 +10767,9 @@ let messageFormHtml = '';
         
         // Переключить лайк/дизлайк
         function toggleLike(gameId, button) {
-            const userVotes = safeGetLocalStorageJSON('userVotes', {});
+            const username = safeGetLocalStorage('username', null);
+            const votesKey = username ? getUserVotesKey(username) : 'userVotes';
+            const userVotes = safeGetLocalStorageJSON(votesKey, {});
             const wasLiked = userVotes[gameId] === 'like';
             
             if (wasLiked) {
@@ -10653,10 +10782,9 @@ let messageFormHtml = '';
                 showNotification('Добавлено в избранное!');
             }
             
-            safeSetLocalStorageJSON('userVotes', userVotes);
+            safeSetLocalStorageJSON(votesKey, userVotes);
             updateFavoritesCount();
             
-            const username = safeGetLocalStorage('username', null);
             if (username) {
                 const favoriteGames = Object.keys(userVotes).filter(id => userVotes[id] === 'like');
                 const likesCount = favoriteGames.length;
@@ -10757,25 +10885,24 @@ function saveProfileSettings() {
                 return;
             }
             
+            const username = safeGetLocalStorage('username', null);
+            const votesKey = username ? getUserVotesKey(username) : 'userVotes';
+            
             // Сначала пробуем из localStorage
             let likedGames = [];
-            const userVotes = JSON.parse(localStorage.getItem('userVotes') || '{}');
+            const userVotes = JSON.parse(localStorage.getItem(votesKey) || '{}');
             likedGames = Object.keys(userVotes).filter(gameId => userVotes[gameId] === 'like');
             
             // Если localStorage пустой, пробуем из Firebase
-            if (likedGames.length === 0) {
-                const username = localStorage.getItem('username');
-                if (username) {
-                    const user = await getUserFromFirebase(username);
-                    if (user && user.favoriteGames) {
-                        likedGames = user.favoriteGames;
-                        // Также синхронизируем в localStorage
-                        const syncVotes = {};
-                        likedGames.forEach(gameId => {
-                            syncVotes[gameId] = 'like';
-                        });
-                        localStorage.setItem('userVotes', JSON.stringify(syncVotes));
-                    }
+            if (likedGames.length === 0 && username) {
+                const user = await getUserFromFirebase(username);
+                if (user && user.favoriteGames) {
+                    likedGames = user.favoriteGames;
+                    const syncVotes = {};
+                    likedGames.forEach(gameId => {
+                        syncVotes[gameId] = 'like';
+                    });
+                    localStorage.setItem(votesKey, JSON.stringify(syncVotes));
                 }
             }
             
@@ -11004,15 +11131,17 @@ function saveProfileSettings() {
         
         // Добавить в избранное (работает без регистрации)
         function addToFavorites(gameId) {
-            const favorites = JSON.parse(localStorage.getItem('userFavorites') || '[]');
+            const username = safeGetLocalStorage('username', null);
+            const favKey = username ? getUserFavoritesKey(username) : 'userFavorites';
+            const favorites = JSON.parse(localStorage.getItem(favKey) || '[]');
             if (!favorites.includes(gameId)) {
                 favorites.push(gameId);
-                localStorage.setItem('userFavorites', JSON.stringify(favorites));
+                localStorage.setItem(favKey, JSON.stringify(favorites));
                 alert('Игра добавлена в избранное!');
             } else {
                 alert('Эта игра уже в избранном!');
             }
-}
+        }
          
          // Загрузка данных из JSON
         let gameData = {};
@@ -11345,10 +11474,12 @@ let popularGamesTitles = [];
             const currentPage = document.querySelector('.page.active');
             const targetPage = document.getElementById(pageId);
 
-            if (currentPage && targetPage && currentPage !== targetPage) {
-                stopVideo();
-                closeMobileMenu();
+            if (!targetPage || currentPage === targetPage) return;
 
+            stopVideo();
+            closeMobileMenu();
+
+            if (currentPage) {
                 currentPage.dataset.scrollPosition = currentPage.scrollTop;
                 currentPage.classList.add('exit');
                 currentPage.classList.remove('active');
@@ -11383,6 +11514,30 @@ let popularGamesTitles = [];
                         usersLoaded = true;
                     }
                 }, 1000);
+            } else {
+                targetPage.classList.remove('exit');
+                targetPage.classList.add('active');
+                targetPage.scrollTop = 0;
+
+                if (pageId === 'all-games-page' && !allGamesLoaded) {
+                    loadAllGames();
+                    allGamesLoaded = true;
+                    if (category) {
+                        setTimeout(() => switchCategory(category), 100);
+                    }
+                } else if (pageId === 'all-games-page' && category) {
+                    switchCategory(category);
+                }
+
+                if (pageId === 'preorders-page' && !preordersLoaded) {
+                     loadPreorders();
+                     preordersLoaded = true;
+                 }
+
+                if (pageId === 'users-search-page' && !usersLoaded) {
+                    loadAllUsers();
+                    usersLoaded = true;
+                }
             }
         }
         
@@ -11627,7 +11782,9 @@ let popularGamesTitles = [];
             gameCard.dataset.status = game.status;
             
             // Проверяем, лайкнута ли игра
-            const userVotes = JSON.parse(localStorage.getItem('userVotes') || '{}');
+            const username = safeGetLocalStorage('username', null);
+            const votesKey = username ? getUserVotesKey(username) : 'userVotes';
+            const userVotes = JSON.parse(localStorage.getItem(votesKey) || '{}');
             const isLiked = userVotes[gameId] === 'like';
             const heartClass = isLiked ? 'like-btn active' : 'like-btn';
 
@@ -13249,6 +13406,10 @@ function localAIResponse(message) {
             if (existingUsername) {
                 setupPresence(existingUsername);
             }
+
+            initOnlineCounter();
+            
+            initRealtimeStatus();
 
             // Проверка URL параметров для прямых ссылок на игры
             const urlParams = new URLSearchParams(window.location.search);
