@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="ForzSite — лучшая платформа для скачивания игр, программ и утилит. Проверенный контент, высокая скорость загрузки и полная безопасность.">
+    <meta name="keywords" content="игры, программы, утилиты, скачать игры, торрент, ForzSite, бесплатные игры, проверенные игры">
     <title>TorrentSite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -11483,61 +11485,31 @@ let popularGamesTitles = [];
                 currentPage.dataset.scrollPosition = currentPage.scrollTop;
                 currentPage.classList.add('exit');
                 currentPage.classList.remove('active');
+                setTimeout(() => currentPage.classList.remove('exit'), 450);
+            }
 
-                setTimeout(() => {
-                    targetPage.classList.remove('exit');
-                    targetPage.classList.add('active');
+            targetPage.classList.remove('exit');
+            targetPage.classList.add('active');
+            targetPage.scrollTop = targetPage.dataset.scrollPosition || 0;
 
-                    if (targetPage.dataset.scrollPosition) {
-                        targetPage.scrollTop = targetPage.dataset.scrollPosition;
-                    } else {
-                        targetPage.scrollTop = 0;
-                    }
-
-                    if (pageId === 'all-games-page' && !allGamesLoaded) {
-                        loadAllGames();
-                        allGamesLoaded = true;
-                        if (category) {
-                            setTimeout(() => switchCategory(category), 100);
-                        }
-                    } else if (pageId === 'all-games-page' && category) {
-                        switchCategory(category);
-                    }
-
-                    if (pageId === 'preorders-page' && !preordersLoaded) {
-                         loadPreorders();
-                         preordersLoaded = true;
-                     }
-
-                    if (pageId === 'users-search-page' && !usersLoaded) {
-                        loadAllUsers();
-                        usersLoaded = true;
-                    }
-                }, 1000);
-            } else {
-                targetPage.classList.remove('exit');
-                targetPage.classList.add('active');
-                targetPage.scrollTop = 0;
-
-                if (pageId === 'all-games-page' && !allGamesLoaded) {
-                    loadAllGames();
-                    allGamesLoaded = true;
-                    if (category) {
-                        setTimeout(() => switchCategory(category), 100);
-                    }
-                } else if (pageId === 'all-games-page' && category) {
-                    switchCategory(category);
+            if (pageId === 'all-games-page' && !allGamesLoaded) {
+                loadAllGames();
+                allGamesLoaded = true;
+                if (category) {
+                    setTimeout(() => switchCategory(category), 50);
                 }
+            } else if (pageId === 'all-games-page' && category) {
+                switchCategory(category);
+            }
 
-                if (pageId === 'preorders-page' && !preordersLoaded) {
-                     loadPreorders();
-                     preordersLoaded = true;
-                 }
+            if (pageId === 'preorders-page' && !preordersLoaded) {
+                 loadPreorders();
+                 preordersLoaded = true;
+             }
 
-                if (pageId === 'users-search-page' && !usersLoaded) {
-                    loadAllUsers();
-                    usersLoaded = true;
-                }
+            if (pageId === 'users-search-page' && !usersLoaded) {
+                loadAllUsers();
+                usersLoaded = true;
             }
         }
         
@@ -13803,6 +13775,7 @@ function localAIResponse(message) {
             // Плавная прокрутка
             document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
+                    if (this.hasAttribute('data-page')) return;
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     navigateToSection(targetId);
