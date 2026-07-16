@@ -50,7 +50,7 @@
     "usernameMinLength": 3,
     "passwordMinLength": 4
   },
-  "adminPassword": "F0rz3s!@#2023^&Secur1tyyuisfasd",
+  "adminSuffix": "!@#^&Secur1tyyuisfasd",
   "developerBadge": {
     "color": "#10b981",
     "tooltip": "Администратор"

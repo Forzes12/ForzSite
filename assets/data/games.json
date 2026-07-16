@@ -4287,6 +4287,49 @@
         },
         "sku": "ART-0080"
     },
+    "Call of Duty Modern Warfare Remastered": {
+        "title": "Call of Duty Modern Warfare Remastered",
+        "description": "Call of Duty Modern Warfare Remastered — Игра Call of Duty: Modern Warfare, удостоенная множества хвалебных отзывов от игроков и критиков, возвращается с поддержкой высоких разрешений, улучшенными текстурами, передовой физической моделью, расширенным динамическим диапазоном освещения и другими современными технологиями для нового поколения.",
+        "image": "game-screenshot/a3364b49129d217a64b3d39937d124eb.png",
+        "size": "30.53 GB",
+        "year": "2026",
+        "updated": "15.06.2026",
+        "status": "available",
+        "category": "Call of Duty",
+        "tags": [
+    "Call of Duty",
+    "Call of Duty Modern Warfare",
+    "Modern Warfare Remastered",
+    "Modern Warfare"
+],
+        "torrentFile": "torrent/Call of Duty Modern Warfare Remastered.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/1bcb3f34fa8fba818f23e7685177d51da308ff2ec56da897f648d388bb2f4f3d?nocache=1",
+        "trailer": "https://drive.google.com/file/d/1kSNm6tVpTEj0E52UAYtx8kuw7gZfdt8C/preview",
+        "buyGame": "https://ggsel.net/catalog/steam-27454",
+        "screenshots": [
+            "game-screenshot/9ebc6f0e9dd689c3274015a2ba4e6f27.jpg",
+            "game-screenshot/d3f3599dd45da13a6522273adfd85cbd.jpg",
+            "game-screenshot/75c826c03d14d1006a78040bd16c9378.jpg",
+            "game-screenshot/c30367963743b8ec470c5fffd1f0f9a6.jpg"
+        ],
+        "specs": {
+            "Жанр": "Экшен, Шутер,",
+            "Разработчик": "Infinity Ward",
+            "Издатель": "Activision",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "Windows 7, Windows 8 (64-bit)",
+                "Процессор": "Intel Core i3-530 2.93GHz - AMD Phenom II X4 810 2.8GHz",
+                "Оперативная память": "6 GB ОЗУ",
+                "Видеокарта": "NVIDIA GeForce™ GTS 450 - NVIDIA GeForce™ GTX 760, DirectX® 11",
+                "DirectX": "9.0",
+                "Свободное место": "46 ГБ"
+            }
+        },
+        "sku": "ART-0080"
+    },
     "The Blood of Dawnwalker": {
         "title": "The Blood of Dawnwalker",
         "description": "The Blood of Dawnwalker — мрачное приключение в жанре экшен-RPG, где магия крови переплетается с древними легендами. В этом опасном мире вас ждёт борьба за выживание, раскрытие сокровенных тайн и поиск своего места между светом и тьмой.",
@@ -4327,7 +4370,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0081"
+        "sku": "ART-0082"
     },
     "Gears of War: E-Day": {
         "title": "Gears of War: E-Day",
@@ -4371,7 +4414,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0082"
+        "sku": "ART-0083"
     },
     "Metro 2039": {
         "title": "Metro 2039",
@@ -4413,7 +4456,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0083"
+        "sku": "ART-0084"
     },
     "Gothic 1 Remake": {
         "title": "Gothic 1 Remake",
@@ -4455,7 +4498,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0084"
+        "sku": "ART-0085"
     },
     "OD Knock": {
         "title": "OD Knock",
@@ -4501,7 +4544,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0085"
+        "sku": "ART-0086"
     },
     "Lords of the Fallen II": {
         "title": "Lords of the Fallen II",
@@ -4545,7 +4588,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0086"
+        "sku": "ART-0087"
     },
     "photoshop-2022": {
         "title": "Adobe Photoshop 2022",
@@ -4582,7 +4625,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0087"
+        "sku": "ART-0088"
     },
     "Adobe After Effects 2024": {
         "title": "Adobe After Effects 2024",
@@ -4619,7 +4662,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0088"
+        "sku": "ART-0089"
     },
     "Adobe After Effects 2023": {
         "title": "Adobe After Effects 2023",
@@ -4656,7 +4699,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0089"
+        "sku": "ART-0090"
     },
     "Adobe After Effects 2022": {
         "title": "Adobe After Effects 2022",
@@ -4693,7 +4736,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0090"
+        "sku": "ART-0091"
     },
     "Adobe After Effects 2021": {
         "title": "Adobe After Effects 2021",
@@ -4730,7 +4773,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0091"
+        "sku": "ART-0092"
     },
     "Adobe After Effects CC 2019": {
         "title": "Adobe After Effects CC 2019",
@@ -4767,7 +4810,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0092"
+        "sku": "ART-0093"
     },
     "Adobe After Effects CC 2017": {
         "title": "Adobe After Effects CC 2017",
@@ -4804,7 +4847,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0093"
+        "sku": "ART-0094"
     },
     "winrar": {
         "title": "WinRAR",
@@ -4841,7 +4884,7 @@
                 "Storage": "50 MB available space"
             }
         },
-        "sku": "ART-0094"
+        "sku": "ART-0095"
     },
     "VPN-ZIP-PC": {
         "title": "VPN-ZIP-PC",
@@ -4880,7 +4923,7 @@
             "minimum": {},
             "recommended": {}
         },
-        "sku": "ART-0095"
+        "sku": "ART-0096"
     },
     "TG WS Proxy v1.6.6": {
         "title": "TG WS Proxy v1.6.6",
@@ -4905,7 +4948,7 @@
             "minimum": {},
             "recommended": {}
         },
-        "sku": "ART-0096"
+        "sku": "ART-0097"
     },
     "Amnezia VPN-PC": {
         "title": "Amnezia VPN-PC",
@@ -4930,7 +4973,7 @@
             "minimum": {},
             "recommended": {}
         },
-        "sku": "ART-0097"
+        "sku": "ART-0098"
     },
     "hitman-pro": {
         "title": "Hitman PRO",
@@ -4963,7 +5006,7 @@
             "minimum": {},
             "recommended": {}
         },
-        "sku": "ART-0098"
+        "sku": "ART-0099"
     },
     "Dr.Web CureIt": {
         "title": "Dr.Web CureIt - Лечащая утилита",
@@ -4997,6 +5040,6 @@
             "minimum": {},
             "recommended": {}
         },
-        "sku": "ART-0099"
+        "sku": "ART-0100"
     }
 }
