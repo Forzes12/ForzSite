@@ -4328,7 +4328,357 @@
                 "Свободное место": "46 ГБ"
             }
         },
-        "sku": "ART-0080"
+        "sku": "ART-0081"
+    },
+    "Call of Duty: Modern Warfare 3": {
+        "title": "Call of Duty: Modern Warfare 3",
+        "description": "Call of Duty: Modern Warfare 3 — Самый популярный шутер всех времен возвращается в новой игре легендарной серии Call of Duty! Вас ожидает жестокое столкновение с террористом Макаровым и его зловещей организацией, которая готова сеять смерть и разрушение по всему миру. В борьбе с подобными злодеями все средства хороши, особенно если в ваших руках – самое современное оружие и снаряжение, доступное только элитным бойцам отрядов особого назначения.",
+        "image": "game-screenshot/deefd33990f9e025f4895d7e002c6fea.png",
+        "size": "54.59 GB",
+        "year": "2026",
+        "updated": "11.08.2024",
+        "status": "available",
+        "category": "Call of Duty",
+        "tags": [
+    "Call of Duty",
+    "Call of Duty Modern Warfare 3",
+    "Modern Warfare 3",
+    "Modern Warfare"
+],
+        "torrentFile": "torrent/Call of Duty Modern Warfare 3.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/1bcb3f34fa8fba818f23e7685177d51da308ff2ec56da897f648d388bb2f4f3d",
+        "trailer": "https://drive.google.com/file/d/1ITUZk-v5M99BO6jcP-d53uQ4eBfnoD7n/preview",
+        "buyGame": "https://ggsel.net/catalog/product/call-of-duty-modern-warfare-3-2011-steam-avtodostavka-102163610",
+        "screenshots": [
+            "game-screenshot/826d58b3aeef033c4c9314efc992a347.jpeg",
+            "game-screenshot/f3d6902f3cabab7fcca888bbb031162c.jpeg",
+            "game-screenshot/51f5e52a562f4a8f64796f96be50ab41.jpeg",
+            "game-screenshot/7c13dd1c4a2d6836d929cda900f57c4d.jpeg"
+        ],
+        "specs": {
+            "Жанр": "Экшен, Шутер,",
+            "Разработчик": "Infinity Ward",
+            "Издатель": "Activision",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "Windows® XP, Windows® Vista, Windows® 7 (64-bit)",
+                "Процессор": "Intel® Core™ 2 Duo E6600 - AMD Phenom™ X3 8750",
+                "Оперативная память": "2 GB ОЗУ",
+                "Видеокарта": "NVIDIA® GeForce™ 8600GT - ATI® Radeon™ X1950",
+                "DirectX": "9.0",
+                "Свободное место": "54.59 ГБ"
+            }
+        },
+        "sku": "ART-0082"
+    },
+    "CALL OF DUTY GHOSTS": {
+        "title": "CALL OF DUTY GHOSTS",
+        "description": "CALL OF DUTY GHOSTS — Легендарная серия экшенов от первого лица, ставшая одной из самых популярных игровых линеек по всему миру, готова совершить прорыв к настоящему совершенству! Новая игра Call of Duty: Ghosts предложит вам сражаться не ради патриотизма, свободы или торжества демократии.",
+        "image": "game-screenshot/31033ee9febf5a2c529caf66360138a9.png",
+        "size": "22.06 GB",
+        "year": "2026",
+        "updated": "13.07.2026",
+        "status": "available",
+        "category": "Call of Duty",
+        "tags": [
+    "Call of Duty",
+    "Call of Duty ghosts",
+    "ghosts"
+],
+        "torrentFile": "torrent/Call of Duty Ghosts.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/16c4e9c71af34e857f4fa8348f0b1905e2d4d7581010944e719164d5cb28cdb5?nocache=1",
+        "trailer": "https://drive.google.com/file/d/1vku0AD3KyudHWVqhU0-4a0jzp2N_gKbA/preview",
+        "buyGame": "https://ggsel.net/catalog/steam-59443",
+        "screenshots": [
+            "game-screenshot/40d3ea217d167c33c49e618d2ab7b4c6.jpg",
+            "game-screenshot/a4cce27841ab36e18fe423c9b967658c.jpg",
+            "game-screenshot/81f954e253e69d148313af4670e91e6d.jpg",
+            "game-screenshot/722942b7444d8fa5047c3f3b948d88d0.jpg"
+        ],
+        "specs": {
+            "Жанр": "Экшен, Шутер,",
+            "Разработчик": "Infinity Ward",
+            "Издатель": "Activision",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "Windows 7, Windows 8 (64-bit)",
+                "Процессор": "Intel® Core™ 2 Duo E8200 2.66 GHZ - Intel Core™ i5 680 3.6GHz",
+                "Оперативная память": "4 GB ОЗУ",
+                "Видеокарта": "NVIDIA GeForce™ GTS 450 - NVIDIA GeForce™ GTX 760, DirectX® 11",
+                "DirectX": "9.0с",
+                "Свободное место": "32 ГБ"
+            }
+        },
+        "sku": "ART-0083"
+    },
+    "CALL OF DUTY WWII": {
+        "title": "CALL OF DUTY WWII",
+        "description": "CALL OF DUTY WWII — События сюжетной кампании развернутся на европейском театре военных действий, где вас ждет абсолютно новая история, а также новые персонажи, вместе с которыми вы пройдете самые знаменитые сражения Второй мировой.",
+        "image": "game-screenshot/251e2d1ddf02277a58da6e47bab18299.png",
+        "size": "36.26 GB",
+        "year": "2026",
+        "updated": "15.07.2026",
+        "status": "available",
+        "category": "Call of Duty",
+        "tags": [
+    "Call of Duty",
+    "Call of Duty wII"
+],
+        "torrentFile": "torrent/Call of Duty WWII.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/a17818ea4e127a4074e1314c2491591b48070265e04fa53fb57a94a18c89ddce?nocache=1",
+        "trailer": "https://drive.google.com/file/d/1TqeMtnQu8nODm3YbRJpaeHzOpXRfPZiS/preview",
+        "buyGame": "https://ggsel.net/catalog/steam-60976?utm_referrer=https%3A%2F%2Fggsel.net%2Fcatalog%2Fsteam-59443",
+        "screenshots": [
+            "game-screenshot/6330d6174230c7186455537cec56200a.jpg",
+            "game-screenshot/374b89a86f2d284011732cace1f2f6b6.jpg",
+            "game-screenshot/5fb583a8228a70d89b2c08c2c109d28a.jpg",
+            "game-screenshot/478102be4a8d88cca5122fe2916f7c7b.jpg"
+        ],
+        "specs": {
+            "Жанр": "Экшен, Шутер,",
+            "Разработчик": "Infinity Ward",
+            "Издатель": "Activision",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "Windows 7, Windows 8 (64-bit)",
+                "Процессор": "Intel Core i3 3225 3.3 GHz - AMD Ryzen 5 1400",
+                "Оперативная память": "8 GB ОЗУ",
+                "Видеокарта": "NVIDIA GeForce GTX 660 @ 2 GB - GTX 1050 or ATI Radeon HD 7850 @ 2GB - AMD RX 550, DirectX® 11",
+                "DirectX": "9.0с",
+                "Свободное место": "53 ГБ"
+            }
+        },
+        "sku": "ART-0084"
+    },
+    "Call of Duty: Black Ops - Cold War": {
+        "title": "Call of Duty: Black Ops - Cold War",
+        "description": "Call of Duty: Black Ops - Cold War — Действие игры Black Ops Cold War происходит в начале 1980-х годов - в один из напряженных периодов холодной войны. В ходе захватывающей кампании невиданных масштабов, рассчитанной на одного игрока, игрокам предстоит встречаться с историческими деятелями и узнавать жестокие истины, сражаясь в таких культовых местах, как Восточный Берлин, Вьетнам, Турция и даже штаб-квартира КГБ на Лубянке.",
+        "image": "game-screenshot/5645yerf.jpg",
+        "size": "84.6 GB",
+        "year": "2026",
+        "updated": "26.10.2023",
+        "status": "available",
+        "category": "Call of Duty",
+        "tags": [
+    "Call of Duty",
+    "Call of Duty Black Ops - Cold War",
+    "Call of Duty Black Ops",
+    "Black Ops"
+],
+        "torrentFile": "torrent/Call.of.Duty.Black.Ops.Cold.War.Campaign.Only-InsaneRamZes.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/935ab3db133e349a9051f71af1554db084e9fb1e0a055b1ca71dc7651f569169?nocache=1",
+        "trailer": "https://drive.google.com/file/d/1d2HKZk6aBINUbPnmRaZJ7BKChvz5qg0s/preview",
+        "buyGame": "https://ggsel.net/catalog/steam-66655",
+        "screenshots": [
+            "game-screenshot/thumb-966b1350fff6ca2b33f9861d69906f5f.png",
+            "game-screenshot/thumb-a886d5331a304f2ced0f3002628323ad.png",
+            "game-screenshot/thumb-9980b98d3e93756060d2ae207c7926c2.png",
+            "game-screenshot/thumb-1b7cccf038a3c0c07ac9da239509ac92.png",
+            "game-screenshot/thumb-192fc149e9944aea27b1882659ef4012.png",
+            "game-screenshot/thumb-364addaf99523094ecadd1bc53b651d4.png",
+            "game-screenshot/thumb-434f7acfa03c58b2d495ec7b39acbd72.png",
+            "game-screenshot/thumb-942acd14c62bfacb0362476e6c31c49e.png"
+        ],
+        "specs": {
+            "Жанр": "Экшен, Шутер,",
+            "Разработчик": "Infinity Ward",
+            "Издатель": "Activision",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "Windows 10, Windows 11 (64-bit)",
+                "Процессор": "Intel Core i3-4340 - AMD FX-6300",
+                "Оперативная память": "8 GB ОЗУ",
+                "Видеокарта": "NVIDIA GeForce GTX 670 - NVIDIA GeForce GTX 1650 - AMD Radeon HD 7950, DirectX 12",
+                "DirectX": "12с",
+                "Свободное место": "85 ГБ"
+            }
+        },
+        "sku": "ART-0085"
+    },
+    "Call of Duty: Modern Warfare": {
+        "title": "Call of Duty: Modern Warfare",
+        "description": "Call of Duty: Modern Warfare — Легендарный боевик от первого лица возвращается! Жестокая и драматичная кампания, рассчитанная на одного игрока, выходит за рамки и разрывает шаблоны так, как это возможно только в Modern Warfare. Игроков ждут захватывающие тайные операции с участием спецназа разных стран в знаменитых городах Европы и на опасных просторах Ближнего Востока.",
+        "image": "game-screenshot/8acc7e0b51fc53443e8916c34d885877.jpg",
+        "size": "165.34 GB",
+        "year": "2026",
+        "updated": "01.08.2025",
+        "status": "available",
+        "category": "Call of Duty",
+        "tags": [
+    "Call of Duty",
+    "Call of Duty: Modern Warfare",
+    "Modern Warfare"
+],
+        "torrentFile": "torrent/Call.of.Duty.Modern.Warfare-InsaneRamZes.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/935ab3db133e349a9051f71af1554db084e9fb1e0a055b1ca71dc7651f569169?nocache=1",
+        "trailer": "https://drive.google.com/file/d/1UYQ8BIe4Cj7h48jyKM_g8j0lk5AMz7rT/preview",
+        "buyGame": "https://ggsel.net/catalog/cod-modern-warfare-2019-keys-steam",
+        "screenshots": [
+            "game-screenshot/_3ff1c9c742319773b559ba1a38aa09b5.jpeg",
+            "game-screenshot/_5411d1a8b643e3989fb6cce40c3193dc.jpeg",
+            "game-screenshot/_34d2db77d07b06987dd5fea80c1fbf1e.jpeg",
+            "game-screenshot/_0f81240c06f04ad65d84b7bf0b32e932.jpeg"
+        ],
+        "specs": {
+            "Жанр": "Экшен, Шутер,",
+            "Разработчик": "Infinity Ward",
+            "Издатель": "Activision",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "Windows 10 (64-bit)",
+                "Процессор": "AMD FX 4350 - Intel Core i3-4130",
+                "Оперативная память": "8 GB ОЗУ",
+                "Видеокарта": "AMD Radeon Vega 8 - NVIDIA GeForce GTX 645 - Intel Iris Graphics 550",
+                "DirectX": "12с",
+                "Свободное место": "165 ГБ"
+            }
+        },
+        "sku": "ART-0086"
+    },
+    "Call of Duty: Black Ops 6": {
+        "title": "Call of Duty: Black Ops 6",
+        "description": "Call of Duty: Black Ops 6 — Нарушение приказа становится единственным выходом. Союзники превращаются во врагов. Это Call of Duty: Black Ops 6. Действие шпионского боевика Black Ops 6, разработанного Treyarch и Raven, происходит в начале 1990-х годов. Это время больших перемен в глобальной политике, вызванных окончанием холодной войны и возвышением США в роли единственной сверхдержавы мира. Вас ждет мозголомный сюжет в лучших традициях Black Ops, не скованный никакими правилами. Кампания Black Ops 6 предлагает динамичный и разнообразный игровой процесс с драматичными сценами, ожесточенными перестрелками, рискованными ограблениями и тайными шпионскими операциями.",
+        "image": "game-screenshot/00c612723c774f5be98c9adc541a0f9e.jpg",
+        "size": "49.14 GB",
+        "year": "2026",
+        "updated": "01.08.2025",
+        "status": "available",
+        "category": "Call of Duty",
+        "tags": [
+    "Call of Duty",
+    "Call of Duty: Black Ops 6",
+    "Black Ops 6",
+    "Black Ops"
+],
+        "torrentFile": "torrent/Call.of.Duty.Black.Ops.6.Campaign.Only-InsaneRamZes.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/be36cf2dae46e8dbb0e26b37792b68e4b30aafa3c0740e80542ab0aadf187e72?nocache=1",
+        "trailer": "https://drive.google.com/file/d/18CuRO-XBMvWZDHdUGg7gLoPZKAvBE0SI/preview",
+        "buyGame": "https://ggsel.net/catalog/cod-black-ops-6-keys-steam?utm_referrer=https%3A%2F%2Fggsel.net%2Fcatalog%2Fcod-modern-warfare-2019-keys-steam",
+        "screenshots": [
+            "game-screenshot/_8279342e9e7a8a745e921399dd187e67.jpeg",
+            "game-screenshot/_f5898ac539d2c8d55cb7dec7ae6205d4.jpeg",
+            "game-screenshot/_6f836d9c3041819dfa298feb87e2f281.jpeg",
+            "game-screenshot/_72ac15512f8baccf7dc69c8293eb5273.jpeg"
+        ],
+        "specs": {
+            "Жанр": "Экшен, Шутер,",
+            "Разработчик": "Infinity Ward",
+            "Издатель": "Activision",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "Windows 10 (64-bit)",
+                "Процессор": "AMD Ryzen 5 1400 - Intel Core i5-6600",
+                "Оперативная память": "8 GB ОЗУ",
+                "Видеокарта": "AMD Radeon RX 470 - NVIDIA GeForce GTX 960 - Intel Arc A580",
+                "DirectX": "12",
+                "Свободное место": "49 ГБ"
+            }
+        },
+        "sku": "ART-0087"
+    },
+    "Call of Duty: Modern Warfare II": {
+        "title": "Call of Duty: Modern Warfare II",
+        "description": "Call of Duty: Modern Warfare II — В игре Call of Duty: Modern Warfare II игроков ожидает беспрецедентный глобальный конфликт с участием легендарных исполнителей из ОТГ-141. В кампании, рассчитанной на одного игрока, вам предстоит путешествовать по всему миру, выполняя самые разные задания - от небольших, но критически важных тактических ударов до сверхсекретных операций.",
+        "image": "game-screenshot/575635.jpg",
+        "size": "82.9 GB",
+        "year": "2026",
+        "updated": "11.08.2025",
+        "status": "available",
+        "category": "Call of Duty",
+        "tags": [
+    "Call of Duty",
+    "Call of Duty: Modern Warfare II",
+    "Modern Warfare II",
+    "Modern Warfare"
+],
+        "torrentFile": "torrent/Call.of.Duty.Modern.Warfare.II-InsaneRamZes.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/af3db2ec52b1a15a4c72c5dc513e3b3afb356fa361c59ca66c0d2e9f2bd1f411?nocache=1",
+        "trailer": "https://drive.google.com/file/d/1zuiU5VoUFrULYKK3mhzcCzTcKJ-dfFZP/preview",
+        "buyGame": "https://ggsel.net/catalog/product/call-of-duty-modern-warfare-ii-avto-mir-102288995",
+        "screenshots": [
+            "game-screenshot/ss-2e25d5720f94648ec94dceb3f48.jpg",
+            "game-screenshot/ss-3bc236957083b41c2820733cc412.jpg",
+            "game-screenshot/ss-6fefacb27d22ce288b985055d7c.jpg",
+            "game-screenshot/ss-66b144b6406b43964c10dd474d2.jpg",
+            "game-screenshot/ss-9883961972520658ee6dca99751.jpg",
+            "game-screenshot/ss-a9db721e54103cde265065e70cd.jpg",
+            "game-screenshot/ss-ad01aa3d3bf4d141280c79a239a.jpg",
+            "game-screenshot/ss-b7d2f0b086a9d7d27fbab073e6f.jpg",
+            "game-screenshot/ss-d432487c50aaffb2cc771039cfe.jpg",
+            "game-screenshot/ss-e01ffb1c1ffa22e06ae99dc6fb7.jpg"
+        ],
+        "specs": {
+            "Жанр": "Экшен, Шутер,",
+            "Разработчик": "Infinity Ward",
+            "Издатель": "Activision",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "Windows 10 (64-bit)",
+                "Процессор": "Intel Core i5-10400 - AMD Ryzen 5 3600",
+                "Оперативная память": "8 GB ОЗУ",
+                "Видеокарта": "NVIDIA GeForce GTX 1060 - AMD Radeon RX 580",
+                "DirectX": "11",
+                "Свободное место": "83 ГБ"
+            }
+        },
+        "sku": "ART-0088"
+    },
+    "Call of Duty: Modern Warfare III": {
+        "title": "Call of Duty: Modern Warfare III",
+        "description": "Call of Duty: Modern Warfare III — В прямом продолжении игры Call of Duty®: Modern Warfare® II капитан Прайс и ОТГ-141 противостоят величайшей угрозе. Ультранационалистический военный преступник Владимир Макаров распространяет свою власть по всему миру, заставляя ОТГ-141 сражаться, как никогда раньше.",
+        "image": "game-screenshot/d9ae0997612a304596ac681265ce3be3.jpg",
+        "size": "143.18 GB",
+        "year": "2026",
+        "updated": "24.08.2025",
+        "status": "available",
+        "category": "Call of Duty",
+        "tags": [
+    "Call of Duty",
+    "Call of Duty: Modern Warfare III",
+    "Modern Warfare III",
+    "Modern Warfare"
+],
+        "torrentFile": "torrent/Call.of.Duty.Modern.Warfare.III-InsaneRamZes.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/85794d413a276d71e4d0b3da897d4ff0d4f035039ea0cb47f9c86b6f173aa6dd?nocache=1",
+        "trailer": "https://drive.google.com/file/d/1ALKc1hI-fXipENzit5OQ6PzTYJH2kaJ3/preview",
+        "buyGame": "https://ggsel.net/catalog/cod-modern-warfare-3-2023-keys-steam",
+        "screenshots": [
+            "game-screenshot/_0320c0141587432c11e99a47e6eafb63.jpeg",
+            "game-screenshot/_b6b810d8df252e85e42472f06561bbf7.jpeg",
+            "game-screenshot/_08ff1602e318df9c481da818f79a770f.jpeg",
+            "game-screenshot/_bb6590c716cce2bd9784df0e5db5d82d.jpeg"
+        ],
+        "specs": {
+            "Жанр": "Экшен, Шутер,",
+            "Разработчик": "Infinity Ward",
+            "Издатель": "Activision",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "Windows 10 (64-bit)",
+                "Процессор": "Intel Core i5-6600 - AMD Ryzen 5 1400",
+                "Оперативная память": "8 GB ОЗУ",
+                "Видеокарта": "NVIDIA GeForce GTX 960 - GTX 1650 - AMD Radeon RX 470",
+                "DirectX": "12",
+                "Свободное место": "143 ГБ"
+            }
+        },
+        "sku": "ART-0089"
     },
     "The Blood of Dawnwalker": {
         "title": "The Blood of Dawnwalker",
@@ -4370,7 +4720,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0082"
+        "sku": "ART-0090"
     },
     "Gears of War: E-Day": {
         "title": "Gears of War: E-Day",
@@ -4414,7 +4764,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0083"
+        "sku": "ART-0091"
     },
     "Metro 2039": {
         "title": "Metro 2039",
@@ -4456,7 +4806,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0084"
+        "sku": "ART-0092"
     },
     "Gothic 1 Remake": {
         "title": "Gothic 1 Remake",
@@ -4498,7 +4848,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0085"
+        "sku": "ART-0093"
     },
     "OD Knock": {
         "title": "OD Knock",
@@ -4544,7 +4894,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0086"
+        "sku": "ART-0094"
     },
     "Lords of the Fallen II": {
         "title": "Lords of the Fallen II",
@@ -4588,7 +4938,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0087"
+        "sku": "ART-0094"
     },
     "photoshop-2022": {
         "title": "Adobe Photoshop 2022",
@@ -4625,7 +4975,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0088"
+        "sku": "ART-0095"
     },
     "Adobe After Effects 2024": {
         "title": "Adobe After Effects 2024",
@@ -4662,7 +5012,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0089"
+        "sku": "ART-0096"
     },
     "Adobe After Effects 2023": {
         "title": "Adobe After Effects 2023",
@@ -4699,7 +5049,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0090"
+        "sku": "ART-0097"
     },
     "Adobe After Effects 2022": {
         "title": "Adobe After Effects 2022",
@@ -4736,7 +5086,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0091"
+        "sku": "ART-00998"
     },
     "Adobe After Effects 2021": {
         "title": "Adobe After Effects 2021",
@@ -4773,7 +5123,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0092"
+        "sku": "ART-0099"
     },
     "Adobe After Effects CC 2019": {
         "title": "Adobe After Effects CC 2019",
@@ -4810,7 +5160,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0093"
+        "sku": "ART-0100"
     },
     "Adobe After Effects CC 2017": {
         "title": "Adobe After Effects CC 2017",
@@ -4847,7 +5197,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0094"
+        "sku": "ART-0101"
     },
     "winrar": {
         "title": "WinRAR",
@@ -4884,7 +5234,7 @@
                 "Storage": "50 MB available space"
             }
         },
-        "sku": "ART-0095"
+        "sku": "ART-0102"
     },
     "VPN-ZIP-PC": {
         "title": "VPN-ZIP-PC",
@@ -4923,7 +5273,7 @@
             "minimum": {},
             "recommended": {}
         },
-        "sku": "ART-0096"
+        "sku": "ART-0103"
     },
     "TG WS Proxy v1.6.6": {
         "title": "TG WS Proxy v1.6.6",
@@ -4948,7 +5298,7 @@
             "minimum": {},
             "recommended": {}
         },
-        "sku": "ART-0097"
+        "sku": "ART-0104"
     },
     "Amnezia VPN-PC": {
         "title": "Amnezia VPN-PC",
@@ -4973,7 +5323,7 @@
             "minimum": {},
             "recommended": {}
         },
-        "sku": "ART-0098"
+        "sku": "ART-0105"
     },
     "hitman-pro": {
         "title": "Hitman PRO",
@@ -5006,7 +5356,7 @@
             "minimum": {},
             "recommended": {}
         },
-        "sku": "ART-0099"
+        "sku": "ART-0106"
     },
     "Dr.Web CureIt": {
         "title": "Dr.Web CureIt - Лечащая утилита",
@@ -5040,6 +5390,6 @@
             "minimum": {},
             "recommended": {}
         },
-        "sku": "ART-0100"
+        "sku": "ART-0106"
     }
 }
