@@ -8410,7 +8410,7 @@ position: absolute;
                     <i class="fas fa-calendar-alt" style="margin-right: 6px;"></i>На сайте с <span id="joinDate">2024</span>
                 </p>
                 
-                <div class="profile-stats" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 35px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                <div id="profileStatsGrid" class="profile-stats" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 35px; max-width: 700px; margin-left: auto; margin-right: auto;">
                     <div class="profile-stat-card" style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;" onclick="showFavorites()">
                         <div class="profile-stat-icon" style="font-size: 1.8rem; margin-bottom: 8px; color: #ef4444;"><i class="fas fa-heart"></i></div>
                         <div class="profile-stat-value" id="favoritesCount" style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">0</div>
@@ -9100,9 +9100,6 @@ position: absolute;
             } catch (e) {
                 user.commentsCount = 0;
             }
-            
-            // Обновляем время последнего посещения
-            await updateLastSeen(username);
             
             if (profileContent) {
                 const avatarIcon = getAvatarIcon(user.avatar);
@@ -9837,6 +9834,11 @@ let messageFormHtml = '';
                 const developerStatCard = document.getElementById('developerStatCard');
                 if (developerStatCard) {
                     developerStatCard.style.display = isDeveloper ? 'block' : 'none';
+                }
+                
+                const profileStatsGrid = document.getElementById('profileStatsGrid');
+                if (profileStatsGrid) {
+                    profileStatsGrid.style.gridTemplateColumns = isDeveloper ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)';
                 }
                 
                 switchPage('user-page');
