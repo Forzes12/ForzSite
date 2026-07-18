@@ -12287,6 +12287,36 @@ if (game.status === 'available') {
                                             <i class="fas fa-question-circle"></i> Как играть
                                         </a>`;
                                     }
+                                    // Add How to Play button for Call of Duty: Black Ops - Cold War
+                                    if (gameId === 'Call of Duty: Black Ops - Cold War' || gameId === 'Call of Duty: Black Ops - Cold War') {
+                                        html += `<a href="#" class="modal-buy-btn" onclick="showColdWarGuide(); return false;" style="background: linear-gradient(135deg, #3b82f6, #2563eb); margin-left: 10px; padding: 12px 24px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5); border: 2px solid rgba(255,255,255,0.3); color: white !important; font-family: 'Orbitron', sans-serif; text-shadow: 0 0 5px rgba(255,255,255,0.5); letter-spacing: 1px; transition: all 0.3s ease;">
+                                            <i class="fas fa-question-circle"></i> Как запустить
+                                        </a>`;
+                                    }
+                                    // Add How to Play button for Call of Duty: Modern Warfare
+                                    if (gameId === 'Call of Duty: Modern Warfare' || gameId === 'Call of Duty: Modern Warfare') {
+                                        html += `<a href="#" class="modal-buy-btn" onclick="showModerWarFareGuide(); return false;" style="background: linear-gradient(135deg, #3b82f6, #2563eb); margin-left: 10px; padding: 12px 24px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5); border: 2px solid rgba(255,255,255,0.3); color: white !important; font-family: 'Orbitron', sans-serif; text-shadow: 0 0 5px rgba(255,255,255,0.5); letter-spacing: 1px; transition: all 0.3s ease;">
+                                            <i class="fas fa-question-circle"></i> Как запустить
+                                        </a>`;
+                                    }
+                                    // Add How to Play button for Call of Duty: Black Ops 6
+                                    if (gameId === 'Call of Duty: Black Ops 6' || gameId === 'Call of Duty: Black Ops 6') {
+                                        html += `<a href="#" class="modal-buy-btn" onclick="showBlackOps6Guide(); return false;" style="background: linear-gradient(135deg, #3b82f6, #2563eb); margin-left: 10px; padding: 12px 24px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5); border: 2px solid rgba(255,255,255,0.3); color: white !important; font-family: 'Orbitron', sans-serif; text-shadow: 0 0 5px rgba(255,255,255,0.5); letter-spacing: 1px; transition: all 0.3s ease;">
+                                            <i class="fas fa-question-circle"></i> Как запустить
+                                        </a>`;
+                                    }
+                                    // Add How to Play button for Call of Duty: Modern Warfare II
+                                    if (gameId === 'Call of Duty: Modern Warfare II' || gameId === 'Call of Duty: Modern Warfare II') {
+                                        html += `<a href="#" class="modal-buy-btn" onclick="showModerWarfareIIGuide(); return false;" style="background: linear-gradient(135deg, #3b82f6, #2563eb); margin-left: 10px; padding: 12px 24px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5); border: 2px solid rgba(255,255,255,0.3); color: white !important; font-family: 'Orbitron', sans-serif; text-shadow: 0 0 5px rgba(255,255,255,0.5); letter-spacing: 1px; transition: all 0.3s ease;">
+                                            <i class="fas fa-question-circle"></i> Как запустить
+                                        </a>`;
+                                    }
+                                    // Add How to Play button for Call of Duty: Modern Warfare III
+                                    if (gameId === 'Call of Duty: Modern Warfare III' || gameId === 'Call of Duty: Modern Warfare III') {
+                                        html += `<a href="#" class="modal-buy-btn" onclick="showModerWarfareIIIGuide(); return false;" style="background: linear-gradient(135deg, #3b82f6, #2563eb); margin-left: 10px; padding: 12px 24px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5); border: 2px solid rgba(255,255,255,0.3); color: white !important; font-family: 'Orbitron', sans-serif; text-shadow: 0 0 5px rgba(255,255,255,0.5); letter-spacing: 1px; transition: all 0.3s ease;">
+                                            <i class="fas fa-question-circle"></i> Как запустить
+                                        </a>`;
+                                    }
                                     return html;
                                 } else if (game.status === 'buy') {
                                     let html = '';
@@ -13995,6 +14025,285 @@ function localAIResponse(message) {
                            6. В той же командной строке вводим команду sc start denuvo (после окончания игры можете ввести в командной строке конанду sc stop denuvoчтобы остановить сервис)
                            7. Запускаем игру с файла b1-Win64-Shipping.exe по пути b1\Binaries\Win64
                            R.S. В архиве с файлани обхода всегда есть readme.txt, в котором есть аналогичная инструкция от саних создателей обхода, а так же другие полезности.</p>
+                    </div>
+                </div>
+            `;
+            modal.onclick = function(e) {
+                if (e.target === modal) {
+                    const c = document.getElementById('guideContent');
+                    c.style.animation = 'slideOut 0.2s ease-in forwards';
+                    modal.style.animation = 'fadeOut 0.2s ease-in forwards';
+                    setTimeout(() => modal.remove(), 200);
+                }
+            };
+            document.body.appendChild(modal);
+        }
+
+        // Функция для показа гайда по Call of Duty: Black Ops - Cold War
+        function showColdWarGuide() {
+            const modal = document.createElement('div');
+            modal.id = 'blackMythGuideModal';
+            modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:999999;display:flex;justify-content:center;align-items:center;animation:fadeIn 0.3s ease-out;';
+            modal.innerHTML = `
+                <style>
+                    @keyframes fadeIn {
+                        from { opacity: 0; }
+                        to { opacity: 1; }
+                    }
+                    @keyframes slideIn {
+                        from { transform: scale(0.8) translateY(-20px); opacity: 0; }
+                        to { transform: scale(1) translateY(0); opacity: 1; }
+                    }
+                    @keyframes fadeOut {
+                        from { opacity: 1; }
+                        to { opacity: 0; }
+                    }
+                    @keyframes slideOut {
+                        from { transform: scale(1) translateY(0); opacity: 1; }
+                        to { transform: scale(0.8) translateY(-20px); opacity: 0; }
+                    }
+                    #blackMythGuideModal::-webkit-scrollbar{display:none}
+                    #guideContent { animation: slideIn 0.3s ease-out; }
+                </style>
+                <div id="guideContent" style="background:linear-gradient(135deg,#1a1a2e,#16213e);padding:30px;border-radius:15px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;border:2px solid #3b82f6;box-shadow:0 0 30px rgba(59,130,246,0.5);position:relative;">
+                    <button onclick="const m=document.getElementById('blackMythGuideModal');const c=document.getElementById('guideContent');c.style.animation='slideOut 0.2s ease-in forwards';m.style.animation='fadeOut 0.2s ease-in forwards';setTimeout(()=>m.remove(),200);" class="close-modal" style="top:15px;right:20px;margin:0;">
+                        <i class="fas fa-times" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;"></i>
+                    </button>
+                    <h2 style="color:#3b82f6;margin:0 0 20px 0;font-family:'Orbitron',sans-serif;text-align:center;">Call of Duty: Black Ops - Cold War - Как играть</h2>
+                    <div style="color:#fff;font-family:'Exo 2',sans-serif;line-height:1.8;white-space: pre-line;">
+                        <p>1. Скачать в любое удобное для вас место (главное чтобы на пути к папке с игрой не было кириллицы)
+                           
+                           2. Запуск игры с файла BlackOpsColdWar.exe в главной директории игры (<a href="https://pixeldrain.com/u/iSikZnuj" target="_blank" style="color:#3b82f6;text-decoration:underline;">Win 11 Fix (Link 1)</a> | <a href="https://wdfiles.ru/2aB1b" target="_blank" style="color:#3b82f6;text-decoration:underline;">Win 11 Fix (Link 2)</a>). Link 1 - ссылка на случай если не работает второй сайт, Link 2 - ссылка на случай если не работает первый сайт.
+                           
+                           3. После запуска у вас откроется командное окно, где будет написано как быстро можно переключаться между доступными режимами (Кампания, Мультиплеер, Зомби-режим)
+                           
+                           - Чтобы в игре был русский язык текста и озвучки, создайте и запустите файл с расширением .reg следующего содержания:
+                           
+                           - Цитата:
+                           
+                           -Windows Registry Editor Version 5.00
+                           
+                           -[HKEY_CURRENT_USER\SOFTWARE\Blizzard Entertainment\Battle.net\Launch Options\ZEUS]
+                           
+                           -"GAME_ACCOUNT"=""
+                           
+                           -"LOCALE"="ruRU"
+                           
+                           -"LOCALE_AUDIO"="ruRU"
+
+                           -"REGION"="EU"
+
+                           -"LAUNCH_64BIT"="false"
+                           ----------------------------------------------------------------------------------------------------
+
+                           Почему игра может не запускаться?
+
+                           - Убирайте кириллицу из пути к папке с игрой,
+                           - Имя пользователя Windows не должно содержать кириллицу,
+                           - Убирайте атрибут "только чтение" с папки с игрой,
+                           - Убирайте папку с игрой из торрент-клиента, перед тем как запускать игру,
+                           - Выключайте антивирус, т.к. он может блокировать запуск исполняемых и/или дополнительных файлов.
+                           - На самый крайний случай - перекачайте папку с игрой полностью, по новой.</p>
+                    </div>
+                </div>
+            `;
+            modal.onclick = function(e) {
+                if (e.target === modal) {
+                    const c = document.getElementById('guideContent');
+                    c.style.animation = 'slideOut 0.2s ease-in forwards';
+                    modal.style.animation = 'fadeOut 0.2s ease-in forwards';
+                    setTimeout(() => modal.remove(), 200);
+                }
+            };
+            document.body.appendChild(modal);
+        }
+
+        // Функция для показа гайда по Call of Duty: Modern Warfare
+        function showModerWarFareGuide() {
+            const modal = document.createElement('div');
+            modal.id = 'blackMythGuideModal';
+            modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:999999;display:flex;justify-content:center;align-items:center;animation:fadeIn 0.3s ease-out;';
+            modal.innerHTML = `
+                <style>
+                    @keyframes fadeIn {
+                        from { opacity: 0; }
+                        to { opacity: 1; }
+                    }
+                    @keyframes slideIn {
+                        from { transform: scale(0.8) translateY(-20px); opacity: 0; }
+                        to { transform: scale(1) translateY(0); opacity: 1; }
+                    }
+                    @keyframes fadeOut {
+                        from { opacity: 1; }
+                        to { opacity: 0; }
+                    }
+                    @keyframes slideOut {
+                        from { transform: scale(1) translateY(0); opacity: 1; }
+                        to { transform: scale(0.8) translateY(-20px); opacity: 0; }
+                    }
+                    #blackMythGuideModal::-webkit-scrollbar{display:none}
+                    #guideContent { animation: slideIn 0.3s ease-out; }
+                </style>
+                <div id="guideContent" style="background:linear-gradient(135deg,#1a1a2e,#16213e);padding:30px;border-radius:15px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;border:2px solid #3b82f6;box-shadow:0 0 30px rgba(59,130,246,0.5);position:relative;">
+                    <button onclick="const m=document.getElementById('blackMythGuideModal');const c=document.getElementById('guideContent');c.style.animation='slideOut 0.2s ease-in forwards';m.style.animation='fadeOut 0.2s ease-in forwards';setTimeout(()=>m.remove(),200);" class="close-modal" style="top:15px;right:20px;margin:0;">
+                        <i class="fas fa-times" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;"></i>
+                    </button>
+                    <h2 style="color:#3b82f6;margin:0 0 20px 0;font-family:'Orbitron',sans-serif;text-align:center;">Call of Duty: Modern Warfare - Как играть</h2>
+                    <div style="color:#fff;font-family:'Exo 2',sans-serif;line-height:1.8;white-space: pre-line;">
+                        <p>1. Скачать в любое место на вашем диске (главное чтобы на пути к папке с игрой не было кириллицы)
+                           
+                           2. Запустите файл !start_cod.bat и ожидайте запуска игры.</p>
+                    </div>
+                </div>
+            `;
+            modal.onclick = function(e) {
+                if (e.target === modal) {
+                    const c = document.getElementById('guideContent');
+                    c.style.animation = 'slideOut 0.2s ease-in forwards';
+                    modal.style.animation = 'fadeOut 0.2s ease-in forwards';
+                    setTimeout(() => modal.remove(), 200);
+                }
+            };
+            document.body.appendChild(modal);
+        }
+
+        // Функция для показа гайда по Call of Duty: Black Ops 6
+        function showBlackOps6Guide() {
+            const modal = document.createElement('div');
+            modal.id = 'blackMythGuideModal';
+            modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:999999;display:flex;justify-content:center;align-items:center;animation:fadeIn 0.3s ease-out;';
+            modal.innerHTML = `
+                <style>
+                    @keyframes fadeIn {
+                        from { opacity: 0; }
+                        to { opacity: 1; }
+                    }
+                    @keyframes slideIn {
+                        from { transform: scale(0.8) translateY(-20px); opacity: 0; }
+                        to { transform: scale(1) translateY(0); opacity: 1; }
+                    }
+                    @keyframes fadeOut {
+                        from { opacity: 1; }
+                        to { opacity: 0; }
+                    }
+                    @keyframes slideOut {
+                        from { transform: scale(1) translateY(0); opacity: 1; }
+                        to { transform: scale(0.8) translateY(-20px); opacity: 0; }
+                    }
+                    #blackMythGuideModal::-webkit-scrollbar{display:none}
+                    #guideContent { animation: slideIn 0.3s ease-out; }
+                </style>
+                <div id="guideContent" style="background:linear-gradient(135deg,#1a1a2e,#16213e);padding:30px;border-radius:15px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;border:2px solid #3b82f6;box-shadow:0 0 30px rgba(59,130,246,0.5);position:relative;">
+                    <button onclick="const m=document.getElementById('blackMythGuideModal');const c=document.getElementById('guideContent');c.style.animation='slideOut 0.2s ease-in forwards';m.style.animation='fadeOut 0.2s ease-in forwards';setTimeout(()=>m.remove(),200);" class="close-modal" style="top:15px;right:20px;margin:0;">
+                        <i class="fas fa-times" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;"></i>
+                    </button>
+                    <h2 style="color:#3b82f6;margin:0 0 20px 0;font-family:'Orbitron',sans-serif;text-align:center;">Call of Duty: Black Ops 6 - Как играть</h2>
+                    <div style="color:#fff;font-family:'Exo 2',sans-serif;line-height:1.8;white-space: pre-line;">
+                        <p>1. Скачать в любое место на вашем диске (главное чтобы на пути к папке с игрой не было кириллицы)
+                           
+                           2. Запустите файл !start_sp24.bat и ожидайте запуска игры.</p>
+                    </div>
+                </div>
+            `;
+            modal.onclick = function(e) {
+                if (e.target === modal) {
+                    const c = document.getElementById('guideContent');
+                    c.style.animation = 'slideOut 0.2s ease-in forwards';
+                    modal.style.animation = 'fadeOut 0.2s ease-in forwards';
+                    setTimeout(() => modal.remove(), 200);
+                }
+            };
+            document.body.appendChild(modal);
+        }
+
+        // Функция для показа гайда по Call of Duty: Modern Warfare II
+        function showModerWarfareIIGuide() {
+            const modal = document.createElement('div');
+            modal.id = 'blackMythGuideModal';
+            modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:999999;display:flex;justify-content:center;align-items:center;animation:fadeIn 0.3s ease-out;';
+            modal.innerHTML = `
+                <style>
+                    @keyframes fadeIn {
+                        from { opacity: 0; }
+                        to { opacity: 1; }
+                    }
+                    @keyframes slideIn {
+                        from { transform: scale(0.8) translateY(-20px); opacity: 0; }
+                        to { transform: scale(1) translateY(0); opacity: 1; }
+                    }
+                    @keyframes fadeOut {
+                        from { opacity: 1; }
+                        to { opacity: 0; }
+                    }
+                    @keyframes slideOut {
+                        from { transform: scale(1) translateY(0); opacity: 1; }
+                        to { transform: scale(0.8) translateY(-20px); opacity: 0; }
+                    }
+                    #blackMythGuideModal::-webkit-scrollbar{display:none}
+                    #guideContent { animation: slideIn 0.3s ease-out; }
+                </style>
+                <div id="guideContent" style="background:linear-gradient(135deg,#1a1a2e,#16213e);padding:30px;border-radius:15px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;border:2px solid #3b82f6;box-shadow:0 0 30px rgba(59,130,246,0.5);position:relative;">
+                    <button onclick="const m=document.getElementById('blackMythGuideModal');const c=document.getElementById('guideContent');c.style.animation='slideOut 0.2s ease-in forwards';m.style.animation='fadeOut 0.2s ease-in forwards';setTimeout(()=>m.remove(),200);" class="close-modal" style="top:15px;right:20px;margin:0;">
+                        <i class="fas fa-times" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;"></i>
+                    </button>
+                    <h2 style="color:#3b82f6;margin:0 0 20px 0;font-family:'Orbitron',sans-serif;text-align:center;">Call of Duty: Modern Warfare II - Как играть</h2>
+                    <div style="color:#fff;font-family:'Exo 2',sans-serif;line-height:1.8;white-space: pre-line;">
+                        <p>1. Скачать в любое место на вашем диске (главное чтобы на пути к папке с игрой не было кириллицы)
+                           
+                           2. Запустите файл !start_cod22.bat (для запуска мультиплеера)
+                           
+                           3. Запустите файл !start_sp22.bat (для запуска кампании).</p>
+                    </div>
+                </div>
+            `;
+            modal.onclick = function(e) {
+                if (e.target === modal) {
+                    const c = document.getElementById('guideContent');
+                    c.style.animation = 'slideOut 0.2s ease-in forwards';
+                    modal.style.animation = 'fadeOut 0.2s ease-in forwards';
+                    setTimeout(() => modal.remove(), 200);
+                }
+            };
+            document.body.appendChild(modal);
+        }
+
+        // Функция для показа гайда по Call of Duty: Modern Warfare III
+        function showModerWarfareIIIGuide() {
+            const modal = document.createElement('div');
+            modal.id = 'blackMythGuideModal';
+            modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:999999;display:flex;justify-content:center;align-items:center;animation:fadeIn 0.3s ease-out;';
+            modal.innerHTML = `
+                <style>
+                    @keyframes fadeIn {
+                        from { opacity: 0; }
+                        to { opacity: 1; }
+                    }
+                    @keyframes slideIn {
+                        from { transform: scale(0.8) translateY(-20px); opacity: 0; }
+                        to { transform: scale(1) translateY(0); opacity: 1; }
+                    }
+                    @keyframes fadeOut {
+                        from { opacity: 1; }
+                        to { opacity: 0; }
+                    }
+                    @keyframes slideOut {
+                        from { transform: scale(1) translateY(0); opacity: 1; }
+                        to { transform: scale(0.8) translateY(-20px); opacity: 0; }
+                    }
+                    #blackMythGuideModal::-webkit-scrollbar{display:none}
+                    #guideContent { animation: slideIn 0.3s ease-out; }
+                </style>
+                <div id="guideContent" style="background:linear-gradient(135deg,#1a1a2e,#16213e);padding:30px;border-radius:15px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;border:2px solid #3b82f6;box-shadow:0 0 30px rgba(59,130,246,0.5);position:relative;">
+                    <button onclick="const m=document.getElementById('blackMythGuideModal');const c=document.getElementById('guideContent');c.style.animation='slideOut 0.2s ease-in forwards';m.style.animation='fadeOut 0.2s ease-in forwards';setTimeout(()=>m.remove(),200);" class="close-modal" style="top:15px;right:20px;margin:0;">
+                        <i class="fas fa-times" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;"></i>
+                    </button>
+                    <h2 style="color:#3b82f6;margin:0 0 20px 0;font-family:'Orbitron',sans-serif;text-align:center;">Call of Duty: Modern Warfare III - Как играть</h2>
+                    <div style="color:#fff;font-family:'Exo 2',sans-serif;line-height:1.8;white-space: pre-line;">
+                        <p>1. Скачать в любое место на вашем диске (главное чтобы на пути к папке с игрой не было кириллицы)
+                           
+                           2. Запустите файл !start_sp23.bat (для запуска кампании)
+                           
+                           3. Запустите файл !start_cod23.bat (для запуска мультиплеера).</p>
                     </div>
                 </div>
             `;
