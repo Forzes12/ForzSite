@@ -8109,6 +8109,66 @@ position: absolute;
                 dot.setAttribute('data-tooltip', isOnline ? 'Online' : offlineTooltip);
             });
         }
+        
+        // ========== DEBUG PANEL ==========
+        let debugVisible = false;
+        const debugLogs = [];
+        
+        function toggleDebug() {
+            debugVisible = !debugVisible;
+            const content = document.getElementById('debugContent');
+            const toggle = document.getElementById('debugToggle');
+            if (content) content.style.display = debugVisible ? 'block' : 'none';
+            if (toggle) toggle.style.background = debugVisible ? 'linear-gradient(135deg, #10b981, #059669)' : 'linear-gradient(135deg, #ef4444, #dc2626)';
+        }
+        
+        function clearDebug() {
+            debugLogs.length = 0;
+            const container = document.getElementById('debugLogs');
+            if (container) container.innerHTML = '';
+        }
+        
+        function logDebug(message, type) {
+            type = type || 'info';
+            const time = new Date().toLocaleTimeString();
+            debugLogs.push({ time: time, message: message, type: type });
+            const container = document.getElementById('debugLogs');
+            if (container) {
+                const entry = document.createElement('div');
+                entry.style.cssText = 'padding: 4px 8px; border-radius: 4px; font-size: 11px; line-height: 1.4;';
+                if (type === 'error') entry.style.background = 'rgba(239, 68, 68, 0.2)';
+                else if (type === 'success') entry.style.background = 'rgba(16, 185, 129, 0.2)';
+                else entry.style.background = 'rgba(255, 255, 255, 0.05)';
+                
+                entry.innerHTML = '<span style="color: #64748b;">[' + time + ']</span> ' + message;
+                container.appendChild(entry);
+                container.scrollTop = container.scrollHeight;
+            }
+        }
+        
+        // Intercept console logs
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+        
+        console.log = function() {
+            logDebug(Array.from(arguments).join(' '), 'info');
+            originalLog.apply(console, arguments);
+        };
+        
+        console.error = function() {
+            logDebug(Array.from(arguments).join(' '), 'error');
+            originalError.apply(console, arguments);
+        };
+        
+        console.warn = function() {
+            logDebug(Array.from(arguments).join(' '), 'warn');
+            originalWarn.apply(console, arguments);
+        };
+        
+        // Initial debug log
+        logDebug('Debug panel initialized. Click 🐛 to toggle.', 'success');
+        
     </script>
     <script>
         document.addEventListener('contextmenu', event => event.preventDefault());
@@ -8236,20 +8296,38 @@ position: absolute;
                 </button>
             </form>
             
-        <div id="qrLoginSection" style="display: none; text-align: center; padding: 15px 0; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 15px;">
-                <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 12px;">Или войдите через QR-код</p>
-                <div id="qrCodeContainer" style="display: inline-block; background: white; padding: 12px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
-                    <canvas id="qrCodeCanvas" width="200" height="200"></canvas>
-                    <img id="qrCodeImage" style="display: none; width: 200px; height: 200px;" alt="QR Code">
+        <div id="qrLoginSection" style="display: none; padding: 0; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <div style="display: flex; justify-content: flex-end; align-items: center; gap: 15px; padding-top: 15px;">
+                    <div style="flex: 1; text-align: right;">
+                        <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 8px;">Или войдите через QR-код</p>
+                        <p id="qrStatusText" style="color: #64748b; font-size: 0.8rem; margin-bottom: 10px;">
+                            QR-код обновится через <span id="qrTimer" style="color: #fbbf24; font-weight: 700;">60</span> сек
+                        </p>
+                        <button onclick="refreshQRCode()" style="padding: 8px 20px; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #94a3b8; border-radius: 8px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s;">
+                            <i class="fas fa-sync-alt"></i> Обновить код
+                        </button>
+                    </div>
+                    <div id="qrCodeContainer" style="background: white; padding: 10px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); flex-shrink: 0;">
+                        <canvas id="qrCodeCanvas" width="240" height="240"></canvas>
+                        <img id="qrCodeImage" style="display: none; width: 240px; height: 240px;" alt="QR Code">
+                    </div>
                 </div>
-                <p id="qrStatusText" style="color: #64748b; font-size: 0.8rem; margin-top: 10px;">
-                    QR-код обновится через <span id="qrTimer" style="color: #fbbf24; font-weight: 700;">60</span> сек
-                </p>
-                <button onclick="refreshQRCode()" style="margin-top: 10px; padding: 8px 20px; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #94a3b8; border-radius: 8px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s;">
-                    <i class="fas fa-sync-alt"></i> Обновить код
-                </button>
             </div>
-            
+    
+    <!-- Debug Panel -->
+    <div id="debugPanel" style="position: fixed; bottom: 20px; right: 20px; z-index: 999999; font-family: monospace; font-size: 12px;">
+        <button id="debugToggle" onclick="toggleDebug()" style="position: fixed; bottom: 20px; right: 20px; z-index: 999999; width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border: none; cursor: pointer; font-size: 20px; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);">
+            🐛
+        </button>
+        <div id="debugContent" style="display: none; position: fixed; bottom: 80px; right: 20px; width: 350px; max-height: 400px; overflow-y: auto; background: rgba(15, 23, 42, 0.98); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; box-shadow: 0 8px 32px rgba(0,0,0,0.5); backdrop-filter: blur(10px);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                <strong style="color: #ef4444;">Debug Console</strong>
+                <button onclick="clearDebug()" style="background: transparent; border: none; color: #94a3b8; cursor: pointer; font-size: 11px;">Очистить</button>
+            </div>
+            <div id="debugLogs" style="display: flex; flex-direction: column; gap: 5px;"></div>
+        </div>
+    </div>
+
             <div style="text-align: center; margin-top: 20px;">
                 <button onclick="closeAuthModal()" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #94a3b8; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease;">
                     Отмена
@@ -9736,64 +9814,109 @@ let messageFormHtml = '';
                 qrSection.style.display = 'block';
             }
             
-            if (img) {
-                img.style.display = 'block';
-                img.style.width = '200px';
-                img.style.height = '200px';
-                img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(qrData);
-                img.onload = function() {
-                    if (statusText) {
-                        statusText.textContent = 'QR-код готов. Отсканируйте в приложении Forzes HUB';
-                        statusText.style.color = '#64748b';
+            const setStatus = (text, isError) => {
+                if (statusText) {
+                    statusText.textContent = text;
+                    statusText.style.color = isError ? '#ef4444' : '#64748b';
+                }
+                console.log('[QR] ' + text);
+            };
+            
+            const tryQRServer = () => {
+                return new Promise((resolve) => {
+                    if (!img) {
+                        resolve(false);
+                        return;
                     }
-                };
-                img.onerror = function() {
-                    img.style.display = 'none';
-                    if (canvas) {
-                        canvas.style.display = 'block';
-                        canvas.style.width = '200px';
-                        canvas.style.height = '200px';
-                        if (typeof QRCode !== 'undefined') {
-                            try {
-                                QRCode.toCanvas(canvas, qrData, {
-                                    width: 200,
-                                    margin: 2,
-                                    color: { dark: '#000000', light: '#ffffff' }
-                                });
-                                if (statusText) {
-                                    statusText.textContent = 'QR-код готов. Отсканируйте в приложении Forzes HUB';
-                                    statusText.style.color = '#64748b';
-                                }
-                            } catch (e) {
-                                console.error('QR canvas error:', e);
-                                if (statusText) {
-                                    statusText.textContent = 'Ошибка генерации QR-кода. Обновите страницу.';
-                                    statusText.style.color = '#ef4444';
-                                }
-                            }
-                        } else {
-                            if (statusText) {
-                                statusText.textContent = 'Библиотека QR не загружена. Обновите страницу.';
-                                statusText.style.color = '#ef4444';
-                            }
-                        }
+                    
+                    if (canvas) canvas.style.display = 'none';
+                    img.style.display = 'block';
+                    img.style.width = '240px';
+                    img.style.height = '240px';
+                    
+                    const timeout = setTimeout(() => {
+                        resolve(false);
+                    }, 8000);
+                    
+                    img.onload = function() {
+                        clearTimeout(timeout);
+                        setStatus('QR-код готов. Отсканируйте в приложении Forzes HUB', false);
+                        resolve(true);
+                    };
+                    
+                    img.onerror = function() {
+                        clearTimeout(timeout);
+                        img.style.display = 'none';
+                        resolve(false);
+                    };
+                    
+                    try {
+                        img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=' + encodeURIComponent(qrData);
+                    } catch (e) {
+                        clearTimeout(timeout);
+                        resolve(false);
                     }
-                };
-            } else if (canvas) {
-                canvas.style.display = 'block';
-                canvas.style.width = '200px';
-                canvas.style.height = '200px';
-                if (typeof QRCode !== 'undefined') {
+                });
+            };
+            
+            const tryCanvas = () => {
+                return new Promise((resolve) => {
+                    if (!canvas) {
+                        resolve(false);
+                        return;
+                    }
+                    
+                    if (img) img.style.display = 'none';
+                    canvas.style.display = 'block';
+                    canvas.style.width = '240px';
+                    canvas.style.height = '240px';
+                    
+                    if (typeof QRCode === 'undefined') {
+                        setStatus('Библиотека QR не загружена', true);
+                        resolve(false);
+                        return;
+                    }
+                    
                     try {
                         QRCode.toCanvas(canvas, qrData, {
-                            width: 200,
+                            width: 240,
                             margin: 2,
                             color: { dark: '#000000', light: '#ffffff' }
+                        }, function(error) {
+                            if (error) {
+                                console.error('QR canvas error:', error);
+                                setStatus('Ошибка рендеринга QR', true);
+                                resolve(false);
+                            } else {
+                                setStatus('QR-код готов. Отсканируйте в приложении Forzes HUB', false);
+                                resolve(true);
+                            }
                         });
                     } catch (e) {
-                        console.error('QR canvas error:', e);
+                        console.error('QR exception:', e);
+                        setStatus('Ошибка создания QR', true);
+                        resolve(false);
+                    }
+                });
+            };
+            
+            const init = async () => {
+                setStatus('Генерация QR-кода...', false);
+                
+                const apiOk = await tryQRServer();
+                if (!apiOk) {
+                    setStatus('API не ответил, пробуем локальный рендер...', false);
+                    const canvasOk = await tryCanvas();
+                    if (!canvasOk) {
+                        setStatus('Не удалось создать QR-код. Обновите страницу или проверьте интернет.', true);
                     }
                 }
+            };
+            
+            if (isLocal) {
+                setTimeout(init, 1000);
+            } else {
+                init();
             }
             
             startQRCheck(sessionId);
