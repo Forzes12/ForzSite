@@ -4198,15 +4198,15 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "Assassin's Creed Black Flag Resynced - Deluxe Edition",
-    "Assassin's Creed Black Flag Resynced",
-    "Assassin's Creed IV: Black Flag Resynced",
-    "Assassin's Creed IV: Black Flag",
-    "Assassin's Creed Black Flag Deluxe Edition",
-    "Assassin's Creed Black Flag",
-    "Black Flag Resynced",
-    "Black Flag Deluxe Edition"
-],
+            "Assassin's Creed Black Flag Resynced - Deluxe Edition",
+            "Assassin's Creed Black Flag Resynced",
+            "Assassin's Creed IV: Black Flag Resynced",
+            "Assassin's Creed IV: Black Flag",
+            "Assassin's Creed Black Flag Deluxe Edition",
+            "Assassin's Creed Black Flag",
+            "Black Flag Resynced",
+            "Black Flag Deluxe Edition"
+        ],
         "torrentFile": "torrent/Assassins.Creed.Black.Flag.Resynced.Deluxe.Edition-InsaneRamZes.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/829701556926706225b1fe9481f8c9875f5741ee4f4dc599df81bcc229eba43b?nocache=1",
         "trailer": "https://drive.google.com/file/d/1IKuW8vagDKCc1zXPz7pW0ozNjVwvq39P/preview",
@@ -4248,15 +4248,15 @@
         "status": "available",
         "category": "games",
         "tags": [
-    "City Car Driving 2.0",
-    "City Car Driving 2",
-    "City Car Driving",
-    "City Car Driving Simulator",
-    "City Car Driving 2.0 Simulator",
-    "City Car Driving 2.0 Driving Simulator",
-    "City Car Driving 2.0 PC",
-    "City Car Driving 2.0 Deluxe Edition"
-],
+            "City Car Driving 2.0",
+            "City Car Driving 2",
+            "City Car Driving",
+            "City Car Driving Simulator",
+            "City Car Driving 2.0 Simulator",
+            "City Car Driving 2.0 Driving Simulator",
+            "City Car Driving 2.0 PC",
+            "City Car Driving 2.0 Deluxe Edition"
+        ],
         "torrentFile": "torrent/City.Car.Driving.2.0-InsaneRamZes.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/f351d909862ecb734952d1507d46356f77cb173b220179f06e71c4f5f609f448?nocache=1",
         "trailer": "https://drive.google.com/file/d/1Cv0eTXhiu6wgQtQuIxW6wYZL_ntJn_Vk/preview",
@@ -4297,11 +4297,15 @@
         "status": "available",
         "category": "Call of Duty",
         "tags": [
-    "Call of Duty",
-    "Call of Duty Modern Warfare",
-    "Modern Warfare Remastered",
-    "Modern Warfare"
-],
+            "City Car Driving 2.0",
+            "City Car Driving 2",
+            "City Car Driving",
+            "City Car Driving Simulator",
+            "City Car Driving 2.0 Simulator",
+            "City Car Driving 2.0 Driving Simulator",
+            "City Car Driving 2.0 PC",
+            "City Car Driving 2.0 Deluxe Edition"
+        ],
         "torrentFile": "torrent/Call of Duty Modern Warfare Remastered.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/1bcb3f34fa8fba818f23e7685177d51da308ff2ec56da897f648d388bb2f4f3d?nocache=1",
         "trailer": "https://drive.google.com/file/d/1kSNm6tVpTEj0E52UAYtx8kuw7gZfdt8C/preview",
@@ -4340,11 +4344,11 @@
         "status": "available",
         "category": "Call of Duty",
         "tags": [
-    "Call of Duty",
-    "Call of Duty Modern Warfare 3",
-    "Modern Warfare 3",
-    "Modern Warfare"
-],
+            "Call of Duty",
+            "Call of Duty Modern Warfare 3",
+            "Modern Warfare 3",
+            "Modern Warfare"
+        ],
         "torrentFile": "torrent/Call of Duty Modern Warfare 3.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/1bcb3f34fa8fba818f23e7685177d51da308ff2ec56da897f648d388bb2f4f3d",
         "trailer": "https://drive.google.com/file/d/1ITUZk-v5M99BO6jcP-d53uQ4eBfnoD7n/preview",
@@ -4383,10 +4387,10 @@
         "status": "available",
         "category": "Call of Duty",
         "tags": [
-    "Call of Duty",
-    "Call of Duty ghosts",
-    "ghosts"
-],
+            "Call of Duty",
+            "Call of Duty ghosts",
+            "ghosts"
+        ],
         "torrentFile": "torrent/Call of Duty Ghosts.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/16c4e9c71af34e857f4fa8348f0b1905e2d4d7581010944e719164d5cb28cdb5?nocache=1",
         "trailer": "https://drive.google.com/file/d/1vku0AD3KyudHWVqhU0-4a0jzp2N_gKbA/preview",
@@ -4425,9 +4429,9 @@
         "status": "available",
         "category": "Call of Duty",
         "tags": [
-    "Call of Duty",
-    "Call of Duty wII"
-],
+            "Call of Duty",
+            "Call of Duty wII"
+        ],
         "torrentFile": "torrent/Call of Duty WWII.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/a17818ea4e127a4074e1314c2491591b48070265e04fa53fb57a94a18c89ddce?nocache=1",
         "trailer": "https://drive.google.com/file/d/1TqeMtnQu8nODm3YbRJpaeHzOpXRfPZiS/preview",
@@ -4466,11 +4470,11 @@
         "status": "available",
         "category": "Call of Duty",
         "tags": [
-    "Call of Duty",
-    "Call of Duty Black Ops - Cold War",
-    "Call of Duty Black Ops",
-    "Black Ops"
-],
+            "Call of Duty",
+            "Call of Duty Black Ops - Cold War",
+            "Call of Duty Black Ops",
+            "Black Ops"
+        ],
         "torrentFile": "torrent/Call.of.Duty.Black.Ops.Cold.War.Campaign.Only-InsaneRamZes.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/935ab3db133e349a9051f71af1554db084e9fb1e0a055b1ca71dc7651f569169?nocache=1",
         "trailer": "https://drive.google.com/file/d/1d2HKZk6aBINUbPnmRaZJ7BKChvz5qg0s/preview",
@@ -4513,10 +4517,10 @@
         "status": "available",
         "category": "Call of Duty",
         "tags": [
-    "Call of Duty",
-    "Call of Duty: Modern Warfare",
-    "Modern Warfare"
-],
+            "Call of Duty",
+            "Call of Duty: Modern Warfare",
+            "Modern Warfare"
+        ],
         "torrentFile": "torrent/Call.of.Duty.Modern.Warfare-InsaneRamZes.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/935ab3db133e349a9051f71af1554db084e9fb1e0a055b1ca71dc7651f569169?nocache=1",
         "trailer": "https://drive.google.com/file/d/1UYQ8BIe4Cj7h48jyKM_g8j0lk5AMz7rT/preview",
@@ -4555,11 +4559,11 @@
         "status": "available",
         "category": "Call of Duty",
         "tags": [
-    "Call of Duty",
-    "Call of Duty: Black Ops 6",
-    "Black Ops 6",
-    "Black Ops"
-],
+            "Call of Duty",
+            "Call of Duty: Black Ops 6",
+            "Black Ops 6",
+            "Black Ops"
+        ],
         "torrentFile": "torrent/Call.of.Duty.Black.Ops.6.Campaign.Only-InsaneRamZes.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/be36cf2dae46e8dbb0e26b37792b68e4b30aafa3c0740e80542ab0aadf187e72?nocache=1",
         "trailer": "https://drive.google.com/file/d/18CuRO-XBMvWZDHdUGg7gLoPZKAvBE0SI/preview",
@@ -4598,11 +4602,11 @@
         "status": "available",
         "category": "Call of Duty",
         "tags": [
-    "Call of Duty",
-    "Call of Duty: Modern Warfare II",
-    "Modern Warfare II",
-    "Modern Warfare"
-],
+            "Call of Duty",
+            "Call of Duty: Modern Warfare II",
+            "Modern Warfare II",
+            "Modern Warfare"
+        ],
         "torrentFile": "torrent/Call.of.Duty.Modern.Warfare.II-InsaneRamZes.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/af3db2ec52b1a15a4c72c5dc513e3b3afb356fa361c59ca66c0d2e9f2bd1f411?nocache=1",
         "trailer": "https://drive.google.com/file/d/1zuiU5VoUFrULYKK3mhzcCzTcKJ-dfFZP/preview",
@@ -4647,11 +4651,11 @@
         "status": "available",
         "category": "Call of Duty",
         "tags": [
-    "Call of Duty",
-    "Call of Duty: Modern Warfare III",
-    "Modern Warfare III",
-    "Modern Warfare"
-],
+            "Call of Duty",
+            "Call of Duty: Modern Warfare III",
+            "Modern Warfare III",
+            "Modern Warfare"
+        ],
         "torrentFile": "torrent/Call.of.Duty.Modern.Warfare.III-InsaneRamZes.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/85794d413a276d71e4d0b3da897d4ff0d4f035039ea0cb47f9c86b6f173aa6dd?nocache=1",
         "trailer": "https://drive.google.com/file/d/1ALKc1hI-fXipENzit5OQ6PzTYJH2kaJ3/preview",
@@ -4679,6 +4683,50 @@
             }
         },
         "sku": "ART-0089"
+    },
+    "Assassin's Creed Shadows": {
+        "title": "Assassin's Creed Shadows",
+        "description": "Assassin's Creed Shadows — Перенеситесь в феодальную Японию в новом эпическом экшен-приключении! Убийственная безупречность синоби-ассасина и мощь легендарного самурая помогут вам найти свой путь в изумительном открытом мире, где царит раздор.",
+        "image": "game-screenshot/f2cc1bd35cb35f41e84270fb18e2b55f.jpg",
+        "size": "176.56 GB",
+        "year": "2026",
+        "updated": "18.07.2026",
+        "status": "available",
+        "category": "Call of Duty",
+        "tags": [
+            "Assassin's",
+            "Assassin's Creed",
+            "Assassin's Creed Shadows",
+            "Assassin"
+        ],
+        "torrentFile": "torrent/Assassins.Creed.Shadows-InsaneRamZes.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/219cb6a9e1e85c3bcafb42c5eac7f991680f312aa73018131a65d01f80a3d71d?nocache=1",
+        "trailer": "https://drive.google.com/file/d/179Xu5bPs9u5GdXUkqdCLQZbWB9bLtPI3/preview",
+        "buyGame": "https://ggsel.net/catalog/assassins-creed-shadows-keys-steam",
+        "screenshots": [
+            "game-screenshot/_9037a9a4577fcbfd706494bf892b5669.jpeg",
+            "game-screenshot/_e1741773ea76a58ec6572c22fc4e8117.jpeg",
+            "game-screenshot/_c746d2ae5f064fad7e4e8b793b9c7da2.jpeg",
+            "game-screenshot/_5049873f7b206a390f5992bdf76ed10e.jpeg",
+            "game-screenshot/_1c2992b9586681e33324d5bf3529f911.jpeg"
+        ],
+        "specs": {
+            "Жанр": "Экшен, Шутер,",
+            "Разработчик": "Infinity Ward",
+            "Издатель": "Activision",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "Windows 10 (64-bit)",
+                "Процессор": "INTEL Core i7 8700K - AMD RYZEN 5 3600",
+                "Оперативная память": "16 GB ОЗУ",
+                "Видеокарта": "NVIDIA GEFORCE GTX 1650 4GB - AMD RX-5500 XT 8GB - INTEL ARC TM A380 6GB (REBAR ON)",
+                "DirectX": "12",
+                "Свободное место": "160 ГБ"
+            }
+        },
+        "sku": "ART-0090"
     },
     "The Blood of Dawnwalker": {
         "title": "The Blood of Dawnwalker",
@@ -4720,7 +4768,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0090"
+        "sku": "ART-0091"
     },
     "Gears of War: E-Day": {
         "title": "Gears of War: E-Day",
@@ -4764,7 +4812,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0091"
+        "sku": "ART-0092"
     },
     "Metro 2039": {
         "title": "Metro 2039",
@@ -4806,7 +4854,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0092"
+        "sku": "ART-0093"
     },
     "Gothic 1 Remake": {
         "title": "Gothic 1 Remake",
@@ -4848,7 +4896,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0093"
+        "sku": "ART-0094"
     },
     "OD Knock": {
         "title": "OD Knock",
@@ -4894,7 +4942,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0094"
+        "sku": "ART-0095"
     },
     "Lords of the Fallen II": {
         "title": "Lords of the Fallen II",
@@ -4938,7 +4986,7 @@
                 "Свободное место": ""
             }
         },
-        "sku": "ART-0094"
+        "sku": "ART-0096"
     },
     "photoshop-2022": {
         "title": "Adobe Photoshop 2022",
@@ -4975,7 +5023,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0095"
+        "sku": "ART-0097"
     },
     "Adobe After Effects 2024": {
         "title": "Adobe After Effects 2024",
@@ -5012,7 +5060,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0096"
+        "sku": "ART-0098"
     },
     "Adobe After Effects 2023": {
         "title": "Adobe After Effects 2023",
@@ -5049,7 +5097,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0097"
+        "sku": "ART-0099"
     },
     "Adobe After Effects 2022": {
         "title": "Adobe After Effects 2022",
@@ -5086,7 +5134,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-00998"
+        "sku": "ART-0099"
     },
     "Adobe After Effects 2021": {
         "title": "Adobe After Effects 2021",
@@ -5123,7 +5171,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0099"
+        "sku": "ART-0100"
     },
     "Adobe After Effects CC 2019": {
         "title": "Adobe After Effects CC 2019",
@@ -5160,7 +5208,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0100"
+        "sku": "ART-0101"
     },
     "Adobe After Effects CC 2017": {
         "title": "Adobe After Effects CC 2017",
@@ -5197,7 +5245,7 @@
                 "Storage": "10 GB SSD available space"
             }
         },
-        "sku": "ART-0101"
+        "sku": "ART-0102"
     },
     "winrar": {
         "title": "WinRAR",
@@ -5234,7 +5282,7 @@
                 "Storage": "50 MB available space"
             }
         },
-        "sku": "ART-0102"
+        "sku": "ART-0103"
     },
     "VPN-ZIP-PC": {
         "title": "VPN-ZIP-PC",
@@ -5273,7 +5321,7 @@
             "minimum": {},
             "recommended": {}
         },
-        "sku": "ART-0103"
+        "sku": "ART-0104"
     },
     "TG WS Proxy v1.6.6": {
         "title": "TG WS Proxy v1.6.6",
@@ -5298,7 +5346,7 @@
             "minimum": {},
             "recommended": {}
         },
-        "sku": "ART-0104"
+        "sku": "ART-0105"
     },
     "Amnezia VPN-PC": {
         "title": "Amnezia VPN-PC",
@@ -5323,7 +5371,7 @@
             "minimum": {},
             "recommended": {}
         },
-        "sku": "ART-0105"
+        "sku": "ART-0106"
     },
     "hitman-pro": {
         "title": "Hitman PRO",
@@ -5356,7 +5404,7 @@
             "minimum": {},
             "recommended": {}
         },
-        "sku": "ART-0106"
+        "sku": "ART-0107"
     },
     "Dr.Web CureIt": {
         "title": "Dr.Web CureIt - Лечащая утилита",
@@ -5390,6 +5438,6 @@
             "minimum": {},
             "recommended": {}
         },
-        "sku": "ART-0106"
+        "sku": "ART-0108"
     }
 }
