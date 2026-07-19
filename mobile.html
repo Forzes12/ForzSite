@@ -267,6 +267,132 @@
         .action-text h3 { font-size: 1.3rem; margin-bottom: 6px; font-weight: 700; }
         .action-text p { font-size: 0.95rem; color: #94a3b8; }
         
+        .comments-screen, .likes-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0f172a;
+            z-index: 2000;
+            padding: 0;
+            display: none;
+            flex-direction: column;
+        }
+        .comments-screen.active, .likes-screen.active {
+            display: flex;
+        }
+        .screen-header {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            z-index: 10;
+        }
+        .screen-header h2 { font-size: 1.5rem; }
+        .screen-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .list-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .list-item {
+            background: rgba(30, 41, 59, 0.9);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        .list-item-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .list-item-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .list-item-meta {
+            flex: 1;
+        }
+        .list-item-author {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+        .list-item-date {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 2px;
+        }
+        .list-item-text {
+            color: #cbd5e1;
+            font-size: 1rem;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+        .list-item-game {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 12px;
+            margin-top: 12px;
+        }
+        .list-item-game img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .list-item-game-info {
+            flex: 1;
+        }
+        .list-item-game-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+        .list-item-game-id {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 2px;
+        }
+        .loading {
+            text-align: center;
+            color: #94a3b8;
+            padding: 40px;
+            font-size: 1.1rem;
+        }
+        .empty-state {
+            text-align: center;
+            color: #94a3b8;
+            padding: 60px 20px;
+        }
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        .empty-state p {
+            font-size: 1.1rem;
+        }
+        
         .scanner-screen {
             position: fixed;
             top: 0;
@@ -525,6 +651,26 @@
                 </div>
             </div>
             
+            <div class="action-card" onclick="showComments()">
+                <div class="action-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <div class="action-text">
+                    <h3>Комментарии</h3>
+                    <p>Просмотреть свои комментарии</p>
+                </div>
+            </div>
+            
+            <div class="action-card" onclick="showLikes()">
+                <div class="action-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="action-text">
+                    <h3>Понравившиеся игры</h3>
+                    <p>Просмотреть лайкнутые игры</p>
+                </div>
+            </div>
+            
             <div class="action-card" onclick="logoutMobile()">
                 <div class="action-icon logout">
                     <i class="fas fa-sign-out-alt"></i>
@@ -533,6 +679,38 @@
                     <h3>Выйти из аккаунта</h3>
                     <p>Выйти из приложения</p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comments Screen -->
+    <div id="commentsScreen" class="screen comments-screen">
+        <div class="screen-header">
+            <button class="nav-item" onclick="showScreen('profile')" style="width: auto; flex-direction: row;">
+                <i class="fas fa-arrow-left"></i>
+                <span>Назад</span>
+            </button>
+            <h2>Комментарии</h2>
+        </div>
+        <div class="screen-content">
+            <div id="commentsList" class="list-container">
+                <div class="loading">Загрузка комментариев...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Likes Screen -->
+    <div id="likesScreen" class="screen likes-screen">
+        <div class="screen-header">
+            <button class="nav-item" onclick="showScreen('profile')" style="width: auto; flex-direction: row;">
+                <i class="fas fa-arrow-left"></i>
+                <span>Назад</span>
+            </button>
+            <h2>Понравившиеся игры</h2>
+        </div>
+        <div class="screen-content">
+            <div id="likesList" class="list-container">
+                <div class="loading">Загрузка...</div>
             </div>
         </div>
     </div>
@@ -747,6 +925,126 @@
             return '<i class="fas ' + (icons[avatar] || 'fa-user') + '"></i>';
         }
 
+        let gamesData = {};
+        async function loadGamesData() {
+            if (Object.keys(gamesData).length > 0) return;
+            try {
+                const response = await fetch('assets/data/games.json');
+                if (response.ok) {
+                    gamesData = await response.json();
+                }
+            } catch (e) {
+                console.error('Failed to load games data:', e);
+            }
+        }
+
+        function getGameTitle(gameId) {
+            if (gamesData[gameId] && gamesData[gameId].title) {
+                return gamesData[gameId].title;
+            }
+            return gameId;
+        }
+
+        function getGameImage(gameId) {
+            if (gamesData[gameId] && gamesData[gameId].image) {
+                return gamesData[gameId].image;
+            }
+            return null;
+        }
+
+        async function showComments() {
+            if (!currentUser) return;
+            showScreen('comments');
+            const list = document.getElementById('commentsList');
+            list.innerHTML = '<div class="loading">Загрузка комментариев...</div>';
+            
+            if (!firebaseAvailable || !database) {
+                list.innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-circle"></i><p>Нет подключения к базе данных</p></div>';
+                return;
+            }
+            
+            try {
+                const snapshot = await database.ref('profile_comments').once('value');
+                const allComments = snapshot.val() || {};
+                const userComments = [];
+                
+                for (const [key, comment] of Object.entries(allComments)) {
+                    if (comment.profile === currentUser.username) {
+                        userComments.push({ id: key, ...comment });
+                    }
+                }
+                
+                userComments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                
+                if (userComments.length === 0) {
+                    list.innerHTML = '<div class="empty-state"><i class="fas fa-comment-slash"></i><p>У вас пока нет комментариев</p></div>';
+                    return;
+                }
+                
+                list.innerHTML = userComments.map(comment => {
+                    const date = new Date(comment.timestamp).toLocaleDateString('ru-RU', {
+                        day: 'numeric',
+                        month: 'short',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                    return '<div class="list-item">' +
+                        '<div class="list-item-header">' +
+                            '<div class="list-item-avatar"><i class="fas fa-user"></i></div>' +
+                            '<div class="list-item-meta">' +
+                                '<div class="list-item-author">@' + escapeHtml(comment.author || 'Аноним') + '</div>' +
+                                '<div class="list-item-date">' + date + '</div>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="list-item-text">' + escapeHtml(comment.text || '') + '</div>' +
+                    '</div>';
+                }).join('');
+            } catch (e) {
+                list.innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-circle"></i><p>Ошибка загрузки комментариев</p></div>';
+            }
+        }
+
+        async function showLikes() {
+            if (!currentUser) return;
+            showScreen('likes');
+            const list = document.getElementById('likesList');
+            list.innerHTML = '<div class="loading">Загрузка...</div>';
+            
+            const likedGames = currentUser.favoriteGames || [];
+            
+            if (likedGames.length === 0) {
+                list.innerHTML = '<div class="empty-state"><i class="fas fa-heart-broken"></i><p>Вы пока не лайкнули ни одной игры</p></div>';
+                return;
+            }
+            
+            await loadGamesData();
+            
+            list.innerHTML = likedGames.map(gameId => {
+                const title = getGameTitle(gameId);
+                const image = getGameImage(gameId);
+                let imageHtml = '';
+                if (image) {
+                    imageHtml = '<img src="' + escapeHtml(image) + '" alt="' + escapeHtml(title) + '" onerror="this.style.display=\'none\'">';
+                }
+                return '<div class="list-item">' +
+                    '<div class="list-item-game">' +
+                        imageHtml +
+                        '<div class="list-item-game-info">' +
+                            '<div class="list-item-game-title">' + escapeHtml(title) + '</div>' +
+                            '<div class="list-item-game-id">ID: ' + escapeHtml(gameId) + '</div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
+            }).join('');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
         // QR Scanner
         function openQRScanner() {
             showScreen('scanner');
@@ -908,6 +1206,7 @@
         // Init
         function init() {
             initFirebase();
+            loadGamesData();
             
             const savedUsername = localStorage.getItem('mobile_username');
             const savedPassword = localStorage.getItem('mobile_password');
