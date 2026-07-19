@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Forzes HUB">
+    <title>Forzes HUB Mobile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .screen { display: none; min-height: 100vh; padding: 20px; }
+        .screen.active { display: flex; flex-direction: column; }
+        
+        .auth-screen {
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        .auth-card {
+            background: rgba(30, 41, 59, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .auth-card h1 {
+            text-align: center;
+            margin-bottom: 8px;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .auth-card .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+        .form-group { margin-bottom: 16px; }
+        .form-group label {
+            display: block;
+            color: #cbd5e1;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(15,23,42,0.8);
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+        .form-group input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        .btn-primary:active { transform: scale(0.98); }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: #94a3b8;
+            margin-top: 10px;
+        }
+        .error-msg {
+            color: #ef4444;
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .profile-screen { padding: 0; }
+        .profile-header {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            padding: 40px 20px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            margin: 0 auto 15px;
+            border: 3px solid rgba(255,255,255,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        .username {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+        .user-status {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.85rem;
+            position: relative;
+            z-index: 1;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            padding: 20px;
+            background: #1e293b;
+            margin: -20px 20px 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-item {
+            text-align: center;
+            padding: 12px;
+            background: rgba(15,23,42,0.5);
+            border-radius: 12px;
+        }
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #6366f1;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+        .actions {
+            padding: 0 20px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .action-card {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .action-card:active { transform: scale(0.98); background: rgba(99, 102, 241, 0.2); }
+        .action-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .action-icon.qr { background: linear-gradient(135deg, #10b981, #059669); }
+        .action-icon.logout { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .action-text h3 { font-size: 1rem; margin-bottom: 3px; }
+        .action-text p { font-size: 0.8rem; color: #94a3b8; }
+        
+        .scanner-screen { padding: 0; }
+        .scanner-header {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .scanner-header h2 { font-size: 1.2rem; }
+        .scanner-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        #qrReader {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #000;
+            margin-bottom: 20px;
+        }
+        .scanner-status {
+            text-align: center;
+            color: #94a3b8;
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+        .scanner-status.success { color: #10b981; }
+        .scanner-status.error { color: #ef4444; }
+        
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            z-index: 1000;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #64748b;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            background: none;
+            border: none;
+            padding: 5px 15px;
+        }
+        .nav-item.active { color: #6366f1; }
+        .nav-item i { font-size: 20px; }
+        
+        .content-area {
+            flex: 1;
+            padding: 20px;
+            padding-bottom: 80px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Auth Screen -->
+    <div id="authScreen" class="screen auth-screen active">
+        <div class="auth-card">
+            <h1><i class="fas fa-gamepad"></i> Forzes HUB</h1>
+            <p class="subtitle">Вход в мобильное приложение</p>
+            <form id="mobileAuthForm">
+                <div class="form-group">
+                    <label>Имя пользователя</label>
+                    <input type="text" id="mobileUsername" placeholder="Введите имя пользователя" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label>Пароль</label>
+                    <input type="password" id="mobilePassword" placeholder="Введите пароль" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Войти
+                </button>
+                <div id="mobileAuthError" class="error-msg"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Screen -->
+    <div id="profileScreen" class="screen profile-screen">
+        <div class="profile-header">
+            <div class="avatar" id="mobileAvatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="username" id="mobileUsernameDisplay">Пользователь</div>
+            <div class="user-status" id="mobileUserStatus">Онлайн</div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-value" id="mobileDownloads">0</div>
+                <div class="stat-label">Скачиваний</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="mobileLikes">0</div>
+                <div class="stat-label">Нравится</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="mobileComments">0</div>
+                <div class="stat-label">Комментариев</div>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <div class="action-card" onclick="openQRScanner()">
+                <div class="action-icon qr">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <div class="action-text">
+                    <h3>Сканировать QR-код ПК</h3>
+                    <p>Войти на компьютере через QR</p>
+                </div>
+            </div>
+            
+            <div class="action-card" onclick="logoutMobile()">
+                <div class="action-icon logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </div>
+                <div class="action-text">
+                    <h3>Выйти из аккаунта</h3>
+                    <p>Выйти из приложения</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scanner Screen -->
+    <div id="scannerScreen" class="screen scanner-screen">
+        <div class="scanner-header">
+            <button class="nav-item" onclick="showScreen('profile')" style="width: auto; flex-direction: row; gap: 8px;">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h2>Сканер QR-кода</h2>
+        </div>
+        <div class="scanner-container">
+            <div id="qrReader"></div>
+            <div class="scanner-status" id="scannerStatus">
+                Наведите камеру на QR-код с компьютера
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="nav-bar" id="navBar" style="display: none;">
+        <button class="nav-item active" onclick="showScreen('profile')">
+            <i class="fas fa-user"></i>
+            <span>Профиль</span>
+        </button>
+        <button class="nav-item" onclick="openQRScanner()">
+            <i class="fas fa-qrcode"></i>
+            <span>QR Скан</span>
+        </button>
+        <button class="nav-item" onclick="logoutMobile()">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Выход</span>
+        </button>
+    </nav>
+
+    <script>
+        // Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyAoGDZCmlRSHI1ZSkc2iUi06grwBoCOSMU",
+            authDomain: "forzes-hub.firebaseapp.com",
+            databaseURL: "https://forzes-hub-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "forzes-hub",
+            storageBucket: "forzes-hub.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:abc123"
+        };
+
+        let database = null;
+        let firebaseAvailable = false;
+        let currentUser = null;
+        let qrScanner = null;
+
+        function initFirebase() {
+            try {
+                if (typeof firebase !== 'undefined') {
+                    firebase.initializeApp(firebaseConfig);
+                    database = firebase.database();
+                    firebaseAvailable = true;
+                }
+            } catch (e) {
+                console.error('Firebase init error:', e);
+            }
+        }
+
+        function showScreen(screen) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screen + 'Screen').classList.add('active');
+            
+            const navBar = document.getElementById('navBar');
+            if (screen === 'auth') {
+                navBar.style.display = 'none';
+            } else {
+                navBar.style.display = 'flex';
+            }
+            
+            if (screen === 'profile' && currentUser) {
+                loadProfile();
+            }
+        }
+
+        // Auth
+        document.getElementById('mobileAuthForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('mobileUsername').value.trim();
+            const password = document.getElementById('mobilePassword').value;
+            const errorDiv = document.getElementById('mobileAuthError');
+            
+            errorDiv.style.display = 'none';
+            
+            if (!firebaseAvailable || !database) {
+                errorDiv.textContent = 'Firebase не подключен';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            
+            try {
+                const snapshot = await database.ref('users/' + username.toLowerCase()).once('value');
+                const user = snapshot.val();
+                
+                if (!user) {
+                    errorDiv.textContent = 'Пользователь не найден';
+                    errorDiv.style.display = 'block';
+                    return;
+                }
+                
+                if (user.password && user.password !== password) {
+                    errorDiv.textContent = 'Неверный пароль';
+                    errorDiv.style.display = 'block';
+                    return;
+                }
+                
+                currentUser = user;
+                localStorage.setItem('mobile_username', username);
+                localStorage.setItem('mobile_password', password);
+                
+                await database.ref('users/' + username.toLowerCase()).update({
+                    lastLogin: firebase.database.ServerValue.TIMESTAMP
+                });
+                
+                showScreen('profile');
+            } catch (err) {
+                errorDiv.textContent = 'Ошибка соединения';
+                errorDiv.style.display = 'block';
+            }
+        });
+
+        async function loadProfile() {
+            if (!currentUser) return;
+            
+            document.getElementById('mobileUsernameDisplay').textContent = '@' + currentUser.username;
+            document.getElementById('mobileAvatar').innerHTML = getAvatarIcon(currentUser.avatar);
+            document.getElementById('mobileDownloads').textContent = currentUser.downloadsCount || 0;
+            document.getElementById('mobileLikes').textContent = currentUser.likesCount || 0;
+            
+            if (firebaseAvailable && database) {
+                try {
+                    const commentsSnapshot = await database.ref('profile_comments').orderByChild('profile').equalTo(currentUser.username).once('value');
+                    const commentsCount = commentsSnapshot.exists() ? Object.keys(commentsSnapshot.val()).length : 0;
+                    document.getElementById('mobileComments').textContent = commentsCount;
+                } catch (e) {
+                    document.getElementById('mobileComments').textContent = '0';
+                }
+            }
+        }
+
+        function getAvatarIcon(avatar) {
+            const icons = {
+                'default': 'fa-user',
+                'ninja': 'fa-user-ninja',
+                'alien': 'fa-user-astronaut',
+                'robot': 'fa-robot',
+                'skull': 'fa-skull',
+                'ghost': 'fa-ghost',
+                'dragon': 'fa-dragon',
+                'wizard': 'fa-hat-wizard',
+                'king': 'fa-crown',
+                'punk': 'fa-user-secret'
+            };
+            return '<i class="fas ' + (icons[avatar] || 'fa-user') + '"></i>';
+        }
+
+        // QR Scanner
+        function openQRScanner() {
+            showScreen('scanner');
+            const statusEl = document.getElementById('scannerStatus');
+            statusEl.textContent = 'Загрузка сканера...';
+            statusEl.className = 'scanner-status';
+            
+            setTimeout(() => {
+                if (typeof Html5Qrcode === 'undefined') {
+                    statusEl.textContent = 'Ошибка: библиотека сканера не загружена';
+                    statusEl.className = 'scanner-status error';
+                    return;
+                }
+                
+                qrScanner = new Html5Qrcode('qrReader');
+                qrScanner.start(
+                    { facingMode: 'environment' },
+                    { fps: 10, qrbox: { width: 250, height: 250 } },
+                    onQRScanSuccess,
+                    onQRScanFailure
+                ).catch(err => {
+                    statusEl.textContent = 'Ошибка доступа к камере: ' + err.message;
+                    statusEl.className = 'scanner-status error';
+                });
+            }, 500);
+        }
+
+        function stopQRScanner() {
+            if (qrScanner) {
+                qrScanner.stop().then(() => {
+                    qrScanner = null;
+                }).catch(err => console.error('Stop scanner error:', err));
+            }
+        }
+
+        function onQRScanSuccess(decodedText) {
+            if (!decodedText.includes('?qr_login=')) {
+                const statusEl = document.getElementById('scannerStatus');
+                statusEl.textContent = 'Это не QR-код для входа';
+                statusEl.className = 'scanner-status error';
+                return;
+            }
+            
+            const sessionId = decodedText.split('?qr_login=')[1].split('&')[0];
+            const statusEl = document.getElementById('scannerStatus');
+            statusEl.textContent = 'QR-код найден! Отправка подтверждения...';
+            statusEl.className = 'scanner-status success';
+            
+            if (currentUser && firebaseAvailable && database) {
+                database.ref('/qr_sessions/' + sessionId).update({
+                    status: 'confirmed',
+                    username: currentUser.username,
+                    confirmedAt: firebase.database.ServerValue.TIMESTAMP
+                }).then(() => {
+                    statusEl.textContent = 'Подтверждение отправлено!';
+                    setTimeout(() => {
+                        stopQRScanner();
+                        showScreen('profile');
+                    }, 1500);
+                }).catch(err => {
+                    statusEl.textContent = 'Ошибка отправки';
+                    statusEl.className = 'scanner-status error';
+                });
+            } else {
+                statusEl.textContent = 'Сначала войдите в аккаунт';
+                statusEl.className = 'scanner-status error';
+            }
+        }
+
+        function onQRScanFailure(error) {
+            // scanning continues
+        }
+
+        function logoutMobile() {
+            localStorage.removeItem('mobile_username');
+            localStorage.removeItem('mobile_password');
+            currentUser = null;
+            stopQRScanner();
+            showScreen('auth');
+        }
+
+        // Init
+        function init() {
+            initFirebase();
+            
+            const savedUsername = localStorage.getItem('mobile_username');
+            const savedPassword = localStorage.getItem('mobile_password');
+            
+            if (savedUsername) {
+                document.getElementById('mobileUsername').value = savedUsername;
+                if (savedPassword) {
+                    document.getElementById('mobilePassword').value = savedPassword;
+                }
+            }
+            
+            if (savedUsername && savedPassword && firebaseAvailable) {
+                database.ref('users/' + savedUsername.toLowerCase()).once('value').then(snapshot => {
+                    if (snapshot.val()) {
+                        currentUser = snapshot.val();
+                        showScreen('profile');
+                    }
+                }).catch(() => {
+                    showScreen('auth');
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

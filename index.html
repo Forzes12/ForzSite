@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Forzes HUB">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/5968/5968764.png">
     <meta name="description" content="ForzSite — лучшая платформа для скачивания игр, программ и утилит. Проверенный контент, высокая скорость загрузки и полная безопасность.">
     <meta name="keywords" content="игры, программы, утилиты, скачать игры, торрент, ForzSite, бесплатные игры, проверенные игры">
     <title>TorrentSite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/5968/5968764.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -7949,6 +7957,8 @@ position: absolute;
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
     <script>
         // Firebase конфигурация
         const firebaseConfig = {
@@ -8226,6 +8236,17 @@ position: absolute;
                 </button>
             </form>
             
+            <div id="qrLoginSection" style="display: none; text-align: center; padding: 15px 0; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 15px;">
+                <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 12px;">Или войдите через QR-код</p>
+                <div id="qrCodeContainer" style="display: inline-block; background: white; padding: 12px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+                    <canvas id="qrCodeCanvas"></canvas>
+                </div>
+                <p id="qrStatusText" style="color: #64748b; font-size: 0.8rem; margin-top: 10px;">Отсканируйте код в приложении Forzes HUB</p>
+                <button onclick="refreshQRCode()" style="margin-top: 10px; padding: 8px 20px; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #94a3b8; border-radius: 8px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s;">
+                    <i class="fas fa-sync-alt"></i> Обновить код
+                </button>
+            </div>
+            
             <div style="text-align: center; margin-top: 20px;">
                 <button onclick="closeAuthModal()" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #94a3b8; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease;">
                     Отмена
@@ -8255,9 +8276,9 @@ position: absolute;
                         <i class="fas fa-tools"></i>
                         <span>VPN</span>
                     </a>
-                    <a href="#" data-page="preorders-page" class="action-btn" onclick="switchPage('preorders-page')" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span>Предзаказы</span>
+                    <a href="mobile.html" class="action-btn" target="_self" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Приложение</span>
                     </a>
                 </div>
             </div>
@@ -9392,12 +9413,15 @@ let messageFormHtml = '';
                 submitText.textContent = AUTH_CONFIG.buttons.register;
                 confirmField.style.display = 'block';
                 submitBtn.style.background = AUTH_CONFIG.styles.submitGradients.register;
+                document.getElementById('qrLoginSection').style.display = 'none';
             } else {
                 title.innerHTML = '<i class="fas ' + AUTH_CONFIG.icons.login + '" style="color: ' + AUTH_CONFIG.styles.titleColors.login + ';"></i> ' + AUTH_CONFIG.titles.login;
                 subtitle.textContent = AUTH_CONFIG.subtitles.login;
                 submitText.textContent = AUTH_CONFIG.buttons.login;
                 confirmField.style.display = 'none';
                 submitBtn.style.background = AUTH_CONFIG.styles.submitGradients.login;
+                document.getElementById('qrLoginSection').style.display = 'block';
+                generateQRCode();
             }
             
             modal.style.display = 'flex';
@@ -9405,6 +9429,7 @@ let messageFormHtml = '';
         }
         
         function closeAuthModal() {
+            stopQRCheck();
             const modal = document.getElementById('authModal');
             modal.classList.remove('active');
             modal.style.display = 'none';
@@ -9636,9 +9661,10 @@ let messageFormHtml = '';
                     localStorage.removeItem(getUserFavoritesKey(username));
                 }
                 
-                safeSetLocalStorage('username', null);
-                safeSetLocalStorage('password', null);
-                safeSetLocalStorage('isDeveloper', null);
+                localStorage.removeItem('username');
+                localStorage.removeItem('password');
+                localStorage.removeItem('isDeveloper');
+                localStorage.removeItem('loginTime');
                 updateAuthUI();
                 showNotification('Вы вышли из аккаунта');
                 switchToMain();
@@ -9669,6 +9695,370 @@ let messageFormHtml = '';
                 if (mobileProfileLink) mobileProfileLink.style.display = 'none';
                 if (mobileLogoutLink) mobileLogoutLink.style.display = 'none';
             }
+        }
+
+        // ========== QR CODE LOGIN ==========
+        let currentQRSession = null;
+        let qrPollInterval = null;
+
+        function generateQRCode() {
+            const sessionId = 'qr_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            const baseUrl = window.location.origin + window.location.pathname;
+            const qrData = baseUrl + '?qr_login=' + sessionId + '&mode=confirm';
+            
+            currentQRSession = {
+                id: sessionId,
+                createdAt: Date.now(),
+                status: 'pending'
+            };
+            
+            if (firebaseAvailable && database) {
+                database.ref('/qr_sessions/' + sessionId).set({
+                    status: 'pending',
+                    createdAt: firebase.database.ServerValue.TIMESTAMP,
+                    username: null
+                });
+            }
+            
+            const canvas = document.getElementById('qrCodeCanvas');
+            if (canvas && typeof QRCode !== 'undefined') {
+                QRCode.toCanvas(canvas, qrData, {
+                    width: 180,
+                    margin: 2,
+                    color: {
+                        dark: '#0f172a',
+                        light: '#ffffff'
+                    }
+                }, function(error) {
+                    if (error) {
+                        console.error('QR Code generation error:', error);
+                    }
+                });
+            }
+            
+            startQRCheck(sessionId);
+        }
+
+        function refreshQRCode() {
+            stopQRCheck();
+            generateQRCode();
+        }
+
+        function startQRCheck(sessionId) {
+            stopQRCheck();
+            let secondsLeft = 60;
+            const timerEl = document.getElementById('qrTimer');
+            const statusText = document.getElementById('qrStatusText');
+            
+            if (statusText) {
+                statusText.innerHTML = 'QR-код обновится через <span id="qrTimer" style="color: #fbbf24; font-weight: 700;">60</span> сек';
+            }
+            
+            qrPollInterval = setInterval(async () => {
+                secondsLeft--;
+                const timerEl = document.getElementById('qrTimer');
+                if (timerEl) timerEl.textContent = secondsLeft;
+                
+                if (secondsLeft <= 0) {
+                    generateQRCode();
+                    return;
+                }
+                
+                if (!firebaseAvailable || !database || !sessionId) return;
+                
+                try {
+                    const snapshot = await database.ref('/qr_sessions/' + sessionId).once('value');
+                    const data = snapshot.val();
+                    if (data && data.status === 'confirmed' && data.username) {
+                        stopQRCheck();
+                        await performQRLogin(data.username);
+                    }
+                } catch (e) {
+                    console.error('QR check error:', e);
+                }
+            }, 1000);
+        }
+
+        function stopQRCheck() {
+            if (qrPollInterval) {
+                clearInterval(qrPollInterval);
+                qrPollInterval = null;
+            }
+        }
+
+        async function performQRLogin(username) {
+            const errorDiv = document.getElementById('authError');
+            if (errorDiv) errorDiv.style.display = 'none';
+            
+            try {
+                let user = await getUserFromFirebase(username);
+                if (!user) {
+                    user = {
+                        username: username,
+                        avatar: 'default',
+                        createdAt: new Date().toISOString(),
+                        downloadsCount: 0,
+                        likesCount: 0,
+                        favoriteGames: [],
+                        isDeveloper: false
+                    };
+                }
+                
+                localStorage.setItem('username', username);
+                localStorage.setItem('loginTime', new Date().toISOString());
+                if (user.isDeveloper) {
+                    localStorage.setItem('isDeveloper', 'true');
+                } else {
+                    localStorage.removeItem('isDeveloper');
+                }
+                
+                const stats = await getProfileStats(username, user);
+                user.downloadsCount = stats.downloadsCount;
+                user.likesCount = stats.likesCount;
+                user.favoriteGames = stats.favoriteGames;
+                
+                const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
+                if (!localUsers[username.toLowerCase()]) {
+                    localUsers[username.toLowerCase()] = {
+                        username: username,
+                        password: '',
+                        isDeveloper: user.isDeveloper || false,
+                        hasBadge: user.hasBadge || false,
+                        badgeColor: user.badgeColor,
+                        badgeTooltip: user.badgeTooltip
+                    };
+                    localStorage.setItem('localUsers', JSON.stringify(localUsers));
+                }
+                
+                setupPresence(username);
+                updateAuthUI();
+                closeAuthModal();
+                
+                if (typeof switchToMain === 'function') switchToMain();
+                if (typeof showUserPage === 'function') showUserPage();
+                
+                setTimeout(() => location.reload(), 500);
+            } catch (e) {
+                console.error('QR login error:', e);
+                if (errorDiv) {
+                    errorDiv.textContent = 'Ошибка входа по QR';
+                    errorDiv.style.display = 'block';
+                }
+            }
+        }
+
+        // ========== MOBILE QR PAGE ==========
+        function initMobileQRPage() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const qrSession = urlParams.get('qr_login');
+            
+            if (!qrSession) return;
+            
+            const mobileQrPage = document.getElementById('mobileQrPage');
+            if (mobileQrPage) {
+                mobileQrPage.style.display = 'block';
+                mobileQrPage.style.opacity = '1';
+                mobileQrPage.style.pointerEvents = 'auto';
+                mobileQrPage.classList.add('active');
+            }
+            
+            const currentUsername = safeGetLocalStorage('username', null);
+            if (!currentUsername) {
+                showMobileLoginPrompt();
+                return;
+            }
+            
+            currentQRConfirmData = { sessionId: qrSession, username: currentUsername };
+            showMobileConfirmView(currentUsername);
+            startQRStatusCheck(qrSession);
+        }
+
+        function showMobileLoginPrompt() {
+            document.getElementById('mobileQrScannerView').style.display = 'none';
+            document.getElementById('mobileQrConfirmView').style.display = 'none';
+            document.getElementById('mobileQrProfileView').style.display = 'none';
+            
+            const container = document.querySelector('#mobileQrPage > div');
+            const promptDiv = document.createElement('div');
+            promptDiv.id = 'mobileQrLoginPrompt';
+            promptDiv.style.cssText = 'background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 30px; text-align: center; margin-bottom: 20px;';
+            promptDiv.innerHTML = `
+                <div style="width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, #f59e0b, #d97706); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 30px; color: white; box-shadow: 0 8px 32px rgba(245, 158, 11, 0.3);">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h2 style="color: var(--text); margin-bottom: 10px; font-size: 1.3rem;">Требуется вход</h2>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px;">Войдите в аккаунт, чтобы подтвердить вход на компьютере</p>
+                <button onclick="closeMobileQrPage(); showAuthModal('login');" style="width: 100%; padding: 14px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 12px; cursor: pointer; font-size: 1rem; font-weight: 600;">
+                    <i class="fas fa-sign-in-alt"></i> Войти
+                </button>
+            `;
+            container.insertBefore(promptDiv, container.firstChild);
+        }
+
+        function showMobileConfirmView(username) {
+            document.getElementById('mobileQrScannerView').style.display = 'none';
+            document.getElementById('mobileQrConfirmView').style.display = 'block';
+            document.getElementById('mobileQrProfileView').style.display = 'none';
+            document.getElementById('mobileQrUsername').textContent = username;
+        }
+
+        function showMobileProfileView() {
+            document.getElementById('mobileQrScannerView').style.display = 'none';
+            document.getElementById('mobileQrConfirmView').style.display = 'none';
+            document.getElementById('mobileQrProfileView').style.display = 'block';
+            
+            const username = safeGetLocalStorage('username', null);
+            if (!username) return;
+            
+            getUserFromFirebase(username).then(user => {
+                if (!user) return;
+                const container = document.getElementById('mobileProfileContent');
+                if (!container) return;
+                
+                const avatarIcon = getAvatarIcon(user.avatar);
+                const avatarBg = getAvatarBg(user.avatar);
+                const isDev = user.isDeveloper === true || user.hasBadge === true || isDeveloperByUsername(user.username);
+                
+                container.innerHTML = `
+                    <div style="width: 80px; height: 80px; border-radius: 50%; ${avatarBg}; display: flex; align-items: center; justify-content: center; font-size: 36px; color: white; margin: 0 auto 15px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
+                        <i class="fas fa-${avatarIcon}"></i>
+                    </div>
+                    <h3 style="color: var(--text); margin-bottom: 5px; font-size: 1.2rem;">@${username} ${isDev ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : ''}</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 20px;">Присоединился ${new Date(user.createdAt).toLocaleDateString('ru-RU')}</p>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                        <div style="background: var(--dark); padding: 12px; border-radius: 10px; border: 1px solid var(--border);">
+                            <div style="font-size: 1.2rem; font-weight: 700; color: var(--text);">${user.downloadsCount || 0}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary);">Скачиваний</div>
+                        </div>
+                        <div style="background: var(--dark); padding: 12px; border-radius: 10px; border: 1px solid var(--border);">
+                            <div style="font-size: 1.2rem; font-weight: 700; color: var(--text);">${user.likesCount || 0}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary);">Нравится</div>
+                        </div>
+                        <div style="background: var(--dark); padding: 12px; border-radius: 10px; border: 1px solid var(--border);">
+                            <div style="font-size: 1.2rem; font-weight: 700; color: var(--text);">${user.commentsCount || 0}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary);">Комментариев</div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function startQRScanner() {
+            document.getElementById('mobileQrScannerView').style.display = 'block';
+            document.getElementById('mobileQrConfirmView').style.display = 'none';
+            document.getElementById('mobileQrProfileView').style.display = 'none';
+            
+            const scannerDiv = document.getElementById('qrScanner');
+            if (!scannerDiv) return;
+            
+            if (typeof Html5Qrcode === 'undefined') {
+                document.getElementById('qrScanStatus').innerHTML = '<span style="color: #ef4444;">Ошибка: библиотека сканера не загружена</span>';
+                return;
+            }
+            
+            qrScannerInstance = new Html5Qrcode('qrScanner');
+            qrScannerInstance.start(
+                { facingMode: 'environment' },
+                { fps: 10, qrbox: { width: 250, height: 250 } },
+                onQRScanSuccess,
+                onQRScanFailure
+            ).catch(err => {
+                document.getElementById('qrScanStatus').innerHTML = '<span style="color: #ef4444;">Ошибка доступа к камере</span>';
+                console.error('Camera error:', err);
+            });
+        }
+
+        function stopQRScanner() {
+            if (qrScannerInstance) {
+                qrScannerInstance.stop().then(() => {
+                    qrScannerInstance = null;
+                }).catch(err => console.error('Stop scanner error:', err));
+            }
+            showMobileProfileView();
+        }
+
+        function onQRScanSuccess(decodedText) {
+            if (!decodedText.includes('?qr_login=')) {
+                document.getElementById('qrScanStatus').innerHTML = '<span style="color: #fbbf24;">Это не QR-код для входа</span>';
+                return;
+            }
+            
+            const sessionId = decodedText.split('?qr_login=')[1].split('&')[0];
+            document.getElementById('qrScanStatus').innerHTML = '<span style="color: #10b981;">QR-код найден! Отправка подтверждения...</span>';
+            
+            if (firebaseAvailable && database) {
+                database.ref('/qr_sessions/' + sessionId).update({
+                    status: 'confirmed',
+                    username: safeGetLocalStorage('username', null),
+                    confirmedAt: firebase.database.ServerValue.TIMESTAMP
+                }).then(() => {
+                    document.getElementById('qrScanStatus').innerHTML = '<span style="color: #10b981;">Подтверждение отправлено!</span>';
+                    setTimeout(() => {
+                        stopQRScanner();
+                    }, 1500);
+                }).catch(err => {
+                    document.getElementById('qrScanStatus').innerHTML = '<span style="color: #ef4444;">Ошибка отправки</span>';
+                });
+            }
+        }
+
+        function onQRScanFailure(error) {
+            // Silent - scanning continues
+        }
+
+        async function confirmPCLogin(confirmed) {
+            if (!currentQRConfirmData) return;
+            
+            const { sessionId, username } = currentQRConfirmData;
+            
+            if (confirmed && firebaseAvailable && database) {
+                await database.ref('/qr_sessions/' + sessionId).update({
+                    status: 'confirmed',
+                    username: username,
+                    confirmedAt: firebase.database.ServerValue.TIMESTAMP
+                });
+            } else if (!confirmed && firebaseAvailable && database) {
+                await database.ref('/qr_sessions/' + sessionId).update({
+                    status: 'rejected',
+                    rejectedAt: firebase.database.ServerValue.TIMESTAMP
+                });
+            }
+            
+            currentQRConfirmData = null;
+            showMobileProfileView();
+        }
+
+        function closeMobileQrPage() {
+            const page = document.getElementById('mobileQrPage');
+            if (page) {
+                page.style.display = 'none';
+            }
+            stopQRScanner();
+            const prompt = document.getElementById('mobileQrLoginPrompt');
+            if (prompt) prompt.remove();
+        }
+
+        let mobileQrStatusInterval = null;
+        function startQRStatusCheck(sessionId) {
+            mobileQrStatusInterval = setInterval(async () => {
+                if (!firebaseAvailable || !database) return;
+                try {
+                    const snapshot = await database.ref('/qr_sessions/' + sessionId).once('value');
+                    const data = snapshot.val();
+                    if (data && (data.status === 'confirmed' || data.status === 'rejected')) {
+                        clearInterval(mobileQrStatusInterval);
+                        mobileQrStatusInterval = null;
+                        if (data.status === 'confirmed') {
+                            showMobileProfileView();
+                        } else {
+                            alert('Вход был отклонен на компьютере');
+                            closeMobileQrPage();
+                        }
+                    }
+                } catch (e) {
+                    console.error('QR status check error:', e);
+                }
+            }, 1500);
         }
 
         // Проверка: авторизован ли пользователь
@@ -14470,10 +14860,79 @@ function localAIResponse(message) {
             Читайте последние обновления и новости Forzes HUB
         </div>
     </div>
-     
-<script>
+    
+    <!-- Mobile QR Login Page -->
+    <div id="mobileQrPage" class="page" style="z-index: 50;">
+        <div style="padding: 20px; max-width: 480px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+            <div id="mobileQrScannerView" style="display: none;">
+                <div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 25px; text-align: center; margin-bottom: 20px;">
+                    <h2 style="color: var(--text); margin-bottom: 8px; font-size: 1.4rem;"><i class="fas fa-camera" style="color: var(--primary); margin-right: 8px;"></i>Сканер QR-кода</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px;">Наведите камеру на QR-код на экране компьютера</p>
+                    <div id="qrScanner" style="width: 100%; border-radius: 12px; overflow: hidden; background: #000;"></div>
+                    <p id="qrScanStatus" style="color: #94a3b8; font-size: 0.85rem; margin-top: 15px;">Ожидание сканирования...</p>
+                </div>
+                <button onclick="stopQRScanner()" style="width: 100%; padding: 14px; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border: none; border-radius: 12px; cursor: pointer; font-size: 1rem; font-weight: 600;">
+                    <i class="fas fa-times"></i> Отмена
+                </button>
+            </div>
+            
+            <div id="mobileQrConfirmView" style="display: none;">
+                <div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 25px; text-align: center; margin-bottom: 20px;">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #059669); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 36px; color: white; box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3);">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h2 style="color: var(--text); margin-bottom: 8px; font-size: 1.4rem;">Вход на компьютер</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 5px;">Аккаунт: <strong id="mobileQrUsername" style="color: var(--primary);">Пользователь</strong></p>
+                    <p style="color: #94a3b8; font-size: 0.85rem;">Подтвердите вход на компьютере</p>
+                </div>
+                <div style="display: flex; gap: 12px;">
+                    <button onclick="confirmPCLogin(true)" style="flex: 1; padding: 16px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 12px; cursor: pointer; font-size: 1rem; font-weight: 600;">
+                        <i class="fas fa-check"></i> Подтвердить
+                    </button>
+                    <button onclick="confirmPCLogin(false)" style="flex: 1; padding: 16px; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border: none; border-radius: 12px; cursor: pointer; font-size: 1rem; font-weight: 600;">
+                        <i class="fas fa-times"></i> Отмена
+                    </button>
+                </div>
+            </div>
+            
+            <div id="mobileQrProfileView" style="display: none;">
+                <div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 25px; text-align: center; margin-bottom: 20px;">
+                    <h2 style="color: var(--text); margin-bottom: 20px; font-size: 1.4rem;"><i class="fas fa-user-circle" style="color: var(--primary); margin-right: 8px;"></i>Мой профиль</h2>
+                    <div id="mobileProfileContent"></div>
+                </div>
+                <button onclick="startQRScanner()" style="width: 100%; padding: 16px; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; border-radius: 12px; cursor: pointer; font-size: 1rem; font-weight: 600; margin-bottom: 12px;">
+                    <i class="fas fa-qrcode"></i> Сканировать QR-код ПК
+                </button>
+                <button onclick="logoutUser(); closeMobileQrPage();" style="width: 100%; padding: 14px; background: transparent; border: 1px solid rgba(239, 68, 68, 0.3); color: #ef4444; border-radius: 12px; cursor: pointer; font-size: 0.95rem; font-weight: 500;">
+                    <i class="fas fa-sign-out-alt"></i> Выйти
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
             document.addEventListener('DOMContentLoaded', function() {
                 updateAuthUI();
+                initMobileQRPage();
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+                }
+                
+                if (/Android|iPhone|iPad|iPod|webOS/i.test(navigator.userAgent)) {
+                    setTimeout(() => {
+                        const banner = document.createElement('div');
+                        banner.id = 'mobileAppBanner';
+                        banner.style.cssText = 'position: fixed; bottom: 20px; left: 20px; right: 20px; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; padding: 16px 20px; border-radius: 16px; display: flex; align-items: center; justify-content: space-between; gap: 15px; z-index: 999999; box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4); animation: slideUp 0.5s ease-out;';
+                        banner.innerHTML = '<div style="display: flex; align-items: center; gap: 12px;"><i class="fas fa-mobile-alt" style="font-size: 24px;"></i><div><div style="font-weight: 700; font-size: 0.95rem;">Forzes HUB App</div><div style="font-size: 0.8rem; opacity: 0.9;">Установите приложение</div></div></div><button onclick="window.location.href=\'mobile.html\'; this.parentElement.remove();" style="background: white; color: #6366f1; border: none; padding: 8px 16px; border-radius: 10px; font-weight: 700; font-size: 0.85rem; cursor: pointer; white-space: nowrap;">Открыть</button>';
+                        document.body.appendChild(banner);
+                        
+                        const style = document.createElement('style');
+                        style.textContent = '@keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }';
+                        document.head.appendChild(style);
+                        
+                        setTimeout(() => { if (banner.parentElement) banner.remove(); }, 15000);
+                    }, 3000);
+                }
             });
         </script>
 </body>

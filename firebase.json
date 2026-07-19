@@ -10,8 +10,54 @@
   },
   "database": {
     "rules": {
-      ".read": true,
-      ".write": true
+      "status": {
+        ".read": true,
+        ".write": true
+      },
+      "users": {
+        ".read": true,
+        ".write": true
+      },
+      "qr_sessions": {
+        ".read": true,
+        ".write": true
+      },
+      "profile_comments": {
+        ".read": true,
+        ".write": true
+      },
+      "online_users": {
+        ".read": true,
+        ".write": true
+      },
+      "game_votes": {
+        ".read": true,
+        ".write": true
+      },
+      "news_likes": {
+        ".read": true,
+        ".write": true
+      },
+      "userVotes": {
+        ".read": true,
+        ".write": true
+      },
+      "favoriteGames": {
+        ".read": true,
+        ".write": true
+      },
+      "userFavorites": {
+        ".read": true,
+        ".write": true
+      },
+      "userDownloads": {
+        ".read": true,
+        ".write": true
+      },
+      "preorders": {
+        ".read": true,
+        ".write": true
+      }
     }
   }
 }
