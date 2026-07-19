@@ -7,14 +7,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Forzes HUB">
+    <link rel="icon" type="image/png" sizes="192x192" href="game-screenshot/5558f6bc-dc26-4fa1-9cc4-8d39ac802dc0.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="game-screenshot/5558f6bc-dc26-4fa1-9cc4-8d39ac802dc0.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="game-screenshot/5558f6bc-dc26-4fa1-9cc4-8d39ac802dc0.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="game-screenshot/5558f6bc-dc26-4fa1-9cc4-8d39ac802dc0.png">
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/5968/5968764.png">
-    <meta name="description" content="ForzSite — лучшая платформа для скачивания игр, программ и утилит. Проверенный контент, высокая скорость загрузки и полная безопасность.">
-    <meta name="keywords" content="игры, программы, утилиты, скачать игры, торрент, ForzSite, бесплатные игры, проверенные игры">
+    <base href="/ForzSite/">
     <title>TorrentSite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/5968/5968764.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -5023,8 +5023,12 @@ position: absolute;
         }
 
         .user-card.developer {
-            border: 2px solid #10b981;
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            border: 2px solid var(--border);
+        }
+
+        .user-card:hover {
+            border-color: #10b981 !important;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3) !important;
         }
 
         .comment-author.developer {
@@ -5054,12 +5058,6 @@ position: absolute;
 
         .dev-checkmark:hover {
             box-shadow: 0 0 15px #10b981;
-        }
-
-        /* Свечение для карточек разработчиков при наведении */
-        .user-card.developer:hover {
-            border-color: #10b981 !important;
-            box-shadow: 0 0 25px rgba(16, 185, 129, 0.4) !important;
         }
 
         .dev-checkmark:hover::after {
