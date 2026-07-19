@@ -7,11 +7,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Forzes HUB">
-    <link rel="icon" type="image/png" sizes="192x192" href="game-screenshot/5558f6bc-dc26-4fa1-9cc4-8d39ac802dc0.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="game-screenshot/5558f6bc-dc26-4fa1-9cc4-8d39ac802dc0.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="game-screenshot/5558f6bc-dc26-4fa1-9cc4-8d39ac802dc0.png">
-    <link rel="apple-touch-icon" sizes="512x512" href="game-screenshot/5558f6bc-dc26-4fa1-9cc4-8d39ac802dc0.png">
-    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="game-screenshot/5558f6bc-dc26-4fa1-9cc4-8d39ac802dc0.png?v=3">
+    <link rel="icon" type="image/png" sizes="512x512" href="game-screenshot/5558f6bc-dc26-4fa1-9cc4-8d39ac802dc0.png?v=3">
+    <link rel="apple-touch-icon" sizes="192x192" href="game-screenshot/5558f6bc-dc26-4fa1-9cc4-8d39ac802dc0.png?v=3">
+    <link rel="apple-touch-icon" sizes="512x512" href="game-screenshot/5558f6bc-dc26-4fa1-9cc4-8d39ac802dc0.png?v=3">
+    <link rel="manifest" href="manifest.json?v=3">
     <base href="/ForzSite/">
     <title>TorrentSite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -662,6 +662,20 @@
             opacity: 0;
             transform: translateY(-20px);
             transition: all 0.4s ease;
+        }
+
+        #qrCodeContainer {
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-user-drag: none;
+        }
+        #qrCodeContainer img,
+        #qrCodeContainer canvas {
+            pointer-events: none;
+        }
+        #qrCodeContainer img {
+            -webkit-user-drag: none;
+            -user-drag: none;
         }
 
         /* Hero section */
@@ -8037,14 +8051,17 @@ position: absolute;
             const userStatusDatabaseRef = database.ref('/status/' + sanitizedUsername);
             const isOnlineRef = userStatusDatabaseRef.child('isOnline');
             const lastSeenRef = userStatusDatabaseRef.child('lastSeen');
+            const deviceRef = userStatusDatabaseRef.child('device');
             
             const connectedRef = database.ref('.info/connected');
             connectedRef.on('value', (snap) => {
                 if (snap.val() === true) {
                     isOnlineRef.set(true);
                     lastSeenRef.set(firebase.database.ServerValue.TIMESTAMP);
+                    deviceRef.set('desktop');
                     isOnlineRef.onDisconnect().set(false);
                     lastSeenRef.onDisconnect().set(firebase.database.ServerValue.TIMESTAMP);
+                    deviceRef.onDisconnect().set(null);
                 }
             });
         }
@@ -8128,27 +8145,29 @@ position: absolute;
             statusRef.on('child_added', (snapshot) => {
                 const username = snapshot.key;
                 const data = snapshot.val();
-                updateStatusDot(username, data.isOnline === true, data.lastSeen);
+                updateStatusDot(username, data.isOnline === true, data.lastSeen, data.device);
             });
             
             statusRef.on('child_removed', (snapshot) => {
                 const username = snapshot.key;
-                updateStatusDot(username, false, null);
+                updateStatusDot(username, false, null, null);
             });
             
             statusRef.on('child_changed', (snapshot) => {
                 const username = snapshot.key;
                 const data = snapshot.val();
-                updateStatusDot(username, data.isOnline === true, data.lastSeen);
+                updateStatusDot(username, data.isOnline === true, data.lastSeen, data.device);
             });
         }
         
-        function updateStatusDot(username, isOnline, lastSeen) {
+        function updateStatusDot(username, isOnline, lastSeen, device) {
             const dots = document.querySelectorAll('.status-dot[data-username="' + username + '"]');
             dots.forEach(dot => {
                 dot.className = 'status-dot ' + (isOnline ? 'online' : 'offline');
                 const offlineTooltip = lastSeen ? 'Offline · ' + formatLastSeen(new Date(lastSeen)) : 'Offline';
-                dot.setAttribute('data-tooltip', isOnline ? 'Online' : offlineTooltip);
+                const deviceLabel = device === 'mobile' ? 'Телефон' : device === 'desktop' ? 'ПК' : '';
+                const onlineTooltip = deviceLabel ? 'Online · ' + deviceLabel : 'Online';
+                dot.setAttribute('data-tooltip', isOnline ? onlineTooltip : offlineTooltip);
             });
         }
         
@@ -8270,9 +8289,10 @@ position: absolute;
                 
                 <div id="qrLoginSection" style="display: none; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding-left: 30px; border-left: 1px solid rgba(255,255,255,0.1); width: 280px; flex-shrink: 0;">
                     <p style="color: #94a3b8; font-size: 0.85rem; margin: 0;">Вход через QR-код</p>
-                    <div id="qrCodeContainer" style="background: white; padding: 8px; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); line-height: 0;">
-                        <canvas id="qrCodeCanvas" width="240" height="240"></canvas>
-                        <img id="qrCodeImage" style="display: none; width: 240px; height: 240px;" alt="QR Code">
+                    <div id="qrCodeContainer" style="background: white; padding: 8px; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); line-height: 0; position: relative; user-select: none; -webkit-user-select: none;">
+                        <canvas id="qrCodeCanvas" width="240" height="240" style="display: block;"></canvas>
+                        <img id="qrCodeImage" style="display: none; width: 240px; height: 240px;" alt="QR Code" draggable="false">
+                        <div style="position: absolute; bottom: 8px; right: 8px; font-size: 10px; color: rgba(0,0,0,0.25); pointer-events: none; font-weight: 700;">Forzes HUB</div>
                     </div>
                     <p id="qrStatusText" style="color: #64748b; font-size: 0.8rem; margin: 0; text-align: center;">
                         QR-код обновится через <span id="qrTimer" style="color: #fbbf24; font-weight: 700;">60</span> сек
@@ -8790,7 +8810,7 @@ position: absolute;
         
         async function loadProfileConfig() {
             try {
-                const response = await fetch('assets/data/profile-config.json');
+                const response = await fetch('assets/data/profile-config.json?v=3');
                 if (response.ok) {
                     GLOBAL_PROFILE_CONFIG = await response.json();
                 }
@@ -9042,9 +9062,12 @@ position: absolute;
             
             const status = user.status || {};
             const isOnline = status.isOnline === true;
+            const device = status.device || '';
+            const deviceLabel = device === 'mobile' ? 'Телефон' : device === 'desktop' ? 'ПК' : '';
             const offlineTooltip = status.lastSeen ? 'Offline · ' + formatLastSeen(new Date(status.lastSeen)) : 'Offline';
+            const onlineTooltip = deviceLabel ? 'Online · ' + deviceLabel : 'Online';
             const statusDot = isOnline 
-                ? '<span class="status-dot online" data-username="' + sanitizedUsername + '" data-tooltip="Online" style="margin-left: 6px;"></span>' 
+                ? '<span class="status-dot online" data-username="' + sanitizedUsername + '" data-tooltip="' + onlineTooltip + '" style="margin-left: 6px;"></span>' 
                 : '<span class="status-dot offline" data-username="' + sanitizedUsername + '" data-tooltip="' + offlineTooltip + '" style="margin-left: 6px;"></span>';
             
             return `
@@ -9335,10 +9358,13 @@ let messageFormHtml = '';
             
             const status = user.status || {};
             const isOnline = status.isOnline === true;
+            const device = status.device || '';
+            const deviceLabel = device === 'mobile' ? 'Телефон' : device === 'desktop' ? 'ПК' : '';
             const offlineTooltip = status.lastSeen ? 'Offline · ' + formatLastSeen(new Date(status.lastSeen)) : 'Offline';
+            const onlineTooltip = deviceLabel ? 'Online · ' + deviceLabel : 'Online';
             const sanitizedUsername = sanitizeFirebasePath((user.username || '').toLowerCase());
             const statusDot = isOnline 
-                ? '<span class="status-dot online" data-username="' + sanitizedUsername + '" data-tooltip="Online"></span>' 
+                ? '<span class="status-dot online" data-username="' + sanitizedUsername + '" data-tooltip="' + onlineTooltip + '"></span>' 
                 : '<span class="status-dot offline" data-username="' + sanitizedUsername + '" data-tooltip="' + offlineTooltip + '"></span>';
             
             return '<div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 40px; text-align: center; position: relative; overflow: hidden;"><div style="position: absolute; top: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));"></div><div style="position: relative; z-index: 1;">' + frameHtml + '<h1 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: var(--text); display: inline-flex; align-items: center; gap: 10px;">' + user.username + statusDot + devCheckmark + '</h1><p style="color: var(--text-secondary); margin-bottom: 35px; font-size: 1rem;"><i class="fas fa-calendar-alt" style="margin-right: 6px; color: var(--primary);"></i>Присоединился ' + new Date(user.createdAt).toLocaleDateString('ru-RU') + '</p><div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;"><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-download" style="font-size: 1.8rem; color: var(--primary); margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + downloads + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Скачиваний</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-heart" style="font-size: 1.8rem; color: #ef4444; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + likes + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Нравится</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-comment" style="font-size: 1.8rem; color: #f59e0b; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + commentsCount + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Комментариев</p></div></div>' + favoriteGamesHtml + messageFormHtml + developerInboxHtml + devBadgeControlsHtml + '</div></div>';
@@ -9350,7 +9376,7 @@ let messageFormHtml = '';
         
         async function loadAuthConfig() {
             try {
-                const response = await fetch('assets/data/auth-modal.json');
+                const response = await fetch('assets/data/auth-modal.json?v=3');
                 if (response.ok) {
                     AUTH_CONFIG = await response.json();
                 } else {
@@ -9797,6 +9823,7 @@ let messageFormHtml = '';
                     img.onload = function() {
                         clearTimeout(timeout);
                         setStatus('QR-код готов. Отсканируйте в приложении Forzes HUB', false);
+                        applyQRProtection();
                         resolve(true);
                     };
                     
@@ -9845,6 +9872,7 @@ let messageFormHtml = '';
                                 resolve(false);
                             } else {
                                 setStatus('QR-код готов. Отсканируйте в приложении Forzes HUB', false);
+                                applyQRProtection();
                                 resolve(true);
                             }
                         });
@@ -9876,6 +9904,25 @@ let messageFormHtml = '';
             }
             
             startQRCheck(sessionId);
+        }
+        
+        function applyQRProtection() {
+            const container = document.getElementById('qrCodeContainer');
+            const canvas = document.getElementById('qrCodeCanvas');
+            const img = document.getElementById('qrCodeImage');
+            
+            if (container) {
+                container.addEventListener('dragstart', (e) => e.preventDefault());
+                container.addEventListener('contextmenu', (e) => e.preventDefault());
+            }
+            if (canvas) {
+                canvas.addEventListener('dragstart', (e) => e.preventDefault());
+                canvas.addEventListener('selectstart', (e) => e.preventDefault());
+            }
+            if (img) {
+                img.addEventListener('dragstart', (e) => e.preventDefault());
+                img.addEventListener('contextmenu', (e) => e.preventDefault());
+            }
         }
         
         function renderCanvasQR(canvas, qrData) {
@@ -11698,7 +11745,7 @@ let popularGamesTitles = [];
             try {
                 // Use XMLHttpRequest for synchronous loading
                 const xhr = new XMLHttpRequest();
-                xhr.open('GET', 'assets/data/games.json', false); // synchronous
+                xhr.open('GET', 'assets/data/games.json?v=3', false); // synchronous
                 xhr.send();
                 if (xhr.status === 200 || xhr.status === 0) {
                     gameData = JSON.parse(xhr.responseText || '{}');
@@ -11708,7 +11755,7 @@ let popularGamesTitles = [];
                 }
 
                 const xhrPopular = new XMLHttpRequest();
-                xhrPopular.open('GET', 'assets/data/popular-games.json', false);
+                xhrPopular.open('GET', 'assets/data/popular-games.json?v=3', false);
                 xhrPopular.send();
                 if (xhrPopular.status === 200 || xhrPopular.status === 0) {
                     popularGamesTitles = JSON.parse(xhrPopular.responseText || '["Samson","REPLACED","Windrose","Subnautica 2","Forza Horizon 6","PRAGMATA"]');
@@ -11717,7 +11764,7 @@ let popularGamesTitles = [];
                 }
 
                 const xhrAnticipated = new XMLHttpRequest();
-                xhrAnticipated.open('GET', 'assets/data/anticipated-games.json', false);
+                xhrAnticipated.open('GET', 'assets/data/anticipated-games.json?v=3', false);
                 xhrAnticipated.send();
                 if (xhrAnticipated.status === 200 || xhrAnticipated.status === 0) {
                     anticipatedGamesTitles = JSON.parse(xhrAnticipated.responseText || '["The Witcher 4","Atomic Heart 2","GTA 6"]');
@@ -11726,7 +11773,7 @@ let popularGamesTitles = [];
                 }
 
                 const xhrRecommended = new XMLHttpRequest();
-                xhrRecommended.open('GET', 'assets/data/recommended-games.json', false);
+                xhrRecommended.open('GET', 'assets/data/recommended-games.json?v=3', false);
                 xhrRecommended.send();
                 if (xhrRecommended.status === 200) {
                     sliderGames = JSON.parse(xhrRecommended.responseText);
@@ -11738,14 +11785,14 @@ let popularGamesTitles = [];
                 }
 
                 const xhrPreorders = new XMLHttpRequest();
-                xhrPreorders.open('GET', 'assets/data/preorders.json', false);
+                xhrPreorders.open('GET', 'assets/data/preorders.json?v=3', false);
                 xhrPreorders.send();
                 if (xhrPreorders.status === 200) {
                     preordersData = JSON.parse(xhrPreorders.responseText);
                 }
 
                 const xhrPopularPrograms = new XMLHttpRequest();
-                xhrPopularPrograms.open('GET', 'assets/data/popular-programs.json', false);
+                xhrPopularPrograms.open('GET', 'assets/data/popular-programs.json?v=3', false);
                 xhrPopularPrograms.send();
                 if (xhrPopularPrograms.status === 200 || xhrPopularPrograms.status === 0) {
                     popularProgramsTitles = JSON.parse(xhrPopularPrograms.responseText || '["Adobe Photoshop 2022","Adobe After Effects 2024","WinRAR"]');
@@ -13131,7 +13178,7 @@ if (game.status === 'available') {
             // Получить текущий промокод из games.json
             let currentPromoCode = originalPromoCode;
             try {
-                const response = await fetch('assets/data/games.json');
+                const response = await fetch('assets/data/games.json?v=3');
                 const currentGameData = await response.json();
                 if (currentGameData[gameId] && currentGameData[gameId].promoCode) {
                     currentPromoCode = currentGameData[gameId].promoCode;
@@ -13235,7 +13282,7 @@ if (game.status === 'available') {
         // Функция проверки изменений промокода в games.json
         async function checkPromoCodeChanges() {
             try {
-                const response = await fetch('assets/data/games.json');
+                const response = await fetch('assets/data/games.json?v=3');
                 const currentGameData = await response.json();
 
                 // Проверить все игры с промокодами
@@ -13978,6 +14025,9 @@ function localAIResponse(message) {
                 profileSettingsModal.style.display = 'none';
             }
             
+            // Защита QR-кода от перетаскивания и скачивания
+            applyQRProtection();
+            
             // Загрузка данных
             loadGameData();
 
@@ -14029,7 +14079,7 @@ function localAIResponse(message) {
             // Функция загрузки всех новостей
             async function loadNews() {
                 try {
-                    const response = await fetch('assets/data/news.json');
+                    const response = await fetch('assets/data/news.json?v=3');
                     newsData = await response.json();
                     
                     // Показать/скрыть стрелки навигации
@@ -14047,7 +14097,7 @@ function localAIResponse(message) {
             // Функция загрузки игровых новостей
             async function loadGameNews() {
                 try {
-                    const response = await fetch('assets/data/game-news.json');
+                    const response = await fetch('assets/data/game-news.json?v=3');
                     gameNewsData = await response.json();
                 } catch (error) {
                     console.error('Ошибка загрузки игровых новостей:', error);
@@ -14463,7 +14513,7 @@ function localAIResponse(message) {
 
             async function loadMinecraftData() {
                 try {
-                    const response = await fetch('assets/data/minecraft.json');
+                    const response = await fetch('assets/data/minecraft.json?v=3');
                     if (response.ok) {
                         modsData = await response.json();
                     } else {
@@ -15106,7 +15156,41 @@ function localAIResponse(message) {
                 updateAuthUI();
                 initMobileQRPage();
                 if ('serviceWorker' in navigator) {
-                    navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+                    const swReg = navigator.serviceWorker.register('/service-worker.js?v=3').catch(() => {});
+                    
+                    let reloadTimeout;
+                    const scheduleReload = () => {
+                        clearTimeout(reloadTimeout);
+                        reloadTimeout = setTimeout(() => location.reload(), 30000);
+                    };
+                    
+                    navigator.serviceWorker.addEventListener('controllerchange', () => {
+                        scheduleReload();
+                    });
+                    
+                    navigator.serviceWorker.ready.then((registration) => {
+                        if (registration.waiting) {
+                            scheduleReload();
+                        }
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            if (newWorker) {
+                                newWorker.addEventListener('statechange', () => {
+                                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                        scheduleReload();
+                                    }
+                                });
+                            }
+                        });
+                    });
+                    
+                    window.addEventListener('load', () => {
+                        navigator.serviceWorker.getRegistration().then((reg) => {
+                            if (reg && reg.waiting) {
+                                scheduleReload();
+                            }
+                        });
+                    });
                 }
                 
                 if (/Android|iPhone|iPad|iPod|webOS/i.test(navigator.userAgent)) {
