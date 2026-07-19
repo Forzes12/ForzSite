@@ -675,7 +675,6 @@
         }
         #qrCodeContainer img {
             -webkit-user-drag: none;
-            -user-drag: none;
         }
 
         /* Hero section */
@@ -8066,6 +8065,16 @@ position: absolute;
             });
         }
         
+        function refreshPresence(username) {
+            if (!username || !firebaseAvailable || !database) return;
+            const sanitizedUsername = sanitizeFirebasePath(username.toLowerCase());
+            database.ref('/status/' + sanitizedUsername).update({
+                isOnline: true,
+                lastSeen: firebase.database.ServerValue.TIMESTAMP,
+                device: 'desktop'
+            });
+        }
+        
         function setUserOffline(username) {
             if (!username || !firebaseAvailable || !database) return;
             const sanitizedUsername = sanitizeFirebasePath(username.toLowerCase());
@@ -14046,6 +14055,13 @@ function localAIResponse(message) {
             initOnlineCounter();
             
             initRealtimeStatus();
+
+            // Повторно установить присутствие при возврате на вкладку
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden && existingUsername) {
+                    refreshPresence(existingUsername);
+                }
+            });
 
             // Проверка URL параметров для прямых ссылок на игры
             const urlParams = new URLSearchParams(window.location.search);
