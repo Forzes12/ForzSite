@@ -271,6 +271,8 @@
             background: #000;
             z-index: 2000;
             padding: 0;
+            display: flex;
+            flex-direction: column;
         }
         .scanner-header {
             position: absolute;
@@ -292,18 +294,32 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 24px;
-            min-height: 100vh;
+            padding: 20px;
+            min-height: 0;
+            overflow: hidden;
         }
         #qrReader {
-            width: 100%;
-            height: 100%;
-            max-width: none;
-            min-height: auto;
-            border-radius: 0;
+            width: min(300px, 85vw);
+            height: min(300px, 85vw);
+            border-radius: 20px;
             overflow: hidden;
             background: #000;
-            box-shadow: none;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            margin-bottom: 24px;
+        }
+        #qrReader video {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover;
+            border-radius: 20px;
+            max-height: 100% !important;
+        }
+        #qrReader img, #qrReader canvas {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover;
+            border-radius: 20px;
+            max-height: 100% !important;
         }
         .scanner-footer {
             position: absolute;
@@ -680,20 +696,34 @@
                     return;
                 }
                 
+                const qrReader = document.getElementById('qrReader');
+                const size = Math.min(300, Math.min(window.innerWidth, window.innerHeight) * 0.75);
+                const sizeInt = Math.floor(size);
+                
+                qrReader.style.width = sizeInt + 'px';
+                qrReader.style.height = sizeInt + 'px';
+                qrReader.style.maxWidth = '85vw';
+                qrReader.style.maxHeight = '85vw';
+                
                 qrScanner = new Html5Qrcode('qrReader');
                 qrScanner.start(
                     { facingMode: 'environment' },
-                    { fps: 10, qrbox: { width: 300, height: 300 } },
+                    { fps: 10, qrbox: { width: sizeInt, height: sizeInt } },
                     onQRScanSuccess,
                     onQRScanFailure
                 ).catch(err => {
                     statusEl.textContent = 'Ошибка доступа к камере: ' + err.message;
                     statusEl.className = 'scanner-status error';
                 });
-            }, 300);
+            }, 500);
         }
 
         function closeQRScanner() {
+            const qrReader = document.getElementById('qrReader');
+            if (qrReader) {
+                qrReader.style.width = '';
+                qrReader.style.height = '';
+            }
             stopQRScanner();
             showScreen('profile');
         }
