@@ -8263,56 +8263,62 @@ position: absolute;
 
     <!-- Auth Modal -->
     <div id="authModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(10px);" onclick="if(event.target === this) closeAuthModal()">
-        <div style="background: linear-gradient(135deg, #1e293b, #0f172a); padding: 30px; border-radius: 20px; max-width: 420px; width: 95%; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+        <div style="background: linear-gradient(135deg, #1e293b, #0f172a); padding: 30px; border-radius: 20px; max-width: 760px; width: 95%; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
             <div style="text-align: center; margin-bottom: 25px;">
                 <h2 id="authModalTitle" style="margin: 0 0 10px 0; color: white; font-size: 1.8rem;"><i class="fas fa-user" style="color: var(--primary);"></i> Вход</h2>
                 <p id="authModalSubtitle" style="color: #94a3b8; margin: 0; font-size: 14px;">Войдите в свой аккаунт</p>
             </div>
             
-            <form id="authForm" onsubmit="handleAuth(event)" style="display: flex; flex-direction: column; gap: 15px;">
-                <div id="authUsernameField">
-                    <label style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px; display: block;">Имя пользователя</label>
-                    <input type="text" id="authUsername" placeholder="Введите имя пользователя" required
-                        style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1rem; box-sizing: border-box;">
-                </div>
-                
-                <div id="authPasswordField">
-                    <label style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px; display: block;">Пароль</label>
-                    <input type="password" id="authPassword" placeholder="Введите пароль" required
-                        style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1rem; box-sizing: border-box;">
-                </div>
-                
-                <div id="authConfirmField" style="display: none;">
-                    <label style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px; display: block;">Подтвердите пароль</label>
-                    <input type="password" id="authConfirmPassword" placeholder="Повторите пароль"
-                        style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1rem; box-sizing: border-box;">
-                </div>
-                
-                <div id="authError" style="color: #ef4444; font-size: 0.9rem; text-align: center; display: none;"></div>
-                
-                <button type="submit" id="authSubmitBtn"
-                    style="padding: 12px 20px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; margin-top: 10px;">
-                    <i class="fas fa-sign-in-alt"></i> <span id="authSubmitText">Войти</span>
-                </button>
-            </form>
-            
-        <div id="qrLoginSection" style="display: none; padding: 0; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
-                <div style="display: flex; justify-content: flex-end; align-items: center; gap: 15px; padding-top: 15px;">
-                    <div style="flex: 1; text-align: right;">
-                        <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 8px;">Или войдите через QR-код</p>
-                        <p id="qrStatusText" style="color: #64748b; font-size: 0.8rem; margin-bottom: 10px;">
-                            QR-код обновится через <span id="qrTimer" style="color: #fbbf24; font-weight: 700;">60</span> сек
-                        </p>
-                        <button onclick="refreshQRCode()" style="padding: 8px 20px; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #94a3b8; border-radius: 8px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s;">
-                            <i class="fas fa-sync-alt"></i> Обновить код
-                        </button>
+            <div style="display: flex; gap: 30px; align-items: flex-start;">
+                <form id="authForm" onsubmit="handleAuth(event)" style="display: flex; flex-direction: column; gap: 15px; flex: 1;">
+                    <div id="authUsernameField">
+                        <label style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px; display: block;">Имя пользователя</label>
+                        <input type="text" id="authUsername" placeholder="Введите имя пользователя" required
+                            style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1rem; box-sizing: border-box;">
                     </div>
-                    <div id="qrCodeContainer" style="background: white; padding: 10px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); flex-shrink: 0;">
+                    
+                    <div id="authPasswordField">
+                        <label style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px; display: block;">Пароль</label>
+                        <input type="password" id="authPassword" placeholder="Введите пароль" required
+                            style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1rem; box-sizing: border-box;">
+                    </div>
+                    
+                    <div id="authConfirmField" style="display: none;">
+                        <label style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px; display: block;">Подтвердите пароль</label>
+                        <input type="password" id="authConfirmPassword" placeholder="Повторите пароль"
+                            style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1rem; box-sizing: border-box;">
+                    </div>
+                    
+                    <div id="authError" style="color: #ef4444; font-size: 0.9rem; text-align: center; display: none;"></div>
+                    
+                    <button type="submit" id="authSubmitBtn"
+                        style="padding: 12px 20px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; margin-top: 10px;">
+                        <i class="fas fa-sign-in-alt"></i> <span id="authSubmitText">Войти</span>
+                    </button>
+                </form>
+                
+                <div id="qrLoginSection" style="display: none; flex-direction: column; align-items: center; justify-content: center; gap: 15px; padding-left: 30px; border-left: 1px solid rgba(255,255,255,0.1); min-width: 260px;">
+                    <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 0;">Вход через QR-код</p>
+                    <div id="qrCodeContainer" style="background: white; padding: 12px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
                         <canvas id="qrCodeCanvas" width="240" height="240"></canvas>
                         <img id="qrCodeImage" style="display: none; width: 240px; height: 240px;" alt="QR Code">
                     </div>
+                    <p id="qrStatusText" style="color: #64748b; font-size: 0.8rem; margin: 0; text-align: center;">
+                        QR-код обновится через <span id="qrTimer" style="color: #fbbf24; font-weight: 700;">60</span> сек
+                    </p>
+                    <button onclick="refreshQRCode()" style="padding: 10px 24px; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #94a3b8; border-radius: 8px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s; width: 100%;">
+                        <i class="fas fa-sync-alt"></i> Обновить код
+                    </button>
                 </div>
             </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button onclick="closeAuthModal()" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #94a3b8; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease;">
+                    Отмена
+                </button>
+            </div>
+        </div>
+    </div>
     
     <!-- Debug Panel -->
     <div id="debugPanel" style="position: fixed; bottom: 20px; right: 20px; z-index: 999999; font-family: monospace; font-size: 12px;">
@@ -8325,14 +8331,6 @@ position: absolute;
                 <button onclick="clearDebug()" style="background: transparent; border: none; color: #94a3b8; cursor: pointer; font-size: 11px;">Очистить</button>
             </div>
             <div id="debugLogs" style="display: flex; flex-direction: column; gap: 5px;"></div>
-        </div>
-    </div>
-
-            <div style="text-align: center; margin-top: 20px;">
-                <button onclick="closeAuthModal()" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #94a3b8; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease;">
-                    Отмена
-                </button>
-            </div>
         </div>
     </div>
 

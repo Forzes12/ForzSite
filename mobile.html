@@ -262,44 +262,95 @@
         .action-text h3 { font-size: 1.3rem; margin-bottom: 6px; font-weight: 700; }
         .action-text p { font-size: 0.95rem; color: #94a3b8; }
         
-        .scanner-screen { padding: 0; }
+        .scanner-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 2000;
+            padding: 0;
+        }
         .scanner-header {
-            background: linear-gradient(135deg, #1e293b, #0f172a);
-            padding: 24px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+            padding: 20px;
             display: flex;
             align-items: center;
             gap: 18px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            z-index: 10;
         }
-        .scanner-header h2 { font-size: 1.4rem; }
+        .scanner-header h2 { font-size: 1.3rem; }
         .scanner-container {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 28px;
+            padding: 24px;
+            min-height: 100vh;
         }
         #qrReader {
             width: 100%;
-            max-width: 420px;
-            min-height: 350px;
-            border-radius: 24px;
+            height: 100%;
+            max-width: none;
+            min-height: auto;
+            border-radius: 0;
             overflow: hidden;
             background: #000;
-            margin-bottom: 28px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            box-shadow: none;
+        }
+        .scanner-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+            padding: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            z-index: 10;
         }
         .scanner-status {
             text-align: center;
             color: #94a3b8;
-            padding: 0 20px;
-            margin-bottom: 24px;
-            font-size: 1rem;
+            padding: 0 10px;
+            margin-bottom: 18px;
+            font-size: 1.05rem;
             line-height: 1.5;
         }
         .scanner-status.success { color: #10b981; }
         .scanner-status.error { color: #ef4444; }
+        .scanner-actions {
+            display: flex;
+            gap: 12px;
+        }
+        .scanner-btn {
+            flex: 1;
+            padding: 18px;
+            border-radius: 16px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-height: 64px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .scanner-btn:active { transform: scale(0.97); opacity: 0.9; }
+        .scanner-btn.back {
+            background: rgba(255,255,255,0.1);
+            color: #94a3b8;
+        }
+        .scanner-btn.close {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+        }
         
         .nav-bar {
             position: fixed;
@@ -321,19 +372,19 @@
             align-items: center;
             gap: 6px;
             color: #64748b;
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 700;
             cursor: pointer;
             transition: color 0.3s;
             background: none;
             border: none;
-            padding: 10px 24px;
-            min-height: 64px;
+            padding: 12px 28px;
+            min-height: 72px;
             justify-content: center;
             -webkit-tap-highlight-color: transparent;
         }
         .nav-item.active { color: #6366f1; }
-        .nav-item i { font-size: 26px; margin-bottom: 4px; }
+        .nav-item i { font-size: 28px; margin-bottom: 4px; }
     </style>
 </head>
 <body>
@@ -418,15 +469,25 @@
     <!-- Scanner Screen -->
     <div id="scannerScreen" class="screen scanner-screen">
         <div class="scanner-header">
-            <button class="nav-item" onclick="showScreen('profile')" style="width: auto; flex-direction: row; gap: 10px; min-height: 52px; padding: 12px 20px;">
+            <button class="nav-item" onclick="closeQRScanner()" style="width: auto; flex-direction: row; gap: 10px; min-height: 52px; padding: 12px 20px;">
                 <i class="fas fa-arrow-left"></i>
             </button>
             <h2>Сканер QR-кода</h2>
         </div>
         <div class="scanner-container">
             <div id="qrReader"></div>
+        </div>
+        <div class="scanner-footer">
             <div class="scanner-status" id="scannerStatus">
                 Наведите камеру на QR-код с компьютера
+            </div>
+            <div class="scanner-actions">
+                <button class="scanner-btn back" onclick="closeQRScanner()">
+                    <i class="fas fa-arrow-left"></i> Назад
+                </button>
+                <button class="scanner-btn close" onclick="logoutMobile()">
+                    <i class="fas fa-sign-out-alt"></i> Выйти
+                </button>
             </div>
         </div>
     </div>
@@ -498,6 +559,7 @@
             const username = document.getElementById('mobileUsername').value.trim();
             const password = document.getElementById('mobilePassword').value;
             const errorDiv = document.getElementById('mobileAuthError');
+            const submitBtn = e.target.querySelector('button[type="submit"]');
             
             errorDiv.style.display = 'none';
             
@@ -508,9 +570,14 @@
             }
             
             if (!firebaseAvailable || !database) {
-                errorDiv.textContent = 'Ошибка соединения с базой данных. Проверьте интернет.';
+                errorDiv.textContent = 'Нет подключения к базе данных. Проверьте интернет.';
                 errorDiv.style.display = 'block';
                 return;
+            }
+            
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Вход...';
             }
             
             try {
@@ -542,6 +609,11 @@
                 console.error('Mobile auth error:', err);
                 errorDiv.textContent = 'Ошибка соединения. Проверьте интернет и попробуйте снова.';
                 errorDiv.style.display = 'block';
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Войти';
+                }
             }
         });
 
@@ -611,14 +683,19 @@
                 qrScanner = new Html5Qrcode('qrReader');
                 qrScanner.start(
                     { facingMode: 'environment' },
-                    { fps: 10, qrbox: { width: 280, height: 280 } },
+                    { fps: 10, qrbox: { width: 300, height: 300 } },
                     onQRScanSuccess,
                     onQRScanFailure
                 ).catch(err => {
                     statusEl.textContent = 'Ошибка доступа к камере: ' + err.message;
                     statusEl.className = 'scanner-status error';
                 });
-            }, 500);
+            }, 300);
+        }
+
+        function closeQRScanner() {
+            stopQRScanner();
+            showScreen('profile');
         }
 
         function stopQRScanner() {
@@ -672,6 +749,13 @@
             localStorage.removeItem('mobile_password');
             currentUser = null;
             stopQRScanner();
+            
+            const form = document.getElementById('mobileAuthForm');
+            if (form) form.reset();
+            
+            const errorDiv = document.getElementById('mobileAuthError');
+            if (errorDiv) errorDiv.style.display = 'none';
+            
             showScreen('auth');
         }
 
