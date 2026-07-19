@@ -12,12 +12,21 @@
     <link rel="apple-touch-icon" sizes="192x192" href="game-screenshot/5558f6bc-dc26-4fa1-9cc4-8d39ac802dc0.png">
     <link rel="apple-touch-icon" sizes="512x512" href="game-screenshot/5558f6bc-dc26-4fa1-9cc4-8d39ac802dc0.png">
     <link rel="manifest" href="manifest.json">
+    <script>
+        (function() {
+            var path = window.location.pathname;
+            var base = path.substring(0, path.lastIndexOf('/') + 1);
+            var baseEl = document.createElement('base');
+            baseEl.href = base;
+            document.head.insertBefore(baseEl, document.head.firstChild);
+        })();
+    </script>
     <title>Forzes HUB Mobile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js" crossorigin="anonymous" onerror="window._firebaseLoadError='app'"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js" crossorigin="anonymous" onerror="window._firebaseLoadError='database'"></script>
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js" onerror="console.warn('QR scanner library failed to load')"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body {
@@ -780,17 +789,84 @@
         let firebaseAvailable = false;
         let currentUser = null;
         let qrScanner = null;
+        let firebaseInitAttempts = 0;
+        const MAX_FIREBASE_ATTEMPTS = 3;
 
         function initFirebase() {
+            if (firebaseAvailable && database) {
+                console.log('Firebase already available');
+                return;
+            }
+            
+            if (firebaseInitAttempts >= MAX_FIREBASE_ATTEMPTS) {
+                showFirebaseError('Не удалось подключиться к базе данных после нескольких попыток. Проверьте интернет или попробуйте позже.');
+                return;
+            }
+            
+            firebaseInitAttempts++;
+            
             try {
-                if (typeof firebase !== 'undefined') {
-                    firebase.initializeApp(firebaseConfig);
-                    database = firebase.database();
-                    firebaseAvailable = true;
+                if (typeof firebase === 'undefined') {
+                    console.error('Firebase SDK not loaded - firebase-app-compat missing');
+                    showFirebaseError('Firebase SDK не загружен. Проверьте интернет и обновите страницу.');
+                    return;
                 }
+                if (!firebase.database) {
+                    console.error('Firebase database module not loaded - firebase-database-compat missing');
+                    showFirebaseError('Модуль базы данных Firebase не загружен. Обновите страницу.');
+                    return;
+                }
+                if (firebase.apps && firebase.apps.length > 0) {
+                    try {
+                        database = firebase.database();
+                        firebaseAvailable = true;
+                        console.log('Firebase reused existing app');
+                        return;
+                    } catch (e) {
+                        console.error('Firebase reuse error:', e);
+                    }
+                }
+                firebase.initializeApp(firebaseConfig);
+                database = firebase.database();
+                firebaseAvailable = true;
+                firebaseInitAttempts = 0;
+                console.log('Firebase initialized successfully');
             } catch (e) {
                 console.error('Firebase init error:', e);
+                firebaseAvailable = false;
+                database = null;
+                
+                if (firebaseInitAttempts < MAX_FIREBASE_ATTEMPTS) {
+                    console.log('Retrying Firebase init in 2 seconds...');
+                    setTimeout(initFirebase, 2000);
+                } else {
+                    showFirebaseError('Ошибка подключения к базе данных. Проверьте интернет и обновите страницу.');
+                }
             }
+        }
+
+        function showFirebaseError(message) {
+            const errorDiv = document.getElementById('mobileAuthError');
+            if (errorDiv) {
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+            }
+        }
+
+        function checkFirebaseScripts() {
+            if (window._firebaseLoadError === 'app') {
+                showFirebaseError('Firebase SDK не загружен. Возможно, блокировщик рекламы или браузер блокирует скрипты. Попробуйте отключить блокировщик.');
+                return false;
+            }
+            if (window._firebaseLoadError === 'database') {
+                showFirebaseError('Модуль базы данных Firebase не загружен. Обновите страницу.');
+                return false;
+            }
+            if (typeof firebase === 'undefined') {
+                showFirebaseError('Firebase не загружен. Проверьте интернет и обновите страницу.');
+                return false;
+            }
+            return true;
         }
 
         function showScreen(screen) {
@@ -812,6 +888,17 @@
             }
         }
 
+        async function waitForFirebase(timeout = 10000) {
+            const startTime = Date.now();
+            while (!firebaseAvailable || !database) {
+                if (Date.now() - startTime > timeout) {
+                    return false;
+                }
+                await new Promise(resolve => setTimeout(resolve, 500));
+            }
+            return true;
+        }
+
         // Auth
         document.getElementById('mobileAuthForm').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -829,9 +916,12 @@
             }
             
             if (!firebaseAvailable || !database) {
-                errorDiv.textContent = 'Нет подключения к базе данных. Проверьте интернет.';
-                errorDiv.style.display = 'block';
-                return;
+                const hasFirebase = await waitForFirebase(5000);
+                if (!hasFirebase) {
+                    errorDiv.innerHTML = 'База данных не подключена.<br><button type="button" onclick="initFirebase(); location.reload();" style="margin-top:8px;padding:8px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(99,102,241,0.2);color:#6366f1;font-size:0.85rem;cursor:pointer;">Попробовать снова</button>';
+                    errorDiv.style.display = 'block';
+                    return;
+                }
             }
             
             if (submitBtn) {
