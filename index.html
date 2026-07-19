@@ -1315,12 +1315,33 @@
             z-index: 5;
         }
 
+        .game-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.08) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
         .game-card:hover::before {
             opacity: 1;
         }
 
-        .status-badge {
-            position: absolute;
+        .game-card:hover::after {
+            opacity: 1;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
             top: 12px;
             right: 12px;
             padding: 6px 12px;
@@ -8110,65 +8131,6 @@ position: absolute;
             });
         }
         
-        // ========== DEBUG PANEL ==========
-        let debugVisible = false;
-        const debugLogs = [];
-        
-        function toggleDebug() {
-            debugVisible = !debugVisible;
-            const content = document.getElementById('debugContent');
-            const toggle = document.getElementById('debugToggle');
-            if (content) content.style.display = debugVisible ? 'block' : 'none';
-            if (toggle) toggle.style.background = debugVisible ? 'linear-gradient(135deg, #10b981, #059669)' : 'linear-gradient(135deg, #ef4444, #dc2626)';
-        }
-        
-        function clearDebug() {
-            debugLogs.length = 0;
-            const container = document.getElementById('debugLogs');
-            if (container) container.innerHTML = '';
-        }
-        
-        function logDebug(message, type) {
-            type = type || 'info';
-            const time = new Date().toLocaleTimeString();
-            debugLogs.push({ time: time, message: message, type: type });
-            const container = document.getElementById('debugLogs');
-            if (container) {
-                const entry = document.createElement('div');
-                entry.style.cssText = 'padding: 4px 8px; border-radius: 4px; font-size: 11px; line-height: 1.4;';
-                if (type === 'error') entry.style.background = 'rgba(239, 68, 68, 0.2)';
-                else if (type === 'success') entry.style.background = 'rgba(16, 185, 129, 0.2)';
-                else entry.style.background = 'rgba(255, 255, 255, 0.05)';
-                
-                entry.innerHTML = '<span style="color: #64748b;">[' + time + ']</span> ' + message;
-                container.appendChild(entry);
-                container.scrollTop = container.scrollHeight;
-            }
-        }
-        
-        // Intercept console logs
-        const originalLog = console.log;
-        const originalError = console.error;
-        const originalWarn = console.warn;
-        
-        console.log = function() {
-            logDebug(Array.from(arguments).join(' '), 'info');
-            originalLog.apply(console, arguments);
-        };
-        
-        console.error = function() {
-            logDebug(Array.from(arguments).join(' '), 'error');
-            originalError.apply(console, arguments);
-        };
-        
-        console.warn = function() {
-            logDebug(Array.from(arguments).join(' '), 'warn');
-            originalWarn.apply(console, arguments);
-        };
-        
-        // Initial debug log
-        logDebug('Debug panel initialized. Click 🐛 to toggle.', 'success');
-        
     </script>
     <script>
         document.addEventListener('contextmenu', event => event.preventDefault());
@@ -8263,14 +8225,14 @@ position: absolute;
 
     <!-- Auth Modal -->
     <div id="authModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(10px);" onclick="if(event.target === this) closeAuthModal()">
-        <div style="background: linear-gradient(135deg, #1e293b, #0f172a); padding: 30px; border-radius: 20px; max-width: 760px; width: 95%; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+        <div style="background: linear-gradient(135deg, #1e293b, #0f172a); padding: 30px; border-radius: 20px; max-width: 780px; width: 95%; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
             <div style="text-align: center; margin-bottom: 25px;">
                 <h2 id="authModalTitle" style="margin: 0 0 10px 0; color: white; font-size: 1.8rem;"><i class="fas fa-user" style="color: var(--primary);"></i> Вход</h2>
                 <p id="authModalSubtitle" style="color: #94a3b8; margin: 0; font-size: 14px;">Войдите в свой аккаунт</p>
             </div>
             
-            <div style="display: flex; gap: 30px; align-items: flex-start;">
-                <form id="authForm" onsubmit="handleAuth(event)" style="display: flex; flex-direction: column; gap: 15px; flex: 1;">
+            <div style="display: flex; gap: 0; align-items: stretch;">
+                <form id="authForm" onsubmit="handleAuth(event)" style="display: flex; flex-direction: column; gap: 15px; flex: 1; padding-right: 30px;">
                     <div id="authUsernameField">
                         <label style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px; display: block;">Имя пользователя</label>
                         <input type="text" id="authUsername" placeholder="Введите имя пользователя" required
@@ -8297,9 +8259,9 @@ position: absolute;
                     </button>
                 </form>
                 
-                <div id="qrLoginSection" style="display: none; flex-direction: column; align-items: center; justify-content: center; gap: 15px; padding-left: 30px; border-left: 1px solid rgba(255,255,255,0.1); min-width: 260px;">
-                    <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 0;">Вход через QR-код</p>
-                    <div id="qrCodeContainer" style="background: white; padding: 12px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+                <div id="qrLoginSection" style="display: none; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding-left: 30px; border-left: 1px solid rgba(255,255,255,0.1); width: 280px; flex-shrink: 0;">
+                    <p style="color: #94a3b8; font-size: 0.85rem; margin: 0;">Вход через QR-код</p>
+                    <div id="qrCodeContainer" style="background: white; padding: 8px; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); line-height: 0;">
                         <canvas id="qrCodeCanvas" width="240" height="240"></canvas>
                         <img id="qrCodeImage" style="display: none; width: 240px; height: 240px;" alt="QR Code">
                     </div>
@@ -8320,20 +8282,6 @@ position: absolute;
         </div>
     </div>
     
-    <!-- Debug Panel -->
-    <div id="debugPanel" style="position: fixed; bottom: 20px; right: 20px; z-index: 999999; font-family: monospace; font-size: 12px;">
-        <button id="debugToggle" onclick="toggleDebug()" style="position: fixed; bottom: 20px; right: 20px; z-index: 999999; width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border: none; cursor: pointer; font-size: 20px; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);">
-            🐛
-        </button>
-        <div id="debugContent" style="display: none; position: fixed; bottom: 80px; right: 20px; width: 350px; max-height: 400px; overflow-y: auto; background: rgba(15, 23, 42, 0.98); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; box-shadow: 0 8px 32px rgba(0,0,0,0.5); backdrop-filter: blur(10px);">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
-                <strong style="color: #ef4444;">Debug Console</strong>
-                <button onclick="clearDebug()" style="background: transparent; border: none; color: #94a3b8; cursor: pointer; font-size: 11px;">Очистить</button>
-            </div>
-            <div id="debugLogs" style="display: flex; flex-direction: column; gap: 5px;"></div>
-        </div>
-    </div>
-
     <!-- Главная страница -->
     <div id="main-page" class="page active">
         <section class="hero-section" id="main">
@@ -9232,6 +9180,7 @@ position: absolute;
                                 }
                             });
                             setupViewButtons();
+                            init3DCardTilt();
                         }
                     } else if (userLikedGameIds.length > 0) {
                         favoriteGamesHtml = '<div style="margin-top: 20px;">';
@@ -11527,6 +11476,7 @@ function saveProfileSettings() {
             
             // Настроить кнопки для просмотра
             setupViewButtons();
+            init3DCardTilt();
             
             // Показать страницу
             switchPage('liked-games-page');
@@ -12322,6 +12272,7 @@ let popularGamesTitles = [];
             console.log('Anticipated grid children:', anticipatedGamesGrid.children.length);
 
             setupViewButtons();
+            init3DCardTilt();
         }
 
         // Создание карточки игры
@@ -12450,6 +12401,7 @@ let popularGamesTitles = [];
 
             updateGamesCount();
             setupViewButtons();
+            init3DCardTilt();
             
             // Фильтруем по умолчанию (игры)
             filterGames();
@@ -12475,6 +12427,31 @@ let popularGamesTitles = [];
             });
         }
 
+        function init3DCardTilt() {
+            const cards = document.querySelectorAll('.game-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -6;
+                    const rotateY = ((x - centerX) / centerX) * 6;
+                    card.style.transform = `perspective(1000px) translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                    card.style.transition = 'transform 0.1s ease-out';
+                    card.style.boxShadow = `${-rotateY * 1.2}px ${rotateX * 1.2 + 20}px 40px rgba(0,0,0,0.4), 0 0 25px rgba(59, 130, 246, 0.15)`;
+                    card.style.borderColor = 'rgba(59, 130, 246, 0.4)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) translateY(0) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                    card.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                    card.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3)';
+                    card.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                });
+            });
+        }
+
         // Загрузка предзаказов
         function loadPreorders() {
             const preordersGrid = document.getElementById('preordersGrid');
@@ -12489,6 +12466,7 @@ let popularGamesTitles = [];
                 const card = createPreorderCard(preorder);
                 preordersGrid.appendChild(card);
             });
+            init3DCardTilt();
         }
 
         function createPreorderCard(preorder) {
