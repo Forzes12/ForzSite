@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#6366f1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -21,28 +21,31 @@
             color: #f1f5f9;
             min-height: 100vh;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
-        .screen { display: none; min-height: 100vh; padding: 20px; }
+        .screen { display: none; min-height: 100vh; padding: 16px; padding-bottom: 100px; }
         .screen.active { display: flex; flex-direction: column; }
         
         .auth-screen {
             justify-content: center;
             align-items: center;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 20px;
         }
         .auth-card {
-            background: rgba(30, 41, 59, 0.9);
-            border-radius: 20px;
-            padding: 30px;
+            background: rgba(30, 41, 59, 0.95);
+            border-radius: 24px;
+            padding: 32px 24px;
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             border: 1px solid rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
         }
         .auth-card h1 {
             text-align: center;
-            margin-bottom: 8px;
-            font-size: 1.8rem;
+            margin-bottom: 6px;
+            font-size: 2rem;
             background: linear-gradient(135deg, #6366f1, #a855f7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -51,27 +54,28 @@
         .auth-card .subtitle {
             text-align: center;
             color: #94a3b8;
-            margin-bottom: 25px;
-            font-size: 0.9rem;
+            margin-bottom: 28px;
+            font-size: 0.95rem;
         }
-        .form-group { margin-bottom: 16px; }
+        .form-group { margin-bottom: 20px; }
         .form-group label {
             display: block;
             color: #cbd5e1;
-            font-size: 0.85rem;
-            margin-bottom: 6px;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
             font-weight: 500;
         }
         .form-group input {
             width: 100%;
-            padding: 14px 16px;
-            border-radius: 12px;
+            padding: 16px 18px;
+            border-radius: 14px;
             border: 1px solid rgba(255,255,255,0.1);
             background: rgba(15,23,42,0.8);
             color: white;
-            font-size: 1rem;
+            font-size: 1.05rem;
             outline: none;
             transition: all 0.3s;
+            min-height: 52px;
         }
         .form-group input:focus {
             border-color: #6366f1;
@@ -79,41 +83,41 @@
         }
         .btn {
             width: 100%;
-            padding: 14px;
-            border-radius: 12px;
+            padding: 18px;
+            border-radius: 14px;
             border: none;
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 1.1rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
+            min-height: 56px;
+            -webkit-tap-highlight-color: transparent;
         }
+        .btn:active { transform: scale(0.97); opacity: 0.9; }
         .btn-primary {
             background: linear-gradient(135deg, #6366f1, #8b5cf6);
             color: white;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-        }
-        .btn-primary:active { transform: scale(0.98); }
-        .btn-secondary {
-            background: rgba(255,255,255,0.1);
-            color: #94a3b8;
-            margin-top: 10px;
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
         }
         .error-msg {
             color: #ef4444;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-align: center;
-            margin-top: 10px;
+            margin-top: 14px;
             display: none;
+            padding: 10px;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 10px;
         }
         
         .profile-screen { padding: 0; }
         .profile-header {
             background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            padding: 40px 20px 30px;
+            padding: 50px 20px 35px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -132,51 +136,88 @@
             0%, 100% { transform: scale(1); opacity: 0.5; }
             50% { transform: scale(1.1); opacity: 0.8; }
         }
+        .avatar-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+            z-index: 1;
+        }
         .avatar {
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             background: rgba(255,255,255,0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 48px;
-            margin: 0 auto 15px;
+            font-size: 52px;
             border: 3px solid rgba(255,255,255,0.3);
-            position: relative;
-            z-index: 1;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+        .online-indicator {
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #10b981;
+            border: 3px solid #6366f1;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+        }
+        .admin-badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: white;
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
         }
         .username {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             position: relative;
             z-index: 1;
         }
         .user-status {
-            color: rgba(255,255,255,0.8);
-            font-size: 0.85rem;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.9rem;
             position: relative;
             z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
+        .user-status i { font-size: 0.7rem; }
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
             padding: 20px;
             background: #1e293b;
-            margin: -20px 20px 20px;
-            border-radius: 16px;
+            margin: -20px 16px 20px;
+            border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
         }
         .stat-item {
             text-align: center;
-            padding: 12px;
+            padding: 14px 8px;
             background: rgba(15,23,42,0.5);
-            border-radius: 12px;
+            border-radius: 14px;
         }
         .stat-value {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: #6366f1;
         }
@@ -186,37 +227,40 @@
             margin-top: 4px;
         }
         .actions {
-            padding: 0 20px 20px;
+            padding: 0 16px 20px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
         }
         .action-card {
-            background: rgba(30, 41, 59, 0.8);
-            border-radius: 16px;
-            padding: 18px;
+            background: rgba(30, 41, 59, 0.9);
+            border-radius: 20px;
+            padding: 20px;
             border: 1px solid rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 16px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
+            min-height: 80px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
         }
         .action-card:active { transform: scale(0.98); background: rgba(99, 102, 241, 0.2); }
         .action-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
+            width: 60px;
+            height: 60px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 28px;
             flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
         .action-icon.qr { background: linear-gradient(135deg, #10b981, #059669); }
         .action-icon.logout { background: linear-gradient(135deg, #ef4444, #dc2626); }
-        .action-text h3 { font-size: 1rem; margin-bottom: 3px; }
-        .action-text p { font-size: 0.8rem; color: #94a3b8; }
+        .action-text h3 { font-size: 1.1rem; margin-bottom: 4px; font-weight: 600; }
+        .action-text p { font-size: 0.85rem; color: #94a3b8; }
         
         .scanner-screen { padding: 0; }
         .scanner-header {
@@ -227,28 +271,31 @@
             gap: 15px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .scanner-header h2 { font-size: 1.2rem; }
+        .scanner-header h2 { font-size: 1.3rem; }
         .scanner-container {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 24px;
         }
         #qrReader {
             width: 100%;
-            max-width: 350px;
-            border-radius: 16px;
+            max-width: 400px;
+            min-height: 300px;
+            border-radius: 20px;
             overflow: hidden;
             background: #000;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
         .scanner-status {
             text-align: center;
             color: #94a3b8;
             padding: 0 20px;
             margin-bottom: 20px;
+            font-size: 0.95rem;
         }
         .scanner-status.success { color: #10b981; }
         .scanner-status.error { color: #ef4444; }
@@ -258,13 +305,14 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(15, 23, 42, 0.98);
             backdrop-filter: blur(10px);
             border-top: 1px solid rgba(255,255,255,0.1);
             display: flex;
             justify-content: space-around;
-            padding: 12px 0;
+            padding: 14px 0;
             z-index: 1000;
+            padding-bottom: max(14px, env(safe-area-inset-bottom));
         }
         .nav-item {
             display: flex;
@@ -272,22 +320,18 @@
             align-items: center;
             gap: 4px;
             color: #64748b;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             cursor: pointer;
             transition: color 0.3s;
             background: none;
             border: none;
-            padding: 5px 15px;
+            padding: 8px 20px;
+            min-height: 56px;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
         }
         .nav-item.active { color: #6366f1; }
-        .nav-item i { font-size: 20px; }
-        
-        .content-area {
-            flex: 1;
-            padding: 20px;
-            padding-bottom: 80px;
-            overflow-y: auto;
-        }
+        .nav-item i { font-size: 22px; margin-bottom: 2px; }
     </style>
 </head>
 <body>
@@ -299,7 +343,7 @@
             <form id="mobileAuthForm">
                 <div class="form-group">
                     <label>Имя пользователя</label>
-                    <input type="text" id="mobileUsername" placeholder="Введите имя пользователя" required autocomplete="username">
+                    <input type="text" id="mobileUsername" placeholder="Введите имя пользователя" required autocomplete="username" autocapitalize="none">
                 </div>
                 <div class="form-group">
                     <label>Пароль</label>
@@ -316,11 +360,19 @@
     <!-- Profile Screen -->
     <div id="profileScreen" class="screen profile-screen">
         <div class="profile-header">
-            <div class="avatar" id="mobileAvatar">
-                <i class="fas fa-user"></i>
+            <div class="avatar-wrapper">
+                <div class="avatar" id="mobileAvatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="online-indicator" id="onlineIndicator" style="display: none;"></div>
+                <div class="admin-badge" id="adminBadge" style="display: none;">
+                    <i class="fas fa-check"></i>
+                </div>
             </div>
             <div class="username" id="mobileUsernameDisplay">Пользователь</div>
-            <div class="user-status" id="mobileUserStatus">Онлайн</div>
+            <div class="user-status" id="mobileUserStatus">
+                <i class="fas fa-circle"></i> Онлайн
+            </div>
         </div>
         
         <div class="stats-grid">
@@ -364,7 +416,7 @@
     <!-- Scanner Screen -->
     <div id="scannerScreen" class="screen scanner-screen">
         <div class="scanner-header">
-            <button class="nav-item" onclick="showScreen('profile')" style="width: auto; flex-direction: row; gap: 8px;">
+            <button class="nav-item" onclick="showScreen('profile')" style="width: auto; flex-direction: row; gap: 8px; min-height: 44px;">
                 <i class="fas fa-arrow-left"></i>
             </button>
             <h2>Сканер QR-кода</h2>
@@ -447,8 +499,14 @@
             
             errorDiv.style.display = 'none';
             
+            if (!username || !password) {
+                errorDiv.textContent = 'Заполните все поля';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            
             if (!firebaseAvailable || !database) {
-                errorDiv.textContent = 'Firebase не подключен';
+                errorDiv.textContent = 'Ошибка соединения с базой данных. Проверьте интернет.';
                 errorDiv.style.display = 'block';
                 return;
             }
@@ -479,7 +537,8 @@
                 
                 showScreen('profile');
             } catch (err) {
-                errorDiv.textContent = 'Ошибка соединения';
+                console.error('Mobile auth error:', err);
+                errorDiv.textContent = 'Ошибка соединения. Проверьте интернет и попробуйте снова.';
                 errorDiv.style.display = 'block';
             }
         });
@@ -487,18 +546,32 @@
         async function loadProfile() {
             if (!currentUser) return;
             
-            document.getElementById('mobileUsernameDisplay').textContent = '@' + currentUser.username;
-            document.getElementById('mobileAvatar').innerHTML = getAvatarIcon(currentUser.avatar);
-            document.getElementById('mobileDownloads').textContent = currentUser.downloadsCount || 0;
-            document.getElementById('mobileLikes').textContent = currentUser.likesCount || 0;
+            const usernameDisplay = document.getElementById('mobileUsernameDisplay');
+            const avatarEl = document.getElementById('mobileAvatar');
+            const downloadsEl = document.getElementById('mobileDownloads');
+            const likesEl = document.getElementById('mobileLikes');
+            const commentsEl = document.getElementById('mobileComments');
+            const onlineIndicator = document.getElementById('onlineIndicator');
+            const adminBadge = document.getElementById('adminBadge');
+            const userStatus = document.getElementById('mobileUserStatus');
+            
+            if (usernameDisplay) usernameDisplay.textContent = '@' + currentUser.username;
+            if (avatarEl) avatarEl.innerHTML = getAvatarIcon(currentUser.avatar);
+            if (downloadsEl) downloadsEl.textContent = currentUser.downloadsCount || 0;
+            if (likesEl) likesEl.textContent = currentUser.likesCount || 0;
+            
+            const isAdmin = currentUser.isDeveloper === true || currentUser.hasBadge === true;
+            if (adminBadge) adminBadge.style.display = isAdmin ? 'flex' : 'none';
+            if (onlineIndicator) onlineIndicator.style.display = 'block';
+            if (userStatus) userStatus.innerHTML = '<i class="fas fa-circle"></i> Онлайн';
             
             if (firebaseAvailable && database) {
                 try {
                     const commentsSnapshot = await database.ref('profile_comments').orderByChild('profile').equalTo(currentUser.username).once('value');
                     const commentsCount = commentsSnapshot.exists() ? Object.keys(commentsSnapshot.val()).length : 0;
-                    document.getElementById('mobileComments').textContent = commentsCount;
+                    if (commentsEl) commentsEl.textContent = commentsCount;
                 } catch (e) {
-                    document.getElementById('mobileComments').textContent = '0';
+                    if (commentsEl) commentsEl.textContent = '0';
                 }
             }
         }
@@ -536,7 +609,7 @@
                 qrScanner = new Html5Qrcode('qrReader');
                 qrScanner.start(
                     { facingMode: 'environment' },
-                    { fps: 10, qrbox: { width: 250, height: 250 } },
+                    { fps: 10, qrbox: { width: 280, height: 280 } },
                     onQRScanSuccess,
                     onQRScanFailure
                 ).catch(err => {
@@ -619,6 +692,8 @@
                     if (snapshot.val()) {
                         currentUser = snapshot.val();
                         showScreen('profile');
+                    } else {
+                        showScreen('auth');
                     }
                 }).catch(() => {
                     showScreen('auth');
