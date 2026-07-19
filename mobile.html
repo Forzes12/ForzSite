@@ -7,6 +7,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Forzes HUB">
+    <link rel="icon" type="image/png" sizes="512x512" href="game-screenshot/5558f6bc-dc26-4fa1-9cc4-8d39ac802dc0.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="game-screenshot/5558f6bc-dc26-4fa1-9cc4-8d39ac802dc0.png">
+    <link rel="manifest" href="manifest.json">
     <title>Forzes HUB Mobile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -322,18 +325,53 @@
             0%, 100% { opacity: 0.4; }
             50% { opacity: 0.8; }
         }
+        @keyframes scanActive {
+            0%, 100% { border-color: rgba(99, 102, 241, 0.9); box-shadow: 0 0 0 9999px rgba(0,0,0,0.55), 0 0 30px 4px rgba(99, 102, 241, 0.6); }
+            50% { border-color: rgba(139, 92, 246, 0.9); box-shadow: 0 0 0 9999px rgba(0,0,0,0.55), 0 0 50px 8px rgba(139, 92, 246, 0.8); }
+        }
+        @keyframes scanIdle {
+            0%, 100% { border-color: rgba(255, 255, 255, 0.5); box-shadow: 0 0 0 9999px rgba(0,0,0,0.55), 0 0 15px 2px rgba(255, 255, 255, 0.15); }
+            50% { border-color: rgba(255, 255, 255, 0.85); box-shadow: 0 0 0 9999px rgba(0,0,0,0.55), 0 0 28px 5px rgba(255, 255, 255, 0.3); }
+        }
+        @keyframes scanSuccess {
+            0% { border-color: rgba(16, 185, 129, 0.9); box-shadow: 0 0 0 9999px rgba(0,0,0,0.55), 0 0 40px 6px rgba(16, 185, 129, 0.9); }
+            100% { border-color: rgba(16, 185, 129, 0.9); box-shadow: 0 0 0 9999px rgba(0,0,0,0.55), 0 0 80px 12px rgba(16, 185, 129, 0); }
+        }
+        #scanZone.scanning {
+            animation: scanActive 1.2s ease-in-out infinite;
+        }
+        #scanZone.scanIdle {
+            animation: scanIdle 2s ease-in-out infinite;
+        }
+        #scanZone.success {
+            animation: scanSuccess 0.8s ease-out forwards;
+        }
+        #scanZone .scan-success-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(16, 185, 129, 0.25);
+            border-radius: 20px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 10;
+            transition: opacity 0.3s;
+        }
+        #scanZone.success .scan-success-overlay {
+            opacity: 1;
+        }
         #qrReader video {
             width: 100% !important;
             height: 100% !important;
             object-fit: cover;
-            border-radius: 20px;
             max-height: 100% !important;
         }
         #qrReader img, #qrReader canvas {
             width: 100% !important;
             height: 100% !important;
             object-fit: cover;
-            border-radius: 20px;
             max-height: 100% !important;
         }
         .scanner-footer {
@@ -510,7 +548,8 @@
             <div id="qrReader" style="width: 100%; height: 100%; max-width: none; max-height: none; border-radius: 0; margin-bottom: 0;"></div>
             <div id="scanOverlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: 5;">
                 <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.55);"></div>
-                <div id="scanZone" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(1300px, 85vw); height: min(1300px, 85vw); border: 3px solid rgba(255,255,255,0.9); border-radius: 20px; box-shadow: 0 0 0 9999px rgba(0,0,0,0.55); overflow: hidden;">
+                <div id="scanZone" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(1299px, 85vw); height: min(1299px, 85vw); border: 3px solid rgba(255,255,255,0.9); border-radius: 20px; box-shadow: 0 0 0 9999px rgba(0,0,0,0.55); overflow: hidden;">
+                    <div class="scan-success-overlay"></div>
                 </div>
             </div>
         </div>
@@ -710,6 +749,12 @@
         function openQRScanner() {
             showScreen('scanner');
             
+            const scanZone = document.getElementById('scanZone');
+            if (scanZone) {
+                scanZone.classList.remove('scanning', 'success');
+                scanZone.classList.add('scanIdle');
+            }
+            
             const qrReader = document.getElementById('qrReader');
             if (qrReader) {
                 qrReader.style.display = 'block';
@@ -746,6 +791,11 @@
                                 ).then(() => {
                                     statusEl.textContent = 'Наведите камеру на QR-код с компьютера';
                                     statusEl.className = 'scanner-status';
+                                    const scanZone = document.getElementById('scanZone');
+                                    if (scanZone) {
+                                        scanZone.classList.remove('scanIdle');
+                                        scanZone.classList.add('scanning');
+                                    }
                                 }).catch(err => {
                                     console.error('Camera start error:', err);
                                     statusEl.textContent = 'Ошибка камеры: ' + err.message;
@@ -775,6 +825,10 @@
                 qrReader.style.width = '';
                 qrReader.style.height = '';
             }
+            const scanZone = document.getElementById('scanZone');
+            if (scanZone) {
+                scanZone.classList.remove('scanning', 'success', 'scanIdle');
+            }
             stopQRScanner();
             showScreen('profile');
         }
@@ -799,6 +853,12 @@
             const statusEl = document.getElementById('scannerStatus');
             statusEl.textContent = 'QR-код найден! Отправка подтверждения...';
             statusEl.className = 'scanner-status success';
+            
+            const scanZone = document.getElementById('scanZone');
+            if (scanZone) {
+                scanZone.classList.remove('scanning', 'scanIdle');
+                scanZone.classList.add('success');
+            }
             
             if (currentUser && firebaseAvailable && database) {
                 database.ref('/qr_sessions/' + sessionId).update({
