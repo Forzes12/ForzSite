@@ -299,13 +299,48 @@
             overflow: hidden;
         }
         #qrReader {
-            width: min(300px, 85vw);
-            height: min(300px, 85vw);
+            width: min(320px, 88vw);
+            height: min(320px, 88vh);
             border-radius: 20px;
             overflow: hidden;
             background: #000;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.6), 0 8px 32px rgba(0,0,0,0.4);
             margin-bottom: 24px;
+            position: relative;
+        }
+        #qrReader::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px dashed rgba(255,255,255,0.4);
+            border-radius: 20px;
+            pointer-events: none;
+            z-index: 5;
+            animation: scanPulse 2s ease-in-out infinite;
+        }
+        @keyframes scanPulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+        #qrReader::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px dashed rgba(255,255,255,0.4);
+            border-radius: 20px;
+            pointer-events: none;
+            z-index: 5;
+            animation: scanPulse 2s ease-in-out infinite;
+        }
+        @keyframes scanPulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
         }
         #qrReader video {
             width: 100% !important;
@@ -554,6 +589,11 @@
         }
 
         function showScreen(screen) {
+            if (screen === 'scanner') {
+                document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+                document.getElementById('scannerScreen').classList.add('active');
+                return;
+            }
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById(screen + 'Screen').classList.add('active');
             
@@ -684,7 +724,16 @@
 
         // QR Scanner
         function openQRScanner() {
-            showScreen('scanner');
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            const scannerScreen = document.getElementById('scannerScreen');
+            scannerScreen.classList.add('active');
+            scannerScreen.style.display = 'flex';
+            
+            const qrReader = document.getElementById('qrReader');
+            if (qrReader) {
+                qrReader.style.display = 'block';
+            }
+            
             const statusEl = document.getElementById('scannerStatus');
             statusEl.textContent = 'Загрузка сканера...';
             statusEl.className = 'scanner-status';
@@ -696,26 +745,53 @@
                     return;
                 }
                 
-                const qrReader = document.getElementById('qrReader');
-                const size = Math.min(300, Math.min(window.innerWidth, window.innerHeight) * 0.75);
+                const size = Math.min(400, Math.min(window.innerWidth, window.innerHeight) * 0.8);
                 const sizeInt = Math.floor(size);
                 
-                qrReader.style.width = sizeInt + 'px';
-                qrReader.style.height = sizeInt + 'px';
-                qrReader.style.maxWidth = '85vw';
-                qrReader.style.maxHeight = '85vw';
+                if (qrReader) {
+                    qrReader.style.width = sizeInt + 'px';
+                    qrReader.style.height = sizeInt + 'px';
+                    qrReader.style.maxWidth = '90vw';
+                    qrReader.style.maxHeight = '90vh';
+                }
                 
-                qrScanner = new Html5Qrcode('qrReader');
-                qrScanner.start(
-                    { facingMode: 'environment' },
-                    { fps: 10, qrbox: { width: sizeInt, height: sizeInt } },
-                    onQRScanSuccess,
-                    onQRScanFailure
-                ).catch(err => {
-                    statusEl.textContent = 'Ошибка доступа к камере: ' + err.message;
+                try {
+                    qrScanner = new Html5Qrcode('qrReader');
+                    
+                    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                        statusEl.textContent = 'Запрос разрешения камеры...';
+                        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+                            .then(() => {
+                                statusEl.textContent = 'Камера разрешена, запуск...';
+                                qrScanner.start(
+                                    { facingMode: 'environment' },
+                                    { fps: 10, qrbox: { width: sizeInt, height: sizeInt } },
+                                    onQRScanSuccess,
+                                    onQRScanFailure
+                                ).then(() => {
+                                    statusEl.textContent = 'Наведите камеру на QR-код с компьютера';
+                                    statusEl.className = 'scanner-status';
+                                }).catch(err => {
+                                    console.error('Camera start error:', err);
+                                    statusEl.textContent = 'Ошибка камеры: ' + err.message;
+                                    statusEl.className = 'scanner-status error';
+                                });
+                            })
+                            .catch(err => {
+                                console.error('Camera permission error:', err);
+                                statusEl.textContent = 'Разрешите доступ к камере в настройках браузера';
+                                statusEl.className = 'scanner-status error';
+                            });
+                    } else {
+                        statusEl.textContent = 'Камера не поддерживается';
+                        statusEl.className = 'scanner-status error';
+                    }
+                } catch (e) {
+                    console.error('Scanner init error:', e);
+                    statusEl.textContent = 'Ошибка инициализации: ' + e.message;
                     statusEl.className = 'scanner-status error';
-                });
-            }, 500);
+                }
+            }, 1000);
         }
 
         function closeQRScanner() {
