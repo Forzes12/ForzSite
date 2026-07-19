@@ -28,29 +28,29 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
-        .screen { display: none; min-height: 100vh; padding: 16px; padding-bottom: 100px; }
+        .screen { display: none; min-height: 100vh; padding: 12px; padding-bottom: 80px; }
         .screen.active { display: flex; flex-direction: column; }
         
         .auth-screen {
             justify-content: center;
             align-items: center;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            padding: 20px;
+            padding: 16px;
         }
         .auth-card {
             background: rgba(30, 41, 59, 0.95);
-            border-radius: 28px;
-            padding: 40px 28px;
+            border-radius: 20px;
+            padding: 24px 20px;
             width: 100%;
-            max-width: 440px;
+            max-width: 360px;
             border: 1px solid rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
             box-shadow: 0 20px 60px rgba(0,0,0,0.4);
         }
         .auth-card h1 {
             text-align: center;
-            margin-bottom: 8px;
-            font-size: 2.2rem;
+            margin-bottom: 6px;
+            font-size: 1.6rem;
             background: linear-gradient(135deg, #6366f1, #a855f7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -59,28 +59,28 @@
         .auth-card .subtitle {
             text-align: center;
             color: #94a3b8;
-            margin-bottom: 32px;
-            font-size: 1.05rem;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
         }
-        .form-group { margin-bottom: 24px; }
+        .form-group { margin-bottom: 16px; }
         .form-group label {
             display: block;
             color: #cbd5e1;
-            font-size: 1rem;
-            margin-bottom: 10px;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
             font-weight: 600;
         }
         .form-group input {
             width: 100%;
-            padding: 18px 20px;
-            border-radius: 16px;
+            padding: 12px 16px;
+            border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.1);
             background: rgba(15,23,42,0.8);
             color: white;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             outline: none;
             transition: all 0.3s;
-            min-height: 60px;
+            min-height: 48px;
         }
         .form-group input:focus {
             border-color: #6366f1;
@@ -88,18 +88,18 @@
         }
         .btn {
             width: 100%;
-            padding: 20px;
-            border-radius: 16px;
+            padding: 14px;
+            border-radius: 12px;
             border: none;
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            min-height: 64px;
+            gap: 10px;
+            min-height: 52px;
             -webkit-tap-highlight-color: transparent;
         }
         .btn:active { transform: scale(0.97); opacity: 0.9; }
@@ -110,19 +110,19 @@
         }
         .error-msg {
             color: #ef4444;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             text-align: center;
-            margin-top: 16px;
+            margin-top: 12px;
             display: none;
-            padding: 12px;
+            padding: 10px;
             background: rgba(239, 68, 68, 0.1);
-            border-radius: 12px;
+            border-radius: 10px;
         }
         
         .profile-screen { padding: 0; }
         .profile-header {
             background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            padding: 55px 20px 40px;
+            padding: 35px 16px 28px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -144,128 +144,128 @@
         .avatar-wrapper {
             position: relative;
             display: inline-block;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             z-index: 1;
         }
         .avatar {
-            width: 110px;
-            height: 110px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             background: rgba(255,255,255,0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 52px;
+            font-size: 36px;
             border: 3px solid rgba(255,255,255,0.3);
             box-shadow: 0 8px 32px rgba(0,0,0,0.2);
         }
         .online-indicator {
             position: absolute;
-            bottom: 6px;
-            right: 6px;
-            width: 26px;
-            height: 26px;
+            bottom: 4px;
+            right: 4px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background: #10b981;
-            border: 3px solid #6366f1;
+            border: 2px solid #6366f1;
             box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
         }
         .admin-badge {
             position: absolute;
-            top: -6px;
-            right: -6px;
-            width: 32px;
-            height: 32px;
+            top: -4px;
+            right: -4px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             background: linear-gradient(135deg, #10b981, #059669);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 12px;
             color: white;
             border: 2px solid white;
             box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
         }
         .username {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             position: relative;
             z-index: 1;
         }
         .user-status {
             color: rgba(255,255,255,0.85);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             position: relative;
             z-index: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 4px;
         }
-        .user-status i { font-size: 0.7rem; }
+        .user-status i { font-size: 0.65rem; }
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-            padding: 24px;
+            gap: 10px;
+            padding: 16px;
             background: #1e293b;
-            margin: -24px 16px 24px;
-            border-radius: 24px;
+            margin: -16px 12px 16px;
+            border-radius: 18px;
             border: 1px solid rgba(255,255,255,0.1);
             box-shadow: 0 8px 32px rgba(0,0,0,0.2);
         }
         .stat-item {
             text-align: center;
-            padding: 18px 10px;
+            padding: 12px 8px;
             background: rgba(15,23,42,0.5);
-            border-radius: 16px;
+            border-radius: 12px;
         }
         .stat-value {
-            font-size: 1.6rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #6366f1;
         }
         .stat-label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #94a3b8;
-            margin-top: 6px;
+            margin-top: 4px;
         }
         .actions {
-            padding: 0 16px 24px;
+            padding: 0 12px 16px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 12px;
         }
         .action-card {
             background: rgba(30, 41, 59, 0.9);
-            border-radius: 24px;
-            padding: 28px;
+            border-radius: 18px;
+            padding: 16px;
             border: 1px solid rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 14px;
             cursor: pointer;
             transition: all 0.2s;
-            min-height: 110px;
+            min-height: 80px;
             box-shadow: 0 4px 16px rgba(0,0,0,0.15);
         }
         .action-card:active { transform: scale(0.98); background: rgba(99, 102, 241, 0.2); }
         .action-icon {
-            width: 76px;
-            height: 76px;
-            border-radius: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 36px;
+            font-size: 26px;
             flex-shrink: 0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
         .action-icon.qr { background: linear-gradient(135deg, #10b981, #059669); }
         .action-icon.logout { background: linear-gradient(135deg, #ef4444, #dc2626); }
-        .action-text h3 { font-size: 1.3rem; margin-bottom: 6px; font-weight: 700; }
-        .action-text p { font-size: 0.95rem; color: #94a3b8; }
+        .action-text h3 { font-size: 1.05rem; margin-bottom: 4px; font-weight: 700; }
+        .action-text p { font-size: 0.8rem; color: #94a3b8; }
         
         .comments-screen, .likes-screen {
             position: fixed;
@@ -559,29 +559,29 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             display: flex;
             justify-content: space-around;
-            padding: 16px 0;
+            padding: 12px 0;
             z-index: 1000;
-            padding-bottom: max(16px, env(safe-area-inset-bottom));
+            padding-bottom: max(12px, env(safe-area-inset-bottom));
         }
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             color: #64748b;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 700;
             cursor: pointer;
             transition: color 0.3s;
             background: none;
             border: none;
-            padding: 12px 28px;
-            min-height: 72px;
+            padding: 8px 20px;
+            min-height: 56px;
             justify-content: center;
             -webkit-tap-highlight-color: transparent;
         }
         .nav-item.active { color: #6366f1; }
-        .nav-item i { font-size: 28px; margin-bottom: 4px; }
+        .nav-item i { font-size: 22px; margin-bottom: 3px; }
     </style>
 </head>
 <body>
@@ -863,6 +863,7 @@
                     lastLogin: firebase.database.ServerValue.TIMESTAMP
                 });
                 
+                setupMobilePresence(username);
                 showScreen('profile');
             } catch (err) {
                 console.error('Mobile auth error:', err);
@@ -1045,6 +1046,37 @@
             return div.innerHTML;
         }
 
+        function sanitizeFirebasePath(str) {
+            return str.replace(/[.#$[\]]/g, '_');
+        }
+
+        function setupMobilePresence(username) {
+            if (!username || !firebaseAvailable || !database) return;
+            const sanitizedUsername = sanitizeFirebasePath(username.toLowerCase());
+            const userStatusDatabaseRef = database.ref('/status/' + sanitizedUsername);
+            const isOnlineRef = userStatusDatabaseRef.child('isOnline');
+            const lastSeenRef = userStatusDatabaseRef.child('lastSeen');
+            
+            const connectedRef = database.ref('.info/connected');
+            connectedRef.on('value', (snap) => {
+                if (snap.val() === true) {
+                    isOnlineRef.set(true);
+                    lastSeenRef.set(firebase.database.ServerValue.TIMESTAMP);
+                    isOnlineRef.onDisconnect().set(false);
+                    lastSeenRef.onDisconnect().set(firebase.database.ServerValue.TIMESTAMP);
+                }
+            });
+        }
+
+        function setMobileOffline(username) {
+            if (!username || !firebaseAvailable || !database) return;
+            const sanitizedUsername = sanitizeFirebasePath(username.toLowerCase());
+            database.ref('/status/' + sanitizedUsername).update({
+                isOnline: false,
+                lastSeen: firebase.database.ServerValue.TIMESTAMP
+            });
+        }
+
         // QR Scanner
         function openQRScanner() {
             showScreen('scanner');
@@ -1186,6 +1218,9 @@
         }
 
         function logoutMobile() {
+            if (currentUser) {
+                setMobileOffline(currentUser.username);
+            }
             localStorage.removeItem('mobile_username');
             localStorage.removeItem('mobile_password');
             currentUser = null;
@@ -1225,6 +1260,20 @@
                 scannerScreen.classList.remove('active');
                 scannerScreen.style.display = 'none';
             }
+            
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden && currentUser) {
+                    setMobileOffline(currentUser.username);
+                } else if (!document.hidden && currentUser) {
+                    setupMobilePresence(currentUser.username);
+                }
+            });
+            
+            window.addEventListener('beforeunload', () => {
+                if (currentUser) {
+                    setMobileOffline(currentUser.username);
+                }
+            });
         }
 
         document.addEventListener('DOMContentLoaded', init);
