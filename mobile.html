@@ -271,8 +271,11 @@
             background: #000;
             z-index: 2000;
             padding: 0;
-            display: flex;
+            display: none;
             flex-direction: column;
+        }
+        .scanner-screen.active {
+            display: flex;
         }
         .scanner-header {
             position: absolute;
@@ -294,53 +297,93 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 0;
             min-height: 0;
             overflow: hidden;
-        }
-        #qrReader {
-            width: min(320px, 88vw);
-            height: min(320px, 88vh);
-            border-radius: 20px;
-            overflow: hidden;
-            background: #000;
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.6), 0 8px 32px rgba(0,0,0,0.4);
-            margin-bottom: 24px;
             position: relative;
         }
-        #qrReader::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 2px dashed rgba(255,255,255,0.4);
-            border-radius: 20px;
-            pointer-events: none;
-            z-index: 5;
-            animation: scanPulse 2s ease-in-out infinite;
+        #qrReader {
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            max-height: none;
+            border-radius: 0;
+            overflow: hidden;
+            background: #000;
+            box-shadow: none;
+            margin-bottom: 0;
+        }
+        #qrReader video, #qrReader img, #qrReader canvas {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover;
         }
         @keyframes scanPulse {
             0%, 100% { opacity: 0.4; }
             50% { opacity: 0.8; }
         }
-        #qrReader::after {
-            content: '';
+        @keyframes scanWave2 {
+            0% { top: -12%; opacity: 0; transform: scaleY(0.5) skewX(-8deg); }
+            20% { opacity: 0.7; transform: scaleY(0.9) skewX(-4deg); }
+            80% { opacity: 0.7; transform: scaleY(0.9) skewX(-4deg); }
+            100% { top: 112%; opacity: 0; transform: scaleY(0.5) skewX(-8deg); }
+        }
+        @keyframes scanWave3 {
+            0% { top: -12%; opacity: 0; transform: scaleY(0.4) skewX(8deg); }
+            25% { opacity: 0.5; transform: scaleY(0.8) skewX(4deg); }
+            75% { opacity: 0.5; transform: scaleY(0.8) skewX(4deg); }
+            100% { top: 112%; opacity: 0; transform: scaleY(0.4) skewX(8deg); }
+        }
+        @keyframes cornerGlow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        @keyframes borderPulse {
+            0%, 100% { box-shadow: 0 0 0 9999px rgba(0,0,0,0.55), 0 0 20px 2px rgba(99, 102, 241, 0.3); }
+            50% { box-shadow: 0 0 0 9999px rgba(0,0,0,0.55), 0 0 30px 4px rgba(139, 92, 246, 0.5); }
+        }
+        .scan-wave {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent 0%, #6366f1 25%, #8b5cf6 50%, #6366f1 75%, transparent 100%);
+            box-shadow: 0 0 12px 3px rgba(99, 102, 241, 0.7), 0 0 32px 6px rgba(139, 92, 246, 0.4);
+            animation: scanWave2 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            z-index: 5;
+            opacity: 0.7;
+        }
+        .scan-wave:nth-of-type(2) { animation-name: scanWave3; animation-delay: 0.9s; height: 1px; opacity: 0.5; }
+        .scan-corner {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            border-color: #6366f1;
+            border-style: solid;
+            border-width: 0;
+            z-index: 7;
+            animation: cornerGlow 1.8s ease-in-out infinite;
+            filter: drop-shadow(0 0 6px rgba(99, 102, 241, 0.9));
+        }
+        .scan-corner.tl { top: -3px; left: -3px; border-top-width: 4px; border-left-width: 4px; border-top-left-radius: 20px; }
+        .scan-corner.tr { top: -3px; right: -3px; border-top-width: 4px; border-right-width: 4px; border-top-right-radius: 20px; }
+        .scan-corner.bl { bottom: -3px; left: -3px; border-bottom-width: 4px; border-left-width: 4px; border-bottom-left-radius: 20px; }
+        .scan-corner.br { bottom: -3px; right: -3px; border-bottom-width: 4px; border-right-width: 4px; border-bottom-right-radius: 20px; }
+        #scanZone {
+            animation: borderPulse 2s ease-in-out infinite;
+        }
+        .scan-grid {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            border: 2px dashed rgba(255,255,255,0.4);
-            border-radius: 20px;
+            background-image: 
+                linear-gradient(rgba(99, 102, 241, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+            background-size: 20px 20px;
             pointer-events: none;
-            z-index: 5;
-            animation: scanPulse 2s ease-in-out infinite;
-        }
-        @keyframes scanPulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.8; }
+            z-index: 4;
         }
         #qrReader video {
             width: 100% !important;
@@ -374,7 +417,7 @@
             font-size: 1.05rem;
             line-height: 1.5;
         }
-        .scanner-status.success { color: #10b981; }
+        .scanner-status.success { color: #6366f1; }
         .scanner-status.error { color: #ef4444; }
         .scanner-actions {
             display: flex;
@@ -522,11 +565,25 @@
         <div class="scanner-header">
             <button class="nav-item" onclick="closeQRScanner()" style="width: auto; flex-direction: row; gap: 10px; min-height: 52px; padding: 12px 20px;">
                 <i class="fas fa-arrow-left"></i>
+                <span>Назад</span>
             </button>
             <h2>Сканер QR-кода</h2>
         </div>
         <div class="scanner-container">
-            <div id="qrReader"></div>
+            <div id="qrReader" style="width: 100%; height: 100%; max-width: none; max-height: none; border-radius: 0; margin-bottom: 0;"></div>
+            <div id="scanOverlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: 5;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.55);"></div>
+                <div id="scanZone" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(260px, 70vw); height: min(260px, 70vw); border: 3px solid rgba(255,255,255,0.9); border-radius: 20px; box-shadow: 0 0 0 9999px rgba(0,0,0,0.55); overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: 2px dashed rgba(99, 102, 241, 0.8); border-radius: 18px; animation: scanPulse 2s ease-in-out infinite;"></div>
+                    <div class="scan-corner tl"></div>
+                    <div class="scan-corner tr"></div>
+                    <div class="scan-corner bl"></div>
+                    <div class="scan-corner br"></div>
+                    <div class="scan-wave"></div>
+                    <div class="scan-wave"></div>
+                    <div class="scan-grid"></div>
+                </div>
+            </div>
         </div>
         <div class="scanner-footer">
             <div class="scanner-status" id="scannerStatus">
@@ -589,12 +646,10 @@
         }
 
         function showScreen(screen) {
-            if (screen === 'scanner') {
-                document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-                document.getElementById('scannerScreen').classList.add('active');
-                return;
-            }
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.screen').forEach(s => {
+                s.classList.remove('active');
+                s.style.display = '';
+            });
             document.getElementById(screen + 'Screen').classList.add('active');
             
             const navBar = document.getElementById('navBar');
@@ -724,14 +779,15 @@
 
         // QR Scanner
         function openQRScanner() {
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            const scannerScreen = document.getElementById('scannerScreen');
-            scannerScreen.classList.add('active');
-            scannerScreen.style.display = 'flex';
+            showScreen('scanner');
             
             const qrReader = document.getElementById('qrReader');
             if (qrReader) {
                 qrReader.style.display = 'block';
+                qrReader.style.width = '100%';
+                qrReader.style.height = '100%';
+                qrReader.style.maxWidth = 'none';
+                qrReader.style.maxHeight = 'none';
             }
             
             const statusEl = document.getElementById('scannerStatus');
@@ -745,16 +801,6 @@
                     return;
                 }
                 
-                const size = Math.min(400, Math.min(window.innerWidth, window.innerHeight) * 0.8);
-                const sizeInt = Math.floor(size);
-                
-                if (qrReader) {
-                    qrReader.style.width = sizeInt + 'px';
-                    qrReader.style.height = sizeInt + 'px';
-                    qrReader.style.maxWidth = '90vw';
-                    qrReader.style.maxHeight = '90vh';
-                }
-                
                 try {
                     qrScanner = new Html5Qrcode('qrReader');
                     
@@ -765,7 +811,7 @@
                                 statusEl.textContent = 'Камера разрешена, запуск...';
                                 qrScanner.start(
                                     { facingMode: 'environment' },
-                                    { fps: 10, qrbox: { width: sizeInt, height: sizeInt } },
+                                    { fps: 10 },
                                     onQRScanSuccess,
                                     onQRScanFailure
                                 ).then(() => {
@@ -863,6 +909,9 @@
             if (errorDiv) errorDiv.style.display = 'none';
             
             showScreen('auth');
+            
+            const navBar = document.getElementById('navBar');
+            navBar.style.display = 'none';
         }
 
         // Init
@@ -879,24 +928,7 @@
                 document.getElementById('mobilePassword').value = savedPassword;
             }
             
-            if (savedUsername && savedPassword && firebaseAvailable && database) {
-                database.ref('users/' + savedUsername.toLowerCase()).once('value').then(snapshot => {
-                    if (snapshot.val()) {
-                        currentUser = snapshot.val();
-                        showScreen('profile');
-                    } else {
-                        showScreen('auth');
-                    }
-                }).catch(() => {
-                    showScreen('auth');
-                });
-            } else if (savedUsername && savedPassword) {
-                const user = { username: savedUsername };
-                currentUser = user;
-                showScreen('profile');
-            } else {
-                showScreen('auth');
-            }
+            showScreen('auth');
             
             const scannerScreen = document.getElementById('scannerScreen');
             if (scannerScreen) {
