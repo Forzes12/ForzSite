@@ -798,12 +798,12 @@
             
             if (savedUsername) {
                 document.getElementById('mobileUsername').value = savedUsername;
-                if (savedPassword) {
-                    document.getElementById('mobilePassword').value = savedPassword;
-                }
+            }
+            if (savedPassword) {
+                document.getElementById('mobilePassword').value = savedPassword;
             }
             
-            if (savedUsername && savedPassword && firebaseAvailable) {
+            if (savedUsername && savedPassword && firebaseAvailable && database) {
                 database.ref('users/' + savedUsername.toLowerCase()).once('value').then(snapshot => {
                     if (snapshot.val()) {
                         currentUser = snapshot.val();
@@ -814,6 +814,17 @@
                 }).catch(() => {
                     showScreen('auth');
                 });
+            } else if (savedUsername && savedPassword) {
+                const user = { username: savedUsername };
+                currentUser = user;
+                showScreen('profile');
+            } else {
+                showScreen('auth');
+            }
+            
+            const scannerScreen = document.getElementById('scannerScreen');
+            if (scannerScreen) {
+                scannerScreen.classList.remove('active');
             }
         }
 

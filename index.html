@@ -1362,6 +1362,9 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(59, 130, 246, 0.2);
             border-color: rgba(59, 130, 246, 0.4);
         }
+
+        .status-badge {
+            position: absolute;
             top: 12px;
             right: 12px;
             padding: 6px 12px;
@@ -10002,27 +10005,19 @@ let messageFormHtml = '';
 
         // ========== MOBILE QR PAGE ==========
         function initMobileQRPage() {
+            if (window.location.pathname.endsWith('/mobile.html') || window.location.pathname.endsWith('mobile.html')) {
+                return;
+            }
             const urlParams = new URLSearchParams(window.location.search);
             const qrSession = urlParams.get('qr_login');
-            
             if (!qrSession) return;
-            
-            const mobileQrPage = document.getElementById('mobileQrPage');
-            if (mobileQrPage) {
-                mobileQrPage.style.display = 'block';
-                mobileQrPage.style.opacity = '1';
-                mobileQrPage.style.pointerEvents = 'auto';
-                mobileQrPage.classList.add('active');
-            }
-            
             const currentUsername = safeGetLocalStorage('username', null);
             if (!currentUsername) {
                 showMobileLoginPrompt();
-                return;
+            } else {
+                currentQRConfirmData = { sessionId: qrSession, username: currentUsername };
+                showMobileConfirmView(currentUsername);
             }
-            
-            currentQRConfirmData = { sessionId: qrSession, username: currentUsername };
-            showMobileConfirmView(currentUsername);
             startQRStatusCheck(qrSession);
         }
 
