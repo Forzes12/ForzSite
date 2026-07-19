@@ -8236,12 +8236,15 @@ position: absolute;
                 </button>
             </form>
             
-            <div id="qrLoginSection" style="display: none; text-align: center; padding: 15px 0; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 15px;">
+        <div id="qrLoginSection" style="display: none; text-align: center; padding: 15px 0; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 15px;">
                 <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 12px;">Или войдите через QR-код</p>
                 <div id="qrCodeContainer" style="display: inline-block; background: white; padding: 12px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
-                    <canvas id="qrCodeCanvas"></canvas>
+                    <canvas id="qrCodeCanvas" width="200" height="200"></canvas>
+                    <img id="qrCodeImage" style="display: none; width: 200px; height: 200px;" alt="QR Code">
                 </div>
-                <p id="qrStatusText" style="color: #64748b; font-size: 0.8rem; margin-top: 10px;">Отсканируйте код в приложении Forzes HUB</p>
+                <p id="qrStatusText" style="color: #64748b; font-size: 0.8rem; margin-top: 10px;">
+                    QR-код обновится через <span id="qrTimer" style="color: #fbbf24; font-weight: 700;">60</span> сек
+                </p>
                 <button onclick="refreshQRCode()" style="margin-top: 10px; padding: 8px 20px; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #94a3b8; border-radius: 8px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s;">
                     <i class="fas fa-sync-alt"></i> Обновить код
                 </button>
@@ -9703,7 +9706,11 @@ let messageFormHtml = '';
 
         function generateQRCode() {
             const sessionId = 'qr_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-            const baseUrl = window.location.origin + window.location.pathname;
+            let baseUrl = window.location.origin + window.location.pathname;
+            const isLocal = baseUrl.startsWith('file://');
+            if (isLocal) {
+                baseUrl = 'https://forzes-hub.pages.dev';
+            }
             const qrData = baseUrl + '?qr_login=' + sessionId + '&mode=confirm';
             
             currentQRSession = {
@@ -9721,22 +9728,90 @@ let messageFormHtml = '';
             }
             
             const canvas = document.getElementById('qrCodeCanvas');
-            if (canvas && typeof QRCode !== 'undefined') {
-                QRCode.toCanvas(canvas, qrData, {
-                    width: 180,
-                    margin: 2,
-                    color: {
-                        dark: '#0f172a',
-                        light: '#ffffff'
+            const img = document.getElementById('qrCodeImage');
+            const qrSection = document.getElementById('qrLoginSection');
+            const statusText = document.getElementById('qrStatusText');
+            
+            if (qrSection) {
+                qrSection.style.display = 'block';
+            }
+            
+            if (img) {
+                img.style.display = 'block';
+                img.style.width = '200px';
+                img.style.height = '200px';
+                img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(qrData);
+                img.onload = function() {
+                    if (statusText) {
+                        statusText.textContent = 'QR-код готов. Отсканируйте в приложении Forzes HUB';
+                        statusText.style.color = '#64748b';
                     }
-                }, function(error) {
-                    if (error) {
-                        console.error('QR Code generation error:', error);
+                };
+                img.onerror = function() {
+                    img.style.display = 'none';
+                    if (canvas) {
+                        canvas.style.display = 'block';
+                        canvas.style.width = '200px';
+                        canvas.style.height = '200px';
+                        if (typeof QRCode !== 'undefined') {
+                            try {
+                                QRCode.toCanvas(canvas, qrData, {
+                                    width: 200,
+                                    margin: 2,
+                                    color: { dark: '#000000', light: '#ffffff' }
+                                });
+                                if (statusText) {
+                                    statusText.textContent = 'QR-код готов. Отсканируйте в приложении Forzes HUB';
+                                    statusText.style.color = '#64748b';
+                                }
+                            } catch (e) {
+                                console.error('QR canvas error:', e);
+                                if (statusText) {
+                                    statusText.textContent = 'Ошибка генерации QR-кода. Обновите страницу.';
+                                    statusText.style.color = '#ef4444';
+                                }
+                            }
+                        } else {
+                            if (statusText) {
+                                statusText.textContent = 'Библиотека QR не загружена. Обновите страницу.';
+                                statusText.style.color = '#ef4444';
+                            }
+                        }
                     }
-                });
+                };
+            } else if (canvas) {
+                canvas.style.display = 'block';
+                canvas.style.width = '200px';
+                canvas.style.height = '200px';
+                if (typeof QRCode !== 'undefined') {
+                    try {
+                        QRCode.toCanvas(canvas, qrData, {
+                            width: 200,
+                            margin: 2,
+                            color: { dark: '#000000', light: '#ffffff' }
+                        });
+                    } catch (e) {
+                        console.error('QR canvas error:', e);
+                    }
+                }
             }
             
             startQRCheck(sessionId);
+        }
+        
+        function renderCanvasQR(canvas, qrData) {
+            if (!canvas || typeof QRCode === 'undefined') return;
+            try {
+                QRCode.toCanvas(canvas, qrData, {
+                    width: 200,
+                    margin: 2,
+                    color: { dark: '#0f172a', light: '#ffffff' }
+                }, function(error) {
+                    if (error) console.error('QR render error:', error);
+                });
+            } catch (e) {
+                console.error('QR render exception:', e);
+            }
         }
 
         function refreshQRCode() {
