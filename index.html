@@ -6,7 +6,6 @@
     <title>TorrentSite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -7928,78 +7927,8 @@ position: absolute;
     </div>
 
     <!-- Auth Modal -->
-    <style>
-        .auth-modal-container {
-            display: flex;
-            gap: 0;
-            background: linear-gradient(135deg, #1e293b, #0f172a);
-            padding: 30px;
-            border-radius: 20px;
-            max-width: 720px;
-            width: 95%;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            overflow: hidden;
-        }
-        .auth-modal-left {
-            flex: 1;
-            min-width: 0;
-        }
-        .auth-modal-right {
-            width: 220px;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-left: 1px solid rgba(255,255,255,0.1);
-            padding-left: 25px;
-            margin-left: 25px;
-        }
-        .auth-qr-title {
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            text-align: center;
-        }
-        .auth-qr-code {
-            background: white;
-            padding: 12px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .auth-qr-code canvas, .auth-qr-code img {
-            display: block;
-        }
-        .auth-qr-text {
-            color: #94a3b8;
-            font-size: 0.8rem;
-            text-align: center;
-            line-height: 1.4;
-        }
-        @media (max-width: 600px) {
-            .auth-modal-container {
-                flex-direction: column;
-                max-width: 420px;
-            }
-            .auth-modal-right {
-                width: 100%;
-                border-left: none;
-                border-top: 1px solid rgba(255,255,255,0.1);
-                padding-left: 0;
-                margin-left: 0;
-                padding-top: 20px;
-                margin-top: 20px;
-            }
-        }
-    </style>
     <div id="authModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(10px);" onclick="if(event.target === this) closeAuthModal()">
-        <div class="auth-modal-container">
-            <div class="auth-modal-left">
+        <div style="background: linear-gradient(135deg, #1e293b, #0f172a); padding: 30px; border-radius: 20px; max-width: 420px; width: 95%; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
             <div style="text-align: center; margin-bottom: 25px;">
                 <h2 id="authModalTitle" style="margin: 0 0 10px 0; color: white; font-size: 1.8rem;"><i class="fas fa-user" style="color: var(--primary);"></i> Вход</h2>
                 <p id="authModalSubtitle" style="color: #94a3b8; margin: 0; font-size: 14px;">Войдите в свой аккаунт</p>
@@ -8036,12 +7965,6 @@ position: absolute;
                 <button onclick="closeAuthModal()" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #94a3b8; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease;">
                     Отмена
                 </button>
-            </div>
-            </div>
-            <div class="auth-modal-right">
-                <div class="auth-qr-title">Вход по QR-коду</div>
-                <div class="auth-qr-code" id="authQrCode"></div>
-                <div class="auth-qr-text">Отсканируйте QR-код<br>для быстрого входа "пока что не работает"</div>
             </div>
         </div>
     </div>
@@ -9045,22 +8968,8 @@ let messageFormHtml = '';
             
             modal.style.display = 'flex';
             modal.classList.add('active');
-
-            // Generate QR code
-            const qrContainer = document.getElementById('authQrCode');
-            if (qrContainer && typeof QRCode !== 'undefined') {
-                qrContainer.innerHTML = '';
-                new QRCode(qrContainer, {
-                    text: window.location.origin,
-                    width: 160,
-                    height: 160,
-                    colorDark: '#0f172a',
-                    colorLight: '#ffffff',
-                    correctLevel: QRCode.CorrectLevel.H
-                });
-            }
         }
-
+        
         function closeAuthModal() {
             const modal = document.getElementById('authModal');
             modal.classList.remove('active');
@@ -11182,7 +11091,7 @@ function switchToMain() {
             let buttonsHTML = '';
             if (game.status === 'available') {
                 buttonsHTML = `
-                    <a href="javascript:void(0)" onclick="handleDownload('${gameId.replace(/'/g, "\\'")}', '${game.title.replace(/'/g, "\\'")}', '${game.torrentFile}')" class="download-btn">
+                    <a href="javascript:void(0)" onclick="handleDownload('${gameId}', '${game.title.replace(/'/g, "\\'")}', '${game.torrentFile}')" class="download-btn">
                         <i class="fas fa-download"></i> Скачать
                     </a>
                     <a href="#" class="view-btn" data-game="${gameId}">
@@ -11219,7 +11128,7 @@ function switchToMain() {
         badgeHTML = '<div class="online-badge">Онлайн</div>';
     }
     if (game.sku) {
-        skuHTML = `<div class="sku-tag" title="Нажмите, чтобы скопировать артикул" onclick="copySKU('${game.sku}', '${gameId.replace(/'/g, "\\'")}')">${game.sku}</div>`;
+        skuHTML = `<div class="sku-tag" title="Нажмите, чтобы скопировать артикул" onclick="copySKU('${game.sku}', '${gameId}')">${game.sku}</div>`;
     }
 
             gameCard.innerHTML = `
@@ -11227,7 +11136,7 @@ function switchToMain() {
                     ${badgeHTML}
                     ${skuHTML}
                     <img src="${game.image}" alt="${game.title}" class="game-image">
-                    <button class="${heartClass}" onclick="toggleLike('${gameId.replace(/'/g, "\\'")}', this)" title="Добавить в избранное">
+                    <button class="${heartClass}" onclick="toggleLike('${gameId}', this)" title="Добавить в избранное">
                         <i class="fas fa-heart"></i>
                     </button>
                 </div>
@@ -11660,36 +11569,37 @@ function showForzaGames() {
                             <span class="game-modal-size">${game.size}</span>
                             <span class="game-modal-year">${game.year}</span>
                             <span class="game-modal-updated">обновлено ${game.updated || new Date().toLocaleDateString('ru-RU')}</span>
-                            <span class="game-modal-status" style="background: transparent; color: white; padding: 8px 16px; border-radius: 8px; border: 2px solid rgba(255, 255, 255, 0.5); font-weight: bold;">${game.status === 'available' ? 'Доступно' : game.status === 'buy' ? 'Можно купить' : 'Скоро'}</span><button class="game-modal-sku" style="margin-left:10px; font-family: 'SF Mono', Menlo, Consolas, monospace; font-size:10px; font-weight:700; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: #ffffff; padding: 7px 13px; border-radius: 8px; border: none; letter-spacing: 1px; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 14px rgba(99,102,241,0.4), 0 1px 3px rgba(0,0,0,0.1); position: relative;" onclick="copySKU('${game.sku}', '${gameId.replace(/'/g, "\\'")}')" title="Нажмите, чтобы скопировать ссылку">${game.sku}</button>
+                            <span class="game-modal-status" style="background: transparent; color: white; padding: 8px 16px; border-radius: 8px; border: 2px solid rgba(255, 255, 255, 0.5); font-weight: bold;">${game.status === 'available' ? 'Доступно' : game.status === 'buy' ? 'Можно купить' : 'Скоро'}</span><button class="game-modal-sku" style="margin-left:10px; font-family: 'SF Mono', Menlo, Consolas, monospace; font-size:10px; font-weight:700; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: #ffffff; padding: 7px 13px; border-radius: 8px; border: none; letter-spacing: 1px; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 14px rgba(99,102,241,0.4), 0 1px 3px rgba(0,0,0,0.1); position: relative;" onclick="copySKU('${game.sku}', '${gameId}')" title="Нажмите, чтобы скопировать ссылку">${game.sku}</button>
                         </div>
                         <p class="game-modal-description">${game.description}</p>
                         <div class="game-modal-buttons">
                             ${(() => {
 if (game.status === 'available') {
-                                    let html = `<a href="javascript:void(0)" onclick="handleDownload('${gameId.replace(/'/g, "\\'")}', '${game.title.replace(/'/g, "\\'")}', '${game.torrentFile}')" class="modal-download-btn">
+                                    let html = `<a href
+javascript:void(0)" onclick="handleDownload('${gameId}', '${game.title.replace(/'/g, "\\'")}', '${game.torrentFile}')" class="modal-download-btn">
                                         <i class="fas fa-download"></i> Скачать
                                     </a>`;
                                     if (game.virus_check) {
                                         html += `<a href="${game.virus_check}" class="virus-btn modal-virus-btn" target="_blank" style="margin-left:10px;"><i class="fas fa-shield-virus"></i> Проверить вирусы</a>`;
                                     }
                                     if (game.promoCode) {
-                                        html += `<div class="promo-button-container" id="promo-container-${game.id}" onclick="copyPromoCode('${game.promoCode}', '${game.id}')">
+                                        html += `<div class="promo-button-container" id="promo-container-${gameId}" onclick="copyPromoCode('${game.promoCode}', '${gameId}')">
                                             <div class="promo-button-content">
-                                                <div class="promo-label">Промокод: ${game.promoActivations} активация</div>
-                                                <div class="promo-code-display" id="promo-code-display-${game.id}">${game.promoCode}</div>
-                                                <div class="promo-timer" id="promo-timer-${game.id}" style="display: none;">
-                                                    <span class="timer-countdown" id="timer-countdown-${game.id}"></span>
+                                                <div class="promo-label">РџСЂРѕРјРѕРєРѕРґ: ${game.promoActivations} Р°РєС‚РёРІР°С†РёСЏ</div>
+                                                <div class="promo-code-display" id="promo-code-display-${gameId}">${game.promoCode}</div>
+                                                <div class="promo-timer" id="promo-timer-${gameId}" style="display: none;">
+                                                    <span class="timer-countdown" id="timer-countdown-${gameId}"></span>
                                                 </div>
                                             </div>
                                         </div>`;
                                     }
                                     if (game.promoCode2) {
-                                        html += `<div class="promo-button-container" id="promo-container-${game.id}-2" onclick="copyPromoCode('${game.promoCode2}', '${game.id}-2')">
+                                        html += `<div class="promo-button-container" id="promo-container-${gameId}-2" onclick="copyPromoCode('${game.promoCode2}', '${gameId}-2')">
                                             <div class="promo-button-content">
-                                                <div class="promo-label">Промокод: ${game.promoActivations2} активация</div>
-                                                <div class="promo-code-display" id="promo-code-display-${game.id}-2">${game.promoCode2}</div>
-                                                <div class="promo-timer" id="promo-timer-${game.id}-2" style="display: none;">
-                                                    <span class="timer-countdown" id="timer-countdown-${game.id}-2"></span>
+                                                <div class="promo-label">РџСЂРѕРјРѕРєРѕРґ: ${game.promoActivations2} Р°РєС‚РёРІР°С†РёСЏ</div>
+                                                <div class="promo-code-display" id="promo-code-display-${gameId}-2">${game.promoCode2}</div>
+                                                <div class="promo-timer" id="promo-timer-${gameId}-2" style="display: none;">
+                                                    <span class="timer-countdown" id="timer-countdown-${gameId}-2"></span>
                                                 </div>
                                             </div>
                                         </div>`;
@@ -11709,12 +11619,12 @@ if (game.status === 'available') {
                                 } else if (game.status === 'buy') {
                                     let html = '';
                                     if (game.promoCode) {
-                                        html += `<div class="promo-button-container" id="promo-container-${game.id}" onclick="copyPromoCode('${game.promoCode}', '${game.id}')">
+                                        html += `<div class="promo-button-container" id="promo-container-${gameId}" onclick="copyPromoCode('${game.promoCode}', '${gameId}')">
                                             <div class="promo-button-content">
-                                                <div class="promo-label">Промокод: ${game.promoActivations} активация</div>
-                                                <div class="promo-code-display" id="promo-code-display-${game.id}">${game.promoCode}</div>
-                                                <div class="promo-timer" id="promo-timer-${game.id}" style="display: none;">
-                                                    <span class="timer-countdown" id="timer-countdown-${game.id}"></span>
+                                                <div class="promo-label">РџСЂРѕРјРѕРєРѕРґ: ${game.promoActivations} Р°РєС‚РёРІР°С†РёСЏ</div>
+                                                <div class="promo-code-display" id="promo-code-display-${gameId}">${game.promoCode}</div>
+                                                <div class="promo-timer" id="promo-timer-${gameId}" style="display: none;">
+                                                    <span class="timer-countdown" id="timer-countdown-${gameId}"></span>
                                                 </div>
                                             </div>
                                         </div>`;
@@ -11729,7 +11639,7 @@ if (game.status === 'available') {
                                     </span>`;
                                 }
                             })()}
-                            <button class="share-btn" onclick="shareGame('${gameId.replace(/'/g, "\\'")}')">
+                            <button class="share-btn" onclick="shareGame('${gameId}')">
                                 <i class="fas fa-share-alt"></i> Поделиться
                             </button>
                         </div>
@@ -11782,10 +11692,10 @@ if (game.status === 'available') {
 
 // Проверить активные таймеры промокодов
             if (game.promoCode) {
-                checkActiveTimers(game.id, game.promoCode);
+                checkActiveTimers(gameId, game.promoCode);
             }
             if (game.promoCode2) {
-                checkActiveTimers(`${game.id}-2`, game.promoCode2);
+                checkActiveTimers(`${gameId}-2`, game.promoCode2);
             }
             
             // Небольшая задержка для обеспечения рендеринга DOM
