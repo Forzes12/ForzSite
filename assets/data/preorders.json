@@ -1,0 +1,103 @@
+[
+    {
+        "id": "gta-6",
+        "title": "Grand Theft Auto VI",
+        "description": "Новая глава легендарной серии. Игра переносит игроков в Виcej, фантастический штат с солнцем, пальмами и криминальными историями.",
+        "image": "https://i.postimg.cc/J0nMCxD8/1746544167-ma5dehcf-lwg7zlyjdkqvq-1.jpg",
+        "releaseDate": "2026",
+        "price": "3999 руб.",
+        "platform": [
+            "PC",
+            "PS5",
+            "Xbox Series X"
+        ],
+        "developer": "Rockstar Games",
+        "genre": "Action, Adventure, Open World",
+        "buyLink": "https://store.rockstargames.com/",
+        "sku": "ART-0007-2026-06-14"
+    },
+    {
+        "id": "the-witcher-4",
+        "title": "The Witcher 4",
+        "description": "Новая глава в эпохальной саге о ведьмаках. В центре сюжета — Цири и другие ведьмаки, мстящие за смерть Геральта из Ривии.",
+        "image": "https://i.postimg.cc/DZQTzVN4/1734556332-8qel50y7kzlpyv3hqi72vw.jpg",
+        "releaseDate": "2026-2027",
+        "price": "Неизвестно",
+        "platform": [
+            "PC",
+            "PS5",
+            "Xbox Series X|S"
+        ],
+        "developer": "CD Projekt Red",
+        "genre": "RPG, Фэнтези, Открытый мир",
+        "buyLink": "",
+        "sku": "ART-0008-2026-06-14"
+    },
+    {
+        "id": "forza-horizon-6",
+        "title": "Forza Horizon 6",
+        "description": "Новое воплощение любимой серии, переносящее гонщиков в Японию. Уличная культура соседствует с храмами и горами.",
+        "image": "https://i.postimg.cc/8CFQvGvZ/1769112682-library-capsule-2x.jpg",
+        "releaseDate": "2026",
+        "price": "Неизвестно",
+        "platform": [
+            "PC",
+            "Xbox Series X|S"
+        ],
+        "developer": "Playground Games",
+        "genre": "Гонки, Открытый мир, Автосимулятор",
+        "buyLink": "https://ggsel.net/catalog/forza-horizon-6",
+        "sku": "ART-0009-2026-06-14"
+    },
+    {
+        "id": "atomic-heart-2",
+        "title": "Atomic Heart 2",
+        "description": "Продолжение безумного научно-фантастического экшена в альтернативной СССР 1950-х. Раскройте новые тайны комплекса «3826».",
+        "image": "https://i.postimg.cc/xTw2cmY8/1771000750-chatgpt-image-13-fevr-2026-g-18-37-12.jpg",
+        "releaseDate": "2027",
+        "price": "Неизвестно",
+        "platform": [
+            "PC",
+            "PS5",
+            "Xbox Series X|S"
+        ],
+        "developer": "Mundfish",
+        "genre": "Экшен, FPS, Научная фантастика",
+        "buyLink": "",
+        "sku": "ART-0010-2026-06-14"
+    },
+    {
+        "id": "darksiders-4",
+        "title": "Darksiders 4",
+        "description": "Хардкорный экшен о выживании среди падших миров, где выбор ведёт к гибели или освобождению.",
+        "image": "https://i.postimg.cc/PqfFxfCF/1771001154-chatgpt-image-13-fevr-2026-g-18-43-52.jpg",
+        "releaseDate": "2027",
+        "price": "Неизвестно",
+        "platform": [
+            "PC",
+            "PS5",
+            "Xbox Series X"
+        ],
+        "developer": "Gunfire Games",
+        "genre": "Экшен, Приключение",
+        "buyLink": "",
+        "sku": "ART-0011-2026-06-14"
+    },
+    {
+        "id": "the-blood-of-dawnwalker",
+        "title": "The Blood of Dawnwalker",
+        "description": "Мрачное приключение в жанре экшен-RPG, где магия крови переплетается с древними легендами.",
+        "image": "https://i.postimg.cc/66VjdGCS/1771001214-library-capsule-2x.jpg",
+        "releaseDate": "2028",
+        "price": "Неизвестно",
+        "platform": [
+            "PC",
+            "PS5",
+            "Xbox Series X"
+        ],
+        "developer": "Rebel Wolves",
+        "genre": "RPG, Экшен, Фэнтези",
+        "buyLink": "",
+        "sku": "ART-0012-2026-06-14"
+    }
+]
