@@ -6,6 +6,7 @@
     <title>TorrentSite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -7927,8 +7928,78 @@ position: absolute;
     </div>
 
     <!-- Auth Modal -->
+    <style>
+        .auth-modal-container {
+            display: flex;
+            gap: 0;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 720px;
+            width: 95%;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+        .auth-modal-left {
+            flex: 1;
+            min-width: 0;
+        }
+        .auth-modal-right {
+            width: 220px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-left: 1px solid rgba(255,255,255,0.1);
+            padding-left: 25px;
+            margin-left: 25px;
+        }
+        .auth-qr-title {
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .auth-qr-code {
+            background: white;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .auth-qr-code canvas, .auth-qr-code img {
+            display: block;
+        }
+        .auth-qr-text {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            text-align: center;
+            line-height: 1.4;
+        }
+        @media (max-width: 600px) {
+            .auth-modal-container {
+                flex-direction: column;
+                max-width: 420px;
+            }
+            .auth-modal-right {
+                width: 100%;
+                border-left: none;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                padding-left: 0;
+                margin-left: 0;
+                padding-top: 20px;
+                margin-top: 20px;
+            }
+        }
+    </style>
     <div id="authModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(10px);" onclick="if(event.target === this) closeAuthModal()">
-        <div style="background: linear-gradient(135deg, #1e293b, #0f172a); padding: 30px; border-radius: 20px; max-width: 420px; width: 95%; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+        <div class="auth-modal-container">
+            <div class="auth-modal-left">
             <div style="text-align: center; margin-bottom: 25px;">
                 <h2 id="authModalTitle" style="margin: 0 0 10px 0; color: white; font-size: 1.8rem;"><i class="fas fa-user" style="color: var(--primary);"></i> Вход</h2>
                 <p id="authModalSubtitle" style="color: #94a3b8; margin: 0; font-size: 14px;">Войдите в свой аккаунт</p>
@@ -7965,6 +8036,12 @@ position: absolute;
                 <button onclick="closeAuthModal()" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #94a3b8; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease;">
                     Отмена
                 </button>
+            </div>
+            </div>
+            <div class="auth-modal-right">
+                <div class="auth-qr-title">Вход по QR-коду</div>
+                <div class="auth-qr-code" id="authQrCode"></div>
+                <div class="auth-qr-text">Отсканируйте QR-код<br>для быстрого входа "пока что не работает"</div>
             </div>
         </div>
     </div>
@@ -8375,10 +8452,6 @@ position: absolute;
                 </button>
             </div>
             <div class="welcome-news-container">
-                <div class="welcome-news">
-                    <div class="welcome-image-container">
-                        <img src="torrent/Screen/c8832d8a-b2a9-437c-a75a-8a0720b5e073.png" alt="Новость" class="welcome-image">
-                    </div>
                     <div class="welcome-text">
                         <h2>Добро пожаловать на ForzSite!</h2>
                         <p>Мы рады представить вам наш обновленный сайт с самыми популярными играми и программами. Скачивайте любимые игры с максимальной скоростью и без ограничений. Наша платформа предлагает только проверенный контент с полной безопасностью.</p>
@@ -8968,8 +9041,22 @@ let messageFormHtml = '';
             
             modal.style.display = 'flex';
             modal.classList.add('active');
+
+            // Generate QR code
+            const qrContainer = document.getElementById('authQrCode');
+            if (qrContainer && typeof QRCode !== 'undefined') {
+                qrContainer.innerHTML = '';
+                new QRCode(qrContainer, {
+                    text: window.location.origin,
+                    width: 160,
+                    height: 160,
+                    colorDark: '#0f172a',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            }
         }
-        
+
         function closeAuthModal() {
             const modal = document.getElementById('authModal');
             modal.classList.remove('active');
@@ -10561,73 +10648,39 @@ function saveProfileSettings() {
             }
 }
          
-         // Загрузка данных из JSON
+         // Загрузка данных из JSON-файлов (асинхронная)
         let gameData = {};
         let preordersData = [];
-let popularGamesTitles = [];
-         let anticipatedGamesTitles = [];
-         let sliderGames = [];
-         let popularProgramsTitles = [];
-        
-        function loadGameData() {
+        let popularGamesTitles = [];
+        let anticipatedGamesTitles = [];
+        let sliderGames = [];
+        let popularProgramsTitles = [];
+
+        async function loadGameData() {
             loadProfileConfig();
             try {
-                // Use XMLHttpRequest for synchronous loading
-                const xhr = new XMLHttpRequest();
-                xhr.open('GET', 'assets/data/games.json', false); // synchronous
-                xhr.send();
-                if (xhr.status === 200 || xhr.status === 0) {
-                    gameData = JSON.parse(xhr.responseText || '{}');
-                }
-                if (!gameData || Object.keys(gameData).length === 0) {
-                    gameData = {"samson":{title:"Samson",image:"https://i.postimg.cc/dQLxg34m/1670961819-cover.jpg",description:"Samson - игра 2026"},"windrose":{title:"Windrose",image:"https://i.postimg.cc/dQLxg34m/1670961819-cover.jpg",description:"Windrose - RPG"}};
-                }
+                const [
+                    gamesRes,
+                    popularRes,
+                    anticipatedRes,
+                    recommendedRes,
+                    preordersRes,
+                    popularProgramsRes
+                ] = await Promise.all([
+                    fetch('assets/data/games.json'),
+                    fetch('assets/data/popular-games.json'),
+                    fetch('assets/data/anticipated-games.json'),
+                    fetch('assets/data/recommended-games.json'),
+                    fetch('assets/data/preorders.json'),
+                    fetch('assets/data/popular-programs.json')
+                ]);
 
-                const xhrPopular = new XMLHttpRequest();
-                xhrPopular.open('GET', 'assets/data/popular-games.json', false);
-                xhrPopular.send();
-                if (xhrPopular.status === 200 || xhrPopular.status === 0) {
-                    popularGamesTitles = JSON.parse(xhrPopular.responseText || '["Samson","REPLACED","Windrose","Subnautica 2","Forza Horizon 6","PRAGMATA"]');
-                } else {
-                    popularGamesTitles = ["Samson", "REPLACED", "Windrose", "Subnautica 2", "Forza Horizon 6", "PRAGMATA"];
-                }
-
-                const xhrAnticipated = new XMLHttpRequest();
-                xhrAnticipated.open('GET', 'assets/data/anticipated-games.json', false);
-                xhrAnticipated.send();
-                if (xhrAnticipated.status === 200 || xhrAnticipated.status === 0) {
-                    anticipatedGamesTitles = JSON.parse(xhrAnticipated.responseText || '["The Witcher 4","Atomic Heart 2","GTA 6"]');
-                } else {
-                    anticipatedGamesTitles = ["The Witcher 4", "Atomic Heart 2", "GTA 6", "Darksiders 4", "The Blood of Dawnwalker", "Gears of War: E-Day", "Metro 2039", "Gothic 1 Remake", "OD Knock", "Lords of the Fallen II"];
-                }
-
-                const xhrRecommended = new XMLHttpRequest();
-                xhrRecommended.open('GET', 'assets/data/recommended-games.json', false);
-                xhrRecommended.send();
-                if (xhrRecommended.status === 200) {
-                    sliderGames = JSON.parse(xhrRecommended.responseText);
-                } else {
-                    sliderGames = [
-                        {id: "samson", title: "Samson", description: "Samson - игра 2026", image: "https://i.postimg.cc/dQLxg34m/1670961819-cover.jpg", buttonText: "Смотреть"},
-                        {id: "windrose", title: "Windrose", description: "Windrose - RPG", image: "https://i.postimg.cc/dQLxg34m/1670961819-cover.jpg", buttonText: "Смотреть"}
-                    ];
-                }
-
-                const xhrPreorders = new XMLHttpRequest();
-                xhrPreorders.open('GET', 'assets/data/preorders.json', false);
-                xhrPreorders.send();
-                if (xhrPreorders.status === 200) {
-                    preordersData = JSON.parse(xhrPreorders.responseText);
-                }
-
-                const xhrPopularPrograms = new XMLHttpRequest();
-                xhrPopularPrograms.open('GET', 'assets/data/popular-programs.json', false);
-                xhrPopularPrograms.send();
-                if (xhrPopularPrograms.status === 200 || xhrPopularPrograms.status === 0) {
-                    popularProgramsTitles = JSON.parse(xhrPopularPrograms.responseText || '["Adobe Photoshop 2022","Adobe After Effects 2024","WinRAR"]');
-                } else {
-                    popularProgramsTitles = ["Adobe Photoshop 2022", "Adobe After Effects 2024", "WinRAR", "7-Zip", "VLC Media Player", "Steam"];
-                }
+                gameData = await gamesRes.json();
+                popularGamesTitles = await popularRes.json();
+                anticipatedGamesTitles = await anticipatedRes.json();
+                sliderGames = await recommendedRes.json();
+                preordersData = await preordersRes.json();
+                popularProgramsTitles = await popularProgramsRes.json();
             } catch (error) {
                 console.error('Error loading game data:', error);
             }
@@ -11091,7 +11144,7 @@ function switchToMain() {
             let buttonsHTML = '';
             if (game.status === 'available') {
                 buttonsHTML = `
-                    <a href="javascript:void(0)" onclick="handleDownload('${gameId}', '${game.title.replace(/'/g, "\\'")}', '${game.torrentFile}')" class="download-btn">
+                    <a href="javascript:void(0)" onclick="handleDownload('${gameId.replace(/'/g, "\\'")}', '${game.title.replace(/'/g, "\\'")}', '${game.torrentFile}')" class="download-btn">
                         <i class="fas fa-download"></i> Скачать
                     </a>
                     <a href="#" class="view-btn" data-game="${gameId}">
@@ -11128,7 +11181,7 @@ function switchToMain() {
         badgeHTML = '<div class="online-badge">Онлайн</div>';
     }
     if (game.sku) {
-        skuHTML = `<div class="sku-tag" title="Нажмите, чтобы скопировать артикул" onclick="copySKU('${game.sku}', '${gameId}')">${game.sku}</div>`;
+        skuHTML = `<div class="sku-tag" title="Нажмите, чтобы скопировать артикул" onclick="copySKU('${game.sku}', '${gameId.replace(/'/g, "\\'")}')">${game.sku}</div>`;
     }
 
             gameCard.innerHTML = `
@@ -11136,7 +11189,7 @@ function switchToMain() {
                     ${badgeHTML}
                     ${skuHTML}
                     <img src="${game.image}" alt="${game.title}" class="game-image">
-                    <button class="${heartClass}" onclick="toggleLike('${gameId}', this)" title="Добавить в избранное">
+                    <button class="${heartClass}" onclick="toggleLike('${gameId.replace(/'/g, "\\'")}', this)" title="Добавить в избранное">
                         <i class="fas fa-heart"></i>
                     </button>
                 </div>
@@ -11569,37 +11622,36 @@ function showForzaGames() {
                             <span class="game-modal-size">${game.size}</span>
                             <span class="game-modal-year">${game.year}</span>
                             <span class="game-modal-updated">обновлено ${game.updated || new Date().toLocaleDateString('ru-RU')}</span>
-                            <span class="game-modal-status" style="background: transparent; color: white; padding: 8px 16px; border-radius: 8px; border: 2px solid rgba(255, 255, 255, 0.5); font-weight: bold;">${game.status === 'available' ? 'Доступно' : game.status === 'buy' ? 'Можно купить' : 'Скоро'}</span><button class="game-modal-sku" style="margin-left:10px; font-family: 'SF Mono', Menlo, Consolas, monospace; font-size:10px; font-weight:700; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: #ffffff; padding: 7px 13px; border-radius: 8px; border: none; letter-spacing: 1px; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 14px rgba(99,102,241,0.4), 0 1px 3px rgba(0,0,0,0.1); position: relative;" onclick="copySKU('${game.sku}', '${gameId}')" title="Нажмите, чтобы скопировать ссылку">${game.sku}</button>
+                            <span class="game-modal-status" style="background: transparent; color: white; padding: 8px 16px; border-radius: 8px; border: 2px solid rgba(255, 255, 255, 0.5); font-weight: bold;">${game.status === 'available' ? 'Доступно' : game.status === 'buy' ? 'Можно купить' : 'Скоро'}</span><button class="game-modal-sku" style="margin-left:10px; font-family: 'SF Mono', Menlo, Consolas, monospace; font-size:10px; font-weight:700; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: #ffffff; padding: 7px 13px; border-radius: 8px; border: none; letter-spacing: 1px; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 14px rgba(99,102,241,0.4), 0 1px 3px rgba(0,0,0,0.1); position: relative;" onclick="copySKU('${game.sku}', '${gameId.replace(/'/g, "\\'")}')" title="Нажмите, чтобы скопировать ссылку">${game.sku}</button>
                         </div>
                         <p class="game-modal-description">${game.description}</p>
                         <div class="game-modal-buttons">
                             ${(() => {
 if (game.status === 'available') {
-                                    let html = `<a href
-javascript:void(0)" onclick="handleDownload('${gameId}', '${game.title.replace(/'/g, "\\'")}', '${game.torrentFile}')" class="modal-download-btn">
+                                    let html = `<a href="javascript:void(0)" onclick="handleDownload('${gameId.replace(/'/g, "\\'")}', '${game.title.replace(/'/g, "\\'")}', '${game.torrentFile}')" class="modal-download-btn">
                                         <i class="fas fa-download"></i> Скачать
                                     </a>`;
                                     if (game.virus_check) {
                                         html += `<a href="${game.virus_check}" class="virus-btn modal-virus-btn" target="_blank" style="margin-left:10px;"><i class="fas fa-shield-virus"></i> Проверить вирусы</a>`;
                                     }
                                     if (game.promoCode) {
-                                        html += `<div class="promo-button-container" id="promo-container-${gameId}" onclick="copyPromoCode('${game.promoCode}', '${gameId}')">
+                                        html += `<div class="promo-button-container" id="promo-container-${game.id}" onclick="copyPromoCode('${game.promoCode}', '${game.id}')">
                                             <div class="promo-button-content">
-                                                <div class="promo-label">РџСЂРѕРјРѕРєРѕРґ: ${game.promoActivations} Р°РєС‚РёРІР°С†РёСЏ</div>
-                                                <div class="promo-code-display" id="promo-code-display-${gameId}">${game.promoCode}</div>
-                                                <div class="promo-timer" id="promo-timer-${gameId}" style="display: none;">
-                                                    <span class="timer-countdown" id="timer-countdown-${gameId}"></span>
+                                                <div class="promo-label">Промокод: ${game.promoActivations} активация</div>
+                                                <div class="promo-code-display" id="promo-code-display-${game.id}">${game.promoCode}</div>
+                                                <div class="promo-timer" id="promo-timer-${game.id}" style="display: none;">
+                                                    <span class="timer-countdown" id="timer-countdown-${game.id}"></span>
                                                 </div>
                                             </div>
                                         </div>`;
                                     }
                                     if (game.promoCode2) {
-                                        html += `<div class="promo-button-container" id="promo-container-${gameId}-2" onclick="copyPromoCode('${game.promoCode2}', '${gameId}-2')">
+                                        html += `<div class="promo-button-container" id="promo-container-${game.id}-2" onclick="copyPromoCode('${game.promoCode2}', '${game.id}-2')">
                                             <div class="promo-button-content">
-                                                <div class="promo-label">РџСЂРѕРјРѕРєРѕРґ: ${game.promoActivations2} Р°РєС‚РёРІР°С†РёСЏ</div>
-                                                <div class="promo-code-display" id="promo-code-display-${gameId}-2">${game.promoCode2}</div>
-                                                <div class="promo-timer" id="promo-timer-${gameId}-2" style="display: none;">
-                                                    <span class="timer-countdown" id="timer-countdown-${gameId}-2"></span>
+                                                <div class="promo-label">Промокод: ${game.promoActivations2} активация</div>
+                                                <div class="promo-code-display" id="promo-code-display-${game.id}-2">${game.promoCode2}</div>
+                                                <div class="promo-timer" id="promo-timer-${game.id}-2" style="display: none;">
+                                                    <span class="timer-countdown" id="timer-countdown-${game.id}-2"></span>
                                                 </div>
                                             </div>
                                         </div>`;
@@ -11619,12 +11671,12 @@ javascript:void(0)" onclick="handleDownload('${gameId}', '${game.title.replace(/
                                 } else if (game.status === 'buy') {
                                     let html = '';
                                     if (game.promoCode) {
-                                        html += `<div class="promo-button-container" id="promo-container-${gameId}" onclick="copyPromoCode('${game.promoCode}', '${gameId}')">
+                                        html += `<div class="promo-button-container" id="promo-container-${game.id}" onclick="copyPromoCode('${game.promoCode}', '${game.id}')">
                                             <div class="promo-button-content">
-                                                <div class="promo-label">РџСЂРѕРјРѕРєРѕРґ: ${game.promoActivations} Р°РєС‚РёРІР°С†РёСЏ</div>
-                                                <div class="promo-code-display" id="promo-code-display-${gameId}">${game.promoCode}</div>
-                                                <div class="promo-timer" id="promo-timer-${gameId}" style="display: none;">
-                                                    <span class="timer-countdown" id="timer-countdown-${gameId}"></span>
+                                                <div class="promo-label">Промокод: ${game.promoActivations} активация</div>
+                                                <div class="promo-code-display" id="promo-code-display-${game.id}">${game.promoCode}</div>
+                                                <div class="promo-timer" id="promo-timer-${game.id}" style="display: none;">
+                                                    <span class="timer-countdown" id="timer-countdown-${game.id}"></span>
                                                 </div>
                                             </div>
                                         </div>`;
@@ -11639,7 +11691,7 @@ javascript:void(0)" onclick="handleDownload('${gameId}', '${game.title.replace(/
                                     </span>`;
                                 }
                             })()}
-                            <button class="share-btn" onclick="shareGame('${gameId}')">
+                            <button class="share-btn" onclick="shareGame('${gameId.replace(/'/g, "\\'")}')">
                                 <i class="fas fa-share-alt"></i> Поделиться
                             </button>
                         </div>
@@ -11692,10 +11744,10 @@ javascript:void(0)" onclick="handleDownload('${gameId}', '${game.title.replace(/
 
 // Проверить активные таймеры промокодов
             if (game.promoCode) {
-                checkActiveTimers(gameId, game.promoCode);
+                checkActiveTimers(game.id, game.promoCode);
             }
             if (game.promoCode2) {
-                checkActiveTimers(`${gameId}-2`, game.promoCode2);
+                checkActiveTimers(`${game.id}-2`, game.promoCode2);
             }
             
             // Небольшая задержка для обеспечения рендеринга DOM
@@ -12683,15 +12735,15 @@ function localAIResponse(message) {
         }
 
         // Инициализация при загрузке
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             // Гарантированно скрыть модальное окно профиля при загрузке
             const profileSettingsModal = document.getElementById('profileSettingsModal');
             if (profileSettingsModal) {
                 profileSettingsModal.style.display = 'none';
             }
             
-            // Загрузка данных
-            loadGameData();
+            // Загрузка данных из JSON-файлов (асинхронная)
+            await loadGameData();
 
             // Обновление UI авторизации
             updateAuthUI();
@@ -13440,15 +13492,234 @@ function localAIResponse(message) {
             Читайте последние обновления и новости Forzes HUB
         </div>
     </div>
-     
+
+    <!-- === МОДАЛКА ТЕХРАБОТ (в начале body) === -->
+<div id="techWorkModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 9999999; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box;">
+    <div style="max-width: 580px; width: 100%; max-height: 92vh; overflow-y: auto; margin: auto; padding: 40px 35px; text-align: center; background: linear-gradient(145deg, rgba(20, 30, 50, 0.95), rgba(10, 15, 30, 0.98)); border: 1px solid rgba(99, 102, 241, 0.4); box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 60px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255,255,255,0.05); border-radius: 24px; animation: modalAppear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); position: relative; overflow: hidden; scrollbar-width: none;">
+        <div style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 18px;">
+            <div style="position: relative; width: 85px; height: 85px; flex-shrink: 0;">
+                <div style="position: absolute; inset: 0; border-radius: 50%; background: rgba(59, 130, 246, 0.15); animation: techPulse 2s ease-in-out infinite;"></div>
+                <div style="position: absolute; inset: 8px; border-radius: 50%; background: rgba(59, 130, 246, 0.1); animation: techPulse 2s ease-in-out infinite 0.5s;"></div>
+                <div style="position: absolute; inset: 16px; border-radius: 50%; background: rgba(59, 130, 246, 0.05); animation: techPulse 2s ease-in-out infinite 1s;"></div>
+                <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 38px; color: #60a5fa;">
+                    <i class="fas fa-microchip"></i>
+                </div>
+            </div>
+            <h2 style="font-size: 2rem; font-weight: 700; color: #f8fafc; margin: 0; letter-spacing: 2px; font-family: 'Inter', sans-serif; text-shadow: 0 2px 20px rgba(59, 130, 246, 0.3);">Технические работы</h2>
+            <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2)); border: 1px solid rgba(99, 102, 241, 0.4); border-radius: 12px; padding: 12px 20px; width: 100%; max-width: 380px; box-shadow: 0 0 30px rgba(59, 130, 246, 0.15); flex-shrink: 0;">
+                <p style="color: #e2e8f0; font-size: 0.95rem; margin: 0; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                    <i class="fas fa-keyboard" style="color: #60a5fa; font-size: 1.1rem;"></i>
+                    <span>Нажмите</span>
+                    <kbd style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 4px 16px; border-radius: 6px; font-size: 1.1rem; font-weight: 700; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5); font-family: 'Inter', sans-serif;">1</kbd>
+                    <span style="color: #94a3b8;">для вызова</span>
+                </p>
+            </div>
+            <div style="width: 70px; height: 3px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); border-radius: 2px; box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); flex-shrink: 0;"></div>
+            <p style="font-size: 1.05rem; color: #cbd5e1; line-height: 1.7; margin: 0; max-width: 420px;">Мы обновляем сайт, чтобы сделать его лучше. Пожалуйста, загляните позже.</p>
+            <div style="background: rgba(0, 0, 0, 0.4); border-radius: 14px; padding: 16px 22px; border: 1px solid rgba(99, 102, 241, 0.25); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); width: 100%; max-width: 340px; flex-shrink: 0;">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 6px;">
+                    <i class="fas fa-clock" style="color: #60a5fa; font-size: 1rem;"></i>
+                    <span style="color: #94a3b8; font-size: 0.85rem; font-weight: 500;">Примерное время окончания</span>
+                </div>
+                <div style="display: flex; justify-content: center; gap: 14px; font-family: 'Inter', sans-serif;">
+                    <div style="text-align: center;"><div id="hoursDisplay" style="font-size: 2rem; font-weight: 700; color: #f8fafc; background: rgba(59, 130, 246, 0.15); padding: 6px 14px; border-radius: 8px; min-width: 56px;">00</div><div style="color: #64748b; font-size: 0.65rem; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Часы</div></div>
+                    <div style="color: #60a5fa; font-size: 2.5rem; font-weight: 700; align-self: center; margin-top: -8px;">:</div>
+                    <div style="text-align: center;"><div id="minutesDisplay" style="font-size: 2rem; font-weight: 700; color: #f8fafc; background: rgba(59, 130, 246, 0.15); padding: 6px 14px; border-radius: 8px; min-width: 56px;">00</div><div style="color: #64748b; font-size: 0.65rem; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Минуты</div></div>
+                    <div style="color: #60a5fa; font-size: 2.5rem; font-weight: 700; align-self: center; margin-top: -8px;">:</div>
+                    <div style="text-align: center;"><div id="secondsDisplay" style="font-size: 2rem; font-weight: 700; color: #f8fafc; background: rgba(59, 130, 246, 0.15); padding: 6px 14px; border-radius: 8px; min-width: 56px;">00</div><div style="color: #64748b; font-size: 0.65rem; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Секунды</div></div>
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; flex-shrink: 0;">
+                <span style="background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 6px 18px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(239, 68, 68, 0.3); display: flex; align-items: center; gap: 6px;"><i class="fas fa-circle" style="font-size: 0.45rem; color: #ef4444; animation: blink 1.5s infinite;"></i> Ведутся работы</span>
+                <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 6px 18px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(16, 185, 129, 0.3); display: flex; align-items: center; gap: 6px;"><i class="fas fa-check-circle" style="font-size: 0.8rem;"></i> Скоро завершим</span>
+            </div>
+            <button onclick="closeTechWorkModal()" style="margin-top: 8px; padding: 14px 48px; border: none; border-radius: 50px; font-size: 1rem; font-weight: 600; color: white; cursor: pointer; background: linear-gradient(135deg, #3b82f6, #2563eb); box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4); transition: all 0.3s ease; font-family: 'Inter', sans-serif; letter-spacing: 0.5px; flex-shrink: 0;"><span style="display: flex; align-items: center; gap: 8px;"><i class="fas fa-check"></i> Хорошо</span></button>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes techPulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.2); opacity: 0.9; }
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+}
+@keyframes modalAppear {
+    0% { transform: scale(0.8) translateY(30px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+@keyframes modalDisappear {
+    0% { transform: scale(1) translateY(0); opacity: 1; }
+    100% { transform: scale(0.8) translateY(30px); opacity: 0; }
+}
+@keyframes gradientMove {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+</style>
+
 <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                updateAuthUI();
-            });
-        </script>
+    let timerInterval = null;
+    let endTime = null;
+
+    function closeTechWorkModal() {
+        const modal = document.getElementById('techWorkModal');
+        const content = modal.querySelector('div:first-child > div');
+        
+        content.style.animation = 'modalDisappear 0.3s ease-in forwards';
+        
+        setTimeout(function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            content.style.animation = '';
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+        }, 350);
+    }
+
+    function openTechWorkModal() {
+        const modal = document.getElementById('techWorkModal');
+        const content = modal.querySelector('div:first-child > div');
+        
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        content.style.animation = 'modalAppear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        
+        // Проверяем, есть ли сохранённое активное время окончания таймера
+        let savedEndTime = null;
+        try {
+            savedEndTime = localStorage.getItem('techWorkEndTime');
+        } catch(e) {}
+        
+        if (savedEndTime && parseInt(savedEndTime) > Date.now()) {
+            // Таймер ещё активен - продолжаем с сохранённого времени
+            endTime = new Date(parseInt(savedEndTime));
+        } else {
+            // Таймер не запущен или истёк - запускаем новый на 162 часа
+            endTime = new Date();
+            endTime.setHours(endTime.getHours() + 162);
+            endTime.setMinutes(endTime.getMinutes() + 0);
+            // Сохраняем время окончания в localStorage
+            try {
+                localStorage.setItem('techWorkEndTime', endTime.getTime().toString());
+            } catch(e) {}
+        }
+        
+        updateTimerDisplay();
+        
+        if (timerInterval) {
+            clearInterval(timerInterval);
+        }
+        
+        timerInterval = setInterval(updateTimerDisplay, 1000);
+    }
+
+    function startTimer(hours, minutes) {
+        // Устанавливаем время окончания (текущее время + указанные часы и минуты)
+        endTime = new Date();
+        endTime.setHours(endTime.getHours() + hours);
+        endTime.setMinutes(endTime.getMinutes() + minutes);
+        
+        // Сохраняем время окончания в localStorage
+        try {
+            localStorage.setItem('techWorkEndTime', endTime.getTime().toString());
+        } catch(e) {}
+        
+        updateTimerDisplay();
+        
+        if (timerInterval) {
+            clearInterval(timerInterval);
+        }
+        
+        timerInterval = setInterval(updateTimerDisplay, 1000);
+    }
+
+    function updateTimerDisplay() {
+        const now = new Date();
+        const diff = endTime - now;
+        
+        if (diff <= 0) {
+            // Время вышло
+            document.getElementById('hoursDisplay').textContent = '00';
+            document.getElementById('minutesDisplay').textContent = '00';
+            document.getElementById('secondsDisplay').textContent = '00';
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+            // Удаляем сохранённое время - таймер завершён, больше не открываем автоматически
+            try {
+                localStorage.removeItem('techWorkEndTime');
+            } catch(e) {}
+            return;
+        }
+        
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('hoursDisplay').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutesDisplay').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('secondsDisplay').textContent = String(seconds).padStart(2, '0');
+    }
+
+    // Показываем окно при загрузке страницы - всегда открываем
+    function showTechWorkModalOnLoad() {
+        console.log('DOM loaded - showing tech work modal');
+        setTimeout(function() {
+            try {
+                // Проверяем, активен ли ещё таймер
+                let savedEndTime = null;
+                try {
+                    savedEndTime = localStorage.getItem('techWorkEndTime');
+                } catch(e) {}
+
+                if (!savedEndTime || parseInt(savedEndTime) <= Date.now()) {
+                    // Нет сохранённого таймера или он истёк - запускаем новый и открываем
+                    try {
+                        localStorage.removeItem('techWorkEndTime');
+                    } catch(e) {}
+                    openTechWorkModal();
+                    console.log('Tech work modal opened - starting/refreshing timer');
+                } else {
+                    // Таймер ещё активен - открываем окно автоматически
+                    openTechWorkModal();
+                    console.log('Tech work modal opened automatically - timer still running');
+                }
+            } catch(e) {
+                console.error('Error opening modal:', e);
+            }
+        }, 500);
+    }
+
+    // Проверяем состояние DOM - если уже загружен, выполняем сразу
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', showTechWorkModalOnLoad);
+    } else {
+        // DOM уже загружен (interactive или complete) - выполняем сразу
+        showTechWorkModalOnLoad();
+    }
+</script>
+
+<script>
+    // ========== ДОБАВЛЯЕМ КНОПКУ ДЛЯ ВЫЗОВА ==========
+    // Просто вызовите openTechWorkModal() из любого места
+    
+    // Пример: вызов по нажатию клавиши "1"
+    document.addEventListener('keydown', function(e) {
+        if (e.key === '1' && !e.ctrlKey && !e.altKey && !e.shiftKey) {
+            // Проверяем, что не в поле ввода
+            const tag = document.activeElement?.tagName?.toLowerCase();
+            if (tag !== 'input' && tag !== 'textarea') {
+                openTechWorkModal();
+            }
+        }
+    });
+</script>
 </body>
 </html>
-
-
-
-
