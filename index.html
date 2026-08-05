@@ -13555,10 +13555,6 @@ function localAIResponse(message) {
     0% { transform: scale(1) translateY(0); opacity: 1; }
     100% { transform: scale(0.8) translateY(30px); opacity: 0; }
 }
-@keyframes gradientMove {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
 </style>
 
 <script>
@@ -13567,59 +13563,45 @@ function localAIResponse(message) {
         initialMinutes: 0,
         autoShowOnLoad: true,
         useLocalStorage: true,
-        useFirebase: false,
-        forceResetToConfig: true
+        useFirebase: false
     };
     let timerInterval = null;
     let endTime = null;
     
-    // Сохранение времени
-    async function saveEndTime(timestamp) {
+    function checkAndResetTimer() {
+        const hasBeenReset = localStorage.getItem('techWorkHasBeenReset');
+        
+        if (!hasBeenReset) {
+            console.log('🔄 Первый запуск - устанавливаем таймер на 208 часов');
+            localStorage.removeItem('techWorkEndTime');
+            localStorage.setItem('techWorkHasBeenReset', 'true');
+            return true;
+        }
+        
+        return false;
+    }
+    
+    function saveEndTime(timestamp) {
         if (TIMER_CONFIG.useLocalStorage) {
             try {
                 localStorage.setItem('techWorkEndTime', timestamp.toString());
+                console.log('💾 Таймер сохранён в localStorage');
             } catch(e) {
                 console.error('Ошибка сохранения в localStorage:', e);
             }
         }
-        
-        if (TIMER_CONFIG.useFirebase && typeof database !== 'undefined') {
-            try {
-                await database.ref('techWork/endTime').set(timestamp);
-            } catch(e) {
-                console.error('Ошибка сохранения в Firebase:', e);
-            }
-        }
     }
     
-    // Получение времени
-    async function getSavedEndTime() {
+    function getSavedEndTime() {
         let savedEndTime = null;
         
-        // Если включен принудительный сброс - сразу возвращаем null
-        if (TIMER_CONFIG.forceResetToConfig) {
-            console.log('🔄 Принудительный сброс таймера на 208 часов');
-            // Чистим сохранённое время
-            if (TIMER_CONFIG.useLocalStorage) {
-                try {
-                    localStorage.removeItem('techWorkEndTime');
-                } catch(e) {}
-            }
+        const needReset = checkAndResetTimer();
+        
+        if (needReset) {
             return null;
         }
         
-        if (TIMER_CONFIG.useFirebase && typeof database !== 'undefined') {
-            try {
-                const snapshot = await database.ref('techWork/endTime').get();
-                if (snapshot.exists()) {
-                    savedEndTime = snapshot.val();
-                }
-            } catch(e) {
-                console.error('Ошибка получения из Firebase:', e);
-            }
-        }
-        
-        if (!savedEndTime && TIMER_CONFIG.useLocalStorage) {
+        if (TIMER_CONFIG.useLocalStorage) {
             try {
                 savedEndTime = localStorage.getItem('techWorkEndTime');
             } catch(e) {
@@ -13630,23 +13612,7 @@ function localAIResponse(message) {
         return savedEndTime ? parseInt(savedEndTime) : null;
     }
     
-    // Удаление времени
-    async function clearSavedEndTime() {
-        if (TIMER_CONFIG.useLocalStorage) {
-            try {
-                localStorage.removeItem('techWorkEndTime');
-            } catch(e) {}
-        }
-        
-        if (TIMER_CONFIG.useFirebase && typeof database !== 'undefined') {
-            try {
-                await database.ref('techWork/endTime').remove();
-            } catch(e) {}
-        }
-    }
-    
-    // Открытие модалки
-    async function openTechWorkModal() {
+    function openTechWorkModal() {
         const modal = document.getElementById('techWorkModal');
         const content = modal.querySelector('div:first-child > div');
         
@@ -13654,22 +13620,18 @@ function localAIResponse(message) {
         document.body.style.overflow = 'hidden';
         content.style.animation = 'modalAppear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
         
-        // Проверяем сохранённое время
-        let savedEndTime = await getSavedEndTime();
+        let savedEndTime = getSavedEndTime();
         
         if (savedEndTime && savedEndTime > Date.now()) {
-            // Таймер ещё активен
             endTime = new Date(savedEndTime);
-            console.log(`⏰ Таймер загружен из сохранения: ${Math.floor((endTime - Date.now()) / (1000 * 60 * 60))} часов`);
+            const hoursLeft = Math.floor((endTime - Date.now()) / (1000 * 60 * 60));
+            console.log(`⏰ Таймер продолжается: ${hoursLeft} часов осталось`);
         } else {
-            // Таймер не запущен или истёк - запускаем новый с настройками
-            clearSavedEndTime();
-            
             endTime = new Date();
             endTime.setHours(endTime.getHours() + TIMER_CONFIG.initialHours);
             endTime.setMinutes(endTime.getMinutes() + TIMER_CONFIG.initialMinutes);
             
-            await saveEndTime(endTime.getTime());
+            saveEndTime(endTime.getTime());
             console.log(`✅ Таймер установлен на ${TIMER_CONFIG.initialHours}ч ${TIMER_CONFIG.initialMinutes}м`);
         }
         
@@ -13682,7 +13644,6 @@ function localAIResponse(message) {
         timerInterval = setInterval(updateTimerDisplay, 1000);
     }
     
-    // Закрытие модалки
     function closeTechWorkModal() {
         const modal = document.getElementById('techWorkModal');
         const content = modal.querySelector('div:first-child > div');
@@ -13700,7 +13661,6 @@ function localAIResponse(message) {
         }, 350);
     }
     
-    // Обновление дисплея
     function updateTimerDisplay() {
         if (!endTime) return;
         
@@ -13717,7 +13677,7 @@ function localAIResponse(message) {
                 timerInterval = null;
             }
             
-            clearSavedEndTime();
+            localStorage.removeItem('techWorkEndTime');
             return;
         }
         
@@ -13730,8 +13690,7 @@ function localAIResponse(message) {
         document.getElementById('secondsDisplay').textContent = String(seconds).padStart(2, '0');
     }
     
-    // Функции для редактирования через консоль
-    async function setTimer(hours, minutes) {
+    function setTimer(hours, minutes) {
         if (timerInterval) {
             clearInterval(timerInterval);
             timerInterval = null;
@@ -13741,16 +13700,14 @@ function localAIResponse(message) {
         endTime.setHours(endTime.getHours() + hours);
         endTime.setMinutes(endTime.getMinutes() + minutes);
         
-        const endTimeTimestamp = endTime.getTime();
-        await saveEndTime(endTimeTimestamp);
-        
+        saveEndTime(endTime.getTime());
         updateTimerDisplay();
         timerInterval = setInterval(updateTimerDisplay, 1000);
         
         console.log(`✅ Таймер установлен на ${hours}ч ${minutes}м`);
     }
     
-    async function addTime(hours, minutes) {
+    function addTime(hours, minutes) {
         if (!endTime) {
             console.warn('⚠️ Таймер не запущен, используйте setTimer()');
             return;
@@ -13759,14 +13716,12 @@ function localAIResponse(message) {
         endTime.setHours(endTime.getHours() + hours);
         endTime.setMinutes(endTime.getMinutes() + minutes);
         
-        const endTimeTimestamp = endTime.getTime();
-        await saveEndTime(endTimeTimestamp);
-        
+        saveEndTime(endTime.getTime());
         updateTimerDisplay();
         console.log(`➕ Добавлено ${hours}ч ${minutes}м к таймеру`);
     }
     
-    async function subtractTime(hours, minutes) {
+    function subtractTime(hours, minutes) {
         if (!endTime) {
             console.warn('⚠️ Таймер не запущен, используйте setTimer()');
             return;
@@ -13781,20 +13736,17 @@ function localAIResponse(message) {
             endTime.setHours(endTime.getHours() + 1);
         }
         
-        const endTimeTimestamp = endTime.getTime();
-        await saveEndTime(endTimeTimestamp);
-        
+        saveEndTime(endTime.getTime());
         updateTimerDisplay();
         console.log(`➖ Вычтено ${hours}ч ${minutes}м из таймера`);
     }
     
-    // Автозапуск при загрузке
     function showTechWorkModalOnLoad() {
         if (!TIMER_CONFIG.autoShowOnLoad) return;
         
-        setTimeout(async function() {
+        setTimeout(function() {
             try {
-                await openTechWorkModal();
+                openTechWorkModal();
                 console.log('✅ Модалка техработ открыта');
             } catch(e) {
                 console.error('Ошибка открытия модалки:', e);
@@ -13802,14 +13754,12 @@ function localAIResponse(message) {
         }, 500);
     }
     
-    // Запуск при загрузке DOM
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', showTechWorkModalOnLoad);
     } else {
         showTechWorkModalOnLoad();
     }
     
-    // Вызов по клавише "1"
     document.addEventListener('keydown', function(e) {
         if (e.key === '1' && !e.ctrlKey && !e.altKey && !e.shiftKey) {
             const tag = document.activeElement?.tagName?.toLowerCase();
@@ -13821,7 +13771,7 @@ function localAIResponse(message) {
     
     console.log('🟢 Таймер технических работ загружен');
     console.log(`📌 Начальное время: ${TIMER_CONFIG.initialHours} часов`);
-    console.log('🔄 forceResetToConfig:', TIMER_CONFIG.forceResetToConfig ? 'ВКЛЮЧЕН (таймер будет сброшен)' : 'ВЫКЛЮЧЕН');
+    console.log('💾 Таймер сохраняется и не сбрасывается при обновлении');
 </script>
 </body>
 </html>
