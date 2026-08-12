@@ -10655,6 +10655,7 @@ function saveProfileSettings() {
         let anticipatedGamesTitles = [];
         let sliderGames = [];
         let popularProgramsTitles = [];
+        let soongamesData = {};
 
         async function loadGameData() {
             loadProfileConfig();
@@ -10665,14 +10666,16 @@ function saveProfileSettings() {
                     anticipatedRes,
                     recommendedRes,
                     preordersRes,
-                    popularProgramsRes
+                    popularProgramsRes,
+                    soongamesRes
                 ] = await Promise.all([
                     fetch('assets/data/games.json'),
                     fetch('assets/data/popular-games.json'),
                     fetch('assets/data/anticipated-games.json'),
                     fetch('assets/data/recommended-games.json'),
                     fetch('assets/data/preorders.json'),
-                    fetch('assets/data/popular-programs.json')
+                    fetch('assets/data/popular-programs.json'),
+                    fetch('assets/data/soongames.json')
                 ]);
 
                 gameData = await gamesRes.json();
@@ -10681,10 +10684,28 @@ function saveProfileSettings() {
                 sliderGames = await recommendedRes.json();
                 preordersData = await preordersRes.json();
                 popularProgramsTitles = await popularProgramsRes.json();
+                soongamesData = await soongamesRes.json();
+
+                console.log('soongamesData загружены:', soongamesData);
+
             } catch (error) {
                 console.error('Error loading game data:', error);
             }
         }
+
+        function mergeSoongamesIntoGameData() {
+    // Перебираем все игры из soongames.json
+    for (const [key, game] of Object.entries(soongamesData)) {
+        // Проверяем, есть ли уже такая игра в gameData
+        if (!gameData[key] && !gameData[key.toLowerCase()]) {
+            // Если нет - добавляем
+            gameData[key] = game;
+            console.log(`✅ Добавлена игра из soongames.json: ${game.title}`);
+        } else {
+            console.log(`ℹ️ Игра "${game.title}" уже существует в gameData, пропускаем`);
+        }
+    }
+}
 
         // Основные функции
         function findGameByTitle(title) {
@@ -12744,6 +12765,7 @@ function localAIResponse(message) {
             
             // Загрузка данных из JSON-файлов (асинхронная)
             await loadGameData();
+            mergeSoongamesIntoGameData();
 
             // Обновление UI авторизации
             updateAuthUI();
@@ -13492,286 +13514,5 @@ function localAIResponse(message) {
             Читайте последние обновления и новости Forzes HUB
         </div>
     </div>
-
-<!-- === МОДАЛКА ТЕХРАБОТ (в начале body) === -->
-<div id="techWorkModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 9999999; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box;">
-    <div style="max-width: 580px; width: 100%; max-height: 92vh; overflow-y: auto; margin: auto; padding: 40px 35px; text-align: center; background: linear-gradient(145deg, rgba(20, 30, 50, 0.95), rgba(10, 15, 30, 0.98)); border: 1px solid rgba(99, 102, 241, 0.4); box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 60px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255,255,255,0.05); border-radius: 24px; animation: modalAppear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); position: relative; overflow: hidden; scrollbar-width: none;">
-        <div style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 18px;">
-            <div style="position: relative; width: 85px; height: 85px; flex-shrink: 0;">
-                <div style="position: absolute; inset: 0; border-radius: 50%; background: rgba(59, 130, 246, 0.15); animation: techPulse 2s ease-in-out infinite;"></div>
-                <div style="position: absolute; inset: 8px; border-radius: 50%; background: rgba(59, 130, 246, 0.1); animation: techPulse 2s ease-in-out infinite 0.5s;"></div>
-                <div style="position: absolute; inset: 16px; border-radius: 50%; background: rgba(59, 130, 246, 0.05); animation: techPulse 2s ease-in-out infinite 1s;"></div>
-                <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 38px; color: #60a5fa;">
-                    <i class="fas fa-microchip"></i>
-                </div>
-            </div>
-            <h2 style="font-size: 2rem; font-weight: 700; color: #f8fafc; margin: 0; letter-spacing: 2px; font-family: 'Inter', sans-serif; text-shadow: 0 2px 20px rgba(59, 130, 246, 0.3);">Технические работы</h2>
-            <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2)); border: 1px solid rgba(99, 102, 241, 0.4); border-radius: 12px; padding: 12px 20px; width: 100%; max-width: 380px; box-shadow: 0 0 30px rgba(59, 130, 246, 0.15); flex-shrink: 0;">
-                <p style="color: #e2e8f0; font-size: 0.95rem; margin: 0; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
-                    <i class="fas fa-keyboard" style="color: #60a5fa; font-size: 1.1rem;"></i>
-                    <span>Нажмите</span>
-                    <kbd style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 4px 16px; border-radius: 6px; font-size: 1.1rem; font-weight: 700; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5); font-family: 'Inter', sans-serif;">1</kbd>
-                    <span style="color: #94a3b8;">для вызова</span>
-                </p>
-            </div>
-            <div style="width: 70px; height: 3px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); border-radius: 2px; box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); flex-shrink: 0;"></div>
-            <p style="font-size: 1.05rem; color: #cbd5e1; line-height: 1.7; margin: 0; max-width: 420px;">Мы обновляем сайт, чтобы сделать его лучше. Пожалуйста, загляните позже.</p>
-            <div style="background: rgba(0, 0, 0, 0.4); border-radius: 14px; padding: 16px 22px; border: 1px solid rgba(99, 102, 241, 0.25); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); width: 100%; max-width: 340px; flex-shrink: 0;">
-                <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 6px;">
-                    <i class="fas fa-clock" style="color: #60a5fa; font-size: 1rem;"></i>
-                    <span style="color: #94a3b8; font-size: 0.85rem; font-weight: 500;">Примерное время окончания</span>
-                </div>
-                <div style="display: flex; justify-content: center; gap: 14px; font-family: 'Inter', sans-serif;">
-                    <div style="text-align: center;"><div id="hoursDisplay" style="font-size: 2rem; font-weight: 700; color: #f8fafc; background: rgba(59, 130, 246, 0.15); padding: 6px 14px; border-radius: 8px; min-width: 56px;">00</div><div style="color: #64748b; font-size: 0.65rem; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Часы</div></div>
-                    <div style="color: #60a5fa; font-size: 2.5rem; font-weight: 700; align-self: center; margin-top: -8px;">:</div>
-                    <div style="text-align: center;"><div id="minutesDisplay" style="font-size: 2rem; font-weight: 700; color: #f8fafc; background: rgba(59, 130, 246, 0.15); padding: 6px 14px; border-radius: 8px; min-width: 56px;">00</div><div style="color: #64748b; font-size: 0.65rem; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Минуты</div></div>
-                    <div style="color: #60a5fa; font-size: 2.5rem; font-weight: 700; align-self: center; margin-top: -8px;">:</div>
-                    <div style="text-align: center;"><div id="secondsDisplay" style="font-size: 2rem; font-weight: 700; color: #f8fafc; background: rgba(59, 130, 246, 0.15); padding: 6px 14px; border-radius: 8px; min-width: 56px;">00</div><div style="color: #64748b; font-size: 0.65rem; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Секунды</div></div>
-                </div>
-            </div>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; flex-shrink: 0;">
-                <span style="background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 6px 18px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(239, 68, 68, 0.3); display: flex; align-items: center; gap: 6px;"><i class="fas fa-circle" style="font-size: 0.45rem; color: #ef4444; animation: blink 1.5s infinite;"></i> Ведутся работы</span>
-                <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 6px 18px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(16, 185, 129, 0.3); display: flex; align-items: center; gap: 6px;"><i class="fas fa-check-circle" style="font-size: 0.8rem;"></i> Скоро завершим</span>
-            </div>
-            <button onclick="closeTechWorkModal()" style="margin-top: 8px; padding: 14px 48px; border: none; border-radius: 50px; font-size: 1rem; font-weight: 600; color: white; cursor: pointer; background: linear-gradient(135deg, #3b82f6, #2563eb); box-shadow: 0 6px 25px rgba(59, 130, 246, 0.4); transition: all 0.3s ease; font-family: 'Inter', sans-serif; letter-spacing: 0.5px; flex-shrink: 0;"><span style="display: flex; align-items: center; gap: 8px;"><i class="fas fa-check"></i> Хорошо</span></button>
-        </div>
-    </div>
-</div>
-
-<style>
-    @keyframes techPulse {
-    0%, 100% { transform: scale(1); opacity: 0.6; }
-    50% { transform: scale(1.2); opacity: 0.9; }
-}
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.2; }
-}
-@keyframes modalAppear {
-    0% { transform: scale(0.8) translateY(30px); opacity: 0; }
-    100% { transform: scale(1) translateY(0); opacity: 1; }
-}
-@keyframes modalDisappear {
-    0% { transform: scale(1) translateY(0); opacity: 1; }
-    100% { transform: scale(0.8) translateY(30px); opacity: 0; }
-}
-</style>
-
-<script>
-    const TIMER_CONFIG = {
-        initialHours: 208,
-        initialMinutes: 0,
-        autoShowOnLoad: true,
-        useLocalStorage: true,
-        useFirebase: false
-    };
-    let timerInterval = null;
-    let endTime = null;
-    
-    function checkAndResetTimer() {
-        const hasBeenReset = localStorage.getItem('techWorkHasBeenReset');
-        
-        if (!hasBeenReset) {
-            console.log('🔄 Первый запуск - устанавливаем таймер на 208 часов');
-            localStorage.removeItem('techWorkEndTime');
-            localStorage.setItem('techWorkHasBeenReset', 'true');
-            return true;
-        }
-        
-        return false;
-    }
-    
-    function saveEndTime(timestamp) {
-        if (TIMER_CONFIG.useLocalStorage) {
-            try {
-                localStorage.setItem('techWorkEndTime', timestamp.toString());
-                console.log('💾 Таймер сохранён в localStorage');
-            } catch(e) {
-                console.error('Ошибка сохранения в localStorage:', e);
-            }
-        }
-    }
-    
-    function getSavedEndTime() {
-        let savedEndTime = null;
-        
-        const needReset = checkAndResetTimer();
-        
-        if (needReset) {
-            return null;
-        }
-        
-        if (TIMER_CONFIG.useLocalStorage) {
-            try {
-                savedEndTime = localStorage.getItem('techWorkEndTime');
-            } catch(e) {
-                console.error('Ошибка получения из localStorage:', e);
-            }
-        }
-        
-        return savedEndTime ? parseInt(savedEndTime) : null;
-    }
-    
-    function openTechWorkModal() {
-        const modal = document.getElementById('techWorkModal');
-        const content = modal.querySelector('div:first-child > div');
-        
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        content.style.animation = 'modalAppear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-        
-        let savedEndTime = getSavedEndTime();
-        
-        if (savedEndTime && savedEndTime > Date.now()) {
-            endTime = new Date(savedEndTime);
-            const hoursLeft = Math.floor((endTime - Date.now()) / (1000 * 60 * 60));
-            console.log(`⏰ Таймер продолжается: ${hoursLeft} часов осталось`);
-        } else {
-            endTime = new Date();
-            endTime.setHours(endTime.getHours() + TIMER_CONFIG.initialHours);
-            endTime.setMinutes(endTime.getMinutes() + TIMER_CONFIG.initialMinutes);
-            
-            saveEndTime(endTime.getTime());
-            console.log(`✅ Таймер установлен на ${TIMER_CONFIG.initialHours}ч ${TIMER_CONFIG.initialMinutes}м`);
-        }
-        
-        updateTimerDisplay();
-        
-        if (timerInterval) {
-            clearInterval(timerInterval);
-        }
-        
-        timerInterval = setInterval(updateTimerDisplay, 1000);
-    }
-    
-    function closeTechWorkModal() {
-        const modal = document.getElementById('techWorkModal');
-        const content = modal.querySelector('div:first-child > div');
-        
-        content.style.animation = 'modalDisappear 0.3s ease-in forwards';
-        
-        setTimeout(function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
-            content.style.animation = '';
-            if (timerInterval) {
-                clearInterval(timerInterval);
-                timerInterval = null;
-            }
-        }, 350);
-    }
-    
-    function updateTimerDisplay() {
-        if (!endTime) return;
-        
-        const now = new Date();
-        const diff = endTime - now;
-        
-        if (diff <= 0) {
-            document.getElementById('hoursDisplay').textContent = '00';
-            document.getElementById('minutesDisplay').textContent = '00';
-            document.getElementById('secondsDisplay').textContent = '00';
-            
-            if (timerInterval) {
-                clearInterval(timerInterval);
-                timerInterval = null;
-            }
-            
-            localStorage.removeItem('techWorkEndTime');
-            return;
-        }
-        
-        const hours = Math.floor(diff / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-        
-        document.getElementById('hoursDisplay').textContent = String(hours).padStart(2, '0');
-        document.getElementById('minutesDisplay').textContent = String(minutes).padStart(2, '0');
-        document.getElementById('secondsDisplay').textContent = String(seconds).padStart(2, '0');
-    }
-    
-    function setTimer(hours, minutes) {
-        if (timerInterval) {
-            clearInterval(timerInterval);
-            timerInterval = null;
-        }
-        
-        endTime = new Date();
-        endTime.setHours(endTime.getHours() + hours);
-        endTime.setMinutes(endTime.getMinutes() + minutes);
-        
-        saveEndTime(endTime.getTime());
-        updateTimerDisplay();
-        timerInterval = setInterval(updateTimerDisplay, 1000);
-        
-        console.log(`✅ Таймер установлен на ${hours}ч ${minutes}м`);
-    }
-    
-    function addTime(hours, minutes) {
-        if (!endTime) {
-            console.warn('⚠️ Таймер не запущен, используйте setTimer()');
-            return;
-        }
-        
-        endTime.setHours(endTime.getHours() + hours);
-        endTime.setMinutes(endTime.getMinutes() + minutes);
-        
-        saveEndTime(endTime.getTime());
-        updateTimerDisplay();
-        console.log(`➕ Добавлено ${hours}ч ${minutes}м к таймеру`);
-    }
-    
-    function subtractTime(hours, minutes) {
-        if (!endTime) {
-            console.warn('⚠️ Таймер не запущен, используйте setTimer()');
-            return;
-        }
-        
-        endTime.setHours(endTime.getHours() - hours);
-        endTime.setMinutes(endTime.getMinutes() - minutes);
-        
-        if (endTime.getTime() < Date.now()) {
-            console.warn('⚠️ Таймер не может быть меньше текущего времени');
-            endTime = new Date();
-            endTime.setHours(endTime.getHours() + 1);
-        }
-        
-        saveEndTime(endTime.getTime());
-        updateTimerDisplay();
-        console.log(`➖ Вычтено ${hours}ч ${minutes}м из таймера`);
-    }
-    
-    function showTechWorkModalOnLoad() {
-        if (!TIMER_CONFIG.autoShowOnLoad) return;
-        
-        setTimeout(function() {
-            try {
-                openTechWorkModal();
-                console.log('✅ Модалка техработ открыта');
-            } catch(e) {
-                console.error('Ошибка открытия модалки:', e);
-            }
-        }, 500);
-    }
-    
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', showTechWorkModalOnLoad);
-    } else {
-        showTechWorkModalOnLoad();
-    }
-    
-    document.addEventListener('keydown', function(e) {
-        if (e.key === '1' && !e.ctrlKey && !e.altKey && !e.shiftKey) {
-            const tag = document.activeElement?.tagName?.toLowerCase();
-            if (tag !== 'input' && tag !== 'textarea') {
-                openTechWorkModal();
-            }
-        }
-    });
-    
-    console.log('🟢 Таймер технических работ загружен');
-    console.log(`📌 Начальное время: ${TIMER_CONFIG.initialHours} часов`);
-    console.log('💾 Таймер сохраняется и не сбрасывается при обновлении');
-</script>
 </body>
 </html>
