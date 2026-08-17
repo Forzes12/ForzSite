@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -8041,7 +8041,7 @@ position: absolute;
             <div class="auth-modal-right">
                 <div class="auth-qr-title">Вход по QR-коду</div>
                 <div class="auth-qr-code" id="authQrCode"></div>
-                <div class="auth-qr-text">Отсканируйте QR-код<br>для быстрого входа "пока что не работает"</div>
+                <div class="auth-qr-text" id="authQrStatus">Отсканируйте QR-код<br>приложением на телефоне</div>
             </div>
         </div>
     </div>
@@ -9042,27 +9042,166 @@ let messageFormHtml = '';
             modal.style.display = 'flex';
             modal.classList.add('active');
 
-            // Generate QR code
-            const qrContainer = document.getElementById('authQrCode');
-            if (qrContainer && typeof QRCode !== 'undefined') {
-                qrContainer.innerHTML = '';
-                new QRCode(qrContainer, {
-                    text: window.location.origin,
-                    width: 160,
-                    height: 160,
-                    colorDark: '#0f172a',
-                    colorLight: '#ffffff',
-                    correctLevel: QRCode.CorrectLevel.H
-                });
+            // QR-вход: генерируем QR только в режиме входа
+            if (mode === 'login') {
+                startQrLogin();
+            } else {
+                cleanupQrLogin();
+                const qrContainer = document.getElementById('authQrCode');
+                const qrStatus = document.getElementById('authQrStatus');
+                if (qrContainer) qrContainer.innerHTML = '';
+                if (qrStatus) {
+                    qrStatus.textContent = 'Регистрация выполняется через форму слева';
+                    qrStatus.style.color = '#94a3b8';
+                }
             }
         }
 
         function closeAuthModal() {
+            cleanupQrLogin();
             const modal = document.getElementById('authModal');
             modal.classList.remove('active');
             modal.style.display = 'none';
             document.getElementById('authError').style.display = 'none';
         }
+
+        // ========== QR-ВХОД ==========
+        let qrSessionRef = null;
+        let qrSessionCb = null;
+        let qrSessionTimeout = null;
+
+        function startQrLogin() {
+            const qrContainer = document.getElementById('authQrCode');
+            const qrStatus = document.getElementById('authQrStatus');
+
+            cleanupQrLogin();
+
+            if (!qrContainer || typeof QRCode === 'undefined' || typeof database === 'undefined') {
+                if (qrContainer) qrContainer.innerHTML = '';
+                if (qrStatus) {
+                    qrStatus.textContent = 'QR-вход временно недоступен';
+                    qrStatus.style.color = '#f87171';
+                }
+                return;
+            }
+
+            const sessionId = 'qr_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 10);
+            qrSessionRef = database.ref('/qr_sessions/' + sessionId);
+
+            const loginUrl = window.location.origin + '/mobile.html?qr_login=' + sessionId;
+
+            qrSessionRef.set({ status: 'pending', createdAt: firebase.database.ServerValue.TIMESTAMP })
+                .catch((error) => {
+                    console.error('QR session create error:', error);
+                    if (qrStatus) {
+                        qrStatus.textContent = 'Ошибка создания QR-сессии';
+                        qrStatus.style.color = '#f87171';
+                    }
+                });
+
+            qrContainer.innerHTML = '';
+            new QRCode(qrContainer, {
+                text: loginUrl,
+                width: 160,
+                height: 160,
+                colorDark: '#0f172a',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            if (qrStatus) {
+                qrStatus.textContent = 'Отсканируйте QR-код разделом «QR Скан» в приложении на телефоне';
+                qrStatus.style.color = '';
+            }
+
+            let confirmed = false;
+
+            qrSessionCb = (snap) => {
+                const data = snap.val();
+                if (!data || confirmed) return;
+                if (data.status === 'confirmed' && data.username) {
+                    confirmed = true;
+                    setTimeout(() => completeQrLogin(data.username), 200);
+                }
+            };
+            qrSessionRef.on('value', qrSessionCb);
+
+            // Автообновление сессии каждые 2 минуты, пока модальное окно открыто
+            qrSessionTimeout = setTimeout(() => {
+                const modal = document.getElementById('authModal');
+                if (modal && modal.style.display !== 'none') {
+                    startQrLogin();
+                }
+            }, 120000);
+        }
+
+        function cleanupQrLogin() {
+            if (qrSessionTimeout) {
+                clearTimeout(qrSessionTimeout);
+                qrSessionTimeout = null;
+            }
+            if (qrSessionRef) {
+                if (qrSessionCb) qrSessionRef.off('value', qrSessionCb);
+                qrSessionRef.remove().catch(() => {});
+                qrSessionRef = null;
+                qrSessionCb = null;
+            }
+        }
+
+        async function completeQrLogin(username) {
+            if (!username) return;
+
+            let user = await getUserFromFirebase(username);
+            if (!user) {
+                const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
+                user = localUsers[username.toLowerCase()];
+            }
+
+            const qrStatus = document.getElementById('authQrStatus');
+            if (!user) {
+                if (qrStatus) {
+                    qrStatus.textContent = 'Пользователь не найден в базе';
+                    qrStatus.style.color = '#f87171';
+                }
+                return;
+            }
+
+            // Восстановление downloads из Firebase
+            if (user.downloads) {
+                const storageKey = `userDownloads_${username.toLowerCase()}`;
+                localStorage.setItem(storageKey, JSON.stringify(user.downloads));
+            }
+
+            // Восстановление favoriteGames из Firebase в localStorage
+            if (user.favoriteGames) {
+                const syncVotes = {};
+                user.favoriteGames.forEach(gameId => { syncVotes[gameId] = 'like'; });
+                localStorage.setItem('userVotes', JSON.stringify(syncVotes));
+            }
+
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', user.password || '');
+            localStorage.setItem('isDeveloper', user.isDeveloper === true || user.hasBadge === true || isDeveloperByUsername(username) ? 'true' : 'false');
+            localStorage.setItem('userCreatedAt', user.createdAt || new Date().toISOString());
+
+            // Сохраняем в локальном хранилище для будущих входов без телефона
+            const localUsersCache = JSON.parse(localStorage.getItem('localUsers') || '{}');
+            if (!localUsersCache[username.toLowerCase()]) {
+                localUsersCache[username.toLowerCase()] = {
+                    username: username,
+                    password: user.password || '',
+                    isDeveloper: user.isDeveloper === true || user.hasBadge === true
+                };
+                localStorage.setItem('localUsers', JSON.stringify(localUsersCache));
+            }
+
+            cleanupQrLogin();
+            closeAuthModal();
+            updateAuthUI();
+            showNotification('Вход по QR-коду выполнен! Добро пожаловать, ' + username + '!');
+            showUserPage();
+        }
+        // ========== КОНЕЦ QR-ВХОДА ==========
         
         async function handleAuth(event) {
             event.preventDefault();
