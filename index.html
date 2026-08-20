@@ -3062,6 +3062,67 @@ position: absolute;
             transform: translateY(-2px);
         }
 
+        .mode-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .mode-btn {
+            padding: 12px 26px;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.4) 100%);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .mode-btn i {
+            font-size: 0.9rem;
+        }
+
+        .mode-btn:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .mode-btn.active {
+            color: white;
+            transform: translateY(-2px) scale(1.03);
+        }
+
+        .mode-btn[data-mode="offline"].active {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-color: rgba(96, 165, 250, 0.5);
+            box-shadow:
+                0 6px 20px rgba(37, 99, 235, 0.4),
+                0 0 30px rgba(37, 99, 235, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .mode-btn[data-mode="online"].active {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-color: rgba(16, 185, 129, 0.5);
+            box-shadow:
+                0 6px 20px rgba(16, 185, 129, 0.4),
+                0 0 30px rgba(16, 185, 129, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
         .category-tab[data-color="purple"].active {
             background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
             border-color: rgba(167, 139, 250, 0.5);
@@ -7937,10 +7998,14 @@ position: absolute;
             border-radius: 20px;
             max-width: 720px;
             width: 95%;
+            max-height: calc(100vh - 48px);
             border: 1px solid rgba(255,255,255,0.1);
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            overflow: hidden;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-width: none;
         }
+        .auth-modal-container::-webkit-scrollbar { display: none; }
         .auth-modal-left {
             flex: 1;
             min-width: 0;
@@ -8297,7 +8362,16 @@ position: absolute;
     <div id="all-games-page" class="page">
         <div style="padding: 70px 20px 20px;">
             <h2 class="section-title">ИГРЫ И ПРОГРАММЫ</h2>
-            
+
+            <div class="mode-buttons">
+                <button class="mode-btn" data-mode="offline" onclick="switchMode('offline')">
+                    <i class="fas fa-user-friends"></i> Компания
+                </button>
+                <button class="mode-btn" data-mode="online" onclick="switchMode('online')">
+                    <i class="fas fa-globe"></i> Онлайн
+                </button>
+            </div>
+
             <div class="category-tabs">
                 <button class="category-tab active" data-color="blue" data-category="games">Игры</button>
                 <button class="category-tab" data-color="purple" data-category="programs">Программы</button>
@@ -8321,7 +8395,7 @@ position: absolute;
                 </div>
                 
                 <div class="filters-panel">
-                    <div class="filter-group">
+                    <div class="filter-group" id="yearFilterGroup">
                         <label class="filter-label">
                             <i class="fas fa-calendar-alt"></i>
                             <span>Год</span>
@@ -8337,7 +8411,7 @@ position: absolute;
                         </select>
                     </div>
                     
-                    <div class="filter-group">
+                    <div class="filter-group" id="genreFilterGroup">
                         <label class="filter-label">
                             <i class="fas fa-tags"></i>
                             <span>Жанр</span>
@@ -8355,7 +8429,7 @@ position: absolute;
                         </select>
                     </div>
                     
-                    <div class="filter-group">
+                    <div class="filter-group" id="companyFilterGroup">
                         <label class="filter-label">
                             <i class="fas fa-building"></i>
                             <span>Компания</span>
@@ -11004,7 +11078,73 @@ function switchToMain() {
                 }
                 if (gamesGrid) gamesGrid.style.display = 'grid';
             }
+
+            const yearFilterGroup = document.getElementById('yearFilterGroup');
+            const genreFilterGroup = document.getElementById('genreFilterGroup');
+            const companyFilterGroup = document.getElementById('companyFilterGroup');
+            const yearFilter = document.getElementById('yearFilter');
+            const genreFilter = document.getElementById('genreFilter');
+            const companyFilter = document.getElementById('companyFilter');
+
+            const isNoMetaCategory = category === 'utilities' || category === 'antivirus' || category === 'programs';
+
+            if (yearFilterGroup) yearFilterGroup.style.display = 'flex';
+            if (genreFilterGroup) genreFilterGroup.style.display = (category === 'games') ? 'flex' : 'none';
+            if (companyFilterGroup) companyFilterGroup.style.display = (category === 'games') ? 'flex' : 'none';
+
+            if (isNoMetaCategory) {
+                if (yearFilter) yearFilter.value = 'all';
+                if (genreFilter) genreFilter.value = 'all';
+                if (companyFilter) companyFilter.value = 'all';
+            } else if (category !== 'games') {
+                if (genreFilter) genreFilter.value = 'all';
+                if (companyFilter) companyFilter.value = 'all';
+            }
+
             filterGames();
+        }
+
+        function switchMode(mode) {
+            document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+            const targetBtn = document.querySelector(`.mode-btn[data-mode="${mode}"]`);
+            if (targetBtn) {
+                targetBtn.classList.add('active');
+            }
+
+            updateModeCategoryTabs(mode);
+
+            const gameSearchInput = document.getElementById('gameSearch');
+            if (gameSearchInput) {
+                gameSearchInput.value = '';
+            }
+            const clearSearchBtn = document.getElementById('clearSearch');
+            if (clearSearchBtn) {
+                clearSearchBtn.style.display = 'none';
+            }
+
+            const yearFilter = document.getElementById('yearFilter');
+            const genreFilter = document.getElementById('genreFilter');
+            const companyFilter = document.getElementById('companyFilter');
+            if (yearFilter) yearFilter.value = 'all';
+            if (genreFilter) genreFilter.value = 'all';
+            if (companyFilter) companyFilter.value = 'all';
+
+            switchCategory('games');
+
+            const page = document.getElementById('all-games-page');
+            if (page) page.scrollTop = 0;
+        }
+
+        function updateModeCategoryTabs(mode) {
+            const hiddenCategories = ['programs', 'utilities', 'antivirus'];
+            const hideTabs = (mode === 'offline' || mode === 'online');
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                if (hideTabs && hiddenCategories.includes(tab.dataset.category)) {
+                    tab.style.display = 'none';
+                } else {
+                    tab.style.display = '';
+                }
+            });
         }
 
 
@@ -11033,6 +11173,12 @@ function switchToMain() {
                         targetPage.scrollTop = 0;
                     }
 
+                    if (pageId === 'all-games-page') {
+                        // «Компания»/«Онлайн» не горят по умолчанию при открытии страницы
+                        document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                        // Возвращаем все категории (VPN, Программы, Антивирус)
+                        updateModeCategoryTabs('all');
+                    }
                     if (pageId === 'all-games-page' && !allGamesLoaded) {
                         loadAllGames();
                         allGamesLoaded = true;
@@ -11041,6 +11187,8 @@ function switchToMain() {
                         }
                     } else if (pageId === 'all-games-page' && category) {
                         switchCategory(category);
+                    } else if (pageId === 'all-games-page') {
+                        filterGames();
                     }
 
                     if (pageId === 'preorders-page' && !preordersLoaded) {
@@ -11333,7 +11481,9 @@ function switchToMain() {
 
     let badgeHTML = '';
     let skuHTML = '';
-    if (game.category === 'programs') {
+    if (game.mode === 'online') {
+        badgeHTML = '<div class="online-badge">Онлайн</div>';
+    } else if (game.category === 'programs') {
         badgeHTML = '<div class="program-badge">Программа</div>';
     } else if (game.category === 'utilities') {
         badgeHTML = '<div class="utility-badge">Утилита</div>';
@@ -11402,7 +11552,11 @@ function switchToMain() {
 
             updateGamesCount();
             setupViewButtons();
-            
+
+            // Синхронизируем видимость категорий с текущим режимом
+            const activeMode = document.querySelector('.mode-btn.active')?.dataset.mode || 'all';
+            updateModeCategoryTabs(activeMode);
+
             // Фильтруем по умолчанию (игры)
             filterGames();
         }
@@ -11525,6 +11679,7 @@ function switchToMain() {
             const searchTerm = document.getElementById('gameSearch').value.toLowerCase();
             const activeCategory = document.querySelector('.category-tab.active').dataset.category;
             const activeFilter = document.querySelector('.filter-pill.active')?.dataset.filter || 'all';
+            const activeMode = document.querySelector('.mode-btn.active')?.dataset.mode || 'all';
             const selectedYear = document.getElementById('yearFilter').value;
             const selectedGenre = document.getElementById('genreFilter').value;
             const selectedCompany = document.getElementById('companyFilter').value;
@@ -11601,7 +11756,14 @@ function switchToMain() {
                                    (publisher && publisher.toLowerCase().includes(selectedCompany.toLowerCase()));
                 }
                 
-                if (matchesCategory && matchesStatus && matchesSearch && matchesYear && matchesGenre && matchesCompany) {
+                let matchesMode = true;
+                if (activeMode === 'offline') {
+                    matchesMode = game.mode !== 'online';
+                } else if (activeMode === 'online') {
+                    matchesMode = game.mode === 'online';
+                }
+
+                if (matchesCategory && matchesStatus && matchesSearch && matchesYear && matchesGenre && matchesCompany && matchesMode) {
                     card.style.display = 'block';
                     visibleCount++;
                 } else {
