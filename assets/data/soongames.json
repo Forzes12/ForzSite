@@ -1,0 +1,372 @@
+{
+    "Grand Theft Auto VI": {
+        "title": "Grand Theft Auto VI",
+        "description": "Самая ожидаемая игра десятилетия. Возвращение во вселенную Grand Theft Auto с новой графикой, механиками и бесконечными возможностями.",
+        "image": "game-screenshot/1746544167_ma5dehcf_lwg7zlyjdkqvq.jpeg",
+        "size": "Неизвестно GB",
+        "year": "2026",
+        "updated": "26.09.2025",
+        "status": "soon",
+        "category": "Rockstar Games",
+        "tags": [
+            "Grand Theft Auto VI",
+            "Grand Theft Auto",
+            "VI",
+            "rockstar",
+            "Rockstar",
+            "гта 6"
+        ],
+        "virus_check": "",
+        "trailer": "https://drive.google.com/file/d/1l9-SpOp0QY4C2A9Ug2rUMsaUbSzqjWFJ/preview",
+        "screenshots": [
+            "game-screenshot/ULTIMATE_EDITION_01.16qc1xq5nigg1.avif",
+            "game-screenshot/ULTIMATE_EDITION_GROTTI_CHEETAH_04.jpg",
+            "game-screenshot/ULTIMATE_EDITION_HAWK_AND_LITTLE_MORGAN_REVOLVERS_01.jpg",
+            "game-screenshot/ULTIMATE_EDITION_VICE_CITY_STYLE_01.jpg",
+            "game-screenshot/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_03.jpg",
+            "game-screenshot/ULTIMATE_EDITION_RIDEOUT_CUSTOMS_03.jpg",
+            "game-screenshot/ULTIMATE_EDITION_SARAS_SALON_01.jpg",
+            "game-screenshot/ULTIMATE_EDITION_SQUALO_01.jpg",
+            "game-screenshot/ULTIMATE_EDITION_SQUALO_03.jpg",
+            "game-screenshot/ULTIMATE_EDITION_SQUALO_04.jpg",
+            "game-screenshot/ULTIMATE_EDITION_STOCK_305_01.jpg",
+            "game-screenshot/ULTIMATE_EDITION_VAPID_BUGGY_01.jpg"
+        ],
+        "specs": {
+            "Жанр": "Экшен, Приключение",
+            "Разработчик": "Rockstar Games",
+            "Издатель": "Rockstar Games",
+            "Платформа": "PC, PS5, Xbox Series X"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "OS": "Информация уточняется",
+                "Processor": "Информация уточняется",
+                "Memory": "Информация уточняется",
+                "Graphics": "Информация уточняется",
+                "Storage": "Информация уточняется"
+            },
+            "recommended": {
+                "OS": "Информация уточняется",
+                "Processor": "Информация уточняется",
+                "Memory": "Информация уточняется",
+                "Graphics": "Информация уточняется",
+                "Storage": "Информация уточняется"
+            }
+        },
+        "sku": "ART-0003"
+    },
+        "The Witcher 4": {
+        "title": "The Witcher 4",
+        "description": "Новая глава в эпохальной саге о ведьмаках. В центре сюжета — Цири и другие ведьмаки, мстящие за смерть Геральта из Ривии. Вас ждёт огромный проработанный мир, зрелищные сражения с новыми могущественными врагами и история, полная драмы и неожиданных поворотов.",
+        "image": "game-screenshot/6f60b828ed_the-witcher-4-poster.jpg",
+        "size": "Неизвестно ГБ",
+        "year": "2026-2027",
+        "updated": "27.01.2026",
+        "status": "soon",
+        "category": "games",
+        "tags": [
+            "the witcher",
+            "ведьмак",
+            "cd projekt red",
+            "rpg",
+            "ролевая игра",
+            "фэнтези",
+            "открытый мир",
+            "цири"
+        ],
+        "virus_check": "",
+        "trailer": "https://drive.google.com/file/d/1_OnTY3sYiHw1W5SmAqGhfv3oN8Q4nrqn/preview",
+        "screenshots": [
+            "game-screenshot/cf2449141a_s1.png",
+            "game-screenshot/27f732cf2b_s2.png",
+            "game-screenshot/cdef2af135_s3.png"
+        ],
+        "specs": {
+            "Жанр": "RPG, Фэнтези, Открытый мир",
+            "Разработчик": "CD Projekt Red",
+            "Издатель": "CD Projekt",
+            "Платформа": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        "systemRequirements": {
+            "минимальные": {
+                "ОС": "Информация уточняется",
+                "Процессор": "Информация уточняется",
+                "Оперативная память": "Информация уточняется",
+                "Видеокарта": "Информация уточняется",
+                "Место на диске": "Информация уточняется"
+            },
+            "рекомендуемые": {
+                "ОС": "Информация уточняется",
+                "Процессор": "Информация уточняется",
+                "Оперативная память": "Информация уточняется",
+                "Видеокарта": "Информация уточняется",
+                "Место на диске": "Информация уточняется"
+            }
+        },
+        "sku": "ART-0005"
+    },
+    "Atomic Heart 2": {
+        "title": "Atomic Heart 2",
+        "description": "Продолжение безумного научно-фантастического экшена в альтернативной СССР 1950-х. Вновь погрузитесь в мир роботов, пси-способностей и технологий «Советского Союза 2.0». Вам предстоит раскрыть новые тайны комплекса «3826» и столкнуться с последствиями событий первой части.",
+        "image": "game-screenshot/d8b3373efc_atomic-heart-2-poster.jpg",
+        "size": "Неизвестно ГБ",
+        "year": "2026",
+        "updated": "27.01.2026",
+        "status": "soon",
+        "category": "games",
+        "tags": [
+            "atomic heart",
+            "атомик харт",
+            "mundfish",
+            "экшен",
+            "шутер",
+            "научная фантастика",
+            "альтернативная история",
+            "рpg элементы",
+            "пост-апокалипсис"
+        ],
+        "virus_check": "",
+        "trailer": "https://drive.google.com/file/d/1IdTYHOgqnWtdkNYeapUI_R-3WNVLzium/preview",
+        "screenshots": [
+            "game-screenshot/5f28cf1cb5_1scr-242023.jpg",
+            "game-screenshot/0d55dfc786_2scr-987096.jpg",
+            "game-screenshot/b6dd639490_3scr-182742.jpg",
+            "game-screenshot/7bbb8d0e6a_4scr-74842.jpg",
+            "game-screenshot/8872203e21_5scr-438754.jpg",
+            "game-screenshot/2409a5b1bc_6scr-726738.jpg"
+        ],
+        "specs": {
+            "Жанр": "Экшен, FPS, Научная фантастика, РPG-элементы",
+            "Разработчик": "Mundfish",
+            "Издатель": "Focus Entertainment / VK Play",
+            "Платформа": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        "systemRequirements": {
+            "минимальные": {
+                "ОС": "Информация уточняется",
+                "Процессор": "Информация уточняется",
+                "Оперативная память": "Информация уточняется",
+                "Видеокарта": "Информация уточняется",
+                "Место на диске": "Информация уточняется"
+            },
+            "рекомендуемые": {
+                "ОС": "Информация уточняется",
+                "Процессор": "Информация уточняется",
+                "Оперативная память": "Информация уточняется",
+                "Видеокарта": "Информация уточняется",
+                "Место на диске": "Информация уточняется"
+            }
+        },
+        "sku": "ART-0006"
+    },
+    "Darksiders 4": {
+        "title": "Darksiders 4",
+        "description": "Darksiders 4 — это хардкорный экшен о выживании среди падших миров, где выбор ведёт к гибели или освобождению. Вам предстоит пробираться через гибель цивилизации, отыскивая правду среди руин.",
+        "image": "game-screenshot/ef3404acf6_darksiders-4-54333.jpg",
+        "size": "Неизвестно GB",
+        "year": "2025",
+        "updated": "05.08.2025",
+        "status": "soon",
+        "category": "games",
+        "tags": [
+            ""
+        ],
+        "torrentFile": "",
+        "virus_check": "",
+        "trailer": "https://drive.google.com/file/d/1ZFLllUOIaHNUPdl2iGk2LoYsSscijp7G/preview",
+        "buyGame": "",
+        "screenshots": [
+            "game-screenshot/f00a6efc2d_1scr-15002.jpg",
+            "game-screenshot/86b6b42aad_2scr-963904.jpg",
+            "game-screenshot/c46ea2cbad_3scr-692111.jpg",
+            "game-screenshot/0c6ea2c1d7_4scr-724887.jpg",
+            "game-screenshot/073612e036_5scr-66719.jpg"
+        ],
+        "specs": {
+            "Жанр": "",
+            "Разработчик": "",
+            "Издатель": "",
+            "Платформа": ""
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "",
+                "Процессор": "",
+                "Оперативная память": "",
+                "Видеокарта": "",
+                "DirectX": "",
+                "Свободное место": ""
+            }
+        },
+        "sku": "ART-0077"
+    },
+    "The Blood of Dawnwalker": {
+        "title": "The Blood of Dawnwalker",
+        "description": "The Blood of Dawnwalker — мрачное приключение в жанре экшен-RPG, где магия крови переплетается с древними легендами. В этом опасном мире вас ждёт борьба за выживание, раскрытие сокровенных тайн и поиск своего места между светом и тьмой.",
+        "image": "game-screenshot/2df765294a_the-blood-of-dawnwalker-76545.jpg",
+        "size": "Неизвестно GB",
+        "year": "2025",
+        "updated": "14.01.2025",
+        "status": "soon",
+        "category": "games",
+        "tags": [
+            ""
+        ],
+        "torrentFile": "",
+        "virus_check": "",
+        "trailer": "https://drive.google.com/file/d/1WU9zcG7cVVJ-DM8n7d1tcnzQPDEgTmD9/preview",
+        "buyGame": "",
+        "screenshots": [
+            "game-screenshot/b71037c1fd_1scr-637837.jpg",
+            "game-screenshot/bb14d014ed_2scr-424267.jpg",
+            "game-screenshot/b77e9aa615_3scr-861412.jpg",
+            "game-screenshot/9ad93962cd_4scr-544679.jpg",
+            "game-screenshot/5f19849bb7_5scr-647620.jpg",
+            "game-screenshot/ad7d90f027_6scr-928144.jpg"
+        ],
+        "specs": {
+            "Жанр": "",
+            "Разработчик": "",
+            "Издатель": "",
+            "Платформа": ""
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "",
+                "Процессор": "",
+                "Оперативная память": "",
+                "Видеокарта": "",
+                "DirectX": "",
+                "Свободное место": ""
+            }
+        },
+        "sku": "ART-0079"
+    },
+    "Gears of War: E-Day": {
+        "title": "Gears of War: E-Day",
+        "description": "Gears of War: E-Day —  как насчет того, чтобы посмотреть на ужасающий День вторжения вместе с Маркусом Фениксом? Да?! Тогда приготовьтесь окунуться с головой в предысторию одну из самых популярных игровых саг. И это только начало…",
+        "image": "game-screenshot/gears-of-war-e-day.jpg",
+        "size": "Неизвестно GB",
+        "year": "2025",
+        "updated": "10.06.2024",
+        "status": "soon",
+        "category": "games",
+        "tags": [
+            ""
+        ],
+        "torrentFile": "",
+        "virus_check": "",
+        "trailer": "https://drive.google.com/file/d/1Z0sr3MXFzpc8RBPlqKSINEPYk7VB-bKq/preview",
+        "buyGame": "",
+        "screenshots": [
+            "game-screenshot/1scr-75260251.jpg",
+            "game-screenshot/2scr-642279928.jpg",
+            "game-screenshot/3scr-3125457566.jpg",
+            "game-screenshot/4scr-10918394.jpg",
+            "game-screenshot/5scr-3921254428.jpg",
+            "game-screenshot/6scr-220216353.jpg"
+        ],
+        "specs": {
+            "Жанр": "",
+            "Разработчик": "",
+            "Издатель": "",
+            "Платформа": ""
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "",
+                "Процессор": "",
+                "Оперативная память": "",
+                "Видеокарта": "",
+                "DirectX": "",
+                "Свободное место": ""
+            }
+        },
+        "sku": "ART-0080"
+    },
+    "Metro 2039": {
+        "title": "Metro 2039",
+        "description": "Metro 2039 —  это сюжетный FPS с упором на выживание, исследование и стелс, где действие разворачивается в разрушенной Москве, раздираемой внутренними конфликтами и борьбой за власть. Игровой процесс сочетает медленное продвижение через опасные зоны с напряжёнными столкновениями, где ресурсы ограничены, а прямой бой далеко не всегда является лучшим решением.",
+        "image": "game-screenshot/0f8f01a264_metro-2039-poster.jpg",
+        "size": "Неизвестно GB",
+        "year": "2025",
+        "updated": "16.04.2026",
+        "status": "soon",
+        "category": "games",
+        "tags": [
+            ""
+        ],
+        "torrentFile": "",
+        "virus_check": "",
+        "trailer": "https://drive.google.com/file/d/1uz8Akd79Hz20Btv-jA1bl2g8VNMxoF8n/preview",
+        "buyGame": "",
+        "screenshots": [
+            "game-screenshot/472e8b2c39_1scr-37484.jpg",
+            "game-screenshot/913c70de73_2scr-492992.jpg",
+            "game-screenshot/50ec64551d_3scr-156374.jpg",
+            "game-screenshot/9aa065188b_4scr-789872.jpg",
+            "game-screenshot/1842fbec60_5scr-836442.jpg",
+            "game-screenshot/8a62de063a_6scr-970422.jpg"
+        ],
+        "specs": {
+            "Жанр": "",
+            "Разработчик": "",
+            "Издатель": "",
+            "Платформа": ""
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "",
+                "Процессор": "",
+                "Оперативная память": "",
+                "Видеокарта": "",
+                "DirectX": "",
+                "Свободное место": ""
+            }
+        },
+        "sku": "ART-0081"
+    },
+    "Lords of the Fallen II": {
+        "title": "Lords of the Fallen II",
+        "description": "Lords of the Fallen II —  это путешествие в мир, где сама надежда стала редкостью. Здесь история переплетается с жестокими боями и личным выбором, который определит судьбу всего королевства.",
+        "image": "game-screenshot/360682d2b6_lords-of-the-fallen-ii-poster.jpg",
+        "size": "Неизвестно GB",
+        "year": "2025",
+        "updated": "20.08.2025",
+        "status": "soon",
+        "category": "games",
+        "tags": [
+            ""
+        ],
+        "torrentFile": "",
+        "virus_check": "",
+        "trailer": "https://drive.google.com/file/d/1xMrWrnm6s9JyyqnShHkPFM-8EQd-Q-9p/preview",
+        "buyGame": "",
+        "screenshots": [
+            "game-screenshot/2cab7fec05_1scr-485808.jpg",
+            "game-screenshot/202ae9936c_2scr-214825.jpg",
+            "game-screenshot/ddb896fcb5_3scr-812371.jpg",
+            "game-screenshot/933c18ec29_4scr-748434.jpg",
+            "game-screenshot/fa90bb9d89_5scr-469131.jpg",
+            "game-screenshot/4fc29ba976_6scr-223158.jpg"
+        ],
+        "specs": {
+            "Жанр": "",
+            "Разработчик": "",
+            "Издатель": "",
+            "Платформа": ""
+        },
+        "systemRequirements": {
+            "recommended": {
+                "Операционная система": "",
+                "Процессор": "",
+                "Оперативная память": "",
+                "Видеокарта": "",
+                "DirectX": "",
+                "Свободное место": ""
+            }
+        },
+        "sku": "ART-0084"
+    }
+}

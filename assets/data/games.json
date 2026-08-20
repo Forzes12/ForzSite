@@ -7,6 +7,7 @@
         "year": "2023",
         "updated": "02.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "dead island",
@@ -53,6 +54,7 @@
         "year": "2018",
         "updated": "02.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Detroit",
@@ -97,6 +99,7 @@
         "year": "2026",
         "updated": "02.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "Forza Horizon",
         "tags": [
             "forza",
@@ -145,6 +148,7 @@
         "year": "2025",
         "updated": "02.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Little Nightmares",
@@ -190,6 +194,7 @@
         "year": "2021",
         "updated": "02.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Little Nightmares",
@@ -237,6 +242,7 @@
         "year": "2016",
         "updated": "02.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "My Summer Car",
@@ -284,6 +290,7 @@
         "year": "2025",
         "updated": "02.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "My Winter Car",
@@ -332,6 +339,7 @@
         "year": "2025",
         "updated": "11.12.2025",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Hollow Knight",
@@ -374,11 +382,12 @@
     "Marvel's Spider-Man 2": {
         "title": "Marvel's Spider-Man 2",
         "description": "Новые приключения Человека-паука. Сыграйте за Питера Паркера и Майлза Моралеса в эпической истории с новыми врагами и способностями.",
-        "image": "https://i.postimg.cc/4NRqkwDR/1738265146-library-600x900-2x-1.jpg",
+        "image": "game-screenshot/bedabd6714_467cccb4b3_3-7596-8289.jpg",
         "size": "88.08 GB",
         "year": "2025",
         "updated": "29.09.2025",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Spider-Man",
@@ -395,9 +404,12 @@
         "trailer": "https://drive.google.com/file/d/1Og_0J7oBUu2_weBm9NBTOB_58fEiOEvv/preview",
         "buyGame": "https://ggsel.net/catalog/steam-102079",
         "screenshots": [
-            "https://i.postimg.cc/RCKpRKWM/1738265228-ss-0fda7c96ee3f16038559fffa8c2cd7b3ac433c2b.jpg",
-            "https://i.postimg.cc/Gp4qsy0L/1738265190-ss-7ef8bc176702470fdc73f62f8e537c3912e70444.jpg",
-            "https://i.postimg.cc/J4Rx5gwD/1738265154-ss-74e612eb0ae275bd6e7f69d407dda8b03d83629f.jpg"
+            "game-screenshot/c6c7055aec_1scr-285678.jpg",
+            "game-screenshot/4d601e6e08_2scr-570702.jpg",
+            "game-screenshot/83b36b4d37_3scr-201614.jpg",
+            "game-screenshot/37e98922f8_4scr-35674.jpg",
+            "game-screenshot/a31998993c_5scr-575946.jpg",
+            "game-screenshot/4a0b45a042_6scr-998038.jpg"
         ],
         "specs": {
             "Жанр": "Экшен, Приключение",
@@ -431,6 +443,7 @@
         "year": "2015",
         "updated": "03.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "Rockstar Games",
         "tags": [
             "gta",
@@ -479,6 +492,7 @@
         "year": "2015",
         "updated": "03.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "Rockstar Games",
         "tags": [
             "gta",
@@ -527,6 +541,7 @@
         "year": "2008",
         "updated": "04.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "Rockstar Games",
         "tags": [
             "gta",
@@ -575,6 +590,7 @@
         "year": "2004",
         "updated": "04.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "Rockstar Games",
         "tags": [
             "gta",
@@ -622,6 +638,7 @@
         "year": "2020",
         "updated": "04.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Teardown",
@@ -671,6 +688,7 @@
         "year": "2018",
         "updated": "04.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "The Crew 2",
@@ -720,6 +738,7 @@
         "year": "2024",
         "updated": "04.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Black Myth: Wukong",
@@ -780,6 +799,7 @@
         "year": "2025",
         "updated": "04.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Battlefield 6",
@@ -829,6 +849,7 @@
         "year": "2020",
         "updated": "05.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Satisfactory",
@@ -877,6 +898,7 @@
         "year": "2023",
         "updated": "05.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Sons of the Forest",
@@ -927,6 +949,7 @@
         "year": "2020",
         "updated": "05.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Cyberpunk 2077",
@@ -976,6 +999,7 @@
         "year": "2015",
         "updated": "05.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "BeamNG.drive",
@@ -1026,6 +1050,7 @@
         "year": "2024",
         "updated": "05.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Star Trucker",
@@ -1074,6 +1099,7 @@
         "year": "2017",
         "updated": "05.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Bridge Constructor Portal",
@@ -1124,6 +1150,7 @@
         "year": "2023",
         "updated": "05.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "Metro",
         "tags": [
             "Metro Exodus",
@@ -1174,6 +1201,7 @@
         "year": "2005",
         "updated": "05.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "Need For Speed",
         "tags": [
             "Need for Speed",
@@ -1220,6 +1248,7 @@
         "year": "2023",
         "updated": "06.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Atomic Heart",
@@ -1270,6 +1299,7 @@
         "year": "2024",
         "updated": "06.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Parcel Simulator",
@@ -1317,6 +1347,7 @@
         "year": "2024",
         "updated": "06.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Parcel Simulator",
@@ -1364,6 +1395,7 @@
         "year": "2026",
         "updated": "13.01.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Quarantine Zone: The Last Check",
@@ -1412,6 +1444,7 @@
         "year": "2018",
         "updated": "08.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "Rockstar Games",
         "tags": [
             "red dead",
@@ -1459,6 +1492,7 @@
         "year": "2021",
         "updated": "08.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "Forza Horizon",
         "tags": [
             "Forza Horizon 5",
@@ -1508,6 +1542,7 @@
         "year": "2018",
         "updated": "15.01.2024",
         "status": "available",
+        "mode": "offline",
         "category": "Forza Horizon",
         "tags": [
             "Forza Horizon 4",
@@ -1557,6 +1592,7 @@
         "year": "2016",
         "updated": "08.08.2026",
         "status": "available",
+        "mode": "offline",
         "category": "Forza Horizon",
         "tags": [
             "Forza Horizon 3",
@@ -1603,6 +1639,7 @@
         "year": "2017",
         "updated": "15.01.2024",
         "status": "available",
+        "mode": "offline",
         "category": "Forza Horizon",
         "tags": [
             "Forza Motorsport 7",
@@ -1658,6 +1695,7 @@
         "year": "2023",
         "updated": "15.01.2024",
         "status": "available",
+        "mode": "offline",
         "category": "Forza Horizon",
         "tags": [
             "Forza Motorsport",
@@ -1716,6 +1754,7 @@
         "year": "2020",
         "updated": "10.02.2024",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "SnowRunner",
@@ -1772,6 +1811,7 @@
         "year": "2023",
         "updated": "05.03.2024",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Underground Garage",
@@ -1828,6 +1868,7 @@
         "year": "2023",
         "updated": "15.04.2024",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "My Dream Setup",
@@ -1883,6 +1924,7 @@
         "year": "2014",
         "updated": "01.09.2023",
         "status": "available",
+        "mode": "offline",
         "category": "Metro",
         "tags": [
             "Metro 2033",
@@ -1938,6 +1980,7 @@
         "year": "2014",
         "updated": "01.09.2023",
         "status": "available",
+        "mode": "offline",
         "category": "Metro",
         "tags": [
             "Metro Last Light",
@@ -1993,6 +2036,7 @@
         "year": "2013",
         "updated": "15.05.2015",
         "status": "available",
+        "mode": "offline",
         "category": "Metro",
         "tags": [
             "Metro Last Light",
@@ -2048,6 +2092,7 @@
         "year": "2024",
         "updated": "10.05.2024",
         "status": "available",
+        "mode": "offline",
         "category": "Need For Speed",
         "tags": [
             "Nid Four Speed Bridge",
@@ -2100,6 +2145,7 @@
         "year": "2015",
         "updated": "15.03.2016",
         "status": "buy",
+        "mode": "offline",
         "category": "Need For Speed",
         "tags": [
             "Need for Speed",
@@ -2160,6 +2206,7 @@
         "year": "2017",
         "updated": "20.02.2018",
         "status": "available",
+        "mode": "offline",
         "category": "Need For Speed",
         "tags": [
             "Need for Speed Payback",
@@ -2214,6 +2261,7 @@
         "year": "2004",
         "updated": "10.11.2005",
         "status": "available",
+        "mode": "offline",
         "category": "Far Cry",
         "tags": [
             "Far Cry",
@@ -2268,6 +2316,7 @@
         "year": "2008",
         "updated": "15.12.2008",
         "status": "available",
+        "mode": "offline",
         "category": "Far Cry",
         "tags": [
             "Far Cry 2",
@@ -2325,6 +2374,7 @@
         "year": "2012",
         "updated": "04.12.2012",
         "status": "available",
+        "mode": "offline",
         "category": "Far Cry",
         "tags": [
             "Far Cry 3",
@@ -2382,6 +2432,7 @@
         "year": "2014",
         "updated": "17.11.2014",
         "status": "available",
+        "mode": "offline",
         "category": "Far Cry",
         "tags": [
             "Far Cry 4",
@@ -2436,6 +2487,7 @@
         "year": "2018",
         "updated": "27.03.2018",
         "status": "available",
+        "mode": "offline",
         "category": "Far Cry",
         "tags": [
             "Far Cry 5",
@@ -2493,6 +2545,7 @@
         "year": "2024",
         "updated": "15.01.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "cairn",
@@ -2549,6 +2602,7 @@
         "year": "2022",
         "updated": "08.11.2022",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "sonic",
@@ -2605,6 +2659,7 @@
         "year": "2024",
         "updated": "20.01.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "half sword",
@@ -2662,6 +2717,7 @@
         "year": "2023",
         "updated": "07.02.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "resident evil",
@@ -2722,6 +2778,7 @@
         "year": "2024",
         "updated": "07.02.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "carmageddon",
@@ -2780,6 +2837,7 @@
         "year": "2023",
         "updated": "15.02.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "the last of us",
@@ -2839,6 +2897,7 @@
         "year": "2025",
         "updated": "20.02.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "the last of us part 2",
@@ -2899,6 +2958,7 @@
         "year": "2026",
         "updated": "11.03.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "hitman",
@@ -2954,6 +3014,7 @@
         "year": "2026",
         "updated": "20.03.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "death stranding",
@@ -3020,6 +3081,7 @@
         "year": "2026",
         "updated": "11.04.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "death stranding",
@@ -3088,6 +3150,7 @@
         "year": "2026",
         "updated": "20.03.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "resident evil",
@@ -3144,6 +3207,7 @@
         "year": "2025",
         "updated": "15.04.2025",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "occultist",
@@ -3199,6 +3263,7 @@
         "year": "2026",
         "updated": "16.04.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Экшены",
@@ -3251,6 +3316,7 @@
         "year": "2025",
         "updated": "10.10.2025",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Казуальные игры",
@@ -3296,6 +3362,7 @@
         "year": "2026",
         "updated": "17.04.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "REPLACED",
@@ -3340,6 +3407,7 @@
         "year": "2026",
         "updated": "16.04.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "MOUSE: P.I. For Hire"
@@ -3382,6 +3450,7 @@
         "year": "2026",
         "updated": "16.04.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Cthulhu: The Cosmic Abyss"
@@ -3424,6 +3493,7 @@
         "year": "2026",
         "updated": "30.04.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Bus Bound"
@@ -3466,6 +3536,7 @@
         "year": "2026",
         "updated": "07.05.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "CarX Drift Racing Online 2",
@@ -3510,6 +3581,7 @@
         "year": "2026",
         "updated": "07.05.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Mixtape"
@@ -3552,6 +3624,7 @@
         "year": "2026",
         "updated": "12.05.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Экшены",
@@ -3595,6 +3668,7 @@
         "year": "2026",
         "updated": "14.05.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "subnautica 2"
@@ -3634,6 +3708,7 @@
         "year": "2026",
         "updated": "17.05.2026",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "Action",
@@ -3683,6 +3758,7 @@
         "year": "2025",
         "updated": "05.06.2025",
         "status": "available",
+        "mode": "offline",
         "category": "games",
         "tags": [
             "007 First Light"
@@ -3716,6 +3792,367 @@
         },
         "sku": "ART-0078"
     },
+    "Mortal Shell II - Devout Edition": {
+        "title": "Mortal Shell II - Devout Edition",
+        "description": "Mortal Shell II - Devout Edition — Их плоть — ваше оружие. Mortal Shell II — полноценное продолжение первой части. Это ролевой боевик с жестокими и напряженными сражениями. Вселяйтесь в тела выдающихся воинов, свергайте лжебогов и верните к жизни опустошенный мир.",
+        "image": "game-screenshot/62e2d6b700126b9cd0644ad2ca68800e.jpg",
+        "size": "65.9 -(66) GB",
+        "year": "2025",
+        "updated": "18.08.2026",
+        "status": "available",
+        "mode": "offline",
+        "category": "games",
+        "tags": [
+            "Mortal Shell II - Devout Edition",
+            "Mortal Shell II",
+            "Mortal Shell"
+        ],
+        "torrentFile": "torrent/Mortal.Shell.II-InsaneRamZes.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/bb5c1ed9d2a51f2dfdc2c46214cd23ec76ab2c730e5bcf20524c4e4a9443b7ac?nocache=1",
+        "trailer": "https://www.youtube.com/embed/MIEHUDi6DwU",
+        "buyGame": "https://ggsel.net/catalog/product/mortal-shell-ii-devout-edition-steam-avto-ru-mir-102547979",
+        "screenshots": [
+            "game-screenshot/efec99d991_1scr-724304.jpg",
+            "game-screenshot/81b1eaa31a_2scr-601329.jpg",
+            "game-screenshot/e772fa39d3_3scr-360323.jpg",
+            "game-screenshot/d9870bba5c_4scr-40828.jpg",
+            "game-screenshot/d751e7f9fc_5scr-914339.jpg",
+            "game-screenshot/424571577c_6scr-607362.jpg"
+        ],
+        "specs": {
+            "Жанр": "Action / Adventure",
+            "Разработчик": "Cold Symmetry",
+            "Издатель": "Playstack",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "Операционная система": "Windows 10 64-bit",
+                "Процессор": "Intel Core i5-10600 / AMD RYZEN 5 5500",
+                "Оперативная память": "16 GB ОЗУ",
+                "Видеокарта": "NVIDIA GeForce GTX 1060 3GB / AMD Radeon RX 580 4GB",
+                "DirectX": "12",
+                "Свободное место": "66"
+            }
+        },
+        "sku": "ART-0078"
+    },
+    "The Sinking City 2 - Premium Edition": {
+        "title": "The Sinking City 2 - Premium Edition",
+        "description": "The Sinking City 2 - Premium Edition - Действие The Sinking City 2 разворачивается в бурных 1920-х годах. Это survival horror, пропитанный леденящим душу ужасом в духе Лавкрафта. Бросьте вызов древнему потустороннему божеству и исследуйте затопленные улицы Аркхэма, где за вами охотятся мертвецы, пытаясь сделать выбор между жизнью одного человека и судьбой целого города.",
+        "image": "game-screenshot/941c16bbfbb68a4732114c9b6637ad94.jpg",
+        "size": "49 -(49.22) GB",
+        "year": "2025",
+        "updated": "18.08.2026",
+        "status": "available",
+        "mode": "offline",
+        "category": "games",
+        "tags": [
+            "The Sinking City 2 - Premium Edition",
+            "The Sinking City 2",
+            "The Sinking City",
+            "Sinking City"
+        ],
+        "torrentFile": "torrent/The.Sinking.City.2-InsaneRamZes.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/d276526681082ae1b823ee98652cf714513c6c1f31e55e3a03c67a6ec54d25b5?nocache=1",
+        "trailer": "https://www.youtube.com/embed/PHzSgbFzfDo",
+        "buyGame": "https://ggsel.net/catalog/product/the-sinking-city-2-premium-ua-kz-sng-tr-ar-steam-auto-102558573",
+        "screenshots": [
+            "game-screenshot/3d18e0bc3d_1scr-2825860.jpg",
+            "game-screenshot/c818a329aa_2scr-2825860.jpg",
+            "game-screenshot/dc809ba393_3scr-2825860.jpg",
+            "game-screenshot/960048e75f_4scr-2825860.jpg",
+            "game-screenshot/c0c97d253d_5scr-2825860.jpg",
+            "game-screenshot/e77639f1d4_6scr-2825860.jpg"
+        ],
+        "specs": {
+            "Жанр": "Action / Adventure",
+            "Разработчик": " Frogwares",
+            "Издатель": "",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "Операционная система": "Windows 10 64-bit",
+                "Процессор": "Intel Core i7-8700K / AMD Ryzen 5 3600X",
+                "Оперативная память": "16 GB ОЗУ",
+                "Видеокарта": "NVIDIA GeForce GTX 1070 / AMD RX 5700 8GB VRAM",
+                "DirectX": "12",
+                "Свободное место": "49.22"
+            }
+        },
+        "sku": "ART-0078"
+    },
+    "Assassin's Creed Black Flag Resynced": {
+        "title": "Assassin's Creed Black Flag Resynced",
+        "description": "Assassin's Creed Black Flag Resynced - Легендарная одиночная игра про пиратов возвращается! Станьте Эдвардом Кенуэем и бороздите Карибское море во времена Золотого века пиратства в этом верном оригиналу ремейке с невероятной графикой, улучшенным геймплеем и новым контентом.",
+        "image": "game-screenshot/a4618ab1dc8fe39ca18329c9c0d6aeb3.jpg",
+        "size": "69.91 -(67) GB",
+        "year": "2025",
+        "updated": "18.08.2026",
+        "status": "available",
+        "mode": "offline",
+        "category": "games",
+        "tags": [
+            "Assassin's Creed Black Flag Resynced",
+            "Assassin's Creed",
+            "Assassin's"
+        ],
+        "torrentFile": "torrent/Assassins.Creed.Black.Flag.Resynced.Deluxe.Edition-InsaneRamZes.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/ba7374f2a28d22442f2434aac17a2d09dcfd6bb75e74369582e50773ea67ec11?nocache=1",
+        "trailer": "https://www.youtube.com/embed/U9EmVkQ5v54",
+        "buyGame": "https://ggsel.net/catalog/product/assassin-s-creed-black-flag-resynced-vybor-izdaniia-steam-ru-avto-102243375",
+        "screenshots": [
+            "game-screenshot/ea65d2ef9c_1scr-962735.jpg",
+            "game-screenshot/f2f43e9ece_2scr-230657.jpg",
+            "game-screenshot/a191b1d6d1_3scr-336693.jpg",
+            "game-screenshot/46e5174bab_4scr-95610.jpg",
+            "game-screenshot/940e8c0282_5scr-429417.jpg"
+        ],
+        "specs": {
+            "Жанр": "Action / Adventure",
+            "Разработчик": "Ubisoft",
+            "Издатель": "Ubisoft",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "Операционная система": "Windows 10 64-bit",
+                "Процессор": "Intel Core i7-8700K / AMD Ryzen 5 3600",
+                "Оперативная память": "16 GB ОЗУ",
+                "Видеокарта": "NVIDIA GeForce GTX 1660 (6GB) / AMD Radeon RX5500XT (8GB) / Intel ARC A580 (8GB)",
+                "DirectX": "12",
+                "Свободное место": "67"
+            }
+        },
+        "sku": "ART-0078"
+    },
+    "Beast of Reincarnation - Deluxe Edition": {
+        "title": "Beast of Reincarnation - Deluxe Edition",
+        "description": "Beast of Reincarnation - Deluxe Edition - Новинка от Game Freak. Beast of Reincarnation — это ролевая игра в стиле экшен с элементами боев в реальном времени и пошаговых сражений. Это инновационный формат экшен-RPG для одного человека и пса, оказавшихся среди прекрасного, но жестокого мира. Что ждет Эмму и Ку в конце путешествия?",
+        "image": "game-screenshot/19ba821cb39d56b74aeb4c951bbd5146.jpg",
+        "size": "31.88 -(32) GB",
+        "year": "2025",
+        "updated": "18.08.2026",
+        "status": "available",
+        "mode": "offline",
+        "category": "games",
+        "tags": [
+            "Beast of Reincarnation - Deluxe Edition",
+            "Beast of Reincarnation",
+            "Beast Reincarnation"
+        ],
+        "torrentFile": "torrent/Beast.of.Reincarnation.Deluxe.Edition-InsaneRamZes.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/bbebec8d88c3caefc6ade77100d9ba3fbc432efce388e06525e775f895462964?nocache=1",
+        "trailer": "https://www.youtube.com/embed/YBAuVSnS0ls",
+        "buyGame": "https://ggsel.net/catalog/product/beast-of-reincarnation-vybor-izdaniia-rf-sng-102615224",
+        "screenshots": [
+            "game-screenshot/246db360ff_1scr-2001760.jpg",
+            "game-screenshot/70b3d2ec29_2scr-2001760.jpg",
+            "game-screenshot/e80b0a0728_3scr-2001760.jpg",
+            "game-screenshot/3ad718b38f_4scr-2001760.jpg",
+            "game-screenshot/94cad16e47_5scr-2001760.jpg",
+            "game-screenshot/6d0091c85b_6scr-2001760.jpg"
+        ],
+        "specs": {
+            "Жанр": "Action / Adventure",
+            "Разработчик": "GAME FREAK inc.",
+            "Издатель": "GAME FREAK inc.",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "Операционная система": "Windows 10 64-bit",
+                "Процессор": "Intel Core i5-8400 / AMD Ryzen 5 3600",
+                "Оперативная память": "16 GB ОЗУ",
+                "Видеокарта": "NVIDIA GeForce GTX 1670 (8GB) / AMD Radeon RX 580 (8GB)",
+                "DirectX": "12",
+                "Свободное место": "32"
+            }
+        },
+        "sku": "ART-0078"
+    },
+    "Avatar: Frontiers of Pandora - Complete Edition": {
+        "title": "Avatar: Frontiers of Pandora - Complete Edition",
+        "description": "Avatar: Frontiers of Pandora - Complete Edition - «Аватар: Рубежи Пандоры» — приключенческая игра с видом от первого или третьего лица. Сюжет разворачивается на просторах Западного рубежа. Вернитесь к своим забытым корням и узнайте, каково это — быть на'ви.",
+        "image": "game-screenshot/4958232f7fb7d90ecc891c9904da39e3.jpg",
+        "size": "136.94 -(135) GB",
+        "year": "2025",
+        "updated": "18.08.2026",
+        "status": "available",
+        "mode": "offline",
+        "category": "games",
+        "tags": [
+            "Avatar: Frontiers of Pandora - Complete Edition",
+            "Avatar: Frontiers of Pandora",
+            "Avatar"
+        ],
+        "torrentFile": "torrent/Avatar.Frontiers.of.Pandora.Complete.Edition-InsaneRamZes.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/84192d3bfa53cc70a709a2d9a579e40eae2d24057fa2ec290d7657b3fa4454c6?nocache=1",
+        "trailer": "https://www.youtube.com/embed/RDzw1EKnaIA",
+        "buyGame": "https://ggsel.net/catalog/product/avatar-frontiers-of-pandora-complete-edition-steam-102117667",
+        "screenshots": [
+            "game-screenshot/6dd0260c28_1scr-2840770.jpg",
+            "game-screenshot/e46a2b38fc_2scr-2840770.jpg",
+            "game-screenshot/069781db81_3scr-2840770.jpg",
+            "game-screenshot/561183812c_4scr-2840770.jpg",
+            "game-screenshot/0a4d1cac51_5scr-2840770.jpg",
+            "game-screenshot/9003b96689_6scr-2840770.jpg"
+        ],
+        "specs": {
+            "Жанр": "Action / Adventure",
+            "Разработчик": "Ubisoft",
+            "Издатель": "Ubisoft",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "Операционная система": "Windows 10 64-bit",
+                "Процессор": "AMD Ryzen 5 3600 / Intel Core i7-8700K",
+                "Оперативная память": "16 GB ОЗУ",
+                "Видеокарта": "AMD RX 5700 (8 GB) / Intel Arc A750 (8 GB, with ReBAR on) / NVIDIA GeForce GTX 1070 (8 GB)",
+                "DirectX": "12",
+                "Свободное место": "135"
+            }
+        },
+        "sku": "ART-0078"
+    },
+    "The First Berserker: Khazan - Deluxe Edition": {
+        "title": "The First Berserker: Khazan - Deluxe Edition",
+        "description": "The First Berserker: Khazan - Deluxe Edition - это беспощадный ролевой экшен, в котором вам предстоит стать Казаном, великим генералом империи Пелос, сумевшим преодолеть саму смерть. Отправьтесь на поиски тех, кто обрёк вас на погибель, и расквитайтесь с ними.",
+        "image": "game-screenshot/d669a340671229f2cc463da4268db898.jpg",
+        "size": "52.73 -(53) GB",
+        "year": "2025",
+        "updated": "18.08.2026",
+        "status": "available",
+        "mode": "offline",
+        "category": "games",
+        "tags": [
+            "The First Berserker: Khazan - Deluxe Edition",
+            "The First Berserker",
+            "First Berserker"
+        ],
+        "torrentFile": "torrent/The.First.Berserker.Khazan.Deluxe.Edition-InsaneRamZes.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/b3de8045e4bf648df1075e3a00ac473faa175afcc16774b9edbc54e542504e2c?nocache=1",
+        "trailer": "https://www.youtube.com/embed/-9uMGePq3zw",
+        "buyGame": "https://ggsel.net/catalog/the-first-berserker-khazan-keys-and-gifts-steam-deluxe-edition",
+        "screenshots": [
+            "game-screenshot/48efaa55bf_1scr-2680010.jpg",
+            "game-screenshot/dca39fa970_2scr-2680010.jpg",
+            "game-screenshot/bf2ec9fb97_3scr-2680010.jpg",
+            "game-screenshot/b7b3a9b324_4scr-2680010.jpg",
+            "game-screenshot/9d80318fe1_5scr-2680010.jpg",
+            "game-screenshot/d343e4e105_6scr-2680010.jpg"
+        ],
+        "specs": {
+            "Жанр": "Action / Adventure",
+            "Разработчик": "Neople",
+            "Издатель": "NEXON",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "Операционная система": "Windows 10 64-bit",
+                "Процессор": "Intel Core i3-6300 / AMD Ryzen 3 1200",
+                "Оперативная память": "12 GB ОЗУ",
+                "Видеокарта": "GeForce GTX 970 / Radeon RX 580 or Arc A580",
+                "DirectX": "12",
+                "Свободное место": "135"
+            }
+        },
+        "sku": "ART-0078"
+    },
+    "Halo: Campaign Evolved - Premium Edition": {
+        "title": "Halo: Campaign Evolved - Premium Edition",
+        "description": "Halo: Campaign Evolved - Premium Edition - это достоверный модернизированный ремейк кампании Halo: Combat Evolved. Откройте для себя оригинальную историю, воссозданную с визуальными эффектами высокой четкости, обновленными кинематографическими эффектами и улучшенным управлением, а также совершенно новое приключение из трех миссий с участием Мастера Чифа и сержанта Джонсона.",
+        "image": "game-screenshot/3bef3e16a989934d1a1ba2c9bc52af7d.jpg",
+        "size": "74.07 -(74) GB",
+        "year": "2025",
+        "updated": "18.08.2026",
+        "status": "available",
+        "mode": "offline",
+        "category": "games",
+        "tags": [
+            "Halo: Campaign Evolved - Premium Edition",
+            "Halo: Campaign Evolved",
+            "Halo: Campaign",
+            "Halo"
+        ],
+        "torrentFile": "torrent/Halo.Campaign.Evolved.Premium.Edition-InsaneRamZes.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/2e27e59224a0a2af1f3e84c60c7a1115c37bd10cd2f00f142875aa02d4309661?nocache=1",
+        "trailer": "https://www.youtube.com/embed/5KhzCSeZxAU",
+        "buyGame": "https://ggsel.net/catalog/product/halo-campaign-evolved-standard-edition-steam-avto-ru-mir-102366480",
+        "screenshots": [
+            "game-screenshot/577cd656f6_1scr-969351.jpg",
+            "game-screenshot/c48c7cbc86_2scr-663507.jpg",
+            "game-screenshot/10f41ca7bb_3scr-395461.jpg",
+            "game-screenshot/232fecbfa6_4scr-256546.jpg",
+            "game-screenshot/ac47090fea_5scr-298004.jpg",
+            "game-screenshot/9019e81902_6scr-833656.jpg"
+        ],
+        "specs": {
+            "Жанр": "Action / Adventure",
+            "Разработчик": "Halo Studios",
+            "Издатель": "Xbox Game Studios",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "Операционная система": "Windows 10 64-bit",
+                "Процессор": "Intel Core i5 3600 / Intel Core i7-10700K",
+                "Оперативная память": "16 GB ОЗУ",
+                "Видеокарта": "AMD Radeon RX 6600 / Intel Arc A580 / Nvidia Ge-Force RTX 2060 Super",
+                "DirectX": "12",
+                "Свободное место": "74"
+            }
+        },
+        "sku": "ART-0078"
+    },
+    "Gothic 1 Remake": {
+        "title": "Gothic 1 Remake",
+        "description": "Gothic 1 Remake - Возвращение легенды! Исследуйте долину Рудников в потрясающем ремейке культовой ролевой игры. Путешествуйте по мрачному рукотворному открытому миру, который динамически реагирует на ваши действия. Ваши возможности безграничны!",
+        "image": "game-screenshot/96140b4cd423f728c854fe1b24f90061.jpg",
+        "size": "35.70 GB",
+        "year": "2025",
+        "updated": "18.08.2026",
+        "status": "available",
+        "mode": "offline",
+        "category": "games",
+        "tags": [
+            "Gothic 1 Remake",
+            "Gothic 1",
+            "Gothic"
+        ],
+        "torrentFile": "torrent/Gothic 1 Remake.torrent",
+        "virus_check": "https://www.virustotal.com/gui/file/15911ce1f64f91f880d221814d554da60747d0dd2a465b9178a15ec6caba0924?nocache=1",
+        "trailer": "https://www.youtube.com/embed/lB1p3RHqIiY",
+        "buyGame": "https://ggsel.net/catalog/product/gothic-1-remake-podarok-steam-kliuc-rossiia-sng-102356569",
+        "screenshots": [
+            "game-screenshot/b8e16b7f2a_01scr-1297900.jpg",
+            "game-screenshot/fbbe8707fe_02scr-1297900.jpg",
+            "game-screenshot/48f409328c_03scr-1297900.jpg",
+            "game-screenshot/d821a288c2_04scr-1297900.jpg",
+            "game-screenshot/607901a206_05scr-1297900.jpg",
+            "game-screenshot/6de8af3ea8_06scr-1297900.jpg"
+        ],
+        "specs": {
+            "Жанр": "Action / Adventure",
+            "Разработчик": "Halo Studios",
+            "Издатель": "Xbox Game Studios",
+            "Платформа": "PC"
+        },
+        "systemRequirements": {
+            "minimum": {
+                "Операционная система": "Windows 10 64-bit",
+                "Процессор": "Intel Core i7-7700K / AMD Ryzen 5 1600X",
+                "Оперативная память": "16 GB ОЗУ",
+                "Видеокарта": "AMD RX 6700 XT 8 GB VRAM / NVIDIA GeForce RTX 2070",
+                "DirectX": "12",
+                "Свободное место": "36"
+            }
+        },
+        "sku": "ART-0078"
+    },
     "photoshop-2022": {
         "title": "Adobe Photoshop 2022",
         "description": "Современный профессиональный графический редактор с искусственным интеллектом. Новые нейросетевые функции, улучшенная производительность и расширенные возможности для творчества.",
@@ -3724,6 +4161,7 @@
         "year": "2024",
         "updated": "",
         "status": "available",
+        "mode": "offline",
         "category": "programs",
         "torrentFile": "https://cloud.mail.ru/public/PMVt/eihVapysA",
         "screenshots": [
@@ -3761,6 +4199,7 @@
         "year": "2024",
         "updated": "2025",
         "status": "available",
+        "mode": "offline",
         "category": "programs",
         "torrentFile": "https://cloud.mail.ru/public/z8nS/73J6oPzet",
         "screenshots": [
@@ -3798,6 +4237,7 @@
         "year": "2023",
         "updated": "2024",
         "status": "available",
+        "mode": "offline",
         "category": "programs",
         "torrentFile": "https://cloud.mail.ru/public/siJJ/FjN13uJbN",
         "screenshots": [
@@ -3835,6 +4275,7 @@
         "year": "2022",
         "updated": "2023",
         "status": "available",
+        "mode": "offline",
         "category": "programs",
         "torrentFile": "https://cloud.mail.ru/public/qqUu/rS4o7KgYS",
         "screenshots": [
@@ -3872,6 +4313,7 @@
         "year": "2021",
         "updated": "2022",
         "status": "available",
+        "mode": "offline",
         "category": "programs",
         "torrentFile": "https://cloud.mail.ru/public/qKRc/vJTvRqJpT",
         "screenshots": [
@@ -3909,6 +4351,7 @@
         "year": "2019",
         "updated": "2020",
         "status": "available",
+        "mode": "offline",
         "category": "programs",
         "torrentFile": "https://cloud.mail.ru/public/sXQ5/583FAfibz",
         "screenshots": [
@@ -3946,6 +4389,7 @@
         "year": "2017",
         "updated": "2018",
         "status": "available",
+        "mode": "offline",
         "category": "programs",
         "torrentFile": "https://cloud.mail.ru/public/SPjk/1c8Zgkx6e",
         "screenshots": [
@@ -3983,6 +4427,7 @@
         "year": "2023",
         "updated": "",
         "status": "available",
+        "mode": "offline",
         "category": "programs",
         "torrentFile": "https://www.rarlab.com/download.htm",
         "screenshots": [
@@ -4020,6 +4465,7 @@
         "year": "2026",
         "updated": "17.03.2026",
         "status": "available",
+        "mode": "offline",
         "category": "utilities",
         "torrentFile": "torrent/zapret-discord-youtube-1.9.7b.rar",
         "screenshots": [
@@ -4045,6 +4491,7 @@
         "year": "2026",
         "updated": "09.04.2026",
         "status": "available",
+        "mode": "offline",
         "category": "utilities",
         "torrentFile": "torrent/TgWsProxy_windows.exe",
         "screenshots": [
@@ -4070,6 +4517,7 @@
         "year": "2023",
         "updated": "09.01.2026",
         "status": "available",
+        "mode": "offline",
         "category": "utilities",
         "torrentFile": "https://github.com/amnezia-vpn/amnezia-client/releases/download/4.8.10.0/AmneziaVPN_4.8.10.0_windows_x64.exe",
         "screenshots": [
@@ -4095,6 +4543,7 @@
         "year": "2019",
         "updated": "05.01.2019",
         "status": "available",
+        "mode": "offline",
         "category": "antivirus",
         "torrentFile": "torrent/HitmanPro.exe",
         "virus_check": "https://www.virustotal.com/gui/file/747e5ac38581a5ee8d1dd970a18b3df0fd87c22924d35a80d85e73b8639ea13a",
@@ -4128,6 +4577,7 @@
         "year": "2019",
         "updated": "30.05.2019",
         "status": "available",
+        "mode": "offline",
         "category": "antivirus",
         "torrentFile": "torrent/r8vfox24.exe.torrent",
         "virus_check": "https://www.virustotal.com/gui/file/903a0dae0a2fa14a47c495cf67b17a829d99ddbd7449639bb5a0939768f58472",

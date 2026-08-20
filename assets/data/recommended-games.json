@@ -1,50 +1,82 @@
 [
     {
-        "id": "Cthulhu: The Cosmic Abyss",
-        "title": "Cthulhu: The Cosmic Abyss",
-        "description": "Мрачный триллер от первого лица, где разум и безумие сталкиваются в безднах океана.",
-        "image": "https://i.postimg.cc/Vkw8YGSj/1745510259-library-600x900.jpg",
+        "id": "Gothic 1 Remake",
+        "title": "Gothic 1 Remake",
+        "description": "Возвращение легенды! Исследуйте долину Рудников в потрясающем ремейке культовой ролевой игры.",
+        "image": "game-screenshot/96140b4cd423f728c854fe1b24f90061.jpg",
         "buttonText": "Смотреть",
-        "sku": "ART-0001-2026-06-14"
+        "sku": "ART-000хз"
     },
     {
-        "id": "Bus Bound",
-        "title": "Bus Bound",
-        "description": "Симулятор водителя автобуса в оживлённом Эмбервилле.",
-        "image": "https://i.postimg.cc/4dysq0mc/1750877905-library-600x900-2x.jpg",
+        "id": "Halo: Campaign Evolved - Premium Edition",
+        "title": "Halo: Campaign Evolved - Premium Edition",
+        "description": "Откройте для себя оригинальную историю, воссозданную с визуальными эффектами высокой четкости, обновленными кинематографическими эффектами и улучшенным управлени",
+        "image": "game-screenshot/3bef3e16a989934d1a1ba2c9bc52af7d.jpg",
         "buttonText": "Смотреть",
-        "sku": "ART-0002-2026-06-14"
+        "sku": "ART-000хз"
     },
     {
-        "id": "WILL: Follow The Light",
-        "title": "WILL: Follow The Light",
-        "description": "Путешествие по северным широтам в реалистичной игре от первого лица.",
-        "image": "https://i.postimg.cc/cJYnP5Z5/1778169412-library-capsule-2x.jpg",
+        "id": "The First Berserker: Khazan - Deluxe Edition",
+        "title": "The First Berserker: Khazan - Deluxe Edition",
+        "description": "это беспощадный ролевой экшен, в котором вам предстоит стать Казаном, великим генералом империи Пелос, сумевшим преодолеть саму смерть.",
+        "image": "game-screenshot/d669a340671229f2cc463da4268db898.jpg",
         "buttonText": "Смотреть",
-        "sku": "ART-0003-2026-06-14"
+        "sku": "ART-000хз"
     },
     {
-        "id": "Subnautica 2",
-        "title": "Subnautica 2",
-        "description": "Новые приключения в открытом море от создателей первой части.",
-        "image": "https://i.postimg.cc/2jcyZpHb/1729328766-library-600x900-2x.jpg",
+        "id": "Avatar: Frontiers of Pandora - Complete Edition",
+        "title": "Avatar: Frontiers of Pandora - Complete Edition",
+        "description": "«Аватар: Рубежи Пандоры» — приключенческая игра с видом от первого или третьего лица. Сюжет разворачивается на просторах Западного рубежа.",
+        "image": "game-screenshot/4958232f7fb7d90ecc891c9904da39e3.jpg",
         "buttonText": "Смотреть",
-        "sku": "ART-0004-2026-06-14"
+        "sku": "ART-000хз"
     },
     {
-        "id": "forza-horizon-6",
-        "title": "Forza Horizon 6",
-        "description": "Новое воплощение любимой серии, переносящее гонщиков в Японию.",
-        "image": "https://i.postimg.cc/8CFQvGvZ/1769112682-library-capsule-2x.jpg",
+        "id": "Beast of Reincarnation - Deluxe Edition",
+        "title": "Beast of Reincarnation - Deluxe Edition",
+        "description": "Это инновационный формат экшен-RPG для одного человека и пса, оказавшихся среди прекрасного, но жестокого мира.",
+        "image": "game-screenshot/19ba821cb39d56b74aeb4c951bbd5146.jpg",
         "buttonText": "Смотреть",
-        "sku": "ART-0005-2026-06-14"
+        "sku": "ART-000хз"
+    },
+    {
+        "id": "Assassin's Creed Black Flag Resynced",
+        "title": "Assassin's Creed Black Flag Resynced",
+        "description": "Станьте Эдвардом Кенуэем и бороздите Карибское море во времена Золотого века пиратства в этом верном оригиналу ремейке с невероятной графикой, улучшенным геймплеем и новым контентом.",
+        "image": "game-screenshot/a4618ab1dc8fe39ca18329c9c0d6aeb3.jpg",
+        "buttonText": "Смотреть",
+        "sku": "ART-000хз"
+    },
+    {
+        "id": "The Sinking City 2 - Premium Edition",
+        "title": "The Sinking City 2 - Premium Edition",
+        "description": "Бросьте вызов древнему потустороннему божеству и исследуйте затопленные улицы Аркхэма, где за вами охотятся мертвецы, пытаясь сделать выбор между жизнью одного человека и судьбой целого города.",
+        "image": "game-screenshot/941c16bbfbb68a4732114c9b6637ad94.jpg",
+        "buttonText": "Смотреть",
+        "sku": "ART-000хз"
+    },
+    {
+        "id": "Mortal Shell II - Devout Edition",
+        "title": "Mortal Shell II - Devout Edition",
+        "description": "Это ролевой боевик с жестокими и напряженными сражениями. Вселяйтесь в тела выдающихся воинов, свергайте лжебогов и верните к жизни опустошенный мир.",
+        "image": "game-screenshot/62e2d6b700126b9cd0644ad2ca68800e.jpg",
+        "buttonText": "Смотреть",
+        "sku": "ART-000хз"
+    },
+    {
+        "id": "007 First Light",
+        "title": "007 First Light",
+        "description": "Джеймса Бонда, где стиль прохождения, моральные дилеммы и взаимодействие с напарником определяют, каким агентом он станет. Это не миф — это его реальный старт, и он полон ошибок, сомнений и риска.",
+        "image": "game-screenshot/f5a1b20c37_007-first-light-31231.jpg",
+        "buttonText": "Смотреть",
+        "sku": "ART-000хз"
     },
     {
         "id": "PRAGMATA",
         "title": "PRAGMATA",
         "description": "Научно-фантастическая action-игра от создателей Resident Evil.",
-        "image": "https://i.postimg.cc/1X4x72TR/1749104374-library-600x900-2x-(1).jpg",
+        "image": "game-screenshot/d52baf4b54_pragmata-9867124.jpg",
         "buttonText": "Смотреть",
-        "sku": "ART-0006-2026-06-14"
+        "sku": "ART-000хз"
     }
 ]
