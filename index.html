@@ -33,6 +33,8 @@
             --warning-bg: linear-gradient(to bottom, rgba(34, 197, 94, 0.1), rgba(234, 179, 8, 0.1));
             --warning-border: rgba(34, 197, 94, 0.6);
             --warning-text: #fbbf24;
+            --neon: #f7931a;
+            --online-color: #f7931a;
         }
 
         :root[data-theme="light"] {
@@ -193,6 +195,26 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
+        /* Анимированные рамки: плавная смена оттенка */
+        @keyframes frameHue {
+            from { filter: hue-rotate(0deg) saturate(1.15); }
+            to   { filter: hue-rotate(360deg) saturate(1.15); }
+        }
+
+        /* Анимированные рамки: пульсация сияния */
+        @keyframes frameGlowPulse {
+            from { filter: brightness(1) saturate(1); }
+            to   { filter: brightness(1.4) saturate(1.3); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #profileFrameWrapper,
+            .profile-frame-ring-bg,
+            .frame-option {
+                animation: none !important;
+            }
+        }
         
         /* Стили для выбора рамок профиля */
         .frame-selector {
@@ -200,13 +222,14 @@
             grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
             gap: 10px;
             padding: 15px;
-            max-height: 200px;
+            max-height: 340px;
             overflow-y: auto;
         }
         
         .frame-option {
             width: 70px;
-            height: 70px;
+            min-height: 96px;
+            padding: 10px 4px;
             border-radius: 10px;
             cursor: pointer;
             display: flex;
@@ -216,6 +239,11 @@
             transition: all 0.3s ease;
             background: var(--card-bg);
             border: 2px solid var(--border);
+        }
+        
+        /* Кружок-превью внутри плитки никогда не сжимается — остаётся идеальным кругом */
+        .frame-option > div {
+            flex-shrink: 0;
         }
         
         .frame-option:hover {
@@ -309,6 +337,12 @@
             color: white;
         }
         
+        .logout-btn {
+            background: #dc2626;
+            border: 1px solid #dc2626;
+            color: white;
+        }
+        
         .logout-btn:hover {
             background: #b91c1c;
             border-color: #b91c1c;
@@ -323,6 +357,110 @@
         .profile-btn:hover {
             background: var(--primary-dark);
             border-color: var(--primary-dark);
+        }
+        
+        /* Меню пользователя — аватар сверху справа с выпадающим меню */
+        .user-menu {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .avatar-btn {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            display: block;
+        }
+
+        .avatar-circle {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--primary);
+            background: var(--primary);
+            color: white;
+            font-size: 1.35rem;
+            position: relative;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .avatar-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-btn:hover .avatar-circle {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Выпадающее меню при наведении */
+        .user-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 50%;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+            min-width: 0;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transform: translate(-50%, -8px);
+            transition: all 0.2s ease;
+            z-index: 3000;
+            padding: 4px;
+        }
+
+        /* Стрелка-носик, соединяющая кнопку с аватаром */
+        .user-dropdown::before {
+            content: '';
+            position: absolute;
+            top: -9px;
+            left: 50%;
+            width: 18px;
+            height: 18px;
+            background: #1e293b;
+            border-left: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            transform: translateX(-50%) rotate(45deg);
+            z-index: -1;
+        }
+
+        .user-menu:hover .user-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            padding: 8px 16px;
+            background: none;
+            border: none;
+            border-radius: 8px;
+            color: #f87171;
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-align: left;
+            white-space: nowrap;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(220, 38, 38, 0.15);
+            color: #ef4444;
         }
         
         /* Clean theme button */
@@ -381,6 +519,8 @@
             color: var(--text);
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .online-counter:hover {
@@ -398,6 +538,15 @@
         .online-count {
             color: var(--neon);
             font-weight: 700;
+        }
+
+        /* Состояния реального счётчика: подключение / нет связи */
+        .online-counter.is-connecting {
+            opacity: 0.5;
+        }
+
+        .online-counter.is-error {
+            opacity: 0.35;
         }
 
         @media (max-width: 767px) {
@@ -444,23 +593,33 @@
             gap: 25px;
         }
 
+        /* Пункт меню не сжимается и не переносится — ломается только переносом строки контейнера */
+        .nav-links li {
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+
+        /* Ссылки-пилюли: рамка + фон. Не сдвигаются и не переносятся на 2 строки */
         .nav-links a {
             color: var(--text);
             text-decoration: none;
             font-weight: 500;
-            padding: 8px 16px;
-            position: relative;
-            transition: all 0.2s ease;
-            font-size: 0.9rem;
-            border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.05);
+            font-size: 0.94rem;
+            padding: 11px 19px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+            text-align: center;
+            white-space: nowrap;   /* текст ссылки никогда не переносится на 2 строки */
+            flex-shrink: 0;        /* ссылка не сжимается и не ломается */
         }
 
         .nav-links a:hover {
             color: var(--primary);
-            background: rgba(37, 99, 235, 0.15);
-            border-color: rgba(37, 99, 235, 0.5);
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         /* Мобильное меню */
@@ -2756,7 +2915,8 @@ position: absolute;
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.75) 100%);
         }
 
-        .search-box-modern i {
+        /* Позиционируем только лупу (прямой потомок), чтобы правило не задевало иконку крестика внутри кнопки очистки */
+        .search-box-modern > i {
             position: absolute;
             left: 20px;
             top: 50%;
@@ -2792,6 +2952,13 @@ position: absolute;
             background: rgba(239, 68, 68, 0.9);
             color: white;
             transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Иконка крестика центрируется флексом самой кнопки,
+           а не абсолютным позиционированием от строки поиска */
+        .clear-search i {
+            position: static;
+            transform: none;
         }
 
         .filters-panel {
@@ -5273,9 +5440,23 @@ position: absolute;
             border-radius: 16px;
         }
 
+        .user-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        /* Свечение появляется ТОЛЬКО при наведении на карточку */
+        .user-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
         .user-card.developer {
             border: 2px solid #10b981;
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .user-card.developer:hover {
+            border-color: #10b981;
+            box-shadow: 0 0 28px rgba(16, 185, 129, 0.55), 0 0 55px rgba(16, 185, 129, 0.25), 0 10px 30px rgba(0, 0, 0, 0.3) !important;
         }
 
         .comment-author.developer {
@@ -5307,11 +5488,7 @@ position: absolute;
             box-shadow: 0 0 15px #10b981;
         }
 
-        /* Свечение для карточек разработчиков при наведении */
-        .user-card.developer:hover {
-            border-color: #10b981 !important;
-            box-shadow: 0 0 25px rgba(16, 185, 129, 0.4) !important;
-        }
+        /* Зелёное свечение карточек разработчиков при наведении (усилено базовым ховером выше) */
 
         .dev-checkmark:hover::after {
             content: attr(data-tooltip);
@@ -6323,8 +6500,9 @@ position: absolute;
             position: fixed;
             bottom: 95px;
             right: 20px;
-            width: 380px;
-            height: 520px;
+            width: 396px;
+            height: 532px;
+            max-height: calc(100vh - 96px);
             background:
                 linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 50%, rgba(51, 65, 85, 0.85) 100%),
                 radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
@@ -6333,10 +6511,12 @@ position: absolute;
                 radial-gradient(circle at 60% 20%, rgba(245, 158, 11, 0.06) 0%, transparent 50%);
             backdrop-filter: blur(25px) saturate(180%);
             -webkit-backdrop-filter: blur(25px) saturate(180%);
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 34px;
+            border: 1px solid rgba(203, 213, 225, 0.32);
             box-shadow:
                 0 25px 80px rgba(0, 0, 0, 0.4),
+                0 0 0 2px rgba(99, 102, 241, 0.45),
+                0 0 30px rgba(99, 102, 241, 0.25),
                 0 12px 40px rgba(99, 102, 241, 0.2),
                 0 6px 20px rgba(168, 85, 247, 0.15),
                 0 3px 10px rgba(6, 182, 212, 0.1),
@@ -6349,7 +6529,6 @@ position: absolute;
             animation: slideUpElegant 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             overflow: hidden;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            transform-style: preserve-3d;
         }
 
         .mini-chat::before {
@@ -6364,7 +6543,7 @@ position: absolute;
                 radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.02) 0%, transparent 40%),
                 radial-gradient(circle at 60% 10%, rgba(6, 182, 212, 0.02) 0%, transparent 40%);
             pointer-events: none;
-            border-radius: 28px;
+            border-radius: 34px;
         }
 
         .mini-chat.active {
@@ -6425,10 +6604,10 @@ position: absolute;
             justify-content: space-between;
             align-items: center;
             gap: 4px;
-            padding: 16px 22px 16px 16px;
+            padding: 16px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.12) 50%, rgba(6, 182, 212, 0.08) 100%);
-            border-radius: 20px 20px 0 0;
+            border-radius: 34px 34px 0 0;
             backdrop-filter: blur(20px);
             position: relative;
             overflow: hidden;
@@ -6451,17 +6630,25 @@ position: absolute;
             100% { left: -100%; }
         }
 
+        /* Неоновая линия-разделитель под шапкой */
+        .mini-chat-header::after {
+            content: '';
+            position: absolute;
+            left: 16px;
+            right: 16px;
+            bottom: 0;
+            height: 2px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.9), rgba(168, 85, 247, 0.9), rgba(6, 182, 212, 0.8), transparent);
+            filter: drop-shadow(0 0 6px rgba(99, 102, 241, 0.6));
+        }
+
         .header-text {
             display: flex;
             flex-direction: column;
             gap: 4px;
             align-items: flex-start;
             margin-right: auto; /* прижимаем текст к аватарке, а не к центру шапки */
-        }
-
-        .header-buttons {
-            display: flex;
-            gap: 8px;
         }
 
         .header-buttons {
@@ -6489,14 +6676,6 @@ position: absolute;
             transform: scale(1.1);
         }
 
-        .header-text {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            align-items: flex-start;
-            margin-right: auto; /* прижимаем текст к аватарке, а не к центру шапки */
-        }
-
         .mini-chat-header span {
             color: var(--text);
             font-family: 'Orbitron', sans-serif;
@@ -6511,19 +6690,43 @@ position: absolute;
         }
 
         .online-status {
-            font-size: 0.7rem;
-            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.68rem;
+            font-weight: 700;
             font-family: 'Exo 2', sans-serif;
+            letter-spacing: 0.4px;
+            padding: 3px 10px 3px 8px;
+            border-radius: 999px;
+            background: rgba(74, 222, 128, 0.12);
+            border: 1px solid rgba(74, 222, 128, 0.3);
             color: #4ade80 !important;
             -webkit-text-fill-color: #4ade80 !important;
-            letter-spacing: 0.4px;
             opacity: 1;
             transition: all 0.3s ease;
+        }
+
+        .online-status::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.9);
+            animation: onlineDotPulse 2s infinite ease-in-out;
         }
 
         .online-status.offline {
             color: #ff4444 !important;
             -webkit-text-fill-color: #ff4444 !important;
+            background: rgba(239, 68, 68, 0.12);
+            border-color: rgba(239, 68, 68, 0.35);
+        }
+
+        .online-status.offline::before {
+            background: #ef4444;
+            box-shadow: 0 0 8px rgba(239, 68, 68, 0.9);
         }
 
         @keyframes onlineGlow {
@@ -6565,6 +6768,7 @@ position: absolute;
         .mini-chat-messages {
             flex: 1;
             overflow-y: auto;
+            overscroll-behavior: contain;
             padding: 18px;
             display: flex;
             flex-direction: column;
@@ -6615,7 +6819,7 @@ position: absolute;
         }
 
         .mini-chat-messages::-webkit-scrollbar {
-            width: 4px;
+            width: 5px;
         }
 
         .mini-chat-messages::-webkit-scrollbar-track {
@@ -6623,8 +6827,8 @@ position: absolute;
         }
 
         .mini-chat-messages::-webkit-scrollbar-thumb {
-            background: rgba(102, 126, 234, 0.3);
-            border-radius: 2px;
+            background: linear-gradient(180deg, rgba(99, 102, 241, 0.85), rgba(168, 85, 247, 0.85));
+            border-radius: 3px;
         }
 
         /* Аватар поддержки в шапке чата */
@@ -6638,7 +6842,7 @@ position: absolute;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 17px;
+            font-size: 15px;
             flex-shrink: 0;
             box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
         }
@@ -6708,7 +6912,8 @@ position: absolute;
         }
 
         .user-message {
-            align-self: flex-start;
+            flex-direction: row-reverse; /* аватар справа, пузырь слева от него */
+            align-self: flex-end;        /* сообщения пользователя прижаты к правому краю */
         }
 
         .message-avatar {
@@ -6782,6 +6987,16 @@ position: absolute;
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
+        /* Акцентная кромка у сообщений поддержки */
+        .bot-message .message-content {
+            border-left: 2px solid rgba(129, 140, 248, 0.55);
+        }
+
+        /* Срезанный уголок у пузыря пользователя (со стороны аватара) */
+        .user-message .message-content {
+            border-radius: 20px 8px 20px 20px;
+        }
+
         .message-content p {
             margin: 0 0 10px 0;
             font-size: 0.9rem;
@@ -6795,13 +7010,13 @@ position: absolute;
         }
 
         .option-btn {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.8) 0%, rgba(168, 85, 247, 0.8) 100%);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 12px 16px;
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.16) 0%, rgba(168, 85, 247, 0.13) 100%);
+            color: var(--text, #fff);
+            border: 1px solid rgba(129, 140, 248, 0.38);
+            padding: 11px 16px;
+            border-radius: 14px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: left;
@@ -6827,6 +7042,9 @@ position: absolute;
 
         .option-btn:hover {
             transform: translateY(-2px) scale(1.02);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.85) 0%, rgba(168, 85, 247, 0.85) 100%);
+            border-color: rgba(255, 255, 255, 0.45);
+            color: white;
             box-shadow:
                 0 8px 25px rgba(99, 102, 241, 0.4),
                 0 4px 15px rgba(168, 85, 247, 0.3);
@@ -6841,7 +7059,7 @@ position: absolute;
         }
 
         .mini-chat-status {
-            padding: 8px 22px;
+            padding: 8px 16px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(255, 255, 255, 0.02);
             text-align: center;
@@ -6896,7 +7114,7 @@ position: absolute;
         .mini-chat-options {
             display: flex;
             gap: 10px;
-            padding: 18px 22px;
+            padding: 18px 16px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -6904,7 +7122,7 @@ position: absolute;
         .mini-chat-input {
             display: flex;
             gap: 12px;
-            padding: 20px 24px;
+            padding: 20px 16px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -6938,6 +7156,8 @@ position: absolute;
 
         /* Кнопка отправки */
         #sendMessageBtn {
+            position: relative;
+            overflow: hidden;
             width: 44px;
             height: 44px;
             flex-shrink: 0;
@@ -6962,6 +7182,25 @@ position: absolute;
 
         #sendMessageBtn:active {
             transform: scale(0.92);
+        }
+
+        /* Бегущий световой блик на кнопке отправки */
+        #sendMessageBtn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -80%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+            transform: skewX(-18deg);
+            animation: sendShine 2.8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes sendShine {
+            0% { left: -80%; }
+            55%, 100% { left: 130%; }
         }
 
         #closeChatBtn {
@@ -7072,9 +7311,16 @@ position: absolute;
             transform: scale(0.95) translateY(0);
         }
 
+        /* Равномерное скругление нижних секций — какой блок ни окажется внизу */
+        .mini-chat-options,
+        .mini-chat-input,
+        .mini-chat-settings-panel {
+            border-radius: 0 0 34px 34px;
+        }
+
         /* Настройки чата */
         .mini-chat-settings-panel {
-            padding: 18px 22px;
+            padding: 18px 16px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
             max-height: 200px;
@@ -8148,6 +8394,15 @@ position: absolute;
 }
     </style>
     <style>
+        /* На странице личного кабинета прокрутка заблокирована */
+        .page.no-scroll {
+            overflow: hidden !important;
+        }
+
+        body.no-scroll {
+            overflow: hidden !important;
+        }
+
         #supportBtn {
             position: relative !important;
             z-index: 2 !important;
@@ -8169,32 +8424,399 @@ position: absolute;
             }
         }
         
-        /* Beautiful Profile Styles */
+        /* ============ Крутой дизайн профиля ============ */
         .user-profile-view {
-            background: var(--card-bg);
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            padding: 40px;
+            background: rgba(15, 23, 42, 0.96);
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 52px 40px 44px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6);
+            isolation: isolate;
         }
-        
-        .user-profile-view::before {
+
+        /* Рамка «на всю панель» — градиентный фон под содержимым карточки */
+        .profile-frame-bg {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ============ Живые анимированные фоны профиля ============ */
+        #user-page {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Контент всегда над фоновым слоем */
+        #user-page > *:not(.profile-dynamic-bg) {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-dynamic-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* ---------- КОСМОС: туманности + два слоя мерцающих звёзд ---------- */
+        .profile-bg-space {
+            background:
+                radial-gradient(ellipse at 20% 15%, rgba(88, 51, 155, 0.35), transparent 55%),
+                radial-gradient(ellipse at 80% 80%, rgba(21, 94, 139, 0.30), transparent 60%),
+                linear-gradient(160deg, #050510 0%, #0d1033 45%, #151b4a 75%, #050510 100%);
+            animation: spaceNebula 14s ease-in-out infinite alternate;
+        }
+
+        .profile-bg-space::before,
+        .profile-bg-space::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 80px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+            inset: -600px;
         }
-        
+
+        .profile-bg-space::before {
+            background-image:
+                radial-gradient(1.5px 1.5px at 40px 60px, #fff 50%, transparent 51%),
+                radial-gradient(1px 1px at 130px 180px, rgba(255,255,255,.9) 50%, transparent 51%),
+                radial-gradient(1.6px 1.6px at 220px 90px, rgba(200,220,255,.95) 50%, transparent 51%),
+                radial-gradient(1px 1px at 300px 260px, #fff 50%, transparent 51%),
+                radial-gradient(1.2px 1.2px at 80px 300px, rgba(255,235,190,.9) 50%, transparent 51%),
+                radial-gradient(1px 1px at 350px 40px, rgba(190,210,255,.8) 50%, transparent 51%),
+                radial-gradient(2px 2px at 180px 340px, rgba(255,255,255,.85) 50%, transparent 51%);
+            background-size: 420px 420px;
+            animation: starTwinkle 4s ease-in-out infinite alternate, starDrift 120s linear infinite;
+            opacity: .9;
+        }
+
+        .profile-bg-space::after {
+            background-image:
+                radial-gradient(1px 1px at 25px 35px, rgba(255,255,255,.7) 50%, transparent 51%),
+                radial-gradient(1.4px 1.4px at 115px 145px, #fff 50%, transparent 51%),
+                radial-gradient(1px 1px at 265px 215px, rgba(180,200,255,.75) 50%, transparent 51%),
+                radial-gradient(1px 1px at 330px 125px, rgba(255,240,210,.7) 50%, transparent 51%),
+                radial-gradient(1.8px 1.8px at 205px 305px, rgba(255,255,255,.9) 50%, transparent 51%);
+            background-size: 380px 380px;
+            animation: starTwinkle 3s ease-in-out infinite alternate-reverse, starDrift 180s linear infinite reverse;
+            opacity: .65;
+        }
+
+        @keyframes starTwinkle {
+            from { opacity: .25; }
+            to   { opacity: .95; }
+        }
+
+        @keyframes starDrift {
+            from { transform: translate3d(0, 0, 0); }
+            to   { transform: translate3d(-420px, -420px, 0); }
+        }
+
+        @keyframes spaceNebula {
+            from { filter: hue-rotate(0deg) brightness(1); }
+            to   { filter: hue-rotate(25deg) brightness(1.12); }
+        }
+
+        /* ---------- ЗАКАТ: пульсирующее солнце + расходящиеся лучи ---------- */
+        .profile-bg-sunset {
+            background: linear-gradient(180deg, #0f1030 0%, #35174b 30%, #7a2463 52%, #c33f63 72%, #ff7847 88%, #ffb45e 100%);
+        }
+
+        .profile-bg-sunset::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 8%;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            background: radial-gradient(circle at 50% 40%, #fff6d0, #ffd166 35%, #ff8c42 70%, #ff5e3a 100%);
+            box-shadow: 0 0 60px 25px rgba(255, 140, 66, .55), 0 0 160px 70px rgba(255, 94, 58, .28);
+            animation: sunBob 6s ease-in-out infinite alternate;
+        }
+
+        .profile-bg-sunset::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-conic-gradient(from 250deg at 50% 92%, rgba(255, 190, 120, .06) 0deg 6deg, transparent 6deg 18deg),
+                linear-gradient(0deg, rgba(255, 150, 80, .18), transparent 45%);
+            animation: sunRays 18s ease-in-out infinite alternate;
+        }
+
+        @keyframes sunBob {
+            from { transform: translateX(-50%) translateY(10px); }
+            to   { transform: translateX(-50%) translateY(-6px); }
+        }
+
+        @keyframes sunRays {
+            from { filter: brightness(.9); }
+            to   { filter: brightness(1.18); }
+        }
+
+        /* ---------- ОКЕАН: качающиеся лучи света + бегущие волны ---------- */
+        .profile-bg-ocean {
+            background: linear-gradient(180deg, #031525 0%, #073053 40%, #0a4d73 70%, #0f6f8f 100%);
+        }
+
+        .profile-bg-ocean::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(115deg, rgba(160, 230, 255, .10) 0 22px, transparent 22px 90px);
+            -webkit-mask-image: linear-gradient(180deg, #000, transparent 60%);
+            mask-image: linear-gradient(180deg, #000, transparent 60%);
+            animation: raysSway 9s ease-in-out infinite alternate;
+        }
+
+        .profile-bg-ocean::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 220px;
+            background-image:
+                radial-gradient(circle at 50% 34px, rgba(140, 225, 255, .20) 46px, transparent 47px),
+                radial-gradient(circle at 50% 74px, rgba(120, 200, 245, .13) 70px, transparent 71px);
+            background-size: 150px 220px, 230px 220px;
+            background-position: 0 0, 40px 0;
+            animation: oceanWaves 7s linear infinite;
+        }
+
+        @keyframes raysSway {
+            from { transform: translateX(-18px); }
+            to   { transform: translateX(18px); }
+        }
+
+        @keyframes oceanWaves {
+            from { background-position: 0 0, 40px 0; }
+            to   { background-position: 150px 0, -230px 0; }
+        }
+
+        /* ---------- ЛЕС: светлячки в ночной чаще ---------- */
+        .profile-bg-forest {
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(120, 255, 180, .10), transparent 60%),
+                linear-gradient(170deg, #04140c 0%, #0a2e1c 45%, #11402a 75%, #1c5233 100%);
+            animation: forestSway 11s ease-in-out infinite alternate;
+        }
+
+        .profile-bg-forest::after {
+            content: '';
+            position: absolute;
+            inset: -200px;
+            background-image:
+                radial-gradient(2px 2px at 20px 30px, rgba(190,255,120,.9) 50%, transparent 51%),
+                radial-gradient(1.6px 1.6px at 110px 90px, rgba(255,235,120,.85) 50%, transparent 51%),
+                radial-gradient(2.2px 2.2px at 210px 50px, rgba(140,255,180,.8) 50%, transparent 51%),
+                radial-gradient(1.5px 1.5px at 160px 190px, rgba(220,255,150,.9) 50%, transparent 51%),
+                radial-gradient(2px 2px at 60px 240px, rgba(255,225,110,.85) 50%, transparent 51%),
+                radial-gradient(1.4px 1.4px at 250px 260px, rgba(180,255,140,.8) 50%, transparent 51%);
+            background-size: 280px 280px;
+            filter: drop-shadow(0 0 6px rgba(190,255,120,.8));
+            animation: firefliesMove 14s ease-in-out infinite alternate;
+        }
+
+        @keyframes forestSway {
+            from { filter: brightness(.92); }
+            to   { filter: brightness(1.08); }
+        }
+
+        @keyframes firefliesMove {
+            0%   { transform: translate(0, 0); opacity: .35; }
+            25%  { opacity: .95; }
+            50%  { transform: translate(-60px, 30px); opacity: .5; }
+            75%  { opacity: .9; }
+            100% { transform: translate(30px, -40px); opacity: .4; }
+        }
+
+        /* ---------- АВРОРА: северное сияние ---------- */
+        .profile-bg-aurora {
+            background: linear-gradient(180deg, #01020e 0%, #04102a 55%, #02243a 100%);
+        }
+
+        .profile-bg-aurora::before {
+            content: '';
+            position: absolute;
+            inset: -600px;
+            background-image:
+                radial-gradient(1.2px 1.2px at 60px 80px, #fff 50%, transparent 51%),
+                radial-gradient(1px 1px at 210px 190px, rgba(200,230,255,.8) 50%, transparent 51%),
+                radial-gradient(1.5px 1.5px at 330px 120px, rgba(255,255,255,.9) 50%, transparent 51%),
+                radial-gradient(1px 1px at 420px 300px, rgba(180,210,255,.7) 50%, transparent 51%),
+                radial-gradient(1.3px 1.3px at 130px 360px, #fff 50%, transparent 51%);
+            background-size: 470px 470px;
+            animation: starTwinkle 3.6s ease-in-out infinite alternate;
+            opacity: .8;
+        }
+
+        .profile-bg-aurora::after {
+            content: '';
+            position: absolute;
+            inset: -10%;
+            background:
+                linear-gradient(105deg, transparent 20%, rgba(80,255,190,.22) 32%, transparent 44%),
+                linear-gradient(115deg, transparent 42%, rgba(90,140,255,.20) 54%, transparent 66%),
+                linear-gradient(125deg, transparent 60%, rgba(200,110,255,.17) 70%, transparent 80%);
+            background-size: 220% 160%;
+            filter: blur(18px);
+            mix-blend-mode: screen;
+            animation: auroraFlow 9s ease-in-out infinite alternate, auroraShift 23s linear infinite;
+        }
+
+        @keyframes auroraFlow {
+            from { transform: skewY(-4deg) scaleY(.95); }
+            to   { transform: skewY(4deg) scaleY(1.08); }
+        }
+
+        @keyframes auroraShift {
+            from { background-position: 0% 0%, 100% 30%, 50% 60%; }
+            to   { background-position: 100% 20%, 0% 70%, 0% 90%; }
+        }
+
+        /* ---------- МАТРИЦА: падающий цифровой дождь ---------- */
+        .profile-bg-matrix {
+            background: linear-gradient(180deg, #000306 0%, #001208 60%, #00160e 100%);
+        }
+
+        .profile-bg-matrix::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(180deg, rgba(0,255,120,.16) 0 14px, transparent 14px 64px),
+                repeating-linear-gradient(180deg, rgba(0,255,120,.09) 0 22px, transparent 22px 118px);
+            background-size: 38px 100%, 74px 100%;
+            filter: drop-shadow(0 0 6px rgba(0,255,140,.45));
+            animation: matrixFall 1.8s linear infinite;
+        }
+
+        .profile-bg-matrix::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(0deg, rgba(0,255,140,.05) 0 2px, transparent 2px 4px);
+            mix-blend-mode: overlay;
+        }
+
+        @keyframes matrixFall {
+            from { background-position: 0 0, 0 0; }
+            to   { background-position: 0 128px, 0 236px; }
+        }
+
+        /* ---------- ГАЛАКТИКА: вращающаяся спираль ---------- */
+        .profile-bg-galaxy {
+            background:
+                radial-gradient(circle at 68% 30%, rgba(120, 60, 200, .25), transparent 45%),
+                linear-gradient(160deg, #05010f 0%, #0e0430 55%, #05010f 100%);
+        }
+
+        .profile-bg-galaxy::before {
+            content: '';
+            position: absolute;
+            width: 900px;
+            height: 900px;
+            right: -320px;
+            top: -320px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg,
+                transparent 0 12%, rgba(180,120,255,.20) 16%, transparent 22% 36%,
+                rgba(90,160,255,.18) 41%, transparent 48% 62%,
+                rgba(255,150,255,.16) 67%, transparent 74% 87%,
+                rgba(140,120,255,.18) 92%, transparent 97%);
+            filter: blur(14px);
+            animation: galaxySpin 60s linear infinite;
+        }
+
+        .profile-bg-galaxy::after {
+            content: '';
+            position: absolute;
+            inset: -600px;
+            background-image:
+                radial-gradient(1.3px 1.3px at 90px 140px, #fff 50%, transparent 51%),
+                radial-gradient(1px 1px at 240px 80px, rgba(215,190,255,.85) 50%, transparent 51%),
+                radial-gradient(1.6px 1.6px at 380px 250px, rgba(255,255,255,.9) 50%, transparent 51%),
+                radial-gradient(1px 1px at 150px 320px, rgba(190,170,255,.75) 50%, transparent 51%),
+                radial-gradient(1.2px 1.2px at 430px 400px, rgba(255,235,255,.8) 50%, transparent 51%);
+            background-size: 490px 490px;
+            animation: starTwinkle 4.4s ease-in-out infinite alternate-reverse;
+            opacity: .85;
+        }
+
+        @keyframes galaxySpin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Уважение к настройкам доступности: отключаем анимации фонов */
+        @media (prefers-reduced-motion: reduce) {
+            .profile-dynamic-bg,
+            .profile-dynamic-bg::before,
+            .profile-dynamic-bg::after {
+                animation: none !important;
+            }
+        }
+
+        /* Заголовок (имя) — обычный текст, без градиентов и свечения */
+        .user-page-title {
+            font-size: 2.3rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: var(--text);
+            background: none;
+            display: inline-flex;
+            align-items: center;
+            flex-wrap: wrap;
+            row-gap: 4px;
+        }
+
+        /* Шапка страницы (кнопка настроек) */
+        .profile-page-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .profile-settings-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 24px -8px rgba(59,130,246,0.5);
+            transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .profile-settings-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+            box-shadow: 0 14px 30px -10px rgba(59,130,246,0.65);
+        }
+
+        /* Аватар */
         .profile-avatar-container {
             width: 140px;
-            margin: 0 auto 25px;
+            margin: 34px auto 30px;
+            position: relative;
         }
-        
+
         .profile-avatar {
             width: 140px;
             height: 140px;
@@ -8205,68 +8827,209 @@ position: absolute;
             font-size: 56px;
             color: white;
             overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            background: var(--primary);
+            box-shadow: 0 14px 44px rgba(0,0,0,0.55), inset 0 0 0 2px rgba(255,255,255,0.2);
+            position: relative;
+            transition: transform 0.25s ease;
         }
-        
+
+        .profile-avatar:hover {
+            transform: scale(1.05);
+        }
+
+        #userAvatarDisplay {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* Индикатор "онлайн" */
+        .profile-status-dot {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            width: 26px;
+            height: 26px;
+            background: #22c55e;
+            border: 4px solid #ffffff;
+            border-radius: 50%;
+            z-index: 3;
+            box-shadow: 0 0 0 4px rgba(34,197,94,0.35), 0 0 20px rgba(34,197,94,1);
+            animation: dotPulse 1.8s ease-in-out infinite;
+        }
+
+        @keyframes dotPulse {
+            0%,100% { box-shadow: 0 0 0 4px rgba(34,197,94,0.35), 0 0 14px rgba(34,197,94,0.8); }
+            50% { box-shadow: 0 0 0 8px rgba(34,197,94,0.08), 0 0 26px rgba(34,197,94,1); }
+        }
+
         .profile-username {
-            font-size: 2.2rem;
-            margin-bottom: 8px;
-            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 14px;
+            font-weight: 800;
             color: var(--text);
+            letter-spacing: 0.5px;
         }
-        
+
         .profile-joined {
             color: var(--text-secondary);
-            margin-bottom: 35px;
-            font-size: 1rem;
+            margin-bottom: 40px;
+            font-size: 0.92rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(168,85,247,0.1));
+            border: 1px solid rgba(139,92,246,0.28);
+            border-radius: 30px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+            letter-spacing: 0.2px;
         }
-        
+
+        .profile-joined i {
+            color: #a78bfa;
+        }
+
         .profile-stats {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 35px;
-            max-width: 500px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 38px;
+            max-width: 560px;
             margin-left: auto;
             margin-right: auto;
         }
-        
+
         .profile-stat-card {
-            background: var(--dark);
-            padding: 20px 15px;
-            border-radius: 10px;
+            background: linear-gradient(165deg, rgba(30,41,59,0.65), rgba(15,23,42,0.5));
+            padding: 26px 16px 22px;
+            border-radius: 20px;
             border: 1px solid var(--border);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(6px);
         }
-        
+
+        .profile-stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: currentColor;
+            opacity: 0.5;
+            box-shadow: 0 0 14px currentColor;
+        }
+
+        .profile-stat-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 44px -14px rgba(99,102,241,0.5);
+        }
+
         .profile-stat-icon {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 14px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
         }
-        
+
         .profile-stat-value {
-            font-size: 1.4rem;
-            font-weight: 700;
+            font-size: 1.6rem;
+            font-weight: 800;
             color: var(--text);
-            margin: 5px 0;
+            margin: 6px 0;
         }
-        
+
         .profile-stat-label {
             color: var(--text-secondary);
             font-size: 0.85rem;
             margin: 0;
+            letter-spacing: 0.3px;
         }
-        
+
+        /* Кнопки действий */
+        .profile-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 26px;
+        }
+
+        .profile-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 13px 24px;
+            color: white;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.92rem;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            box-shadow: 0 12px 26px -8px rgba(99,102,241,0.55);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-action-btn:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
+            box-shadow: 0 18px 36px -10px rgba(99,102,241,0.7);
+        }
+
+        .profile-action-btn.violet {
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            box-shadow: 0 12px 26px -8px rgba(168,85,247,0.6);
+        }
+
+        .profile-action-btn.ghost {
+            background: rgba(255,255,255,0.06);
+            color: var(--text);
+            box-shadow: none;
+        }
+
+        .profile-action-btn.ghost:hover {
+            background: rgba(255,255,255,0.12);
+            box-shadow: none;
+            filter: none;
+        }
+
         .dev-checkmark {
             background: #10b981;
             color: white;
+            -webkit-text-fill-color: white;
             border-radius: 50%;
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             margin-left: 8px;
-            font-size: 12px;
+            font-size: 13px;
+            position: relative;
+            flex-shrink: 0;
+            vertical-align: middle;
+            box-shadow: 0 0 12px rgba(16,185,129,0.6);
         }
         
         .dev-badge-controls {
@@ -8314,6 +9077,334 @@ position: absolute;
         
         .dev-save-btn:hover {
             transform: scale(1.02);
+        }
+        /* ============================================================
+           АДАПТИВНОСТЬ: всё подстраивается под размер окна, ничего не ломается
+           ============================================================ */
+        
+        /* Страховка от горизонтального скролла на любом размере */
+        img, video, svg, canvas {
+            max-width: 100%;
+        }
+        
+        button {
+            max-width: 100%;
+            overflow-wrap: break-word;
+        }
+
+        /* ---------- Планшеты и узкие ноутбуки (≤ 1440px) ---------- */
+        @media (max-width: 1440px) {
+            /* Гасим огромный десктопный вид из правила min-width:768px */
+            .logo {
+                font-size: 21px;
+                letter-spacing: 2px;
+            }
+            
+            .nav-links {
+                gap: 22px;
+            }
+            
+            .nav-links a {
+                padding: 10px 17px;
+                font-size: 0.91rem;
+            }
+            
+            .auth-btn {
+                padding: 8px 14px;
+                font-size: 0.88rem;
+            }
+        }
+
+        /* ---------- Узкие ноутбуки и большие планшеты (≤ 1280px): следующий лёгкий шаг ---------- */
+        @media (max-width: 1280px) {
+            .nav-links {
+                gap: 20px;
+                /* Страховка: если совсем тесно — аккуратный второй ряд по центру */
+                flex-wrap: wrap;
+                row-gap: 6px;
+            }
+
+            .nav-links a {
+                font-size: 0.88rem;
+                padding: 9px 16px;
+            }
+
+            .auth-btn {
+                font-size: 0.85rem;
+                padding: 7px 13px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .tech-nav {
+                padding: 12px 16px;
+                /* Если совсем тесно — перенос строки вместо поломки */
+                flex-wrap: wrap;
+                row-gap: 6px;
+            }
+            
+            .nav-left {
+                flex-shrink: 0;
+            }
+            
+            .nav-center {
+                min-width: 0;
+                flex: 1 1 auto;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 6px;
+                row-gap: 4px;
+            }
+            
+            .nav-links a {
+                white-space: nowrap;
+                font-size: 0.85rem;
+                padding: 8px 13px;
+            }
+
+            .auth-btn {
+                font-size: 0.83rem;
+                padding: 7px 12px;
+            }
+            
+            .online-counter {
+                padding: 5px 9px;
+                font-size: 0.68rem;
+            }
+            
+            /* Сетка игр: карточка никогда не шире экрана */
+            .games-grid,
+            .all-games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(min(270px, 100%), 1fr));
+                gap: 22px;
+            }
+            
+            .game-image-container {
+                height: clamp(210px, 36vw, 400px);
+            }
+            
+            /* Панель поиска/фильтров складывается в столбик без сдвигов */
+            .search-filter-container {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+            
+            .search-box,
+            .filter-dropdown {
+                min-width: 0;
+                width: 100%;
+            }
+        }
+
+        /* ---------- Телефоны и узкие планшеты (≤ 767px) ---------- */
+        @media (max-width: 767px) {
+            /* Компактные кнопки авторизации рядом с бургером */
+            .auth-btn {
+                padding: 7px 12px;
+                font-size: 0.78rem;
+            }
+
+            /* Шапка страницы профиля: перенос вместо ломки */
+            .profile-page-head {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            /* Контейнер профиля: компактнее отступы */
+            #user-page > div:not(.profile-dynamic-bg) {
+                padding: 78px 12px 26px !important;
+            }
+            
+            .user-profile-view {
+                padding: 34px 16px 28px;
+                border-radius: 22px;
+            }
+            
+            .profile-username {
+                font-size: 1.7rem;
+                letter-spacing: 0.2px;
+            }
+            
+            .profile-joined {
+                margin-bottom: 24px;
+                padding: 7px 15px;
+                font-size: 0.82rem;
+            }
+            
+            /* Статистика: остаётся в ОДИН РЯД (страница не скроллится),
+               но карточки компактнее и не ломаются */
+            .profile-stats {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 10px;
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .profile-stat-card {
+                padding: 14px 8px;
+                border-radius: 16px;
+            }
+            
+            .profile-stat-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 1.25rem;
+                margin-bottom: 7px;
+                border-radius: 12px;
+            }
+            
+            .profile-stat-value {
+                font-size: 1.25rem;
+                margin: 4px 0;
+            }
+            
+            .profile-stat-label {
+                font-size: 0.72rem;
+            }
+            
+            /* Кнопки действий: гибкий ряд с переносом, ширина подстраивается */
+            .profile-actions {
+                flex-direction: row;
+                align-items: stretch;
+                gap: 9px;
+                margin-top: 18px;
+            }
+            
+            .profile-action-btn {
+                flex: 1 1 auto;
+                justify-content: center;
+                padding: 12px 12px;
+                white-space: nowrap;
+            }
+            
+            .profile-settings-btn {
+                padding: 9px 14px;
+                font-size: 0.82rem;
+            }
+            
+            /* Модалки рамок и настроек: компактнее */
+            #frameSelectorModal > div,
+            #profileSettingsModal > div,
+            #authModal .auth-modal-container {
+                padding: 20px 14px !important;
+                border-radius: 16px !important;
+            }
+            
+            #profileSettingsModal h2,
+            #frameSelectorModal h2 {
+                font-size: 1.3rem !important;
+            }
+            
+            /* Панель выбора рамки: чуть уже плитки */
+            .frame-selector {
+                grid-template-columns: repeat(auto-fill, minmax(74px, 1fr));
+                gap: 8px;
+                padding: 10px;
+                max-height: 260px;
+            }
+        }
+
+        /* ---------- Малые телефоны (≤ 480px) ---------- */
+        @media (max-width: 480px) {
+            .tech-nav {
+                padding: 10px 12px;
+            }
+            
+            .online-counter {
+                padding: 5px 8px;
+                font-size: 0.65rem;
+            }
+            
+            .avatar-circle {
+                width: 42px;
+                height: 42px;
+                font-size: 1.05rem;
+            }
+            
+            .user-profile-view {
+                padding: 26px 10px 22px;
+                border-radius: 18px;
+            }
+            
+            .profile-avatar-container,
+            #profileFrameWrapper {
+                width: 104px !important;
+                height: 104px !important;
+            }
+            
+            #userAvatarDisplay {
+                width: 92px !important;
+                height: 92px !important;
+            }
+            
+            .profile-status-dot {
+                width: 16px !important;
+                height: 16px !important;
+            }
+            
+            .profile-username {
+                font-size: 1.3rem;
+            }
+            
+            .profile-joined {
+                margin-bottom: 16px;
+                font-size: 0.75rem;
+            }
+            
+            .profile-stats {
+                gap: 7px;
+                margin-bottom: 14px;
+            }
+            
+            .profile-stat-card {
+                padding: 11px 5px;
+                border-radius: 13px;
+            }
+            
+            .profile-stat-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+                margin-bottom: 5px;
+                border-radius: 10px;
+            }
+            
+            .profile-stat-value {
+                font-size: 1.05rem;
+            }
+            
+            .profile-stat-label {
+                font-size: 0.63rem;
+            }
+            
+            .profile-actions {
+                gap: 7px;
+                margin-top: 12px;
+            }
+            
+            .profile-action-btn {
+                flex: 1 1 0;
+                min-width: 0;
+                font-size: 0.74rem;
+                gap: 6px;
+                padding: 11px 6px;
+                border-radius: 11px;
+            }
+            
+            .logo {
+                font-size: 17px !important;
+                letter-spacing: 1px !important;
+            }
+            
+            .auth-btn {
+                padding: 7px 10px;
+                font-size: 0.75rem;
+                border-radius: 5px;
+            }
         }
     </style>
     <!-- Firebase SDK -->
@@ -8392,10 +9483,25 @@ position: absolute;
         </div>
         
         <div class="nav-auth" id="navAuth">
+            <!-- Счётчик онлайн-посетителей -->
+            <div class="online-counter" id="onlineCounter" title="Сейчас на сайте">
+                <i class="fas fa-users"></i>
+                <span><span class="online-count" id="onlineCount">0</span> онлайн</span>
+            </div>
             <button class="auth-btn login-btn" id="loginBtn" onclick="showAuthModal('login')">Войти</button>
             <button class="auth-btn register-btn" id="registerBtn" onclick="showAuthModal('register')">Регистрация</button>
-            <button class="auth-btn profile-btn" id="profileBtn" onclick="showUserPage()" style="display: none;">Профиль</button>
-            <button class="auth-btn logout-btn" id="logoutBtn" onclick="logoutUser()" style="display: none;">Выход</button>
+            <div class="user-menu" id="userMenu" style="display: none;">
+                <button class="avatar-btn" id="navAvatarBtn" onclick="showUserPage()" title="Профиль" aria-label="Профиль">
+                    <div class="avatar-circle" id="navAvatarDisplay">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </button>
+                <div class="user-dropdown" id="userDropdown">
+                    <button class="dropdown-item" id="dropdownLogoutBtn" onclick="logoutUser()">
+                        <i class="fas fa-right-from-bracket"></i> Выход
+                    </button>
+                </div>
+            </div>
         </div>
         
         <!-- Кнопка мобильного меню -->
@@ -8418,8 +9524,8 @@ position: absolute;
             <li><a href="#contact" onclick="navigateToSection('#contact'); closeMobileMenu(); return false;">Все ссылки</a></li>
             <li><a href="#" onclick="showAuthModal('login'); closeMobileMenu(); return false;">Войти</a></li>
             <li><a href="#" onclick="showAuthModal('register'); closeMobileMenu(); return false;">Регистрация</a></li>
-            <li><a href="#" onclick="showUserPage(); closeMobileMenu(); return false;" id="mobileProfileLink" style="display: none;">Профиль</a></li>
-            <li><a href="#" onclick="logoutUser(); closeMobileMenu(); return false;" id="mobileLogoutLink" style="display: none;">Выход</a></li>
+            <li><a href="#" onclick="showUserPage(); closeMobileMenu(); return false;" id="mobileProfileLink" style="display: none;"><i class="fas fa-user" style="margin-right: 8px;"></i>Профиль</a></li>
+            <li><a href="#" onclick="logoutUser(); closeMobileMenu(); return false;" id="mobileLogoutLink" style="display: none;"><i class="fas fa-right-from-bracket" style="margin-right: 8px;"></i>Выход</a></li>
         </ul>
     </div>
 
@@ -8697,59 +9803,58 @@ position: absolute;
 
     <!-- Страница профиля пользователя -->
     <div id="user-page" class="page">
-        <div style="padding: 80px 20px 40px; max-width: 800px; margin: 0 auto;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
-                <h2 class="user-page-title" style="font-size: 2rem; font-weight: 700; color: var(--text);">Личный кабинет</h2>
-                <button onclick="showProfileSettings()" style="padding: 10px 20px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 500;">
-                    <i class="fas fa-cog" style="margin-right: 6px;"></i>Настройки
+        <div style="padding: 90px 20px 40px; max-width: 820px; margin: 0 auto;">
+            <div class="profile-page-head">
+                <h2 class="user-page-title">Пользователь</h2>
+                <button class="profile-settings-btn" onclick="showProfileSettings()">
+                    <i class="fas fa-cog"></i>Настройки
                 </button>
             </div>
-            
-            <div class="user-profile-view" style="margin-top: 20px;">
+
+            <div class="user-profile-view">
                 <div class="profile-avatar-container">
-                    <div id="profileFrameWrapper" class="profile-avatar" style="width: 140px; height: 140px; margin: 0 auto; cursor: pointer;" onclick="document.getElementById('avatarUpload').click();">
-                        <div id="userAvatarDisplay" style="width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 56px; color: white; overflow: hidden;">
+                    <div id="profileFrameWrapper" class="profile-avatar" onclick="document.getElementById('avatarUpload').click();">
+                        <div id="userAvatarDisplay">
                             <i class="fas fa-user"></i>
                         </div>
                     </div>
+                    <span class="profile-status-dot"></span>
                     <input type="file" id="avatarUpload" accept="image/*" style="display: none;" onchange="handleAvatarUpload(event)">
                 </div>
-                
-                <h3 class="profile-username" id="userPageUsername" style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: var(--text);">@Пользователь</h3>
-                
-                <p class="profile-joined" style="color: var(--text-secondary); margin-bottom: 35px; font-size: 1rem;">
-                    <i class="fas fa-calendar-alt" style="margin-right: 6px;"></i>На сайте с <span id="joinDate">2024</span>
+
+                <h3 class="profile-username" id="userPageUsername">@Пользователь</h3>
+
+                <p class="profile-joined">
+                    <i class="fas fa-calendar-alt"></i>На сайте с <span id="joinDate">2024</span>
                 </p>
-                
-                <div class="profile-stats" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;">
-                    <div class="profile-stat-card" style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;" onclick="showFavorites()">
-                        <div class="profile-stat-icon" style="font-size: 1.8rem; margin-bottom: 8px; color: #ef4444;"><i class="fas fa-heart"></i></div>
-                        <div class="profile-stat-value" id="favoritesCount" style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">0</div>
-                        <p class="profile-stat-label" style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Избранное</p>
+
+                <div class="profile-stats">
+                    <div class="profile-stat-card" onclick="showFavorites()">
+                        <div class="profile-stat-icon" style="color: #ef4444;"><i class="fas fa-heart"></i></div>
+                        <div class="profile-stat-value" id="favoritesCount">0</div>
+                        <p class="profile-stat-label">Избранное</p>
                     </div>
-                    <div class="profile-stat-card" style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);">
-                        <div class="profile-stat-icon" style="font-size: 1.8rem; margin-bottom: 8px; color: var(--primary);"><i class="fas fa-download"></i></div>
-                        <div class="profile-stat-value" id="downloadsCount" style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">0</div>
-                        <p class="profile-stat-label" style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Скачано</p>
+                    <div class="profile-stat-card">
+                        <div class="profile-stat-icon" style="color: var(--primary);"><i class="fas fa-download"></i></div>
+                        <div class="profile-stat-value" id="downloadsCount">0</div>
+                        <p class="profile-stat-label">Скачано</p>
                     </div>
-                    <div class="profile-stat-card" style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);">
-                        <div class="profile-stat-icon" style="font-size: 1.8rem; margin-bottom: 8px; color: #10b981;"><i class="fas fa-code"></i></div>
-                        <div class="profile-stat-value" style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">
-                            <span id="devStatusBadge" style="display: none;"><i class="fas fa-check-circle" style="color: #10b981;"></i></span>
-                        </div>
-                        <p class="profile-stat-label" style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Разработчик</p>
+                    <div class="profile-stat-card">
+                        <div class="profile-stat-icon" style="color: #10b981;"><i class="fas fa-code"></i></div>
+                        <div class="profile-stat-value"><span id="devStatusBadge" style="display: none;"><i class="fas fa-check-circle" style="color: #10b981;"></i></span></div>
+                        <p class="profile-stat-label">Разработчик</p>
                     </div>
                 </div>
-                
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px;">
-                    <button onclick="showFrameSelector()" style="padding: 12px 24px; background: linear-gradient(135deg, #8b5cf6, #6366f1); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 500; transition: all 0.2s;">
-                        <i class="fas fa-gem" style="margin-right: 8px;"></i>Рамка профиля
+
+                <div class="profile-actions">
+                    <button class="profile-action-btn violet" onclick="showFrameSelector()">
+                        <i class="fas fa-gem"></i>Рамка профиля
                     </button>
-                    <button onclick="switchPage('users-search-page'); loadAllUsers();" style="padding: 12px 24px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 500;">
-                        <i class="fas fa-search" style="margin-right: 8px;"></i>Поиск пользователей
+                    <button class="profile-action-btn" onclick="switchPage('users-search-page'); loadAllUsers();">
+                        <i class="fas fa-search"></i>Поиск пользователей
                     </button>
-                    <button onclick="switchToMain()" style="padding: 12px 24px; background: var(--border); color: var(--text); border: none; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 500;">
-                        <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>На главную
+                    <button class="profile-action-btn ghost" onclick="switchToMain()">
+                        <i class="fas fa-arrow-left"></i>На главную
                     </button>
                 </div>
             </div>
@@ -8779,6 +9884,28 @@ position: absolute;
                         <input type="password" id="confirmPassword" placeholder="Повторите новый пароль"
                             style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1rem; box-sizing: border-box;">
                     </div>
+                </div>
+                
+                <hr style="border: none; border-top: 1px solid var(--border); margin: 5px 0;">
+                
+                <div>
+                    <label style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px; display: block;"><i class="fas fa-palette" style="color: var(--primary); margin-right: 6px;"></i>Фон страницы профиля</label>
+                    <select id="profileBackgroundSetting"
+                        style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1rem; box-sizing: border-box;">
+                        <option value="default">По умолчанию</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px; display: block;"><i class="fas fa-wand-magic-sparkles" style="color: var(--primary); margin-right: 6px;"></i>Эффект аватара</label>
+                    <select id="profileAvatarEffectSetting"
+                        style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,42,0.8); color: white; font-size: 1rem; box-sizing: border-box;">
+                        <option value="none">Без эффекта</option>
+                        <option value="pulse">Пульсация</option>
+                        <option value="glow">Свечение</option>
+                        <option value="spin">Вращение</option>
+                        <option value="rainbow">Радуга</option>
+                    </select>
                 </div>
                 
                 <div style="display: flex; gap: 10px; margin-top: 10px;">
@@ -9098,6 +10225,55 @@ position: absolute;
             const frames = getGlobalFrames();
             return frames[frameToUse] || frames['gold'] || frames['default'] || null;
         }
+
+        // Перенос старого формата {userFrame, userFrameMode} в новые независимые слоты.
+        // Вызывается перед чтением/записью слотов, чтобы второй слот не потерялся.
+        function materializeFrameSlots() {
+            if (typeof localStorage === 'undefined') return;
+            if (localStorage.getItem('userCircleFrame') !== null || localStorage.getItem('userPanelFrame') !== null) return;
+            const legacyValue = localStorage.getItem('userFrame');
+            if (legacyValue === null) return;
+            if (localStorage.getItem('userFrameMode') === 'card') {
+                localStorage.setItem('userPanelFrame', legacyValue);
+            } else {
+                localStorage.setItem('userCircleFrame', legacyValue);
+            }
+        }
+
+        // НЕЗАВИСИМЫЕ слоты рамок:
+        //   userCircleFrame — кольцо вокруг аватарки ('none' = убрано)
+        //   userPanelFrame  — фон всей панели профиля ('none' = обычная тёмная карточка)
+        // Один слот можно менять, не затрагивая второй. strictSrcOnly=true — читать только
+        // из переданного объекта (просмотр чужого профиля), без подмешивания своего localStorage.
+        function resolveFrameSlots(src, strictSrcOnly) {
+            src = src || {};
+            const ls = (typeof localStorage !== 'undefined');
+            const norm = v => (v && v !== 'none' && v !== 'default') ? v : null;
+            const present = v => v !== null && v !== undefined && v !== '';
+            const grab = k => {
+                if (src[k] !== undefined && src[k] !== null) return src[k];
+                return (ls && !strictSrcOnly) ? localStorage.getItem(k) : null;
+            };
+
+            // Явный выбор уважается ВСЕГДА: 'none'/'default'/'' означают «слот пуст»
+            const circleSet = present(grab('userCircleFrame'));
+            const panelSet  = present(grab('userPanelFrame'));
+            let c = circleSet ? norm(grab('userCircleFrame')) : null;
+            let p = panelSet  ? norm(grab('userPanelFrame'))  : null;
+
+            // Миграция со старого формата, пока не сохранён ни один новый слот
+            let legacyUsed = false;
+            if (!circleSet && !panelSet && present(grab('userFrame'))) {
+                const legacyMode = grab('userFrameMode');
+                const legacyVal = norm(grab('userFrame'));
+                if (legacyMode === 'card') { p = legacyVal; } else { c = legacyVal; }
+                legacyUsed = true;
+            }
+
+            // Традиция совершенно нового пользователя — золотое кольцо, панель чистая.
+            // Явно выбранные «Стандартная»/«нет» уважаются как отсутствие кольца.
+            return { circle: (circleSet || legacyUsed) ? c : 'gold', panel: p };
+        }
         
         // Функция применения рамки к профилю
         function applyFrame(frameId, element) {
@@ -9260,10 +10436,8 @@ position: absolute;
             const devClass = isDev ? 'developer' : '';
             
             return `
-                <div class="user-card ${devClass}" style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 20px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" 
-                    onclick="viewUserProfile('${user.username}')"
-                    onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.3)'"
-                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                <div class="user-card ${devClass}" style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 20px; cursor: pointer;"
+                    onclick="viewUserProfile('${user.username}')">
                     <div style="display: flex; align-items: center; gap: 15px;">
                         <div style="width: 60px; height: 60px; border-radius: 50%; ${avatarBg}; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white;">
                             <i class="fas fa-${avatarIcon}"></i>
@@ -9467,9 +10641,20 @@ position: absolute;
         }
         
         function getProfileHtml(user, avatarIcon, avatarBg, favoriteGamesHtml, userFrame) {
-            // Используем userFrame из параметра (из профиля просматриваемого пользователя) или берём из его данных
-            const frameId = userFrame || user.userFrame || 'default';
-            const frame = getFrame(frameId);
+            // Независимые слоты рамок просматриваемого пользователя (объявлены ДО использования):
+            // кольцо вокруг аватара и фон панели задаются по отдельности
+            const uSlots = resolveFrameSlots(user, true);
+            const circleFrameObj = uSlots.circle ? getGlobalFrames()[uSlots.circle] : null;
+            const panelFrameObj = uSlots.panel ? getGlobalFrames()[uSlots.panel] : null;
+            let viewCardExtraCss = '';
+            let cardBgHtml = '';
+            if (panelFrameObj) {
+                const bgAnimCss = panelFrameObj.animation ? ' animation: ' + panelFrameObj.animation + ';' : '';
+                cardBgHtml = '<div class="profile-frame-bg" style="background:' + buildFrameCardBackground(panelFrameObj) + ';' + bgAnimCss + '"></div>';
+                // Без внешнего box-shadow свечения: оно выходило за карточку
+                // и подсвечивало зону верхней надписи (имя + галочка)
+                viewCardExtraCss = ' border-color: transparent; isolation: isolate;';
+            }
             
             const hasCustomAvatar = user.avatar === 'custom' && user.avatarData;
             let avatarContent = '';
@@ -9480,12 +10665,20 @@ position: absolute;
             }
             
             let frameHtml = '';
-            if (frame && frameId !== 'default') {
-                if (frame.gradient) {
-                    frameHtml = '<div style="width: 140px; height: 140px; margin: 0 auto 25px; border-radius: 50%; background: ' + frame.gradient + '; box-shadow: ' + (frame.glow || 'none') + '; display: flex; align-items: center; justify-content: center;"><div style="width: 124px; height: 124px; border-radius: 50%; ' + avatarBg + '; display: flex; align-items: center; justify-content: center; font-size: 56px; color: white; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">'+avatarContent+'</div></div>';
-                } else {
-                    frameHtml = '<div style="width: 140px; height: 140px; margin: 0 auto 25px; border-radius: 50%; ' + frame.border + '; display: flex; align-items: center; justify-content: center;"><div style="width: 124px; height: 124px; border-radius: 50%; ' + avatarBg + '; display: flex; align-items: center; justify-content: center; font-size: 56px; color: white; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">'+avatarContent+'</div></div>';
-                }
+            if (circleFrameObj) {
+                const fr = circleFrameObj;
+                // Кольцо рисуется отдельным слоем позади аватарки: filter-анимации
+                // (перелив оттенков RGB) не задевают саму картинку аватара
+                const ringLayerCss = 'position:absolute; inset:0; border-radius:50%; pointer-events:none;'
+                    + (fr.gradient ? 'background:' + fr.gradient + ';' : 'border:' + fr.border + ';')
+                    + (fr.glow ? 'box-shadow:' + fr.glow + ';' : '')
+                    + (fr.animation ? 'animation:' + fr.animation + ';' : '');
+                const avatarInnerCss = 'position:relative; z-index:1; width:124px; height:124px; border-radius:50%; '
+                    + avatarBg + '; display:flex; align-items:center; justify-content:center; font-size:56px; color:white; overflow:hidden; box-shadow:0 8px 32px rgba(0, 0, 0, 0.2);';
+                frameHtml = '<div style="position:relative; width:140px; height:140px; margin:0 auto 25px; border-radius:50%; display:flex; align-items:center; justify-content:center;">'
+                    + '<div style="' + ringLayerCss + '"></div>'
+                    + '<div style="' + avatarInnerCss + '">' + avatarContent + '</div>'
+                    + '</div>';
             } else {
                 frameHtml = '<div style="width: 140px; height: 140px; margin: 0 auto 25px; border-radius: 50%; ' + avatarBg + '; display: flex; align-items: center; justify-content: center; font-size: 56px; color: white; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">'+avatarContent+'</div>';
             }
@@ -9517,7 +10710,7 @@ let messageFormHtml = '';
             const gamesAdded = user.gamesAdded || 0;
             const commentsCount = user.commentsCount || 0;
             
-            return '<div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 40px; text-align: center; position: relative; overflow: hidden;"><div style="position: absolute; top: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));"></div><div style="position: relative; z-index: 1;">' + frameHtml + '<h1 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: var(--text);">' + user.username + devCheckmark + '</h1><p style="color: var(--text-secondary); margin-bottom: 35px; font-size: 1rem;"><i class="fas fa-calendar-alt" style="margin-right: 6px; color: var(--primary);"></i>Присоединился ' + new Date(user.createdAt).toLocaleDateString('ru-RU') + '</p><div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;"><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-download" style="font-size: 1.8rem; color: var(--primary); margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + downloads + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Скачиваний</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-heart" style="font-size: 1.8rem; color: #ef4444; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + likes + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Нравится</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-gamepad" style="font-size: 1.8rem; color: #10b981; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + gamesAdded + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Игр добавлено</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-comment" style="font-size: 1.8rem; color: #f59e0b; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + commentsCount + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Комментариев</p></div></div>' + favoriteGamesHtml + messageFormHtml + developerInboxHtml + devBadgeControlsHtml + '</div></div>';
+            return '<div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 40px; text-align: center; position: relative; overflow: hidden;' + viewCardExtraCss + '"><div style="position: absolute; top: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));"></div>' + cardBgHtml + '<div style="position: relative; z-index: 1;">' + frameHtml + '<h1 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: var(--text);">' + user.username + devCheckmark + '</h1><p style="color: var(--text-secondary); margin-bottom: 35px; font-size: 1rem;"><i class="fas fa-calendar-alt" style="margin-right: 6px; color: var(--primary);"></i>Присоединился ' + new Date(user.createdAt).toLocaleDateString('ru-RU') + '</p><div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;"><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-download" style="font-size: 1.8rem; color: var(--primary); margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + downloads + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Скачиваний</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-heart" style="font-size: 1.8rem; color: #ef4444; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + likes + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Нравится</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-gamepad" style="font-size: 1.8rem; color: #10b981; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + gamesAdded + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Игр добавлено</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-comment" style="font-size: 1.8rem; color: #f59e0b; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + commentsCount + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Комментариев</p></div></div>' + favoriteGamesHtml + messageFormHtml + developerInboxHtml + devBadgeControlsHtml + '</div></div>';
         }
         
         // ========== СИСТЕМА АВТОРИЗАЦИИ ==========
@@ -9917,25 +11110,62 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
             const username = localStorage.getItem('username');
             const loginBtn = document.getElementById('loginBtn');
             const registerBtn = document.getElementById('registerBtn');
-            const profileBtn = document.getElementById('profileBtn');
-            const logoutBtn = document.getElementById('logoutBtn');
+            const userMenu = document.getElementById('userMenu');
             const mobileProfileLink = document.getElementById('mobileProfileLink');
             const mobileLogoutLink = document.getElementById('mobileLogoutLink');
             
             if (username) {
                 if (loginBtn) loginBtn.style.display = 'none';
                 if (registerBtn) registerBtn.style.display = 'none';
-                if (profileBtn) profileBtn.style.display = 'flex';
-                if (logoutBtn) logoutBtn.style.display = 'flex';
+                if (userMenu) userMenu.style.display = 'inline-flex';
                 if (mobileProfileLink) mobileProfileLink.style.display = 'block';
                 if (mobileLogoutLink) mobileLogoutLink.style.display = 'block';
+                updateNavAvatar();
             } else {
                 if (loginBtn) loginBtn.style.display = 'flex';
                 if (registerBtn) registerBtn.style.display = 'flex';
-                if (profileBtn) profileBtn.style.display = 'none';
-                if (logoutBtn) logoutBtn.style.display = 'none';
+                if (userMenu) userMenu.style.display = 'none';
                 if (mobileProfileLink) mobileProfileLink.style.display = 'none';
                 if (mobileLogoutLink) mobileLogoutLink.style.display = 'none';
+            }
+        }
+
+        // Обновить аватар в меню пользователя в шапке
+        function updateNavAvatar() {
+            const avatarDisplay = document.getElementById('navAvatarDisplay');
+            
+            if (avatarDisplay) {
+                const avatarType = localStorage.getItem('avatarType');
+                const avatarData = localStorage.getItem('avatarData');
+                if (avatarData) {
+                    avatarDisplay.innerHTML = `<img src="${avatarData}" alt="Аватар">`;
+                } else if (avatarType && avatarType !== 'default') {
+                    const icons = {
+                        'robot': 'fa-robot',
+                        'gamepad': 'fa-gamepad',
+                        'dragon': 'fa-dragon',
+                        'ghost': 'fa-ghost',
+                        'rocket': 'fa-rocket',
+                        'star': 'fa-star',
+                        'heart': 'fa-heart'
+                    };
+                    const colors = {
+                        'robot': '#6366f1',
+                        'gamepad': '#10b981',
+                        'dragon': '#ef4444',
+                        'ghost': '#8b5cf6',
+                        'rocket': '#f59e0b',
+                        'star': '#ec4899',
+                        'heart': '#ef4444'
+                    };
+                    const icon = icons[avatarType] || 'fa-user';
+                    const color = colors[avatarType] || 'var(--primary)';
+                    avatarDisplay.style.background = color;
+                    avatarDisplay.innerHTML = `<i class="fas ${icon}"></i>`;
+                } else {
+                    avatarDisplay.style.background = 'var(--primary)';
+                    avatarDisplay.innerHTML = '<i class="fas fa-user"></i>';
+                }
             }
         }
         
@@ -10015,8 +11245,12 @@ avatar: localStorage.getItem('userAvatar') || 'default',
                 likesCount: parseInt(localStorage.getItem('likesCount') || '0'),
                 // Настройки профиля из глобальной системы (доступны всем)
                 userFrame: localStorage.getItem('userFrame') || 'gold',
+                userFrameMode: localStorage.getItem('userFrameMode') || 'circle',
                 userBackground: localStorage.getItem('userBackground') || 'default',
-                userAvatarEffect: localStorage.getItem('userAvatarEffect') || 'none'
+                userAvatarEffect: localStorage.getItem('userAvatarEffect') || 'none',
+                // Независимые слоты рамок
+                userCircleFrame: localStorage.getItem('userCircleFrame') || '',
+                userPanelFrame: localStorage.getItem('userPanelFrame') || ''
             };
             
             await updateUserInFirebase(username, userData);
@@ -10029,7 +11263,7 @@ avatar: localStorage.getItem('userAvatar') || 'default',
                 const username = localStorage.getItem('username') || 'Пользователь';
                 const isDeveloper = localStorage.getItem('isDeveloper') === 'true';
                 const developerCheckmark = isDeveloper ? getDevCheckmarkHtml('#10b981', 'Разработчик', true) : '';
-                userPage.querySelector('.user-page-title').innerHTML = 'Личный кабинет - ' + username + developerCheckmark;
+                userPage.querySelector('.user-page-title').innerHTML = username + developerCheckmark;
                 userPage.querySelector('#userPageUsername').textContent = '@' + username;
                 
                 // Показать/скрыть меню настройки галочки для разработчиков
@@ -10042,9 +11276,15 @@ avatar: localStorage.getItem('userAvatar') || 'default',
                 if (username) {
                     getUserFromFirebase(username).then(user => {
                         if (user) {
-                            if (user.userFrame) localStorage.setItem('userFrame', user.userFrame);
-                            if (user.userBackground) localStorage.setItem('userBackground', user.userBackground);
-                            if (user.userAvatarEffect) localStorage.setItem('userAvatarEffect', user.userAvatarEffect);
+                            // ВАЖНО: локальный выбор главнее — Firebase только ДОПОЛНЯЕТ отсутствующие
+                            // настройки (иначе гонка синка возвращала старую рамку с режимом «карточка»)
+                            if (user.userFrame && !localStorage.getItem('userFrame')) localStorage.setItem('userFrame', user.userFrame);
+                            if (user.userFrameMode && !localStorage.getItem('userFrameMode')) localStorage.setItem('userFrameMode', user.userFrameMode);
+                            if (user.userBackground && !localStorage.getItem('userBackground')) localStorage.setItem('userBackground', user.userBackground);
+                            if (user.userAvatarEffect && !localStorage.getItem('userAvatarEffect')) localStorage.setItem('userAvatarEffect', user.userAvatarEffect);
+                            // Новые независимые слоты рамок (только если ещё не выбраны локально)
+                            if (user.userCircleFrame && !localStorage.getItem('userCircleFrame')) localStorage.setItem('userCircleFrame', user.userCircleFrame);
+                            if (user.userPanelFrame && !localStorage.getItem('userPanelFrame')) localStorage.setItem('userPanelFrame', user.userPanelFrame);
                             if (user.avatar) localStorage.setItem('userAvatar', user.avatar);
                             if (user.avatarData) localStorage.setItem('avatarData', user.avatarData);
                             if (user.downloads) {
@@ -10145,6 +11385,7 @@ avatar: localStorage.getItem('userAvatar') || 'default',
                     avatarDisplay.innerHTML = '<i class="fas fa-user"></i>';
                 }
             }
+            updateNavAvatar();
         }
         
         // Установка аватара из списка
@@ -10187,6 +11428,7 @@ avatar: localStorage.getItem('userAvatar') || 'default',
                     showNotification('Аватар изменен!');
                 }
             }
+            updateNavAvatar();
         }
         
         // Загрузка аватара с компьютера
@@ -10243,6 +11485,7 @@ avatar: localStorage.getItem('userAvatar') || 'default',
                             
                             showNotification('Аватар загружен и сохранён!');
                         }
+                        updateNavAvatar();
                     };
                     img.src = e.target.result;
                 };
@@ -10254,11 +11497,23 @@ avatar: localStorage.getItem('userAvatar') || 'default',
         // Эти функции используют глобальную конфигурацию
         // Все рамки автоматически доступны всем пользователям!
         
-        // Сохранение выбора рамки профиля
-        function setUserFrame(frameId) {
+        // Сохранение выбора рамки в НУЖНЫЙ слот:
+        // mode 'circle' — менять ТОЛЬКО кольцо вокруг аватарки,
+        // mode 'card'   — менять ТОЛЬКО фон панели (кольцо не трогается!)
+        function setUserFrame(frameId, mode) {
             const frames = getGlobalFrames();
             if (frames[frameId]) {
-                localStorage.setItem('userFrame', frameId);
+                // Материализуем старый формат ДО записи, чтобы не потерять второй слот
+                materializeFrameSlots();
+                if (mode === 'card') {
+                    localStorage.setItem('userPanelFrame', frameId);
+                } else {
+                    localStorage.setItem('userCircleFrame', frameId);
+                }
+                // Зеркалим кольцо в старый формат (совместимость)
+                const slots = resolveFrameSlots({});
+                localStorage.setItem('userFrame', slots.circle || 'default');
+                localStorage.setItem('userFrameMode', 'circle');
                 localStorage.setItem('userBackground', localStorage.getItem('userBackground') || 'default');
                 localStorage.setItem('userAvatarEffect', localStorage.getItem('userAvatarEffect') || 'none');
                 
@@ -10272,9 +11527,47 @@ avatar: localStorage.getItem('userAvatar') || 'default',
                 const modal = document.getElementById('frameSelectorModal');
                 if (modal) modal.style.display = 'none';
                 
-                // Показываем уведомление
-                showNotification('Рамка профиля изменена!');
+                // Показываем уведомление о том, ЧТО именно изменилось
+                let msg;
+                if (mode === 'card') {
+                    msg = frameId === 'default' ? 'Фон панели сброшен!' : 'Рамка установлена как фон панели!';
+                } else {
+                    msg = frameId === 'default' ? 'Кольцо вокруг аватарки убрано!' : 'Рамка установлена вокруг аватарки!';
+                }
+                showNotification(msg);
             }
+        }
+        
+        // Выбор рамки → показываем выбор способа применения
+        let pendingFrameId = null;
+        
+        function pickFrame(frameId) {
+            const frames = getGlobalFrames();
+            if (!frames[frameId]) return;
+            
+            pendingFrameId = frameId;
+            
+            const grid = document.getElementById('frameGrid');
+            const choice = document.getElementById('frameApplyChoice');
+            const nameEl = document.getElementById('chosenFrameName');
+            if (grid) grid.style.display = 'none';
+            if (nameEl) nameEl.textContent = '«' + frames[frameId].name + '»';
+            if (choice) choice.style.display = 'block';
+        }
+        
+        function backToFrameGrid() {
+            pendingFrameId = null;
+            const grid = document.getElementById('frameGrid');
+            const choice = document.getElementById('frameApplyChoice');
+            if (choice) choice.style.display = 'none';
+            if (grid) grid.style.display = 'grid';
+        }
+        
+        function applyPickedFrame(mode) {
+            if (!pendingFrameId) return;
+            const frameId = pendingFrameId;
+            backToFrameGrid();
+            setUserFrame(frameId, mode);
         }
         
         // Сохранение выбора фона профиля
@@ -10299,52 +11592,86 @@ avatar: localStorage.getItem('userAvatar') || 'default',
             }
         }
         
-        // Применение рамки к профилю пользователя
+        // Применение рамок к профилю из НЕЗАВИСИМЫХ слотов:
+        // кольцо вокруг аватарки и фон панели меняются по отдельности
         function applyUserFrameToProfile() {
-            // Используем сохранённую рамку или золотую по умолчанию
-            const frameId = localStorage.getItem('userFrame') || 'gold';
+            const slots = resolveFrameSlots({});
             const frameWrapper = document.getElementById('profileFrameWrapper');
             const avatarDisplay = document.getElementById('userAvatarDisplay');
-            const frame = getFrame(frameId);
+            const profileCard = document.querySelector('#user-page .user-profile-view');
             
-            // Применяем рамку ПОЗАДИ аватаром (как фон)
-            if (frameWrapper && frame) {
+            // --- Слот 1: кольцо вокруг аватарки ---
+            const circleFrame = slots.circle ? getGlobalFrames()[slots.circle] : null;
+            
+            if (frameWrapper) {
                 // Сбрасываем стили
                 frameWrapper.style.padding = '0';
                 frameWrapper.style.border = 'none';
                 frameWrapper.style.background = 'transparent';
                 frameWrapper.style.boxShadow = 'none';
+                frameWrapper.style.animation = 'none';
                 frameWrapper.style.width = '140px';
                 frameWrapper.style.height = '140px';
                 frameWrapper.style.borderRadius = '50%';
                 
-                if (frameId !== 'default') {
-                    // Рамка позади аватара - аватар меньше на 12px
-                    frameWrapper.style.width = '140px';
-                    frameWrapper.style.height = '140px';
-                    frameWrapper.style.borderRadius = '50%';
-                    
-                    if (frame.gradient) {
-                        frameWrapper.style.background = frame.gradient;
-                        if (frame.glow) {
-                            frameWrapper.style.boxShadow = frame.glow;
+                frameWrapper.style.position = 'relative';
+                // Кольцо рисуется ОТДЕЛЬНЫМ слоем позади: filter-анимации
+                // (перелив оттенков RGB) больше не задевают саму аватарку
+                const oldRingBg = frameWrapper.querySelector('.profile-frame-ring-bg');
+                if (oldRingBg) oldRingBg.remove();
+                
+                if (circleFrame) {
+                    if (circleFrame.gradient) {
+                        const ringBg = document.createElement('div');
+                        ringBg.className = 'profile-frame-ring-bg';
+                        ringBg.style.cssText = 'position:absolute; inset:0; border-radius:50%; pointer-events:none; z-index:0;'
+                            + 'background:' + circleFrame.gradient + ';'
+                            + (circleFrame.glow ? 'box-shadow:' + circleFrame.glow + ';' : '')
+                            + (circleFrame.animation ? 'animation:' + circleFrame.animation + ';' : '');
+                        frameWrapper.insertBefore(ringBg, frameWrapper.firstChild);
+                        // Аватарка всегда НАД слоем кольца
+                        if (avatarDisplay) {
+                            avatarDisplay.style.position = 'relative';
+                            avatarDisplay.style.zIndex = '1';
                         }
                     } else {
-                        frameWrapper.style.border = frame.border;
+                        frameWrapper.style.border = circleFrame.border;
                     }
                     
-                    // Делаем аватар поменьше, чтобы рамка была видна
+                    // Аватар поменьше, чтобы кольцо было видно
                     if (avatarDisplay) {
                         avatarDisplay.style.width = '124px';
                         avatarDisplay.style.height = '124px';
                     }
-                } else {
-                    // Без рамки - аватар полный размер
-                    if (avatarDisplay) {
-                        avatarDisplay.style.width = '140px';
-                        avatarDisplay.style.height = '140px';
-                    }
+                } else if (avatarDisplay) {
+                    // Без кольца — аватар полного размера
+                    avatarDisplay.style.width = '140px';
+                    avatarDisplay.style.height = '140px';
                 }
+            }
+            
+            // --- Слот 2: фон всей панели (абсолютно независимо от кольца) ---
+            if (profileCard) {
+                const oldBgLayer = profileCard.querySelector('.profile-frame-bg');
+                if (oldBgLayer) oldBgLayer.remove();
+                profileCard.style.borderColor = '';
+                profileCard.style.boxShadow = '';
+            }
+            const panelFrame = slots.panel ? getGlobalFrames()[slots.panel] : null;
+            if (profileCard && panelFrame) {
+                let bgLayer = profileCard.querySelector('.profile-frame-bg');
+                if (!bgLayer) {
+                    bgLayer = document.createElement('div');
+                    bgLayer.className = 'profile-frame-bg';
+                    profileCard.insertBefore(bgLayer, profileCard.firstChild);
+                }
+                
+                bgLayer.style.background = buildFrameCardBackground(panelFrame);
+                bgLayer.style.animation = panelFrame.animation || '';
+                
+                // Внешнее свечение НЕ применяем: оно выходило за пределы карточки
+                // и окрашивало область вокруг верхней надписи (имя + галочка)
+                profileCard.style.borderColor = 'transparent';
             }
             
             // Также применяем эффект к самому аватару
@@ -10363,15 +11690,51 @@ avatar: localStorage.getItem('userAvatar') || 'default',
             }
         }
         
-        // Применение фона к профилю
+        // Фон панели для режима «вся панель»: чистый яркий градиент рамки, без затемняющей вуали
+        function buildFrameCardBackground(frame) {
+            if (frame.gradient) {
+                return frame.gradient;
+            }
+            // Если у рамки только цветная обводка — строим фон из её цвета
+            let c = ((frame.border || '').match(/#[0-9a-fA-F]{6}|#[0-9a-fA-F]{3}/) || [null])[0] || '#6366f1';
+            if (c.length === 4) c = '#' + c[1] + c[1] + c[2] + c[2] + c[3] + c[3];
+            return 'linear-gradient(135deg, ' + c + 'F2 0%, rgba(13, 18, 38, 0.92) 50%, ' + c + 'F2 100%)';
+        }
+
+        // Применение фона к профилю (живые анимированные темы)
+        const PROFILE_BG_THEMES = ['space', 'ocean', 'forest', 'sunset', 'aurora', 'matrix', 'galaxy'];
+
         function applyUserBackgroundToProfile() {
             const backgroundId = localStorage.getItem('userBackground') || 'default';
             const backgrounds = getGlobalBackgrounds();
             const profilePage = document.getElementById('user-page');
-            
-            if (profilePage && backgrounds[backgroundId]) {
-                profilePage.style.background = backgrounds[backgroundId].bg;
+            if (!profilePage) return;
+
+            // Убрать старый инлайн-фон (от прежней реализации)
+            profilePage.style.background = '';
+
+            let bgLayer = profilePage.querySelector('.profile-dynamic-bg');
+
+            if (backgroundId === 'default' || !backgrounds[backgroundId]) {
+                if (bgLayer) bgLayer.remove();
+                return;
             }
+
+            if (!bgLayer) {
+                bgLayer = document.createElement('div');
+                bgLayer.className = 'profile-dynamic-bg';
+                bgLayer.setAttribute('aria-hidden', 'true');
+                profilePage.insertBefore(bgLayer, profilePage.firstChild);
+            }
+
+            PROFILE_BG_THEMES.forEach(theme => bgLayer.classList.remove('profile-bg-' + theme));
+            bgLayer.classList.add('profile-bg-' + backgroundId);
+
+            // Тема НЕ рисуется за шапкой (имя + кнопка «Настройки»): маска делает
+            // слой прозрачным в зоне шапки с плавным появлением ниже — без полос и рамок
+            const headerFade = 'linear-gradient(to bottom, transparent 0px, transparent 145px, black 205px)';
+            bgLayer.style.webkitMaskImage = headerFade;
+            bgLayer.style.maskImage = headerFade;
         }
         
         // Применение эффекта к аватару
@@ -10388,6 +11751,7 @@ avatar: localStorage.getItem('userAvatar') || 'default',
         
         // Загрузка всех настроек профиля из глобальной конфигурации
         function loadUserProfileSettings() {
+            materializeFrameSlots();
             applyUserFrameToProfile();
             applyUserBackgroundToProfile();
             applyUserAvatarEffectToProfile();
@@ -10400,6 +11764,7 @@ avatar: localStorage.getItem('userAvatar') || 'default',
                 // Создаём модальное окно если его нет
                 createFrameSelectorModal();
             } else {
+                backToFrameGrid();
                 modal.style.display = 'flex';
             }
         }
@@ -10407,18 +11772,22 @@ avatar: localStorage.getItem('userAvatar') || 'default',
         // Создание модального окна выбора рамок
         function createFrameSelectorModal() {
             const frames = getGlobalFrames();
-            const currentFrame = localStorage.getItem('userFrame') || 'default';
+            materializeFrameSlots();
+            // Подсвечиваем рамки, реально стоящие в ЛЮБОМ из двух слотов
+            const slotsNow = resolveFrameSlots({});
+            const activeIds = [slotsNow.circle, slotsNow.panel].filter(Boolean);
             
             let framesHtml = '';
             for (const [id, frame] of Object.entries(frames)) {
-                const isSelected = id === currentFrame ? 'selected' : '';
+                const isSelected = activeIds.indexOf(id) !== -1 ? 'selected' : '';
                 const hasGradient = frame.gradient ? 'background:' + frame.gradient + ';' : '';
                 const hasGlow = frame.glow ? 'box-shadow:' + frame.glow + ';' : '';
                 const borderStyle = frame.gradient ? 'border:none;' : (frame.border || '');
+                const animAttr = frame.animation ? 'animation:' + frame.animation + ';' : '';
                 
                 framesHtml += `
-                    <div class="frame-option ${isSelected}" onclick="setUserFrame('${id}')" style="${hasGradient} ${hasGlow} ${borderStyle} padding: 8px;">
-                        <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--dark); display: flex; align-items: center; justify-content: center; margin-bottom: 5px;">
+                    <div class="frame-option ${isSelected}" onclick="pickFrame('${id}')" style="${hasGradient} ${hasGlow} ${borderStyle} ${animAttr} padding: 8px;">
+                        <div style="width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%; background: var(--dark); display: flex; align-items: center; justify-content: center; margin-bottom: 6px;">
                             <i class="fas fa-user" style="color: white; font-size: 18px;"></i>
                         </div>
                         <span style="font-size: 9px; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.8);">${frame.name}</span>
@@ -10433,8 +11802,27 @@ avatar: localStorage.getItem('userAvatar') || 'default',
                             <h2 style="margin: 0 0 10px 0; color: white; font-size: 1.8rem;"><i class="fas fa-crown" style="color: #ffd700;"></i> Выбор рамки профиля</h2>
                             <p style="color: #94a3b8; margin: 0; font-size: 14px;">✨ Все рамки доступны бесплатно всем пользователям!</p>
                         </div>
-                        <div class="frame-selector" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 12px; max-height: 350px; overflow-y: auto; padding: 10px;">
+                        <div id="frameGrid" class="frame-selector" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 12px; max-height: 350px; overflow-y: auto; padding: 10px;">
                             ${framesHtml}
+                        </div>
+                        <div id="frameApplyChoice" style="display: none; text-align: center;">
+                            <p style="color: #94a3b8; margin: 5px 0 15px; font-size: 14px;">Выбрано: <span id="chosenFrameName" style="color: white; font-weight: 700;"></span></p>
+                            <p style="color: var(--primary); font-weight: 600; margin-bottom: 18px; font-size: 1.05rem;"><i class="fas fa-wand-magic-sparkles"></i> Как применить рамку?</p>
+                            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                                <button onclick="applyPickedFrame('circle')" style="flex: 1; min-width: 200px; max-width: 240px; padding: 20px 16px; background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(168,85,247,0.15)); border: 2px solid var(--primary); border-radius: 14px; cursor: pointer; transition: transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 25px rgba(99,102,241,.35)'" onmouseout="this.style.transform=''; this.style.boxShadow=''">
+                                    <div style="font-size: 2rem; margin-bottom: 8px;">⭕</div>
+                                    <div style="color: white; font-weight: 700; font-size: 1rem;">Круг вокруг аватарки</div>
+                                    <div style="color: #94a3b8; font-size: 0.82rem; margin-top: 6px;">Как сейчас — кольцо вокруг фото профиля</div>
+                                </button>
+                                <button onclick="applyPickedFrame('card')" style="flex: 1; min-width: 200px; max-width: 240px; padding: 20px 16px; background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(59,130,246,0.12)); border: 2px solid #10b981; border-radius: 14px; cursor: pointer; transition: transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 25px rgba(16,185,129,.3)'" onmouseout="this.style.transform=''; this.style.boxShadow=''">
+                                    <div style="font-size: 2rem; margin-bottom: 8px;">🖼️</div>
+                                    <div style="color: white; font-weight: 700; font-size: 1rem;">Вся панель профиля</div>
+                                    <div style="color: #94a3b8; font-size: 0.82rem; margin-top: 6px;">Рамка по краю карточки с именем и статистикой</div>
+                                </button>
+                            </div>
+                            <button onclick="backToFrameGrid()" style="margin-top: 18px; padding: 10px 24px; background: none; border: 1px solid rgba(255,255,255,0.25); color: #94a3b8; border-radius: 20px; cursor: pointer; font-size: 13px;">
+                                ← Назад к рамкам
+                            </button>
                         </div>
                         <div style="text-align: center; margin-top: 20px;">
                             <button onclick="document.getElementById('frameSelectorModal').style.display = 'none'; showUserPage();" style="padding: 12px 30px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 14px; font-weight: 600; transition: transform 0.2s;">
@@ -11136,6 +12524,26 @@ function showProfileSettings() {
                  if (passwordSection) {
                      passwordSection.style.display = isDeveloper ? 'none' : 'block';
                  }
+
+                 // Динамически заполнить список фонов из глобальной конфигурации
+                 const bgSelect = document.getElementById('profileBackgroundSetting');
+                 if (bgSelect && getGlobalBackgrounds) {
+                     const backgrounds = getGlobalBackgrounds();
+                     bgSelect.innerHTML = '';
+                     for (const key in backgrounds) {
+                         const opt = document.createElement('option');
+                         opt.value = key;
+                         opt.textContent = backgrounds[key].name || key;
+                         bgSelect.appendChild(opt);
+                     }
+                     bgSelect.value = localStorage.getItem('userBackground') || 'default';
+                 }
+                 
+                 // Выбрать текущий эффект аватара
+                 const effectSelect = document.getElementById('profileAvatarEffectSetting');
+                 if (effectSelect) {
+                     effectSelect.value = localStorage.getItem('userAvatarEffect') || 'none';
+                 }
                  
                  settingsModal.style.display = 'flex';
                  document.body.style.overflow = 'hidden';
@@ -11173,6 +12581,22 @@ function saveProfileSettings() {
              
              if (newUsername) {
                  localStorage.setItem('username', newUsername);
+             }
+             
+             // Сохранить выбранный фон страницы профиля
+             const bgSetting = document.getElementById('profileBackgroundSetting');
+             if (bgSetting && bgSetting.value) {
+                 localStorage.setItem('userBackground', bgSetting.value);
+                 applyUserBackgroundToProfile();
+                 syncProfileToFirebase();
+             }
+             
+             // Сохранить выбранный эффект аватара
+             const effectSetting = document.getElementById('profileAvatarEffectSetting');
+             if (effectSetting && effectSetting.value) {
+                 localStorage.setItem('userAvatarEffect', effectSetting.value);
+                 applyUserAvatarEffectToProfile();
+                 syncProfileToFirebase();
              }
              
              alert('Настройки сохранены!');
@@ -11750,6 +13174,21 @@ function switchToMain() {
                 setTimeout(() => {
                     targetPage.classList.remove('exit');
                     targetPage.classList.add('active');
+
+                    // Кнопка поддержки скрывается на странице профиля и в поиске пользователей
+                    const supportFab = document.getElementById('supportFabWrap') || document.getElementById('supportBtn');
+                    if (supportFab) {
+                        if (pageId === 'user-page' || pageId === 'users-search-page') {
+                            supportFab.style.setProperty('display', 'none', 'important');
+                        } else {
+                            const oldDisplay = supportFab.getAttribute('data-old-display');
+                            supportFab.style.setProperty('display', oldDisplay || 'flex', 'important');
+                        }
+                    }
+
+                    // На личном кабинете блокируем прокрутку вниз
+                    document.querySelectorAll('.page').forEach(p => p.classList.toggle('no-scroll', p.id === 'user-page'));
+                    document.body.classList.toggle('no-scroll', pageId === 'user-page');
 
                     if (targetPage.dataset.scrollPosition) {
                         targetPage.scrollTop = targetPage.dataset.scrollPosition;
@@ -12386,6 +13825,8 @@ function switchToMain() {
 
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
+            // Скрываем плавающую кнопку поддержки, пока открыто окно предзаказа
+            setSupportFabVisibility(false);
         }
 
         // Функция фильтрации
@@ -12491,8 +13932,21 @@ function switchToMain() {
                 emptyMessage = null;
             }
             
-            // Показываем placeholder GIF для любой пустой категории, в том числе и Minecraft
-            if (visibleCount === 0 && activeCategory !== 'Minecraft') {
+            // Если задан поисковый запрос и ничего не найдено — текст вместо GIF
+            const searchValue = document.getElementById('gameSearch').value.trim();
+            if (visibleCount === 0 && searchValue !== '') {
+                emptyMessage = document.createElement('div');
+                emptyMessage.className = 'empty-message';
+                emptyMessage.innerHTML = `
+                    <div style="text-align: center; padding: 50px 20px;">
+                        <i class="fas fa-search" style="font-size: 3rem; color: var(--text-secondary); opacity: 0.6; margin-bottom: 20px;"></i>
+                        <h2 style="color: var(--text); font-family: Orbitron, sans-serif; font-size: 1.8rem; margin-bottom: 12px;">Ничего не найдено по данному запросу</h2>
+                        <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;">Проверьте правильность написания или попробуйте другой запрос.</p>
+                    </div>`;
+                grid.appendChild(emptyMessage);
+            }
+            // Показываем placeholder GIF только для пустых новых категорий (без активного поиска)
+            else if (visibleCount === 0 && activeCategory !== 'Minecraft') {
                 const customMessages = {
                     'Privatki': '<div style="text-align: center; margin-bottom: 20px; font-size: 1.5rem; font-weight: bold; color: var(--text); text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);">🚀 Игра появится: 22.01.2026 21:00 🚀</div>',
                     'Far Cry': '<div style="text-align: center;"><h2 style="color: var(--text); font-family: Orbitron, sans-serif; margin-bottom: 15px;">FAR CRY</h2><p style="color: var(--text-secondary); line-height: 1.6; max-width: 600px; margin: 0 auto;">Far Cry — это серия популярных компьютерных игр в жанре action-adventure и шутера от первого лица, разработанная компанией Ubisoft.</p></div>',
@@ -12539,6 +13993,45 @@ function showForzaGames() {
             ];
             const count = cards.length;
             document.getElementById('gamesCount').textContent = `Найдено: ${count}`;
+        }
+
+        // Управление видимостью плавающей кнопки поддержки:
+        // скрывается, пока открыто окно просмотра игры/программы, и восстанавливается при закрытии
+        function setSupportFabVisibility(visible) {
+            const supportFab = document.getElementById('supportFabWrap') || document.getElementById('supportBtn');
+            if (!supportFab) return;
+            if (!visible) {
+                // Запоминаем текущее отображение только один раз, чтобы потом корректно восстановить
+                if (supportFab.getAttribute('data-old-display') === null) {
+                    supportFab.setAttribute('data-old-display', supportFab.style.display);
+                }
+                supportFab.style.setProperty('display', 'none', 'important');
+            } else {
+                const activePageForRestore = document.querySelector('.page.active');
+                const isOnProfilePage = activePageForRestore && (activePageForRestore.id === 'user-page' || activePageForRestore.id === 'users-search-page');
+                if (!isOnProfilePage) {
+                    const oldDisplay = supportFab.getAttribute('data-old-display');
+                    supportFab.style.setProperty('display', oldDisplay || 'flex', 'important');
+                }
+            }
+        }
+
+        // Страховка: как только окно просмотра игры/программы начинает закрываться
+        // или полностью закрывается ЛЮБЫМ способом (крестик, клик мимо и т.д.),
+        // кнопка поддержки гарантированно возвращается обратно
+        const gameModalElement = document.getElementById('gameModal');
+        if (gameModalElement) {
+            new MutationObserver(function() {
+                const isActive = gameModalElement.classList.contains('active');
+                const isClosing = gameModalElement.classList.contains('closing');
+                if (isActive && !isClosing) {
+                    // Окно открыто — прячем кнопку поддержки
+                    setSupportFabVisibility(false);
+                } else {
+                    // Окно закрывается/закрыто — возвращаем кнопку поддержки
+                    setSupportFabVisibility(true);
+                }
+            }).observe(gameModalElement, { attributes: true, attributeFilter: ['class'] });
         }
 
         // Открытие модального окна
@@ -12825,6 +14318,8 @@ if (game.status === 'available') {
         `;
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
+        // Скрываем плавающую кнопку поддержки, пока открыт просмотр игры/программы
+        setSupportFabVisibility(false);
         history.replaceState(null, null, `?game=${gameId}`);
         // Запоминаем исходную платформу и показываем оверлей вместо автовоспроизведения трейлера
         window.currentTrailerPlatform = initialPlatform;
@@ -12860,6 +14355,8 @@ if (game.status === 'available') {
         // Закрытие модального окна
         document.getElementById('closeModalBtn').addEventListener('click', function() {
             const modal = document.getElementById('gameModal');
+            // Возвращаем кнопку поддержки сразу в момент выхода из окна просмотра
+            setSupportFabVisibility(true);
             modal.classList.add('closing');
             setTimeout(() => {
                 modal.classList.remove('active', 'closing');
@@ -12874,6 +14371,8 @@ if (game.status === 'available') {
         window.addEventListener('click', function(e) {
             const modal = document.getElementById('gameModal');
             if (e.target === modal) {
+                // Возвращаем кнопку поддержки сразу в момент выхода из окна просмотра
+                setSupportFabVisibility(true);
                 modal.classList.add('closing');
                 setTimeout(() => {
                     modal.classList.remove('active', 'closing');
@@ -13470,7 +14969,174 @@ if (game.status === 'available') {
             const supportBtn = document.getElementById('supportBtn');
             if (supportBtn) supportBtn.classList.remove('chat-open');
             updateSupportBadge();
+            ChatHoverScroll.release();
         }
+
+        // ─── Блокировка прокрутки страницы при наведении на чат поддержки ───
+        // Пока курсор над окном чата — страница не прокручивается колесом/клавиатурой.
+        // Увелили мышь с чата — скролл страницы снова работает.
+        const ChatHoverScroll = {
+            locked: false,
+            savedRootOverflow: '',
+            savedBodyOverflow: '',
+            savedPadding: '',
+            scrollbarWidth() {
+                return window.innerWidth - document.documentElement.clientWidth;
+            },
+            acquire() {
+                if (this.locked) return;
+                this.locked = true;
+                // На сайте у <html> задан собственный overflow — блокируем оба уровня сразу
+                this.savedRootOverflow = document.documentElement.style.overflow || '';
+                this.savedBodyOverflow = document.body.style.overflow || '';
+                this.savedPadding = document.body.style.paddingRight || '';
+                document.documentElement.style.overflow = 'hidden';
+                document.body.style.overflow = 'hidden';
+                const sw = this.scrollbarWidth();
+                if (sw > 0) document.body.style.paddingRight = sw + 'px'; // без сдвига контента
+            },
+            release() {
+                if (!this.locked) return;
+                this.locked = false;
+                document.documentElement.style.overflow = this.savedRootOverflow;
+                document.body.style.overflow = this.savedBodyOverflow;
+                document.body.style.paddingRight = this.savedPadding;
+                this.savedRootOverflow = '';
+                this.savedBodyOverflow = '';
+                this.savedPadding = '';
+            }
+        };
+
+        // Слежение по всему документу: как только курсор оказывается над ЛЮБОЙ частью
+        // окна чата (шапка, кнопки, поле ввода, настройки, переписка) — прокрутка
+        // страницы замирает. Увели курсор из чата — страница снова прокручивается.
+        document.addEventListener('DOMContentLoaded', () => {
+            const isOverChat = (target) => !!(target && target.closest && target.closest('#miniChat'));
+            // Эмуляция мыши после тапа на телефоне — игнорируем, тач-скролл не трогаем
+            const fromTouch = (e) => !!(e.sourceCapabilities && e.sourceCapabilities.firesTouchEvents);
+
+            document.addEventListener('mouseover', (e) => {
+                if (!fromTouch(e) && isOverChat(e.target)) ChatHoverScroll.acquire();
+            });
+
+            document.addEventListener('mouseout', (e) => {
+                if (!fromTouch(e) && isOverChat(e.target) && !isOverChat(e.relatedTarget)) {
+                    ChatHoverScroll.release();
+                }
+            });
+
+            // Страховка: если чат закрыли, пока курсор был внутри — мгновенно снимаем блокировку
+            const chatNode = document.getElementById('miniChat');
+            if (chatNode) {
+                new MutationObserver(() => {
+                    if (!chatNode.classList.contains('active')) ChatHoverScroll.release();
+                }).observe(chatNode, { attributes: true, attributeFilter: ['class'] });
+
+                // Колесо мыши над ЛЮБОЙ частью чата: страница не прокручивается ни сверху,
+                // ни снизу, ни по бокам. Исключение — внутренние скроллеры самого чата
+                // (переписка, панель настроек): их колесо крутит как обычно.
+                const nearestInnerScroller = (startEl) => {
+                    let el = startEl && startEl.parentElement;
+                    while (el) {
+                        if (el === document.body || el === document.documentElement) return null;
+                        const st = window.getComputedStyle(el);
+                        if ((st.overflowY === 'auto' || st.overflowY === 'scroll') && el.scrollHeight > el.clientHeight) {
+                            return el;
+                        }
+                        el = el.parentElement;
+                    }
+                    return null;
+                };
+                chatNode.addEventListener('wheel', (e) => {
+                    if (fromTouch(e)) return;
+                    if (!chatNode.classList.contains('active')) return;
+                    const targetEl = e.target instanceof Element ? e.target : null;
+                    if (!targetEl || !isOverChat(targetEl)) return;
+                    const inner = nearestInnerScroller(targetEl);
+                    // Ближайший прокручиваемый предок вне чата (или его нет вовсе) =
+                    // это прокрутка страницы — отменяем событие колеса
+                    if (!(inner && isOverChat(inner))) e.preventDefault();
+                }, { passive: false });
+            }
+        });
+
+        // ─── Счётчик онлайн-посетителей: РЕАЛЬНОЕ число через Firebase Realtime DB ───
+        // Каждый браузер со стабильным анонимным ID раз в 30 секунд пишет «сердцебиение»
+        // в узел online/. При закрытии вкладки Firebase сам удаляет запись (onDisconnect).
+        // Считаются только записи свежее 2 минут; зависшие подчищаются самими клиентами.
+        (function onlineVisitorsCounter() {
+            const pill = document.getElementById('onlineCounter');
+            const numEl = document.getElementById('onlineCount');
+            if (!pill || !numEl) return;
+            pill.classList.add('is-connecting');   // приглушены, пока не придёт первое живое значение
+
+            const STALE_MS = 120000;   // запись считается «живой» максимум 2 минуты
+
+            function setState(cls, on) { pill.classList.toggle(cls, !!on); }
+            function render(count) {
+                numEl.textContent = String(count);
+                setState('is-connecting', false);
+                setState('is-error', false);
+            }
+
+            try {
+                if (typeof firebase === 'undefined' || !firebase.database) throw new Error('SDK не загружен');
+                const db = firebase.database();
+                const onlineRef = db.ref('online');
+
+                // Стабильный анонимный ID браузера (никаких личных данных);
+                // несколько вкладок одного человека дают одну и ту же запись
+                const VID_KEY = 'forzesVisitorId';
+                let vid;
+                try {
+                    vid = localStorage.getItem(VID_KEY);
+                    if (!vid) {
+                        vid = 'v' + Date.now().toString(36) + Math.random().toString(36).slice(2, 9);
+                        localStorage.setItem(VID_KEY, vid);
+                    }
+                } catch (_) {
+                    vid = 'v' + Date.now() + Math.random().toString(36).slice(2, 9);
+                }
+                const myRef = onlineRef.child(vid);
+
+                // Живое обновление числа при любом входе/выходе посетителей
+                onlineRef.on('value', (snap) => {
+                    if (!snap.exists()) { render(0); return; }
+                    const now = Date.now();
+                    let count = 0;
+                    snap.forEach((child) => {
+                        const ts = typeof child.val() === 'number' ? child.val() : 0;
+                        if (ts && now - ts < STALE_MS) {
+                            count++;
+                        } else if (!ts || now - ts > STALE_MS * 2) {
+                            child.ref.remove();              // подчистка зависших записей
+                        }
+                    });
+                    render(count);
+                }, () => setState('is-error', true));
+
+                // Схема присутствия: как только соединение установлено —
+                // регистрируем автоснятие своей записи и пишем штамп времени
+                db.ref('.info/connected').on('value', (snap) => {
+                    if (!snap.val()) return;
+                    myRef.onDisconnect().remove();
+                    myRef.set(firebase.database.ServerValue.TIMESTAMP).catch(() => {});
+                });
+
+                // Свежий штамп каждые 30 секунд
+                setInterval(() => {
+                    myRef.set(firebase.database.ServerValue.TIMESTAMP).catch(() => {});
+                }, 30000);
+
+                // При закрытии/перезагрузке вкладки пробуем удалиться мгновенно
+                window.addEventListener('pagehide', () => {
+                    try { myRef.remove(); } catch (_) {}
+                });
+            } catch (e) {
+                console.warn('Онлайн-счётчик:', e && e.message);
+                pill.classList.add('is-error');
+            }
+        })();
 
         function toggleSettings() {
             const settingsPanel = document.getElementById('settingsPanel');
@@ -13575,15 +15241,10 @@ if (game.status === 'available') {
 
         function handleOption(action) {
             if (action === 'support') {
-                // Не открываем всплывающее окно принудительно — даём пользователю выбор
                 const supportActions = `
-                    <a href="https://web.telegram.org/k/#@Forzes_Dev" target="_blank" rel="noopener"
-                       style="display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:12px;background:linear-gradient(135deg,#229ED9,#2ba0da);color:#fff;font-family:'Exo 2',sans-serif;font-size:0.85rem;font-weight:600;text-decoration:none;box-shadow:0 4px 14px rgba(34,158,217,0.35);transition:all 0.25s ease;"
-                       onmouseover="this.style.transform='translateY(-2px)'"
-                       onmouseout="this.style.transform=''">✈️ Открыть Telegram @Forzes_Dev</a>
                     <button class="option-btn" data-action="support-chat">✍️ Написать прямо в чат</button>
                 `;
-                addMessage('Telegram — самый быстрый способ. Или напишите сюда:', 'bot', supportActions);
+                addMessage('Напишите прямо сюда — поддержка ответит в этом чате:', 'bot', supportActions);
             } else if (action === 'support-chat') {
                 addMessage('Опишите проблему 🛠️', 'bot');
                 enterChatMode('support');
@@ -13612,7 +15273,7 @@ if (game.status === 'available') {
                         // Токен бота ещё не настроен — просто принимаем сообщение в чате
                         setTimeout(() => {
                             hideTypingIndicator();
-                            addMessage('✅ Принято! Поддержка ответит здесь или в Telegram @Forzes_Dev.', 'bot');
+                            addMessage('✅ Принято! Поддержка ответит здесь в чате.', 'bot');
                             console.warn('[Support→TG] Автоотправка выключена: укажите TELEGRAM_BOT_TOKEN в коде чата.');
                         }, 1500);
                     } else {
@@ -13632,16 +15293,16 @@ if (game.status === 'available') {
                             .then(data => {
                                 hideTypingIndicator();
                                 if (data && data.ok) {
-                                    addMessage('✅ Отправлено поддержке! Ответим здесь или в Telegram.', 'bot');
+                                    addMessage('✅ Отправлено поддержке! Ответим здесь в чате.', 'bot');
                                 } else {
                                     console.error('[Support→TG] Ошибка Telegram API:', data);
-                                    addMessage('⚠️ Не удалось доставить сообщение. Напишите нам в Telegram @Forzes_Dev.', 'bot');
+                                    addMessage('⚠️ Не удалось доставить сообщение. Попробуйте отправить ещё раз.', 'bot');
                                 }
                             })
                             .catch(err => {
                                 console.error('[Support→TG] Сеть недоступна:', err);
                                 hideTypingIndicator();
-                                addMessage('⚠️ Нет связи с Telegram. Напишите напрямую: @Forzes_Dev', 'bot');
+                                addMessage('⚠️ Нет связи с сервером поддержки. Попробуйте чуть позже.', 'bot');
                             });
                     }
                 } else {
@@ -14068,9 +15729,11 @@ if (game.status === 'available') {
                         welcomeModal.classList.remove('closing');
                     }, 300);
                     localStorage.setItem('hasSeenWelcome', 'true');
-                    // Показать кнопку поддержки
+                    // Показать кнопку поддержки (кроме личного кабинета и поиска пользователей)
                     const supportFab = document.getElementById('supportFabWrap') || document.getElementById('supportBtn');
-                    if (supportFab) {
+                    const activePageForWelcome = document.querySelector('.page.active');
+                    const welcomeHideSupport = activePageForWelcome && (activePageForWelcome.id === 'user-page' || activePageForWelcome.id === 'users-search-page');
+                    if (supportFab && !welcomeHideSupport) {
                         const oldDisplay = supportFab.getAttribute('data-old-display');
                         supportFab.style.display = oldDisplay || 'flex';
                     }
@@ -14097,7 +15760,10 @@ if (game.status === 'available') {
                     if (toast._hideTimeout) { clearTimeout(toast._hideTimeout); delete toast._hideTimeout; }
                 }
                 const supportFab = document.getElementById('supportFabWrap') || document.getElementById('supportBtn');
-                if (supportFab && (!welcomeModal || !welcomeModal.classList.contains('active'))) {
+                const activePageForToast = document.querySelector('.page.active');
+                // Скрываем поддержку на профиле и в поиске пользователей
+                const isOnProfilePage = activePageForToast && (activePageForToast.id === 'user-page' || activePageForToast.id === 'users-search-page');
+                if (supportFab && (!welcomeModal || !welcomeModal.classList.contains('active')) && !isOnProfilePage) {
                     supportFab.style.setProperty('display', 'flex', 'important');
                 }
             }
