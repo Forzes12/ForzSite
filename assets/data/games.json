@@ -2145,7 +2145,7 @@
         "size": "19 GB",
         "year": "2015",
         "updated": "15.03.2016",
-        "status": "buy",
+        "status": "available",
         "mode": "offline",
         "category": "Need For Speed",
         "tags": [
@@ -2160,8 +2160,9 @@
             "Ventura Bay",
             "Customization"
         ],
+        "torrentFile": "torrent/Need_for_Speed-GameWorks.torrent",
         "buyGame": "https://ggsel.net/catalog/product/avto-24-7-need-for-speed-deluxe-edition-rf-mir-steam-podarok-102112687",
-        "virus_check": "",
+        "virus_check": "https://www.virustotal.com/gui/file/350894d2205e955899b8fc5c45bd75c2c2718dd2d8d5c64ead116359e6dd49ce?nocache=1",
         "trailer": "https://drive.google.com/file/d/1y-N_Dffen_gDTD5-dHv9ctpRIRA4mu4l/preview",
         "screenshots": [
             "game-screenshot/1scr-87867543.jpg",
