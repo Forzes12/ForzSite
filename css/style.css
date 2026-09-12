@@ -9707,3 +9707,7 @@ button {
         margin-top: 20px;
     }
 }
+/* Режим регистрации: QR-панель скрыта — окно становится компактным */
+.auth-modal-container.qr-hidden {
+    max-width: 420px;
+}
