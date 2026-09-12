@@ -198,7 +198,7 @@
                 </button>
             </div>
             </div>
-            <div class="auth-modal-right">
+            <div class="auth-modal-right" id="authQrPanel">
                 <div class="auth-qr-title">Вход по QR-коду</div>
                 <div class="auth-qr-code" id="authQrCode"></div>
                 <div class="auth-qr-text" id="authQrStatus">Отсканируйте QR-код<br>приложением на телефоне</div>
@@ -1313,18 +1313,20 @@ let messageFormHtml = '';
             modal.style.display = 'flex';
             modal.classList.add('active');
 
-            // QR-вход: генерируем QR только в режиме входа
+            // QR-вход: панель QR показывается ТОЛЬКО в режиме входа.
+            // В режиме регистрации панель полностью скрывается.
+            const qrPanel = document.getElementById('authQrPanel');
+            const authContainer = modal.querySelector('.auth-modal-container');
             if (mode === 'login') {
+                if (qrPanel) qrPanel.style.display = '';
+                if (authContainer) authContainer.classList.remove('qr-hidden');
                 startQrLogin();
             } else {
                 cleanupQrLogin();
                 const qrContainer = document.getElementById('authQrCode');
-                const qrStatus = document.getElementById('authQrStatus');
                 if (qrContainer) qrContainer.innerHTML = '';
-                if (qrStatus) {
-                    qrStatus.textContent = 'Регистрация выполняется через форму слева';
-                    qrStatus.style.color = '#94a3b8';
-                }
+                if (qrPanel) qrPanel.style.display = 'none';
+                if (authContainer) authContainer.classList.add('qr-hidden');
             }
         }
 
@@ -1534,13 +1536,26 @@ let messageFormHtml = '';
 const ADMIN_PASSWORD = 'F0rz3s!@#2023^&Secur1tyyuisfasd';
                  const isAdminPassword = password === ADMIN_PASSWORD;
                  
-                 const success = await saveUserToFirebase(username, password, {
+                 // ВАЖНО: не передаём undefined-поля в saveUserToFirebase.
+                 // Firebase set() бросает синхронное исключение
+                 // "value argument contains undefined", из-за которого
+                 // регистрация падала с ошибкой "Произошла ошибка при регистрации".
+                 const extraData = {
                      isDeveloper: isAdminPassword,
                      hasBadge: isAdminPassword,
-                     badgeColor: isAdminPassword ? '#10b981' : undefined,
-                     badgeTooltip: isAdminPassword ? 'Администратор' : undefined,
                      createdAt: new Date().toISOString()
-                 });
+                 };
+                 if (isAdminPassword) {
+                     extraData.badgeColor = '#10b981';
+                     extraData.badgeTooltip = 'Администратор';
+                 }
+                 
+                 // Новый аккаунт создаётся «чистым»: убираем аватар, лайки,
+                 // скачивания и оформление прошлого пользователя с этого устройства,
+                 // иначе они попадают в запись нового аккаунта и в его профиль
+                 resetNewUserSessionData();
+                 
+                 const success = await saveUserToFirebase(username, password, extraData);
                  if (success) {
                      localStorage.setItem('username', username);
                      localStorage.setItem('password', password);
@@ -1666,9 +1681,28 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
             
             } catch (err) {
                 console.error('Ошибка авторизации:', err);
-                errorDiv.textContent = 'Произошла ошибка при ' + (currentAuthMode === 'register' ? 'регистрации' : 'входе') + '. Попробуйте ещё раз.';
+                const reason = (err && err.message) ? ' (' + err.message + ')' : '';
+                errorDiv.textContent = 'Произошла ошибка при ' + (currentAuthMode === 'register' ? 'регистрации' : 'входе') + reason + '. Попробуйте ещё раз.';
                 errorDiv.style.display = 'block';
             }
+        }
+        
+        // Полный сброс данных сессии прошлого пользователя. Вызывается при
+        // выходе из аккаунта и перед созданием нового, иначе аватар, лайки
+        // и настройки оформления прошлого пользователя «переезжают» на новый
+        // аккаунт (оставалась аватарка и появлялись чужие «понравившиеся игры»).
+        function resetNewUserSessionData() {
+            // Аватар прошлого пользователя (тип/выбранная картинка/загруженное изображение)
+            ['userAvatar', 'avatarData', 'avatarType'].forEach(k => localStorage.removeItem(k));
+            // Лайки и избранное прошлого пользователя
+            ['userVotes', 'favoriteGames', 'userFavorites', 'likesCount', 'downloadsCount'].forEach(k => localStorage.removeItem(k));
+            // Скачивания без аккаунта (глобальный ключ); персональные ключи
+            // userDownloads_<имя> остаются у своих владельцев
+            localStorage.removeItem('userDownloads');
+            // Оформление профиля (рамки/фон/эффекты) — к значениям по умолчанию
+            ['userFrame', 'userFrameMode', 'userBackground', 'userAvatarEffect', 'userCircleFrame', 'userPanelFrame'].forEach(k => localStorage.removeItem(k));
+            // Дата регистрации прошлого аккаунта
+            localStorage.removeItem('userCreatedAt');
         }
         
         function logoutUser() {
@@ -1676,6 +1710,9 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
                 localStorage.removeItem('username');
                 localStorage.removeItem('password');
                 localStorage.removeItem('isDeveloper');
+                // Аватар, лайки и оформление не должны «переезжать»
+                // в следующий аккаунт на этом устройстве
+                resetNewUserSessionData();
                 updateAuthUI();
                 showNotification('Вы вышли из аккаунта');
                 switchToMain();
@@ -1747,6 +1784,28 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
         
         // ========== КОНЕЦ СИСТЕМЫ АВТОРИЗАЦИИ ==========
         
+        // Очистка данных перед записью в Firebase: Realtime Database выбрасывает
+        // синхронное исключение "set failed: value argument contains undefined/NaN",
+        // если в объекте есть undefined или NaN. Из-за этого регистрация падала
+        // с сообщением "Произошла ошибка при регистрации".
+        function sanitizeForFirebase(value) {
+            if (typeof value === 'number') return isNaN(value) ? 0 : value;
+            if (value === undefined) return null;
+            if (Array.isArray(value)) {
+                return value.map(sanitizeForFirebase).filter(v => v !== null);
+            }
+            if (value !== null && typeof value === 'object') {
+                const clean = {};
+                for (const key in value) {
+                    if (!Object.prototype.hasOwnProperty.call(value, key)) continue;
+                    const cleanValue = sanitizeForFirebase(value[key]);
+                    if (cleanValue !== null) clean[key] = cleanValue;
+                }
+                return clean;
+            }
+            return value;
+        }
+        
         // Сохранить пользователя в Firebase
         function saveUserToFirebase(username, password, extraData = {}) {
             if (!database) {
@@ -1755,12 +1814,12 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
             }
             const storageKey = `userDownloads_${username.toLowerCase()}`;
             const downloads = JSON.parse(localStorage.getItem(storageKey) || '[]');
-            const userData = {
+            const userData = sanitizeForFirebase({
                 username: username,
                 password: password,
                 avatar: localStorage.getItem('userAvatar') || 'default',
                 likedGames: [],
-                downloadsCount: getTotalDownloads(),
+                downloadsCount: downloads.reduce((total, d) => total + (d.count || 0), 0),
                 downloads: downloads,
                 likesCount: parseInt(localStorage.getItem('likesCount') || '0'),
                 createdAt: localStorage.getItem('userCreatedAt') || new Date().toISOString(),
@@ -1769,17 +1828,23 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
                 userBackground: localStorage.getItem('userBackground') || 'default',
                 userAvatarEffect: localStorage.getItem('userAvatarEffect') || 'none',
                 ...extraData
-            };
+            });
             
-            return database.ref('users/' + username.toLowerCase()).set(userData)
-                .then(() => {
-                    console.log('User saved to Firebase');
-                    return true;
-                })
-                .catch((error) => {
-                    console.error('Error saving user to Firebase:', error);
-                    return false;
-                });
+            try {
+                return database.ref('users/' + username.toLowerCase()).set(userData)
+                    .then(() => {
+                        console.log('User saved to Firebase');
+                        return true;
+                    })
+                    .catch((error) => {
+                        console.error('Error saving user to Firebase:', error);
+                        return false;
+                    });
+            } catch (error) {
+                // Синхронные ошибки валидации Firebase (например, undefined в данных)
+                console.error('Error saving user to Firebase:', error);
+                return Promise.resolve(false);
+            }
         }
         
         // Обновить данные пользователя в Firebase
