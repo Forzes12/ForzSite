@@ -40,6 +40,7 @@
             "border": "3px solid #ff00ff",
             "gradient": "linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff, #00ffff)",
             "glow": "0 0 35px rgba(255, 0, 255, 0.9), 0 0 70px rgba(0, 255, 255, 0.5)",
+            "animation": "frameGlowPulse 1.9s ease-in-out infinite alternate",
             "icon": "fa-bolt"
         },
         "dark": {
@@ -54,6 +55,7 @@
             "border": "3px solid transparent",
             "gradient": "linear-gradient(45deg, #ff0000, #ff7700, #ffff00, #00ff00, #00ffff, #0077ff, #ff00ff, #ff0000)",
             "glow": "0 0 30px rgba(255, 0, 255, 0.6)",
+            "animation": "frameHue 5s linear infinite",
             "icon": "fa-rainbow"
         },
         "cyber": {
@@ -61,6 +63,7 @@
             "border": "3px solid #00ff88",
             "gradient": "linear-gradient(135deg, #00ff88 0%, #00ffff 33%, #ff00ff 66%, #00ff88 100%)",
             "glow": "0 0 35px rgba(0, 255, 136, 0.8), 0 0 70px rgba(0, 255, 255, 0.5)",
+            "animation": "frameHue 8s linear infinite",
             "icon": "fa-microchip"
         },
         "legend": {
@@ -68,6 +71,7 @@
             "border": "4px solid #ffd700",
             "gradient": "linear-gradient(135deg, #ffd700 0%, #ff6b6b 20%, #c71585 40%, #4b0082 60%, #ff00ff 80%, #ffd700 100%)",
             "glow": "0 0 50px rgba(255, 215, 0, 1), 0 0 100px rgba(255, 0, 255, 0.6)",
+            "animation": "frameGlowPulse 2.6s ease-in-out infinite alternate",
             "icon": "fa-trophy"
         },
         "dragon": {
@@ -82,6 +86,7 @@
             "border": "3px solid #ff6600",
             "gradient": "linear-gradient(135deg, #ff4500 0%, #ff8c00 25%, #ffd700 50%, #ff8c00 75%, #ff4500 100%)",
             "glow": "0 0 40px rgba(255, 69, 0, 0.9), 0 0 80px rgba(255, 140, 0, 0.6)",
+            "animation": "frameGlowPulse 3s ease-in-out infinite alternate",
             "icon": "fa-fire-alt"
         },
         "galaxy": {
@@ -111,17 +116,102 @@
             "gradient": "linear-gradient(135deg, #4169e1 0%, #ffd700 50%, #4169e1 100%)",
             "glow": "0 0 30px rgba(65, 105, 225, 0.8), 0 0 60px rgba(255, 215, 0, 0.4)",
             "icon": "fa-crown"
+        },
+        "vampire": {
+            "name": "Вампир",
+            "border": "3px solid #8b0000",
+            "gradient": "linear-gradient(135deg, #0a0000 0%, #8b0000 40%, #dc143c 60%, #0a0000 100%)",
+            "glow": "0 0 30px rgba(139, 0, 0, 0.85), inset 0 0 18px rgba(220, 20, 60, 0.45)",
+            "icon": "fa-droplet"
+        },
+        "toxic": {
+            "name": "Токсик",
+            "border": "3px solid #39ff14",
+            "gradient": "linear-gradient(135deg, #1a0033 0%, #39ff14 45%, #b026ff 65%, #1a0033 100%)",
+            "glow": "0 0 28px rgba(57, 255, 20, 0.75), 0 0 55px rgba(176, 38, 255, 0.4)",
+            "icon": "fa-skull-crossbones"
+        },
+        "angel": {
+            "name": "Ангел",
+            "border": "3px solid #fffbe6",
+            "gradient": "linear-gradient(135deg, #fffbe6 0%, #ffd700 30%, #ffffff 55%, #ffe97a 80%, #fffbe6 100%)",
+            "glow": "0 0 30px rgba(255, 248, 210, 0.95), 0 0 60px rgba(255, 215, 0, 0.4)",
+            "icon": "fa-dove"
+        },
+        "demon": {
+            "name": "Демон",
+            "border": "3px solid #ff2222",
+            "gradient": "linear-gradient(135deg, #150005 0%, #5c000a 35%, #ff2222 65%, #2b0004 100%)",
+            "glow": "0 0 32px rgba(255, 34, 34, 0.8), inset 0 0 24px rgba(120, 0, 10, 0.7)",
+            "icon": "fa-skull"
+        },
+        "hologram": {
+            "name": "Голограмма",
+            "border": "3px solid transparent",
+            "gradient": "linear-gradient(135deg, rgba(0,255,240,.9), rgba(180,120,255,.9), rgba(255,120,220,.9), rgba(0,255,240,.9))",
+            "glow": "0 0 25px rgba(0, 255, 240, 0.65), 0 0 50px rgba(255, 120, 220, 0.4)",
+            "animation": "frameHue 7s linear infinite",
+            "icon": "fa-tower-broadcast"
+        },
+        "obsidian": {
+            "name": "Обсидиан",
+            "border": "3px solid #444",
+            "gradient": "linear-gradient(135deg, #111118 0%, #3c3c50 30%, #15151f 55%, #6a5acd 90%, #15151f 100%)",
+            "glow": "0 0 22px rgba(106, 90, 205, 0.55), inset 0 0 16px rgba(0, 0, 0, 0.8)",
+            "icon": "fa-shield-halved"
+        },
+        "candy": {
+            "name": "Конфетти",
+            "border": "3px solid #ff8ad8",
+            "gradient": "linear-gradient(135deg, #ff8ad8 0%, #fff3b0 30%, #8ad8ff 65%, #ffb3f0 100%)",
+            "glow": "0 0 26px rgba(255, 138, 216, 0.75), 0 0 52px rgba(138, 216, 255, 0.45)",
+            "icon": "fa-candy-cane"
+        },
+        "electric": {
+            "name": "Электро",
+            "border": "3px solid #ffee32",
+            "gradient": "linear-gradient(135deg, #12121a 0%, #ffee32 42%, #2bd2ff 68%, #12121a 100%)",
+            "glow": "0 0 30px rgba(255, 238, 50, 0.8), 0 0 58px rgba(43, 210, 255, 0.45)",
+            "icon": "fa-bolt-lightning"
+        },
+        "frostfire": {
+            "name": "Ледяное пламя",
+            "border": "3px solid transparent",
+            "gradient": "linear-gradient(135deg, #00c6ff 0%, #e0ffff 30%, #ff9d00 55%, #ff3d00 80%, #00c6ff 100%)",
+            "glow": "0 0 28px rgba(0, 198, 255, 0.8), 0 0 56px rgba(255, 61, 0, 0.55)",
+            "icon": "fa-fire-flame-simple"
+        },
+        "monarch": {
+            "name": "Монарх",
+            "border": "3px solid #ffd700",
+            "gradient": "linear-gradient(135deg, #2b0a4e 0%, #7b2cbf 30%, #ffd700 55%, #c77dff 75%, #2b0a4e 100%)",
+            "glow": "0 0 30px rgba(199, 125, 255, 0.7), 0 0 62px rgba(255, 215, 0, 0.45)",
+            "icon": "fa-chess-queen"
+        },
+        "venom": {
+            "name": "Веном",
+            "border": "3px solid #e6e6e6",
+            "gradient": "linear-gradient(135deg, #050505 0%, #232323 40%, #e6e6e6 52%, #232323 64%, #050505 100%)",
+            "glow": "0 0 24px rgba(230, 230, 230, 0.6), inset 0 0 18px rgba(255, 255, 255, 0.15)",
+            "icon": "fa-face-dizzy"
+        },
+        "sakura": {
+            "name": "Сакура",
+            "border": "3px solid #ffb7c5",
+            "gradient": "linear-gradient(135deg, #ffe3ec 0%, #ffb7c5 35%, #ff8fb1 60%, #ffc7db 100%)",
+            "glow": "0 0 26px rgba(255, 183, 197, 0.8), 0 0 54px rgba(255, 143, 177, 0.45)",
+            "icon": "fa-fan"
         }
     },
     "backgrounds": {
-        "default": { "name": "По умолчанию", "bg": "transparent" },
-        "space": { "name": "Космос", "bg": "linear-gradient(135deg, #0f0c29, #302b63, #24243e)" },
-        "ocean": { "name": "Океан", "bg": "linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)" },
-        "forest": { "name": "Лес", "bg": "linear-gradient(135deg, #134e5e, #71b280)" },
-        "sunset": { "name": "Закат", "bg": "linear-gradient(135deg, #ff512f, #dd2476)" },
-        "aurora": { "name": "Аврора", "bg": "linear-gradient(135deg, #00b09b, #96c93d)" },
-        "matrix": { "name": "Матрица", "bg": "linear-gradient(135deg, #000000, #0f9b0f)" },
-        "galaxy": { "name": "Галактика", "bg": "linear-gradient(135deg, #1e3c72, #2a5298, #7a2855)" }
+        "default": { "name": "🌙 Тёмный (по умолчанию)" },
+        "space": { "name": "🌌 Космос — мерцающие звёзды" },
+        "sunset": { "name": "🌅 Закат — светящееся солнце" },
+        "ocean": { "name": "🌊 Океан — волны и лучи света" },
+        "forest": { "name": "🌲 Лес — светлячки в чаще" },
+        "aurora": { "name": "💫 Аврора — северное сияние" },
+        "matrix": { "name": "🟢 Матрица — цифровой дождь" },
+        "galaxy": { "name": "🪐 Галактика — вращающаяся спираль" }
     },
     "avatarEffects": {
         "none": { "name": "Без эффекта", "css": "" },
