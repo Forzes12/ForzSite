@@ -7452,5 +7452,65 @@ if (game.status === 'available') {
             Читайте последние обновления и новости Forzes HUB
         </div>
     </div>
+
+    <!-- Всплывающее окно: сайт на тестовых серверах -->
+    <div class="test-server-overlay" id="testServerOverlay" role="dialog" aria-modal="true" aria-labelledby="testServerTitle">
+        <div class="test-server-modal">
+            <button class="test-server-close" id="testServerClose" aria-label="Закрыть">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="test-server-icon">
+                <i class="fas fa-flask"></i>
+            </div>
+            <h2 id="testServerTitle">Внимание!</h2>
+            <p class="test-server-text">
+                Сайт сейчас находится на <b>тестовых серверах</b>.
+                Возможны сбои в работе.
+                Спасибо за понимание!
+            </p>
+            <button class="test-server-btn" id="testServerOk">
+                <i class="fas fa-check"></i> Понятно
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Логика всплывающего окна "Сайт на тестовых серверах"
+        (function () {
+            const overlay = document.getElementById('testServerOverlay');
+
+            function showTestServerModal() {
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function hideTestServerModal() {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            document.getElementById('testServerOk').addEventListener('click', hideTestServerModal);
+            document.getElementById('testServerClose').addEventListener('click', hideTestServerModal);
+
+            // Клик по затемнённому фону закрывает окно
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) hideTestServerModal();
+            });
+
+            // Закрытие по Escape
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && overlay.classList.contains('active')) hideTestServerModal();
+            });
+
+            // Показываем окно с небольшой задержкой после загрузки страницы
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function () {
+                    setTimeout(showTestServerModal, 400);
+                });
+            } else {
+                setTimeout(showTestServerModal, 400);
+            }
+        })();
+    </script>
 </body>
 </html>
