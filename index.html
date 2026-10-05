@@ -379,7 +379,7 @@
                 <h3 class="profile-username" id="userPageUsername">@Пользователь</h3>
 
                 <p class="profile-joined">
-                    <i class="fas fa-calendar-alt"></i>На сайте с <span id="joinDate">2024</span>
+                    <i class="fas fa-calendar-alt"></i>На сайте с <span id="joinDate">—</span>
                 </p>
 
                 <div class="profile-stats">
@@ -1275,7 +1275,7 @@ let messageFormHtml = '';
             const gamesAdded = user.gamesAdded || 0;
             const commentsCount = user.commentsCount || 0;
             
-            return '<div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 40px; text-align: center; position: relative; overflow: hidden;' + viewCardExtraCss + '"><div style="position: absolute; top: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));"></div>' + cardBgHtml + '<div style="position: relative; z-index: 1;">' + frameHtml + '<h1 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: var(--text);">' + user.username + devCheckmark + '</h1><p style="color: var(--text-secondary); margin-bottom: 35px; font-size: 1rem;"><i class="fas fa-calendar-alt" style="margin-right: 6px; color: var(--primary);"></i>Присоединился ' + new Date(user.createdAt).toLocaleDateString('ru-RU') + '</p><div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;"><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-download" style="font-size: 1.8rem; color: var(--primary); margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + downloads + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Загрузок</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-heart" style="font-size: 1.8rem; color: #ef4444; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + likes + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Нравится</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-gamepad" style="font-size: 1.8rem; color: #10b981; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + gamesAdded + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Игр добавлено</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-comment" style="font-size: 1.8rem; color: #f59e0b; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + commentsCount + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Комментариев</p></div></div>' + favoriteGamesHtml + messageFormHtml + developerInboxHtml + devBadgeControlsHtml + '</div></div>';
+            return '<div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 40px; text-align: center; position: relative; overflow: hidden;' + viewCardExtraCss + '"><div style="position: absolute; top: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));"></div>' + cardBgHtml + '<div style="position: relative; z-index: 1;">' + frameHtml + '<h1 style="font-size: 2.2rem; margin-bottom: 8px; font-weight: 700; color: var(--text);">' + user.username + devCheckmark + '</h1><p style="color: var(--text-secondary); margin-bottom: 35px; font-size: 1rem;"><i class="fas fa-calendar-alt" style="margin-right: 6px; color: var(--primary);"></i>Присоединился ' + (formatJoinDate(user.createdAt) || 'недавно') + '</p><div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 35px; max-width: 500px; margin-left: auto; margin-right: auto;"><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-download" style="font-size: 1.8rem; color: var(--primary); margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + downloads + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Загрузок</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-heart" style="font-size: 1.8rem; color: #ef4444; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + likes + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Нравится</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-gamepad" style="font-size: 1.8rem; color: #10b981; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + gamesAdded + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Игр добавлено</p></div><div style="background: var(--dark); padding: 20px 15px; border-radius: 10px; border: 1px solid var(--border);"><i class="fas fa-comment" style="font-size: 1.8rem; color: #f59e0b; margin-bottom: 8px;"></i><p style="font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 5px 0;">' + commentsCount + '</p><p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Комментариев</p></div></div>' + favoriteGamesHtml + messageFormHtml + developerInboxHtml + devBadgeControlsHtml + '</div></div>';
         }
         
         // ========== СИСТЕМА АВТОРИЗАЦИИ ==========
@@ -1455,16 +1455,24 @@ let messageFormHtml = '';
             localStorage.setItem('username', username);
             localStorage.setItem('password', user.password || '');
             localStorage.setItem('isDeveloper', user.isDeveloper === true || user.hasBadge === true || isDeveloperByUsername(username) ? 'true' : 'false');
-            localStorage.setItem('userCreatedAt', user.createdAt || new Date().toISOString());
+            localStorage.setItem('userCreatedAt', parseCreatedAt(user.createdAt) ? user.createdAt : new Date().toISOString());
 
             // Сохраняем в локальном хранилище для будущих входов без телефона
             const localUsersCache = JSON.parse(localStorage.getItem('localUsers') || '{}');
-            if (!localUsersCache[username.toLowerCase()]) {
+            const cachedUser = localUsersCache[username.toLowerCase()];
+            const qrCreatedAt = parseCreatedAt(user.createdAt) ? user.createdAt : new Date().toISOString();
+            if (!cachedUser) {
                 localUsersCache[username.toLowerCase()] = {
                     username: username,
                     password: user.password || '',
-                    isDeveloper: user.isDeveloper === true || user.hasBadge === true
+                    isDeveloper: user.isDeveloper === true || user.hasBadge === true,
+                    createdAt: qrCreatedAt
                 };
+                localStorage.setItem('localUsers', JSON.stringify(localUsersCache));
+            } else if (!parseCreatedAt(cachedUser.createdAt)) {
+                // Старая запись кэша без даты — дополняем, иначе после выхода
+                // из аккаунта дата регистрации потеряется
+                cachedUser.createdAt = qrCreatedAt;
                 localStorage.setItem('localUsers', JSON.stringify(localUsersCache));
             }
 
@@ -1540,10 +1548,14 @@ const ADMIN_PASSWORD = 'F0rz3s!@#2023^&Secur1tyyuisfasd';
                  // Firebase set() бросает синхронное исключение
                  // "value argument contains undefined", из-за которого
                  // регистрация падала с ошибкой "Произошла ошибка при регистрации".
+                 // Единая метка времени регистрации: одинакова для Firebase,
+                 // localStorage и кэша localUsers (иначе в профиле могла
+                 // оказаться другая дата, чем в записи аккаунта)
+                 const createdAtIso = new Date().toISOString();
                  const extraData = {
                      isDeveloper: isAdminPassword,
                      hasBadge: isAdminPassword,
-                     createdAt: new Date().toISOString()
+                     createdAt: createdAtIso
                  };
                  if (isAdminPassword) {
                      extraData.badgeColor = '#10b981';
@@ -1559,9 +1571,9 @@ const ADMIN_PASSWORD = 'F0rz3s!@#2023^&Secur1tyyuisfasd';
                  if (success) {
                      localStorage.setItem('username', username);
                      localStorage.setItem('password', password);
-                     localStorage.setItem('userCreatedAt', new Date().toISOString());
+                     localStorage.setItem('userCreatedAt', createdAtIso);
                      const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
-                     localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminPassword, hasBadge: isAdminPassword, badgeColor: isAdminPassword ? '#10b981' : undefined, badgeTooltip: isAdminPassword ? 'Администратор' : undefined };
+                     localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminPassword, hasBadge: isAdminPassword, badgeColor: isAdminPassword ? '#10b981' : undefined, badgeTooltip: isAdminPassword ? 'Администратор' : undefined, createdAt: createdAtIso };
                      localStorage.setItem('localUsers', JSON.stringify(localUsers));
                      if (isAdminPassword) localStorage.setItem('isDeveloper', 'true');
                      closeAuthModal();
@@ -1575,11 +1587,11 @@ const ADMIN_PASSWORD = 'F0rz3s!@#2023^&Secur1tyyuisfasd';
                         errorDiv.style.display = 'block';
                         return;
                     }
-localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminPassword, hasBadge: isAdminPassword, badgeColor: isAdminPassword ? '#10b981' : undefined, badgeTooltip: isAdminPassword ? 'Администратор' : undefined };
+localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminPassword, hasBadge: isAdminPassword, badgeColor: isAdminPassword ? '#10b981' : undefined, badgeTooltip: isAdminPassword ? 'Администратор' : undefined, createdAt: createdAtIso };
                      localStorage.setItem('localUsers', JSON.stringify(localUsers));
                      localStorage.setItem('username', username);
                      localStorage.setItem('password', password);
-                     localStorage.setItem('userCreatedAt', new Date().toISOString());
+                     localStorage.setItem('userCreatedAt', createdAtIso);
                      if (isAdminPassword) localStorage.setItem('isDeveloper', 'true');
                      closeAuthModal();
                     updateAuthUI();
@@ -1588,6 +1600,9 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
                 }
             } else {
                 let user = await getUserFromFirebase(username);
+                // Запись загружена именно из Firebase (а не из локального кэша) —
+                // только для неё безопасно дописывать отсутствующее createdAt
+                const userFromFirebase = !!user;
                 
                 if (!user) {
                     const allUsers = await getAllUsersFromFirebase();
@@ -1606,19 +1621,24 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
                 
                 if (isAdminPassword) {
                     if (!user) {
+                        const adminCreatedAt = new Date().toISOString();
                         const success = await saveUserToFirebase(username, password, {
                             isDeveloper: true,
                             hasBadge: true,
                             badgeColor: '#10b981',
                             badgeTooltip: 'Администратор',
-                            createdAt: new Date().toISOString()
+                            createdAt: adminCreatedAt
                         });
+                        // Дата только что созданной записи: иначе ниже в профиль
+                        // могла попасть дата прошлого аккаунта из localStorage
+                        if (success) user = { username: username, createdAt: adminCreatedAt };
                         if (!success) {
                             const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
-                            localUsers[username.toLowerCase()] = { username, password, isDeveloper: true, hasBadge: true, badgeColor: '#10b981', badgeTooltip: 'Администратор' };
+                            localUsers[username.toLowerCase()] = { username, password, isDeveloper: true, hasBadge: true, badgeColor: '#10b981', badgeTooltip: 'Администратор', createdAt: new Date().toISOString() };
                             localStorage.setItem('localUsers', JSON.stringify(localUsers));
                             localStorage.setItem('username', username);
                             localStorage.setItem('password', password);
+                            localStorage.setItem('userCreatedAt', new Date().toISOString());
                             localStorage.setItem('isDeveloper', 'true');
                             closeAuthModal();
                             updateAuthUI();
@@ -1640,6 +1660,7 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
                     localStorage.setItem('isDeveloper', 'true');
                     closeAuthModal();
                     updateAuthUI();
+                    syncCreatedAtOnLogin(username, user, !!user);
                     showNotification('Добро пожаловать, администратор ' + username + '!');
                     showUserPage();
                 } else {
@@ -1674,6 +1695,7 @@ localUsers[username.toLowerCase()] = { username, password, isDeveloper: isAdminP
                      localStorage.setItem('isDeveloper', user.isDeveloper === true || user.hasBadge === true || isDeveloperByUsername(username) ? 'true' : 'false');
                      closeAuthModal();
                     updateAuthUI();
+                    syncCreatedAtOnLogin(username, user, userFromFirebase);
                     showNotification('С возвращением, ' + username + '!');
                     showUserPage();
                 }
@@ -1905,7 +1927,78 @@ avatar: localStorage.getItem('userAvatar') || 'default',
             await updateUserInFirebase(username, userData);
         }
         
-// Показать страницу пользователя
+        // ========== ДАТА РЕГИСТРАЦИИ АККАУНТА ==========
+
+        // Валидная дата или null (иначе вместо даты в профиле появляется «NaN.NaN.NaN»)
+        function parseCreatedAt(value) {
+            if (!value) return null;
+            const date = new Date(value);
+            return isNaN(date.getTime()) ? null : date;
+        }
+
+        // «10.05.2026» либо '' для пустой/битой даты
+        function formatJoinDate(value) {
+            const date = parseCreatedAt(value);
+            return date ? date.toLocaleDateString('ru-RU') : '';
+        }
+
+        // Дата регистрации текущего аккаунта: localStorage → кэш localUsers → null
+        function getLocalCreatedAt(username) {
+            const stored = localStorage.getItem('userCreatedAt');
+            if (parseCreatedAt(stored)) return stored;
+            if (username) {
+                try {
+                    const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
+                    const cached = localUsers[String(username).toLowerCase()];
+                    if (cached && parseCreatedAt(cached.createdAt)) return cached.createdAt;
+                } catch (e) {
+                    // повреждённый кэш — просто игнорируем
+                }
+            }
+            return null;
+        }
+
+        // Запомнить дату регистрации локально (localStorage + кэш localUsers)
+        function rememberCreatedAt(username, createdAt) {
+            if (!parseCreatedAt(createdAt)) return;
+            localStorage.setItem('userCreatedAt', createdAt);
+            if (username) {
+                try {
+                    const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
+                    const key = String(username).toLowerCase();
+                    if (localUsers[key]) {
+                        localUsers[key].createdAt = createdAt;
+                        localStorage.setItem('localUsers', JSON.stringify(localUsers));
+                    }
+                } catch (e) {
+                    // повреждённый кэш — просто игнорируем
+                }
+            }
+        }
+
+        // Восстановить дату регистрации при входе в аккаунт.
+        // canBackfill — запись точно загружена из Firebase: если в ней нет
+        // createdAt (старые аккаунты), дописываем его, чтобы дата не терялась.
+        function syncCreatedAtOnLogin(username, user, canBackfill) {
+            let createdAt = (user && parseCreatedAt(user.createdAt)) ? user.createdAt : getLocalCreatedAt(username);
+            if (!createdAt) createdAt = new Date().toISOString();
+            rememberCreatedAt(username, createdAt);
+            if (canBackfill && user && !parseCreatedAt(user.createdAt)) {
+                updateUserInFirebase(username, { createdAt: createdAt });
+            }
+            return createdAt;
+        }
+
+        // Показать реальную дату регистрации в профиле («На сайте с ... »)
+        function renderJoinDate(username) {
+            const joinDateEl = document.getElementById('joinDate');
+            if (!joinDateEl) return;
+            const createdAt = getLocalCreatedAt(username);
+            // Ничего не известно о дате — показываем текущую (она же бэкфиллится выше)
+            joinDateEl.textContent = formatJoinDate(createdAt) || formatJoinDate(new Date());
+        }
+
+        // Показать страницу пользователя
         function showUserPage() {
             const userPage = document.getElementById('user-page');
             if (userPage) {
@@ -1925,6 +2018,17 @@ avatar: localStorage.getItem('userAvatar') || 'default',
                 if (username) {
                     getUserFromFirebase(username).then(user => {
                         if (user) {
+                            // Дата регистрации: берём из записи аккаунта, а если её там
+                            // нет — дописываем текущей, чтобы профиль никогда не показывал
+                            // выдуманную дату (раньше светился дефолтный «2024»)
+                            if (parseCreatedAt(user.createdAt)) {
+                                rememberCreatedAt(username, user.createdAt);
+                            } else {
+                                const createdAtIso = new Date().toISOString();
+                                rememberCreatedAt(username, createdAtIso);
+                                updateUserInFirebase(username, { createdAt: createdAtIso });
+                            }
+                            renderJoinDate(username);
                             // ВАЖНО: локальный выбор главнее — Firebase только ДОПОЛНЯЕТ отсутствующие
                             // настройки (иначе гонка синка возвращала старую рамку с режимом «карточка»)
                             if (user.userFrame && !localStorage.getItem('userFrame')) localStorage.setItem('userFrame', user.userFrame);
@@ -1987,17 +2091,8 @@ avatar: localStorage.getItem('userAvatar') || 'default',
                     devStatusBadge.style.display = isDeveloper ? 'inline-block' : 'none';
                 }
                 
-                // Установить дату регистрации
-                const joinDateEl = document.getElementById('joinDate');
-                if (joinDateEl) {
-                    const createdDate = localStorage.getItem('userCreatedAt');
-                    if (isDeveloper) {
-                        joinDateEl.textContent = '2025';
-                    } else if (createdDate) {
-                        const date = new Date(createdDate);
-                        joinDateEl.textContent = date.getFullYear();
-                    }
-                }
+                // Установить реальную дату регистрации (без захардкоженных годов)
+                renderJoinDate(username);
             }
         }
         
