@@ -3638,8 +3638,19 @@ async function handleReplyComment(gameId, commentId) {
             }
         }
         
-// Обработчик скачивания с отслеживанием
+// Проверка авторизации для скачивания и дележа играми/программами
+        function requireAuth() {
+            const username = localStorage.getItem('username');
+            if (!username) {
+                showNotification('Чтобы скачивать и делиться играми, войдите или зарегистрируйтесь');
+                return false;
+            }
+            return true;
+        }
+
+        // Обработчик скачивания с отслеживанием
         function handleDownload(gameId, gameName, torrentUrl) {
+            if (!requireAuth()) return;
             trackDownload(gameId, gameName);
             window.open(torrentUrl, '_blank');
         }
@@ -3664,6 +3675,7 @@ localStorage.setItem('userVotes', JSON.stringify(userVotes));
          }
              
          function copySKU(sku, gameId, gameTitle) {
+    if (!requireAuth()) return;
     const encodedId = encodeURIComponent(gameId);
     const encodedSku = encodeURIComponent(sku);
     const url = `${window.location.origin}${window.location.pathname}?game=${encodedId}&sku=${encodedSku}`;
@@ -6065,6 +6077,7 @@ if (game.status === 'available') {
 
         // Функция поделиться игрой
         function shareGame(gameId) {
+            if (!requireAuth()) return;
             const encodedId = encodeURIComponent(gameId);
             const url = `${window.location.origin}${window.location.pathname}?game=${encodedId}`;
             navigator.clipboard.writeText(url).then(function() {
@@ -6989,7 +7002,7 @@ if (game.status === 'available') {
                                         <h4>${game.title}</h4>
                                         <div class="game-buttons">
                                             <button class="watch-btn" onclick="openGameModal('${game.id}')">Информация</button>
-                                            <button class="download-btn" onclick="${game.torrentFile ? 'if (window.bumpSiteDownloads) window.bumpSiteDownloads(); ' : ''}window.open('${game.torrentFile || game.buyGame}', '_blank')">${game.torrentFile ? 'Скачать' : 'Купить'}</button>
+                                            <button class="download-btn" onclick="requireAuth() && ${game.torrentFile ? 'if (window.bumpSiteDownloads) window.bumpSiteDownloads(); ' : ''}window.open('${game.torrentFile || game.buyGame}', '_blank')">${game.torrentFile ? 'Скачать' : 'Купить'}</button>
                                         </div>
                                     </div>
                                 `;
@@ -7312,7 +7325,7 @@ if (game.status === 'available') {
                     
                     // Кнопка "Скачать" (если есть downloadUrl)
                     if (news.downloadUrl && news.downloadUrl.trim() !== '') {
-                        buttonsHTML += `<a href="${news.downloadUrl}" target="_blank" onclick="if (window.bumpSiteDownloads) window.bumpSiteDownloads();" class="news-btn news-btn-download"><i class="fas fa-download"></i> Скачать</a>`;
+                        buttonsHTML += `<a href="${news.downloadUrl}" target="_blank" onclick="if(!requireAuth()){return false;} if(window.bumpSiteDownloads)window.bumpSiteDownloads();" class="news-btn news-btn-download"><i class="fas fa-download"></i> Скачать</a>`;
                     }
                     
                     buttonsContainer.innerHTML = buttonsHTML;
@@ -8243,11 +8256,7 @@ if (game.status === 'available') {
 
     // Авто-показ только если пользователь ещё не нажимал "Скачать"
     function autoShowIfNeeded() {
-        let downloaded = false;
-        try {
-            downloaded = localStorage.getItem(STORAGE_KEY) === 'true';
-        } catch (e) {}
-        if (!downloaded) window.openCompatModal();
+        if (!localStorage.getItem('username')) window.openCompatModal();
     }
 
     function init() {
@@ -8271,19 +8280,19 @@ if (game.status === 'available') {
     const compatOverlay = document.getElementById('compatOverlay');
     const STORAGE_KEY = 'forzes_compat_downloaded';
 
-    // Проверяем, нужно ли показывать окно
+    // Показываем окно только если пользователь не зарегистрирован
     function showCompatModal() {
         if (!compatOverlay) return;
 
-        const downloaded = localStorage.getItem(STORAGE_KEY);
-
-        if (downloaded === 'true') {
+        if (localStorage.getItem('username')) {
+            // Зарегистрированному пользователю окно не показываем автоматически
             compatOverlay.classList.add('hidden');
             document.body.style.overflow = '';
-        } else {
-            compatOverlay.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
+            return;
         }
+
+        compatOverlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
     }
 
     // Скрываем окно
