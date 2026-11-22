@@ -44,8 +44,7 @@
                 "DirectX": "12",
                 "Storage": "72 GB"
             }
-        },
-        "sku": "ART-0001"
+        }
     },
     "Detroit: Become Human": {
         "title": "Detroit: Become Human",
@@ -89,8 +88,7 @@
                 "Graphics": "Nvidia GeForce GTX 780 (3Gb) / AMD HD 7950 (Необходима поддержка Vulkan 1.1)",
                 "Storage": "53.63 GB"
             }
-        },
-        "sku": "ART-0002"
+        }
     },
     "Forza Horizon 6": {
         "title": "Forza Horizon 6",
@@ -138,8 +136,7 @@
                 "DirectX": "12",
                 "Место на диске": "(SSD): 156 GB"
             }
-        },
-        "sku": "ART-0004"
+        }
     },
     "Little Nightmares 3": {
         "title": "Little Nightmares 3",
@@ -184,8 +181,7 @@
                 "Graphics": "GeForce GTX 1060 / AMD Radeon RX 580",
                 "Storage": "14.82 GB"
             }
-        },
-        "sku": "ART-0007"
+        }
     },
     "Little Nightmares II": {
         "title": "Little Nightmares II",
@@ -232,8 +228,7 @@
                 "Graphics": "Nvidia GeForce GTX 570 / AMD Radeon HD 7850",
                 "Storage": "12 GB"
             }
-        },
-        "sku": "ART-0008"
+        }
     },
     "My Summer Car": {
         "title": "My Summer Car",
@@ -280,8 +275,7 @@
                 "Graphics": "Nvidia GTX 650 TI",
                 "Storage": "1 GB"
             }
-        },
-        "sku": "ART-0009"
+        }
     },
     "My Winter Car": {
         "title": "My Winter Car",
@@ -329,8 +323,7 @@
                 "Graphics": "Nvidia GeForce GTX 1070",
                 "Storage": "1 GB"
             }
-        },
-        "sku": "ART-0010"
+        }
     },
     "Hollow Knight Silksong": {
         "title": "Hollow Knight Silksong",
@@ -377,8 +370,7 @@
                 "Graphics": "GeForce GTX 560 Ti / Radeon HD 7750",
                 "Storage": "7.64 GB"
             }
-        },
-        "sku": "ART-0011"
+        }
     },
     "Marvel's Spider-Man 2": {
         "title": "Marvel's Spider-Man 2",
@@ -433,8 +425,7 @@
                 "Graphics": "NVIDIA RTX 3070 / AMD RX 6800 XT",
                 "Storage": "88 GB SSD available space"
             }
-        },
-        "sku": "ART-0012"
+        }
     },
     "Grand Theft Auto V": {
         "title": "Grand Theft Auto V",
@@ -482,8 +473,7 @@
                 "Graphics": "NVIDIA 9800 GT / AMD HD 4870",
                 "Storage": "120 GB"
             }
-        },
-        "sku": "ART-0013"
+        }
     },
     "Grand Theft Auto V Enhanced": {
         "title": "Grand Theft Auto V Enhanced",
@@ -531,8 +521,7 @@
                 "Graphics": "NVIDIA GeForce GTX 1630 (4GB VRAM) / AMD Radeon RX 6400 (4GB VRAM)",
                 "Storage": "96 GB"
             }
-        },
-        "sku": "ART-0013"
+        }
     },
     "Grand Theft Auto IV. Complete Edition": {
         "title": "Grand Theft Auto IV: The Complete Edition",
@@ -580,8 +569,7 @@
                 "Graphics": "NVIDIA 8600 512 МБ / ATI 3870 512 МБ",
                 "Storage": "22 GB"
             }
-        },
-        "sku": "ART-0014"
+        }
     },
     "Grand Theft Auto: San Andreas": {
         "title": "Grand Theft Auto: San Andreas",
@@ -628,8 +616,7 @@
                 "Graphics": "GeForce 3 64 МБ / ATI Radeon 8500 64MB",
                 "Storage": "5 GB"
             }
-        },
-        "sku": "ART-0015"
+        }
     },
     "Teardown": {
         "title": "Teardown",
@@ -678,8 +665,7 @@
                 "Graphics": "NVIDIA GeForce GTX 1060",
                 "Storage": "10.74 GB"
             }
-        },
-        "sku": "ART-0016"
+        }
     },
     "The Crew 2 - Gold Edition": {
         "title": "The Crew 2 - Gold Edition",
@@ -728,8 +714,7 @@
                 "Graphics": "NVIDIA GeForce GTX 660 / AMD HD 7870",
                 "Storage": "36 GB"
             }
-        },
-        "sku": "ART-0017"
+        }
     },
     "Black Myth: Wukong": {
         "title": "Black Myth: Wukong",
@@ -789,8 +774,7 @@
             "sc create denuvo type-kernel start-demand binPath=C:\\ путь до SimpleSvm.sys или hyperkd.sys",
             "sc start denuvo",
             "Запустить 51-Win64-Shipping.exe"
-        ],
-        "sku": "ART-0019"
+        ]
     },
     "Battlefield 6": {
         "title": "Battlefield 6",
@@ -839,8 +823,7 @@
                 "Graphics": "RTX 2060 / AMD Radeon RX 5600 XT 6GB / Intel Arc A380",
                 "Storage": "103 GB"
             }
-        },
-        "sku": "ART-0020"
+        }
     },
     "Satisfactory": {
         "title": "Satisfactory",
@@ -888,8 +871,7 @@
                 "Graphics": "NVIDIA GeForce GTX 1050-ti",
                 "Storage": "11.6 GB"
             }
-        },
-        "sku": "ART-0021"
+        }
     },
     "Sons of The Forest": {
         "title": "Sons of The Forest",
@@ -939,8 +921,7 @@
                 "DirectX": "11",
                 "Storage": "14.9 GB"
             }
-        },
-        "sku": "ART-0022"
+        }
     },
     "Cyberpunk 2077": {
         "title": "Cyberpunk 2077",
@@ -989,8 +970,7 @@
                 "Graphics": "NVIDIA GeForce GTX 1060 6GB / AMD Radeon RX 580 8GB",
                 "Storage": "148.88 GB"
             }
-        },
-        "sku": "ART-0023"
+        }
     },
     "BeamNG.drive": {
         "title": "BeamNG.drive",
@@ -1040,8 +1020,7 @@
                 "DirectX": "11",
                 "Storage": "49.86 GB SSD"
             }
-        },
-        "sku": "ART-0024"
+        }
     },
     "Star Trucker": {
         "title": "Star Trucker",
@@ -1089,8 +1068,7 @@
                 "Graphics": "NVIDIA GeForce GTX 1650 6GB / AMD Radeon RX 580",
                 "Storage": "5 GB"
             }
-        },
-        "sku": "ART-0025"
+        }
     },
     "Bridge Constructor Portal": {
         "title": "Bridge Constructor Portal",
@@ -1140,8 +1118,7 @@
                 "DirectX": "9.0с",
                 "Storage": "257 МБ"
             }
-        },
-        "sku": "ART-0026"
+        }
     },
     "Metro Exodus Enhanced Edition": {
         "title": "Metro Exodus Enhanced Edition",
@@ -1191,8 +1168,7 @@
                 "Graphics": "RTX 2060",
                 "Storage": "102.76 GB"
             }
-        },
-        "sku": "ART-0028"
+        }
     },
     "Need for Speed: Most Wanted  2005": {
         "title": "Need for Speed: Most Wanted (2005)",
@@ -1238,8 +1214,7 @@
                 "Graphics": "NVIDIA GeForce 4 Ti / ATI Radeon 8500 (с 64 MB памяти)",
                 "Storage": "3 GB"
             }
-        },
-        "sku": "ART-0029"
+        }
     },
     "Atomic Heart": {
         "title": "Atomic Heart",
@@ -1289,8 +1264,7 @@
                 "DirectX": "12",
                 "Storage": "163.41 GB"
             }
-        },
-        "sku": "ART-0030"
+        }
     },
     "Parcel Simulator": {
         "title": "Parcel Simulator",
@@ -1337,8 +1311,7 @@
                 "Graphics": "NVIDIA GeForce GTX 970 / AMD Radeon FX 580",
                 "Storage": "4 GB"
             }
-        },
-        "sku": "ART-0031"
+        }
     },
     "Parcel Delivery Simulator": {
         "title": "Parcel Delivery Simulator",
@@ -1385,8 +1358,7 @@
                 "Graphics": "Nvidia GeForce GTX 660 2ГБ - GTX 1050 2ГБ / AMD Radeon r7 265 2ГБ - FX 460 2ГБ",
                 "Storage": "5 GB"
             }
-        },
-        "sku": "ART-0031"
+        }
     },
     "Quarantine Zone: The Last Check": {
         "title": "Quarantine Zone: The Last Check",
@@ -1434,8 +1406,7 @@
                 "DirectX": "12",
                 "Storage": "9 GB"
             }
-        },
-        "sku": "ART-0032"
+        }
     },
     "Red-Dead-Redеmption-2": {
         "title": "Red Dead Redеmption 2",
@@ -1482,8 +1453,7 @@
                 "Graphics": "NVIDIA GeForce GTX 770 2GB / AMD Radeon R9 280 3GB",
                 "Storage": "119 GB"
             }
-        },
-        "sku": "ART-0033"
+        }
     },
     "Forza Horizon 5": {
         "title": "Forza Horizon 5",
@@ -1532,8 +1502,7 @@
                 "Storage": "110 GB (SSD рекомендуется)",
                 "DirectX": "Версия 12"
             }
-        },
-        "sku": "ART-0034"
+        }
     },
     "Forza Horizon 4": {
         "title": "Forza Horizon 4",
@@ -1582,8 +1551,7 @@
                 "Storage": "95 GB",
                 "DirectX": "12"
             }
-        },
-        "sku": "ART-0035"
+        }
     },
     "Forza Horizon 3": {
         "title": "Forza Horizon 3",
@@ -1629,8 +1597,7 @@
                 "Storage": "62.5 GB",
                 "DirectX": "Версия 12"
             }
-        },
-        "sku": "ART-0036"
+        }
     },
     "Forza Motorsport 7": {
         "title": "Forza Motorsport 7",
@@ -1685,8 +1652,7 @@
                 "DirectX": "Версия 12",
                 "Дополнительно": "Для игры в 4K 60FPS требуется NVIDIA GTX 1080 или эквивалентная карта"
             }
-        },
-        "sku": "ART-0037"
+        }
     },
     "Forza Motorsport-2023": {
         "title": "Forza Motorsport (2023)",
@@ -1744,8 +1710,7 @@
                 "DirectX": "Версия 12 Ultimate",
                 "Дополнительно": "Для игры в 4K с ray tracing требуется NVIDIA RTX 4080/4090 или AMD RX 7900 XTX"
             }
-        },
-        "sku": "ART-0038"
+        }
     },
     "SnowRunner": {
         "title": "SnowRunner",
@@ -1801,8 +1766,7 @@
                 "Graphics": "NVIDIA GeForce GTX 970 / AMD Radeon RX 580",
                 "Storage": "20 GB available space (SSD рекомендуется)"
             }
-        },
-        "sku": "ART-0039"
+        }
     },
     "Underground Garage": {
         "title": "Underground Garage",
@@ -1858,8 +1822,7 @@
                 "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 580",
                 "Storage": "10 GB available space (SSD рекомендуется)"
             }
-        },
-        "sku": "ART-0040"
+        }
     },
     "My Dream Setup": {
         "title": "My Dream Setup",
@@ -1914,8 +1877,7 @@
                 "Graphics": "NVIDIA GeForce GTX 1060 / AMD Radeon RX 570",
                 "Storage": "6 GB available space (SSD рекомендуется)"
             }
-        },
-        "sku": "ART-0041"
+        }
     },
     "Metro 2033 Redux": {
         "title": "Metro 2033 Redux",
@@ -1970,8 +1932,7 @@
                 "Storage": "10 GB available space (SSD рекомендуется)",
                 "DirectX": "Версии 11"
             }
-        },
-        "sku": "ART-0042"
+        }
     },
     "Metro Last Light Redux": {
         "title": "Metro Last Light Redux",
@@ -2026,8 +1987,7 @@
                 "Storage": "10 GB available space (SSD рекомендуется)",
                 "DirectX": "Версии 11"
             }
-        },
-        "sku": "ART-0043"
+        }
     },
     "metro-last-light": {
         "title": "Metro: Last Light",
@@ -2082,8 +2042,7 @@
                 "Storage": "8 GB available space",
                 "DirectX": "Версии 11"
             }
-        },
-        "sku": "ART-0044"
+        }
     },
     "Need for Speed Most Wanted Limited Edition": {
         "title": "Need for Speed Most Wanted Limited Edition",
@@ -2135,8 +2094,7 @@
                 "Storage": "30 GB available space (NVMe SSD)",
                 "Peripherals": "Прямой приводный руль, педали с датчиком нагрузки, амортизаторная ручка КПП"
             }
-        },
-        "sku": "ART-0045"
+        }
     },
     "Need for Speed (2016)": {
         "title": "Need for Speed (2016)",
@@ -2197,8 +2155,7 @@
                 "DirectX": "Версии 11",
                 "Network": "Широкополосное подключение к интернету"
             }
-        },
-        "sku": "ART-0046"
+        }
     },
     "Need for Speed Payback": {
         "title": "Need for Speed Payback",
@@ -2252,8 +2209,7 @@
                 "Storage": "30 GB available space (SSD рекомендуется)",
                 "DirectX": "Версии 11"
             }
-        },
-        "sku": "ART-0047"
+        }
     },
     "Far Cry 1": {
         "title": "Far Cry 1",
@@ -2307,8 +2263,7 @@
                 "Storage": "4 GB available space",
                 "DirectX": "Версии 9.0b"
             }
-        },
-        "sku": "ART-0048"
+        }
     },
     "Far Cry 2": {
         "title": "Far Cry 2",
@@ -2365,8 +2320,7 @@
                 "Storage": "12 GB available space",
                 "DirectX": "Версии 9.0c / 10.0"
             }
-        },
-        "sku": "ART-0049"
+        }
     },
     "Far Cry 3": {
         "title": "Far Cry 3",
@@ -2423,8 +2377,7 @@
                 "Storage": "15 GB available space",
                 "DirectX": "Версии 11"
             }
-        },
-        "sku": "ART-0050"
+        }
     },
     "Far Cry 4": {
         "title": "Far Cry 4",
@@ -2478,8 +2431,7 @@
                 "Storage": "30 GB available space",
                 "DirectX": "Версии 11"
             }
-        },
-        "sku": "ART-0051"
+        }
     },
     "Far Cry 5": {
         "title": "Far Cry 5",
@@ -2536,8 +2488,7 @@
                 "Storage": "40 GB available space (SSD рекомендуется)",
                 "DirectX": "Версии 9.0c"
             }
-        },
-        "sku": "ART-0052"
+        }
     },
     "Cairn": {
         "title": "Cairn",
@@ -2593,8 +2544,7 @@
                 "Graphics": "NVIDIA GeForce RTX 3060 / AMD Radeon RX 6600 XT",
                 "Storage": "3 GB available space (SSD)"
             }
-        },
-        "sku": "ART-0053"
+        }
     },
     "Sonic Frontiers": {
         "title": "Sonic Frontiers",
@@ -2650,8 +2600,7 @@
                 "Graphics": "NVIDIA GeForce RTX 3060 / AMD Radeon RX 6600 XT (8GB VRAM)",
                 "Storage": "18 GB available space (SSD)"
             }
-        },
-        "sku": "ART-0054"
+        }
     },
     "Half Sword": {
         "title": "Half Sword",
@@ -2708,8 +2657,7 @@
                 "Graphics": "NVIDIA GeForce RTX 3060 Ti / AMD Radeon RX 6700 XT (8GB VRAM)",
                 "Storage": "25 GB available space (SSD)"
             }
-        },
-        "sku": "ART-0055"
+        }
     },
     "Resident Evil 4 Remake": {
         "title": "Resident Evil 4 Remake",
@@ -2769,8 +2717,7 @@
                 "Graphics": "NVIDIA GeForce RTX 2070 / AMD Radeon RX 5700 XT",
                 "Storage": "63 GB available space (SSD)"
             }
-        },
-        "sku": "ART-0056"
+        }
     },
     "Carmageddon: Rogue Shift": {
         "title": "Carmageddon: Rogue Shift",
@@ -2828,8 +2775,7 @@
                 "Graphics": "NVIDIA GeForce GTX 1660 Ti / AMD Radeon RX 580",
                 "Storage": "15 GB available space (SSD)"
             }
-        },
-        "sku": "ART-0057"
+        }
     },
     "The-Last-Of-Us-Part-I": {
         "title": "The Last of Us Part I",
@@ -2888,8 +2834,7 @@
                 "Graphics": "AMD Radeon RX 5700 XT / NVIDIA GeForce RTX 2070 SUPER",
                 "Storage": "100 GB available space (SSD обязательно)"
             }
-        },
-        "sku": "ART-0058"
+        }
     },
     "The-Last-Of-Us-Part-II": {
         "title": "The Last of Us Part II Remastered",
@@ -2949,8 +2894,7 @@
                 "Graphics": "AMD Radeon RX 6800 / NVIDIA GeForce RTX 3080",
                 "Storage": "100 GB available space (NVMe SSD рекомендуется)"
             }
-        },
-        "sku": "ART-0059"
+        }
     },
     "HITMAN 3": {
         "title": "HITMAN 3",
@@ -3005,8 +2949,7 @@
                 "Видеокарта": "NVIDIA GeForce RTX 2060 / AMD Radeon RX 5600 XT",
                 "Свободное место": "45.50 GB"
             }
-        },
-        "sku": "ART-0061"
+        }
     },
     "Death Stranding 2: On the Beach": {
         "title": "Death Stranding 2: On the Beach",
@@ -3072,8 +3015,7 @@
                 "Видеокарта": "NVIDIA GeForce RTX 3080 / AMD Radeon RX 6800 XT",
                 "Свободное место": "105.76 GB"
             }
-        },
-        "sku": "ART-0062"
+        }
     },
     "Samson": {
         "title": "Samson",
@@ -3141,8 +3083,7 @@
                 "Видеокарта": "NVIDIA GeForce RTX 3080 / AMD Radeon RX 6800 XT",
                 "Свободное место": "10.47 GB"
             }
-        },
-        "sku": "ART-0063"
+        }
     },
     "Resident Evil Requiem": {
         "title": "Resident Evil Requiem",
@@ -3198,8 +3139,7 @@
                 "Видеокарта": "NVIDIA GeForce RTX 3080 / AMD Radeon RX 6800 XT",
                 "Свободное место": "70.69 GB"
             }
-        },
-        "sku": "ART-0064"
+        }
     },
     "The Occultist": {
         "title": "The Occultist",
@@ -3254,8 +3194,7 @@
                 "Видеокарта": "NVIDIA GeForce RTX 3060 Ti / AMD Radeon RX 6700 XT",
                 "Свободное место": "50 GB SSD"
             }
-        },
-        "sku": "ART-0065"
+        }
     },
     "Windrose": {
         "title": "Windrose",
@@ -3307,8 +3246,7 @@
                 "DirectX": "Версия 12",
                 "Свободное место": "30 GB"
             }
-        },
-        "sku": "ART-0066"
+        }
     },
     "The Farmer Was Replaced": {
         "title": "The Farmer Was Replaced",
@@ -3353,8 +3291,7 @@
                 "DirectX": "Версия 11",
                 "Свободное место": "1 GB"
             }
-        },
-        "sku": "ART-0067"
+        }
     },
     "REPLACED": {
         "title": "REPLACED",
@@ -3398,8 +3335,7 @@
                 "DirectX": "Версия 11",
                 "Свободное место": "5.5 GB"
             }
-        },
-        "sku": "ART-0068"
+        }
     },
     "MOUSE: P.I. For Hire": {
         "title": "MOUSE: P.I. For Hire",
@@ -3441,8 +3377,7 @@
                 "DirectX": "Версия 11",
                 "Свободное место": "11 GB"
             }
-        },
-        "sku": "ART-0069"
+        }
     },
     "Cthulhu: The Cosmic Abyss": {
         "title": "Cthulhu: The Cosmic Abyss",
@@ -3484,8 +3419,7 @@
                 "DirectX": "Версия 11",
                 "Свободное место": "18 GB"
             }
-        },
-        "sku": "ART-0070"
+        }
     },
     "Bus Bound": {
         "title": "Bus Bound",
@@ -3527,8 +3461,7 @@
                 "DirectX": "",
                 "Свободное место": "47 GB"
             }
-        },
-        "sku": "ART-0071"
+        }
     },
     "CarX Drift Racing Online 2": {
         "title": "CarX Drift Racing Online 2",
@@ -3572,8 +3505,7 @@
                 "DirectX": "",
                 "Свободное место": "14 GB"
             }
-        },
-        "sku": "ART-0072"
+        }
     },
     "Mixtape": {
         "title": "Mixtape",
@@ -3615,8 +3547,7 @@
                 "DirectX": "",
                 "Свободное место": "12 GB"
             }
-        },
-        "sku": "ART-0073"
+        }
     },
     "Directive 8020": {
         "title": "Directive 8020",
@@ -3659,8 +3590,7 @@
                 "DirectX": "",
                 "Свободное место": "26.69 GB"
             }
-        },
-        "sku": "ART-0074"
+        }
     },
     "Subnautica 2": {
         "title": "Subnautica 2",
@@ -3699,8 +3629,7 @@
                 "DirectX": "",
                 "Свободное место": "15 GB"
             }
-        },
-        "sku": "ART-0075"
+        }
     },
     "PRAGMATA": {
         "title": "PRAGMATA",
@@ -3749,8 +3678,7 @@
                 "DirectX": "Version 12",
                 "Свободное место": "50 GB SSD"
             }
-        },
-        "sku": "ART-0076"
+        }
     },
     "007 First Light": {
         "title": "007 First Light",
@@ -3791,8 +3719,7 @@
                 "Видеокарта": "NVIDIA GEFORCE GTX 1660 / AMD RX 5700",
                 "Свободное место": "53"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Mortal Shell II - Devout Edition": {
         "title": "Mortal Shell II - Devout Edition",
@@ -3836,8 +3763,7 @@
                 "DirectX": "12",
                 "Свободное место": "66"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "The Sinking City 2 - Premium Edition": {
         "title": "The Sinking City 2 - Premium Edition",
@@ -3882,8 +3808,7 @@
                 "DirectX": "12",
                 "Свободное место": "49.22"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Beast of Reincarnation - Deluxe Edition": {
         "title": "Beast of Reincarnation - Deluxe Edition",
@@ -3927,8 +3852,7 @@
                 "DirectX": "12",
                 "Свободное место": "32"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Avatar: Frontiers of Pandora - Complete Edition": {
         "title": "Avatar: Frontiers of Pandora - Complete Edition",
@@ -3972,8 +3896,7 @@
                 "DirectX": "12",
                 "Свободное место": "135"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "The First Berserker: Khazan - Deluxe Edition": {
         "title": "The First Berserker: Khazan - Deluxe Edition",
@@ -4017,8 +3940,7 @@
                 "DirectX": "12",
                 "Свободное место": "135"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Halo: Campaign Evolved - Premium Edition": {
         "title": "Halo: Campaign Evolved - Premium Edition",
@@ -4063,8 +3985,7 @@
                 "DirectX": "12",
                 "Свободное место": "74"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Gothic 1 Remake": {
         "title": "Gothic 1 Remake",
@@ -4108,8 +4029,7 @@
                 "DirectX": "12",
                 "Свободное место": "36"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Assassin's Creed Black Flag Resynced": {
         "title": "Assassin's Creed Black Flag Resynced",
@@ -4152,8 +4072,7 @@
                 "DirectX": "12",
                 "Свободное место": "67"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Assassin's Creed Director's Cut Edition": {
         "title": "Assassin's Creed Director's Cut Edition",
@@ -4197,8 +4116,7 @@
                 "DirectX": "9.0с",
                 "Свободное место": "8"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Assassin's Creed 2 Deluxe Edition": {
         "title": "Assassin's Creed 2 Deluxe Edition",
@@ -4242,8 +4160,7 @@
                 "DirectX": "9.0с",
                 "Свободное место": "5.5"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Assassin's Creed: Brotherhood": {
         "title": "Assassin's Creed: Brotherhood",
@@ -4287,8 +4204,7 @@
                 "DirectX": "9.0с",
                 "Свободное место": "8"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Assassin's Creed Revelations": {
         "title": "Assassin's Creed Revelations",
@@ -4333,8 +4249,7 @@
                 "DirectX": "9.0с",
                 "Свободное место": "7"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Assassin's Creed III": {
         "title": "Assassin's Creed III",
@@ -4376,8 +4291,7 @@
                 "DirectX": "9.0с",
                 "Свободное место": "16.2"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Assassin's Creed III Remastered": {
         "title": "Assassin's Creed III Remastered",
@@ -4422,8 +4336,7 @@
                 "DirectX": "11",
                 "Свободное место": "45"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Assassin’s Creed VI Black Flag": {
         "title": "Assassin’s Creed VI Black Flag",
@@ -4468,8 +4381,7 @@
                 "DirectX": "11",
                 "Свободное место": "18"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Assassin’s Creed Rogue": {
         "title": "Assassin’s Creed Rogue",
@@ -4513,8 +4425,7 @@
                 "DirectX": "11",
                 "Свободное место": "12"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Assassin's Creed Unity": {
         "title": "Assassin's Creed Unity",
@@ -4558,8 +4469,7 @@
                 "Видеокарта": "NVIDIA GeForce GTX 680 / AMD Radeon HD 7970",
                 "Свободное место": "50"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Resonance: A Plague Tale Legacy": {
         "title": "Resonance: A Plague Tale Legacy",
@@ -4603,8 +4513,7 @@
                 "DirectX": "12",
                 "Свободное место": "76"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Low-Budget Repairs": {
         "title": "Low-Budget Repairs",
@@ -4653,8 +4562,7 @@
                 "Видеокарта": "NVIDIA RTX 2070 8GB / AMD Radeon RX 5700XT 8GB",
                 "Свободное место": "25"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "Aliens: Fireteam Elite 2": {
         "title": "Aliens: Fireteam Elite 2",
@@ -4698,8 +4606,7 @@
                 "DirectX": "12",
                 "Свободное место": "30"
             }
-        },
-        "sku": "ART-0078"
+        }
     },
     "photoshop-2022": {
         "title": "Adobe Photoshop 2022",
@@ -4711,7 +4618,7 @@
         "status": "available",
         "mode": "offline",
         "category": "programs",
-        "torrentFile": "https://cloud.mail.ru/public/PMVt/eihVapysA",
+        "torrentFile": "torrent/Adobe Photoshop 2022 (23.5.5) x64 [2023, Multi] RePack syneus [rutracker-6320441].torrent",
         "screenshots": [
             "game-screenshot/maxresdefault.jpg"
         ],
@@ -4736,8 +4643,7 @@
                 "Graphics": "DirectX 12, 4 GB VRAM (NVIDIA RTX / AMD RX)",
                 "Storage": "10 GB SSD available space"
             }
-        },
-        "sku": "ART-0085"
+        }
     },
     "Adobe After Effects 2024": {
         "title": "Adobe After Effects 2024",
@@ -4749,7 +4655,7 @@
         "status": "available",
         "mode": "offline",
         "category": "programs",
-        "torrentFile": "https://cloud.mail.ru/public/z8nS/73J6oPzet",
+        "torrentFile": "torrent/Adobe After Effects 2024 24.6.2.002 x64 [2024, MULTILANG + RUS] RePack m0nkrus [rutracker-6657924].torrent",
         "screenshots": [
             "game-screenshot/maxresdefault.jpg"
         ],
@@ -4774,8 +4680,7 @@
                 "Graphics": "DirectX 12, 4 GB VRAM (NVIDIA RTX 2060+ / AMD RX 6000+)",
                 "Storage": "10 GB SSD available space"
             }
-        },
-        "sku": "ART-0086"
+        }
     },
     "Adobe After Effects 2023": {
         "title": "Adobe After Effects 2023",
@@ -4787,7 +4692,7 @@
         "status": "available",
         "mode": "offline",
         "category": "programs",
-        "torrentFile": "https://cloud.mail.ru/public/siJJ/FjN13uJbN",
+        "torrentFile": "torrent/torrent/Adobe After Effects CC 2017 (v14.2.1) Multilingual Update 3 [rutracker-5419130].torrent",
         "screenshots": [
             "game-screenshot/Apa-Itu-Adobe-After-Effects-2023.jpg"
         ],
@@ -4812,8 +4717,7 @@
                 "Graphics": "DirectX 12, 4 GB VRAM (NVIDIA GTX 1060+ / AMD RX 5000+)",
                 "Storage": "10 GB SSD available space"
             }
-        },
-        "sku": "ART-0087"
+        }
     },
     "Adobe After Effects 2022": {
         "title": "Adobe After Effects 2022",
@@ -4825,7 +4729,7 @@
         "status": "available",
         "mode": "offline",
         "category": "programs",
-        "torrentFile": "https://cloud.mail.ru/public/qqUu/rS4o7KgYS",
+        "torrentFile": "torrent/Adobe After Effects 2022 v22.5.0.53 x64 [21.06.2022, Multi + RUS] [rutracker-6228413].torrent",
         "screenshots": [
             "game-screenshot/maxresdefault (1).jpg"
         ],
@@ -4850,8 +4754,7 @@
                 "Graphics": "DirectX 12, 4 GB VRAM (NVIDIA GTX 1050 Ti+ / AMD RX 400+)",
                 "Storage": "10 GB SSD available space"
             }
-        },
-        "sku": "ART-0088"
+        }
     },
     "Adobe After Effects 2021": {
         "title": "Adobe After Effects 2021",
@@ -4863,7 +4766,7 @@
         "status": "available",
         "mode": "offline",
         "category": "programs",
-        "torrentFile": "https://cloud.mail.ru/public/qKRc/vJTvRqJpT",
+        "torrentFile": "torrent/Adobe After Effects 2021 (18.4.1.4) x64 [2021, ENG] Portable by syneus [rutracker-5912108].torrent",
         "screenshots": [
             "game-screenshot/after-effects-2021-1024x1024.png"
         ],
@@ -4888,8 +4791,7 @@
                 "Graphics": "DirectX 12, 2 GB VRAM (NVIDIA GTX 1050 Ti+ / AMD RX 400+)",
                 "Storage": "10 GB SSD available space"
             }
-        },
-        "sku": "ART-0089"
+        }
     },
     "Adobe After Effects CC 2019": {
         "title": "Adobe After Effects CC 2019",
@@ -4901,7 +4803,7 @@
         "status": "available",
         "mode": "offline",
         "category": "programs",
-        "torrentFile": "https://cloud.mail.ru/public/sXQ5/583FAfibz",
+        "torrentFile": "torrent/Adobe After Effects CC 2019 v16.1.3.5 Multilingual (x64) [2019, Ml Rus] RePack m0nkrus [rutracker-5658526].torrent",
         "screenshots": [
             "game-screenshot/Download-Adobe-After-Effects-CC-2019.jpg"
         ],
@@ -4926,8 +4828,7 @@
                 "Graphics": "DirectX 12, 2 GB VRAM (NVIDIA GTX 970+ / AMD R9 290+)",
                 "Storage": "10 GB SSD available space"
             }
-        },
-        "sku": "ART-0090"
+        }
     },
     "Adobe After Effects CC 2017": {
         "title": "Adobe After Effects CC 2017",
@@ -4939,7 +4840,7 @@
         "status": "available",
         "mode": "offline",
         "category": "programs",
-        "torrentFile": "https://cloud.mail.ru/public/SPjk/1c8Zgkx6e",
+        "torrentFile": "torrent/Adobe After Effects CC 2017 (v14.2.1) Multilingual Update 3 [rutracker-5419130].torrent",
         "screenshots": [
             "game-screenshot/1570cc50-3a6f-4258-aa5c-5236ef31034e.png"
         ],
@@ -4964,8 +4865,7 @@
                 "Graphics": "DirectX 12, 2 GB VRAM (NVIDIA GTX 960+ / AMD R9 280+)",
                 "Storage": "10 GB SSD available space"
             }
-        },
-        "sku": "ART-0091"
+        }
     },
     "winrar": {
         "title": "WinRAR",
@@ -5002,8 +4902,7 @@
                 "Graphics": "",
                 "Storage": "50 MB available space"
             }
-        },
-        "sku": "ART-0092"
+        }
     },
     "VPN-ZIP-PC": {
         "title": "VPN-ZIP-PC",
@@ -5028,8 +4927,7 @@
         "systemRequirements": {
             "minimum": {},
             "recommended": {}
-        },
-        "sku": "ART-0093"
+        }
     },
     "TG WS Proxy v1.6.6": {
         "title": "TG WS Proxy v1.6.6",
@@ -5054,8 +4952,7 @@
         "systemRequirements": {
             "minimum": {},
             "recommended": {}
-        },
-        "sku": "ART-0094"
+        }
     },
     "Amnezia VPN-PC": {
         "title": "Amnezia VPN-PC",
@@ -5080,8 +4977,7 @@
         "systemRequirements": {
             "minimum": {},
             "recommended": {}
-        },
-        "sku": "ART-0095"
+        }
     },
     "hitman-pro": {
         "title": "Hitman PRO",
@@ -5114,8 +5010,7 @@
         "systemRequirements": {
             "minimum": {},
             "recommended": {}
-        },
-        "sku": "ART-0096"
+        }
     },
     "Dr.Web CureIt": {
         "title": "Dr.Web CureIt - Лечащая утилита",
@@ -5149,7 +5044,6 @@
         "systemRequirements": {
             "minimum": {},
             "recommended": {}
-        },
-        "sku": "ART-0097"
+        }
     }
 }
